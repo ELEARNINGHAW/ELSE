@@ -1,0 +1,42 @@
+DELETE  FROM LR_Anfrage WHERE (state = '4' OR state = '5') AND initdate  < Datetime('2016-06-25 00:00:00')
+
+SELECT * FROM LR_Anfrage WHERE (initdate  BETWEEN "2015-01-01" AND "2017-06-25")
+
+SELECT cshortname, initdate, state FROM LR_Anfrage      WHERE(state = '3' OR  state = '4' OR state = '5')
+
+       
+	   SELECT  COUNT(*) cshortname, initdate, state FROM LR_Anfrage  WHERE   (initdate > "25-06-25") AND (state = '3' OR  state = '4' OR state = '5')  ORDER BY initdate
+	   SELECT COUNT(*) FROM LR_Anfrage
+	   
+
+SELECT * FROM LR_Anfrage   WHERE(state = '4' OR state = '5') AND      (initdate < "25-06-25")
+
+http://lernserver.el.haw-hamburg.de/haw/ERanfrageAPP/index.php?a=5&x=9&lr=DMI.MD.W15%20ET2
+
+
+
+SELECT COUNT(*) cshortname, userdate, state FROM LR_Anfrage  WHERE   (userdate > "01-06-2016") AND (state = '3' OR  state = '4' OR state = '5')  ORDER BY userdate
+
+
+42838 - 6674
+
+LS..MT.S16 PTZ
+
+DMI
+
+246
+247
+248
+
+LS 
+249
+
+
+251
+252
+253
+254
+255
+
+WS
+256

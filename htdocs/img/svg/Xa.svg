@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="32"
+   height="32"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="Xa.svg"
+   sodipodi:version="0.32"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   sodipodi:modified="true">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="7.8549247"
+     inkscape:cx="23.304053"
+     inkscape:cy="27.004168"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="935"
+     inkscape:window-height="786"
+     inkscape:window-x="2076"
+     inkscape:window-y="17"
+     inkscape:window-maximized="0"
+     width="32px"
+     showguides="true"
+     inkscape:guide-bbox="true">
+    <sodipodi:guide
+       orientation="0,1"
+       position="3.1507288,36.818516"
+       id="guide3842" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="17.313979"
+       id="guide2991" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="20.614768,15.753644"
+       id="guide2993" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-1020.3619)">
+    <rect
+       style="fill:#1a1a1a;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect15313"
+       width="40"
+       height="37.207474"
+       x="40.12001"
+       y="1012.2333"
+       rx="4.1501708"
+       ry="4.6416383" />
+    <rect
+       style="fill:#ffffff;stroke:#ffffff;stroke-width:1.99999988;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect3037"
+       width="29.488052"
+       height="29.269617"
+       x="1.2796803"
+       y="1021.8834"
+       ry="4.6416383"
+       rx="4.1501708" />
+    <g
+       transform="matrix(1.1715252,0,0,0.85358813,-1.8339564,-2.9968292)"
+       style="font-size:29.02571678px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:HAW Frutiger Next Regular;-inkscape-font-specification:HAW Frutiger Next Regular"
+       id="text3838">
+      <g
+         transform="scale(0.85358813,1.1715252)"
+         style="font-size:27.40637398px;line-height:125%;fill:#000000;font-family:HAW Frutiger Next Regular;-inkscape-font-specification:HAW Frutiger Next Regular"
+         id="text2987">
+        <text
+           xml:space="preserve"
+           style="font-size:26.8822403px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+           x="8.6189528"
+           y="1053.7241"
+           id="text2165"
+           transform="scale(1.0045097,0.9955105)"><tspan
+             sodipodi:role="line"
+             id="tspan2167"
+             x="8.6189528"
+             y="1053.7241"
+             style="font-weight:bold;font-family:Arial">X</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

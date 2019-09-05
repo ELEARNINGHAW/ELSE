@@ -1,0 +1,1292 @@
+body
+{
+  min-width:600px;
+  max-width:800px;
+  font-size:1.1em;
+  font-family:Verdana, Arial, Helvetica, sans-serif;
+}
+
+fieldset
+{
+  width:auto;
+}
+
+.colList
+{
+  color: #FFF; 
+  font-size: 10px; 
+  padding:1px
+}
+
+._head, .admin_head, .edit_head,  .staff_head  ,  .view_head  
+{
+  padding:4px;
+  position: relative;
+  left:0px;
+  top:0px;
+  margin:0px; 
+  background-color: #FFFFFF; 
+}
+
+.admin_head 
+{
+  color: #C60C30; 
+}
+
+.edit_head 
+{
+  color: #000; 
+}
+
+.staff_head  
+{
+  color: #00F; 
+}
+
+.fachbib
+{ 
+ color:#FFFFFF; 
+ font-size: 13px; 
+ border: 1px solid white;
+ padding:3px;
+ margin:3px;
+}
+
+.currentDoc
+{
+ /* background-color:#A33  !important;
+  border:#0099ff  groove   5px !important;
+ border-collapse: collapse;*/
+ box-shadow:3px 3px 3px 3px #0E905A !important;
+}
+
+#nav, #nav ul
+{
+margin:0;
+padding:0;
+list-style-type:none;
+list-style-position:outside;
+position:relative;
+line-height:1.5em; 
+}
+
+#nav a
+{
+display:block;
+padding:0px 5px;
+border:1px solid #333;
+color:#fff;
+text-decoration:none;
+background-color:#333;
+}
+
+#nav a.en
+{
+display:block;
+padding:0px 5px;
+border:1px solid #333;
+color:#fff;
+text-decoration:none;
+background-color:#333;
+}
+
+#nav a.dis
+{
+display:block;
+padding:0px 5px;
+border:1px solid #333;
+color:#fff;
+text-decoration:none;
+background-color:#FFF;
+}
+
+#nav a:hover
+{
+background-color:#fff;
+color:#333;
+}
+
+#nav li
+{
+float:left;
+position:relative;
+}
+
+#nav ul 
+{
+position:absolute;
+display:none;
+width:12em;
+top:1.5em;
+}
+
+#nav li ul a
+{
+width:12em;
+height:auto;
+float:left;
+}
+
+#nav ul ul
+{
+top:auto;
+}	
+
+#nav li ul ul 
+{
+left:12em;
+margin:0px 0 0 10px;
+}
+
+/*------------------------*/
+ a.en
+{
+display:inline;
+padding:0px 5px;
+border:1px solid #333;
+color:#fff;
+width:10px;
+text-decoration:none;
+background-color:#333;
+}
+
+.enS
+{
+display:inline;
+padding:0px 5px;
+border:1px solid #333;
+color:#fff;
+width:35px;
+text-decoration:none;
+background-color:#0E905A; 
+}
+
+#nav a.dis
+{
+display:block;
+padding:0px 5px;
+border:1px solid #333;
+color:#fff;
+text-decoration:none;
+background-color:#FFF;
+}
+/*------------------------*/
+
+#nav2, #nav2 ul{
+margin:0;
+padding:0;
+list-style-type:none;
+list-style-position:outside;
+position:relative;
+line-height:0em; 
+z-index:10;
+}
+
+#nav2 a{
+display:block;
+padding:0px;
+border:1px solid #333;
+color:#fff;
+text-decoration:none;
+}
+
+
+#nav2 a:hover{
+background-color:#fff;
+color:#FFF;
+background-color:#333;
+}
+
+#nav2 li{
+float:left;
+position:relative;
+}
+
+#nav2 ul {
+position:absolute;
+display:none;
+width:12em;
+right:0px;
+}
+
+#nav2 li ul a{
+width:12em;
+float:left;
+background-color:#333;
+
+}
+
+#nav2 ul ul{
+top:auto;
+}	
+
+#nav2 li ul ul {
+left:12em;
+margin:0 0 0 0;
+}
+
+#nav2 li:hover ul ul, #nav2 li:hover ul ul ul, #nav2 li:hover ul ul ul ul{
+display:none;
+}
+#nav2 li:hover ul, #nav2 li li:hover ul, #nav2 li li li:hover ul, #nav2 li li li li:hover ul{
+display:block;
+}
+
+#nav li:hover ul ul, #nav li:hover ul ul ul, #nav li:hover ul ul ul ul{
+display:none;
+}
+#nav li:hover ul, #nav li li:hover ul, #nav li li li:hover ul, #nav li li li li:hover ul{
+display:block;
+}
+
+
+
+
+
+#nav3, #nav3 ul{
+margin:0;
+padding:0;
+list-style-type:none;
+list-style-position:outside;
+position:relative;
+line-height:0em; 
+z-index:10;
+}
+
+#nav3 a{
+display:block;
+padding:0px;
+border:1px solid #333;
+color:#fff;
+text-decoration:none;
+}
+
+
+#nav3 a:hover{
+background-color:#fff;
+color:#FFF;
+background-color:#333;
+}
+
+#nav3 li{
+float:left;
+position:relative;
+}
+
+#nav3 ul {
+position:absolute;
+display:none;
+width:12em;
+right:0px;
+}
+
+#nav3 li ul a{
+width:12em;
+float:left;
+background-color:#333;
+
+}
+
+#nav3 ul ul{
+top:auto;
+}	
+
+#nav3 li ul ul {
+left:12em;
+margin:0 0 0 0;
+}
+
+#nav3 li:hover ul ul, #nav3 li:hover ul ul ul, #nav3 li:hover ul ul ul ul{
+display:none;
+}
+#nav3 li:hover ul, #nav3 li li:hover ul, #nav3 li li li:hover ul, #nav3 li li li li:hover ul{
+display:block;
+}
+
+.bgHAW2x,.bgHAW, .bgX, .bg ,.bg0 , .bgDef
+{
+  background-color: #002664 !important;
+}
+
+.bgHAW1x, .bg1, .bg106
+{
+  background-color:  #234A89 !important;
+}
+
+.bgWuS, .bgSP,   .bg63, .bg64
+{
+background-color: #C60C30 !important;   /* WS ROT */
+}
+
+.bgTWI1, .bg61, .bg62 
+{
+background-color: #7f2049 !important;  /* WS ROT2 */
+}
+
+.bgLS, .bg30, .bg31, .bg32, .bg33, .bg34, .bg35, .bg36, .bg37  
+{
+background-color:  #E98300 !important; /* LS ORANGE */
+}
+
+.bgTI, .bg50, .bg51, .bg52, .bg53, .bg54, .bg55
+{
+  background-color:  #0E905A !important; /* TI GRÜN */
+}
+
+.bgDMI, .bg20, .bg21, .bg22, .bg23  
+{
+  background-color:  #008B95 !important; /* DMI Grün */
+}
+
+.bgTWI1  /* TWI I */
+{
+  background-color:   #7f2049 !important;  /* WS ROT2 */
+}
+
+.bgTWI2  /* TWI II */
+{
+  background-color:  #0E905A !important; /* TI GRÜN */
+}
+
+.bgALLE   /* ALLE */
+{
+  background-color: #002664 !important;/* HAW Blau */
+}
+
+.bgOHNE   /* ´OHNE */
+{
+  background-color: #002664 !important;/* HAW Blau */
+}
+
+
+/* ID der  Fachbibs */
+.bgFBDMI   /* DMI */
+{
+  background-color:  #008B95 !important;/* DMI Grün */
+}
+
+.bgFBLS  /* LS */
+{
+  background-color:  #E98300 !important;  /* LS ORANGE */
+}
+
+.bgFBSP  /* SozArb & Pflege */
+{
+  background-color: #C60C30 !important;  /* WS ROT */
+}
+
+.bgFBTWI1  /* TWI I */
+{
+  background-color:   #7f2049 !important;  /* WS ROT2 */
+}
+
+.bgFBTWI2  /* TWI II */
+{
+  background-color:  #0E905A !important; /* TI GRÜN */
+}
+
+.bgFBALLE   /* ALLE */
+{
+  background-color: #002664 !important;/* HAW Blau */
+}
+
+.bgFBOHNE   /* ´OHNE */
+{
+  background-color: #002664 !important;/* HAW Blau */
+}
+
+
+
+
+
+
+.bgTD1, .bgTD2, .bgTD3, .bgTD4, .bgTD5, .bgTD6, .bgTD9
+{
+background-color: #efe96d;
+}
+
+.lbWuS, .lb60, .lb61, .lb62, .lb63, .lb64, .lb3
+{
+    border-left:3px solid #C60C30 !important;
+}
+
+.lbLS, .lb30, .lb31, .lb32, .lb33, .lb34, .lb35, .lb36, .lb37 , .lb2
+{
+  border-left:3px solid #E98300 !important;
+}
+
+.lbTI, .lb50, .lb51, .lb52, .lb53, .lb54, .lb55, .lb4
+{
+  border-left:3px solid #0E905A !important;
+}
+
+.lbDMI, .lb20, .lb21, .lb22, .lb23  , .lb6
+{
+  border-left:3px solid #008B95 !important;
+}
+
+.lb1
+{
+  border-left:3px solid #228B95 !important;
+}
+
+.lb5
+{
+  border-left:3px solid #C62C34 !important;
+}
+
+
+a.icon
+{
+  margin: 0px;
+  padding:0px;
+  width:32px;
+  height:32px;
+}
+
+
+a.name2, a.name 
+{
+  padding-top: 10px;
+  padding-left: 25px;
+  display:block;
+  color:#000;
+  text-decoration:none;
+}
+
+
+a.name 
+{ 
+  width: calc(100% - 154px);
+  border-right: 0px solid #FFF;
+}
+
+
+.name2
+{  
+  padding-top: 20px;
+  width: calc(100% - 175px);
+  font-size: 13px;
+}
+
+
+.name:hover,  a.name2:hover
+{
+  color:#000;
+  background-color:#DDD;
+  text-decoration:none;
+}
+
+
+.semapNameListe
+{
+  font-size:12px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #FFF;
+  margin: 2px;
+  margin-left: 10px;
+  margin-right: 0px;
+  padding-right: 70px;
+  padding-left: 10px;
+  border-top: 1px solid #AEAEAE;
+  border-right: 1px solid #AEAEAE;
+  border-bottom: 1px solid #AEAEAE;
+  border-left: 1px solid #AEAEAE;
+
+  height: 33px;
+  display: block;
+  float:left;
+}
+
+
+.semapIconListe
+{
+  background-color: #FAFAFA;
+  margin: 0px;
+  margin-top:2px;
+ 
+  border: 1px solid #AEAEAE;
+  border-left: 0px solid #FFF;
+
+  padding:0px;
+  padding-right:4px;
+  padding-top:5px;
+  padding-bottom:3px;
+
+  top:0px;
+  float:left; 
+  display: block;
+}
+
+
+
+.todoHeader
+{
+  font-size:15px;
+  font-family: Arial, Helvetica, sans-serif;
+ 
+  margin: 0px;
+  margin-top: 2px;
+  margin-bottom: 20px;
+  padding: 2px;
+  padding-left: 35px;
+  border: 1px solid #000;
+  color:#FFF;
+  background-image:url(../img/svg/star.svg);
+  background-repeat:no-repeat;
+  font-weight:700;
+}
+
+
+.depName
+{
+  font-size:15px;
+  font-family: Arial, Helvetica, sans-serif;
+ 
+  margin: 10px;
+  margin-top: 2px;
+  padding: 2px;
+  padding-left: 35px;
+  border: 1px solid #000;
+  color:#FFFFFF;
+  background-image:url(../img/svg/star.svg);
+  background-repeat:no-repeat;
+  font-weight:700;
+}
+
+.dozentName 
+{
+    font-family: Arial, Helvetica, sans-serif;
+    margin:10px;
+    margin-top: 12px;
+    margin-bottom: 2px;
+    padding: 4px;
+    padding-left: 35px;
+    font-size:14px;
+    font-weight:700;
+    text-decoration: none;
+    color: #FFF;
+    display: block;
+    width: calc(100% - 60px);
+    border:solid #EFEFEF 2px;
+    display: block;
+    float:left;
+}
+
+.dozentLink 
+{
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    color: #FFF;
+
+}
+
+.studihint {
+  font-size:13px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #F6F6F6;
+  margin: 0px;
+  margin-top: 0px;
+  padding: 5px;
+  padding-left: 15px;
+  border: 1px solid #999;
+  background-image:url(../img/svg/clip.svg);
+  background-repeat:no-repeat;
+  background-position: 25px 5px;
+  background-size: 32px;
+    /*   text-shadow:#AAA 1px 1px;   */
+}
+ 
+.SAMeta{
+	font-size:16px;
+	font-family: Arial, Helvetica, sans-serif;
+  margin: 0px;
+	margin-right: 0px;
+	margin-left: 0px;
+  padding:0px;
+	padding-left: 20px;
+  height: 35px;
+
+}
+
+.SAtitel{
+	font-size:20px;
+	font-weight:700;
+	font-family: Arial, Helvetica, sans-serif;
+	margin-left: 10px;
+	margin-top: 2px;
+	margin-bottom: 0px;
+	padding: 2px;
+	padding-left: 0px;
+  color:#FFF;
+  text-shadow:black 1px 1px;
+}
+
+
+.SAdozName{
+	font-size:14px;
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 0px;
+	margin-left: 0px;
+	padding: 0px;
+	padding-top: 5px;
+  color:#FFF;
+  line-height: 95%;
+  font-weight:700;
+  height: 30px;
+ display:inline-block;
+ 
+}
+
+
+
+.hinweise{
+	font-size:11px; 
+	background-color: #FFF;
+	padding: 10px;
+	border: 1px solid #999;
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 3px;
+	margin-left: 10px;
+	padding: 2px;
+	padding-left: 0px;
+
+}
+
+.medVerlag, .medBand, .medAuflage, .medSignatur ,.medJahrgang, .medTitle , .medTyp, .medAutor , .medSignatur
+{	font-size:12px;
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 1px;
+	padding-left: 0px;
+    display:inline-block;
+    white-space:normal;
+}
+
+
+td{
+  margin:0;
+  padding:0;
+  vertical-align: top; 
+  height:100%;
+}
+
+
+
+
+
+
+
+.bibStandort, .prebib{
+	margin: 1px;
+	margin: 0px;
+	padding: 0px;
+  height: 28px;
+  width:1px;
+  display:inline-block;
+}
+
+.bibStandort{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size:11px;
+  margin: 1px;
+  margin-left: 0px;
+  padding: 5px;
+  padding-top: 0px;
+  padding-left: 32px;
+  width:auto;
+  left:30px;
+}
+
+.state_1  /* new */
+{
+ /*  background-color: #9295C2; */
+}
+
+.state_2  /* open */ 
+{
+ /* background-color: #6666cc; */
+}
+
+.state_3  /* active */
+{
+  background-color: #FEFEFE;
+  border: solid black 1px;
+  color:#000;
+}
+
+.state_4  /* active */.obsolete
+{
+  /*background-color: #cc66cc;*/
+}
+
+.state_5  /* inactive */  
+{
+  /* background-color: #555; */
+}
+
+
+.headlineDozent
+{
+  left:5px;
+  margin:0px;   background-color: #FEFEFE; 
+  border-bottom:2px solid #666; 
+  margin-bottom: 10px;  
+  height:20px;
+}
+
+.status
+{ 
+
+  text-align: center;
+  display:block;
+  float:right;
+  margin:0px;
+  margin-top:2px; 
+  margin-left:3px; 
+  margin-right:-8px; 
+  margin-bottom:1px; 
+  line-height: 100%;
+
+  padding:0px;  
+  padding-top:5px;  
+  padding-bottom:5px;  
+  font-size:9px; 
+  width: 50px;
+  border: solid black 1px;
+  background-color: #FFF;
+}
+
+
+.iconlist
+{ 
+  display:block;
+  top:0px; 
+  height:30px; 
+  float:right;
+  margin:0px;
+  margin-left:0px; 
+  padding-left:0px;  
+  padding-right: 0px;
+  padding-top:0px;  
+
+  background-color: #FFF;
+}
+
+
+.medHeadBlock
+{
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0px;
+  padding: 0px;
+  padding-top: 6px;
+  color: #FFF;
+  line-height: 95%;
+  font-weight: 700;
+  height: 30px;
+  display: inline-block;
+  position:absolute;
+  left:620px;
+}
+
+
+.s_standard
+{
+  border-right: #FFF solid 10px;  
+  
+}
+
+.s_new, .s_open, .s_active, .s_obsolete, .s_inactive
+{
+  border-right: #FFF solid 10px;  
+}
+
+.s_new
+{
+  border-color: #00F ;  
+}
+
+.s_open /*wird bearbeitet */
+{
+  border-color:  #0099ff;  
+}
+
+.s_active
+{
+  border-color:  #0F0;  
+}
+
+.s_obsolete /* Wird entfernt */
+{
+  border-color:  #E98300;  
+}
+
+.s_inactive
+{
+  border-color: #F00 ;  
+}
+
+
+.mediaInSA-placeholder
+{
+  width:98%;
+  height: 10px;
+  margin:10px;
+  background-color: #efe96d;
+  border: solid #666 1px;
+}
+
+.mediaInSA
+{
+  padding:10px;
+  padding-left: 50px; 
+  padding-top:0px; 
+  padding-bottom:0px;
+  margin:0px; 
+  margin-bottom: 6px; 
+  border-top: solid black 2px;
+  border-bottom:  solid #999 2px;
+  border-right: solid #666 1px;
+  border-left: solid #000 1px;
+}
+
+.medium_1 /* Buch */
+{
+  background-image:url(../img/svg/txtBuch.png);
+  background-repeat:repeat-y;
+  background-color: transparent; 
+}
+
+.medium_2 /* Buch Literaturhinweis */
+{
+  background-image:url(../img/svg/txtLHBuch.png);
+  background-repeat:repeat-y;
+  background-color: #F0F0F0; 
+}
+
+.medium_3 /* CD-ROM */
+{
+  background-image:url(../img/svg/txtBuch.png);
+  background-repeat:repeat-y;
+  background-color: transparent; 
+}
+
+.medium_4 /* E-Book */
+{
+  background-image:url(../img/svg/txtE-Book.png);
+  background-repeat:repeat-y;
+  background-color: #FFF; 
+}
+
+
+.medium_6 /* Artikel */
+{
+  background-image:url(../img/svg/txt-Artikel.png);
+  background-repeat:repeat-y;
+  background-color: #FFF;
+}
+
+.medium_7 /* E-Artikel */
+{
+  background-image:url(../img/svg/txtE-Artikel.png);
+  background-repeat:repeat-y;
+  background-color: #FFF;
+}
+
+.medium_8 /* E-Journal */
+{
+  background-image:url(../img/svg/txtE-Journal.png);
+  background-repeat:repeat-y;
+  background-color: #FFF;
+}
+
+
+.addMedInSA
+{
+  padding:10px;
+	padding-left:50px; 
+	margin:10px; 
+	background-color: #E0E0E0; 
+	border-bottom:1px solid #666;  
+}
+
+
+.medimSA
+{
+	background-image:url(../img/svg/chevron-right.svg);
+	background-repeat:no-repeat;
+  padding:10px;
+	padding-left:50px; 
+	margin:10px; 
+	background-color: #EEE; 
+	border-bottom:3px solid #666;  
+}
+
+/*-- HELP WINDOW --*/
+.overlay {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  display: none;
+}
+
+.modal {
+  display: none;
+  background: #FFF;
+  padding: 0px 20px 20px 0;
+  overflow: auto;
+  z-index: 5001;
+  position: absolute;
+  width: 100%;
+  min-height: 800px;
+  top:100px;
+  max-width: 800px !important;
+}
+/*-- HELP WINDOW --*/
+
+.modal_e {
+  display: none;
+  background: #FFF;
+  padding: 0 20px 20px;
+  overflow: auto;
+  z-index: 1001;
+  position: absolute;
+  width: 700px;
+  min-height: 600px;
+}
+/*-- HELP WINDOW --*/
+
+.head1
+{
+  font-weight:700;
+  float:right;
+ 
+}
+
+.txtin{
+     height: 30px;
+     width:400px;
+}
+
+.txtin2{
+     height: 60px;
+     width:400px;
+}
+
+.text{
+	font-size:12px;
+	font-family: Arial, Helvetica, sans-serif;
+  margin: 15px;
+  padding: 5px;
+  padding-left: 115px;
+	border: 1px solid #EEE;
+  background-color: #EEE
+}
+
+.erwebungsvorschlag
+{
+  text-decoration: none ; 
+  font-weight: 700;
+  font-size: 13px; 
+  color:#000;
+  padding:3px;
+}
+
+.erwebungsvorschlag:hover
+{
+  background-color: #FEFEFE;
+}
+
+
+.staffnote{
+	font-size:12px;
+	font-family: Arial, Helvetica, sans-serif;
+  margin: 5px;
+  padding: 5px;
+  padding-left: 30px;
+	border: 1px solid #EEE;
+  background-color: #ffff99;
+}
+
+
+.medhint
+{
+  font-size:13px;
+  text-decoration: none;
+  color: #000;
+  padding:8px;
+  padding-left:40px;
+  background-image:url(../img/svg/pushpin.svg);
+  background-repeat:no-repeat;
+  background-position:10px 5px;
+  background-size: 20px;
+  display:block;
+  border-top: solid black 1px;
+  border-bottom:  solid #999 1px;
+  margin: 0px;
+  margin-bottom: 8px;
+}
+
+.medLink{
+  font-size:13px;
+  font-weight:700;
+  text-decoration: none;
+  color: #000;
+  padding:8px;
+  padding-left:25px;
+  display:block;
+  margin:0px; 
+  margin-top:2px; 
+  margin-bottom:2px; 
+  margin-right: -7px; 
+  border:    #FFF solid 1px; 
+}
+
+.medLink:hover {
+  background-image:url(../img/svg/chevron-right.svg);
+  background-repeat:no-repeat;
+  background-position:2px 1px;
+  color: #000;
+  background-color: #FFF;
+  border :    #000 solid 1px; 
+}
+  
+.medLink:focus    {
+  background-image:url(../img/svg/chevron-right_w.svg);
+  background-repeat:no-repeat;
+  background-position:2px 1px;
+  background-color: #FFF;
+  text-decoration: none;
+  color: #000;
+}
+
+
+
+a.medi_1  /* Buch */
+{
+  background-repeat:no-repeat;
+  background-position:100% 15px;
+  background-image:url(../img/svg/books.svg);
+}
+
+a.medi_2 /* Buch Literaturhinweis */
+{
+  background-repeat:no-repeat;
+  background-position:100% 15px;
+  background-image:url(../img/svg/book4.svg);
+}
+
+
+a.medi_3 /* CD-ROM */
+{
+  background-repeat:no-repeat;
+  background-position:100% 15px;
+  background-image:url(../img/svg/vinyl.svg);
+}
+
+a.medi_4 /* E-Book */
+
+{
+  background-repeat:no-repeat;
+  background-position:100% 15px;
+  background-image:url(../img/svg/newspaper.svg);
+}
+
+a.medi_1:hover  /* Buch */
+{
+  background-repeat:no-repeat;
+  background-position:100% 15px;
+  background-image:url(../img/svg/booksH.svg);
+}
+
+a.medi_2:hover /* Buch Literaturhinweis */
+{
+  background-repeat:no-repeat;
+  background-position:100% 15px;
+  background-image:url(../img/svg/book4H.svg);
+}
+
+
+a.medi_3:hover /* CD-ROM */
+{
+  background-repeat:no-repeat;
+  background-position:100% 15px;
+  background-image:url(../img/svg/vynilH.svg);
+}
+
+a.medi_4:hover /* E-Book */
+
+{
+  background-repeat:no-repeat;
+  background-position:100% 15px;
+  background-image:url(../img/svg/newspaperH.svg);
+}
+
+
+a.hitlink_print, a.hitlink_electronic, a.hitlink_cd-rom {
+  background-color: #FFF;
+  color:#666;
+	text-decoration:none;
+  text-align:  left; 
+  font-size:11px;
+	font-weight:700;
+  padding: 6px;
+  margin-left:15px;
+  margin-top:20px;
+  margin-right: 5px;
+  width: 640px;
+  border: 1px solid #CCC;
+  display: block;	
+}
+
+a.hitlink_print 
+{
+  background-repeat:no-repeat;
+  background-position:615px 5px;
+  background-image:url(../img/svg/books.svg);
+}
+
+a.hitlink_electronic 
+{
+  background-repeat:no-repeat;
+  background-position:615px 5px;  
+  background-image:url(../img/svg/newspaper.svg);
+}
+
+a.hitlink_cd-rom 
+{
+  background-image:url(../img/svg/vinyl.svg);
+  background-repeat:no-repeat;
+  background-position:615px 5px;
+}
+
+
+
+
+a.hitlink_print:hover, a.hitlink_electronic:hover , a.hitlink_cd-rom:hover 
+{
+  background-color:#234A89;
+	color:#FFF;
+}
+
+.mediaListHeader
+{
+  color:#FFF;
+  margin-right: 5px;
+  padding:2px;
+  width: 90px;
+  text-align:  right; 
+  background-color: #AEAEAE;
+  display:inline-block;
+}
+
+.mediaTxt
+{
+  color:#000;
+  margin-right: 5px;
+  padding:2px;
+  padding-right:25px;
+  text-align:  left; 
+  background-color: #FAFAFA;
+}
+
+.border2top
+{
+  border-top:solid white 20px; 
+  font-weight: 700;
+  padding-top:10px;  
+  margin:30px;
+}
+
+.checkBox
+{
+  float:right;
+  margin:10px;
+}
+
+
+li a, a
+{
+  text-decoration: none;
+  font-size: 16px;
+  color:#002664;
+}
+
+ul 
+{
+	list-style-image: url('img/right.jpg');
+}
+
+ul.circle {
+	list-style-type: circle;
+	list-style-image: none;
+}
+
+legend {
+	font-size: x-small;
+}
+
+fieldset {
+	margin-top: 20px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+
+
+.medHead{
+  font-size:12px;
+  margin-right: 5px;
+  padding:2px;
+  width: 75px;
+  text-align:  right;
+  background-color: #AEAEAE;
+  color: #FFF;
+  display:inline-block;
+}
+
+
+
+a.medHead2{
+    font-weight: 700;
+    font-size: 12px;
+    color: #FFFFFF !important;
+}
+
+
+a.medHead3{
+  font-weight: 700;
+  font-size: 12px;
+  color: #FFF !important;
+  display:block;
+}
+
+.exportBt
+{
+    
+}
+.exportBt:hover
+{
+    background-color: #DDD;
+}
+
+.bgHAW2x:hover {
+  background-color: #FFF;
+  color: #000;
+}
+
+
+
+/* LOADING IMG */
+#basic-modal-content {display:none;}
+/* Overlay */
+#simplemodal-overlay {background-color:#000;}
+/* Container */
+#simplemodal-container {height:100px; width:100px; color:#bbb; background-color:#FFF; border:4px solid #444; padding:12px;}
+#simplemodal-container .simplemodal-data {padding:8px;}
+
+

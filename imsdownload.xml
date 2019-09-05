@@ -1,0 +1,4616 @@
+<collection xmlns="http://www.indexdata.com/turbomarc">
+<r>
+  <l>07962nam a2201861 c 4500</l>
+  <c001>148079857</c001>
+  <c003>DE-601</c003>
+  <c005>20181024095510.0</c005>
+  <c008>940325s1994    gw            000 0 ger d</c008>
+  <d015 i1=" " i2=" ">
+    <sa>94N080399</sa>
+    <s2>dnb</s2>
+  </d015>
+  <d015 i1=" " i2=" ">
+    <sa>94A251081</sa>
+    <s2>dnb</s2>
+  </d015>
+  <d016 i1="7" i2=" ">
+    <sa>940299364</sa>
+    <s2>DE-101</s2>
+  </d016>
+  <d020 i1=" " i2=" ">
+    <sa>3050025654</sa>
+    <s9>3-05-002565-4</s9>
+  </d020>
+  <d024 i1="8" i2=" ">
+    <sa>340100036606</sa>
+  </d024>
+  <d024 i1="8" i2=" ">
+    <sa>OKRT00001928</sa>
+  </d024>
+  <d024 i1="8" i2=" ">
+    <sa>BBAWhk_00_002417</sa>
+  </d024>
+  <d024 i1="8" i2=" ">
+    <sa>khfs9388</sa>
+  </d024>
+  <d024 i1="8" i2=" ">
+    <sa>imw000739</sa>
+  </d024>
+  <d024 i1="8" i2=" ">
+    <sa>ZHW002169</sa>
+  </d024>
+  <d024 i1="8" i2=" ">
+    <sa>DBHB0028090</sa>
+  </d024>
+  <d024 i1="8" i2=" ">
+    <sa>SBD0014837</sa>
+  </d024>
+  <d035 i1=" " i2=" ">
+    <sa>(OCoLC)832319525</sa>
+  </d035>
+  <d035 i1=" " i2=" ">
+    <sa>(DE-599)DNB940299364</sa>
+  </d035>
+  <d040 i1=" " i2=" ">
+    <sb>ger</sb>
+    <sc>GBVCP</sc>
+  </d040>
+  <d041 i1="0" i2=" ">
+    <sa>ger</sa>
+  </d041>
+  <d050 i1=" " i2="0">
+    <sa>QH31.D2</sa>
+  </d050>
+  <d082 i1="0" i2="0">
+    <sa>575.0162074432142</sa>
+  </d082>
+  <d082 i1="0" i2="0">
+    <sa>575.01/62/074432142</sa>
+  </d082>
+  <d084 i1=" " i2=" ">
+    <sa>32</sa>
+    <sa>46</sa>
+    <sa>26</sa>
+    <sa>63</sa>
+    <s2>sdnb</s2>
+  </d084>
+  <d084 i1=" " i2=" ">
+    <sa>42.01</sa>
+    <s9>Geschichte der Biologie</s9>
+    <s2>bkl</s2>
+  </d084>
+  <d084 i1=" " i2=" ">
+    <sa>42.02</sa>
+    <s9>Philosophie und Theorie der Biologie</s9>
+    <s2>bkl</s2>
+  </d084>
+  <d084 i1=" " i2=" ">
+    <sa>42.21</sa>
+    <s9>Evolution</s9>
+    <s2>bkl</s2>
+  </d084>
+  <d084 i1=" " i2=" ">
+    <sa>CH 5317</sa>
+    <s2>rvk</s2>
+  </d084>
+  <d110 i1="2" i2=" ">
+    <sa>Deutsches Hygiene-Museum</sa>
+    <s0>(DE-601)101629745</s0>
+    <s0>(DE-588)2008718-4</s0>
+  </d110>
+  <d245 i1="0" i2="0">
+    <sa>Darwin und Darwinismus</sa>
+    <sb>eine Ausstellung zur Kultur- und Naturgeschichte ; [Katalog ; eine Publikation des Deutschen Hygiene-Museums]</sb>
+    <sc>hrsg. von Bodo-Michael Baumunk und Jürgen Riess ; in memoriam Walter Rossmanith 1958 - 1993</sc>
+  </d245>
+  <d264 i1="3" i2="1">
+    <sa>Berlin</sa>
+    <sb>Akad.-Verl.</sb>
+    <sc>1994</sc>
+  </d264>
+  <d300 i1=" " i2=" ">
+    <sa>265 S.</sa>
+    <sb>zahlr. Ill.</sb>
+    <sc>26 cm</sc>
+  </d300>
+  <d500 i1=" " i2=" ">
+    <sa>Eine Veröffentlichung des Deutschen Hygiene-Museums</sa>
+  </d500>
+  <d500 i1=" " i2=" ">
+    <sa>Katalog einer Ausstellung am Deutschen Hygiene-Museum Dresden vom 25.März - 26.Juni 1994</sa>
+  </d500>
+  <d500 i1=" " i2=" ">
+    <sa>Literaturverz. S. 249-258</sa>
+  </d500>
+  <d611 i1="2" i2="7">
+    <sa>Ausstellung</sa>
+    <s2>gnd</s2>
+  </d611>
+  <d611 i1="2" i2="7">
+    <sa>Ausstellung</sa>
+    <s2>gnd</s2>
+  </d611>
+  <d648 i1=" " i2="7">
+    <sa>Geschichte</sa>
+    <s2>gnd</s2>
+  </d648>
+  <d650 i1=" " i2="7">
+    <s0>(DE-601)104313285</s0>
+    <s0>(DE-588)4011097-7</s0>
+    <sa>Darwinismus</sa>
+    <s2>gnd</s2>
+  </d650>
+  <d650 i1=" " i2="7">
+    <s0>(DE-601)105670421</s0>
+    <s0>(DE-588)4134723-7</s0>
+    <sa>Naturdarstellung</sa>
+    <s2>gnd</s2>
+  </d650>
+  <d650 i1=" " i2="7">
+    <s0>(DE-601)105822957</s0>
+    <s0>(DE-588)4114333-4</s0>
+    <sa>Kunst</sa>
+    <s2>gnd</s2>
+  </d650>
+  <d651 i1=" " i2="7">
+    <sa>Dresden &lt;1995&gt;</sa>
+    <s2>gnd</s2>
+  </d651>
+  <d651 i1=" " i2="7">
+    <sa>Dresden &lt;1995&gt;</sa>
+    <s2>gnd</s2>
+  </d651>
+  <d653 i1=" " i2="0">
+    <sa>Darwin, Charles</sa>
+    <sa>1809-1882</sa>
+    <sa>Exhibitions</sa>
+  </d653>
+  <d653 i1=" " i2="0">
+    <sa>Evolution (Biology)</sa>
+    <sa>Exhibitions</sa>
+  </d653>
+  <d653 i1=" " i2="0">
+    <sa>Natural selection</sa>
+    <sa>Exhibitions</sa>
+  </d653>
+  <d655 i1="0" i2="7">
+    <s0>(DE-588)4135467-9</s0>
+    <sa>Ausstellungskatalog</sa>
+    <s2>gnd-content</s2>
+  </d655>
+  <d689 i1="0" i2="0">
+    <s0>(DE-601)104313285</s0>
+    <s0>(DE-588)4011097-7</s0>
+    <sd>s</sd>
+    <sa>Darwinismus</sa>
+  </d689>
+  <d689 i1="0" i2="1">
+    <sa>f</sa>
+    <sa>Ausstellung</sa>
+  </d689>
+  <d689 i1="0" i2="2">
+    <sa>g</sa>
+    <sa>Dresden &lt;1995&gt;</sa>
+  </d689>
+  <d689 i1="0" i2=" ">
+    <s5>DE-601</s5>
+  </d689>
+  <d689 i1="1" i2="0">
+    <s0>(DE-601)105670421</s0>
+    <s0>(DE-588)4134723-7</s0>
+    <sd>s</sd>
+    <sa>Naturdarstellung</sa>
+  </d689>
+  <d689 i1="1" i2="1">
+    <s0>(DE-601)105822957</s0>
+    <s0>(DE-588)4114333-4</s0>
+    <sd>s</sd>
+    <sa>Kunst</sa>
+  </d689>
+  <d689 i1="1" i2="2">
+    <sa>z</sa>
+    <sa>Geschichte</sa>
+  </d689>
+  <d689 i1="1" i2="3">
+    <sa>f</sa>
+    <sa>Ausstellung</sa>
+  </d689>
+  <d689 i1="1" i2="4">
+    <sa>g</sa>
+    <sa>Dresden &lt;1995&gt;</sa>
+  </d689>
+  <d689 i1="1" i2=" ">
+    <s5>DE-601</s5>
+  </d689>
+  <d700 i1="1" i2=" ">
+    <sa>Baumunk, Bodo-Michael</sa>
+    <s0>(DE-601)771321260</s0>
+    <s0>(DE-588)1043286160</s0>
+  </d700>
+  <d700 i1="1" i2=" ">
+    <sa>Rossmanith, Walter</sa>
+    <se>gefeierter</se>
+    <s4>hnr</s4>
+  </d700>
+  <d700 i1="1" i2=" ">
+    <sa>Rieß, Jürgen</sa>
+  </d700>
+  <d711 i1="2" i2=" ">
+    <sa>Ausstellung</sa>
+    <sd>1995.03.25-06.26</sd>
+    <sc>Dresden</sc>
+  </d711>
+  <d856 i1="4" i2="2">
+    <su>http://d-nb.info/940299364/04</su>
+    <sm>V:AT-OBV</sm>
+    <sq>application/pdf</sq>
+    <s3>Inhaltsverzeichnis</s3>
+  </d856>
+  <d889 i1=" " i2=" ">
+    <sw>(DE-601)466395558</sw>
+  </d889>
+  <d912 i1=" " i2=" ">
+    <sa>SYSFLAG_1</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_GVK</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_11</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_20</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_22</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_31</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_34</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_39</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_40</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_49</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_50</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_61</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_62</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_65</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_70</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_105</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_118</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_130</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_156</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_179</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_181</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_205</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_227</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_341</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_676</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_791</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_22_i30809</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_22_i30716</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_22_i30514</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_40_i154</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_65_a018</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_181_b010</sa>
+  </d912>
+  <d951 i1=" " i2=" ">
+    <sa>BO</sa>
+  </d951>
+  <d980 i1=" " i2=" ">
+    <s2>11</s2>
+    <s1>01</s1>
+    <sb>025686607</sb>
+    <sf>1:HA15</sf>
+    <sd>HA 15 Aa 6925</sd>
+    <se>s</se>
+    <sd>6 B 21158</sd>
+    <sx>0001</sx>
+    <sy>r</sy>
+    <sz>30-08-94</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>20</s2>
+    <s1>01</s1>
+    <sb>1396318704</sb>
+    <sf>Q2</sf>
+    <sd>U-230</sd>
+    <se>i</se>
+    <sx>0084</sx>
+    <sy>riQ2</sy>
+    <sz>06-06-13</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>22</s2>
+    <s1>01</s1>
+    <sb>39823521X</sb>
+    <sf>18/308</sf>
+    <sd>VKK-G5/34</sd>
+    <se>i</se>
+    <sx>0018</sx>
+    <sy>zi30809</sy>
+    <sz>24-07-00</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>22</s2>
+    <s1>03</s1>
+    <sb>098595725</sb>
+    <sf>18/307-a</sf>
+    <sd>ZHW 52/435</sd>
+    <se>i</se>
+    <sx>0018</sx>
+    <sy>zi30716</sy>
+    <sz>01-01-04</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>22</s2>
+    <s1>04</s1>
+    <sb>1699919410</sb>
+    <sf>18/305</sf>
+    <sd>B 7 Dar/1</sd>
+    <se>c</se>
+    <sl>Geschenk v. Prof. Mühlbach</sl>
+    <sx>0018</sx>
+    <sy>zi30514</sy>
+    <sz>06-07-17</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>31</s2>
+    <s1>01</s1>
+    <sb>294821473</sb>
+    <sf>J 30</sf>
+    <sd>PHI:HM:900:D228:5:1994</sd>
+    <se>d</se>
+    <sx>0027</sx>
+    <sy>r</sy>
+    <sz>03-09-98</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>31</s2>
+    <s1>02</s1>
+    <sb>708802141</sb>
+    <sf>J 26</sf>
+    <sd>BIO:FO:0500:Bau::1994</sd>
+    <se>d</se>
+    <sx>0027</sx>
+    <sy>z</sy>
+    <sz>01-03-05</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>31</s2>
+    <s1>03</s1>
+    <sb>894830317</sb>
+    <sf>J 47</sf>
+    <sd>VII 1278</sd>
+    <se>d</se>
+    <sx>0027</sx>
+    <sy>r</sy>
+    <sz>14-10-08</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>34</s2>
+    <s1>01</s1>
+    <sb>065017617</sb>
+    <sf>18/285</sf>
+    <sd>A.3</sd>
+    <se>c</se>
+    <sx>3551</sx>
+    <sy>zi005</sy>
+    <sz>15-05-95</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>39</s2>
+    <s1>01</s1>
+    <sb>151106371</sb>
+    <sf>FBG MAG</sf>
+    <sd>B 02747</sd>
+    <se>d</se>
+    <sd>Forschungsbibliothek Gotha</sd>
+    <sl>Belegexemplar: Forschungsdokumentation</sl>
+    <sx>547/039</sx>
+    <sy>zg05</sy>
+    <sz>27-01-00</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>40</s2>
+    <s1>01</s1>
+    <sb>470286857</sb>
+    <sf>7/154</sf>
+    <sd>Biol.90.1994</sd>
+    <se>i</se>
+    <sx>0007</sx>
+    <sy>xi154</sy>
+    <sz>07-02-01</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>49</s2>
+    <s1>01</s1>
+    <sb>12667647X</sb>
+    <sf>Gö164</sf>
+    <sd>CH 5317 Baum 1994</sd>
+    <se>i</se>
+    <sx>3049</sx>
+    <sy>zi164</sy>
+    <sz>01-06-94</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>50</s2>
+    <s1>01</s1>
+    <sb>743672291</sb>
+    <sd>NT 95-7110</sd>
+    <se>b</se>
+    <sd>55.4° 419</sd>
+    <sx>0023</sx>
+    <sy>k</sy>
+    <sz>21-11-05</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>61</s2>
+    <s1>01</s1>
+    <sb>383099552</sb>
+    <sf>MAG</sf>
+    <sd>141232 - B</sd>
+    <se>u</se>
+    <sx>0032</sx>
+    <sy>r</sy>
+    <sz>17-03-00</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>61</s2>
+    <s1>02</s1>
+    <sb>653614829</sb>
+    <sf>MAG</sf>
+    <sd>Ku B 2638</sd>
+    <se>u</se>
+    <sx>0032</sx>
+    <sy>r</sy>
+    <sz>23-06-04</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>61</s2>
+    <s1>03</s1>
+    <sb>653614837</sb>
+    <sf>MAG</sf>
+    <sd>Ku B 2638 [a]</sd>
+    <se>u</se>
+    <sx>0032</sx>
+    <sy>r</sy>
+    <sz>23-06-04</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>62</s2>
+    <s1>01</s1>
+    <sb>1638432228</sb>
+    <sf>28/BB2-PHI</sf>
+    <sd>CH 5317 B348</sd>
+    <se>u</se>
+    <sh>ACQ</sh>
+    <sx>0028</sx>
+    <sy>z</sy>
+    <sz>17-11-16</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>65</s2>
+    <s1>02</s1>
+    <sb>1514656345</sb>
+    <sf>Ha 18-18</sf>
+    <sd>A III J 1641</sd>
+    <se>i</se>
+    <sx>3/18</sx>
+    <sy>ka018</sy>
+    <sz>16-12-14</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>70</s2>
+    <s1>01</s1>
+    <sb>127513590</sb>
+    <sf>FBE</sf>
+    <sd>94-1463</sd>
+    <se>u</se>
+    <sx>89/15</sx>
+    <sy>zce</sy>
+    <sz>30-06-94</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>105</s2>
+    <s1>01</s1>
+    <sb>098797352</sb>
+    <sf>IMGWF B</sf>
+    <sd>Biol G9 415</sd>
+    <se>g</se>
+    <sx>0841/1</sx>
+    <sy>ni01</sy>
+    <sz>28-04-94</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>118</s2>
+    <s1>01</s1>
+    <sb>1241268231</sb>
+    <sf>SBD-LS</sf>
+    <sd>13215</sd>
+    <se>i</se>
+    <sl>ORG_DS_ID: b006689</sl>
+    <sx>3329/4</sx>
+    <sy>z4</sy>
+    <sz>03-10-07</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>130</s2>
+    <s1>01</s1>
+    <sb>126831580</sb>
+    <sf>N</sf>
+    <sd>VNH / Dar</sd>
+    <se>u</se>
+    <sx>0700</sx>
+    <sy>kn</sy>
+    <sz>22-08-94</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>156</s2>
+    <s1>01</s1>
+    <sb>679690697</sb>
+    <sf>FHMA</sf>
+    <sd>B 94 / 457</sd>
+    <se>u</se>
+    <sd>B 94::457</sd>
+    <sx>0204</sx>
+    <sy>z</sy>
+    <sz>01-01-01</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>179</s2>
+    <s1>01</s1>
+    <sb>093894449</sb>
+    <sf>B4</sf>
+    <sd>1994 B 912</sd>
+    <se>u</se>
+    <sx>8306</sx>
+    <sy>n</sy>
+    <sz>06-07-94</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>179</s2>
+    <s1>02</s1>
+    <sb>1400236762</sb>
+    <sf>B4/AvH</sf>
+    <se>g</se>
+    <sx>8306</sx>
+    <sy>z</sy>
+    <sz>12-06-13</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>181</s2>
+    <s1>01</s1>
+    <sb>948656646</sb>
+    <sf>KB</sf>
+    <sd>8 1994 2092</sd>
+    <se>i</se>
+    <sd>::8:1994:2092:</sd>
+    <sl>Retro Th</sl>
+    <sx>3181/010</sx>
+    <sy>rb010</sy>
+    <sz>24-09-09</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>205</s2>
+    <s1>01</s1>
+    <sb>1368035159</sb>
+    <sf>FBG MAG</sf>
+    <sd>B 02747</sd>
+    <sk>Titel vorhanden! &lt;a target="_blank" href="http://opac.uni-erfurt.de/php/opac_forward.php?inst=OPAC_EF_EPN&amp;ppn=151106371"&gt;Weiter zum Online-Katalog&lt;/a&gt;</sk>
+    <sx>3205</sx>
+    <sy>zfg1</sy>
+    <sz>22-02-13</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>227</s2>
+    <s1>01</s1>
+    <sb>1241582998</sb>
+    <sd>II 23-523</sd>
+    <se>u</se>
+    <sx>0056</sx>
+    <sy>x</sy>
+    <sz>13-05-11</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>341</s2>
+    <s1>01</s1>
+    <sb>685155005</sb>
+    <sd>94-0318</sd>
+    <se>u</se>
+    <sx>4341</sx>
+    <sy>n</sy>
+    <sz>30-09-99</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>676</s2>
+    <s1>01</s1>
+    <sb>1779660065</sb>
+    <sd>N1-1-19</sd>
+    <se>i</se>
+    <sx>9835</sx>
+    <sy>rp</sy>
+    <sz>18-06-18</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>791</s2>
+    <s1>01</s1>
+    <sb>895437791</sb>
+    <sd>1 E c 1765</sd>
+    <se>u</se>
+    <sx>3791</sx>
+    <sy>n</sy>
+    <sz>03-10-06</sz>
+  </d980>
+  <d982 i1=" " i2=" ">
+    <s2>61</s2>
+    <s1>00</s1>
+    <s8>00</s8>
+    <sa>Dresden [Stadt] / Ausstellung</sa>
+  </d982>
+  <d982 i1=" " i2=" ">
+    <s2>61</s2>
+    <s1>00</s1>
+    <s8>01</s8>
+    <sa>Darwin, Charles / Nachwirkung Deutung</sa>
+  </d982>
+  <d982 i1=" " i2=" ">
+    <s2>61</s2>
+    <s1>00</s1>
+    <s8>02</s8>
+    <sa>Darwinismus / Nachwirkung Deutung</sa>
+  </d982>
+  <d982 i1=" " i2=" ">
+    <s2>156</s2>
+    <s1>01</s1>
+    <s8>00</s8>
+    <s0>(DE-601)396730779</s0>
+    <sa>XXX</sa>
+  </d982>
+  <d982 i1=" " i2=" ">
+    <s2>205</s2>
+    <s1>00</s1>
+    <s8>20</s8>
+    <sa>Chart A00783a, Fundstelle: S. 46-47</sa>
+  </d982>
+  <d982 i1=" " i2=" ">
+    <s2>205</s2>
+    <s1>00</s1>
+    <s8>21</s8>
+    <sa>Chart A00784, Fundstelle: S. 47</sa>
+  </d982>
+  <d982 i1=" " i2=" ">
+    <s2>791</s2>
+    <s1>00</s1>
+    <s8>00</s8>
+    <sa>Darwinismus / Geschichte / Ausstellung / Dresden &lt;1994&gt;</sa>
+  </d982>
+  <d982 i1=" " i2=" ">
+    <s2>791</s2>
+    <s1>00</s1>
+    <s8>01</s8>
+    <sa>Ausstellung / Dresden &lt;1994&gt; / Darwinismus</sa>
+  </d982>
+  <d983 i1=" " i2=" ">
+    <s2>11</s2>
+    <s1>00</s1>
+    <s8>00</s8>
+    <s0>(DE-601)284758221</s0>
+    <sa>Bio A 668; Darwinismus</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>11</s2>
+    <s1>00</s1>
+    <s8>01</s8>
+    <s0>(DE-601)28999618X</s0>
+    <sa>Bio A 622 Dresden: Deutsches Hygiene-Museum</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>11</s2>
+    <s1>00</s1>
+    <s8>02</s8>
+    <s0>(DE-601)289996198</s0>
+    <sa>Dresden; Bio A 622 Deutsches Hygiene-Museum</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>11</s2>
+    <s1>00</s1>
+    <s8>03</s8>
+    <s0>(DE-601)289996201</s0>
+    <sa>Darwin, Charles; &lt;22&gt;</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>22</s2>
+    <s1>04</s1>
+    <s8>00</s8>
+    <sa>B 7</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>31</s2>
+    <s1>00</s1>
+    <s8>00</s8>
+    <sa>BIO:FO:0500</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>39</s2>
+    <s1>00</s1>
+    <s8>01</s8>
+    <sa>WB 2420</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>40</s2>
+    <s1>01</s1>
+    <s8>50</s8>
+    <sa>Biol.90 Darwinismus</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>40</s2>
+    <s1>01</s1>
+    <s8>51</s8>
+    <sa>Ges.Med.37 Darwin</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>40</s2>
+    <s1>01</s1>
+    <s8>52</s8>
+    <sa>Biol.90 Rasse</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>40</s2>
+    <s1>01</s1>
+    <s8>53</s8>
+    <sa>Anthrop.90 Rasse</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>105</s2>
+    <s1>00</s1>
+    <s8>00</s8>
+    <sa>Biol</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>118</s2>
+    <s1>01</s1>
+    <s8>00</s8>
+    <sa>013.-Darwin</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>130</s2>
+    <s1>01</s1>
+    <s8>00</s8>
+    <sa>VNH</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>130</s2>
+    <s1>01</s1>
+    <s8>01</s8>
+    <sa>VNA</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>130</s2>
+    <s1>01</s1>
+    <s8>02</s8>
+    <sa>VOU</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>341</s2>
+    <s1>00</s1>
+    <s8>00</s8>
+    <s0>(DE-601)471384038</s0>
+    <sa>576.8092</sa>
+    <sb>Evolution, Personen</sb>
+  </d983>
+  <d995 i1=" " i2=" ">
+    <s2>62</s2>
+    <s1>01</s1>
+    <sa>ACQ</sa>
+  </d995>
+</r>
+<r>
+  <l>07962nam a2201861 c 4500</l>
+  <c001>148079857</c001>
+  <c003>DE-601</c003>
+  <c005>20181024095510.0</c005>
+  <c008>940325s1994    gw            000 0 ger d</c008>
+  <d015 i1=" " i2=" ">
+    <sa>94N080399</sa>
+    <s2>dnb</s2>
+  </d015>
+  <d015 i1=" " i2=" ">
+    <sa>94A251081</sa>
+    <s2>dnb</s2>
+  </d015>
+  <d016 i1="7" i2=" ">
+    <sa>940299364</sa>
+    <s2>DE-101</s2>
+  </d016>
+  <d020 i1=" " i2=" ">
+    <sa>3050025654</sa>
+    <s9>3-05-002565-4</s9>
+  </d020>
+  <d024 i1="8" i2=" ">
+    <sa>340100036606</sa>
+  </d024>
+  <d024 i1="8" i2=" ">
+    <sa>OKRT00001928</sa>
+  </d024>
+  <d024 i1="8" i2=" ">
+    <sa>BBAWhk_00_002417</sa>
+  </d024>
+  <d024 i1="8" i2=" ">
+    <sa>khfs9388</sa>
+  </d024>
+  <d024 i1="8" i2=" ">
+    <sa>imw000739</sa>
+  </d024>
+  <d024 i1="8" i2=" ">
+    <sa>ZHW002169</sa>
+  </d024>
+  <d024 i1="8" i2=" ">
+    <sa>DBHB0028090</sa>
+  </d024>
+  <d024 i1="8" i2=" ">
+    <sa>SBD0014837</sa>
+  </d024>
+  <d035 i1=" " i2=" ">
+    <sa>(OCoLC)832319525</sa>
+  </d035>
+  <d035 i1=" " i2=" ">
+    <sa>(DE-599)DNB940299364</sa>
+  </d035>
+  <d040 i1=" " i2=" ">
+    <sb>ger</sb>
+    <sc>GBVCP</sc>
+  </d040>
+  <d041 i1="0" i2=" ">
+    <sa>ger</sa>
+  </d041>
+  <d050 i1=" " i2="0">
+    <sa>QH31.D2</sa>
+  </d050>
+  <d082 i1="0" i2="0">
+    <sa>575.0162074432142</sa>
+  </d082>
+  <d082 i1="0" i2="0">
+    <sa>575.01/62/074432142</sa>
+  </d082>
+  <d084 i1=" " i2=" ">
+    <sa>32</sa>
+    <sa>46</sa>
+    <sa>26</sa>
+    <sa>63</sa>
+    <s2>sdnb</s2>
+  </d084>
+  <d084 i1=" " i2=" ">
+    <sa>42.01</sa>
+    <s9>Geschichte der Biologie</s9>
+    <s2>bkl</s2>
+  </d084>
+  <d084 i1=" " i2=" ">
+    <sa>42.02</sa>
+    <s9>Philosophie und Theorie der Biologie</s9>
+    <s2>bkl</s2>
+  </d084>
+  <d084 i1=" " i2=" ">
+    <sa>42.21</sa>
+    <s9>Evolution</s9>
+    <s2>bkl</s2>
+  </d084>
+  <d084 i1=" " i2=" ">
+    <sa>CH 5317</sa>
+    <s2>rvk</s2>
+  </d084>
+  <d110 i1="2" i2=" ">
+    <sa>Deutsches Hygiene-Museum</sa>
+    <s0>(DE-601)101629745</s0>
+    <s0>(DE-588)2008718-4</s0>
+  </d110>
+  <d245 i1="0" i2="0">
+    <sa>Darwin und Darwinismus</sa>
+    <sb>eine Ausstellung zur Kultur- und Naturgeschichte ; [Katalog ; eine Publikation des Deutschen Hygiene-Museums]</sb>
+    <sc>hrsg. von Bodo-Michael Baumunk und Jürgen Riess ; in memoriam Walter Rossmanith 1958 - 1993</sc>
+  </d245>
+  <d264 i1="3" i2="1">
+    <sa>Berlin</sa>
+    <sb>Akad.-Verl.</sb>
+    <sc>1994</sc>
+  </d264>
+  <d300 i1=" " i2=" ">
+    <sa>265 S.</sa>
+    <sb>zahlr. Ill.</sb>
+    <sc>26 cm</sc>
+  </d300>
+  <d500 i1=" " i2=" ">
+    <sa>Eine Veröffentlichung des Deutschen Hygiene-Museums</sa>
+  </d500>
+  <d500 i1=" " i2=" ">
+    <sa>Katalog einer Ausstellung am Deutschen Hygiene-Museum Dresden vom 25.März - 26.Juni 1994</sa>
+  </d500>
+  <d500 i1=" " i2=" ">
+    <sa>Literaturverz. S. 249-258</sa>
+  </d500>
+  <d611 i1="2" i2="7">
+    <sa>Ausstellung</sa>
+    <s2>gnd</s2>
+  </d611>
+  <d611 i1="2" i2="7">
+    <sa>Ausstellung</sa>
+    <s2>gnd</s2>
+  </d611>
+  <d648 i1=" " i2="7">
+    <sa>Geschichte</sa>
+    <s2>gnd</s2>
+  </d648>
+  <d650 i1=" " i2="7">
+    <s0>(DE-601)104313285</s0>
+    <s0>(DE-588)4011097-7</s0>
+    <sa>Darwinismus</sa>
+    <s2>gnd</s2>
+  </d650>
+  <d650 i1=" " i2="7">
+    <s0>(DE-601)105670421</s0>
+    <s0>(DE-588)4134723-7</s0>
+    <sa>Naturdarstellung</sa>
+    <s2>gnd</s2>
+  </d650>
+  <d650 i1=" " i2="7">
+    <s0>(DE-601)105822957</s0>
+    <s0>(DE-588)4114333-4</s0>
+    <sa>Kunst</sa>
+    <s2>gnd</s2>
+  </d650>
+  <d651 i1=" " i2="7">
+    <sa>Dresden &lt;1995&gt;</sa>
+    <s2>gnd</s2>
+  </d651>
+  <d651 i1=" " i2="7">
+    <sa>Dresden &lt;1995&gt;</sa>
+    <s2>gnd</s2>
+  </d651>
+  <d653 i1=" " i2="0">
+    <sa>Darwin, Charles</sa>
+    <sa>1809-1882</sa>
+    <sa>Exhibitions</sa>
+  </d653>
+  <d653 i1=" " i2="0">
+    <sa>Evolution (Biology)</sa>
+    <sa>Exhibitions</sa>
+  </d653>
+  <d653 i1=" " i2="0">
+    <sa>Natural selection</sa>
+    <sa>Exhibitions</sa>
+  </d653>
+  <d655 i1="0" i2="7">
+    <s0>(DE-588)4135467-9</s0>
+    <sa>Ausstellungskatalog</sa>
+    <s2>gnd-content</s2>
+  </d655>
+  <d689 i1="0" i2="0">
+    <s0>(DE-601)104313285</s0>
+    <s0>(DE-588)4011097-7</s0>
+    <sd>s</sd>
+    <sa>Darwinismus</sa>
+  </d689>
+  <d689 i1="0" i2="1">
+    <sa>f</sa>
+    <sa>Ausstellung</sa>
+  </d689>
+  <d689 i1="0" i2="2">
+    <sa>g</sa>
+    <sa>Dresden &lt;1995&gt;</sa>
+  </d689>
+  <d689 i1="0" i2=" ">
+    <s5>DE-601</s5>
+  </d689>
+  <d689 i1="1" i2="0">
+    <s0>(DE-601)105670421</s0>
+    <s0>(DE-588)4134723-7</s0>
+    <sd>s</sd>
+    <sa>Naturdarstellung</sa>
+  </d689>
+  <d689 i1="1" i2="1">
+    <s0>(DE-601)105822957</s0>
+    <s0>(DE-588)4114333-4</s0>
+    <sd>s</sd>
+    <sa>Kunst</sa>
+  </d689>
+  <d689 i1="1" i2="2">
+    <sa>z</sa>
+    <sa>Geschichte</sa>
+  </d689>
+  <d689 i1="1" i2="3">
+    <sa>f</sa>
+    <sa>Ausstellung</sa>
+  </d689>
+  <d689 i1="1" i2="4">
+    <sa>g</sa>
+    <sa>Dresden &lt;1995&gt;</sa>
+  </d689>
+  <d689 i1="1" i2=" ">
+    <s5>DE-601</s5>
+  </d689>
+  <d700 i1="1" i2=" ">
+    <sa>Baumunk, Bodo-Michael</sa>
+    <s0>(DE-601)771321260</s0>
+    <s0>(DE-588)1043286160</s0>
+  </d700>
+  <d700 i1="1" i2=" ">
+    <sa>Rossmanith, Walter</sa>
+    <se>gefeierter</se>
+    <s4>hnr</s4>
+  </d700>
+  <d700 i1="1" i2=" ">
+    <sa>Rieß, Jürgen</sa>
+  </d700>
+  <d711 i1="2" i2=" ">
+    <sa>Ausstellung</sa>
+    <sd>1995.03.25-06.26</sd>
+    <sc>Dresden</sc>
+  </d711>
+  <d856 i1="4" i2="2">
+    <su>http://d-nb.info/940299364/04</su>
+    <sm>V:AT-OBV</sm>
+    <sq>application/pdf</sq>
+    <s3>Inhaltsverzeichnis</s3>
+  </d856>
+  <d889 i1=" " i2=" ">
+    <sw>(DE-601)466395558</sw>
+  </d889>
+  <d912 i1=" " i2=" ">
+    <sa>SYSFLAG_1</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_GVK</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_11</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_20</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_22</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_31</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_34</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_39</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_40</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_49</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_50</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_61</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_62</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_65</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_70</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_105</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_118</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_130</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_156</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_179</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_181</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_205</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_227</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_341</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_676</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_791</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_22_i30809</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_22_i30716</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_22_i30514</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_40_i154</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_65_a018</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_181_b010</sa>
+  </d912>
+  <d951 i1=" " i2=" ">
+    <sa>BO</sa>
+  </d951>
+  <d980 i1=" " i2=" ">
+    <s2>11</s2>
+    <s1>01</s1>
+    <sb>025686607</sb>
+    <sf>1:HA15</sf>
+    <sd>HA 15 Aa 6925</sd>
+    <se>s</se>
+    <sd>6 B 21158</sd>
+    <sx>0001</sx>
+    <sy>r</sy>
+    <sz>30-08-94</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>20</s2>
+    <s1>01</s1>
+    <sb>1396318704</sb>
+    <sf>Q2</sf>
+    <sd>U-230</sd>
+    <se>i</se>
+    <sx>0084</sx>
+    <sy>riQ2</sy>
+    <sz>06-06-13</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>22</s2>
+    <s1>01</s1>
+    <sb>39823521X</sb>
+    <sf>18/308</sf>
+    <sd>VKK-G5/34</sd>
+    <se>i</se>
+    <sx>0018</sx>
+    <sy>zi30809</sy>
+    <sz>24-07-00</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>22</s2>
+    <s1>03</s1>
+    <sb>098595725</sb>
+    <sf>18/307-a</sf>
+    <sd>ZHW 52/435</sd>
+    <se>i</se>
+    <sx>0018</sx>
+    <sy>zi30716</sy>
+    <sz>01-01-04</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>22</s2>
+    <s1>04</s1>
+    <sb>1699919410</sb>
+    <sf>18/305</sf>
+    <sd>B 7 Dar/1</sd>
+    <se>c</se>
+    <sl>Geschenk v. Prof. Mühlbach</sl>
+    <sx>0018</sx>
+    <sy>zi30514</sy>
+    <sz>06-07-17</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>31</s2>
+    <s1>01</s1>
+    <sb>294821473</sb>
+    <sf>J 30</sf>
+    <sd>PHI:HM:900:D228:5:1994</sd>
+    <se>d</se>
+    <sx>0027</sx>
+    <sy>r</sy>
+    <sz>03-09-98</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>31</s2>
+    <s1>02</s1>
+    <sb>708802141</sb>
+    <sf>J 26</sf>
+    <sd>BIO:FO:0500:Bau::1994</sd>
+    <se>d</se>
+    <sx>0027</sx>
+    <sy>z</sy>
+    <sz>01-03-05</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>31</s2>
+    <s1>03</s1>
+    <sb>894830317</sb>
+    <sf>J 47</sf>
+    <sd>VII 1278</sd>
+    <se>d</se>
+    <sx>0027</sx>
+    <sy>r</sy>
+    <sz>14-10-08</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>34</s2>
+    <s1>01</s1>
+    <sb>065017617</sb>
+    <sf>18/285</sf>
+    <sd>A.3</sd>
+    <se>c</se>
+    <sx>3551</sx>
+    <sy>zi005</sy>
+    <sz>15-05-95</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>39</s2>
+    <s1>01</s1>
+    <sb>151106371</sb>
+    <sf>FBG MAG</sf>
+    <sd>B 02747</sd>
+    <se>d</se>
+    <sd>Forschungsbibliothek Gotha</sd>
+    <sl>Belegexemplar: Forschungsdokumentation</sl>
+    <sx>547/039</sx>
+    <sy>zg05</sy>
+    <sz>27-01-00</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>40</s2>
+    <s1>01</s1>
+    <sb>470286857</sb>
+    <sf>7/154</sf>
+    <sd>Biol.90.1994</sd>
+    <se>i</se>
+    <sx>0007</sx>
+    <sy>xi154</sy>
+    <sz>07-02-01</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>49</s2>
+    <s1>01</s1>
+    <sb>12667647X</sb>
+    <sf>Gö164</sf>
+    <sd>CH 5317 Baum 1994</sd>
+    <se>i</se>
+    <sx>3049</sx>
+    <sy>zi164</sy>
+    <sz>01-06-94</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>50</s2>
+    <s1>01</s1>
+    <sb>743672291</sb>
+    <sd>NT 95-7110</sd>
+    <se>b</se>
+    <sd>55.4° 419</sd>
+    <sx>0023</sx>
+    <sy>k</sy>
+    <sz>21-11-05</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>61</s2>
+    <s1>01</s1>
+    <sb>383099552</sb>
+    <sf>MAG</sf>
+    <sd>141232 - B</sd>
+    <se>u</se>
+    <sx>0032</sx>
+    <sy>r</sy>
+    <sz>17-03-00</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>61</s2>
+    <s1>02</s1>
+    <sb>653614829</sb>
+    <sf>MAG</sf>
+    <sd>Ku B 2638</sd>
+    <se>u</se>
+    <sx>0032</sx>
+    <sy>r</sy>
+    <sz>23-06-04</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>61</s2>
+    <s1>03</s1>
+    <sb>653614837</sb>
+    <sf>MAG</sf>
+    <sd>Ku B 2638 [a]</sd>
+    <se>u</se>
+    <sx>0032</sx>
+    <sy>r</sy>
+    <sz>23-06-04</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>62</s2>
+    <s1>01</s1>
+    <sb>1638432228</sb>
+    <sf>28/BB2-PHI</sf>
+    <sd>CH 5317 B348</sd>
+    <se>u</se>
+    <sh>ACQ</sh>
+    <sx>0028</sx>
+    <sy>z</sy>
+    <sz>17-11-16</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>65</s2>
+    <s1>02</s1>
+    <sb>1514656345</sb>
+    <sf>Ha 18-18</sf>
+    <sd>A III J 1641</sd>
+    <se>i</se>
+    <sx>3/18</sx>
+    <sy>ka018</sy>
+    <sz>16-12-14</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>70</s2>
+    <s1>01</s1>
+    <sb>127513590</sb>
+    <sf>FBE</sf>
+    <sd>94-1463</sd>
+    <se>u</se>
+    <sx>89/15</sx>
+    <sy>zce</sy>
+    <sz>30-06-94</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>105</s2>
+    <s1>01</s1>
+    <sb>098797352</sb>
+    <sf>IMGWF B</sf>
+    <sd>Biol G9 415</sd>
+    <se>g</se>
+    <sx>0841/1</sx>
+    <sy>ni01</sy>
+    <sz>28-04-94</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>118</s2>
+    <s1>01</s1>
+    <sb>1241268231</sb>
+    <sf>SBD-LS</sf>
+    <sd>13215</sd>
+    <se>i</se>
+    <sl>ORG_DS_ID: b006689</sl>
+    <sx>3329/4</sx>
+    <sy>z4</sy>
+    <sz>03-10-07</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>130</s2>
+    <s1>01</s1>
+    <sb>126831580</sb>
+    <sf>N</sf>
+    <sd>VNH / Dar</sd>
+    <se>u</se>
+    <sx>0700</sx>
+    <sy>kn</sy>
+    <sz>22-08-94</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>156</s2>
+    <s1>01</s1>
+    <sb>679690697</sb>
+    <sf>FHMA</sf>
+    <sd>B 94 / 457</sd>
+    <se>u</se>
+    <sd>B 94::457</sd>
+    <sx>0204</sx>
+    <sy>z</sy>
+    <sz>01-01-01</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>179</s2>
+    <s1>01</s1>
+    <sb>093894449</sb>
+    <sf>B4</sf>
+    <sd>1994 B 912</sd>
+    <se>u</se>
+    <sx>8306</sx>
+    <sy>n</sy>
+    <sz>06-07-94</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>179</s2>
+    <s1>02</s1>
+    <sb>1400236762</sb>
+    <sf>B4/AvH</sf>
+    <se>g</se>
+    <sx>8306</sx>
+    <sy>z</sy>
+    <sz>12-06-13</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>181</s2>
+    <s1>01</s1>
+    <sb>948656646</sb>
+    <sf>KB</sf>
+    <sd>8 1994 2092</sd>
+    <se>i</se>
+    <sd>::8:1994:2092:</sd>
+    <sl>Retro Th</sl>
+    <sx>3181/010</sx>
+    <sy>rb010</sy>
+    <sz>24-09-09</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>205</s2>
+    <s1>01</s1>
+    <sb>1368035159</sb>
+    <sf>FBG MAG</sf>
+    <sd>B 02747</sd>
+    <sk>Titel vorhanden! &lt;a target="_blank" href="http://opac.uni-erfurt.de/php/opac_forward.php?inst=OPAC_EF_EPN&amp;ppn=151106371"&gt;Weiter zum Online-Katalog&lt;/a&gt;</sk>
+    <sx>3205</sx>
+    <sy>zfg1</sy>
+    <sz>22-02-13</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>227</s2>
+    <s1>01</s1>
+    <sb>1241582998</sb>
+    <sd>II 23-523</sd>
+    <se>u</se>
+    <sx>0056</sx>
+    <sy>x</sy>
+    <sz>13-05-11</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>341</s2>
+    <s1>01</s1>
+    <sb>685155005</sb>
+    <sd>94-0318</sd>
+    <se>u</se>
+    <sx>4341</sx>
+    <sy>n</sy>
+    <sz>30-09-99</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>676</s2>
+    <s1>01</s1>
+    <sb>1779660065</sb>
+    <sd>N1-1-19</sd>
+    <se>i</se>
+    <sx>9835</sx>
+    <sy>rp</sy>
+    <sz>18-06-18</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>791</s2>
+    <s1>01</s1>
+    <sb>895437791</sb>
+    <sd>1 E c 1765</sd>
+    <se>u</se>
+    <sx>3791</sx>
+    <sy>n</sy>
+    <sz>03-10-06</sz>
+  </d980>
+  <d982 i1=" " i2=" ">
+    <s2>61</s2>
+    <s1>00</s1>
+    <s8>00</s8>
+    <sa>Dresden [Stadt] / Ausstellung</sa>
+  </d982>
+  <d982 i1=" " i2=" ">
+    <s2>61</s2>
+    <s1>00</s1>
+    <s8>01</s8>
+    <sa>Darwin, Charles / Nachwirkung Deutung</sa>
+  </d982>
+  <d982 i1=" " i2=" ">
+    <s2>61</s2>
+    <s1>00</s1>
+    <s8>02</s8>
+    <sa>Darwinismus / Nachwirkung Deutung</sa>
+  </d982>
+  <d982 i1=" " i2=" ">
+    <s2>156</s2>
+    <s1>01</s1>
+    <s8>00</s8>
+    <s0>(DE-601)396730779</s0>
+    <sa>XXX</sa>
+  </d982>
+  <d982 i1=" " i2=" ">
+    <s2>205</s2>
+    <s1>00</s1>
+    <s8>20</s8>
+    <sa>Chart A00783a, Fundstelle: S. 46-47</sa>
+  </d982>
+  <d982 i1=" " i2=" ">
+    <s2>205</s2>
+    <s1>00</s1>
+    <s8>21</s8>
+    <sa>Chart A00784, Fundstelle: S. 47</sa>
+  </d982>
+  <d982 i1=" " i2=" ">
+    <s2>791</s2>
+    <s1>00</s1>
+    <s8>00</s8>
+    <sa>Darwinismus / Geschichte / Ausstellung / Dresden &lt;1994&gt;</sa>
+  </d982>
+  <d982 i1=" " i2=" ">
+    <s2>791</s2>
+    <s1>00</s1>
+    <s8>01</s8>
+    <sa>Ausstellung / Dresden &lt;1994&gt; / Darwinismus</sa>
+  </d982>
+  <d983 i1=" " i2=" ">
+    <s2>11</s2>
+    <s1>00</s1>
+    <s8>00</s8>
+    <s0>(DE-601)284758221</s0>
+    <sa>Bio A 668; Darwinismus</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>11</s2>
+    <s1>00</s1>
+    <s8>01</s8>
+    <s0>(DE-601)28999618X</s0>
+    <sa>Bio A 622 Dresden: Deutsches Hygiene-Museum</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>11</s2>
+    <s1>00</s1>
+    <s8>02</s8>
+    <s0>(DE-601)289996198</s0>
+    <sa>Dresden; Bio A 622 Deutsches Hygiene-Museum</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>11</s2>
+    <s1>00</s1>
+    <s8>03</s8>
+    <s0>(DE-601)289996201</s0>
+    <sa>Darwin, Charles; &lt;22&gt;</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>22</s2>
+    <s1>04</s1>
+    <s8>00</s8>
+    <sa>B 7</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>31</s2>
+    <s1>00</s1>
+    <s8>00</s8>
+    <sa>BIO:FO:0500</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>39</s2>
+    <s1>00</s1>
+    <s8>01</s8>
+    <sa>WB 2420</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>40</s2>
+    <s1>01</s1>
+    <s8>50</s8>
+    <sa>Biol.90 Darwinismus</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>40</s2>
+    <s1>01</s1>
+    <s8>51</s8>
+    <sa>Ges.Med.37 Darwin</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>40</s2>
+    <s1>01</s1>
+    <s8>52</s8>
+    <sa>Biol.90 Rasse</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>40</s2>
+    <s1>01</s1>
+    <s8>53</s8>
+    <sa>Anthrop.90 Rasse</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>105</s2>
+    <s1>00</s1>
+    <s8>00</s8>
+    <sa>Biol</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>118</s2>
+    <s1>01</s1>
+    <s8>00</s8>
+    <sa>013.-Darwin</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>130</s2>
+    <s1>01</s1>
+    <s8>00</s8>
+    <sa>VNH</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>130</s2>
+    <s1>01</s1>
+    <s8>01</s8>
+    <sa>VNA</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>130</s2>
+    <s1>01</s1>
+    <s8>02</s8>
+    <sa>VOU</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>341</s2>
+    <s1>00</s1>
+    <s8>00</s8>
+    <s0>(DE-601)471384038</s0>
+    <sa>576.8092</sa>
+    <sb>Evolution, Personen</sb>
+  </d983>
+  <d995 i1=" " i2=" ">
+    <s2>62</s2>
+    <s1>01</s1>
+    <sa>ACQ</sa>
+  </d995>
+</r>
+<r>
+  <l>04606nam a2201057 c 4500</l>
+  <c001>328047457</c001>
+  <c003>DE-601</c003>
+  <c005>20180317212405.0</c005>
+  <c008>010417s2001    gw            000 0 ger d</c008>
+  <d015 i1=" " i2=" ">
+    <sa>01A400930</sa>
+    <s2>dnb</s2>
+  </d015>
+  <d016 i1="7" i2=" ">
+    <sa>96223687X</sa>
+    <s2>DE-101</s2>
+  </d016>
+  <d020 i1=" " i2=" ">
+    <sa>3462030086 (kart.)</sa>
+    <sc>DM 22.90, EUR 11.50 (ab 1.1.2002)</sc>
+    <s9>3-462-03008-6</s9>
+  </d020>
+  <d024 i1="8" i2=" ">
+    <sa>ZHW003323</sa>
+  </d024>
+  <d035 i1=" " i2=" ">
+    <sa>(OCoLC)248225786</sa>
+  </d035>
+  <d035 i1=" " i2=" ">
+    <sa>(DE-599)GBV328047457</sa>
+  </d035>
+  <d040 i1=" " i2=" ">
+    <sb>ger</sb>
+    <sc>GBVCP</sc>
+  </d040>
+  <d041 i1="0" i2=" ">
+    <sa>ger</sa>
+  </d041>
+  <d060 i1=" " i2="0">
+    <sa>TP 248.2</sa>
+  </d060>
+  <d084 i1=" " i2=" ">
+    <sa>Wa</sa>
+    <s2>asb</s2>
+  </d084>
+  <d084 i1=" " i2=" ">
+    <sa>28</sa>
+    <sa>32</sa>
+    <sa>33</sa>
+    <sa>11</sa>
+    <sa>10</sa>
+    <s2>sdnb</s2>
+  </d084>
+  <d084 i1=" " i2=" ">
+    <sa>02.40</sa>
+    <s9>Futurologie</s9>
+    <s2>bkl</s2>
+  </d084>
+  <d084 i1=" " i2=" ">
+    <sa>MS 6950</sa>
+    <s2>rvk</s2>
+  </d084>
+  <d084 i1=" " i2=" ">
+    <sa>WB 4000</sa>
+    <s2>rvk</s2>
+  </d084>
+  <d084 i1=" " i2=" ">
+    <sa>XC 2812</sa>
+    <s2>rvk</s2>
+  </d084>
+  <d245 i1="0" i2="4">
+    <sa>Die Darwin AG</sa>
+    <sb>wie Nanotechnologie, Biotechnologie und Computer den neuen Menschen träumen</sb>
+    <sc>Frank Schirrmacher (Hrsg.)</sc>
+  </d245>
+  <d250 i1=" " i2=" ">
+    <sa>1. Aufl</sa>
+  </d250>
+  <d264 i1="3" i2="1">
+    <sa>Köln</sa>
+    <sb>Kiepenheuer &amp; Witsch</sb>
+    <sc>2001</sc>
+  </d264>
+  <d300 i1=" " i2=" ">
+    <sa>311 S</sa>
+    <sc>19 cm</sc>
+  </d300>
+  <d490 i1="0" i2=" ">
+    <sa>KiWi</sa>
+    <sv>626</sv>
+    <sa>Paperback</sa>
+  </d490>
+  <d650 i1=" " i2="7">
+    <s0>(DE-601)106101390</s0>
+    <s0>(DE-588)4070083-5</s0>
+    <sa>Computer</sa>
+    <s2>gnd</s2>
+  </d650>
+  <d650 i1=" " i2="7">
+    <s0>(DE-601)105224596</s0>
+    <s0>(DE-588)4193780-6</s0>
+    <sa>Kognitionswissenschaft</sa>
+    <s2>gnd</s2>
+  </d650>
+  <d650 i1=" " i2="7">
+    <s0>(DE-601)106257188</s0>
+    <s0>(DE-588)4033447-8</s0>
+    <sa>Künstliche Intelligenz</sa>
+    <s2>gnd</s2>
+  </d650>
+  <d650 i1=" " i2="7">
+    <s0>(DE-601)104642904</s0>
+    <s0>(DE-588)4069491-4</s0>
+    <sa>Biotechnologie</sa>
+    <s2>gnd</s2>
+  </d650>
+  <d650 i1=" " i2="7">
+    <s0>(DE-601)105244503</s0>
+    <s0>(DE-588)4191125-8</s0>
+    <sa>Zukunftserwartung</sa>
+    <s2>gnd</s2>
+  </d650>
+  <d653 i1=" " i2="2">
+    <sa>Artificial Intelligence</sa>
+  </d653>
+  <d653 i1=" " i2="2">
+    <sa>Biotechnology / trends</sa>
+  </d653>
+  <d653 i1=" " i2="2">
+    <sa>Technology</sa>
+  </d653>
+  <d653 i1=" " i2="2">
+    <sa>Computers</sa>
+  </d653>
+  <d653 i1=" " i2="2">
+    <sa>Philosophy</sa>
+  </d653>
+  <d653 i1=" " i2="0">
+    <sa>Artificial Intelligence</sa>
+  </d653>
+  <d653 i1=" " i2="0">
+    <sa>Biotechnology / trends</sa>
+  </d653>
+  <d653 i1=" " i2="0">
+    <sa>Computers</sa>
+  </d653>
+  <d653 i1=" " i2="0">
+    <sa>Philosophy</sa>
+  </d653>
+  <d653 i1=" " i2="0">
+    <sa>Technology</sa>
+  </d653>
+  <d655 i1=" " i2="7">
+    <sa>Aufsatzsammlung</sa>
+    <s2>gnd</s2>
+  </d655>
+  <d655 i1=" " i2="7">
+    <sa>30;23.2;5.1a</sa>
+    <s2>gnd</s2>
+  </d655>
+  <d689 i1="0" i2="0">
+    <sa>s</sa>
+    <s0>(DE-601)106101390</s0>
+    <s0>(DE-588)4070083-5</s0>
+    <sa>Computer</sa>
+  </d689>
+  <d689 i1="0" i2="1">
+    <sa>s</sa>
+    <s0>(DE-601)105224596</s0>
+    <s0>(DE-588)4193780-6</s0>
+    <sa>Kognitionswissenschaft</sa>
+  </d689>
+  <d689 i1="0" i2="2">
+    <sa>s</sa>
+    <s0>(DE-601)106257188</s0>
+    <s0>(DE-588)4033447-8</s0>
+    <sa>Künstliche Intelligenz</sa>
+  </d689>
+  <d689 i1="0" i2="3">
+    <sa>s</sa>
+    <s0>(DE-601)104642904</s0>
+    <s0>(DE-588)4069491-4</s0>
+    <sa>Biotechnologie</sa>
+  </d689>
+  <d689 i1="0" i2="4">
+    <sa>s</sa>
+    <s0>(DE-601)105244503</s0>
+    <s0>(DE-588)4191125-8</s0>
+    <sa>Zukunftserwartung</sa>
+  </d689>
+  <d689 i1="0" i2="5">
+    <sa>f</sa>
+    <sa>Aufsatzsammlung</sa>
+  </d689>
+  <d700 i1="1" i2=" ">
+    <sa>Schirrmacher, Frank</sa>
+    <s0>(DE-601)081167253</s0>
+    <s0>(DE-588)121226948</s0>
+  </d700>
+  <d830 i1=" " i2="0">
+    <sw>(DE-601)129156388</sw>
+    <sv>626</sv>
+    <s9>62600</s9>
+  </d830>
+  <d856 i1="4" i2="2">
+    <sy>Inhaltsverzeichnis</sy>
+    <su>http://www.gbv.de/dms/hebis-darmstadt/toc/10028566X.pdf</su>
+    <sm>V:DE-603;B:DE-17</sm>
+    <sq>pdf/application</sq>
+    <s3>Inhaltsverzeichnis</s3>
+  </d856>
+  <d856 i1="4" i2="2">
+    <su>http://d-nb.info/96223687X/04</su>
+    <sm>V:DE-603</sm>
+    <sq>application/pdf</sq>
+    <s3>Inhaltsverzeichnis</s3>
+  </d856>
+  <d912 i1=" " i2=" ">
+    <sa>SYSFLAG_1</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_GVK</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_21</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_22</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_23</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_32</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_34</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_39</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_70</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_176</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_22_i22818</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_22_i06404</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_22_i30716</sa>
+  </d912>
+  <d950 i1=" " i2=" ">
+    <sa>Computer</sa>
+    <sa>Kognitionswissenschaft</sa>
+    <sa>Künstliche Intelligenz</sa>
+    <sa>Biotechnologie</sa>
+    <sa>Zukunftserwartung</sa>
+    <sa>Aufsatzsammlung</sa>
+    <s2>DE-601</s2>
+  </d950>
+  <d951 i1=" " i2=" ">
+    <sa>BO</sa>
+  </d951>
+  <d980 i1=" " i2=" ">
+    <s2>21</s2>
+    <s1>01</s1>
+    <sb>546325386</sb>
+    <sf>TB BHV</sf>
+    <sd>tec 30/5</sd>
+    <se>u</se>
+    <sx>0046</sx>
+    <sy>zba</sy>
+    <sz>14-02-02</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>22</s2>
+    <s1>01</s1>
+    <sb>494230142</sb>
+    <sf>18/228-e</sf>
+    <sd>ANT 199/1</sd>
+    <se>i</se>
+    <sx>0018</sx>
+    <sy>zi22818</sy>
+    <sz>21-05-01</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>22</s2>
+    <s1>02</s1>
+    <sb>536868077</sb>
+    <sf>SUB</sf>
+    <sd>A 2002/2371</sd>
+    <se>u</se>
+    <sx>0018</sx>
+    <sy>zu</sy>
+    <sz>10-06-02</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>22</s2>
+    <s1>03</s1>
+    <sb>547949200</sb>
+    <sf>18/64</sf>
+    <sd>TP 248.2 Med A 2001/479</sd>
+    <se>u</se>
+    <sd>Med A 2001/479</sd>
+    <sx>0018</sx>
+    <sy>zi06404</sy>
+    <sz>26-02-02</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>22</s2>
+    <s1>04</s1>
+    <sb>098603817</sb>
+    <sf>18/307-a</sf>
+    <sd>ZHW 52/540</sd>
+    <se>i</se>
+    <sx>0018</sx>
+    <sy>zi30716</sy>
+    <sz>01-01-04</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>23</s2>
+    <s1>01</s1>
+    <sb>523659938</sb>
+    <sf>14</sf>
+    <sd>1410-0145</sd>
+    <sx>0830</sx>
+    <sy>z</sy>
+    <sz>02-11-01</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>32</s2>
+    <s1>01</s1>
+    <sb>528485423</sb>
+    <sf>59</sf>
+    <sd>NAT TB 6200 S337</sd>
+    <se>u</se>
+    <sl>;1=Quelle db... ;2=Ex 1... ;2.1=... ;2.2=... ;2.3=... ;2.4=... ;3=Preis 10,93 Euro... ;4=UK c52... ;5=Sto 53... ;5.1=... ;5.2=... ;5.3=... ;5.4=... ;6=Info Buchhdl ... ;8=RechnNr 428/02... ;9=RechnDat 18.3.2002... ;10=Rabatt ... ;11=BestDat 020102... ;12=BestArt ... ;13=Lief 1... ;14=Bemerk  ... ;15=Vol...;15.1=...;15.2=... ;15.3=... ;16=Vol Biblgr-Angb... ;16.1=... ;16.2=... ;16.3=... ;17=AUS... ;7=BearbSt ...</sl>
+    <sx>3400</sx>
+    <sy>k</sy>
+    <sz>16-05-02</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>34</s2>
+    <s1>01</s1>
+    <sb>48971000X</sb>
+    <sf>18/284</sf>
+    <sd>Wis C - 89.1</sd>
+    <se>c</se>
+    <sx>3551</sx>
+    <sy>zi004</sy>
+    <sz>17-05-01</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>70</s2>
+    <s1>01</s1>
+    <sb>477399339</sb>
+    <sf>FBS</sf>
+    <sd>LG 120 65</sd>
+    <se>s</se>
+    <sx>89/19</sx>
+    <sy>zsa</sy>
+    <sz>09-08-01</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>176</s2>
+    <s1>01</s1>
+    <sb>164385772X</sb>
+    <sf>IGS</sf>
+    <sd>NW 1.0 Dar</sd>
+    <se>c</se>
+    <sx>3703/4</sx>
+    <sy>z4i</sy>
+    <sz>01-11-16</sz>
+  </d980>
+  <d982 i1=" " i2=" ">
+    <s2>176</s2>
+    <s1>00</s1>
+    <s8>20</s8>
+    <sa>Naturwissenschaften/Allgemeines</sa>
+  </d982>
+  <d983 i1=" " i2=" ">
+    <s2>21</s2>
+    <s1>00</s1>
+    <s8>20</s8>
+    <sa>tec 30</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>32</s2>
+    <s1>00</s1>
+    <s8>00</s8>
+    <sa>TB 6200</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>70</s2>
+    <s1>00</s1>
+    <s8>40</s8>
+    <sa>BB 40</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>70</s2>
+    <s1>00</s1>
+    <s8>41</s8>
+    <sa>RG 90</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>72</s2>
+    <s1>00</s1>
+    <s8>40</s8>
+    <sa>BB 40</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>72</s2>
+    <s1>00</s1>
+    <s8>41</s8>
+    <sa>RG 90</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>110</s2>
+    <s1>00</s1>
+    <s8>00</s8>
+    <sa>Nat 3006</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>110</s2>
+    <s1>00</s1>
+    <s8>01</s8>
+    <sa>Nat 2970</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>110</s2>
+    <s1>00</s1>
+    <s8>02</s8>
+    <sa>Nat 137</sa>
+  </d983>
+</r>
+<r>
+  <l>07962nam a2201861 c 4500</l>
+  <c001>148079857</c001>
+  <c003>DE-601</c003>
+  <c005>20181024095510.0</c005>
+  <c008>940325s1994    gw            000 0 ger d</c008>
+  <d015 i1=" " i2=" ">
+    <sa>94N080399</sa>
+    <s2>dnb</s2>
+  </d015>
+  <d015 i1=" " i2=" ">
+    <sa>94A251081</sa>
+    <s2>dnb</s2>
+  </d015>
+  <d016 i1="7" i2=" ">
+    <sa>940299364</sa>
+    <s2>DE-101</s2>
+  </d016>
+  <d020 i1=" " i2=" ">
+    <sa>3050025654</sa>
+    <s9>3-05-002565-4</s9>
+  </d020>
+  <d024 i1="8" i2=" ">
+    <sa>340100036606</sa>
+  </d024>
+  <d024 i1="8" i2=" ">
+    <sa>OKRT00001928</sa>
+  </d024>
+  <d024 i1="8" i2=" ">
+    <sa>BBAWhk_00_002417</sa>
+  </d024>
+  <d024 i1="8" i2=" ">
+    <sa>khfs9388</sa>
+  </d024>
+  <d024 i1="8" i2=" ">
+    <sa>imw000739</sa>
+  </d024>
+  <d024 i1="8" i2=" ">
+    <sa>ZHW002169</sa>
+  </d024>
+  <d024 i1="8" i2=" ">
+    <sa>DBHB0028090</sa>
+  </d024>
+  <d024 i1="8" i2=" ">
+    <sa>SBD0014837</sa>
+  </d024>
+  <d035 i1=" " i2=" ">
+    <sa>(OCoLC)832319525</sa>
+  </d035>
+  <d035 i1=" " i2=" ">
+    <sa>(DE-599)DNB940299364</sa>
+  </d035>
+  <d040 i1=" " i2=" ">
+    <sb>ger</sb>
+    <sc>GBVCP</sc>
+  </d040>
+  <d041 i1="0" i2=" ">
+    <sa>ger</sa>
+  </d041>
+  <d050 i1=" " i2="0">
+    <sa>QH31.D2</sa>
+  </d050>
+  <d082 i1="0" i2="0">
+    <sa>575.0162074432142</sa>
+  </d082>
+  <d082 i1="0" i2="0">
+    <sa>575.01/62/074432142</sa>
+  </d082>
+  <d084 i1=" " i2=" ">
+    <sa>32</sa>
+    <sa>46</sa>
+    <sa>26</sa>
+    <sa>63</sa>
+    <s2>sdnb</s2>
+  </d084>
+  <d084 i1=" " i2=" ">
+    <sa>42.01</sa>
+    <s9>Geschichte der Biologie</s9>
+    <s2>bkl</s2>
+  </d084>
+  <d084 i1=" " i2=" ">
+    <sa>42.02</sa>
+    <s9>Philosophie und Theorie der Biologie</s9>
+    <s2>bkl</s2>
+  </d084>
+  <d084 i1=" " i2=" ">
+    <sa>42.21</sa>
+    <s9>Evolution</s9>
+    <s2>bkl</s2>
+  </d084>
+  <d084 i1=" " i2=" ">
+    <sa>CH 5317</sa>
+    <s2>rvk</s2>
+  </d084>
+  <d110 i1="2" i2=" ">
+    <sa>Deutsches Hygiene-Museum</sa>
+    <s0>(DE-601)101629745</s0>
+    <s0>(DE-588)2008718-4</s0>
+  </d110>
+  <d245 i1="0" i2="0">
+    <sa>Darwin und Darwinismus</sa>
+    <sb>eine Ausstellung zur Kultur- und Naturgeschichte ; [Katalog ; eine Publikation des Deutschen Hygiene-Museums]</sb>
+    <sc>hrsg. von Bodo-Michael Baumunk und Jürgen Riess ; in memoriam Walter Rossmanith 1958 - 1993</sc>
+  </d245>
+  <d264 i1="3" i2="1">
+    <sa>Berlin</sa>
+    <sb>Akad.-Verl.</sb>
+    <sc>1994</sc>
+  </d264>
+  <d300 i1=" " i2=" ">
+    <sa>265 S.</sa>
+    <sb>zahlr. Ill.</sb>
+    <sc>26 cm</sc>
+  </d300>
+  <d500 i1=" " i2=" ">
+    <sa>Eine Veröffentlichung des Deutschen Hygiene-Museums</sa>
+  </d500>
+  <d500 i1=" " i2=" ">
+    <sa>Katalog einer Ausstellung am Deutschen Hygiene-Museum Dresden vom 25.März - 26.Juni 1994</sa>
+  </d500>
+  <d500 i1=" " i2=" ">
+    <sa>Literaturverz. S. 249-258</sa>
+  </d500>
+  <d611 i1="2" i2="7">
+    <sa>Ausstellung</sa>
+    <s2>gnd</s2>
+  </d611>
+  <d611 i1="2" i2="7">
+    <sa>Ausstellung</sa>
+    <s2>gnd</s2>
+  </d611>
+  <d648 i1=" " i2="7">
+    <sa>Geschichte</sa>
+    <s2>gnd</s2>
+  </d648>
+  <d650 i1=" " i2="7">
+    <s0>(DE-601)104313285</s0>
+    <s0>(DE-588)4011097-7</s0>
+    <sa>Darwinismus</sa>
+    <s2>gnd</s2>
+  </d650>
+  <d650 i1=" " i2="7">
+    <s0>(DE-601)105670421</s0>
+    <s0>(DE-588)4134723-7</s0>
+    <sa>Naturdarstellung</sa>
+    <s2>gnd</s2>
+  </d650>
+  <d650 i1=" " i2="7">
+    <s0>(DE-601)105822957</s0>
+    <s0>(DE-588)4114333-4</s0>
+    <sa>Kunst</sa>
+    <s2>gnd</s2>
+  </d650>
+  <d651 i1=" " i2="7">
+    <sa>Dresden &lt;1995&gt;</sa>
+    <s2>gnd</s2>
+  </d651>
+  <d651 i1=" " i2="7">
+    <sa>Dresden &lt;1995&gt;</sa>
+    <s2>gnd</s2>
+  </d651>
+  <d653 i1=" " i2="0">
+    <sa>Darwin, Charles</sa>
+    <sa>1809-1882</sa>
+    <sa>Exhibitions</sa>
+  </d653>
+  <d653 i1=" " i2="0">
+    <sa>Evolution (Biology)</sa>
+    <sa>Exhibitions</sa>
+  </d653>
+  <d653 i1=" " i2="0">
+    <sa>Natural selection</sa>
+    <sa>Exhibitions</sa>
+  </d653>
+  <d655 i1="0" i2="7">
+    <s0>(DE-588)4135467-9</s0>
+    <sa>Ausstellungskatalog</sa>
+    <s2>gnd-content</s2>
+  </d655>
+  <d689 i1="0" i2="0">
+    <s0>(DE-601)104313285</s0>
+    <s0>(DE-588)4011097-7</s0>
+    <sd>s</sd>
+    <sa>Darwinismus</sa>
+  </d689>
+  <d689 i1="0" i2="1">
+    <sa>f</sa>
+    <sa>Ausstellung</sa>
+  </d689>
+  <d689 i1="0" i2="2">
+    <sa>g</sa>
+    <sa>Dresden &lt;1995&gt;</sa>
+  </d689>
+  <d689 i1="0" i2=" ">
+    <s5>DE-601</s5>
+  </d689>
+  <d689 i1="1" i2="0">
+    <s0>(DE-601)105670421</s0>
+    <s0>(DE-588)4134723-7</s0>
+    <sd>s</sd>
+    <sa>Naturdarstellung</sa>
+  </d689>
+  <d689 i1="1" i2="1">
+    <s0>(DE-601)105822957</s0>
+    <s0>(DE-588)4114333-4</s0>
+    <sd>s</sd>
+    <sa>Kunst</sa>
+  </d689>
+  <d689 i1="1" i2="2">
+    <sa>z</sa>
+    <sa>Geschichte</sa>
+  </d689>
+  <d689 i1="1" i2="3">
+    <sa>f</sa>
+    <sa>Ausstellung</sa>
+  </d689>
+  <d689 i1="1" i2="4">
+    <sa>g</sa>
+    <sa>Dresden &lt;1995&gt;</sa>
+  </d689>
+  <d689 i1="1" i2=" ">
+    <s5>DE-601</s5>
+  </d689>
+  <d700 i1="1" i2=" ">
+    <sa>Baumunk, Bodo-Michael</sa>
+    <s0>(DE-601)771321260</s0>
+    <s0>(DE-588)1043286160</s0>
+  </d700>
+  <d700 i1="1" i2=" ">
+    <sa>Rossmanith, Walter</sa>
+    <se>gefeierter</se>
+    <s4>hnr</s4>
+  </d700>
+  <d700 i1="1" i2=" ">
+    <sa>Rieß, Jürgen</sa>
+  </d700>
+  <d711 i1="2" i2=" ">
+    <sa>Ausstellung</sa>
+    <sd>1995.03.25-06.26</sd>
+    <sc>Dresden</sc>
+  </d711>
+  <d856 i1="4" i2="2">
+    <su>http://d-nb.info/940299364/04</su>
+    <sm>V:AT-OBV</sm>
+    <sq>application/pdf</sq>
+    <s3>Inhaltsverzeichnis</s3>
+  </d856>
+  <d889 i1=" " i2=" ">
+    <sw>(DE-601)466395558</sw>
+  </d889>
+  <d912 i1=" " i2=" ">
+    <sa>SYSFLAG_1</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_GVK</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_11</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_20</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_22</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_31</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_34</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_39</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_40</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_49</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_50</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_61</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_62</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_65</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_70</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_105</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_118</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_130</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_156</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_179</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_181</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_205</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_227</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_341</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_676</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_791</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_22_i30809</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_22_i30716</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_22_i30514</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_40_i154</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_65_a018</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_181_b010</sa>
+  </d912>
+  <d951 i1=" " i2=" ">
+    <sa>BO</sa>
+  </d951>
+  <d980 i1=" " i2=" ">
+    <s2>11</s2>
+    <s1>01</s1>
+    <sb>025686607</sb>
+    <sf>1:HA15</sf>
+    <sd>HA 15 Aa 6925</sd>
+    <se>s</se>
+    <sd>6 B 21158</sd>
+    <sx>0001</sx>
+    <sy>r</sy>
+    <sz>30-08-94</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>20</s2>
+    <s1>01</s1>
+    <sb>1396318704</sb>
+    <sf>Q2</sf>
+    <sd>U-230</sd>
+    <se>i</se>
+    <sx>0084</sx>
+    <sy>riQ2</sy>
+    <sz>06-06-13</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>22</s2>
+    <s1>01</s1>
+    <sb>39823521X</sb>
+    <sf>18/308</sf>
+    <sd>VKK-G5/34</sd>
+    <se>i</se>
+    <sx>0018</sx>
+    <sy>zi30809</sy>
+    <sz>24-07-00</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>22</s2>
+    <s1>03</s1>
+    <sb>098595725</sb>
+    <sf>18/307-a</sf>
+    <sd>ZHW 52/435</sd>
+    <se>i</se>
+    <sx>0018</sx>
+    <sy>zi30716</sy>
+    <sz>01-01-04</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>22</s2>
+    <s1>04</s1>
+    <sb>1699919410</sb>
+    <sf>18/305</sf>
+    <sd>B 7 Dar/1</sd>
+    <se>c</se>
+    <sl>Geschenk v. Prof. Mühlbach</sl>
+    <sx>0018</sx>
+    <sy>zi30514</sy>
+    <sz>06-07-17</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>31</s2>
+    <s1>01</s1>
+    <sb>294821473</sb>
+    <sf>J 30</sf>
+    <sd>PHI:HM:900:D228:5:1994</sd>
+    <se>d</se>
+    <sx>0027</sx>
+    <sy>r</sy>
+    <sz>03-09-98</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>31</s2>
+    <s1>02</s1>
+    <sb>708802141</sb>
+    <sf>J 26</sf>
+    <sd>BIO:FO:0500:Bau::1994</sd>
+    <se>d</se>
+    <sx>0027</sx>
+    <sy>z</sy>
+    <sz>01-03-05</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>31</s2>
+    <s1>03</s1>
+    <sb>894830317</sb>
+    <sf>J 47</sf>
+    <sd>VII 1278</sd>
+    <se>d</se>
+    <sx>0027</sx>
+    <sy>r</sy>
+    <sz>14-10-08</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>34</s2>
+    <s1>01</s1>
+    <sb>065017617</sb>
+    <sf>18/285</sf>
+    <sd>A.3</sd>
+    <se>c</se>
+    <sx>3551</sx>
+    <sy>zi005</sy>
+    <sz>15-05-95</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>39</s2>
+    <s1>01</s1>
+    <sb>151106371</sb>
+    <sf>FBG MAG</sf>
+    <sd>B 02747</sd>
+    <se>d</se>
+    <sd>Forschungsbibliothek Gotha</sd>
+    <sl>Belegexemplar: Forschungsdokumentation</sl>
+    <sx>547/039</sx>
+    <sy>zg05</sy>
+    <sz>27-01-00</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>40</s2>
+    <s1>01</s1>
+    <sb>470286857</sb>
+    <sf>7/154</sf>
+    <sd>Biol.90.1994</sd>
+    <se>i</se>
+    <sx>0007</sx>
+    <sy>xi154</sy>
+    <sz>07-02-01</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>49</s2>
+    <s1>01</s1>
+    <sb>12667647X</sb>
+    <sf>Gö164</sf>
+    <sd>CH 5317 Baum 1994</sd>
+    <se>i</se>
+    <sx>3049</sx>
+    <sy>zi164</sy>
+    <sz>01-06-94</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>50</s2>
+    <s1>01</s1>
+    <sb>743672291</sb>
+    <sd>NT 95-7110</sd>
+    <se>b</se>
+    <sd>55.4° 419</sd>
+    <sx>0023</sx>
+    <sy>k</sy>
+    <sz>21-11-05</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>61</s2>
+    <s1>01</s1>
+    <sb>383099552</sb>
+    <sf>MAG</sf>
+    <sd>141232 - B</sd>
+    <se>u</se>
+    <sx>0032</sx>
+    <sy>r</sy>
+    <sz>17-03-00</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>61</s2>
+    <s1>02</s1>
+    <sb>653614829</sb>
+    <sf>MAG</sf>
+    <sd>Ku B 2638</sd>
+    <se>u</se>
+    <sx>0032</sx>
+    <sy>r</sy>
+    <sz>23-06-04</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>61</s2>
+    <s1>03</s1>
+    <sb>653614837</sb>
+    <sf>MAG</sf>
+    <sd>Ku B 2638 [a]</sd>
+    <se>u</se>
+    <sx>0032</sx>
+    <sy>r</sy>
+    <sz>23-06-04</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>62</s2>
+    <s1>01</s1>
+    <sb>1638432228</sb>
+    <sf>28/BB2-PHI</sf>
+    <sd>CH 5317 B348</sd>
+    <se>u</se>
+    <sh>ACQ</sh>
+    <sx>0028</sx>
+    <sy>z</sy>
+    <sz>17-11-16</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>65</s2>
+    <s1>02</s1>
+    <sb>1514656345</sb>
+    <sf>Ha 18-18</sf>
+    <sd>A III J 1641</sd>
+    <se>i</se>
+    <sx>3/18</sx>
+    <sy>ka018</sy>
+    <sz>16-12-14</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>70</s2>
+    <s1>01</s1>
+    <sb>127513590</sb>
+    <sf>FBE</sf>
+    <sd>94-1463</sd>
+    <se>u</se>
+    <sx>89/15</sx>
+    <sy>zce</sy>
+    <sz>30-06-94</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>105</s2>
+    <s1>01</s1>
+    <sb>098797352</sb>
+    <sf>IMGWF B</sf>
+    <sd>Biol G9 415</sd>
+    <se>g</se>
+    <sx>0841/1</sx>
+    <sy>ni01</sy>
+    <sz>28-04-94</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>118</s2>
+    <s1>01</s1>
+    <sb>1241268231</sb>
+    <sf>SBD-LS</sf>
+    <sd>13215</sd>
+    <se>i</se>
+    <sl>ORG_DS_ID: b006689</sl>
+    <sx>3329/4</sx>
+    <sy>z4</sy>
+    <sz>03-10-07</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>130</s2>
+    <s1>01</s1>
+    <sb>126831580</sb>
+    <sf>N</sf>
+    <sd>VNH / Dar</sd>
+    <se>u</se>
+    <sx>0700</sx>
+    <sy>kn</sy>
+    <sz>22-08-94</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>156</s2>
+    <s1>01</s1>
+    <sb>679690697</sb>
+    <sf>FHMA</sf>
+    <sd>B 94 / 457</sd>
+    <se>u</se>
+    <sd>B 94::457</sd>
+    <sx>0204</sx>
+    <sy>z</sy>
+    <sz>01-01-01</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>179</s2>
+    <s1>01</s1>
+    <sb>093894449</sb>
+    <sf>B4</sf>
+    <sd>1994 B 912</sd>
+    <se>u</se>
+    <sx>8306</sx>
+    <sy>n</sy>
+    <sz>06-07-94</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>179</s2>
+    <s1>02</s1>
+    <sb>1400236762</sb>
+    <sf>B4/AvH</sf>
+    <se>g</se>
+    <sx>8306</sx>
+    <sy>z</sy>
+    <sz>12-06-13</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>181</s2>
+    <s1>01</s1>
+    <sb>948656646</sb>
+    <sf>KB</sf>
+    <sd>8 1994 2092</sd>
+    <se>i</se>
+    <sd>::8:1994:2092:</sd>
+    <sl>Retro Th</sl>
+    <sx>3181/010</sx>
+    <sy>rb010</sy>
+    <sz>24-09-09</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>205</s2>
+    <s1>01</s1>
+    <sb>1368035159</sb>
+    <sf>FBG MAG</sf>
+    <sd>B 02747</sd>
+    <sk>Titel vorhanden! &lt;a target="_blank" href="http://opac.uni-erfurt.de/php/opac_forward.php?inst=OPAC_EF_EPN&amp;ppn=151106371"&gt;Weiter zum Online-Katalog&lt;/a&gt;</sk>
+    <sx>3205</sx>
+    <sy>zfg1</sy>
+    <sz>22-02-13</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>227</s2>
+    <s1>01</s1>
+    <sb>1241582998</sb>
+    <sd>II 23-523</sd>
+    <se>u</se>
+    <sx>0056</sx>
+    <sy>x</sy>
+    <sz>13-05-11</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>341</s2>
+    <s1>01</s1>
+    <sb>685155005</sb>
+    <sd>94-0318</sd>
+    <se>u</se>
+    <sx>4341</sx>
+    <sy>n</sy>
+    <sz>30-09-99</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>676</s2>
+    <s1>01</s1>
+    <sb>1779660065</sb>
+    <sd>N1-1-19</sd>
+    <se>i</se>
+    <sx>9835</sx>
+    <sy>rp</sy>
+    <sz>18-06-18</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>791</s2>
+    <s1>01</s1>
+    <sb>895437791</sb>
+    <sd>1 E c 1765</sd>
+    <se>u</se>
+    <sx>3791</sx>
+    <sy>n</sy>
+    <sz>03-10-06</sz>
+  </d980>
+  <d982 i1=" " i2=" ">
+    <s2>61</s2>
+    <s1>00</s1>
+    <s8>00</s8>
+    <sa>Dresden [Stadt] / Ausstellung</sa>
+  </d982>
+  <d982 i1=" " i2=" ">
+    <s2>61</s2>
+    <s1>00</s1>
+    <s8>01</s8>
+    <sa>Darwin, Charles / Nachwirkung Deutung</sa>
+  </d982>
+  <d982 i1=" " i2=" ">
+    <s2>61</s2>
+    <s1>00</s1>
+    <s8>02</s8>
+    <sa>Darwinismus / Nachwirkung Deutung</sa>
+  </d982>
+  <d982 i1=" " i2=" ">
+    <s2>156</s2>
+    <s1>01</s1>
+    <s8>00</s8>
+    <s0>(DE-601)396730779</s0>
+    <sa>XXX</sa>
+  </d982>
+  <d982 i1=" " i2=" ">
+    <s2>205</s2>
+    <s1>00</s1>
+    <s8>20</s8>
+    <sa>Chart A00783a, Fundstelle: S. 46-47</sa>
+  </d982>
+  <d982 i1=" " i2=" ">
+    <s2>205</s2>
+    <s1>00</s1>
+    <s8>21</s8>
+    <sa>Chart A00784, Fundstelle: S. 47</sa>
+  </d982>
+  <d982 i1=" " i2=" ">
+    <s2>791</s2>
+    <s1>00</s1>
+    <s8>00</s8>
+    <sa>Darwinismus / Geschichte / Ausstellung / Dresden &lt;1994&gt;</sa>
+  </d982>
+  <d982 i1=" " i2=" ">
+    <s2>791</s2>
+    <s1>00</s1>
+    <s8>01</s8>
+    <sa>Ausstellung / Dresden &lt;1994&gt; / Darwinismus</sa>
+  </d982>
+  <d983 i1=" " i2=" ">
+    <s2>11</s2>
+    <s1>00</s1>
+    <s8>00</s8>
+    <s0>(DE-601)284758221</s0>
+    <sa>Bio A 668; Darwinismus</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>11</s2>
+    <s1>00</s1>
+    <s8>01</s8>
+    <s0>(DE-601)28999618X</s0>
+    <sa>Bio A 622 Dresden: Deutsches Hygiene-Museum</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>11</s2>
+    <s1>00</s1>
+    <s8>02</s8>
+    <s0>(DE-601)289996198</s0>
+    <sa>Dresden; Bio A 622 Deutsches Hygiene-Museum</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>11</s2>
+    <s1>00</s1>
+    <s8>03</s8>
+    <s0>(DE-601)289996201</s0>
+    <sa>Darwin, Charles; &lt;22&gt;</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>22</s2>
+    <s1>04</s1>
+    <s8>00</s8>
+    <sa>B 7</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>31</s2>
+    <s1>00</s1>
+    <s8>00</s8>
+    <sa>BIO:FO:0500</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>39</s2>
+    <s1>00</s1>
+    <s8>01</s8>
+    <sa>WB 2420</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>40</s2>
+    <s1>01</s1>
+    <s8>50</s8>
+    <sa>Biol.90 Darwinismus</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>40</s2>
+    <s1>01</s1>
+    <s8>51</s8>
+    <sa>Ges.Med.37 Darwin</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>40</s2>
+    <s1>01</s1>
+    <s8>52</s8>
+    <sa>Biol.90 Rasse</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>40</s2>
+    <s1>01</s1>
+    <s8>53</s8>
+    <sa>Anthrop.90 Rasse</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>105</s2>
+    <s1>00</s1>
+    <s8>00</s8>
+    <sa>Biol</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>118</s2>
+    <s1>01</s1>
+    <s8>00</s8>
+    <sa>013.-Darwin</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>130</s2>
+    <s1>01</s1>
+    <s8>00</s8>
+    <sa>VNH</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>130</s2>
+    <s1>01</s1>
+    <s8>01</s8>
+    <sa>VNA</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>130</s2>
+    <s1>01</s1>
+    <s8>02</s8>
+    <sa>VOU</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>341</s2>
+    <s1>00</s1>
+    <s8>00</s8>
+    <s0>(DE-601)471384038</s0>
+    <sa>576.8092</sa>
+    <sb>Evolution, Personen</sb>
+  </d983>
+  <d995 i1=" " i2=" ">
+    <s2>62</s2>
+    <s1>01</s1>
+    <sa>ACQ</sa>
+  </d995>
+</r>
+<r>
+  <l>04606nam a2201057 c 4500</l>
+  <c001>328047457</c001>
+  <c003>DE-601</c003>
+  <c005>20180317212405.0</c005>
+  <c008>010417s2001    gw            000 0 ger d</c008>
+  <d015 i1=" " i2=" ">
+    <sa>01A400930</sa>
+    <s2>dnb</s2>
+  </d015>
+  <d016 i1="7" i2=" ">
+    <sa>96223687X</sa>
+    <s2>DE-101</s2>
+  </d016>
+  <d020 i1=" " i2=" ">
+    <sa>3462030086 (kart.)</sa>
+    <sc>DM 22.90, EUR 11.50 (ab 1.1.2002)</sc>
+    <s9>3-462-03008-6</s9>
+  </d020>
+  <d024 i1="8" i2=" ">
+    <sa>ZHW003323</sa>
+  </d024>
+  <d035 i1=" " i2=" ">
+    <sa>(OCoLC)248225786</sa>
+  </d035>
+  <d035 i1=" " i2=" ">
+    <sa>(DE-599)GBV328047457</sa>
+  </d035>
+  <d040 i1=" " i2=" ">
+    <sb>ger</sb>
+    <sc>GBVCP</sc>
+  </d040>
+  <d041 i1="0" i2=" ">
+    <sa>ger</sa>
+  </d041>
+  <d060 i1=" " i2="0">
+    <sa>TP 248.2</sa>
+  </d060>
+  <d084 i1=" " i2=" ">
+    <sa>Wa</sa>
+    <s2>asb</s2>
+  </d084>
+  <d084 i1=" " i2=" ">
+    <sa>28</sa>
+    <sa>32</sa>
+    <sa>33</sa>
+    <sa>11</sa>
+    <sa>10</sa>
+    <s2>sdnb</s2>
+  </d084>
+  <d084 i1=" " i2=" ">
+    <sa>02.40</sa>
+    <s9>Futurologie</s9>
+    <s2>bkl</s2>
+  </d084>
+  <d084 i1=" " i2=" ">
+    <sa>MS 6950</sa>
+    <s2>rvk</s2>
+  </d084>
+  <d084 i1=" " i2=" ">
+    <sa>WB 4000</sa>
+    <s2>rvk</s2>
+  </d084>
+  <d084 i1=" " i2=" ">
+    <sa>XC 2812</sa>
+    <s2>rvk</s2>
+  </d084>
+  <d245 i1="0" i2="4">
+    <sa>Die Darwin AG</sa>
+    <sb>wie Nanotechnologie, Biotechnologie und Computer den neuen Menschen träumen</sb>
+    <sc>Frank Schirrmacher (Hrsg.)</sc>
+  </d245>
+  <d250 i1=" " i2=" ">
+    <sa>1. Aufl</sa>
+  </d250>
+  <d264 i1="3" i2="1">
+    <sa>Köln</sa>
+    <sb>Kiepenheuer &amp; Witsch</sb>
+    <sc>2001</sc>
+  </d264>
+  <d300 i1=" " i2=" ">
+    <sa>311 S</sa>
+    <sc>19 cm</sc>
+  </d300>
+  <d490 i1="0" i2=" ">
+    <sa>KiWi</sa>
+    <sv>626</sv>
+    <sa>Paperback</sa>
+  </d490>
+  <d650 i1=" " i2="7">
+    <s0>(DE-601)106101390</s0>
+    <s0>(DE-588)4070083-5</s0>
+    <sa>Computer</sa>
+    <s2>gnd</s2>
+  </d650>
+  <d650 i1=" " i2="7">
+    <s0>(DE-601)105224596</s0>
+    <s0>(DE-588)4193780-6</s0>
+    <sa>Kognitionswissenschaft</sa>
+    <s2>gnd</s2>
+  </d650>
+  <d650 i1=" " i2="7">
+    <s0>(DE-601)106257188</s0>
+    <s0>(DE-588)4033447-8</s0>
+    <sa>Künstliche Intelligenz</sa>
+    <s2>gnd</s2>
+  </d650>
+  <d650 i1=" " i2="7">
+    <s0>(DE-601)104642904</s0>
+    <s0>(DE-588)4069491-4</s0>
+    <sa>Biotechnologie</sa>
+    <s2>gnd</s2>
+  </d650>
+  <d650 i1=" " i2="7">
+    <s0>(DE-601)105244503</s0>
+    <s0>(DE-588)4191125-8</s0>
+    <sa>Zukunftserwartung</sa>
+    <s2>gnd</s2>
+  </d650>
+  <d653 i1=" " i2="2">
+    <sa>Artificial Intelligence</sa>
+  </d653>
+  <d653 i1=" " i2="2">
+    <sa>Biotechnology / trends</sa>
+  </d653>
+  <d653 i1=" " i2="2">
+    <sa>Technology</sa>
+  </d653>
+  <d653 i1=" " i2="2">
+    <sa>Computers</sa>
+  </d653>
+  <d653 i1=" " i2="2">
+    <sa>Philosophy</sa>
+  </d653>
+  <d653 i1=" " i2="0">
+    <sa>Artificial Intelligence</sa>
+  </d653>
+  <d653 i1=" " i2="0">
+    <sa>Biotechnology / trends</sa>
+  </d653>
+  <d653 i1=" " i2="0">
+    <sa>Computers</sa>
+  </d653>
+  <d653 i1=" " i2="0">
+    <sa>Philosophy</sa>
+  </d653>
+  <d653 i1=" " i2="0">
+    <sa>Technology</sa>
+  </d653>
+  <d655 i1=" " i2="7">
+    <sa>Aufsatzsammlung</sa>
+    <s2>gnd</s2>
+  </d655>
+  <d655 i1=" " i2="7">
+    <sa>30;23.2;5.1a</sa>
+    <s2>gnd</s2>
+  </d655>
+  <d689 i1="0" i2="0">
+    <sa>s</sa>
+    <s0>(DE-601)106101390</s0>
+    <s0>(DE-588)4070083-5</s0>
+    <sa>Computer</sa>
+  </d689>
+  <d689 i1="0" i2="1">
+    <sa>s</sa>
+    <s0>(DE-601)105224596</s0>
+    <s0>(DE-588)4193780-6</s0>
+    <sa>Kognitionswissenschaft</sa>
+  </d689>
+  <d689 i1="0" i2="2">
+    <sa>s</sa>
+    <s0>(DE-601)106257188</s0>
+    <s0>(DE-588)4033447-8</s0>
+    <sa>Künstliche Intelligenz</sa>
+  </d689>
+  <d689 i1="0" i2="3">
+    <sa>s</sa>
+    <s0>(DE-601)104642904</s0>
+    <s0>(DE-588)4069491-4</s0>
+    <sa>Biotechnologie</sa>
+  </d689>
+  <d689 i1="0" i2="4">
+    <sa>s</sa>
+    <s0>(DE-601)105244503</s0>
+    <s0>(DE-588)4191125-8</s0>
+    <sa>Zukunftserwartung</sa>
+  </d689>
+  <d689 i1="0" i2="5">
+    <sa>f</sa>
+    <sa>Aufsatzsammlung</sa>
+  </d689>
+  <d700 i1="1" i2=" ">
+    <sa>Schirrmacher, Frank</sa>
+    <s0>(DE-601)081167253</s0>
+    <s0>(DE-588)121226948</s0>
+  </d700>
+  <d830 i1=" " i2="0">
+    <sw>(DE-601)129156388</sw>
+    <sv>626</sv>
+    <s9>62600</s9>
+  </d830>
+  <d856 i1="4" i2="2">
+    <sy>Inhaltsverzeichnis</sy>
+    <su>http://www.gbv.de/dms/hebis-darmstadt/toc/10028566X.pdf</su>
+    <sm>V:DE-603;B:DE-17</sm>
+    <sq>pdf/application</sq>
+    <s3>Inhaltsverzeichnis</s3>
+  </d856>
+  <d856 i1="4" i2="2">
+    <su>http://d-nb.info/96223687X/04</su>
+    <sm>V:DE-603</sm>
+    <sq>application/pdf</sq>
+    <s3>Inhaltsverzeichnis</s3>
+  </d856>
+  <d912 i1=" " i2=" ">
+    <sa>SYSFLAG_1</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_GVK</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_21</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_22</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_23</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_32</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_34</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_39</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_70</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_176</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_22_i22818</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_22_i06404</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_22_i30716</sa>
+  </d912>
+  <d950 i1=" " i2=" ">
+    <sa>Computer</sa>
+    <sa>Kognitionswissenschaft</sa>
+    <sa>Künstliche Intelligenz</sa>
+    <sa>Biotechnologie</sa>
+    <sa>Zukunftserwartung</sa>
+    <sa>Aufsatzsammlung</sa>
+    <s2>DE-601</s2>
+  </d950>
+  <d951 i1=" " i2=" ">
+    <sa>BO</sa>
+  </d951>
+  <d980 i1=" " i2=" ">
+    <s2>21</s2>
+    <s1>01</s1>
+    <sb>546325386</sb>
+    <sf>TB BHV</sf>
+    <sd>tec 30/5</sd>
+    <se>u</se>
+    <sx>0046</sx>
+    <sy>zba</sy>
+    <sz>14-02-02</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>22</s2>
+    <s1>01</s1>
+    <sb>494230142</sb>
+    <sf>18/228-e</sf>
+    <sd>ANT 199/1</sd>
+    <se>i</se>
+    <sx>0018</sx>
+    <sy>zi22818</sy>
+    <sz>21-05-01</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>22</s2>
+    <s1>02</s1>
+    <sb>536868077</sb>
+    <sf>SUB</sf>
+    <sd>A 2002/2371</sd>
+    <se>u</se>
+    <sx>0018</sx>
+    <sy>zu</sy>
+    <sz>10-06-02</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>22</s2>
+    <s1>03</s1>
+    <sb>547949200</sb>
+    <sf>18/64</sf>
+    <sd>TP 248.2 Med A 2001/479</sd>
+    <se>u</se>
+    <sd>Med A 2001/479</sd>
+    <sx>0018</sx>
+    <sy>zi06404</sy>
+    <sz>26-02-02</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>22</s2>
+    <s1>04</s1>
+    <sb>098603817</sb>
+    <sf>18/307-a</sf>
+    <sd>ZHW 52/540</sd>
+    <se>i</se>
+    <sx>0018</sx>
+    <sy>zi30716</sy>
+    <sz>01-01-04</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>23</s2>
+    <s1>01</s1>
+    <sb>523659938</sb>
+    <sf>14</sf>
+    <sd>1410-0145</sd>
+    <sx>0830</sx>
+    <sy>z</sy>
+    <sz>02-11-01</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>32</s2>
+    <s1>01</s1>
+    <sb>528485423</sb>
+    <sf>59</sf>
+    <sd>NAT TB 6200 S337</sd>
+    <se>u</se>
+    <sl>;1=Quelle db... ;2=Ex 1... ;2.1=... ;2.2=... ;2.3=... ;2.4=... ;3=Preis 10,93 Euro... ;4=UK c52... ;5=Sto 53... ;5.1=... ;5.2=... ;5.3=... ;5.4=... ;6=Info Buchhdl ... ;8=RechnNr 428/02... ;9=RechnDat 18.3.2002... ;10=Rabatt ... ;11=BestDat 020102... ;12=BestArt ... ;13=Lief 1... ;14=Bemerk  ... ;15=Vol...;15.1=...;15.2=... ;15.3=... ;16=Vol Biblgr-Angb... ;16.1=... ;16.2=... ;16.3=... ;17=AUS... ;7=BearbSt ...</sl>
+    <sx>3400</sx>
+    <sy>k</sy>
+    <sz>16-05-02</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>34</s2>
+    <s1>01</s1>
+    <sb>48971000X</sb>
+    <sf>18/284</sf>
+    <sd>Wis C - 89.1</sd>
+    <se>c</se>
+    <sx>3551</sx>
+    <sy>zi004</sy>
+    <sz>17-05-01</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>70</s2>
+    <s1>01</s1>
+    <sb>477399339</sb>
+    <sf>FBS</sf>
+    <sd>LG 120 65</sd>
+    <se>s</se>
+    <sx>89/19</sx>
+    <sy>zsa</sy>
+    <sz>09-08-01</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>176</s2>
+    <s1>01</s1>
+    <sb>164385772X</sb>
+    <sf>IGS</sf>
+    <sd>NW 1.0 Dar</sd>
+    <se>c</se>
+    <sx>3703/4</sx>
+    <sy>z4i</sy>
+    <sz>01-11-16</sz>
+  </d980>
+  <d982 i1=" " i2=" ">
+    <s2>176</s2>
+    <s1>00</s1>
+    <s8>20</s8>
+    <sa>Naturwissenschaften/Allgemeines</sa>
+  </d982>
+  <d983 i1=" " i2=" ">
+    <s2>21</s2>
+    <s1>00</s1>
+    <s8>20</s8>
+    <sa>tec 30</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>32</s2>
+    <s1>00</s1>
+    <s8>00</s8>
+    <sa>TB 6200</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>70</s2>
+    <s1>00</s1>
+    <s8>40</s8>
+    <sa>BB 40</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>70</s2>
+    <s1>00</s1>
+    <s8>41</s8>
+    <sa>RG 90</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>72</s2>
+    <s1>00</s1>
+    <s8>40</s8>
+    <sa>BB 40</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>72</s2>
+    <s1>00</s1>
+    <s8>41</s8>
+    <sa>RG 90</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>110</s2>
+    <s1>00</s1>
+    <s8>00</s8>
+    <sa>Nat 3006</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>110</s2>
+    <s1>00</s1>
+    <s8>01</s8>
+    <sa>Nat 2970</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>110</s2>
+    <s1>00</s1>
+    <s8>02</s8>
+    <sa>Nat 137</sa>
+  </d983>
+</r>
+<r>
+  <l>23825nmm a2202761 c 4500</l>
+  <c001>784604568</c001>
+  <c003>DE-601</c003>
+  <c005>20180416222403.0</c005>
+  <c007>cr uuu---uuuuu</c007>
+  <c008>140505s2014            o     000 0 ger d</c008>
+  <d020 i1=" " i2=" ">
+    <sa>9783642419614</sa>
+    <s9>978-3-642-41961-4</s9>
+  </d020>
+  <d020 i1=" " i2=" ">
+    <sa>9783642419607 (print)</sa>
+    <s9>978-3-642-41960-7</s9>
+  </d020>
+  <d024 i1="7" i2=" ">
+    <sa>10.1007/978-3-642-41961-4</sa>
+    <s2>doi</s2>
+  </d024>
+  <d024 i1="8" i2=" ">
+    <sa>HBZTTT050428155</sa>
+  </d024>
+  <d035 i1=" " i2=" ">
+    <sa>(DE-605)TT050428155</sa>
+  </d035>
+  <d035 i1=" " i2=" ">
+    <sa>978-3-642-41961-4</sa>
+  </d035>
+  <d035 i1=" " i2=" ">
+    <sa>(OCoLC)888358875</sa>
+  </d035>
+  <d035 i1=" " i2=" ">
+    <sa>ebr10862820</sa>
+  </d035>
+  <d035 i1=" " i2=" ">
+    <sa>EBC1731213</sa>
+  </d035>
+  <d035 i1=" " i2=" ">
+    <sa>(DE-599)HBZTT050428155</sa>
+  </d035>
+  <d040 i1=" " i2=" ">
+    <sb>ger</sb>
+    <sc>GBVCP</sc>
+    <se>rda</se>
+  </d040>
+  <d041 i1="0" i2=" ">
+    <sa>ger</sa>
+  </d041>
+  <d050 i1=" " i2="0">
+    <sa>QL461-599.82</sa>
+  </d050>
+  <d082 i1="0" i2="0">
+    <sa>500</sa>
+  </d082>
+  <d084 i1=" " i2=" ">
+    <sa>WH 2200</sa>
+    <s2>rvk</s2>
+  </d084>
+  <d084 i1=" " i2=" ">
+    <sa>WB 2370</sa>
+    <s2>rvk</s2>
+  </d084>
+  <d084 i1=" " i2=" ">
+    <sa>WB 2540</sa>
+    <s2>rvk</s2>
+  </d084>
+  <d084 i1=" " i2=" ">
+    <sa>ggo</sa>
+    <sq>DE-601</sq>
+    <s2>z</s2>
+  </d084>
+  <d085 i1=" " i2=" ">
+    <s8>1\x</s8>
+    <su>595.7</su>
+  </d085>
+  <d245 i1="0" i2="0">
+    <sa>Charles Darwin</sa>
+    <sh>Elektronische Ressource</sh>
+    <sb>Zur Evolution der Arten und zur Entwicklung der Erde</sb>
+    <sc>Uwe Hoßfeld; Lennart Olsson (Hrsg.)</sc>
+  </d245>
+  <d250 i1=" " i2=" ">
+    <sa>2., überarb. Aufl. 2014</sa>
+  </d250>
+  <d264 i1="3" i2="1">
+    <sa>Berlin [u.a.]</sa>
+    <sb>Springer Spektrum</sb>
+    <sc>2014</sc>
+  </d264>
+  <d300 i1=" " i2=" ">
+    <sa>Online-Ressource</sa>
+    <sa>VII, 201 S. 21 Abb., 1 Abb. in Farbe</sa>
+    <sb>Ill.</sb>
+  </d300>
+  <d336 i1=" " i2=" ">
+    <sa>Text</sa>
+    <sb>txt</sb>
+    <s2>rdacontent</s2>
+  </d336>
+  <d337 i1=" " i2=" ">
+    <sa>Computermedien</sa>
+    <sb>c</sb>
+    <s2>rdamedia</s2>
+  </d337>
+  <d338 i1=" " i2=" ">
+    <sa>Online-Ressource</sa>
+    <sb>cr</sb>
+    <s2>rdacarrier</s2>
+  </d338>
+  <d490 i1="0" i2=" ">
+    <sa>Klassische Texte der Wissenschaft</sa>
+  </d490>
+  <d500 i1=" " i2=" ">
+    <sa>Description based upon print version of record</sa>
+  </d500>
+  <d505 i1="0" i2=" ">
+    <sa>1 Danksagung; Danksagung zur ersten Auflage; Danksagung zur zweiten Auflage; Inhaltsverzeichnis; Teil I Charles Darwin; Auszüge aus Briefen an Professor Henslow; Auszüge &amp;c.; Über bestimmte Gebiete der Hebung und Senkung im Pazifischen und im Indischen Ozean, abgeleitet vom Studium der Korallenformationen; Beobachtungen zu den Parallelstraßen des Glen Roy und anderer Teile von Lochaber in Schottland nebst dem Versuch zu beweisen, daß sie marinen Ursprungs sind; Teil I. Beschreibung der Schelfe; Teil II. Zu den Theorien von Sir Lauder Dick und Dr. MacCulloch.</sa>
+  </d505>
+  <d505 i1="0" i2=" ">
+    <sa>Teil III. Beweise für den Rückzug einer Wassermasse aus den zentralen Teilen Schottlands und für die Annahme, daß es sich hierbei um diejenige des Meeres handelteTeil IV. Beweise für eine Veränderung des Niveauunterschieds von Land und Meer in Schottland aufgrund organischer Überreste. Die hypothetischen Auswirkungen einer Hebung; Teil V. Einwände gegen die Theorie unter Verweis auf den nichtkontinuierlichen Verlauf der Schelfe und auf das Fehlen organischer Reste in größerer Höhe sowie die Erwiderung.</sa>
+  </d505>
+  <d505 i1="0" i2=" ">
+    <sa>Teil VI. Anwendung der Theorie auf einige weniger bedeutsame Aspekte der Struktur im Gebiet von Lochaber und RekapitulationTeil VII. Über die erratischen Blöcke von Lochaber; Teil VIII. Über die geringfügige alluviale Tätigkeit seit der Entstehung der Schelfe; Teil IX. Über die Horizontalität der Schelfe und über das gleichmäßige Wirken der hebenden Kräfte; Teil X. Spekulationen über das Wirken der hebenden Kräfte und Konklusion; Über die Tendenz von Arten, Varietäten zu bilden;  und über den Fortbestand von Varietäten und Arten auf dem natürlichen Weg der Selektion.</sa>
+  </d505>
+  <d505 i1="0" i2=" ">
+    <sa>Auszug aus einem unveröffentlichten Werk über die Arten von C. Darwin, Esq., bestehend aus dem Teil eines Kapitels mit dem Titel «Über das Variieren organischer Wesen im natürlichen Zustand über die natürlichen Mittel der Selektio; Zusammenfassung eines Briefes von C. Darwin, Esq., an Prof. Asa Gray, Boston, USA, datiert Down, 5. September 1857; Über die Tendenz von Varietäten, unbegrenzt vom Originaltypus abzuweichen. Von Alfred Russel Wallace; Teil II Uwe Hoßfeld, Lennart Olsson: Kommentar; 5 Einleitung: Was ist Evolution?; 6 Historische Einführung.</sa>
+  </d505>
+  <d505 i1="0" i2=" ">
+    <sa>6.1 Wie Charles Darwin die Evolutionslehre entdeckte6.2 Ein Brief aus Ternate und die Folgen; 6.3 Ein Buch verändert unser Weltbild; 6.4 Darwin in Deutschland und Ernst Haeckel, der ‚deutsche Darwin'; 6.5 Charles Darwin über Menschwerdung und sexuelle Selektion; 6.6 Ausblick; 7 Präsentation des Textes; 7.1 Auszüge aus Briefen an Professor Henslow (S. 3-16); 7.2 Über bestimmte Gebiete der Hebung und Senkung im Pazifischen und im Indischen Ozean, abgeleitet vom Studium der Korallenformationen (S. 17-24).</sa>
+  </d505>
+  <d505 i1="0" i2=" ">
+    <sa>7.3 Beobachtungen zu den Parallelstraßen des Glen Roy und anderer Teile von Lochaber in Schottland nebst dem Versuch zu beweisen, dass sie marinen Ursprung sind (S. 34-113).</sa>
+  </d505>
+  <d520 i1=" " i2=" ">
+    <sa>Originaltext und ausführlicher historischer Kommentar von Uwe Hoßfeld und Lennart Olsson. Dieses Buch bietet neben den berühmten Darwin-Wallace-Papers drei weitere frühe Schriften Charles Darwins, die seine ersten Schritte zu einer umfassenden Theorie der Evolution markieren und gewissermaßen die Vorgeschichte der Origins of Species erzählen. In höchst lesbarer und informativer Weise erschließt der Kommentar von Uwe Hoßfeld und Lennart Olsson den historischen wie theoretischen Horizont der Werke. Alle erforderlichen Informationen werden in kompakter und übersichtlicher Weise gebündelt. Der Band eignet sich daher nicht nur als erste Orientierung für Theorieeinsteiger, sondern stellt auch eine ideale Grundlage für Lektürekurse an Schule und Universität dar.</sa>
+  </d520>
+  <d650 i1=" " i2="0">
+    <sa>Life sciences</sa>
+  </d650>
+  <d650 i1=" " i2="0">
+    <sa>Geography</sa>
+  </d650>
+  <d650 i1=" " i2="0">
+    <sa>Entomology</sa>
+  </d650>
+  <d650 i1=" " i2="0">
+    <sa>Science (General)</sa>
+  </d650>
+  <d653 i1=" " i2="0">
+    <sa>Life sciences</sa>
+  </d653>
+  <d653 i1=" " i2="0">
+    <sa>Geography</sa>
+  </d653>
+  <d653 i1=" " i2="0">
+    <sa>Entomology</sa>
+  </d653>
+  <d653 i1=" " i2="0">
+    <sa>Science (General)</sa>
+  </d653>
+  <d700 i1="1" i2=" ">
+    <sa>Hoßfeld, Uwe</sa>
+    <se>hrsg</se>
+  </d700>
+  <d700 i1="1" i2=" ">
+    <sa>Olsson, Lennart</sa>
+    <se>hrsg</se>
+  </d700>
+  <d787 i1="0" i2="8">
+    <si>Print version</si>
+    <st>Charles Darwin</st>
+    <sd>Zur Evolution der Arten und zur Entwicklung der Erde</sd>
+  </d787>
+  <d856 i1="4" i2="0">
+    <su>http://dx.doi.org/10.1007/978-3-642-41961-4</su>
+  </d856>
+  <d856 i1="4" i2="1">
+    <su>http://gbv.eblib.com/patron/FullRecord.aspx?p=1731213</su>
+    <s3>Volltext</s3>
+  </d856>
+  <d856 i1="4" i2="0">
+    <su>http://site.ebrary.com/lib/alltitles/docDetail.action?docID=10862820</su>
+  </d856>
+  <d856 i1="4" i2="0">
+    <su>https://ebookcentral.proquest.com/lib/gbv/detail.action?docID=1731213</su>
+  </d856>
+  <d912 i1=" " i2=" ">
+    <sa>ZDB-2-SNA</sa>
+    <sb>2014</sb>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>ZDB-38-EBR</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>ZDB-30-PQE</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>SYSFLAG_1</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_GVK</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>SSG-OPC-GGO</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_20</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_21</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_22</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_23</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_24</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_30</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_34</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_40</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_60</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_62</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_65</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_69</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_70</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_91</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_95</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_100</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_101</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_105</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_110</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_118</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_120</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_122</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_130</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_131</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_132</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_136</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_140</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_160</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_161</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_186</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_213</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_230</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_231</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_252</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_264</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_285</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_293</sa>
+  </d912>
+  <d912 i1=" " i2=" ">
+    <sa>GBV_ILN_370</sa>
+  </d912>
+  <d951 i1=" " i2=" ">
+    <sa>BO</sa>
+  </d951>
+  <d980 i1=" " i2=" ">
+    <s2>20</s2>
+    <s1>01</s1>
+    <sb>1472827562</sb>
+    <sk>Vervielfältigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Keine Weitergabe an Dritte. Kein systematisches Downloaden durch Robots.</sk>
+    <sx>0084</sx>
+    <sy>z</sy>
+    <sz>09-05-14</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>21</s2>
+    <s1>01</s1>
+    <sb>1472810600</sb>
+    <sk>Freie Nutzung im Campusnetz der Universität und der Hochschulen im Land Bremen</sk>
+    <sx>0046</sx>
+    <sy>zza</sy>
+    <sz>09-05-14</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>22</s2>
+    <s1>01</s1>
+    <sb>1472816455</sb>
+    <sk>Vervielfältigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Keine Weitergabe an Dritte. Kein systematisches Downloaden durch Robots.</sk>
+    <sx>0018</sx>
+    <sy>zu</sy>
+    <sz>09-05-14</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>23</s2>
+    <s1>01</s1>
+    <sb>1472823869</sb>
+    <sk>Vervielfältigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Keine Weitergabe an Dritte. Kein systematisches Downloaden durch Robots.</sk>
+    <sx>0830</sx>
+    <sy>z</sy>
+    <sz>09-05-14</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>24</s2>
+    <s1>01</s1>
+    <sb>1472832965</sb>
+    <sk>Ausdruck und Kopien sind ausschließlich für den eigenen wissenschaftlichen Gebrauch gestattet</sk>
+    <sk>Zugriff auf den Volltext nur für Universitätsangehörige innerhalb des Netzes der Universität Kiel (Campuslizenz).</sk>
+    <sl>2015-04-13</sl>
+    <sx>0008</sx>
+    <sy>z</sy>
+    <sz>09-05-14</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>30</s2>
+    <s1>01</s1>
+    <sb>1472760883</sb>
+    <sk>Vervielfältigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Keine Weitergabe an Dritte. Kein systematisches Downloaden.</sk>
+    <sx>0104</sx>
+    <sy>z</sy>
+    <sz>09-05-14</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>34</s2>
+    <s1>01</s1>
+    <sb>1472787781</sb>
+    <sk>Vervielfältigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Keine Weitergabe an Dritte. Kein systematisches Downloaden durch Robots.</sk>
+    <sx>3551</sx>
+    <sy>zi004</sy>
+    <sz>09-05-14</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>40</s2>
+    <s1>01</s1>
+    <sb>1570867887</sb>
+    <sl>SUPO</sl>
+    <sx>0007</sx>
+    <sy>xsn</sy>
+    <sz>07-10-15</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>40</s2>
+    <s1>02</s1>
+    <sb>1739956877</sb>
+    <sx>0007</sx>
+    <sy>xsn</sy>
+    <sz>08-01-18</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>60</s2>
+    <s1>01</s1>
+    <sb>1472802217</sb>
+    <sk>Vervielfältigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Keine Weitergabe an Dritte. Kein systematisches Downloaden durch Robots.</sk>
+    <sk>Nur für Angehörige der HSU: Volltextzugang von außerhalb des Campus mit Anmeldung über Shibboleth mit Ihrer Bibliothekskennung</sk>
+    <sx>0705</sx>
+    <sy>z</sy>
+    <sz>09-05-14</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>62</s2>
+    <s1>01</s1>
+    <sb>1472865383</sb>
+    <sk>Vervielfältigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Keine Weitergabe an Dritte. Kein systematisches Downloaden durch Robots.</sk>
+    <sx>0028</sx>
+    <sy>z</sy>
+    <sz>09-05-14</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>65</s2>
+    <s1>01</s1>
+    <sb>1472870034</sb>
+    <sd>ebook</sd>
+    <sk>Vervielfältigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Keine Weitergabe an Dritte. Kein systematisches Downloaden durch Robots.</sk>
+    <sx>0003</sx>
+    <sy>k3o</sy>
+    <sz>09-05-14</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>69</s2>
+    <s1>01</s1>
+    <sb>1472830350</sb>
+    <sk>Vervielfältigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Keine Weitergabe an Dritte. Kein systematisches Downloaden durch Robots.</sk>
+    <sx>0009</sx>
+    <sy>z</sy>
+    <sz>09-05-14</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>70</s2>
+    <s1>01</s1>
+    <sb>1472819799</sb>
+    <sk>Campusweiter Zugriff (Universität Hannover). - Vervielfältigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Keine Weitergabe an Dritte. Kein systematisches Downloaden durch Robots.</sk>
+    <sk>Erworben aus Studienbeiträgen</sk>
+    <sx>0089</sx>
+    <sy>zesp</sy>
+    <sz>09-05-14</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>91</s2>
+    <s1>01</s1>
+    <sb>1472773527</sb>
+    <sk>Vervielfältigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Keine Weitergabe an Dritte. Kein systematisches Downloaden durch Robots.</sk>
+    <sk>Freie Nutzung im Campusnetz der Hochschule und für registrierte Benutzer</sk>
+    <sx>3091</sx>
+    <sy>z</sy>
+    <sz>09-05-14</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>95</s2>
+    <s1>01</s1>
+    <sb>1472798805</sb>
+    <sk>Ausdruck und Kopien sind ausschließlich für den eigenen wissenschaftlichen Gebrauch gestattet</sk>
+    <sx>3095</sx>
+    <sy>z1</sy>
+    <sz>09-05-14</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>100</s2>
+    <s1>01</s1>
+    <sb>147284386X</sb>
+    <sd>eBook Springer</sd>
+    <sk>Vervielfältigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Keine Weitergabe an Dritte. Kein systematisches Downloaden durch Robots.</sk>
+    <sx>3100</sx>
+    <sy>z</sy>
+    <sz>09-05-14</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>101</s2>
+    <s1>01</s1>
+    <sb>1472851595</sb>
+    <sd>eBook Springer</sd>
+    <sk>Vervielfältigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Keine Weitergabe an Dritte. Kein systematisches Downloaden durch Robots.</sk>
+    <sx>3101</sx>
+    <sy>z</sy>
+    <sz>09-05-14</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>105</s2>
+    <s1>01</s1>
+    <sb>1472872347</sb>
+    <sk>Campuslizenz Universität / Fachhochschule Lübeck. - Vervielfältigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Keine Weitergabe an Dritte. Kein systematisches Downloaden durch Robots.</sk>
+    <sx>0841</sx>
+    <sy>x</sy>
+    <sz>09-05-14</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>110</s2>
+    <s1>01</s1>
+    <sb>147283383X</sb>
+    <sk>Vervielfältigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Keine Weitergabe an Dritte. Kein systematisches Downloaden durch Robots.</sk>
+    <sx>3110</sx>
+    <sy>z</sy>
+    <sz>09-05-14</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>118</s2>
+    <s1>01</s1>
+    <sb>1472791649</sb>
+    <sk>Campusweiter Zugriff HSA - Vervielfältigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Keine Weitergabe an Dritte. Kein systematisches Downloaden durch Robots.</sk>
+    <sx>3329</sx>
+    <sy>z1</sy>
+    <sz>09-05-14</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>120</s2>
+    <s1>01</s1>
+    <sb>1472851951</sb>
+    <sk>Campusweiter Zugriff (Universität Oldenburg). - Vervielfältigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Keine Weitergabe an Dritte. Kein systematisches Downloaden.</sk>
+    <sx>0715</sx>
+    <sy>z</sy>
+    <sz>09-05-14</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>120</s2>
+    <s1>02</s1>
+    <sb>1754636292</sb>
+    <se>n</se>
+    <sx>0715</sx>
+    <sy>l02</sy>
+    <sz>22-02-18</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>122</s2>
+    <s1>01</s1>
+    <sb>1472778111</sb>
+    <sk>Vervielfältigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Keine Weitergabe an Dritte. Kein systematisches Downloaden durch Robots.</sk>
+    <sx>0897</sx>
+    <sy>z</sy>
+    <sz>09-05-14</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>130</s2>
+    <s1>01</s1>
+    <sb>1472858573</sb>
+    <sk>Vervielfältigungen (z. B. Kopien, Downloads) nur für den eigenen wissenschaftlichen Gebrauch. Keine Weitergabe an Dritte. Kein systematisches Downloaden durch Robots</sk>
+    <sx>0700</sx>
+    <sy>z</sy>
+    <sz>09-05-14</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>131</s2>
+    <s1>01</s1>
+    <sb>1517864968</sb>
+    <sk>Vervielfältigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Keine Weitergabe an Dritte. Kein systematisches Downloaden durch Robots.</sk>
+    <sk>Volltextzugriff nur für berechtigte Personen über das Campusnetz der Universität Vechta</sk>
+    <sx>3131</sx>
+    <sy>z</sy>
+    <sz>13-01-15</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>132</s2>
+    <s1>01</s1>
+    <sb>1472785703</sb>
+    <sk>Vervielfältigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Keine Weitergabe an Dritte. Kein systematisches Downloaden durch Robots.</sk>
+    <sk>Finanziert aus Studienbeiträgen</sk>
+    <sx>0959</sx>
+    <sy>k</sy>
+    <sz>09-05-14</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>136</s2>
+    <s1>01</s1>
+    <sb>1472807448</sb>
+    <sk>Vervielfältigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Keine Weitergabe an Dritte. Kein systematisches Downloaden durch Robots.</sk>
+    <sx>3526</sx>
+    <sy>z</sy>
+    <sz>09-05-14</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>140</s2>
+    <s1>01</s1>
+    <sb>1472780744</sb>
+    <sk>Vervielfältigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Keine Weitergabe an Dritte. Kein systematisches Downloaden durch Robots.</sk>
+    <sx>0839</sx>
+    <sy>z</sy>
+    <sz>09-05-14</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>160</s2>
+    <s1>01</s1>
+    <sb>1472766423</sb>
+    <sk>Campusweiter Zugriff (Hochschule Emden/Leer). - Vervielfältigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Keine Weitergabe an Dritte. Kein systematisches Downloaden durch Robots.</sk>
+    <sx>0755</sx>
+    <sy>z</sy>
+    <sz>09-05-14</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>161</s2>
+    <s1>01</s1>
+    <sb>1594130094</sb>
+    <sk>Campusweiter Zugriff (Hochschule Hannover). - Vervielfältigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Keine Weitergabe an Dritte. Kein systematisches Downloaden durch Robots.</sk>
+    <sx>0960</sx>
+    <sy>z</sy>
+    <sz>12-01-16</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>186</s2>
+    <s1>01</s1>
+    <sb>151949226X</sb>
+    <sk>Vervielfältigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Keine Weitergabe an Dritte. Kein systematisches Downloaden durch Robots.</sk>
+    <sx>0519</sx>
+    <sy>z</sy>
+    <sz>23-01-15</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>213</s2>
+    <s1>01</s1>
+    <sb>1472794672</sb>
+    <sk>Campusweiter Zugriff (HS Magdeburg-Stendal). - Vervielfältigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Keine Weitergabe an Dritte. Kein systematisches Downloaden durch Robots.</sk>
+    <sx>0551</sx>
+    <sy>z</sy>
+    <sz>09-05-14</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>230</s2>
+    <s1>01</s1>
+    <sb>1472796659</sb>
+    <sk>Campusweiter Zugriff (HS Magdeburg-Stendal). - Vervielfältigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Keine Weitergabe an Dritte. Kein systematisches Downloaden durch Robots.</sk>
+    <sx>0552</sx>
+    <sy>z</sy>
+    <sz>09-05-14</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>231</s2>
+    <s1>01</s1>
+    <sb>1472793145</sb>
+    <sk>Ausdruck und Kopien sind ausschließlich für den eigenen wissenschaftlichen Gebrauch gestattet</sk>
+    <sx>0527</sx>
+    <sy>z</sy>
+    <sz>09-05-14</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>252</s2>
+    <s1>01</s1>
+    <sb>1522760008</sb>
+    <sf>Thünen-Institut</sf>
+    <sd>Online-Ressource</sd>
+    <se>g</se>
+    <sk>Ebook noch nicht erworben! Nach dem Kauf: Vervielfältigungen (z. B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Keine Weitergabe an Dritte.</sk>
+    <sl>E-Books (Schweitzer)</sl>
+    <sx>4252</sx>
+    <sy>zi070e</sy>
+    <sz>05-02-15</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>264</s2>
+    <s1>01</s1>
+    <sb>1472783158</sb>
+    <sk>Vervielfältigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Keine Weitergabe an Dritte. Kein systematisches Downloaden durch Robots.</sk>
+    <sx>3264</sx>
+    <sy>z</sy>
+    <sz>09-05-14</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>285</s2>
+    <s1>01</s1>
+    <sb>1472862899</sb>
+    <sf>1960</sf>
+    <se>s</se>
+    <sk>Vervielfältigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Keine Weitergabe an Dritte. Kein systematisches Downloaden durch Robots.</sk>
+    <sx>0517</sx>
+    <sy>z</sy>
+    <sz>09-05-14</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>293</s2>
+    <s1>01</s1>
+    <sb>1594135517</sb>
+    <sk>Campusweiter Zugriff (Hochschule Hannover). - Vervielfältigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Keine Weitergabe an Dritte. Kein systematisches Downloaden durch Robots.</sk>
+    <sx>3293</sx>
+    <sy>xf</sy>
+    <sz>12-01-16</sz>
+  </d980>
+  <d980 i1=" " i2=" ">
+    <s2>370</s2>
+    <s1>01</s1>
+    <sb>1472789938</sb>
+    <sk>Vervielfältigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Keine Weitergabe an Dritte. Kein systematisches Downloaden durch Robots.</sk>
+    <sx>4370</sx>
+    <sy>z</sy>
+    <sz>09-05-14</sz>
+  </d980>
+  <d981 i1=" " i2=" ">
+    <s2>20</s2>
+    <s1>01</s1>
+    <sr>http://dx.doi.org/10.1007/978-3-642-41961-4</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>21</s2>
+    <s1>01</s1>
+    <sr>http://dx.doi.org/10.1007/978-3-642-41961-4</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>22</s2>
+    <s1>01</s1>
+    <sy>Volltextzugang Campus</sy>
+    <sr>http://dx.doi.org/10.1007/978-3-642-41961-4</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>22</s2>
+    <s1>01</s1>
+    <sy>Nur für Angehörige der Universität Hamburg: Volltextzugang von außerhalb des Campus</sy>
+    <sr>http://emedien.sub.uni-hamburg.de/han/SpringerEbooks/dx.doi.org/10.1007/978-3-642-41961-4</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>23</s2>
+    <s1>01</s1>
+    <sy>Springer EBook</sy>
+    <sr>http://dx.doi.org/10.1007/978-3-642-41961-4</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>24</s2>
+    <s1>01</s1>
+    <sy>E-books (Springer Collection: Naturwissenschaften)</sy>
+    <sr>http://dx.doi.org/10.1007/978-3-642-41961-4</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>30</s2>
+    <s1>01</s1>
+    <sr>http://dx.doi.org/10.1007/978-3-642-41961-4</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>34</s2>
+    <s1>01</s1>
+    <sy>Zugriff nur im dem Netz der HAW-Hamburg</sy>
+    <sr>http://dx.doi.org/10.1007/978-3-642-41961-4</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>40</s2>
+    <s1>01</s1>
+    <sy>Volltext</sy>
+    <sr>http://han.sub.uni-goettingen.de/han/ebrary1/site.ebrary.com/lib/subgoettingen/Doc?id=10862820</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>40</s2>
+    <s1>02</s1>
+    <sy>Volltext, Campuszugriff</sy>
+    <sr>http://dx.doi.org/10.1007/978-3-642-41961-4</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>40</s2>
+    <s1>02</s1>
+    <sy>Volltext, Externer Zugriff</sy>
+    <sr>http://han.sub.uni-goettingen.de/han/Springer-eBook-Naturwissenschaften/dx.doi.org/10.1007/978-3-642-41961-4</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>40</s2>
+    <s1>02</s1>
+    <sy>Dieser Titel ist Teil einer Datenbank</sy>
+    <sr>http://dbis.uni-regensburg.de/detail.php?titel_id=8680&amp;bibid=SUBGO</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>60</s2>
+    <s1>01</s1>
+    <sy>Volltextzugang Campus</sy>
+    <sr>http://dx.doi.org/10.1007/978-3-642-41961-4</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>62</s2>
+    <s1>01</s1>
+    <sr>http://dx.doi.org/10.1007/978-3-642-41961-4</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>65</s2>
+    <s1>01</s1>
+    <sy>Volltextzugang Campus</sy>
+    <sr>http://dx.doi.org/10.1007/978-3-642-41961-4</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>69</s2>
+    <s1>01</s1>
+    <sr>http://dx.doi.org/10.1007/978-3-642-41961-4</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>70</s2>
+    <s1>01</s1>
+    <sr>http://dx.doi.org/10.1007/978-3-642-41961-4</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>91</s2>
+    <s1>01</s1>
+    <sr>http://dx.doi.org/10.1007/978-3-642-41961-4</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>95</s2>
+    <s1>01</s1>
+    <sr>http://dx.doi.org/10.1007/978-3-642-41961-4</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>100</s2>
+    <s1>01</s1>
+    <sr>http://dx.doi.org/10.1007/978-3-642-41961-4</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>100</s2>
+    <s1>01</s1>
+    <sy>für Uniangehörige: Zugang weltweit</sy>
+    <sr>http://han.med.uni-magdeburg.de/han/SPR-eBooksdt2006-2008-einzeln/dx.doi.org/10.1007/978-3-642-41961-4</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>101</s2>
+    <s1>01</s1>
+    <sr>http://dx.doi.org/10.1007/978-3-642-41961-4</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>101</s2>
+    <s1>01</s1>
+    <sy>für Uniangehörige: Zugang weltweit</sy>
+    <sr>http://han.med.uni-magdeburg.de/han/SPR-eBooksdt2006-2008-einzeln/dx.doi.org/10.1007/978-3-642-41961-4</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>105</s2>
+    <s1>01</s1>
+    <sr>http://dx.doi.org/10.1007/978-3-642-41961-4</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>110</s2>
+    <s1>01</s1>
+    <sr>http://dx.doi.org/10.1007/978-3-642-41961-4</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>118</s2>
+    <s1>01</s1>
+    <sr>http://dx.doi.org/10.1007/978-3-642-41961-4</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>120</s2>
+    <s1>01</s1>
+    <sr>http://dx.doi.org/10.1007/978-3-642-41961-4</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>120</s2>
+    <s1>02</s1>
+    <sr>http://49gbv-uob-primo.hosted.exlibrisgroup.com/openurl/49GBV_UOB/UOB_services_page?u.ignore_date_coverage=true&amp;rft.mms_id=991000956519703501</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>122</s2>
+    <s1>01</s1>
+    <sr>http://dx.doi.org/10.1007/978-3-642-41961-4</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>130</s2>
+    <s1>01</s1>
+    <sr>http://dx.doi.org/10.1007/978-3-642-41961-4</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>131</s2>
+    <s1>01</s1>
+    <sr>http://dx.doi.org/10.1007/978-3-642-41961-4</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>132</s2>
+    <s1>01</s1>
+    <sy>Zugriff nur für Angehörige der Hochschule Osnabrück im Hochschulnetz</sy>
+    <sr>http://dx.doi.org/10.1007/978-3-642-41961-4</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>136</s2>
+    <s1>01</s1>
+    <sr>http://dx.doi.org/10.1007/978-3-642-41961-4</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>140</s2>
+    <s1>01</s1>
+    <sr>http://dx.doi.org/10.1007/978-3-642-41961-4</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>160</s2>
+    <s1>01</s1>
+    <sr>http://dx.doi.org/10.1007/978-3-642-41961-4</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>161</s2>
+    <s1>01</s1>
+    <sr>http://dx.doi.org/10.1007/978-3-642-41961-4</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>186</s2>
+    <s1>01</s1>
+    <sr>http://dx.doi.org/10.1007/978-3-642-41961-4</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>213</s2>
+    <s1>01</s1>
+    <sr>http://dx.doi.org/10.1007/978-3-642-41961-4</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>230</s2>
+    <s1>01</s1>
+    <sr>http://dx.doi.org/10.1007/978-3-642-41961-4</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>231</s2>
+    <s1>01</s1>
+    <sy>Nutzung ausschließlich für Angehörige der Hochschule Harz</sy>
+    <sr>http://dx.doi.org/10.1007/978-3-642-41961-4</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>252</s2>
+    <s1>01</s1>
+    <sy>Zeitlich begrenzter Lesezugriffzugriff nur für Angehörige des Thünen-Instituts</sy>
+    <sr>http://thinst.eblib.com/patron/FullRecord.aspx?p=1731213</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>264</s2>
+    <s1>01</s1>
+    <sr>http://dx.doi.org/10.1007/978-3-642-41961-4</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>285</s2>
+    <s1>01</s1>
+    <sy>E-books (Springer)</sy>
+    <sr>http://dx.doi.org/10.1007/978-3-642-41961-4</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>293</s2>
+    <s1>01</s1>
+    <sr>http://dx.doi.org/10.1007/978-3-642-41961-4</sr>
+  </d981>
+  <d981 i1=" " i2=" ">
+    <s2>370</s2>
+    <s1>01</s1>
+    <sy>E-Book: Zugriff im HCU-Netz. Zugriff von außerhalb nur für HCU-Angehörige möglich</sy>
+    <sr>http://dx.doi.org/10.1007/978-3-642-41961-4</sr>
+  </d981>
+  <d982 i1=" " i2=" ">
+    <s2>132</s2>
+    <s1>01</s1>
+    <s8>00</s8>
+    <sa>EBooks Springer Natur- und Basiswissenschaften</sa>
+  </d982>
+  <d983 i1=" " i2=" ">
+    <s2>24</s2>
+    <s1>01</s1>
+    <s8>50</s8>
+    <s0>(DE-601)057894779</s0>
+    <sa>bib 400.100</sa>
+    <sb>Darwinismus</sb>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>24</s2>
+    <s1>01</s1>
+    <s8>70</s8>
+    <s0>(DE-601)55964227X</s0>
+    <sa>bib 400</sa>
+    <sb>Evolution</sb>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>120</s2>
+    <s1>00</s1>
+    <s8>99</s8>
+    <sa>ww</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>120</s2>
+    <s1>02</s1>
+    <s8>00</s8>
+    <sa>ww</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>285</s2>
+    <s1>00</s1>
+    <s8>00</s8>
+    <sa>WH 2200</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>285</s2>
+    <s1>00</s1>
+    <s8>00</s8>
+    <sa>WB 2370</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>285</s2>
+    <s1>00</s1>
+    <s8>00</s8>
+    <sa>WB 2540</sa>
+  </d983>
+  <d983 i1=" " i2=" ">
+    <s2>285</s2>
+    <s1>00</s1>
+    <s8>00</s8>
+    <sa>WH 1000</sa>
+  </d983>
+  <d995 i1=" " i2=" ">
+    <s2>22</s2>
+    <s1>01</s1>
+    <sa>Olr-seb-nat</sa>
+  </d995>
+  <d995 i1=" " i2=" ">
+    <s2>23</s2>
+    <s1>01</s1>
+    <sa>olr-springer</sa>
+  </d995>
+  <d995 i1=" " i2=" ">
+    <s2>24</s2>
+    <s1>01</s1>
+    <sa>OLR-ESPNAT</sa>
+  </d995>
+  <d995 i1=" " i2=" ">
+    <s2>30</s2>
+    <s1>01</s1>
+    <sa>OLR-ESP</sa>
+  </d995>
+  <d995 i1=" " i2=" ">
+    <s2>34</s2>
+    <s1>01</s1>
+    <sa>OLR-SEB-NAT</sa>
+  </d995>
+  <d995 i1=" " i2=" ">
+    <s2>40</s2>
+    <s1>01</s1>
+    <sa>OLR-EBRARY-SPEKTRUM</sa>
+  </d995>
+  <d995 i1=" " i2=" ">
+    <s2>40</s2>
+    <s1>02</s1>
+    <sa>OLR-SPRINGER-SNA-2014</sa>
+  </d995>
+  <d995 i1=" " i2=" ">
+    <s2>60</s2>
+    <s1>01</s1>
+    <sa>SpringerLink</sa>
+  </d995>
+  <d995 i1=" " i2=" ">
+    <s2>65</s2>
+    <s1>01</s1>
+    <sa>OLR-SEB-ZDB-2-SNA</sa>
+  </d995>
+  <d995 i1=" " i2=" ">
+    <s2>69</s2>
+    <s1>01</s1>
+    <sa>OLR-SEB-ZDB-2-SNA</sa>
+  </d995>
+  <d995 i1=" " i2=" ">
+    <s2>70</s2>
+    <s1>01</s1>
+    <sa>ACQ</sa>
+  </d995>
+  <d995 i1=" " i2=" ">
+    <s2>91</s2>
+    <s1>01</s1>
+    <sa>OLR-SEB</sa>
+  </d995>
+  <d995 i1=" " i2=" ">
+    <s2>95</s2>
+    <s1>01</s1>
+    <sa>OLR-SEB</sa>
+  </d995>
+  <d995 i1=" " i2=" ">
+    <s2>100</s2>
+    <s1>01</s1>
+    <sa>OLR-SEB</sa>
+  </d995>
+  <d995 i1=" " i2=" ">
+    <s2>101</s2>
+    <s1>01</s1>
+    <sa>OLR-SEB</sa>
+  </d995>
+  <d995 i1=" " i2=" ">
+    <s2>105</s2>
+    <s1>01</s1>
+    <sa>OLR-ESP</sa>
+  </d995>
+  <d995 i1=" " i2=" ">
+    <s2>110</s2>
+    <s1>01</s1>
+    <sa>OLR-SEB</sa>
+  </d995>
+  <d995 i1=" " i2=" ">
+    <s2>118</s2>
+    <s1>01</s1>
+    <sa>OLR-SEB</sa>
+  </d995>
+  <d995 i1=" " i2=" ">
+    <s2>120</s2>
+    <s1>01</s1>
+    <sa>OLR-ESP</sa>
+  </d995>
+  <d995 i1=" " i2=" ">
+    <s2>120</s2>
+    <s1>02</s1>
+    <sa>alma</sa>
+  </d995>
+  <d995 i1=" " i2=" ">
+    <s2>130</s2>
+    <s1>01</s1>
+    <sa>OLR-SEB</sa>
+  </d995>
+  <d995 i1=" " i2=" ">
+    <s2>131</s2>
+    <s1>01</s1>
+    <sa>OLR SEP-N</sa>
+  </d995>
+  <d995 i1=" " i2=" ">
+    <s2>132</s2>
+    <s1>01</s1>
+    <sa>OLR-ESP-SNA</sa>
+  </d995>
+  <d995 i1=" " i2=" ">
+    <s2>160</s2>
+    <s1>01</s1>
+    <sa>olr-seb</sa>
+  </d995>
+  <d995 i1=" " i2=" ">
+    <s2>161</s2>
+    <s1>01</s1>
+    <sa>OLR-SEB</sa>
+  </d995>
+  <d995 i1=" " i2=" ">
+    <s2>186</s2>
+    <s1>01</s1>
+    <sa>OLR-SEB</sa>
+  </d995>
+  <d995 i1=" " i2=" ">
+    <s2>231</s2>
+    <s1>01</s1>
+    <sa>OLR-SEB</sa>
+  </d995>
+  <d995 i1=" " i2=" ">
+    <s2>252</s2>
+    <s1>01</s1>
+    <sa>OLR-EBL</sa>
+  </d995>
+  <d995 i1=" " i2=" ">
+    <s2>285</s2>
+    <s1>01</s1>
+    <sa>OLR-ESP-SNA</sa>
+  </d995>
+  <d995 i1=" " i2=" ">
+    <s2>293</s2>
+    <s1>01</s1>
+    <sa>OLR-SEB</sa>
+  </d995>
+  <d995 i1=" " i2=" ">
+    <s2>370</s2>
+    <s1>01</s1>
+    <sa>olr-springer</sa>
+  </d995>
+  <d998 i1=" " i2=" ">
+    <s2>21</s2>
+    <s1>01</s1>
+    <s0>2014.05.09</s0>
+  </d998>
+  <d998 i1=" " i2=" ">
+    <s2>23</s2>
+    <s1>01</s1>
+    <s0>2014.05.09</s0>
+  </d998>
+  <d998 i1=" " i2=" ">
+    <s2>40</s2>
+    <s1>01</s1>
+    <s0>2015-10</s0>
+  </d998>
+</r>
+</collection>
