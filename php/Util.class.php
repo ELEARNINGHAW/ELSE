@@ -25,6 +25,7 @@ $currentUser       = new User();
 $medium            = new medium();
 $this -> HAWdb     = new HAW_DB();                                    # Aus der SQLite DB
 
+
 if ( ! isset ( $_SESSION [ 'DEP_2_BIB' ] ) )  // Standardkonstanten werden nur beim ersten Aufruf eingelesen.
 {
   $_SESSION[ 'DEP_2_BIB'    ] = $this -> HAWdb -> getDEP_2_BIB ();
@@ -47,16 +48,13 @@ if ( isset ( $_GET[ 'uid' ] ) )  ##  Initiale Parameterübergabe über  Moodle #
   $medium            = $O[ 'medium'            ] ;
 
   $_SESSION[ 'currentUser'       ] = (array) $currentUser      ;
-
-
-
 }
 else
 {
-#  $currentUser       -> array2obj( $_SESSION[ 'currentUser'       ] );
+  $currentUser       -> array2obj( $_SESSION[ 'currentUser'       ] );
 }
 
-    deb($_SESSION[ 'currentUser'       ]);
+
 
 #  if ( $_SESSION['currentUser']['Userrole_id'] == ''   ) { die(  '<div style="  display: flex;  position: absolute;  top:45%; right:45%; font-size: 30px; "> TIME OUT <div>'); }
 
@@ -76,17 +74,17 @@ if (isset(  $_SERVER [ 'HTTP_REFERER'      ] ))
 ### ------------------------------- OPERATOR  --------------------------------
 ##
 ## Action DEFAULTEEINSTELLUNGEN für die einzelnen Rollen
-if (  $this->hasRole( $currentUser,'admin', 'staff') )       { $operator -> set_action           (  'show_collection_list' );  }
-else                                                                 { $operator -> set_action           (  'show_collection'      );  }
+if (  $this->hasRole( $currentUser,'admin', 'staff') )       { $operator -> set_action           ( 'show_collection_list' );  }
+else                                                                 { $operator -> set_action           ( 'show_collection'      );  }
 
-if ( isset ( $_GET[ 'item'                                     ] ) ) { $operator -> set_item              ( $_GET[ 'item'               ] ) ; }
-if ( isset ( $_GET[ 'action'                                   ] ) ) { $operator -> set_action            ( $_GET[ 'action'             ] ) ; }
-if ( isset ( $_GET[ 'mode'                                     ] ) ) { $operator -> set_mode              ( $_GET[ 'mode'               ] ) ; }
-if ( isset ( $_GET[ 'category'                                 ] ) ) { $operator -> set_category          ( $_GET[ 'category'           ] ) ; }
+if ( isset ( $_GET[ 'item'                                     ] ) ) { $operator -> set_item             ( $_GET[ 'item'               ] ) ; }
+if ( isset ( $_GET[ 'action'                                   ] ) ) { $operator -> set_action           ( $_GET[ 'action'             ] ) ; }
+if ( isset ( $_GET[ 'mode'                                     ] ) ) { $operator -> set_mode             ( $_GET[ 'mode'               ] ) ; }
+if ( isset ( $_GET[ 'category'                                 ] ) ) { $operator -> set_category         ( $_GET[ 'category'           ] ) ; }
 
-if ( isset ( $_GET[ 'lms-download'                             ] ) ) { $operator -> set_action            ( 'lms-download'            ) ;
-                                                                       $operator -> set_item              ( 'collection'              ) ;
-                                                                       $operator -> set_url               (  $_GET[ 'lms-download'     ]  ) ;
+if ( isset ( $_GET[ 'lms-download'                             ] ) ) { $operator -> set_action           ( 'lms-download'           ) ;
+                                                                       $operator -> set_item             ( 'collection'             ) ;
+                                                                       $operator -> set_url              (  $_GET[ 'lms-download'      ] ) ;
 }  ## Hook, für BELUGA IMPORT, wird als action= "Downloadlink", mode
 
 
@@ -94,12 +92,13 @@ if ( isset ( $_GET[ 'lms-download'                             ] ) ) { $operator
 #if ( isset ( $_GET[ 'redirect'                                 ] ) ) { $operator->set_redirect          ( $_SESSION['last_page'       ] ) ; }
 
 
-
 ##
 ### ------------------------------- MEDIUM  --------------------------------
 ##
-if ( isset ( $_GET[ 'ppn'                                      ] ) )  { $medium -> set_ppn                 ( $_GET[ 'ppn'               ] ) ; }
+if ( isset ( $_GET[ 'document_id'                              ] ) )  { $medium -> set_id                  ( $_GET[ 'document_id'       ] ) ; }
+if ( isset ( $_GET[ 'doc_type'                                 ] ) )  { $medium -> set_doc_type            ( $_GET[ 'doc_type'          ] ) ; }
 if ( isset ( $_GET[ 'doc_type_id'                              ] ) )  { $medium -> set_doc_type_id         ( $_GET[ 'doc_type_id'       ] ) ; }
+if ( isset ( $_GET[ 'ppn'                                      ] ) )  { $medium -> set_ppn                 ( $_GET[ 'ppn'               ] ) ; }
 if ( isset ( $_GET[ 'physicaldesc'                             ] ) )  { $medium -> set_physicaldesc        ( $_GET[ 'physicaldesc'      ] ) ; }
 if ( isset ( $_GET[ 'title'                                    ] ) )  { $medium -> set_title               ( $_GET[ 'title'             ] ) ; }
 if ( isset ( $_GET[ 'author'                                   ] ) )  { $medium -> set_author              ( $_GET[ 'author'            ] ) ; }
@@ -109,11 +108,10 @@ if ( isset ( $_GET[ 'year'                                     ] ) )  { $medium 
 if ( isset ( $_GET[ 'volume'                                   ] ) )  { $medium -> set_volume              ( $_GET[ 'volume'            ] ) ; }
 if ( isset ( $_GET[ 'edition'                                  ] ) )  { $medium -> set_edition             ( $_GET[ 'edition'           ] ) ; }
 if ( isset ( $_GET[ 'signature'                                ] ) )  { $medium -> set_signature           ( $_GET[ 'signature'         ] ) ; }
-if ( isset ( $_GET[ 'notes_to_studies'                         ] ) )  { $medium -> set_notes_to_studies    ( $_GET[ 'notes_to_studies'  ] ) ; }
-if ( isset ( $_GET[ 'shelf_remain'                             ] ) )  { $medium -> set_shelf_remain        ( $_GET[ 'shelf_remain'      ] ) ; }
 if ( isset ( $_GET[ 'notes_to_staff'                           ] ) )  { $medium -> set_notes_to_staff      ( $_GET[ 'notes_to_staff'    ] ) ; }
-if ( isset ( $_GET[ 'document_id'                              ] ) )  { $medium -> set_id                  ( $_GET[ 'document_id'       ] ) ; }
-
+if ( isset ( $_GET[ 'notes_to_studies'                         ] ) )  { $medium -> set_notes_to_studies    ( $_GET[ 'notes_to_studies'  ] ) ; }
+if ( isset ( $_GET[ 'shelf_remain'                             ] ) )  { $medium -> set_shelf_remain        ( $_GET[ 'shelf_remain'      ] ) ;
+                                                                        $medium -> set_in_SA               ( $_GET[ 'shelf_remain'      ] ) ; }
 
 ##
 ### ------------------------------- COLLECTION  --------------------------------
@@ -136,7 +134,7 @@ else if ( isset ( $_GET[ 'dc_collection_id'                    ] ) )  { $current
 if ( isset ( $_GET[ 'lms-download'                             ] ) )  { $cc  =  $this -> SQL -> getCollection( $_SESSION[ 'currentCollection' ][ 'collection_id' ] );
                                                                         $currentCollection =  array_pop   ( $cc  );  }
 
-# deb($_SESSION[ 'currentCollection' ],1);
+
 ##
 ### ------------------------------- EMAIL  --------------------------------
 ##

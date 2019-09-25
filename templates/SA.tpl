@@ -2,20 +2,26 @@
 
 {$edit_mode  = "0"}
 {$staff_mode = "0"}
+
+{$doctypedescription = $DOC_TYPE[ $di[ 'doc_type_id' ] ]['description'] }
+{$doctype            = $DOC_TYPE[ $di[ 'doc_type_id' ] ]['item'       ] }
+
 {if $user_role_name == "admin"  OR  $user_role_name == "staff" OR  $user_role_name == "edit"  } {$edit_mode  = "1"} {/if}
 {if $user_role_name == "admin"  OR  $user_role_name == "staff"                                } {$staff_mode = "1"} {/if}
 
 {if $medium.id == $di.id}  {$current = "currentDoc"} {else}  {$current = "XXX"}   {/if}{* Das zuletzt angeklickte Medium wird zur Unterscheidung in der Liste farblich unterlegt*}
 
-<div  id="{$di.ppn}" class="mediaInSA medium_{$di.doc_type_id} {$current} " >
+<div  id="{$di.ppn}" class="mediaInSA medium_{$di.shelf_remain} {$current} " >
 <a name="{$di.ppn}" style="position:relative; top:-220px;"></a>
 <a title="Buch Im Onlinekatalog anzeigen" class="medLink medi_{$di.doc_type_id} .s_standard state_{$di.state_id}" href="{$CFG.catURLlnk}{$di.ppn}" target="_blank" onclick="return -1">
 
 <table>
-{if $di.title   != ""            }  <tr><td><div class="mediaListHeader">Titel:  </div></td><td><div  class="mediaTxt" >{$di.title}       </div>            {/if}
-{if $di.author  != ""            }  <tr><td><div class="mediaListHeader">Autor:  </div></td><td><div  class="mediaTxt" >{$di.author}      </div> </td></tr> {/if}
-{if $di.doc_type == 'electronic' }  <tr><td><div class="mediaListHeader">Format: </div></td><td><span class="mediaTxt" >Online-Ressource  </span></td></tr> {/if}
-{if $di.doc_type == 'print'      }
+
+{if $doctypedescription != ""           }  <tr><td><div class="mediaListHeader">Medientyp: </div></td><td><div  class="mediaTxt" >{$doctypedescription}  </div>            {/if}
+{if $di.title           != ""           }  <tr><td><div class="mediaListHeader">Titel:     </div></td><td><div  class="mediaTxt" >{$di.title}            </div>            {/if}
+{if $di.author          != ""           }  <tr><td><div class="mediaListHeader">Autor:     </div></td><td><div  class="mediaTxt" >{$di.author}           </div> </td></tr> {/if}
+{if $di.doc_type        == 'electronic' }  <tr><td><div class="mediaListHeader">Format:    </div></td><td><span class="mediaTxt" >Online-Ressource  </span></td></tr> {/if}
+{if $di.doc_type        == 'print'      }
   {if (isset ( $di.signature  ) AND $di.signature  != "" )}<tr><td><div class="mediaListHeader">Format: </div></td><td><span class="mediaTxt">Print - Sig:{$di.signature|escape} </span></td></tr>{/if}
   {if (isset ( $di.ISBN       ) AND $di.ISBN       != "" )}<tr><td><div class="mediaListHeader">ISBN:   </div></td><td><span class="mediaTxt">{$di.ISBN|escape:"br"}             </span></td></tr>{/if}
 {/if}
@@ -26,12 +32,12 @@
 {if $di.notes_to_studies != "" }   <div class="medhint">Zur Beachtung: {$di.notes_to_studies|nl2br}  </div> {/if}
 
 <div class="bibStandort">
-    {$di.doc_type_id}
-
+   doc_id  {$di.doc_type_id}
+   shelf {$di.shelf_remain}
     {if $ci.bib_id != "" }
-    {if $di.doc_type_id == 1 OR $di.doc_type_id == 3}   {$FACHBIB[ $ci.bib_id ].bib_name|escape},<br/> im Regal "Semesterapparate"      {/if}{* SA Medium        *}
-    {if $di.doc_type_id == 2                        }   Im Buchbestand der Fachbibliothek<br/> (wie im Online-Katalog angegeben).       {/if}{* LitHinweis Buch  *}
-    {if $di.doc_type_id == 4                        }   Im Online-Katalog,<br/>  erreichbar nur aus dem HAW-Netz (oder VPN).            {/if}{* PDF *}
+    {if $di.shelf_remain == 1  }  {$FACHBIB[ $ci.bib_id ].bib_name|escape},<br/> im Regal "Semesterapparate"      {/if}{* SA Medium        *}
+    {if $di.shelf_remain == 2  }  Im Buchbestand der Fachbibliothek<br/> (wie im Online-Katalog angegeben).       {/if}{* LitHinweis Buch  *}
+    {if $di.shelf_remain == 3  }  Im Online-Katalog,<br/>  erreichbar nur aus dem HAW-Netz (oder VPN).            {/if}{* PDF *}
   {/if}
 </div>
 
@@ -44,12 +50,14 @@
   {if isset( $action.button_visible_if )}
     {$visible = "1"}
     {foreach key=k item=cond from=$action.button_visible_if }
+
       {$match = "0"}
       {foreach item=v from=$cond}
-        {if ($k == "state") and ($v == $MEDIA_STATE[ $di.state_id ].name) }  {$match ="1"}  {/if}
-        {if ($k == "mode" ) and ($v == $user.role_name )                  }  {$match ="1"}  {/if}
-        {if ($k == "item" ) and ($v == $di.item )                         }  {$match ="1"}  {/if}
+        {if ($k == "state") and ($v == $MEDIA_STATE[ $di.state_id ].name) }{$match ="1"}  {/if}
+        {if ($k == "mode" ) and ($v == $user.role_name )                  }{$match ="1"}  {/if}
+        {if ($k == "loc"  ) and ($v == $di.shelf_remain )                 }{$match ="1"}  {/if}
       {/foreach}
+
       {if $match == 0}  {$visible = "0"}  {/if}
     {/foreach}
   {/if}
@@ -63,7 +71,6 @@
 {/if}
 
 </div>
-
 
 {if ($staff_mode or $edit_mode) AND ($di.notes_to_staff != "") } {* and   ($di.state_id == 1 or $di.state_id == 2 or $di.state_id == 9) *}
     <div class="staffnote"> {$di.notes_to_staff|escape|nl2br} </div>{/if}

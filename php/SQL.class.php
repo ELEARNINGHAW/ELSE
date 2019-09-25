@@ -31,6 +31,7 @@ function initMediaMetaData( $book )
 $SQL = '
 INSERT INTO `document`
 SET
+doc_type_id        = "' . $this -> es ( $book -> get_doc_type_id       ( ) ) . '",
 collection_id      = "' . $this -> es ( $book -> get_collection_id     ( ) ) . '",
 title              = "' . $this -> es ( $book -> get_title             ( ) ) . '",
 author             = "' . $this -> es ( $book -> get_author            ( ) ) . '",
@@ -39,16 +40,17 @@ publisher          = "' . $this -> es ( $book -> get_publisher         ( ) ) . '
 ISBN               = "' . $this -> es ( $book -> get_ISBN              ( ) ) . '",
 signature          = "' . $this -> es ( $book -> get_signature         ( ) ) . '",
 ppn                = "' . $this -> es ( $book -> get_ppn               ( ) ) . '",
-doc_type_id        = "' . $this -> es ( $book -> get_doc_type_id       ( ) ) . '",
 physicaldesc       = "' . $this -> es ( $book -> get_physicaldesc      ( ) ) . '",
 state_id           = "' . $this -> es ( $book -> get_state_id          ( ) ) . '",
 notes_to_staff     = "' . $this -> es ( $book -> get_notes_to_staff    ( ) ) . '",
 notes_to_studies   = "' . $this -> es ( $book -> get_notes_to_studies  ( ) ) . '",
+shelf_remain       = "' . $this -> es ( $book -> get_shelf_remain      ( ) ) . '",
+
 created            = NOW() ,
 last_modified      = NOW() ,
 last_state_change  = NOW()';
 
-
+#deb($SQL,1);
 
 $res = mysqli_query ( $this -> DB , $SQL );
 
@@ -96,9 +98,9 @@ $SQL =
 "SELECT * FROM `document`
 WHERE `collection_id` = \"" . $colID . "\"";
 if (  $filter_state != ''  AND  $filter_state != 0   ) { $SQL .= " AND `state_id`    = " . $this -> es ( $filter_state  ); }
-if (  $filter_type  != ''                            ) { $SQL .= " AND `doc_type_id` = " . $this -> es ( $filter_type   ); }
+if (  $filter_type  != ''                            ) { $SQL .= " AND `id` = "          . $this -> es ( $filter_type   ); }
 
-
+#deb($SQL);
 $res = mysqli_query ( $this -> DB , $SQL );
 
 if ( $res )
@@ -118,6 +120,7 @@ if ( $res )
       $m -> set_signature            ( $row[ 'signature'           ] );
       $m -> set_ppn                  ( $row[ 'ppn'                 ] );
       $m -> set_doc_type_id          ( $row[ 'doc_type_id'         ] );
+      $m -> set_shelf_remain         ( $row[ 'shelf_remain'        ] );
       $m -> set_physicaldesc         ( $row[ 'physicaldesc'        ] );
       $m -> set_collection_id        ( $row[ 'collection_id'       ] );
       $m -> set_notes_to_studies     ( $row[ 'notes_to_studies'    ] );
@@ -126,7 +129,7 @@ if ( $res )
       $m -> set_last_modified        ( $row[ 'last_modified'       ] );
       $m -> set_last_state_change    ( $row[ 'last_state_change'   ] );
 
-      # $m->set_shelf_remain     ( $row[ 'shelf_remain'        ] );
+      #$m->set_shelf_remain     ( $row[ 'shelf_remain'        ] );
       # $m->set_location_id      ( $row[ 'location_id'       ] );
       # $m->set_year             ( $row[ 'year'              ] );
       # $m->set_journal          ( $row[ 'journal'           ] );
@@ -141,7 +144,7 @@ if ( $res )
     $ret[ $row[ 'id' ] ] = $m;
   }
 }
-
+#deb($ret);
 return $ret;
 }
 
@@ -252,7 +255,9 @@ function getCollection( $colID = null , $filter = false ,  $short = null )
 
         foreach ( $dl as $d )
         {
+        #  deb($d);
           $d -> calcDocType ( );  ## TODO check ob überhaupt notwendig?
+        #  deb($d);
           $withoutSortOrder[ $d -> get_id()  ] = $d ;   ## --- Attribute hinzufügen 'doc_type', 'item', 'doc_type_id', 'state_id'
         }
 
@@ -888,15 +893,15 @@ function importCollection( $collection_id , $medium )
 
 
 
-  function getSAid( $SEM )
-  {
-    $SQL = " SELECT id, title,  bib_id  FROM `collection` wHERE sem = '" . $SEM . "' ORDER BY bib_id DESC;";
-    $res = mysqli_query ( $this->DB , $SQL );
-    while ( $row = mysqli_fetch_assoc ( $res ) ) {
-      $ret[ $row[ 'id' ] ] = $row;
-    }
-    return $ret;
+function getSAid( $SEM )
+{
+  $SQL = " SELECT id, title,  bib_id  FROM `collection` wHERE sem = '" . $SEM . "' ORDER BY bib_id DESC;";
+  $res = mysqli_query ( $this->DB , $SQL );
+  while ( $row = mysqli_fetch_assoc ( $res ) ) {
+  $ret[ $row[ 'id' ] ] = $row;
   }
+   return $ret;
+}
 
 
 
@@ -941,12 +946,13 @@ function importCollection( $collection_id , $medium )
 # ---------------------------------------------------------------------------------------------
   function getAllDocTypes()
   {
-    $SQL = "SELECT * FROM `doc_type` ORDER BY doc_type_id asc";
+    $SQL = "SELECT * FROM `doc_type` ORDER BY id asc";
 
     $res = mysqli_query ( $this->DB , $SQL );
     while ( $row = mysqli_fetch_assoc ( $res ) ) {
       $ret[ $row[ 'id' ] ] = $row;
     }
+
     return $ret;
   }
 

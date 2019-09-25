@@ -29,8 +29,8 @@
       {elseif $c[j].state_name != 'delete'} {* HEADLINE:  SEMAPP -- USER-MODE  *}
         <div class='SAHeadline' style="display: block;" >
           <a href="index.php?item=collection&action=show_collection&dc_collection_id={$c[j].dc_collection_id}&amp;r={$user.role_id}">
-          <div  class="name2 semapNameListe"  >{$c[j].title}</div>
-          <div   class="name2 semapNameListe"  style="background: url(img/bg/{$c[j].bib_id}.png);  text-align: right; repeat-y; right:150px; padding-right:5px; padding-left:0px; color: #FFFFFF; width: 55px;  margin-left: 0px;">({$c[j].MedState.med_state_GE}) {$c[j].bib_id}</div>
+          <div class="name2 semapNameListe"  >{$c[j].title}</div>
+          <div class="name  semapNameListe semapNameListeNumbers "  style="background: url(img/bg/{$c[j].bib_id}.png);">({$c[j].MedState.med_state_GE})<br/>{$c[j].bib_id}</div>
           </a>
         </div>
     {/if}

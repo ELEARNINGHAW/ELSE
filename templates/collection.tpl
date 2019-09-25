@@ -35,7 +35,7 @@
 
     <a target="help_win" class="modalLink" href="#helpit" rel="modal:open"  title="Weitere Informationen über ELSE"                  ><img src="img/svg/help.svg"        width="32"  height="32" style="position:relative; float:right; padding-right: 2px; margin:2px; margin-right:-1px;"  /></a>
     <a target="_blank" href="index.php?item=collection&amp;dc_collection_id={$ci.dc_collection_id}&amp;action=show_collection&amp;mode=print&amp;r={$user_role_id}">
-    <img src="img/svg/print_w.svg"    width="32"  height="32" style="position:relative; float:right; padding-right: 2px; margin:2px; margin-right:-1px;" title="Druckversion"   /></a>
+    <img src="img/svg/print_w.svg"    width="32"  height="32" style="position:relative; float:right; padding-right: 2px; margin:2px; margin-right:-1px;" title="Druckversion SA"   /></a>
 
     {if ($edit_mode OR $staff_mode)}
     <a href="index.php?item=collection&amp;action=coll_meta_edit&amp;dc_collection_id={$ci.dc_collection_id}&amp;redirect=SA&amp;r={$user_role_id}" title="Bearbeiten der allgemeinen Infos des Semesterapparats">
@@ -43,7 +43,7 @@
     {/if}
 
     {if $edit_mode AND $ci.dc_collection_id != "" }
-    <a href="index.php?dc_collection_id={$ci.dc_collection_id}&amp;item=book&amp;action=coll_meta_save&amp;r={$user_role_id}"  title="Neues Medium (Buch, E-Book,...) dem Semesterapparat hinzufügen"  >
+    <a href="index.php?dc_collection_id={$ci.dc_collection_id}&amp;item=physical&amp;action=coll_meta_save&amp;r={$user_role_id}"  title="Neues Medium (Buch, E-Book,...) dem Semesterapparat hinzufügen"  >
     <img src="img/svg/addBook_w.svg"   width="32"  height="32" style="position:relative; float:right;  margin:2px; " /></a>
     {/if}
 
@@ -66,11 +66,10 @@
 
     {/if}
 
-
     {if isset($ci.media)}
     {foreach from=$ci.media item=di}
-
     {if    $edit_mode == 0  AND  $di.state_id == 3  OR $edit_mode   == 1 AND $di.state_id != 6 OR $operator_action == 'show_media_list' }
+
 
     <div class='{$di.id}'>
       {include file = "SA.tpl" }

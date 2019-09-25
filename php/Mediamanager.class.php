@@ -22,6 +22,7 @@ function __construct( $CFG , $SQL, $RENDERER, $UTIL )
 function showNewMediaForm( $I, $toSearch = NULL, $searchHits = 1 )
 {
   $collection_id                                    = $I[ 'currentCollection'               ] -> get_collection_id( );
+  $bc_urlID                                         = $_SESSION['bc_urlID'] = urlencode( base64_encode ($collection_id.'###'. $I[ 'currentUser']-> get_hawaccount() ) );
   $collection                                       = $this -> SQL -> getCollection ( $collection_id );
   $tpl_vars[ 'collection'      ]                    = $collection[ $collection_id           ] -> obj2array ( );
   $tpl_vars[ 'user'            ]                    = $I[ 'currentUser'                     ] -> obj2array ( );
@@ -34,7 +35,7 @@ function showNewMediaForm( $I, $toSearch = NULL, $searchHits = 1 )
   $tpl_vars[ 'book'            ][ 'author'      ]   = $toSearch[ 'author'        ];
   $tpl_vars[ 'book'            ][ 'signature'   ]   = $toSearch[ 'signature'     ];
   $tpl_vars[ 'maxRecords'      ]                    = $this -> CFG -> CFG[ 'maxRecords' ];
-  $tpl_vars[ 'URLID'           ]                    = base64_encode ($collection_id.'###'. $I[ 'currentUser']-> get_hawaccount() );
+  $tpl_vars[ 'URLID'           ]                    = $bc_urlID;
   $tpl_vars[ 'URL'             ]                    = $this -> CFG -> CFG[ 'URL' ].'/htdocs/' ;
 
   $_SESSION[ 'currentCollection' ] = $collection[ $collection_id ] -> obj2array ( );
@@ -83,12 +84,12 @@ function editMediaMetaData( $I )
   $tpl_vars[ 'SEMESTER'        ]                          =  array_keys( $_SESSION[ 'SEM' ] );  #$conf[ 'SEMESTER' ] ;
   $tpl_vars[ 'CFG'             ]                          =  $this -> CFG -> getConf();
   $tpl_vars[ 'filter'          ]                          =  $I[ 'filter'                          ] -> obj2array ( ) ;
-/*
-  if (          $book[ 'state_id' ] == 9      ) { $tpl_vars[ 'work' ][ 'category'             ] = "suggest";                       } # 9 = Suggest Mode / Kaufvorschlag
-  if (   isset( $book[ 'notes_to_studies' ] ) ) { $tpl_vars[ 'work' ][ 'notes_to_studies' ] =  $book[ 'notes_to_studies'  ];   }
-  if (   isset( $book[ 'notes_to_staff'   ] ) ) { $tpl_vars[ 'work' ][ 'notes_to_staff'   ] =  $book[ 'notes_to_staff'    ];   }
-  if ( ! isset( $book[ 'signature'        ] ) ) { $tpl_vars[ 'work' ][ 'signature'        ] =  getSignature( $book[ 'ppn' ] ); }
-*/
+
+
+  $tpl_vars[ 'currentElement'  ]                          =  0 ;
+  $tpl_vars[ 'maxElement'      ]                          =  1 ;
+
+
 
   $this -> RENDERER -> do_template ( 'edit_book.tpl' , $tpl_vars ) ;
   exit(0);
@@ -98,22 +99,17 @@ function editMediaMetaData( $I )
 ###############################################################################################
 function annoteNewMedia_showForm( $I )
 {
-#unset( $_SESSION[ 'books' ]);
-  #deb( $_SESSION[ 'books' ],1);
-
- if( isset($_SESSION[ 'books' ][ 'booksHitList' ][0]) )
- {
-  $bookHit = $_SESSION[ 'books' ][ 'booksHitList' ][  $_SESSION[ 'books' ][ 'currentElement' ] ]; ## Metadaten des aus der Trefferliste ausgeählte Mediums
-  $I[ 'medium' ] -> array2obj ( $bookHit );
- }
-
+  if( isset($_SESSION[ 'books' ][ 'booksHitList' ][0]) )
+  {
+    $bookHit = $_SESSION[ 'books' ][ 'booksHitList' ][  $_SESSION[ 'books' ][ 'currentElement' ] ]; ## Metadaten des aus der Trefferliste ausgeählte Mediums
+    $I[ 'medium' ] -> array2obj ( $bookHit );
+  }
 
   else if( $I[ 'medium' ] -> get_title() == '' )
   {
     $bookHit = $_SESSION[ 'books' ][ 'booksHitList' ][ $I[ 'medium' ] -> get_ppn() ]; ## Metadaten des aus der Trefferliste ausgeählte Mediums
     $I[ 'medium' ] -> array2obj ( $bookHit );
   }
-
 
   $collection_id = $I[ 'currentCollection'    ] -> get_collection_id();
   $collection    = $this -> SQL -> getCollection ( $collection_id );
@@ -124,8 +120,11 @@ function annoteNewMedia_showForm( $I )
   $tpl_vars[ 'operator'        ]  =  $I[ 'operator'                        ] -> obj2array ( );
   $tpl_vars[ 'filter'          ]  =  $I[ 'filter'                          ] -> obj2array ( ) ;
   $tpl_vars[ 'SEMESTER'        ]  =  array_keys( $_SESSION[ 'SEM' ] );
+  $tpl_vars[ 'DOC_TYPE'        ]  =  $_SESSION[ 'DOC_TYPE' ] ;
   $tpl_vars[ 'currentElement'  ]  =  $_SESSION['books'][ 'currentElement'  ];
   $tpl_vars[ 'maxElement'      ]  =  $_SESSION['books'][ 'maxElement'      ];
+
+  #deb($tpl_vars['DOC_TYPE']);
 
   $this -> RENDERER -> do_template ( 'edit_book.tpl' , $tpl_vars ) ;
   exit(0);
@@ -135,7 +134,7 @@ function annoteNewMedia_showForm( $I )
 ###############################################################################################
 function saveMediaMetaData( $I )
 {
-  if (  $I[ 'operator' ] -> item == 'book'   AND $I[ 'medium' ] -> get_shelf_remain() == '0' )   #  Bei Buch Keine Auswahl getroffen, ob Literaturhinweis oder Handapparat
+  if (  $I[ 'operator' ] -> item == 'physical'   AND $I[ 'medium' ] -> get_shelf_remain() == '0' )   #  Bei Buch Keine Auswahl getroffen, ob Literaturhinweis oder Handapparat
   {
     $I[ 'operator' ] -> set_msg            ( 'shelf_remain' );
     $I[ 'operator' ] -> set_mode           ( 'new' );
@@ -144,20 +143,43 @@ function saveMediaMetaData( $I )
 
   if ( $I[ 'medium' ] -> get_id() == 0 )                            ##  NEUES MEDIUM
   {
-    $I[ 'medium' ] -> set_id            ( '' );
-    $I[ 'medium' ] -> set_state_id      ( 1 );
-  # $I[ 'medium' ] -> set_publisher     ( $_SESSION[ 'booksHitList' ][ $I[ 'medium' ] -> get_ppn ( ) ][ 'publisher' ] );
-    $I[ 'medium' ] -> set_collection_id ( $I[ 'currentCollection' ] -> get_collection_id () );
+      $ppn = $I[ 'medium' ]->get_ppn() ;
+      foreach($_SESSION ['books']['booksHitList'] as $m)
+      {
+          if ($m['ppn'] == $ppn)
+          {   $I[ 'medium' ] -> set_leader       ( $m[ 'leader'        ]  ); ## Datensatz aus dem Bibkatlog wird übernommen (zu den manuellen Metadaten-Einträgen)
+              $I[ 'medium' ] -> set_item         ( $m[ 'item'          ]  );
+              $I[ 'medium' ] -> set_doc_type     ( $m[ 'doc_type'      ]  );
+              $I[ 'medium' ] -> set_physicaldesc ( $m[ 'physicaldesc'  ]  );
+              $I[ 'medium' ] -> set_collection_id( $m[ 'collection_id' ]  );
+              $I[ 'medium' ] -> set_state_id     ( $m[ 'state_id'      ]  );
+              $I[ 'medium' ] -> set_format       ( $m[ 'format'        ]  );
 
-    $sr = $I[ 'medium' ] -> get_shelf_remain ();
+              if     ( $I[ 'medium' ] -> get_shelf_remain () == '0'  OR $I[ 'medium' ] -> get_shelf_remain () == '' )  ##  Wenn kein Medien'ORT' angeklickt wurde, dann bleibt dass Medium im Regal (status: 2)
+              { $I[ 'medium' ] -> set_shelf_remain ( 2 );                                                              ##  ist der Medienort: 'verbleibt im Regal' ;) , Status 2
+                $I[ 'medium' ] -> set_state_id     ( 3 );                                                              ##  und der Status wird 'aktiv'         , Status 3
+              }
+              else if ( $I[ 'medium' ] -> get_shelf_remain () == '1'  )                                                ##  Wenn Medien'ORT' 'Semesterapparat' (status: 1)
+              { $I[ 'medium' ] -> set_shelf_remain ( 1 );                                                              ##  ist der Medienort: 'verbleibt im Regal' ;) , Status 1
+                $I[ 'medium' ] -> set_state_id     ( 1 );                                                              ##  und der Status wird 'aktiv'         , Status 3
+              }
+              else if ( $I[ 'medium' ] -> get_shelf_remain () == '2'  )                                                ##  Wenn Medien'ORT' 'verbleibt im Regal' (status: 2)
+              { $I[ 'medium' ] -> set_shelf_remain ( 2 );                                                              ##  ist der Medienort: 'verbleibt im Regal' ;) , Status 2
+                $I[ 'medium' ] -> set_state_id     ( 3 );                                                              ##  und der Status wird 'aktiv'         , Status 3
+              }
 
-    if ( isset ( $sr ) AND ( $sr == '2' ) )                                          ## Wenn Checkbox 'Bleibt im Regal' aktiv ist, dann wird das Medium zum Literaturhinweis
-    {
-      $I[ 'medium' ]->set_state_id ( 3 );                                           ## Staus = aktiv
-      $I[ 'medium' ]->set_doc_type_id ( 2 );                                        ## doc_typ = Buch Literaturhinweis
-    }
+              if ( $I[ 'medium' ] -> get_item () == 'online' )                                                         ## Bei ONLINE Medien
+              { $I[ 'medium' ] -> set_shelf_remain ( 3 );                                                              ## ist der Medienort: 'Online' ;) , Status 3
+                $I[ 'medium' ] -> set_state_id     ( 3 );                                                              ## und der Status wird 'aktiv'         , Status 3
+              }
 
-    $this->SQL->initMediaMetaData ( $I[ 'medium' ] );
+              $I[ 'medium' ] -> set_id            ( '' );
+              $I[ 'medium' ] -> set_collection_id ( $I[ 'currentCollection' ] -> get_collection_id () );
+
+              break;
+          }
+      }
+      $this->SQL->initMediaMetaData ( $I[ 'medium' ] );
 
   }
   else
@@ -169,9 +191,6 @@ function saveMediaMetaData( $I )
   if( $_SESSION['books'][ 'currentElement'  ] <   $_SESSION['books'][ 'maxElement'  ] -1  )
   {
 
-   # $_SESSION['books'][ 'booksHitList'    ] =
-   # $_SESSION['books'][ 'currentElement'  ] = 0;
-   # $_SESSION['books'][ 'maxNr'           ] = sizeof($_SESSION['books'][ 'booksHitList' ]);
    $_SESSION['books'][ 'currentElement'  ] ++ ;
 
    $url = $_SESSION[ 'books' ][ 'url' ];
@@ -247,7 +266,7 @@ function searchMediaOnLibraryServer( $I )  ## -- OPAC --
   $_SESSION['books'][ 'currentElement'   ] = 0;
   $_SESSION['books'][ 'maxElement'       ] = 1;
 
-  # deb( $_SESSION[ 'books' ] );
+
 
 
   if    ( $hits < 1 )  { $this -> showNewMediaForm( $I, $toSearch, $hits, $maxhits );  }   ## -- Suche ergab keinen Treffer
@@ -307,7 +326,7 @@ function getHitList( $searchQuery )
 
   $datasourceURL = $catURL . $cat . '?version=1.2&operation=searchRetrieve&query=' . $query . '+sortby+year%2Fdescending&maximumRecords=' . $maxRecords . '&recordSchema=' . $recordSchema;
 
-deb($datasourceURL,1);
+
 
   try                      { $page  = file_get_contents ( $datasourceURL );   }
   catch ( Exception $e )   { $error = true;                                   }
@@ -320,39 +339,37 @@ deb($datasourceURL,1);
   {
     $sxm = simplexml_load_string ( str_replace ( array( 'diag:' , 'zs:' ) , '' , $page ) );
 
-    $hits = $sxm->numberOfRecords;  # Anzahl Treffer
+    $hits = $sxm -> numberOfRecords;  # Anzahl Treffer
 
-    if ( isset ( $sxm->records->record ) )
-    foreach ( $sxm->records->record as $rec )
+    if ( isset ( $sxm -> records -> record ) )
+    foreach ( $sxm -> records -> record as $rec )
     {
       $m = new Medium();
-      if ( $recordSchema == 'turbomarc' )            ## ------------- TURBOMARC ---------------
+
+      ## ------------------ TURBOMARC ----------------------------------------------------------------------------------
+      if ( $recordSchema == 'turbomarc' )
       {
-        $r = $rec->recordData->r;
+        $r = $rec -> recordData -> r;
 
         $ISBN = '';
-        foreach ( $r->d020 as $i ) {
-          $ISBN .= $i->s9 . "<br/>";
+        foreach ( $r -> d020 as $i )
+        {
+          $ISBN .= $i -> s9 . "<br/>";
         }
         $ISBN = substr ( $ISBN , 0 , -5 );  # letztes '<br/>' wieder entfernen
 
-        #turbomarc
+        $m -> set_ISBN           ( trim ( $ISBN ) );
+        $m -> set_ppn            ( trim ( $r -> c001 ) );
+        $m -> set_title          ( trim ( $r -> d245 -> sa ) );
+        $m -> set_author         ( trim ( $r -> d100 -> sa ) );
+        $m -> set_signature      ( trim ( $r -> d954 -> sd ) );
+        $m -> set_physicaldesc   ( trim ( $r -> d300 -> sa ) );
+        $m -> set_publisher      ( trim ($r->d264->sb . ' ' . $r->d264->sa . ' ' . $r->d264->sc ) );
 
-        $m->set_title ( trim ( $r->d245->sa ) );
-        $m->set_author ( trim ( $r->d100->sa ) );
-        $m->set_signature ( trim ( $r->d954->sd ) );
-        $m->set_ppn ( trim ( $r->c001 ) );
-        $m->set_physicaldesc ( trim ( $r->d300->sa ) );
-        $m->set_ISBN ( trim ( $ISBN ) );
-        $m->set_publisher ( trim ( $r->d264->sb . ' ' . $r->d264->sa . ' ' . $r->d264->sc ) );
+        if ( $m -> get_publisher () == '' ) { $m -> set_publisher ( trim ( $r -> d260 -> sb . ' ' . $r -> d260 -> sa . ' ' . $r -> d260 -> sc . '' ) );  }
+        if ( $m -> get_author    () == '' ) { $m -> set_author    ( trim ( $this -> getPersons ( $r -> d700 ) ) );      }
 
-        if ( $m->get_publisher () == '' ) {
-          $m->set_publisher ( trim ( $r->d260->sb . ' ' . $r->d260->sa . ' ' . $r->d260->sc . '' ) );
-        }
-        if ( $m->get_author () == '' ) {
-          $m->set_author ( trim ( $this->getPersons ( $r->d700 ) ) );
-        } # Wenn im Datensatz kein Autor vorhanden ist, wird dafür 'Peronen' genommen
-
+        # Wenn im Datensatz kein Autor vorhanden ist, wird dafür 'Personen' genommen
         # $m->set_subTitle     ( trim ( $r -> d245 -> sb   ) );
         # $m->set_edition      ( trim ( $r -> d250 -> sa   ) );
         # $m->set_directory    ( trim ( $r -> d856 -> su   ) );
@@ -360,7 +377,9 @@ deb($datasourceURL,1);
         $ret['hitlist'][ $m->get_ppn () ] = $m;
       }
 
-      elseif ( $recordSchema == 'marcxml' )              ## ------------- MARC21 ---------------
+
+      ## ------------------ MARC21 -------------------------------------------------------------------------------------
+      elseif ( $recordSchema == 'marcxml' )
       {
         $r = $rec->recordData->record;
         foreach ( $r->controlfield as $a => $b ) {
@@ -402,23 +421,22 @@ deb($datasourceURL,1);
 
       $medium[ $PPN ][ 'PPN' ] = $PPN;
 
-        $medium[ $PPN ][ 'title' ] = $title->subfield;
-        $medium[ $PPN ][ 'author' ] = $author->subfield;
-        $medium[ $PPN ][ 'PPN' ] = (string) $PPN;
-        $medium[ $PPN ][ 'physicaldesc' ] = $physicaldesc->subfield;
-        #  $medium[(string)$PPN][ 'SIG'          ] = $signatur;
-        $medium[ $PPN ][ 'publisher' ] = $publisher->subfield;
+      $medium[ $PPN ][ 'title' ] = $title->subfield;
+      $medium[ $PPN ][ 'author' ] = $author->subfield;
+      $medium[ $PPN ][ 'PPN' ] = (string) $PPN;
+      $medium[ $PPN ][ 'physicaldesc' ] = $physicaldesc->subfield;
+      #  $medium[(string)$PPN][ 'SIG'          ] = $signatur;
+      $medium[ $PPN ][ 'publisher' ] = $publisher->subfield;
+      $medium[ $PPN ][ 'ISBN' ] = $ISBN;
 
-        $medium[ $PPN ][ 'ISBN' ] = $ISBN;
 
-
-        $m->set_title ( trim ( $medium[ $PPN ][ 'title' ] ) );
-        $m->set_author ( trim ( $medium[ $PPN ][ 'author' ] ) );
-        # $m->set_signature   ( trim ( $r -> d954 -> sd   ) );
-        $m->set_ppn ( trim ( $medium[ $PPN ][ 'PPN' ] ) );
-        $m->set_physicaldesc ( trim ( $medium[ $PPN ][ 'physicaldesc' ] ) );
-        # $m->set_ISBN        ( trim ( $ISBN              ) );
-        $m->set_publisher ( trim ( $r->d264->sb . ' ' . $r->d264->sa . ' ' . $r->d264->sc ) );
+      $m->set_title ( trim ( $medium[ $PPN ][ 'title' ] ) );
+      $m->set_author ( trim ( $medium[ $PPN ][ 'author' ] ) );
+      # $m->set_signature   ( trim ( $r -> d954 -> sd   ) );
+      $m->set_ppn ( trim ( $medium[ $PPN ][ 'PPN' ] ) );
+      $m->set_physicaldesc ( trim ( $medium[ $PPN ][ 'physicaldesc' ] ) );
+      # $m->set_ISBN        ( trim ( $ISBN              ) );
+      $m->set_publisher ( trim ( $r->d264->sb . ' ' . $r->d264->sa . ' ' . $r->d264->sc ) );
 
         if ( $m->get_publisher () == '' ) {
           $m->set_publisher ( trim ( $r->d260->sb . ' ' . $r->d260->sa . ' ' . $r->d260->sc . '' ) );
@@ -427,6 +445,9 @@ deb($datasourceURL,1);
           $m->set_author ( trim ( $this->getPersons ( $r->d700 ) ) );
         } # Wenn im Datensatz kein Autor vorhanden ist, wird dafür 'Peronen' genommen
       }
+      ## --------------------------------------------------------------------------------------------------------------
+
+      ## ------------------ MODS --------------------------------------------------------------------------------------
       elseif ( $recordSchema == 'mods' )
       {
         $r = $rec->recordData->mods;
@@ -469,13 +490,16 @@ deb($datasourceURL,1);
 
         $ret[ $book[ 'ppn' ] ] = $book;
 
-      }  ## ------------- MODS ---------------
+      }
+      ## ---------------------------------------------------------------------------------------------------------------
+     }
 
 
-      $ret[ 'hits' ] = ( string ) $hits;  ## Erster Datensatz enthalt: Die Anzahl der gefundenen Medien
-      $ret[ 'maxRecords' ] = $maxRecords;       #  Anzahl der gespeicherten Datensätze
+     $ret[ 'hits' ] = ( string ) $hits;  ## Erster Datensatz enthalt: Die Anzahl der gefundenen Medien
+     $ret[ 'maxRecords' ] = $maxRecords;       #  Anzahl der gespeicherten Datensätze
     }
-  }
+
+
   return $ret;
 
   }
@@ -794,6 +818,7 @@ deb($datasourceURL,1);
 
           $tpl_vars[ 'operator'         ]  = $_SESSION[ 'operator' ];
       */
+
 
       $this->RENDERER->do_template ( 'email.tpl' , $tpl_vars );
     }

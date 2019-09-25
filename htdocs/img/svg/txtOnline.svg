@@ -15,11 +15,14 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.45pre1"
-   sodipodi:docname="txtLHBuch.svg"
+   sodipodi:docname="txtOnline.svg"
    sodipodi:version="0.32"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
    sodipodi:docbase="C:\xampp\htdocs\ELSE-DEV\htdocs\img\svg"
-   sodipodi:modified="true">
+   inkscape:export-filename="C:\xampp\htdocs\ELSE-DEV\htdocs\img\svg\txtOnline.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90"
+   sodipodi:modified="TRUE">
   <defs
      id="defs4">
     <radialGradient
@@ -2689,15 +2692,15 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="3.959798"
-     inkscape:cx="78.066169"
-     inkscape:cy="12.791057"
+     inkscape:cx="65.17683"
+     inkscape:cy="-3.0737132"
      inkscape:document-units="px"
      inkscape:current-layer="_98045400"
      showgrid="false"
-     inkscape:window-width="874"
-     inkscape:window-height="781"
-     inkscape:window-x="1929"
-     inkscape:window-y="95"
+     inkscape:window-width="1233"
+     inkscape:window-height="907"
+     inkscape:window-x="1851"
+     inkscape:window-y="55"
      inkscape:window-maximized="1"
      showguides="true"
      inkscape:guide-bbox="true">
@@ -5670,10 +5673,12 @@
            id="_98045400">
           <g
              id="g4437"
-             transform="matrix(1.8830663,0,0,0.67793324,-640.88922,174.29055)"
-             style="fill:#f9f9f9">
+             transform="matrix(1.8830663,0,0,0.66648688,-640.88922,168.97822)"
+             style="fill:#aeaeae;stroke:#5d5d5d;stroke-opacity:1;fill-opacity:1"
+             inkscape:export-xdpi="90"
+             inkscape:export-ydpi="90">
             <rect
-               style="fill:#f9f9f9;fill-opacity:1;fill-rule:nonzero;stroke:#b3b3b3;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+               style="fill:#aeaeae;fill-opacity:1;fill-rule:nonzero;stroke:#5d5d5d;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
                id="rect5432"
                width="13.131983"
                height="120.20815"
@@ -5682,18 +5687,32 @@
                transform="matrix(4.3417443,0,0,4.6347686,259.28381,-178.20767)"
                ry="0" />
           </g>
-          <text
-             xml:space="preserve"
-             style="font-size:74.15629578px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:HAW Frutiger Next Regular"
-             x="-381.02811"
-             y="174.42683"
-             id="text3110"
-             sodipodi:linespacing="125%"
-             transform="matrix(0,-1,1,0,0,0)"><tspan
-               sodipodi:role="line"
-               id="tspan3112"
-               x="-381.02811"
-               y="174.42683">Bibliothek</tspan></text>
+          <g
+             transform="matrix(0,-1.06749,1,0,-285.013,150.6866)"
+             style="font-size:292.76300049px;font-weight:normal;fill:#ffffff;fill-rule:evenodd;font-family:HAW Frutiger Next Regular"
+             id="text4439">
+            <g
+               transform="scale(0.96787235,1.0331941)"
+               style="font-size:102.70472717px;font-style:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;font-family:HAW Frutiger Next Regular;-inkscape-font-specification:HAW Frutiger Next Regular"
+               id="text3929">
+              <g
+                 style="font-size:71.77383423px;font-weight:normal;line-height:125%;fill:#ffffff;font-family:HAW Frutiger Next Regular;-inkscape-font-specification:HAW Frutiger Next Regular"
+                 id="text3932">
+                <text
+                   xml:space="preserve"
+                   style="font-size:71.77383423px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;font-family:HAW Frutiger Next Regular"
+                   x="-132.25626"
+                   y="449.49106"
+                   id="text3932-66"
+                   sodipodi:linespacing="125%"><tspan
+                     sodipodi:role="line"
+                     id="tspan3934-95"
+                     x="-132.25626"
+                     y="449.49106"
+                     style="font-weight:bold">Online</tspan></text>
+              </g>
+            </g>
+          </g>
         </g>
       </g>
     </g>

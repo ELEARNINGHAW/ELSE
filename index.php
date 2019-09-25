@@ -64,7 +64,7 @@ if ( $ci  == 'collection'  AND   $UTIL->hasRole( $cu,'admin', 'staff', 'edit') )
  #else if ( $ca  == 'kill'                   )  { $COLLMGR -> ereaseCollection          ( $I ) ; }  ## Löscht SA endgültig
 }
 
-else if (   $ci  == 'book' OR $ci  == 'cd-rom'   AND   $UTIL->hasRole( $cu,'admin', 'staff', 'edit'))
+else if (   $ci  == 'physical'   AND   $UTIL->hasRole( $cu,'admin', 'staff', 'edit'))
 { if      ( 1==2 ) {;}
   else if ( $ca  == 'coll_meta_save'        )  {  $MEDIAMGR -> showNewMediaForm              ( $I ); }   ## ++ 3 Eingabemaske für Mediensuche anzeigen   [Neues Medium dem SA hinzufügen]
   else if ( $ca  == 'search'                )  {  $MEDIAMGR -> searchMediaOnLibraryServer    ( $I ); }   ## ++ 4 Suchprozess des Mediums wird gestartet
@@ -88,7 +88,7 @@ else if (   $ci  == 'book' OR $ci  == 'cd-rom'   AND   $UTIL->hasRole( $cu,'admi
   else if ( $ca  == 'cancel_order'          )  {  $MEDIAMGR -> cancelMedia                   ( $I ); }   ## ActionHandler: Buchbestellung wird storiert
 }
  
-else if ( $ci  == 'ebook' OR $ci  == 'lh_book'   AND   $UTIL->hasRole( $cu,'admin', 'staff', 'edit'))
+else if ( $ci  == 'online'   AND   $UTIL->hasRole( $cu,'admin', 'staff', 'edit'))
 { if      ( 1==2 ) {;}
   else if ( $ca  == 'annoteNewMedia'        )  {  $MEDIAMGR -> annoteNewMedia_showForm       ( $I ); }   ## Eingabemaske Metadaten für Buch Annotation anzeigen
   else if ( $ca  == 'edit'                  )  {  $MEDIAMGR -> editMediaMetaData             ( $I ); }   ## ActionHandler: Metadaten des SA bearbeiten

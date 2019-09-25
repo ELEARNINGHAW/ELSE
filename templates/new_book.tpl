@@ -3,7 +3,7 @@
 <script type='text/javascript' src='lib/jquery.simplemodal.js'></script>
 
 <h3 style="margin:10px; padding:10px; color: #FFF;" class="bgDef bg{$collection.bib_id}" >
-    {$collection.title} : Katalogsuche <a style="float:right;" href="index.php?item=collection&action=show_collection&dc_collection_id={$collection.dc_collection_id}&r={$user.role_id}"><img  class="icon" style="margin-top:-4px;" title="Zurück" src="img/svg/chevron-left_w.svg" /></a>
+    {$collection.title} : Suche im HAW-Katalog <a style="float:right;" href="index.php?item=collection&action=show_collection&dc_collection_id={$collection.dc_collection_id}&r={$user.role_id}"><img  class="icon" style="margin-top:-4px;" title="Zurück" src="img/svg/chevron-left_w.svg" /></a>
 </h3>
 
 <div id='basic-modal'>
@@ -28,33 +28,40 @@
   <div style="font-size:35px; float:left; padding:10px; margin:5px; margin-bottom:100px;display:block;   background-color:#EFEFEF">B</div>Eine neue Suche starten:<br><br>
  {/if}
 
-     <div style="  display: none;" >
-     Sie können nun direkt im HAW-Katalog recherchieren und bei allen gewünschten Titel durch einen Klick auf  <img src="img/sternchen.png" /> in die dortige Merkliste übernehmen.
+ <div style="  display: block;" >
+   Sie können nun direkt im HAW-Katalog recherchieren und bei allen gewünschten Titel durch einen Klick auf  <img src="img/sternchen.png" /> in die dortige Merkliste übernehmen.
      <br />
      <br />
 
-     <a style = "border: 1px solid black; padding:13px; margin: 20px; " href="https://elsehaw.beluga-core.de/vufind/?lmsid={$URLID}&lmsurl={$URL}">HAW-Katalog recherchieren und dort die Merkliste füllen</a>
-     <br />
-     <br />
+     <button class="ui-button ui-widget ui-corner-all"> <a href="https://elsehaw.beluga-core.de/vufind/?lmsid={$URLID}&lmsurl={$URL}">Im HAW-Katalog recherchieren und die Merkliste füllen</a>
+     </button>
 
+
+
+     <br />
+     <br />
 
      Über die Merklisten-Verwaltung des HAW-Katalogs <img src="img/merkliste.png" />   können Sie diese Titel dann direkt in Ihr ELSE übernehmen.
      <br />
-     <br />
-     In ELSE erfolgt die weitere Bearbeitung:
-<ul>
-     <li>Bei einem Printmedium können Sie entscheiden, ob dieses ein Literaturhinweis sein soll oder Sie es in Ihren physischen Semesterapparat in der Bibliothek bestellen möchten.</li>
-     <li>Bei allen Medien können Sie, bei Bedarf, eigene Anmerkungen (für die Studierenden bzw. für die Bibliotheksmitarbeiter*innen) hinzufügen.</li>
-</ul>
-
 
   <br/>
 
+         In ELSE erfolgt die weitere Bearbeitung der einzelnen Titel:
 
+         <ul>
+             <li>
+         Bei einem Print-Buch können Sie entscheiden, ob dieses ein Literaturhinweis sein soll oder in Ihren physischen Semesterapparat (Handapparat) in der Fachbibliothek eingestellt werden soll. (Bei Artikeln ist nur die Einbindung als Literaturhinweis möglich.)
+             </li>
+             <li>
+            Bei allen Titeln können Sie Anmerkungen für die Studierenden hinzufügen.
+             </li>
+         </ul>
 
+     </div>
+         <div style="  display: none;" >
 
   oder Medien im OPAC suchen.<br><br>
-     </div>
+
 
          Bitte geben Sie in dieser Suchmaske <b>Titel</b> und / oder <b>Autor</b> und / oder <b>Signatur</b> ein.<br><br>
   Das Buch wird dann im HIBS Online-Katalog gesucht.<br><br>
@@ -74,6 +81,7 @@
    </table>
    <input style="float: right;" name="basic"  class="basic" value="&nbsp;&nbsp;&nbsp;SUCHE&nbsp;&nbsp;&nbsp;" type="submit">
   </form>
+     </div>
    <!-- -->
      {/if}
 
@@ -87,11 +95,7 @@
 
          {foreach from=$books_info item=b}
              {if (isset ( $b.title ))}
-             {$item = ""}
-             {if (isset ( $b.physicaldesc ))}
-                 {if ($b.physicaldesc == 'print'      )} {assign var="item"  value="book" } {/if}
-                 {if ($b.physicaldesc == 'electronic' )} {assign var="item"  value="ebook"} {/if}
-             {/if}
+
           <a class="hitlink_{$b.doc_type}" href="index.php?ppn={$b.ppn}&item={$b.item}&action=annoteNewMedia&dc_collection_id={$collection.dc_collection_id}&mode=new&r={$user.role_id}">
            <table>
                {if (isset ( $b.title        ) AND $b.title        != "" )}<tr><td><div class="mediaListHeader">Titel:    </div></td><td><span class="mediaTxt">{$b.title|escape}                           </span></td></tr>{/if}

@@ -103,7 +103,22 @@ class Collection
 
 
 
-  function obj2array()           {  return json_decode(json_encode( $this  ), true);  }
+  function obj2array()
+  {
+      $tmp = (array) $this;
+      $tmp['Owner'] = (array) $this->Owner;
+      $tmp['MedState'] = (array) $this->MedState;
+      $tmp['Bib'] = (array) $this->Bib;
+
+      unset($tmp['media']);
+      if (isset($this -> media))
+      foreach ($this -> media as $med)
+      {   $m = (array)$med;
+
+        $tmp['media'][] = $m;
+      }
+      return  $tmp ;
+  }
 
   function array2obj( $array )
   { $colltmp = new Collection();

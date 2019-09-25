@@ -24,13 +24,12 @@ function __construct()
 #$this->sem[ 'S18' ] = array( '2018_02_03' , '2018_07_14' );
 $this->sem[ 'W18' ] = array( '2018_07_14' , '2019_02_02' );
 $this->sem[ 'S19' ] = array( '2019_02_02' , '2019_07_13' );
-$this->sem[ 'W19' ] = array( '2019_09_16' , '2020_01_31' );
+$this->sem[ 'W19' ] = array( '2019_09_10' , '2020_01_31' );
 #$this->sem[ 'S20' ] = array( '2020_03_09' , '2020_07_10' );
 #$this->sem[ 'W20' ] = array( '2020_09_14' , '2021_01_29' );
 #$this->sem[ 'S21' ] = array( '2021_03_15' , '2021_07_16' );
 #$this->sem[ 'W21' ] = array( '2021_09_20' , '2022_02_04' );
 #$this->sem[ 'S22' ] = array( '2022_03_21' , '2022_07_22' );
- 
 
 
 if   ( !isset ($this->default_role_id)) $this->default_role_id = 3;
@@ -53,9 +52,8 @@ $this->CONST_ACTION_INFO = array
         (
             "user"       => "any" ,
             "collection" => "role=admin,role=edit,role=staff" ,
-            "book"       => "role=admin,role=edit,role=staff" ,
-            "ebook"      => "role=admin,role=edit,role=staff" ,
-            "lh_book"    => "role=admin,role=edit,role=staff" ,
+            "physical"   => "role=admin,role=edit,role=staff" ,
+            "online"     => "role=admin,role=edit,role=staff" ,
           ) ,
     ) ,
 
@@ -89,13 +87,12 @@ $this->CONST_ACTION_INFO = array
         (
             "state"    => array ( "inactive" ) ,
             "mode"     => array ( "edit" , "admin" , "staff" ) ,
-            "item"     => array ( "book",  "ebook" ,"lh_book"      ) ,
+            "loc"      => array ( "1" ,  "2", "3"  ) ,
         ) ,
         'acl' => array
         (
-            "book"       => "role=admin,owner=true,role=staff" ,
-            "ebook"      => "role=none,owner=none" ,
-            "lh_book"    => "role=none,owner=none" ,
+            "physical"       => "role=admin,owner=true,role=staff" ,
+            "online"         => "role=none,owner=none" ,
         ) ,
     ) ,
     
@@ -104,10 +101,10 @@ $this->CONST_ACTION_INFO = array
         'button'            => 'accept' ,
         'button_label'      => 'Bestellung annehmen' ,
         'input'             => array ( "state" => "open" ) ,
-        'acl' => array (  "book" => "role=admin,role=staff" ,  ) ,
+        'acl' => array (  "physical" => "role=admin,role=staff" ,  ) ,
         'button_visible_if' => array 
         (
-            "item"     => array ( "book" ) ,
+            "loc"      => array ( "1"   ) ,
             "state"    => array ( "new", "suggest" ) ,
             "mode"     => array ( "staff" , "admin" ) ,
         ) ,
@@ -118,11 +115,11 @@ $this->CONST_ACTION_INFO = array
         'button'            => 'cancel_order' ,
         'button_label'      => 'Bestellung stornieren' ,
         'input'             => array ( "state" => "inactive" ) ,
-        'acl' => array ( "book" => "role=admin,owner=true,role=staff" ,  ) ,
+        'acl' => array ( "physical" => "role=admin,owner=true,role=staff" ,  ) ,
         'button_visible_if' => array 
         (
             "state"    => array ( "new" ) ,
-            "item"     => array ( "book" ) ,
+            "loc"      => array ( "1"    ) ,
             "mode"     => array ( "edit" , "staff" , "admin" ) ,
         ) ,
     ) ,
@@ -137,7 +134,7 @@ $this->CONST_ACTION_INFO = array
             "state" => array ( "open" ) ,
             "mode"  => array ( "staff" , "admin" ) ,
         ) ,
-        'acl'               => array ( "book" => "role=admin,role=staff" ,   ) ,
+        'acl'               => array ( "physical" => "role=admin,role=staff" ,   ) ,
     ) ,
     
     'release'             => array
@@ -145,10 +142,10 @@ $this->CONST_ACTION_INFO = array
         'button'            => 'release' ,
         'button_label'      => 'Rückgabe' ,
         'input'             => array ( "state" => "obsolete" ) ,
-        'acl'               => array ( "book" => "role=admin,owner=true" , ) ,
+        'acl'               => array ( "physical" => "role=admin,owner=true" , ) ,
         'button_visible_if' => array
         (
-            "item" => array ( "book" ) ,
+            "loc"      => array ( "1"    ) ,
             "state" => array ( "active" ) ,
             "mode" => array ( "edit" , "admin" ,"staff" ) ,
         ) ,
@@ -159,10 +156,10 @@ $this->CONST_ACTION_INFO = array
         'button'            => 'return' ,
         'button_label'      => 'Rückgabe erledigt' ,
         'input'             => array ( "state" => "inactive" ) ,
-        'acl'               => array ( "book" => "role=admin,role=staff" , ) ,
+        'acl'               => array ( "physical" => "role=admin,role=staff" , ) ,
         'button_visible_if' => array 
         (
-            "item"      => array (  "book"  ) ,
+            "loc"      => array ( "1"   ) ,
             "state"     => array ( "obsolete" , "delete") ,
             "mode"      => array ( "staff" , "admin" ) ,
         ) ,
@@ -175,13 +172,13 @@ $this->CONST_ACTION_INFO = array
         'input'             => array ( "state" => "open" ) ,
         'button_visible_if' => array 
         (
-            "item"      => array ( 'book' ) ,
+            "loc"      => array ( "1"    ) ,
             "state"     => array ( 'obsolete' ) ,
             "mode"      => array ( 'edit', 'staff' , 'admin' ) ,
         ) ,
         'acl' => array 
         (
-            "book"      => "role=admin, owner=true, role=staff" ,
+            "physical"      => "role=admin, owner=true, role=staff" ,
         ) ,
     ) ,
 
@@ -192,14 +189,14 @@ $this->CONST_ACTION_INFO = array
         'input'             => array ( "state" => "new" ) ,
         'button_visible_if' => array 
         (
-            "item"       => array ( "book" , "article" ) ,
+            "loc"      => array ( "1"   ) ,
             "state"      => array ( "inactive" ) ,
             "mode"       => array (  "admin", 'staff' ) ,
         ) ,
         'acl' => array 
         (
             "article" => "role=admin,owner=true,role=staff" ,
-            "book"    => "role=admin,owner=true,role=staff" ,
+            "physical"    => "role=admin,owner=true,role=staff" ,
         ) ,
     ) ,
     
@@ -211,13 +208,13 @@ $this->CONST_ACTION_INFO = array
         'button_visible_if' => array
         (
             "state"  => array ( "active" ) ,
-            "item"   => array ( "ebook", "lh_book" ) ,
+            "loc"      => array (  "2", "3"  ) ,
             "mode"   => array ( "edit" , "admin" ,'staff' ) ,
         ) ,
         'acl' => array 
         (
-            "ebook"  => "owner=true,role=admin, role=staff",
-            "lh_book"  => "owner=true,role=admin, role=staff",
+
+            "online"  => "owner=true,role=admin, role=staff",
         ) ,
     ) ,
     
@@ -231,13 +228,13 @@ $this->CONST_ACTION_INFO = array
          (
 
             "state"   => array ( "inactive" ,"delete" ) ,
-            "item"    => array ("lh_book", "ebook" ) ,
+            "loc"      => array (  "2", "3"  ) ,
             "mode"   => array ( "edit" , "admin" ,'staff' ) ,
         ) ,
         'acl' => array 
         (
-            "ebook"  => "owner=true,role=admin, role=staff",
-            "lh_book"  => "owner=true,role=admin, role=staff",
+
+            "online"  => "owner=true,role=admin, role=staff",
         ) ,
     ) ,
     
@@ -248,14 +245,14 @@ $this->CONST_ACTION_INFO = array
         'input'             => array ( "mode" => "edit" ) ,
         'button_visible_if' => array 
         (
-            "item"     => array ( "book" , "ebook"  , "lh_book"  ) ,
+            "loc"      => array ( "1" ,  "2", "3"  ) ,
             "mode"     => array ( "edit" , "staff" , "admin" ) ,
         ) ,
         'acl'               => array 
         (
-            "book"    => "role=admin,role=staff,owner=true" ,
-            "ebook"   => "role=admin,role=staff,owner=true" ,
-            "lh_book"   => "role=admin,role=staff,owner=true" ,
+            "physical"    => "role=admin,role=staff,owner=true" ,
+
+            "online"   => "role=admin,role=staff,owner=true" ,
         ) ,
     ) ,
     
@@ -267,7 +264,7 @@ $this->CONST_ACTION_INFO = array
         'acl'               => array ( "any" => "role=admin,role=staff" , ) ,
         'button_visible_if' => array 
         (
-            "item" => array (  "book" , "ebook", "lh_book" ) ,
+            "loc"      => array ( "1" ,  "2", "3"  ) ,
             "mode" => array ( "staff" , "admin" ) ,
         ) ,
     ) ,
@@ -281,7 +278,7 @@ $this->CONST_ACTION_INFO = array
         'button_visible_if' => array 
         (
             "state"  => array ( "delete" ) ,
-            "item"   => array (  "book" , "ebook", "lh_book" ) ,
+            "loc"      => array ( "1" ,  "2", "3"  ) ,
             "mode"   => array ( "staff" , "admin" ) ,
         ) ,
     ) ,

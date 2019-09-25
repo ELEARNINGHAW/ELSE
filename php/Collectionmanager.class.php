@@ -79,6 +79,7 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
   $tpl_vars[ 'source'         ]                  = 'index.php'                            ;
   ##-------------------------------------------------------------------------------------------------------------------
 
+
   $this -> RENDERER -> do_template ( 'index.tpl' , $tpl_vars , TRUE ) ;
 }
 
@@ -119,12 +120,15 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
 
     $collection_id                        = $I[ 'currentCollection' ] -> get_collection_id();
     $collection                           = $this -> SQL-> getCollection ( $collection_id );
+ #deb("Coll");
+ #     deb($collection,1);
 
     $I[ 'operator' ] -> set_url( $I[ 'operator' ] -> get_history( )[ 1 ]  );                  ##  Link für den "zurück"- Button
 
     $_SESSION['url']['currentCollection'] = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 
     $tpl_vars[ 'collection'             ][ $collection_id ] =  $collection[ $collection_id ] -> obj2array( );
+
 
     $tpl_vars[ 'medium'                 ] = $I[ 'medium'                     ] -> obj2array( ) ;
     $tpl_vars[ 'user'                   ] = $I[ 'currentUser'                ] -> obj2array( ) ;
@@ -135,12 +139,13 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
     $tpl_vars[ 'department'             ] = $_SESSION[ 'DEP_2_BIB'           ] ;
     $tpl_vars[ 'filter'                 ] = $_SESSION[ 'filter'              ] ;
     $tpl_vars[ 'ACTION_INFO'            ] = $_SESSION[ 'ACTION_INFO'         ];
+    $tpl_vars[ 'DOC_TYPE'               ] = $_SESSION[ 'DOC_TYPE'            ] ;
     $tpl_vars[ 'CFG'                    ] = $this->CFG->getConf();
     $tpl_vars[ 'errors_info'            ][] = '';
 
     # $this -> RENDERER -> do_template( 'collection.tpl', $tpl_vars, ( $I[ 'operator' ] -> get_mode() != 'print' ) );
 
-    #deb($tpl_vars,1);
+    #deb( $tpl_vars[ 'collection'             ],1);
 
     $this -> RENDERER -> do_template( 'collection.tpl', $tpl_vars );
   }
@@ -158,8 +163,6 @@ function saveNewCollection( $I )
 ###############################################################################################
 function editColMetaData( $I )
 {
-  #$I[ 'operator' ] -> set_url(  '?item=collection&action=show_collection&dc_collection_id='. $I[ 'currentCollection' ] -> get_dc_collection_id() .'&r='. $I[ 'currentUser']->get_role_id()  );
-
   $collection_id = $I[ 'currentCollection'    ] -> get_collection_id();
   $collection    = $this -> SQL -> getCollection( $collection_id ); #( $colID , $filter , $short = null )
 
@@ -258,7 +261,7 @@ function etCollectionState_inactive( $I )
 
 function  saveColMetaData( $I )
 {
-  $url = "index.php?item=collection&collection_id=".$I[ 'W' ][ 'collection_id' ]."&ro=".$I[ 'U' ][ 'role_encode' ]."&item=collection&action=show_collection";
+  $url = "index.php?[ $PPN ]=collection&collection_id=".$I[ 'W' ][ 'collection_id' ]."&ro=".$I[ 'U' ][ 'role_encode' ]."&item=collection&action=show_collection";
   $this->RENDERER->doRedirect( $url );
 }
 
@@ -370,58 +373,41 @@ function lmsDownload( $I )
 
   $url =  $I['operator']->get_url() ;
 
-  #deb($I['operator'],1);
   $lmsDownload = explode( '?lmsid=', $url );
 
-  #deb($lmsDownload,1);
-
-  $lms = explode ( '###', $lms= base64_decode ($lmsDownload[1])  );
+  $lms = explode ( '###', $lms= base64_decode ( $lmsDownload[ 1 ])  );
 
   $url = $url ."&format=".$conf[ 'recordSchema' ];
 
-
-  #deb($url,1);
-
   $medList = $this -> LMSLoader( $url );
+
+
+
   $medList = $this -> UTIL -> xml2array( $medList );
 
- # deb($medList);
+
 
   foreach ( $medList as $med )
   {
     $m = new Medium();
 
-    $ti = '';
-    if( isset( $med[ 'title'       ][ 0 ] ) ) { $ti .=                  ( trim ( $med[ 'title'        ][ 0 ] ) ); }
-    if( isset( $med[ 'title'       ][ 1 ] ) ) { $ti  =  $ti .' - '.     ( trim ( $med[ 'title'        ][ 1 ] ) ); }
-
-    $pd = '';
-    if( isset( $med[ 'physicaldesc'][ 0 ] ) ) { $pd .=                  ( trim ( $med[ 'physicaldesc' ][ 0 ] ) ); }
-    if( isset( $med[ 'physicaldesc'][ 1 ] ) ) { $pd  =  $pd . ', ' .    ( trim ( $med[ 'physicaldesc' ][ 1 ] ) ); }
-    if( isset( $med[ 'physicaldesc'][ 2 ] ) ) { $pd  =  $pd . ', ' .    ( trim ( $med[ 'physicaldesc' ][ 2 ] ) ); }
-
-    $pb = '';
-    if( isset( $med[ 'publisher'   ][ 1 ] ) ) { $pb .=                 ( trim ( $med[ 'publisher'    ][ 1 ] ) ); }
-    if( isset( $med[ 'publisher'   ][ 2 ] ) ) { $pb  =  $pb . ', ' .   ( trim ( $med[ 'publisher'    ][ 2 ] ) ); }
-    if( isset( $med[ 'publisher'   ][ 3 ] ) ) { $pb  =  $pb . ', ' .   ( trim ( $med[ 'publisher'    ][ 3 ] ) ); }
-
-    if( isset( $med[ 'title'       ][ 0 ] ) ) { $m -> set_title         ( $ti );                                  }
-    if( isset( $med[ 'author'      ][ 0 ] ) ) { $m -> set_author        ( trim ( $med[ 'author'       ][ 0 ] ) ); }
-    if( isset( $med[ 'publisher'   ][ 0 ] ) ) { $m -> set_publisher     ( $pb );                                  }
-    if( isset( $med[ 'physicaldesc'][ 0 ] ) ) { $m -> set_physicaldesc  ( $pd );                                  }
-    if( isset( $med[ 'ppn'         ][ 0 ] ) ) { $m -> set_ppn           ( trim ( $med[ 'ppn'          ]      ) ); }
-    if( isset( $med[ 'leader'      ][ 0 ] ) ) { $m -> set_leader        ( trim ( $med[ 'leader'       ]      ) ); }
-    if( isset( $med[ 'ISBN'        ][ 0 ] ) ) { $m -> set_ISBN          ( trim ( $med[ 'ISBN'         ][ 0 ] ) ); }
-    if( isset( $med[ 'signature'   ][ 0 ] ) ) { $m -> set_signature     ( trim ( $med[ 'signature'    ][ 0 ] ) ); }
-    if( isset( $med[ 'format'      ][ 0 ] ) ) { $m -> set_format        ( trim ( $med[ 'format'       ]      )  ) ;  $m -> set_doc_type      ( trim ( $med[ 'format'   ]      ) ); }
- #   if( isset( $med[ 'format'      ][ 0 ] ) ) { $m -> set_doc_type      ( trim ( $med[ 'format'       ]      ) ); }
-
+    if( isset( $med[ 'title'       ][ 0 ] ) ) { $m -> set_title         ( trim ( $med[ 'title'        ]  ) ); }
+    if( isset( $med[ 'author'      ][ 0 ] ) ) { $m -> set_author        ( trim ( $med[ 'author'       ]  ) ); }
+    if( isset( $med[ 'publisher'   ][ 0 ] ) ) { $m -> set_publisher     ( trim ( $med[ 'publisher'    ]  ) ); }
+    if( isset( $med[ 'physicaldesc'][ 0 ] ) ) { $m -> set_physicaldesc  ( trim ( $med[ 'physicaldesc' ]  ) ); }
+    if( isset( $med[ 'ppn'         ][ 0 ] ) ) { $m -> set_ppn           ( trim ( $med[ 'ppn'          ]  ) ); }
+    if( isset( $med[ 'leader'      ][ 0 ] ) ) { $m -> set_leader        ( trim ( $med[ 'leader'       ]  ) ); }
+    if( isset( $med[ 'ISBN'        ][ 0 ] ) ) { $m -> set_ISBN          ( trim ( $med[ 'ISBN'         ]  ) ); }
+    if( isset( $med[ 'signature'   ][ 0 ] ) ) { $m -> set_signature     ( trim ( $med[ 'signature'    ]  ) ); }
+    if( isset( $med[ 'format'      ][ 0 ] ) ) { $m -> set_format        ( trim ( $med[ 'format'       ]  ) );
+                                                $m -> set_doc_type      ( trim ( $med[ 'format'       ]  ) );
+                                                $m -> calcDocTypeID();
+    }
 
     $ret[] = $m;
   }
 
-
-  #deb($ret,1);
+   # deb( $ret,1);
 
   $_SESSION[ 'books' ][ 'currentCollection' ] = $lmsDownload[1];
   $_SESSION[ 'books' ][ 'booksHitList'      ] = $this -> UTIL -> xml2array( $ret );
@@ -433,21 +419,16 @@ function lmsDownload( $I )
   $user_role_id                = $I[ 'currentUser'      ] -> get_role_encode();
   $b_ppn                       = $_SESSION[ 'books'     ][ 'booksHitList' ][ 0 ][ 'ppn' ];
 
-#$b_item = 'book';
 
-# deb(  $_SESSION['books'],1);
+  $b_item = $_SESSION[ 'books' ][ 'booksHitList' ][0]['item'];
 
-$dt_id = $_SESSION[ 'books' ][ 'booksHitList' ][0]['doc_type_id'];
-
-  # deb(  $dt_id,1);
-
-
+/*
 if     ( $dt_id  == 1 OR $dt_id  == 3  )  { $b_item =   'book' ; }
 else                                      { $b_item =   'ebook'; }
-
+*/
 
 $_SESSION[ 'books' ][ 'url' ] =  "index.php?ppn=$b_ppn&item=$b_item&action=annoteNewMedia&dc_collection_id=$collection_dc_collection_id&mode=new&r=$user_role_id";
-  #   deb( $_SESSION[ 'books' ][ 'url' ],1);
+
 $this -> RENDERER -> doRedirect( $_SESSION[ 'books' ][ 'url' ]  );
 }
 
@@ -455,25 +436,22 @@ $this -> RENDERER -> doRedirect( $_SESSION[ 'books' ][ 'url' ]  );
 function LMSLoader( $strXml )
 {
 	$arrContextOptions=array(
-    "ssl"=>array(
+        "ssl"=>array(
         "verify_peer"=>false,
         "verify_peer_name"=>false,
-    ),
-);  
+         ), );
 
-  $url = 'https://haw.beluga-core.de/vufind/Cart/lmsdownload?lmsid='.$_SESSION['books'][ 'currentCollection'].'&format=marc21';
+  $url = 'https://haw.beluga-core.de/vufind/Cart/lmsdownload?lmsid='.$_SESSION['bc_urlID'].'&format=marc21';
+
 
   ### ------ TEST -------
- # $url = 'C:\xampp\htdocs\ELSE-DEV\htdocs\format.xml';
+  # $url = 'C:\xampp\htdocs\ELSE-DEV\htdocs\format.xml';
   ### ------ TEST -------
-
 
   $strXml = file_get_contents( $url , false, stream_context_create($arrContextOptions));
- 
-  $xml = simplexml_load_string( $strXml);
- 
 
- # deb( $xml,1);
+  $xml = simplexml_load_string( $strXml);
+
   $i = 0;
   foreach( $xml -> record as $xmlrec )
   {
@@ -483,31 +461,51 @@ function LMSLoader( $strXml )
       if ( $b[ 'tag' ]       == '001' ) { $PPN            = (string)$b;   $medium[(string)$PPN][ 'ppn'          ] = $PPN;      }
     }
 
-    $medium[(string)$PPN][ 'leader'          ] =   (string)$xmlrec -> leader;
-    $medium[(string)$PPN][ 'format'          ] =   (string)$xmlrec -> format;
-
-
-    # medientyp marc 338 -- pica 0503 -- 0500 Medientyp
-
+      $hasAuthor = false;
     foreach ( $xmlrec -> datafield as $a => $b )
     {
+
       $b_att = $b->attributes ();
       ## -- Autor --
-      if ( $b_att == '100' ) { $author        = $b;     $medium[$PPN][ 'author'       ] = $author       -> subfield; }
+      if ( $b_att == '100' )
+      {
+        foreach ( $b -> subfield as $sf )
+        {
+          if( $sf -> attributes() -> code == 'a'  )  {  $medium[ $PPN ][ 'author'        ] = (string)$sf .":100";  $hasAuthor = true;  }
+        }
+      }
+
+      if ( $hasAuthor == false AND $b_att == '245' )
+      {
+         foreach ($b -> subfield as $sf )
+         {
+           if( $sf -> attributes() -> code == 'c'  )  {  $medium[ $PPN ][ 'author'        ] =  (string)$sf .":245";   }
+         }
+      }
+
 
       ## -- Titel --
       if ( $b_att == '245' )
       {
-        foreach ($b -> subfield as $sf   )
+        foreach ( $b -> subfield as $sf   )
         {
-          if( $sf -> attributes() -> code == 'a'  )  {  $medium[$PPN][ 'title'        ] = $b -> subfield;   }
-          if( $sf -> attributes() -> code == 'h'  )  {  $medium[$PPN][ 'doc_type'     ] = 4;   }               ## E-Book
-          else                                       {  $medium[$PPN][ 'doc_type'     ] = 1;   }               ## Buch
+          if( $sf -> attributes() -> code == 'a'  )  {  $medium[ $PPN ][ 'title'        ]  =  (string)$sf;   }
+
+          #if( $sf -> attributes() -> code == 'h'  )  {  $medium[ $PPN ][ 'doc_type'     ]  =  4;   }               ## E-Book  ???????????? checken!
+          #else                                       {  $medium[ $PPN ][ 'doc_type'     ]  =  1;   }               ## Buch    ???????????? checken!
         }
       }
 
+
       ## -- Physical Description --
-      if ( $b_att == '300' ) { $physicaldesc  = $b;     $medium[$PPN][ 'physicaldesc' ] = $physicaldesc -> subfield; }
+      if ( $b_att == '300' )
+      {
+          foreach ($b -> subfield as $sf   )
+          {
+              if( $sf -> attributes() -> code == 'a'  )  {  $medium[ $PPN ][ 'physicaldesc'        ] =  (string)$sf;   }
+          }
+      }
+
 
       ## -- Signatur --
       if ( $b_att == '980' )
@@ -517,26 +515,38 @@ function LMSLoader( $strXml )
 
         if ( $hit )
         foreach ( $b -> subfield as $sf   )
-        { if( $sf -> attributes() -> code == 'b' )    { $medium[$PPN][ 'signature' ] = $sf; }  }
+        { if( $sf -> attributes() -> code == 'd' )    { $medium[ $PPN ][ 'signature' ] =  (string)$sf; }  }
       }
 
+
       ## -- Verlag --
-      if ( $b_att == '264' ) { $publisher     = $b;     $medium[$PPN][ 'publisher'    ] = $publisher    -> subfield; }
+      if ( $b_att == '264' )
+      {
+          foreach ($b -> subfield as $sf   )
+          {
+              if( $sf -> attributes() -> code == 'a'  )  {  $medium[ $PPN ][ 'publisher'        ] =   (string)$sf;   }
+           }
+      }
 
       ## -- ISBN  --
-      if ( $b_att == '020' ) { foreach ( $b->subfield as $sub => $val )  { if ($val['code'][0] == 9) { $ISBN[] = (string) $val[0]; }   }    }
+      if ( $b_att == '020' )
+      {
+          foreach ($b -> subfield as $sf   )
+          {
+              if( $sf -> attributes() -> code == '9'  )  {  $medium[ $PPN ][ '$ISBN'        ] =  (string)$sf;   }
+          }
+      }
     }
 
-  # $medium[$PPN][ 'ISBN'         ] = $ISBN;
-  # $medium[(string)$PPN][ 'SIG'          ] = $signatur;
+    $medium[(string)$PPN][ 'leader'          ] =   (string)$xmlrec -> leader;
+    $medium[(string)$PPN][ 'format'          ] =   (string)$xmlrec -> format;
+
   }
 
-  #deb( $medium );
+
 
   return  $medium;
- # echo '<br>'.$medium['aut']->subfield[0] ;
 }
-
 
 
 
@@ -755,7 +765,6 @@ if (!empty($_FILES))
 
     foreach ( $userlist as $user )                                                                                            ## Liste wird mit entsprechenden SAs erweitert
     {
-
       $SAlistTMP  =  $this -> SQL -> getSAlist( $user, $I  );
 
       $SAlist     =  array();
@@ -763,14 +772,18 @@ if (!empty($_FILES))
       if ( $SAlistTMP )
       { foreach ( $SAlistTMP as $SA )
         { if  ( !in_array( $SA -> get_id(),  $this -> CFG -> CFG[ 'doNotShow'  ] ) )                                          ## SA die nicht angzeigt werden sollen, werden aus der Liste entfernt
-          {    $SAlist[] = $SA -> obj2array ();
+          {  $SAlist[] = $SA -> obj2array ();
           }
+
         }
+
+
         $collectionList[ ] = $SAlist  ;
       }
       else
       { $collectionList[ ] = 0 ;                                                                  }
     }
+
     return $collectionList;
   }
 

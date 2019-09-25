@@ -39,12 +39,13 @@ $ca = $I[ 'operator'    ] -> get_action();
 $ci = $I[ 'operator'    ] -> get_item();
 
 
-if ( $ci  == 'book' OR $ci  == 'cd-rom' OR $ci == 'article' )  { $ci ="physical"; }
+#if ( $ci  == 'book' OR $ci  == 'cd-rom' OR $ci == 'article' )  { $ci ="physical"; }
 #if ($ci ==  OR $ci ==  OR $ci == )  { $ci =""; }
 
 
 #deb($I[ 'operator'    ],1);
-#deb($_SESSION['currentUser'],1);
+#deb($_SESSION,1);
+
 
 # -- Default: item = collection -- (user) action = show_collection, (staff) action = show_collection_list
 if ( $ci  == 'collection'  AND   $UTIL->hasRole( $cu,'admin', 'staff', 'edit') )
@@ -72,7 +73,6 @@ else if (   $ci  == 'physical'    AND   $UTIL->hasRole( $cu,'admin', 'staff', 'e
   else if ( $ca  == 'coll_meta_save'        )  {  $MEDIAMGR -> showNewMediaForm              ( $I ); }   ## ++ 3 Eingabemaske für Mediensuche anzeigen   [Neues Medium dem SA hinzufügen]
   else if ( $ca  == 'search'                )  {  $MEDIAMGR -> searchMediaOnLibraryServer    ( $I ); }   ## ++ 4 Suchprozess des Mediums wird gestartet
   else if ( $ca  == 'annoteNewMedia'        )  {  $MEDIAMGR -> annoteNewMedia_showForm       ( $I ); }   ## ++ 5 Eingabemaske Metadaten für Buch Annotation anzeigen
-##  else if ( $ca  == 'annoteNewMediaBatch'   )  {  $MEDIAMGR -> annoteNewMediaBatch_showForm  ( $I ); }   ## ++ 5 Eingabemaske Metadaten für Buch Annotation anzeigen
   else if ( $ca  == 'save'                  )  {  $MEDIAMGR -> saveMediaMetaData             ( $I ); }   ## ++ 6 Metadaten eines neues Buch speichern
 
   else if ( $ca  == 'purchase_suggestion'   )  {  $MEDIAMGR -> purchase_suggestion           ( $I ); }   ## Erwebungsvorschlag (nach 0 Suchtreffern)
@@ -91,7 +91,7 @@ else if (   $ci  == 'physical'    AND   $UTIL->hasRole( $cu,'admin', 'staff', 'e
   else if ( $ca  == 'cancel_order'          )  {  $MEDIAMGR -> cancelMedia                   ( $I ); }   ## ActionHandler: Buchbestellung wird storiert
 }
  
-else if ( $ci  == 'ebook' OR $ci  == 'lh_book'   AND   $UTIL->hasRole( $cu,'admin', 'staff', 'edit'))
+else if (  $ci  == 'online'    AND   $UTIL->hasRole( $cu,'admin', 'staff', 'edit'))
 { if      ( 1==2 ) {;}
   else if ( $ca  == 'annoteNewMedia'        )  {  $MEDIAMGR -> annoteNewMedia_showForm       ( $I ); }   ## Eingabemaske Metadaten für Buch Annotation anzeigen
   else if ( $ca  == 'edit'                  )  {  $MEDIAMGR -> editMediaMetaData             ( $I ); }   ## ActionHandler: Metadaten des SA bearbeiten

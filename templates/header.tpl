@@ -22,7 +22,7 @@
 <div style="position:relative;  padding:0px; height:38px; margin:0px;  background-color: #234A89;  margin-bottom:20px;  margin-left:0px; margin-right: 0px;">
   <div style="position:relative;  left:0px; top:0px; height:40px; padding-right: 3px;"  >
     <ul id="nav" style="position:absolute; left:5px;   top:3px; margin-right:60px; border: white solid 2px;"   >
-      <li><a title="Semesterapparate der HAW"       class="bgHAW2x"  {if $filter.bib == X                            } style=" background-color:#FFF !important; color:#000 !important;  " {/if}  href="index.php?category=X&amp;mode=filterBib&amp;r={$user.role_id}"> X    </a></li>
+      <li><a title="Alle Semesterapparate"          class="bgHAW2x"  {if $filter.bib == X                            } style=" background-color:#FFF !important; color:#000 !important;  " {/if}  href="index.php?category=X&amp;mode=filterBib&amp;r={$user.role_id}"> X  </a></li>
       <li><a title="Semesterapparate der FB DMI"    class="bgHAW2"   {if $filter.bib == DMI                          } style=" background-color:#FFF !important; color:#000 !important;  " {/if}  href="index.php?category=DMI&amp;mode=filterBib&amp;r={$user.role_id}">  DMI  </a></li>
       <li><a title="Semesterapparate der FB LS"     class="bgHAW2"   {if $filter.bib == LS                           } style=" background-color:#FFF !important; color:#000 !important;  " {/if}  href="index.php?category=LS&amp;mode=filterBib&amp;r={$user.role_id}">   LS   </a></li>
       <li><a title="Semesterapparate der FB SP"     class="bgHAW2"   {if $filter.bib == SP                           } style=" background-color:#FFF !important; color:#000 !important;  " {/if}  href="index.php?category=SP&amp;mode=filterBib&amp;r={$user.role_id}">   SP   </a></li>
@@ -58,19 +58,19 @@
 
     <ul>
       <li><a href='index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=0' title="Alle Semapp"    ><img src="img/svg/X.svg" width="24" height="24"/><span style="position:absolute; padding:12px;"> Alle Medien        </span></a></li>
-      <li><a href='index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=1' title="Neu Bestellt"   ><img src="img/svg/N.svg" width="24" height="24"/><span style="position:absolute; padding:12px;"> Neu bestellte M.  </span></a></li>
-      <li><a href='index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=2' title="Wird Bearbeitet"><img src="img/svg/B.svg" width="24" height="24"/><span style="position:absolute; padding:12px;"> zu bearbeitende  </span></a></li>
-      <li><a href='index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=9' title="Kaufvorschlag"  ><img src="img/svg/K.svg" width="24" height="24"/><span style="position:absolute; padding:12px;"> Erwerbungsvorsch.    </span></a></li>
-      <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=3" title="Aktiv"          ><img src="img/svg/A.svg" width="24" height="24"/><span style="position:absolute; padding:12px;"> aktive M.  </span></a></li>
-      <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=5" title="Inaktiv"        ><img src="img/svg/I.svg" width="24" height="24"/><span style="position:absolute; padding:12px;"> inaktive M. </span></a></li>
-      <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=4" title="Wird Entfernt"  ><img src="img/svg/E.svg" width="24" height="24"/><span style="position:absolute; padding:12px;"> zu löschende M.</span></a></li>
-      <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=6" title="Gelöschte"      ><img src="img/svg/G.svg" width="24" height="24"/><span style="position:absolute; padding:12px;"> gelöschte M.</span></a></li>
+      <li><a href='index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=1' title="Neu Bestellt"   ><img src="img/svg/N.svg" width="24" height="24"/><span style="position:absolute; padding:12px;"> Neu bestellte M.   </span></a></li>
+      <li><a href='index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=2' title="Wird Bearbeitet"><img src="img/svg/B.svg" width="24" height="24"/><span style="position:absolute; padding:12px;"> Zu bearbeitende    </span></a></li>
+      <li><a href='index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=9' title="Kaufvorschlag"  ><img src="img/svg/K.svg" width="24" height="24"/><span style="position:absolute; padding:12px;"> Erwerbungsvorsch.  </span></a></li>
+      <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=3" title="Aktiv"          ><img src="img/svg/A.svg" width="24" height="24"/><span style="position:absolute; padding:12px;"> Aktive M.          </span></a></li>
+      <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=5" title="Inaktiv"        ><img src="img/svg/I.svg" width="24" height="24"/><span style="position:absolute; padding:12px;"> Inaktive M.        </span></a></li>
+      <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=4" title="Wird Entfernt"  ><img src="img/svg/E.svg" width="24" height="24"/><span style="position:absolute; padding:12px;"> Zu löschende M.    </span></a></li>
+      <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=6" title="Gelöschte"      ><img src="img/svg/G.svg" width="24" height="24"/><span style="position:absolute; padding:12px;"> Gelöschte M.       </span></a></li>
     </ul>
   </li>
 </ul>
 
 <div  style="position:absolute; right:44px;   top:3px;">
-  <a href="javascript:window.print() " title="Druckversion" >  <img src="img/svg/print_w.svg"   width="32"  height="32"   /></a>
+  <a href="javascript:window.print() " title="Druckversion Seite" >  <img src="img/svg/print_w.svg"   width="32"  height="32"   /></a>
 </div>
 
 <div  style="position:absolute; right:1px;   top:2px;">

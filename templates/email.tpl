@@ -1,5 +1,5 @@
 <h3 style="margin:10px; padding:10px; color: #FFF; background-color: #800000;">
-{$collection.title} : {$collection.media[ $medium.id ].title } : Email
+{$collection.title} : {$collection.media[ 0 ].title } : Email
 <a style="float:right;" href="{$operator.url}"> <img  class="icon" style="margin-top:-4px;" title="Zurück" src="img/svg/chevron-left_w.svg" /></a>
 </h3>
 
@@ -22,10 +22,10 @@
 
 Ihr Semesterapparat: {$collection.title }
 
-Ihr Buch/Medium: {$collection.media[ $medium.id ].title }
+Ihr Buch/Medium: {$collection.media[ 0 ].title }
 
 
-{$collection.media[ $medium.id ].notes_to_staff}
+{$collection.media[ 0 ].notes_to_staff}
  
 
 Mit freundlichen Gr&uuml;&szlig;en
