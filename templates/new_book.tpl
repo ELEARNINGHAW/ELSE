@@ -36,12 +36,7 @@
      <button style="padding:20px;" class="ui-button ui-widget ui-corner-all"> <a href="https://elsehaw.beluga-core.de/vufind/?lmsid={$URLID}&lmsurl={$URL}">Im HAW-Katalog recherchieren und die Merkliste füllen</a>
 </div>
      </button>
-
-
-
      <br />
-
-
      Über die Merklisten-Verwaltung des HAW-Katalogs <img src="img/merkliste.png" />   können Sie diese Titel dann direkt in Ihr ELSE übernehmen.
      <br />
 
