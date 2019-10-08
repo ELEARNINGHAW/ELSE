@@ -14,7 +14,6 @@
 <div  id="{$di.ppn}" class="mediaInSA medium_{$di.shelf_remain} {$current} " >
 <a name="{$di.ppn}" style="position:relative; top:-220px;"></a>
 <a title="Buch Im Onlinekatalog anzeigen" class="medLink medi_{$di.doc_type_id} .s_standard state_{$di.state_id}" href="{$CFG.catURLlnk}{$di.ppn}" target="_blank" onclick="return -1">
-
 <table>
 
 {if $doctypedescription != ""           }  <tr><td><div class="mediaListHeader">Medientyp: </div></td><td><div  class="mediaTxt" >{$doctypedescription}  </div>            {/if}
@@ -22,8 +21,9 @@
 {if $di.author          != ""           }  <tr><td><div class="mediaListHeader">Autor:     </div></td><td><div  class="mediaTxt" >{$di.author}           </div> </td></tr> {/if}
 {if $di.doc_type        == 'electronic' }  <tr><td><div class="mediaListHeader">Format:    </div></td><td><span class="mediaTxt" >Online-Ressource  </span></td></tr> {/if}
 {if $di.doc_type        == 'print'      }
-  {if (isset ( $di.signature  ) AND $di.signature  != "" )}<tr><td><div class="mediaListHeader">Format: </div></td><td><span class="mediaTxt">Print - Sig:{$di.signature|escape} </span></td></tr>{/if}
-  {if (isset ( $di.ISBN       ) AND $di.ISBN       != "" )}<tr><td><div class="mediaListHeader">ISBN:   </div></td><td><span class="mediaTxt">{$di.ISBN|escape:"br"}             </span></td></tr>{/if}
+
+{if (isset ( $di.signature  ) AND $di.signature  != "" )}<tr><td><div class="mediaListHeader">Format: </div></td><td><span class="mediaTxt">Print - Sig:{$di.signature|escape} </span></td></tr>{/if}
+{if (isset ( $di.ISBN       ) AND $di.ISBN       != "" )}<tr><td><div class="mediaListHeader">ISBN:   </div></td><td><span class="mediaTxt">{$di.ISBN|escape:"br"}             </span></td></tr>{/if}
 {/if}
 
 </table>
@@ -63,7 +63,7 @@
   {/if}
   {if $visible == 1}
     {if $CFG[ 'ajaxON' ]} {* AJAX *} <a class='icon' href='javascript:;' onCLick="{literal}${/literal}.ajax({literal}{{/literal}url: 'index.php?dc_collection_id={$ci.dc_collection_id}&item={$di.item}&action={$action.button}&r={$user.role_encode}&d_info={$di.id}#{$di.id}' ,type: 'GET', success: function(data){literal}{{/literal}{literal}${/literal}('.{$di.id}').html(data);{literal}}}{/literal});"><img  class="icon" title="{$action.button_label}" src="img/svg/{$action.button}.svg" /></a>
-    {else}                {* HTTP *} <a class="icon" href="index.php?dc_collection_id={$ci.dc_collection_id}&amp;item={$di.item}&amp;action={$action.button}&amp;r={$user.role_encode}&amp;document_id={$di.id}#{$di.id}">                                                                                                                                                                              <img  class="icon" title="{$action.button_label}" src="img/svg/{$action.button}.svg" /></a>
+    {else}                {* HTTP *} <a class="icon" href="index.php?loc={$di.shelf_remain}&dc_collection_id={$ci.dc_collection_id}&amp;item={$di.item}&amp;action={$action.button}&amp;r={$user.role_encode}&amp;document_id={$di.id}#{$di.id}">                                                                                                                                                                              <img  class="icon" title="{$action.button_label}" src="img/svg/{$action.button}.svg" /></a>
     {/if}
   {/if}
 {/foreach}

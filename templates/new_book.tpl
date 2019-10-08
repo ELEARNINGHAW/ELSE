@@ -29,7 +29,7 @@
  {/if}
 
  <div style="  display: block;" >
-   Sie können nun direkt im HAW-Katalog recherchieren und bei allen gewünschten Titel durch einen Klick auf  <img src="img/sternchen.png" /> in die dortige Merkliste übernehmen.
+   Sie können nun direkt im HAW-Katalog recherchieren und gewünschte Titel durch einen Klick auf  <img src="img/sternchen.png" /> in die dortige Merkliste übernehmen.
      <br />
      <br />
 
@@ -50,7 +50,11 @@
 
          <ul>
              <li>
-         Bei einem Print-Buch können Sie entscheiden, ob dieses ein Literaturhinweis sein soll oder in Ihren physischen Semesterapparat (Handapparat) in der Fachbibliothek eingestellt werden soll. (Bei Artikeln ist nur die Einbindung als Literaturhinweis möglich.)
+         Bei einem Print-Buch können Sie entscheiden, ob dieses ein Literaturhinweis sein soll oder in Ihren physischen Semesterapparat (Handapparat) in der Fachbibliothek eingestellt werden soll.
+             </li>
+
+             <li>
+                 Bei Print-Artikeln ist nur die Einbindung als Literaturhinweis möglich.
              </li>
              <li>
             Bei allen Titeln können Sie Anmerkungen für die Studierenden hinzufügen.

@@ -49,7 +49,6 @@ class Collection
     $this -> Owner                 = new User();
     $this -> MedState              = new MedState();
     $this -> Bib                   = new Bib();
-
     $this -> media                 = null;
   }
 
@@ -75,7 +74,6 @@ class Collection
   function get_Med_state()             { return $this -> Med_state            ; }
   function get_Bib()                   { return $this -> Bib                  ; }
   function get_media()                 { return $this -> media                ; }
-  #  function get_      ()          { return $this ->                   ; }
 
   function set_id                      ( $val ) { $this -> id                   =  $val ; }
   function set_title                   ( $val ) { $this -> title                =  $val ; }
@@ -99,9 +97,6 @@ class Collection
   function set_Med_state               ( $val ) { $this -> MedState             =  $val ; }
   function set_Bib                     ( $val ) { $this -> Bib                  =  $val ; }
   function set_media                   ( $val ) { $this -> media                =  $val ; }
-  #  function set_               ( $val )  { $this ->                 =  $val ; }
-
-
 
   function obj2array()
   {
@@ -129,14 +124,9 @@ class Collection
 
     foreach ( $array as $k => $v )  {  $this->$k = $v;    }
 
-    #foreach ($array['medias'] as $m { $med[]  }
-
     $this -> Owner              = $colltmp -> Owner    -> array2obj ( $colltmp->Owner    );
     $this -> MedState           = $colltmp -> MedState -> array2obj ( $colltmp->MedState );
     $this -> Bib                = $colltmp -> Bib      -> array2obj ( $colltmp->Bib      );
 
   }
-
-
-
 }

@@ -18,7 +18,10 @@ Wenn Sie ein Buch zur Anschaffung in der Bibliothek vorschlagen m&ouml;chten und
 </div>
 {**}
 {else}
-<h3 style="margin:10px; padding:10px; color: #FFF"  class="bgDef bg{$collection.bib_id}" >{$collection.title}<br/> {$doctypetxt} bearbeiten {$currentElement+1}/{$maxElement}<a style="float:right;" href="index.php{$operator.url}"><img  class="icon" style="margin-top:-4px;" title="Zurück" src="img/svg/chevron-left_w.svg" /></a></h3>
+<h5 style="margin:10px; padding:10px; color: #FFF"  class="bgDef bg{$collection.bib_id}" >{$collection.title}<br/> {$doctypetxt} bearbeiten <a style="float:right;" href="index.php{$operator.url}"><img  class="icon" style="margin-top:-15px;" title="Zurück" src="img/svg/chevron-left_w.svg" /></a>
+ <span   style="position:relative; font-size:25px; float:right; top:-18px; padding-right: 15px; " >  {$currentElement+1}/{$maxElement} </span>
+</h5>
+
 {/if}
 
 
@@ -26,7 +29,8 @@ Wenn Sie ein Buch zur Anschaffung in der Bibliothek vorschlagen m&ouml;chten und
 <form  action="index.php" method="get">
 
 <input type = "hidden" name = "dc_collection_id" value = "{$collection.dc_collection_id}" >
-<input type = "hidden" name = "item"             value = "{$operator.item}"               >
+<input type = "hidden" name = "item"             value = "media"                          >
+<input type = "hidden" name = "loc"              value = "1"                              >   {* loc ist an dieser Stelle noch nicht definiert, deshalb standard = 1 *}
 <input type = "hidden" name = "action"           value = "save"                           >
 <input type = "hidden" name = "document_id"      value = "{$medium.id}"                   >
 <input type = "hidden" name = "doc_type_id"      value = "{$medium.doc_type_id}"          >

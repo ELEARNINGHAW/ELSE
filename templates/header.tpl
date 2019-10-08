@@ -4,11 +4,12 @@
     <meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8" />
     <link   type="text/css"        href="lib/style.css"     rel="stylesheet"  />
     <link   type="text/css"        href="lib/jquery-ui.css" rel="stylesheet" />
+    <link   href="https://fonts.googleapis.com/css?family=Fira+Sans|Open+Sans&display=swap" rel="stylesheet">
+
     <script type="text/javascript" src="lib/jquery-1.10.2.js"></script>
 
     <script type="text/javascript" src="lib/jquery-ui.js"></script>
     <script type="text/javascript" src="lib/else.js"></script>
-
   </head>
 <body style='margin:0px; padding:0px;'>
 

@@ -51,8 +51,6 @@ $this -> bib_name       = '';
 $this -> bib_ap_name    = '';
 $this -> bib_ap_mail    = '';
 $this -> state_id       = '';
-
-#$this ->      = '';
 }
 
 

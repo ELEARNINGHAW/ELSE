@@ -43,7 +43,7 @@
     {/if}
 
     {if $edit_mode AND $ci.dc_collection_id != "" }
-    <a href="index.php?dc_collection_id={$ci.dc_collection_id}&amp;item=physical&amp;action=coll_meta_save&amp;r={$user_role_id}"  title="Neues Medium (Buch, E-Book,...) dem Semesterapparat hinzufügen"  >
+    <a href="index.php?dc_collection_id={$ci.dc_collection_id}&amp;item=collection&amp;action=add_media&amp;r={$user_role_id}"  title="Neues Medium (Buch, E-Book,...) dem Semesterapparat hinzufügen"  >
     <img src="img/svg/addBook_w.svg"   width="32"  height="32" style="position:relative; float:right;  margin:2px; " /></a>
     {/if}
 

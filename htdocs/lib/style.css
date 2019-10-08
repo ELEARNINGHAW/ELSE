@@ -3,7 +3,9 @@ body
   min-width:600px;
   max-width:800px;
   font-size:1.1em;
-  font-family:Verdana, Arial, Helvetica, sans-serif;
+
+  font-family: 'Fira Sans', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 
@@ -453,7 +455,7 @@ a.icon
 
 a.name2, a.name 
 {
-  padding-top: 10px;
+  padding-top: 5px;
   padding-left: 25px;
   display:block;
   color:#000;
@@ -470,7 +472,7 @@ a.name
 
 .name2
 {  
-  padding-top: 20px;
+  padding-top: 14px;
   width: calc(100% - 155px);
   font-size: 13px;
 }
@@ -486,8 +488,8 @@ a.name
 
 .semapNameListe
 {
-  font-size:13px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-size:15px;
+
   background-color: #FFF;
   margin: 2px;
   margin-left: 10px;
@@ -501,7 +503,7 @@ a.name
 
   background-image:url(../img/svg/SA.svg);
   background-repeat:no-repeat;
-  background-position: 3px 11px;
+  background-position: 3px 9px;
   background-size: 32px;
   height: 33px;
 
@@ -513,7 +515,7 @@ a.name
 
   text-align: center;
   right: 180px;
-  padding : 10px;
+  padding : 7px;
   padding-left: 7px;
 
 

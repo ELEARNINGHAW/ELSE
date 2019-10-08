@@ -24,7 +24,6 @@ function __construct()
   $this -> mailtext         = '' ;
   $this -> collection_id    = '' ;
   $this -> document_id      = '' ;
-#    $this->    = '' ;
 }
 
   function get_to                ( )       { return $this -> to              ; }
@@ -49,5 +48,4 @@ function __construct()
 
   function obj2array()           { return json_decode(json_encode( $this  ), true);  }
   function array2obj( $array )   { foreach ( $array as $k => $v )  { $this -> $k = $v;      } }
-
 }

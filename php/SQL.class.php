@@ -97,16 +97,17 @@ if( $filter )
 $SQL =
 "SELECT * FROM `document`
 WHERE `collection_id` = \"" . $colID . "\"";
-if (  $filter_state != ''  AND  $filter_state != 0   ) { $SQL .= " AND `state_id`    = " . $this -> es ( $filter_state  ); }
-if (  $filter_type  != ''                            ) { $SQL .= " AND `id` = "          . $this -> es ( $filter_type   ); }
+if (  $filter_state != ''  AND  $filter_state != 0   ) { $SQL .= " AND `state_id`    = "   . $this -> es ( $filter_state  ); }
+if (  $filter_type  != ''                            ) { $SQL .= " AND `doc_type_id` = "   . $this -> es ( $filter_type   ); }
 
 #deb($SQL);
 $res = mysqli_query ( $this -> DB , $SQL );
 
+
 if ( $res )
 { while ( $row = mysqli_fetch_assoc ( $res ) )
   {
-
+    #  deb($row );
     if( $row[ 'state_id' ] != 6 OR  $filter_state = 6 )  ## Gelöschte Medien werden NICHT angezeigt, außer in der Liste der gelöschten Medien
     {
       $m = new Medium();
@@ -128,23 +129,11 @@ if ( $res )
       $m -> set_created              ( $row[ 'created'             ] );
       $m -> set_last_modified        ( $row[ 'last_modified'       ] );
       $m -> set_last_state_change    ( $row[ 'last_state_change'   ] );
-
-      #$m->set_shelf_remain     ( $row[ 'shelf_remain'        ] );
-      # $m->set_location_id      ( $row[ 'location_id'       ] );
-      # $m->set_year             ( $row[ 'year'              ] );
-      # $m->set_journal          ( $row[ 'journal'           ] );
-      # $m->set_volume           ( $row[ 'volume'            ] );
-      # $m->set_pages            ( $row[ 'pages'             ] );
-      # $m->set_url              ( $row[ 'url'               ] );
-      # $m->set_url_type_id      ( $row[ 'url_type_id'       ] );
-      # $m->set_relevance        ( $row[ 'relevance'         ] );
-      # m->set_protected         ( $row[ 'protected'         ] );
     }
 
     $ret[ $row[ 'id' ] ] = $m;
   }
 }
-#deb($ret);
 return $ret;
 }
 
@@ -223,18 +212,15 @@ function getCollection( $colID = null , $filter = false ,  $short = null )
 
     if ( $filterSem != ''  AND   $filterSem != 'X'                           )  {  $semesterFilter = " AND c.sem     = '" .   $filterSem . "' "; }  # SEMESTER filter
     if ( $filterBib != ''  AND   $filterBib != 'X' AND   $filterBib != '0'   )  {  $bibFilter      = " AND c.bib_id  = '" .   $filterBib . "' "; }  # Bibliotheks filter
-    else                                                                                                     {  $bibFilter      = " AND c.bib_id != '' ";    }
+    else                                                                        {  $bibFilter      = " AND c.bib_id != '' "                    ; }
   }
 
-  if ( $colID )   {  $collection .= " AND c.id = \"" . $this->es ( $colID ) . "\" ";     }
+  if ( $colID )   { $collection .= " AND c.id = \"" . $this->es ( $colID ) . "\" ";  }
 
-
-  $SQL = "SELECT  c.id        as c_id, 
-                c.sortorder as c_sortorder ";
+  $SQL  = "SELECT  c.id  as  c_id,    c.sortorder as c_sortorder ";
   $SQL .= " FROM `collection` c , `user` u";
   $SQL .= " WHERE  u.hawaccount = c.user_id " .  $collection  . " " . $bibFilter . " " . $semesterFilter;  # ."  ".$user;
   $SQL .= " ORDER BY c.id ";
-
 
   $res = mysqli_query ( $this->DB , $SQL );
 
@@ -255,9 +241,7 @@ function getCollection( $colID = null , $filter = false ,  $short = null )
 
         foreach ( $dl as $d )
         {
-        #  deb($d);
           $d -> calcDocType ( );  ## TODO check ob überhaupt notwendig?
-        #  deb($d);
           $withoutSortOrder[ $d -> get_id()  ] = $d ;   ## --- Attribute hinzufügen 'doc_type', 'item', 'doc_type_id', 'state_id'
         }
 
@@ -1011,7 +995,9 @@ function getSAid( $SEM )
     $SQL .= " ORDER BY `c_id` ";
     $SQL .= " DESC ";
 
+    #deb($SQL,1);
     $SAList = NULL;
+
 
     $res = mysqli_query ( $this->DB , $SQL );
 
@@ -1074,12 +1060,8 @@ function getSAid( $SEM )
       {
         $newValue = trim($row[$currTableRow ]);
         $SQL2 = "UPDATE $currTable SET `$currTableRow` =  \"$newValue\"   WHERE `$currTableRow` LIKE \"" . $row[$currTableRow] . "\"";
-
         mysqli_query ( $this->DB , $SQL2 );
       }
     }
   }
 }
-
-
-

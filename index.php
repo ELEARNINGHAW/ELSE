@@ -41,7 +41,7 @@ $cu = $I[ 'currentUser' ];
 $ca = $I[ 'operator'    ] -> get_action();
 $ci = $I[ 'operator'    ] -> get_item();
 
-#deb($I[ 'operator'    ],1);
+deb($I,1);
 
 # -- Default: item = collection -- (user) action = show_collection, (staff) action = show_collection_list
 if ( $ci  == 'collection'  AND   $UTIL->hasRole( $cu,'admin', 'staff', 'edit') )
@@ -51,7 +51,9 @@ if ( $ci  == 'collection'  AND   $UTIL->hasRole( $cu,'admin', 'staff', 'edit') )
   else if ( $ca  == 'show_media_list'        )  { $COLLMGR -> showMediaList             ( $I ) ; }  ## ++ STAFF:: Zeigt die Liste der SAs, geoperatort nach deren STATUS
   else if ( $ca  == 'new_init'               )  { $COLLMGR -> saveNewCollection         ( $I ) ; }  ## Metadaten des NEUEN SA wird gepeichert -> SA wird angelegt
   else if ( $ca  == 'coll_meta_edit'         )  { $COLLMGR -> editColMetaData           ( $I ) ; }  ## Anzeigen des Formulars um Metadaten des SA zu bearbeiten
+
   else if ( $ca  == 'coll_meta_save'         )  { $COLLMGR -> updateColMetaData         ( $I ) ; }  ## Metadaten des SA updaten
+  else if ( $ca  == 'add_media'              )  {  $MEDIAMGR -> showNewMediaForm              ( $I ); }   ## ++ 3 Eingabemaske für Mediensuche anzeigen   [Neues Medium dem SA hinzufügen]
   else if ( $ca  == 'resort'                 )  { $COLLMGR -> resortCollection          ( $I ) ; }  ## Setzt neue Reihenfolge der Medien im SA
   else if ( $ca  == 'export'                 )  { $COLLMGR -> exportCollection          ( $I ) ; }  ## Exportiert den SA
   else if ( $ca  == 'import'                 )  { $COLLMGR -> importCollection          ( $I ) ; }  ## Importiert den SA
@@ -66,7 +68,6 @@ if ( $ci  == 'collection'  AND   $UTIL->hasRole( $cu,'admin', 'staff', 'edit') )
 
 else if (   $ci  == 'physical'   AND   $UTIL->hasRole( $cu,'admin', 'staff', 'edit'))
 { if      ( 1==2 ) {;}
-  else if ( $ca  == 'coll_meta_save'        )  {  $MEDIAMGR -> showNewMediaForm              ( $I ); }   ## ++ 3 Eingabemaske für Mediensuche anzeigen   [Neues Medium dem SA hinzufügen]
   else if ( $ca  == 'search'                )  {  $MEDIAMGR -> searchMediaOnLibraryServer    ( $I ); }   ## ++ 4 Suchprozess des Mediums wird gestartet
   else if ( $ca  == 'annoteNewMedia'        )  {  $MEDIAMGR -> annoteNewMedia_showForm       ( $I ); }   ## ++ 5 Eingabemaske Metadaten für Buch Annotation anzeigen
   else if ( $ca  == 'annoteNewMediaBatch'   )  {  $MEDIAMGR -> annoteNewMediaBatch_showForm  ( $I ); }   ## ++ 5 Eingabemaske Metadaten für Buch Annotation anzeigen

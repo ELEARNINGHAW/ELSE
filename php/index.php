@@ -14,7 +14,7 @@
       <main>
 		<a class='btn btn-default btn-sm' href='javascript:;' onCLick="$.ajax({url: './ajax.php', type: 'GET', success: function(data){$('.ausgabe').html(data);}});">AjAX-Request ausführen</a>
 		  <div class='ausgabe'>
-			Hier steht was, nachdem du auf den Button klickst
+
 		</div>
 		</main>
  

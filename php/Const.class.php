@@ -22,9 +22,9 @@ function __construct()
 #$this->sem[ 'S17' ] = array( '2017_03_01' , '2017_08_31' );
 #$this->sem[ 'W17' ] = array( '2017_09_01' , '2018_02_03' );
 #$this->sem[ 'S18' ] = array( '2018_02_03' , '2018_07_14' );
-$this->sem[ 'W18' ] = array( '2018_07_14' , '2019_02_02' );
-$this->sem[ 'S19' ] = array( '2019_02_02' , '2019_07_13' );
-$this->sem[ 'W19' ] = array( '2019_09_10' , '2020_01_31' );
+    $this->sem[ 'W18' ] = array( '2018_07_14' , '2019_02_02' );
+    $this->sem[ 'S19' ] = array( '2019_02_02' , '2019_07_13' );
+    $this->sem[ 'W19' ] = array( '2019_09_10' , '2020_01_31' );
 #$this->sem[ 'S20' ] = array( '2020_03_09' , '2020_07_10' );
 #$this->sem[ 'W20' ] = array( '2020_09_14' , '2021_01_29' );
 #$this->sem[ 'S21' ] = array( '2021_03_15' , '2021_07_16' );
@@ -87,7 +87,7 @@ $this->CONST_ACTION_INFO = array
         (
             "state"    => array ( "inactive" ) ,
             "mode"     => array ( "edit" , "admin" , "staff" ) ,
-            "loc"      => array ( "1" ,  "2", "3"  ) ,
+            "loc"      => array ( "1", "2", "3"  ) ,
         ) ,
         'acl' => array
         (

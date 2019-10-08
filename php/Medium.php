@@ -103,16 +103,13 @@ function set_created                     ( $val )  { return $this -> created    
 function set_last_modified               ( $val )  { return $this -> last_modified               =  $val ; }
 function set_last_state_change           ( $val )  { return $this -> last_state_change           =  $val ; }
 
-
 function obj2array()           {  return json_decode(json_encode( $this  ), true);  }
 function array2obj( $array )   {  foreach ($array as $k => $v )  { $this->$k = $v;       } }
 
-
 function calcDocType()
-{ #deb( $_SESSION[ 'DOC_TYPE' ],1);
+{
   $dt = $_SESSION[ 'DOC_TYPE' ][ $this->get_doc_type_id() ];
   $this -> set_doc_type( $dt[ 'doc_type'   ] );
-  $this -> set_item    ( $dt[ 'item' ] );
 }
 
 function calcDocTypeID()  ## docTypeID and Item
@@ -120,8 +117,19 @@ function calcDocTypeID()  ## docTypeID and Item
   foreach ( $_SESSION[ 'DOC_TYPE' ]  as $dt )
   {    if ($dt[ 'doc_type' ] == $this->get_doc_type() )
     {  $this -> set_doc_type_id( $dt[ 'id'   ] );
-       $this -> set_item(        $dt[ 'item' ] );
     }
   }
 }
+
+function calcItem()  ## docTypeID and Item
+{
+   foreach ( $_SESSION[ 'DOC_TYPE' ]  as $dt )
+   { if ($dt[ 'doc_type' ] == $this->get_doc_type() )
+     {   if ( $dt[ 'SA-ready' ] == '0' )         ## Alle Medien die nicht SA fähig sind werden zu item: online
+              {  $this -> set_item('online') ;     }
+         else {  $this -> set_item(  $dt[ 'item' ] ); }
+     }
+   }
+}
+
 }

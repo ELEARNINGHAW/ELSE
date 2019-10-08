@@ -7,7 +7,6 @@ var $RENDERER;
 var $SQL;
 var $UTIL;
 
-
 function __construct( $CONFIG, $SQL, $RENDERER, $UTIL )
 {
   $this->CFG        = $CONFIG;
@@ -15,7 +14,6 @@ function __construct( $CONFIG, $SQL, $RENDERER, $UTIL )
   $this->RENDERER   = $RENDERER;
   $this->UTIL       = $UTIL;
 }
-
 
 ###############################################################################################
 function  showMediaList( $I )  ##---------- Medien gefiltert nach Status
@@ -39,6 +37,7 @@ function  showMediaList( $I )  ##---------- Medien gefiltert nach Status
   $tpl_vars[ 'medium'          ] =  $I[ 'medium'                          ] -> obj2array ( ) ;
   $tpl_vars[ 'filter'          ]  = $I[ 'filter'                          ] -> obj2array ( )  ;
 
+  $tpl_vars[ 'DOC_TYPE'        ]  = $_SESSION[ 'DOC_TYPE' ] ;
   $tpl_vars[ 'MEDIA_STATE'     ]  = $_SESSION[ 'MEDIA_STATE'              ]  ; #
   $tpl_vars[ 'ACTION_INFO'     ]  = $_SESSION[ 'ACTION_INFO'              ]  ; # ===================== ACTION INFO BESSER HIER IM PHP AUSWERTEN, NICHT IM TEMPLATE
   $tpl_vars[ 'CFG'             ]  = $_SESSION[ 'CFG'                      ]  ; # aus config.class.php
@@ -47,9 +46,10 @@ function  showMediaList( $I )  ##---------- Medien gefiltert nach Status
   $tpl_vars[ 'FACHBIB'         ]  = $_SESSION[ 'FACHBIB'                  ]  ; # Liste aller Fachbibs
   $tpl_vars[ 'SEMESTER'        ]  = array_keys( $_SESSION[ 'SEM'          ] ); #
 
-  $this->RENDERER -> do_template( 'collection.tpl', $tpl_vars );
-}
+  #deb($tpl_vars,1);
 
+   $this->RENDERER -> do_template( 'collection.tpl', $tpl_vars );
+}
 
 # ---------------------------------------------------------------------------------------------
   /*
@@ -63,7 +63,7 @@ function  showMediaList( $I )  ##---------- Medien gefiltert nach Status
 function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert nach Dozenten,  Fakuläten, Departtments, Status
 {
   /* ----------------- LISTE DER INPUTPARAMETER  ------------------ */
-  #$tpl_vars = $I ;
+
 
   $I[ 'operator' ] -> set_url( $I[ 'operator' ] -> get_history( )[ 1 ]  );                  ##  Link für den "zurück"- Button
   $tpl_vars[ 'collectionList' ]                  = $this -> getAllCollection ( $I )      ;
@@ -79,9 +79,38 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
   $tpl_vars[ 'source'         ]                  = 'index.php'                            ;
   ##-------------------------------------------------------------------------------------------------------------------
 
-
   $this -> RENDERER -> do_template ( 'index.tpl' , $tpl_vars , TRUE ) ;
 }
+
+
+###############################################################################################
+# ---------------------------------------------------------------------------------------------
+    function showNewMediaForm( $I, $toSearch = NULL, $searchHits = 1 )
+    {
+        $collection_id                                    = $I[ 'currentCollection'               ] -> get_collection_id( );
+        $bc_urlID                                         = $_SESSION['bc_urlID'] = urlencode( base64_encode ($collection_id.'###'. $I[ 'currentUser']-> get_hawaccount() ) );
+        $collection                                       = $this -> SQL -> getCollection ( $collection_id );
+        $tpl_vars[ 'collection'      ]                    = $collection[ $collection_id           ] -> obj2array ( );
+        $tpl_vars[ 'user'            ]                    = $I[ 'currentUser'                     ] -> obj2array ( );
+        $tpl_vars[ 'operator'        ]                    = $I[ 'operator'                        ] -> obj2array ( );
+        $tpl_vars[ 'filter'          ]                    = $I[ 'filter'                          ] -> obj2array ( ) ;
+        $tpl_vars[ 'SEMESTER'        ]                    = array_keys( $_SESSION[ 'SEM' ] );                                      # $conf[ 'SEMESTER' ] ;
+        $tpl_vars[ 'page'            ]                    = 1;                                                                     # Seite 1 = Eingabemaske für die Suchbegriffe bei der Mediensuche */
+        $tpl_vars[ 'searchHits'      ]                    = $searchHits;
+        $tpl_vars[ 'book'            ][ 'title'       ]   = $toSearch[ 'title'         ];
+        $tpl_vars[ 'book'            ][ 'author'      ]   = $toSearch[ 'author'        ];
+        $tpl_vars[ 'book'            ][ 'signature'   ]   = $toSearch[ 'signature'     ];
+        $tpl_vars[ 'maxRecords'      ]                    = $this -> CFG -> CFG[ 'maxRecords' ];
+        $tpl_vars[ 'URLID'           ]                    = $bc_urlID;
+        $tpl_vars[ 'URL'             ]                    = $this -> CFG -> CFG[ 'URL' ].'/htdocs/' ;
+
+        $_SESSION[ 'currentCollection' ] = $collection[ $collection_id ] -> obj2array ( );
+
+        $this -> RENDERER -> do_template ( 'new_book.tpl' , $tpl_vars ) ;
+        exit(0);
+    }
+
+
 
 
 /*
@@ -104,8 +133,6 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
 
     $tpl_vars[ 'SEMESTER'               ]  = $conf[ 'SEMESTER'  ] =  array_keys( $_SESSION[ 'SEM' ] );
     $tpl_vars[ 'CFG'                    ] = $this->CFG->getConf();
-
-
 
     $this->RENDERER->do_template( 'collection_list.tpl', $tpl_vars );
     unset($_SESSION[ 'operator' ][ 'off' ]);
@@ -149,8 +176,6 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
 
     $this -> RENDERER -> do_template( 'collection.tpl', $tpl_vars );
   }
-
-
 
 function saveNewCollection( $I )
 {
@@ -402,12 +427,15 @@ function lmsDownload( $I )
     if( isset( $med[ 'format'      ][ 0 ] ) ) { $m -> set_format        ( trim ( $med[ 'format'       ]  ) );
                                                 $m -> set_doc_type      ( trim ( $med[ 'format'       ]  ) );
                                                 $m -> calcDocTypeID();
+                                                $m -> calcItem();
     }
 
     $ret[] = $m;
   }
 
-   # deb( $ret,1);
+
+ # deb( $ret,1);
+
 
   $_SESSION[ 'books' ][ 'currentCollection' ] = $lmsDownload[1];
   $_SESSION[ 'books' ][ 'booksHitList'      ] = $this -> UTIL -> xml2array( $ret );
@@ -420,16 +448,8 @@ function lmsDownload( $I )
   $b_ppn                       = $_SESSION[ 'books'     ][ 'booksHitList' ][ 0 ][ 'ppn' ];
 
 
-  $b_item = $_SESSION[ 'books' ][ 'booksHitList' ][0]['item'];
-
-/*
-if     ( $dt_id  == 1 OR $dt_id  == 3  )  { $b_item =   'book' ; }
-else                                      { $b_item =   'ebook'; }
-*/
-
-$_SESSION[ 'books' ][ 'url' ] =  "index.php?ppn=$b_ppn&item=$b_item&action=annoteNewMedia&dc_collection_id=$collection_dc_collection_id&mode=new&r=$user_role_id";
-
-$this -> RENDERER -> doRedirect( $_SESSION[ 'books' ][ 'url' ]  );
+  $_SESSION[ 'books' ][ 'url' ] =  "index.php?ppn=$b_ppn&item=media&loc=1&action=annoteNewMedia&dc_collection_id=$collection_dc_collection_id&mode=new&r=$user_role_id";
+  $this -> RENDERER -> doRedirect( $_SESSION[ 'books' ][ 'url' ]  );
 }
 
 
@@ -490,9 +510,6 @@ function LMSLoader( $strXml )
         foreach ( $b -> subfield as $sf   )
         {
           if( $sf -> attributes() -> code == 'a'  )  {  $medium[ $PPN ][ 'title'        ]  =  (string)$sf;   }
-
-          #if( $sf -> attributes() -> code == 'h'  )  {  $medium[ $PPN ][ 'doc_type'     ]  =  4;   }               ## E-Book  ???????????? checken!
-          #else                                       {  $medium[ $PPN ][ 'doc_type'     ]  =  1;   }               ## Buch    ???????????? checken!
         }
       }
 
@@ -542,9 +559,6 @@ function LMSLoader( $strXml )
     $medium[(string)$PPN][ 'format'          ] =   (string)$xmlrec -> format;
 
   }
-
-
-
   return  $medium;
 }
 
@@ -761,12 +775,14 @@ if (!empty($_FILES))
 #    $userlist = $this -> SQL -> getUserList ( $I[ 'filter' ] -> get_user () );                                                                         ## Array der Metadaten aller ELSE Owner
     $userlist = $this -> SQL -> getUserList ( );                                                                         ## Array der Metadaten aller ELSE Owner
 
-    $collectionList = null;
+    # deb($userlist,1);
+     $collectionList = null;
 
     foreach ( $userlist as $user )                                                                                            ## Liste wird mit entsprechenden SAs erweitert
     {
       $SAlistTMP  =  $this -> SQL -> getSAlist( $user, $I  );
 
+      # deb($SAlistTMP);
       $SAlist     =  array();
 
       if ( $SAlistTMP )
@@ -784,6 +800,7 @@ if (!empty($_FILES))
       { $collectionList[ ] = 0 ;                                                                  }
     }
 
+  #  deb($collectionList,1);
     return $collectionList;
   }
 

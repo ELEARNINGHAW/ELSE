@@ -37,15 +37,13 @@ $I = $UTIL -> getInput();                                #--- GET ALL INPUT (GET
 $cu = $I[ 'currentUser' ];
 $ca = $I[ 'operator'    ] -> get_action();
 $ci = $I[ 'operator'    ] -> get_item();
-
+$cl = $I[ 'operator'    ] -> get_loc();
 
 #if ( $ci  == 'book' OR $ci  == 'cd-rom' OR $ci == 'article' )  { $ci ="physical"; }
 #if ($ci ==  OR $ci ==  OR $ci == )  { $ci =""; }
 
-
 #deb($I[ 'operator'    ],1);
 #deb($_SESSION,1);
-
 
 # -- Default: item = collection -- (user) action = show_collection, (staff) action = show_collection_list
 if ( $ci  == 'collection'  AND   $UTIL->hasRole( $cu,'admin', 'staff', 'edit') )
@@ -53,7 +51,10 @@ if ( $ci  == 'collection'  AND   $UTIL->hasRole( $cu,'admin', 'staff', 'edit') )
   else if ( $ca  == 'show_collection_list'   )  { $COLLMGR -> showCollectionList        ( $I ) ; }  ## ++ 1 STAFF:: SA wird angezeigt (deren Editierbarkeit ist abhängig von der Rolle des Nuters)
   else if ( $ca  == 'show_collection'        )  { $COLLMGR -> showCollection            ( $I ) ; }  ## ++ 2 SA wird angezeigt (deren Editierbarkeit ist abhängig von der Rolle des Nuters)
   else if ( $ca  == 'show_media_list'        )  { $COLLMGR -> showMediaList             ( $I ) ; }  ## ++ STAFF:: Zeigt die Liste der SAs, geoperatort nach deren STATUS
+  else if ( $ca  == 'add_media'              )  { $COLLMGR -> showNewMediaForm          ( $I ); }   ## ++ 3 Eingabemaske für Mediensuche anzeigen   [Neues Medium dem SA hinzufügen]
+
   else if ( $ca  == 'new_init'               )  { $COLLMGR -> saveNewCollection         ( $I ) ; }  ## Metadaten des NEUEN SA wird gepeichert -> SA wird angelegt
+
   else if ( $ca  == 'coll_meta_edit'         )  { $COLLMGR -> editColMetaData           ( $I ) ; }  ## Anzeigen des Formulars um Metadaten des SA zu bearbeiten
   else if ( $ca  == 'coll_meta_save'         )  { $COLLMGR -> updateColMetaData         ( $I ) ; }  ## Metadaten des SA updaten
   else if ( $ca  == 'resort'                 )  { $COLLMGR -> resortCollection          ( $I ) ; }  ## Setzt neue Reihenfolge der Medien im SA
@@ -68,9 +69,9 @@ if ( $ci  == 'collection'  AND   $UTIL->hasRole( $cu,'admin', 'staff', 'edit') )
  #else if ( $ca  == 'kill'                   )  { $COLLMGR -> ereaseCollection          ( $I ) ; }  ## Löscht SA endgültig
 }
 
-else if (   $ci  == 'physical'    AND   $UTIL->hasRole( $cu,'admin', 'staff', 'edit'))
+
+else if (   $cl  == 1    AND   $UTIL->hasRole( $cu,'admin', 'staff', 'edit'))
 { if      ( 1==2 ) {;}
-  else if ( $ca  == 'coll_meta_save'        )  {  $MEDIAMGR -> showNewMediaForm              ( $I ); }   ## ++ 3 Eingabemaske für Mediensuche anzeigen   [Neues Medium dem SA hinzufügen]
   else if ( $ca  == 'search'                )  {  $MEDIAMGR -> searchMediaOnLibraryServer    ( $I ); }   ## ++ 4 Suchprozess des Mediums wird gestartet
   else if ( $ca  == 'annoteNewMedia'        )  {  $MEDIAMGR -> annoteNewMedia_showForm       ( $I ); }   ## ++ 5 Eingabemaske Metadaten für Buch Annotation anzeigen
   else if ( $ca  == 'save'                  )  {  $MEDIAMGR -> saveMediaMetaData             ( $I ); }   ## ++ 6 Metadaten eines neues Buch speichern
@@ -91,7 +92,7 @@ else if (   $ci  == 'physical'    AND   $UTIL->hasRole( $cu,'admin', 'staff', 'e
   else if ( $ca  == 'cancel_order'          )  {  $MEDIAMGR -> cancelMedia                   ( $I ); }   ## ActionHandler: Buchbestellung wird storiert
 }
  
-else if (  $ci  == 'online'    AND   $UTIL->hasRole( $cu,'admin', 'staff', 'edit'))
+else if (  ( $cl  == 2  OR $cl  == 3)   AND   $UTIL->hasRole( $cu,'admin', 'staff', 'edit'))
 { if      ( 1==2 ) {;}
   else if ( $ca  == 'annoteNewMedia'        )  {  $MEDIAMGR -> annoteNewMedia_showForm       ( $I ); }   ## Eingabemaske Metadaten für Buch Annotation anzeigen
   else if ( $ca  == 'edit'                  )  {  $MEDIAMGR -> editMediaMetaData             ( $I ); }   ## ActionHandler: Metadaten des SA bearbeiten

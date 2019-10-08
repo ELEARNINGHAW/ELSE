@@ -17,32 +17,6 @@ function __construct( $CFG , $SQL, $RENDERER, $UTIL )
 }
 ####################### --- MEDIA  --- #######################
 
-###############################################################################################
-# ---------------------------------------------------------------------------------------------
-function showNewMediaForm( $I, $toSearch = NULL, $searchHits = 1 )
-{
-  $collection_id                                    = $I[ 'currentCollection'               ] -> get_collection_id( );
-  $bc_urlID                                         = $_SESSION['bc_urlID'] = urlencode( base64_encode ($collection_id.'###'. $I[ 'currentUser']-> get_hawaccount() ) );
-  $collection                                       = $this -> SQL -> getCollection ( $collection_id );
-  $tpl_vars[ 'collection'      ]                    = $collection[ $collection_id           ] -> obj2array ( );
-  $tpl_vars[ 'user'            ]                    = $I[ 'currentUser'                     ] -> obj2array ( );
-  $tpl_vars[ 'operator'        ]                    = $I[ 'operator'                        ] -> obj2array ( );
-  $tpl_vars[ 'filter'          ]                    = $I[ 'filter'                          ] -> obj2array ( ) ;
-  $tpl_vars[ 'SEMESTER'        ]                    = array_keys( $_SESSION[ 'SEM' ] );                                      # $conf[ 'SEMESTER' ] ;
-  $tpl_vars[ 'page'            ]                    = 1;                                                                     # Seite 1 = Eingabemaske für die Suchbegriffe bei der Mediensuche */
-  $tpl_vars[ 'searchHits'      ]                    = $searchHits;
-  $tpl_vars[ 'book'            ][ 'title'       ]   = $toSearch[ 'title'         ];
-  $tpl_vars[ 'book'            ][ 'author'      ]   = $toSearch[ 'author'        ];
-  $tpl_vars[ 'book'            ][ 'signature'   ]   = $toSearch[ 'signature'     ];
-  $tpl_vars[ 'maxRecords'      ]                    = $this -> CFG -> CFG[ 'maxRecords' ];
-  $tpl_vars[ 'URLID'           ]                    = $bc_urlID;
-  $tpl_vars[ 'URL'             ]                    = $this -> CFG -> CFG[ 'URL' ].'/htdocs/' ;
-
-  $_SESSION[ 'currentCollection' ] = $collection[ $collection_id ] -> obj2array ( );
-
-  $this -> RENDERER -> do_template ( 'new_book.tpl' , $tpl_vars ) ;
-  exit(0);
-}
 
 
 function showHitList( $I , $books, $hits, $maxhits)
@@ -59,10 +33,7 @@ function showHitList( $I , $books, $hits, $maxhits)
 
   $tpl_vars[ 'searchHits'      ]  = $hits;
   $tpl_vars[ 'maxHits'         ]  = $maxhits;
-#  foreach($books as $key => $b)
-#  { $b -> calcDocType();
-#    $books_info[ $key ] = $b -> obj2array();
-#  }
+
   $tpl_vars[ 'books_info'  ]  = $books;
 
   $this -> RENDERER -> do_template ( 'new_book.tpl' , $tpl_vars ) ;
@@ -124,8 +95,6 @@ function annoteNewMedia_showForm( $I )
   $tpl_vars[ 'currentElement'  ]  =  $_SESSION['books'][ 'currentElement'  ];
   $tpl_vars[ 'maxElement'      ]  =  $_SESSION['books'][ 'maxElement'      ];
 
-  #deb($tpl_vars['DOC_TYPE']);
-
   $this -> RENDERER -> do_template ( 'edit_book.tpl' , $tpl_vars ) ;
   exit(0);
 }
@@ -134,7 +103,7 @@ function annoteNewMedia_showForm( $I )
 ###############################################################################################
 function saveMediaMetaData( $I )
 {
-  if (  $I[ 'operator' ] -> item == 'physical'   AND $I[ 'medium' ] -> get_shelf_remain() == '0' )   #  Bei Buch Keine Auswahl getroffen, ob Literaturhinweis oder Handapparat
+  if (  $I[ 'operator' ] -> item == 'media'   AND $I[ 'medium' ] -> get_shelf_remain() == '0' )   #  Bei physischem Medium Keine Auswahl getroffen, ob Literaturhinweis oder Handapparat
   {
     $I[ 'operator' ] -> set_msg            ( 'shelf_remain' );
     $I[ 'operator' ] -> set_mode           ( 'new' );
@@ -180,7 +149,6 @@ function saveMediaMetaData( $I )
           }
       }
       $this->SQL->initMediaMetaData ( $I[ 'medium' ] );
-
   }
   else
   {
@@ -198,7 +166,6 @@ function saveMediaMetaData( $I )
   }
   else
   {
-  #  die('2');
     $url = "index.php?item=collection&action=show_collection&dc_collection_id=".$I[ 'currentCollection' ] -> get_dc_collection_id()."&r=".$I[ 'currentUser' ] -> get_role_id();
   }
   $this -> RENDERER -> doRedirect( $url );
@@ -259,15 +226,9 @@ function searchMediaOnLibraryServer( $I )  ## -- OPAC --
     $bk[$key] = $b -> obj2array();
   }
 
-
-
-  #$_SESSION['books'][ 'currentCollection'] = $lmsDownload[1];
   $_SESSION['books'][ 'booksHitList'     ] = $this->UTIL->xml2array($bk);
   $_SESSION['books'][ 'currentElement'   ] = 0;
   $_SESSION['books'][ 'maxElement'       ] = 1;
-
-
-
 
   if    ( $hits < 1 )  { $this -> showNewMediaForm( $I, $toSearch, $hits, $maxhits );  }   ## -- Suche ergab keinen Treffer
   else                 { $this -> showHitList    ( $I, $bk , $hits, $maxhits);                                          }
@@ -289,11 +250,6 @@ function purchase_suggestion( $I )
     $tpl_vars[ 'filter'          ]            =  $I[ 'filter'                          ] -> obj2array ( ) ;
     $tpl_vars[ 'SEMESTER'        ]            =  array_keys( $_SESSION[ 'SEM' ] );                                      # $conf[ 'SEMESTER' ] ;
     $tpl_vars[ 'CFG'             ]            =  $this -> CFG -> getConf();
-
-    #$tpl_vars[ 'coll'    ]                   = $_SESSION[ 'coll' ];
-    #$tpl_vars[ 'work'    ]                   = $I[ 'W' ];
-
-    #$tpl_vars[ 'work'    ][ 'document_id' ]  = 0 ;
 
     $this -> RENDERER -> do_template ( 'edit_book.tpl' , $tpl_vars ) ;
     exit(0);
@@ -786,40 +742,6 @@ function getHitList( $searchQuery )
       }
 
       $tpl_vars[ 'salutaton' ] = $salutaton;
-
-
-      /*
-
-          $tpl_vars[ 'coll' ]             = $I[ 'C' ];
-
-          $tpl_vars[ 'fromFirstName'  ] = $I[ 'U' ][ 'forename'    ] ;
-          $tpl_vars[ 'fromName'       ] = $I[ 'U' ][ 'surname'   ] ;
-          $tpl_vars[ 'fromEmail'      ] = $I[ 'U' ][ 'mail'       ] ;
-
-
-          $tpl_vars[ 'toFirstName'    ] = $user_info[ 'u_forename'  ] ;
-          $tpl_vars[ 'toName'         ] = $user_info[ 'u_surname' ] ;
-          $tpl_vars[ 'toEmail'        ] = $user_info[ 'u_mail'     ] ;
-
-          $tpl_vars[ 'collectionName' ] = $col_info[ 'title' ] ;
-          $tpl_vars[ 'collection_id'  ] = $col_info[ 'id'    ] ;
-
-          $tpl_vars[ 'documentName'   ] = $doc_info[ 'title' ] ;
-          $tpl_vars[ 'doc_info'       ] = $doc_info ;
-
-
-
-          $tpl_vars[ 'linkTxt'        ] = '' ;
-          $tpl_vars[ 'url'            ] = '' ;
-
-          $tpl_vars[ 'work'           ] = $I[ 'W' ] ;
-          $tpl_vars[ 'user'           ] = $I[ 'U' ] ;
-          $tpl_vars[ 'ci'             ] = $col_info ;
-
-          $tpl_vars[ 'operator'         ]  = $_SESSION[ 'operator' ];
-      */
-
-
       $this->RENDERER->do_template ( 'email.tpl' , $tpl_vars );
     }
 
