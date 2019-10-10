@@ -17,8 +17,6 @@ function __construct( $CFG , $SQL, $RENDERER, $UTIL )
 }
 ####################### --- MEDIA  --- #######################
 
-
-
 function showHitList( $I , $books, $hits, $maxhits)
 {
   $collection_id = $I[ 'currentCollection'    ] -> get_collection_id();
@@ -41,7 +39,6 @@ function showHitList( $I , $books, $hits, $maxhits)
   exit(0);
 }
 
-
 ###############################################################################################
 function editMediaMetaData( $I )
 {
@@ -59,8 +56,6 @@ function editMediaMetaData( $I )
 
   $tpl_vars[ 'currentElement'  ]                          =  0 ;
   $tpl_vars[ 'maxElement'      ]                          =  1 ;
-
-
 
   $this -> RENDERER -> do_template ( 'edit_book.tpl' , $tpl_vars ) ;
   exit(0);
@@ -162,18 +157,15 @@ function saveMediaMetaData( $I )
 
   if( $_SESSION['books'][ 'currentElement'  ] <   $_SESSION['books'][ 'maxElement'  ] -1  )
   {
-
-   $_SESSION['books'][ 'currentElement'  ] ++ ;
-
-   $url = $_SESSION[ 'books' ][ 'url' ];
-
+    $_SESSION['books'][ 'currentElement'  ] ++ ;
+    $url = $_SESSION[ 'books' ][ 'url' ];
   }
   else
   {
     $url = "index.php?item=collection&action=show_collection&dc_collection_id=".$I[ 'currentCollection' ] -> get_dc_collection_id()."&r=".$I[ 'currentUser' ] -> get_role_id();
   }
   $this -> RENDERER -> doRedirect( $url );
-exit(0);
+  exit(0);
 }
 
 
@@ -243,20 +235,20 @@ function searchMediaOnLibraryServer( $I )  ## -- OPAC --
 # ---------------------------------------------------------------------------------------------
 function purchase_suggestion( $I )
 {
-    $collection_id = $I[ 'currentCollection'    ] -> get_collection_id();
-    $collection    = $this -> SQL -> getCollection ( $collection_id );
-    $tpl_vars[ 'collection'      ]            =  $collection[  $collection_id          ] -> obj2array ( );
-    $tpl_vars[ 'medium'          ]            =  $I[ 'medium'                          ] -> obj2array ( );
-    $tpl_vars[ 'user'            ]            =  $I[ 'currentUser'                     ] -> obj2array ( );
-    $tpl_vars[ 'book'            ]            =  $I[ 'medium'                          ] -> obj2array ( );
-    $tpl_vars[ 'operator'        ]            =  $I[ 'operator'                        ] -> obj2array ( );
-    $tpl_vars[ 'operator'        ][ 'mode' ]  =  "suggest";
-    $tpl_vars[ 'filter'          ]            =  $I[ 'filter'                          ] -> obj2array ( ) ;
-    $tpl_vars[ 'SEMESTER'        ]            =  array_keys( $_SESSION[ 'SEM' ] );                                      # $conf[ 'SEMESTER' ] ;
-    $tpl_vars[ 'CFG'             ]            =  $this -> CFG -> getConf();
+  $collection_id = $I[ 'currentCollection'    ] -> get_collection_id();
+  $collection    = $this -> SQL -> getCollection ( $collection_id );
+  $tpl_vars[ 'collection'      ]            =  $collection[  $collection_id          ] -> obj2array ( );
+  $tpl_vars[ 'medium'          ]            =  $I[ 'medium'                          ] -> obj2array ( );
+  $tpl_vars[ 'user'            ]            =  $I[ 'currentUser'                     ] -> obj2array ( );
+  $tpl_vars[ 'book'            ]            =  $I[ 'medium'                          ] -> obj2array ( );
+  $tpl_vars[ 'operator'        ]            =  $I[ 'operator'                        ] -> obj2array ( );
+  $tpl_vars[ 'operator'        ][ 'mode' ]  =  "suggest";
+  $tpl_vars[ 'filter'          ]            =  $I[ 'filter'                          ] -> obj2array ( ) ;
+  $tpl_vars[ 'SEMESTER'        ]            =  array_keys( $_SESSION[ 'SEM' ] );                                      # $conf[ 'SEMESTER' ] ;
+  $tpl_vars[ 'CFG'             ]            =  $this -> CFG -> getConf();
 
-    $this -> RENDERER -> do_template ( 'edit_book.tpl' , $tpl_vars ) ;
-    exit(0);
+  $this -> RENDERER -> do_template ( 'edit_book.tpl' , $tpl_vars ) ;
+  exit(0);
 }
 
 /*
@@ -271,7 +263,6 @@ function purchase_suggestion( $I )
 function getHitList( $searchQuery )
 {
   #$this->getIMS_pack( );
-
   $error = false;
 
 #--------------------------------
@@ -285,8 +276,6 @@ function getHitList( $searchQuery )
   $query = $this->build_sru_query ( $searchQuery );
 
   $datasourceURL = $catURL . $cat . '?version=1.2&operation=searchRetrieve&query=' . $query . '+sortby+year%2Fdescending&maximumRecords=' . $maxRecords . '&recordSchema=' . $recordSchema;
-
-
 
   try                      { $page  = file_get_contents ( $datasourceURL );   }
   catch ( Exception $e )   { $error = true;                                   }

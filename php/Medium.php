@@ -128,12 +128,6 @@ function calcItem()  ## docTypeID and Item
   foreach ( $_SESSION[ 'DOC_TYPE' ]  as $dt )
   { if ($dt[ 'doc_type' ] == $this->get_doc_type() )
     {  $this -> set_item(  $dt[ 'item' ] ); }
-
-   ## { if ( $dt[ 'SA-ready' ] == '0' )         ## Alle Medien die nicht SA fähig sind werden zu item: online
-   ##   {  $this -> set_item('online') ;   }
-   ##   else
-   ##   {  $this -> set_item(  $dt[ 'item' ] ); }
-   ##  }
   }
 }
 
