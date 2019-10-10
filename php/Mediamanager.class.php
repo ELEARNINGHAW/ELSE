@@ -83,6 +83,7 @@ function annoteNewMedia_showForm( $I )
   }
 
   $collection_id = $I[ 'currentCollection'    ] -> get_collection_id();
+
   $collection    = $this -> SQL -> getCollection ( $collection_id );
 
   $tpl_vars[ 'collection'      ]  =  $collection[  $collection_id          ] -> obj2array ( );
@@ -90,11 +91,12 @@ function annoteNewMedia_showForm( $I )
   $tpl_vars[ 'user'            ]  =  $I[ 'currentUser'                     ] -> obj2array ( );
   $tpl_vars[ 'operator'        ]  =  $I[ 'operator'                        ] -> obj2array ( );
   $tpl_vars[ 'filter'          ]  =  $I[ 'filter'                          ] -> obj2array ( ) ;
-  $tpl_vars[ 'SEMESTER'        ]  =  array_keys( $_SESSION[ 'SEM' ] );
-  $tpl_vars[ 'DOC_TYPE'        ]  =  $_SESSION[ 'DOC_TYPE' ] ;
+  $tpl_vars[ 'SEMESTER'        ]  =  array_keys( $_SESSION[ 'SEM'          ] );
+  $tpl_vars[ 'DOC_TYPE'        ]  =  $_SESSION[ 'DOC_TYPE'                 ] ;
   $tpl_vars[ 'currentElement'  ]  =  $_SESSION['books'][ 'currentElement'  ];
   $tpl_vars[ 'maxElement'      ]  =  $_SESSION['books'][ 'maxElement'      ];
 
+  #deb($tpl_vars,1);
   $this -> RENDERER -> do_template ( 'edit_book.tpl' , $tpl_vars ) ;
   exit(0);
 }
@@ -128,10 +130,12 @@ function saveMediaMetaData( $I )
               { $I[ 'medium' ] -> set_shelf_remain ( 2 );                                                              ##  ist der Medienort: 'verbleibt im Regal' ;) , Status 2
                 $I[ 'medium' ] -> set_state_id     ( 3 );                                                              ##  und der Status wird 'aktiv'         , Status 3
               }
+
               else if ( $I[ 'medium' ] -> get_shelf_remain () == '1'  )                                                ##  Wenn Medien'ORT' 'Semesterapparat' (status: 1)
               { $I[ 'medium' ] -> set_shelf_remain ( 1 );                                                              ##  ist der Medienort: 'verbleibt im Regal' ;) , Status 1
                 $I[ 'medium' ] -> set_state_id     ( 1 );                                                              ##  und der Status wird 'aktiv'         , Status 3
               }
+
               else if ( $I[ 'medium' ] -> get_shelf_remain () == '2'  )                                                ##  Wenn Medien'ORT' 'verbleibt im Regal' (status: 2)
               { $I[ 'medium' ] -> set_shelf_remain ( 2 );                                                              ##  ist der Medienort: 'verbleibt im Regal' ;) , Status 2
                 $I[ 'medium' ] -> set_state_id     ( 3 );                                                              ##  und der Status wird 'aktiv'         , Status 3
