@@ -394,9 +394,9 @@ function setCollectionForNextSem( $I )
 
 function lmsDownload( $I )
 {
-  $conf = $this->CFG->getConf();
+  $conf = $this -> CFG -> getConf();
 
-  $url =  $I['operator']->get_url() ;
+  $url  =  $I[ 'operator' ] -> get_url() ;
 
   $lmsDownload = explode( '?lmsid=', $url );
 
@@ -406,11 +406,7 @@ function lmsDownload( $I )
 
   $medList = $this -> LMSLoader( $url );
 
-
-
   $medList = $this -> UTIL -> xml2array( $medList );
-
-
 
   foreach ( $medList as $med )
   {
@@ -433,25 +429,18 @@ function lmsDownload( $I )
     $ret[] = $m;
   }
 
-
- # deb( $ret,1);
-
-
   $_SESSION[ 'books' ][ 'currentCollection' ] = $lmsDownload[1];
   $_SESSION[ 'books' ][ 'booksHitList'      ] = $this -> UTIL -> xml2array( $ret );
   $_SESSION[ 'books' ][ 'currentElement'    ] = 0;
   $_SESSION[ 'books' ][ 'maxElement'        ] = sizeof($_SESSION[ 'books' ][ 'booksHitList' ]);
 
-
-  $collection_dc_collection_id = $I[ 'currentCollection'] -> get_dc_collection_id();
-  $user_role_id                = $I[ 'currentUser'      ] -> get_role_encode();
-  $b_ppn                       = $_SESSION[ 'books'     ][ 'booksHitList' ][ 0 ][ 'ppn' ];
-
+  $collection_dc_collection_id = $I[ 'currentCollection' ] -> get_dc_collection_id();
+  $user_role_id                = $I[ 'currentUser'       ] -> get_role_encode();
+  $b_ppn                       = $_SESSION[ 'books'      ][ 'booksHitList' ][ 0 ][ 'ppn' ];
 
   $_SESSION[ 'books' ][ 'url' ] =  "index.php?ppn=$b_ppn&item=media&loc=1&action=annoteNewMedia&dc_collection_id=$collection_dc_collection_id&mode=new&r=$user_role_id";
   $this -> RENDERER -> doRedirect( $_SESSION[ 'books' ][ 'url' ]  );
 }
-
 
 function LMSLoader( $strXml )
 {
@@ -462,7 +451,6 @@ function LMSLoader( $strXml )
          ), );
 
   $url = 'https://haw.beluga-core.de/vufind/Cart/lmsdownload?lmsid='.$_SESSION['bc_urlID'].'&format=marc21';
-
 
   ### ------ TEST -------
   # $url = 'C:\xampp\htdocs\ELSE-DEV\htdocs\format.xml';
@@ -481,10 +469,9 @@ function LMSLoader( $strXml )
       if ( $b[ 'tag' ]       == '001' ) { $PPN            = (string)$b;   $medium[(string)$PPN][ 'ppn'          ] = $PPN;      }
     }
 
-      $hasAuthor = false;
+    $hasAuthor = false;
     foreach ( $xmlrec -> datafield as $a => $b )
     {
-
       $b_att = $b->attributes ();
       ## -- Autor --
       if ( $b_att == '100' )

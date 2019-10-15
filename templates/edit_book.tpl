@@ -4,7 +4,8 @@
 {else}                                {$bordercolor= "AAA"}
 {/if}
 
-{$doctypetxt = $DOC_TYPE[ $medium[ 'doc_type_id' ] ]['description'] }
+{$doctypetxt = $DOC_TYPE[ $medium[ 'doc_type_id' ] ][ 'description' ] }
+{$SAready    = $DOC_TYPE[ $medium[ 'doc_type_id' ] ][ 'SA-ready'    ] }
 
 {if ($medium.shelf_remain == 0)}  {$c0 = 'checked="checked"' } {else} {$c0 = ''} {/if}
 {if ($medium.shelf_remain == 1)}  {$c1 = 'checked="checked"' } {else} {$c1 = ''} {/if}
@@ -23,7 +24,6 @@ Wenn Sie ein Buch zur Anschaffung in der Bibliothek vorschlagen m&ouml;chten und
 </h5>
 
 {/if}
-
 
 <div style="margin:10px; margin-top:0px;  padding:10px; border:solid 1px black; ">
 <form  action="index.php" method="get">
@@ -55,7 +55,7 @@ Wenn Sie ein Buch zur Anschaffung in der Bibliothek vorschlagen m&ouml;chten und
 
 <tr><td class = "editmedia">Medientyp: </td><td> {$doctypetxt} </td></tr>
 
-{if (($medium[ 'item' ] == 'physical' ) AND $operator.mode == 'new'   OR $operator.mode == 'suggest'  )} {* doc_type 1 = Buch oder CD im SA *}
+{if ( $SAready== 1 AND  ( $operator.mode == 'new'  OR $operator.mode == 'suggest'  ) ) }
   <tr><td  class = "editmedia" style="vertical-align: top; font-weight: bold;">  Ort:  <span style="color: #F03; vertical-align: top; font-weight: bold;">(bitte auswählen)</span> </td><td>
      <div  style="border:1px solid {$bordercolor};    height:59px; padding: 5px; font-size: 13px; width: calc(100% - 20px); ">
      <input {$c2} value="2" class='i' type="radio" name="shelf_remain" id="radio-2"><label for="radio-2"><div style="display: inline-block;  font-weight:700; width:125px; text-align:left; ">Literaturhinweis:</div> Buch verbleibt im Regal der Bibliothek.</label><br/>
@@ -66,12 +66,12 @@ Wenn Sie ein Buch zur Anschaffung in der Bibliothek vorschlagen m&ouml;chten und
 {/if}
 
 
-<tr><td class = "editmedia">Titel: </td><td><textarea  cols="60" rows="2"    name="title">{$medium.title}</textarea>   </td></tr>
-<tr><td class = "editmedia">Autor: </td><td><input size="80" value="{$medium.author}"     {$restricted} name="author"> </td></tr>
+<tr><td class = "editmedia">Titel:    </td><td><textarea  cols="60" rows="2"    name="title">{$medium.title}</textarea>   </td></tr>
+<tr><td class = "editmedia">Autor:    </td><td><input size="80" value="{$medium.author}"     {$restricted} name="author"> </td></tr>
 
 
 {if ($medium.doc_type_id == 1) && $operator.mode != 'suggest'  }
-<tr><td class = "editmedia">ISBN:  </td><td><input size="80" value="{$medium.ISBN}"       {$restricted} name="ISBN">   </td></tr>
+<tr><td class = "editmedia">ISBN:    </td><td><input size="80" value="{$medium.ISBN}"               {$restricted} name="ISBN">   </td></tr>
 <tr><td class = "editmedia">Signatur:</td><td><input size="20" value="{$medium.signature|escape}" {$restricted} name="signature"></td></tr>
 {/if}
 
