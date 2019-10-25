@@ -22,9 +22,9 @@
 
     {if ( $staff_mode )}
     <div  style="width:630px; display: inline-block; padding-top:5px; line-height: 80% ">
-    <a class = "medHead2"  style="float:left;" href="index.php?item=collection&action=show&dc_collection_id={$ci.dc_collection_id}&r=2"           > {$ci.title|truncate:70:"...":true} </a><br/>
-    <a class = "medHead2"  style="float:left;" href="index.php?category=ALLE&mode=filterBib&r=2&user={$ci.Owner.hawaccount}">von: {$ci.Owner.forename|escape} {$ci.Owner.surname} </a>
-    <a class = "medHead2"  style="float:left;" href="index.php?mode=filterBib&r=2&category={$ci.Owner.dep_id}"              >&nbsp;&nbsp;/&nbsp;&nbsp;Dep:   {$ci.Owner.dep_name}</a>
+    <a class = "medHead2"  style="float:left;"  > {$ci.title|truncate:70:"...":true} </a><br/>
+    <a class = "medHead2"  style="float:left;"  >von: {$ci.Owner.forename|escape} {$ci.Owner.surname} </a>
+    <a class = "medHead2"  style="float:left;"  >&nbsp;&nbsp;/&nbsp;&nbsp;Dep:   {$ci.Owner.dep_name}</a>
     </div>
 
     {else}

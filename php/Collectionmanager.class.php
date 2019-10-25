@@ -167,7 +167,7 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
     $tpl_vars[ 'filter'                 ] = $_SESSION[ 'filter'              ] ;
     $tpl_vars[ 'ACTION_INFO'            ] = $_SESSION[ 'ACTION_INFO'         ];
     $tpl_vars[ 'DOC_TYPE'               ] = $_SESSION[ 'DOC_TYPE'            ] ;
-    $tpl_vars[ 'CFG'                    ] = $this->CFG->getConf();
+    $tpl_vars[ 'CFG'                    ] = $this -> CFG -> getConf();
     $tpl_vars[ 'errors_info'            ][] = '';
 
     # $this -> RENDERER -> do_template( 'collection.tpl', $tpl_vars, ( $I[ 'operator' ] -> get_mode() != 'print' ) );
@@ -403,7 +403,7 @@ function lmsDownload( $I )
   $lms = explode ( '###', $lms= base64_decode ( $lmsDownload[ 1 ])  );
 
   $url = $url ."&format=".$conf[ 'recordSchema' ];
-
+#deb($url,1);
   $medList = $this -> LMSLoader( $url );
 
   $medList = $this -> UTIL -> xml2array( $medList );

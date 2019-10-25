@@ -7,26 +7,26 @@
 {$doctypetxt = $DOC_TYPE[ $medium[ 'doc_type_id' ] ][ 'description' ] }
 {$SAready    = $DOC_TYPE[ $medium[ 'doc_type_id' ] ][ 'SA-ready'    ] }
 
-{if ($medium.shelf_remain == 0)}  {$c0 = 'checked="checked"' } {else} {$c0 = ''} {/if}
-{if ($medium.shelf_remain == 1)}  {$c1 = 'checked="checked"' } {else} {$c1 = ''} {/if}
-{if ($medium.shelf_remain == 2)}  {$c2 = 'checked="checked"' } {else} {$c2 = ''} {/if}
+    {if ($medium.shelf_remain == 0)}  {$c0 = 'checked="checked"' } {else} {$c0 = ''} {/if}
+    {if ($medium.shelf_remain == 1)}  {$c1 = 'checked="checked"' } {else} {$c1 = ''} {/if}
+    {if ($medium.shelf_remain == 2)}  {$c2 = 'checked="checked"' } {else} {$c2 = ''} {/if}
 
-{if $operator.mode == 'suggest' }
-<h3 style="margin:10px; margin-bottom:0px; margin-top:0px; padding:10px; color: #FFF;" class="bgDef bg{$collection.bib_id}">Erwerbungsvorschlag für: {$collection.title}
-<a style="float:right;" href="index.php"><img  class="icon" style="margin-top:-4px;" title="Zurück" src="img/svg/chevron-left_w.svg" /></a></h3>
-<div style="margin:10px;  padding:10px; border:solid 1px black; ">
-Wenn Sie ein Buch zur Anschaffung in der Bibliothek vorschlagen m&ouml;chten und dieses in  Ihren Semesterapparat aufgenommen werden soll, benutzen Sie bitte diese Formular.<br/><br/>Wir geben Ihnen eine Rückmeldung, ob wir Ihnen das Buch beschaffen k&ouml;nnen. 
-</div>
-{**}
-{else}
-<h5 style="margin:10px; padding:10px; color: #FFF"  class="bgDef bg{$collection.bib_id}" >{$collection.title}<br/> {$doctypetxt} bearbeiten <a style="float:right;" href="index.php{$operator.url}"><img  class="icon" style="margin-top:-15px;" title="Zurück" src="img/svg/chevron-left_w.svg" /></a>
- <span   style="position:relative; font-size:25px; float:right; top:-18px; padding-right: 15px; " >  {$currentElement+1}/{$maxElement} </span>
-</h5>
+    {if $operator.mode == 'suggest' }
+        <h3 style="margin:10px; margin-bottom:0px; margin-top:0px; padding:10px; color: #FFF;" class="bgDef bg{$collection.bib_id}">Erwerbungsvorschlag für: {$collection.title}
+            <a style="float:right;" href="index.php"><img  class="icon" style="margin-top:-4px;" title="Zurück" src="img/svg/chevron-left_w.svg" /></a></h3>
+        <div style="margin:10px;  padding:10px; border:solid 1px black; ">
+            Wenn Sie ein Buch zur Anschaffung in der Bibliothek vorschlagen m&ouml;chten und dieses in  Ihren Semesterapparat aufgenommen werden soll, benutzen Sie bitte diese Formular.<br/><br/>Wir geben Ihnen eine Rückmeldung, ob wir Ihnen das Buch beschaffen k&ouml;nnen.
+        </div>
+        {**}
+    {else}
+        <h5 style="margin:10px; padding:10px; color: #FFF"  class="bgDef bg{$collection.bib_id}" >{$collection.title}<br/> {$doctypetxt} bearbeiten <a style="float:right;" href="index.php{$operator.url}"><img  class="icon" style="margin-top:-15px;" title="Zurück" src="img/svg/chevron-left_w.svg" /></a>
+            <span   style="position:relative; font-size:25px; float:right; top:-18px; padding-right: 15px; " >  {$currentElement+1}/{$maxElement} </span>
+        </h5>
 
-{/if}
+    {/if}
 
-<div style="margin:10px; margin-top:0px;  padding:10px; border:solid 1px black; ">
-<form  action="index.php" method="get">
+    <div style="margin:10px; margin-top:0px;  padding:10px; border:solid 1px black; ">
+        <form  action="index.php" method="get">
 
 <input type = "hidden" name = "dc_collection_id" value = "{$collection.dc_collection_id}" >
 <input type = "hidden" name = "item"             value = "media"                          >
