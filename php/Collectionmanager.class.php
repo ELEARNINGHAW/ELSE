@@ -150,15 +150,15 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
 
     $collection_id                        = $I[ 'currentCollection' ] -> get_collection_id();
     $collection                           = $this -> SQL-> getCollection ( $collection_id );
- #deb("Coll");
-    #     deb($collection,1);
+
+    # deb("Coll");
+    # deb($collection,1);
 
     $I[ 'operator' ] -> set_url( $I[ 'operator' ] -> get_history( )[ 1 ]  );                  ##  Link für den "zurück"- Button
 
     $_SESSION['url']['currentCollection'] = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 
     $tpl_vars[ 'collection'        ][ $collection_id ] =  $collection[ $collection_id ] -> obj2array( );
-
 
     $tpl_vars[ 'medium'            ] = $I[ 'medium'                     ] -> obj2array( ) ;
     $tpl_vars[ 'user'              ] = $I[ 'currentUser'                ] -> obj2array( ) ;
@@ -172,13 +172,14 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
     $tpl_vars[ 'DOC_TYPE'          ] = $_SESSION[ 'DOC_TYPE'            ] ;
     $tpl_vars[ 'CFG'               ] = $this -> CFG -> getConf();
     $tpl_vars[ 'errors_info'       ][] = '';
-    $tpl_vars[ 'back_URL'          ]  = $_SESSION['history'][0];
+    $tpl_vars[ 'back_URL'          ]  = $_SESSION[ 'history' ][ 0 ];
+    $tpl_vars[ 'medIndex'          ]  = $_SESSION[ 'medIndex' ];
     #$tpl_vars[ 'back_URL'          ]  = "index.php?item=collection&action=show_collection&dc_collection_id=".$collection[ $collection_id  ] -> get_dc_collection_id()."&r=".$I[ 'currentUser'  ] -> get_role_id();
 
     # $this -> RENDERER -> do_template( 'collection.tpl', $tpl_vars, ( $I[ 'operator' ] -> get_mode() != 'print' ) );
 
-   # deb( $_SESSION['history'],1);
-
+   # deb( $_SESSION );
+   #  deb($tpl_vars,1);
     $this -> RENDERER -> do_template( 'collection.tpl', $tpl_vars );
   }
 
