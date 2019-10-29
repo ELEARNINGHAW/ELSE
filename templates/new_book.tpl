@@ -3,7 +3,7 @@
 <script type='text/javascript' src='lib/jquery.simplemodal.js'></script>
 
 <h3 style="margin:10px; padding:10px; color: #FFF;" class="bgDef bg{$collection.bib_id}" >
-    {$collection.title} : Suche im HAW-Katalog <a style="float:right;" href="index.php?item=collection&action=show_collection&dc_collection_id={$collection.dc_collection_id}&r={$user.role_id}"><img  class="icon" style="margin-top:-4px;" title="Zurück" src="img/svg/chevron-left_w.svg" /></a>
+    {$collection.title} : Suche im HAW-Katalog <a style="float:right;" href="{$back_URL}"><img  class="icon" style="margin-top:-4px;" title="Zurück" src="img/svg/chevron-left_w.svg" /></a>
 </h3>
 
 <div id='basic-modal'>
@@ -28,7 +28,7 @@
   <div style="font-size:35px; float:left; padding:10px; margin:5px; margin-bottom:100px;display:block;   background-color:#EFEFEF">B</div>Eine neue Suche starten:<br><br>
  {/if}
 
- <div style="  display: block;" >
+ <div class="text2" style="  display: block;" >
    Sie können nun direkt im HAW-Katalog recherchieren und gewünschte Titel durch einen Klick auf  <img src="img/sternchen.png" /> in die dortige Merkliste übernehmen.
      <br />
      <br />

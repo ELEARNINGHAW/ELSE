@@ -14,10 +14,17 @@ fieldset
   width:auto;
 }
 
-h3{
- font-size:0.9em;
+h3
+{
+  font-size:0.9em;
 }
 
+
+.text2
+{
+  font-size:1.0em;
+
+}
 
 .colList
 {
@@ -610,7 +617,8 @@ a.name
 
 }
 
-.studihint {
+.studihint
+{
   font-size:13px;
   font-family: Arial, Helvetica, sans-serif;
   background-color: #F6F6F6;
@@ -626,48 +634,47 @@ a.name
     /*   text-shadow:#AAA 1px 1px;   */
 }
  
-.SAMeta{
-	font-size:16px;
-	font-family: Arial, Helvetica, sans-serif;
+.SAMeta
+{
+  font-size:16px;
+  font-family: Arial, Helvetica, sans-serif;
   margin: 0px;
-	margin-right: 0px;
-	margin-left: 0px;
+  margin-right: 0px;
+  margin-left: 0px;
   padding:0px;
-	padding-left: 20px;
+  padding-left: 20px;
   height: 35px;
-
 }
 
-.SAtitel{
-	font-size:20px;
-	font-weight:700;
-	font-family: Arial, Helvetica, sans-serif;
-	margin-left: 10px;
-	margin-top: 2px;
-	margin-bottom: 0px;
-	padding: 2px;
-	padding-left: 0px;
+.SAtitel
+{
+  font-size:20px;
+  font-weight:700;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-left: 10px;
+  margin-top: 2px;
+  margin-bottom: 0px;
+  padding: 2px;
+  padding-left: 0px;
   color:#FFF;
   text-shadow:black 1px 1px;
 }
 
 
-.SAdozName{
-	font-size:14px;
-	font-family: Arial, Helvetica, sans-serif;
-	margin: 0px;
-	margin-left: 0px;
-	padding: 0px;
-	padding-top: 5px;
+.SAdozName
+{
+  font-size:14px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0px;
+  margin-left: 0px;
+  padding: 0px;
+  padding-top: 5px;
   color:#FFF;
   line-height: 95%;
   font-weight:700;
   height: 30px;
- display:inline-block;
- 
+  display:inline-block;
 }
-
-
 
 .hinweise{
 	font-size:11px; 
@@ -700,21 +707,18 @@ td{
 }
 
 
-
-
-
-
-
-.bibStandort, .prebib{
-	margin: 1px;
-	margin: 0px;
-	padding: 0px;
+.bibStandort, .prebib
+{
+  margin: 1px;
+  margin: 0px;
+  padding: 0px;
   height: 28px;
   width:1px;
   display:inline-block;
 }
 
-.bibStandort{
+.bibStandort
+{
   font-family: Arial, Helvetica, sans-serif;
   font-size:11px;
   margin: 1px;
@@ -943,13 +947,13 @@ td{
 
 .medimSA
 {
-	background-image:url(../img/svg/chevron-right.svg);
-	background-repeat:no-repeat;
+  background-image:url(../img/svg/chevron-right.svg);
+  background-repeat:no-repeat;
   padding:10px;
-	padding-left:50px; 
-	margin:10px; 
-	background-color: #EEE; 
-	border-bottom:3px solid #666;  
+  padding-left:50px;
+  margin:10px;
+  background-color: #EEE;
+  border-bottom:3px solid #666;
 }
 
 /*-- HELP WINDOW --*/
@@ -993,26 +997,28 @@ td{
 {
   font-weight:700;
   float:right;
- 
 }
 
-.txtin{
-     height: 30px;
-     width:400px;
+.txtin
+{
+  height:30px;
+  width:400px;
 }
 
-.txtin2{
-     height: 60px;
-     width:400px;
+.txtin2
+{
+  height:60px;
+  width:400px;
 }
 
-.text{
-	font-size:12px;
-	font-family: Arial, Helvetica, sans-serif;
+.text
+{
+  font-size:12px;
+  font-family: Arial, Helvetica, sans-serif;
   margin: 15px;
   padding: 5px;
   padding-left: 115px;
-	border: 1px solid #EEE;
+  border: 1px solid #EEE;
   background-color: #EEE
 }
 
@@ -1031,13 +1037,14 @@ td{
 }
 
 
-.staffnote{
-	font-size:12px;
-	font-family: Arial, Helvetica, sans-serif;
+.staffnote
+{
+  font-size:12px;
+  font-family: Arial, Helvetica, sans-serif;
   margin: 5px;
   padding: 5px;
   padding-left: 30px;
-	border: 1px solid #EEE;
+  border: 1px solid #EEE;
   background-color: #ffff99;
 }
 
@@ -1060,7 +1067,8 @@ td{
   margin-bottom: 8px;
 }
 
-.medLink{
+.medLink
+{
   font-size:13px;
   font-weight:700;
   text-decoration: none;
@@ -1148,7 +1156,6 @@ a.medi_3:hover /* CD-ROM */
 }
 
 a.medi_4:hover /* E-Book */
-
 {
   background-repeat:no-repeat;
   background-position:100% 15px;
@@ -1156,25 +1163,23 @@ a.medi_4:hover /* E-Book */
 }
 
 
-a.hitlink_print, a.hitlink_electronic, a.hitlink_cd-rom {
+a.hitlink_print, a.hitlink_electronic, a.hitlink_cd-rom
+{
   background-color: #FFF;
   color:#666;
-	text-decoration:none;
+  text-decoration:none;
   text-align:  left; 
   font-size:11px;
-	font-weight:700;
+  font-weight:700;
   padding: 6px;
   padding-right: 0px;
   margin-left:10px;
   margin-top:20px;
   margin-right: 10px;
-
   border: 1px solid #CCC;
   display: block;
-
   background-repeat:no-repeat;
   background-position:calc(100% - 10px) 5px;
-
 }
 
 a.hitlink_print 
@@ -1190,16 +1195,14 @@ a.hitlink_electronic
 a.hitlink_cd-rom 
 {
   background-image:url(../img/svg/vinyl.svg);
-
 }
-
 
 
 
 a.hitlink_print:hover, a.hitlink_electronic:hover , a.hitlink_cd-rom:hover 
 {
   background-color:#234A89;
-	color:#FFF;
+  color:#FFF;
 }
 
 .mediaListHeader
@@ -1248,26 +1251,30 @@ li a, a
 
 ul 
 {
-	list-style-image: url('img/right.jpg');
+  list-style-image: url('img/right.jpg');
 }
 
-ul.circle {
-	list-style-type: circle;
-	list-style-image: none;
+ul.circle
+{
+  list-style-type: circle;
+  list-style-image: none;
 }
 
-legend {
-	font-size: x-small;
+legend
+{
+  font-size: x-small;
 }
 
-fieldset {
-	margin-top: 20px;
-	padding-bottom: 10px;
-	padding-left: 10px;
-	padding-right: 10px;
+fieldset
+{
+ margin-top: 20px;
+ padding-bottom: 10px;
+ padding-left: 10px;
+ padding-right: 10px;
 }
 
-.medHead{
+.medHead
+{
   font-size:12px;
   margin-right: 5px;
   padding:2px;
@@ -1278,14 +1285,16 @@ fieldset {
   display:inline-block;
 }
 
-a.medHead2{
-    font-weight: 700;
-    font-size: 12px;
-    color: #FFFFFF !important;
+a.medHead2
+{
+  font-weight: 700;
+  font-size: 12px;
+  color: #FFFFFF !important;
 }
 
 
-a.medHead3{
+a.medHead3
+{
   font-weight: 700;
   font-size: 12px;
   color: #FFF !important;

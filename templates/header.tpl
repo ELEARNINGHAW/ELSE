@@ -2,12 +2,11 @@
   <head>
     <title>Semesterapparate</title>
     <meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8" />
+    <link   type="text/css"        href="lib/reset.css"     rel="stylesheet"  />
     <link   type="text/css"        href="lib/style.css"     rel="stylesheet"  />
     <link   type="text/css"        href="lib/jquery-ui.css" rel="stylesheet" />
     <link   href="https://fonts.googleapis.com/css?family=Fira+Sans|Open+Sans&display=swap" rel="stylesheet">
-
     <script type="text/javascript" src="lib/jquery-1.10.2.js"></script>
-
     <script type="text/javascript" src="lib/jquery-ui.js"></script>
     <script type="text/javascript" src="lib/else.js"></script>
   </head>
@@ -37,7 +36,6 @@
 {if  ($SEMESTER != null) }
   <ul id="nav" style="position:absolute; left:300px;   top:2px; margin-right:10px; border: white solid 2px;">
     <li><a class="en" title="Alle Semester" href="index.php?category=X&mode=filterSem&r=2"    {if $filter.sem == X   } style="background-color:#FFF; color:#000;" {/if}>X</a></li>
-
       {foreach from=$SEMESTER item=sem}
         <li><a class="enS" title="Semester {$sem}"  href="index.php?category={$sem}&mode=filterSem&r=2" {if  $filter.sem == $sem } style="background-color:#FFF; color:#000;" {/if}>{$sem}</a></li>
       {/foreach}
@@ -46,7 +44,6 @@
 
 
 <ul id="nav2" style="position:absolute; right:77px;   top:3px;">
-
     {if      $filter.state == 0}<li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=0" title="Alle SemApp"    ><img src="img/svg/Xa.svg" width="32" height="32"/></a>
     {elseif  $filter.state == 1}<li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=1" title="Neu Bestellte"  ><img src="img/svg/Na.svg" width="32" height="32"/></a>
     {elseif  $filter.state == 2}<li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=2" title="Wird Bearbeitet"><img src="img/svg/Ba.svg" width="32" height="32"/></a>
@@ -73,11 +70,9 @@
 <div  style="position:absolute; right:44px;   top:3px;">
   <a href="javascript:window.print() " title="Druckversion Seite" >  <img src="img/svg/print_w.svg"   width="32"  height="32"   /></a>
 </div>
-
 <div  style="position:absolute; right:1px;   top:2px;">
-  <a href='{$operator.url}' title="Zurück"            ><img src="img/svg/chevron-l.svg" width="32" height="32"/></a>
+  <a href='index.php' title="Zurück"            ><img src="img/svg/chevron-l.svg" width="32" height="32"/></a>
 </div>
-
 </div>
 
 {/if}

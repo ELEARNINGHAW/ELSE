@@ -65,7 +65,7 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
   /* ----------------- LISTE DER INPUTPARAMETER  ------------------ */
 
 
-  $I[ 'operator' ] -> set_url( $I[ 'operator' ] -> get_history( )[ 1 ]  );                  ##  Link für den "zurück"- Button
+  #$I[ 'operator' ] -> set_url( $I[ 'operator' ] -> get_history( )[ 1 ]  );                  ##  Link für den "zurück"- Button
   $tpl_vars[ 'collectionList' ]                  = $this -> getAllCollection ( $I )      ;
   $tpl_vars[ 'user'           ]                  = $I[ 'currentUser'                     ] -> obj2array ();
   $tpl_vars[ 'operator'       ]                  = $I[ 'operator'                        ] -> obj2array ();
@@ -77,6 +77,9 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
   $tpl_vars[ 'ACTION_INFO'    ]                  =  $_SESSION[ 'ACTION_INFO'             ] ;                                 # aus const.php ##===================== ACTION INFO BESSER HIER IM PHP AUSWERTEN, NICHT IM TEMPLATE
   $tpl_vars[ 'CFG'            ]                  = $this -> CFG -> getConf()              ;                                                 # aus config.class.php ##===================== ACTION INFO BESSER HIER IM PHP AUSWERTEN, NICHT IM TEMPLATE
   $tpl_vars[ 'source'         ]                  = 'index.php'                            ;
+  $tpl_vars[ 'toLastPage'     ]                  =  true                                  ;
+  $tpl_vars[ 'back_URL'       ]  = "#";
+
   ##-------------------------------------------------------------------------------------------------------------------
 
   $this -> RENDERER -> do_template ( 'index.tpl' , $tpl_vars , TRUE ) ;
@@ -87,23 +90,23 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
 # ---------------------------------------------------------------------------------------------
     function showNewMediaForm( $I, $toSearch = NULL, $searchHits = 1 )
     {
-        $collection_id                                    = $I[ 'currentCollection'               ] -> get_collection_id( );
-        $bc_urlID                                         = $_SESSION['bc_urlID'] = urlencode( base64_encode ($collection_id.'###'. $I[ 'currentUser']-> get_hawaccount() ) );
-        $collection                                       = $this -> SQL -> getCollection ( $collection_id );
-        $tpl_vars[ 'collection'      ]                    = $collection[ $collection_id           ] -> obj2array ( );
-        $tpl_vars[ 'user'            ]                    = $I[ 'currentUser'                     ] -> obj2array ( );
-        $tpl_vars[ 'operator'        ]                    = $I[ 'operator'                        ] -> obj2array ( );
-        $tpl_vars[ 'filter'          ]                    = $I[ 'filter'                          ] -> obj2array ( ) ;
-        $tpl_vars[ 'SEMESTER'        ]                    = array_keys( $_SESSION[ 'SEM' ] );                                      # $conf[ 'SEMESTER' ] ;
-        $tpl_vars[ 'page'            ]                    = 1;                                                                     # Seite 1 = Eingabemaske für die Suchbegriffe bei der Mediensuche */
-        $tpl_vars[ 'searchHits'      ]                    = $searchHits;
-        $tpl_vars[ 'book'            ][ 'title'       ]   = $toSearch[ 'title'         ];
-        $tpl_vars[ 'book'            ][ 'author'      ]   = $toSearch[ 'author'        ];
-        $tpl_vars[ 'book'            ][ 'signature'   ]   = $toSearch[ 'signature'     ];
-        $tpl_vars[ 'maxRecords'      ]                    = $this -> CFG -> CFG[ 'maxRecords' ];
-        $tpl_vars[ 'URLID'           ]                    = $bc_urlID;
-        $tpl_vars[ 'URL'             ]                    = $this -> CFG -> CFG[ 'URL' ].'/htdocs/' ;
-
+        $collection_id                                      = $I[ 'currentCollection'               ] -> get_collection_id( );
+        $bc_urlID                                           = $_SESSION['bc_urlID'] = urlencode( base64_encode ($collection_id.'###'. $I[ 'currentUser']-> get_hawaccount() ) );
+        $collection                                         = $this -> SQL -> getCollection ( $collection_id );
+        $tpl_vars[ 'collection'        ]                    = $collection[ $collection_id           ] -> obj2array ( );
+        $tpl_vars[ 'user'              ]                    = $I[ 'currentUser'                     ] -> obj2array ( );
+        $tpl_vars[ 'operator'          ]                    = $I[ 'operator'                        ] -> obj2array ( );
+        $tpl_vars[ 'filter'            ]                    = $I[ 'filter'                          ] -> obj2array ( ) ;
+        $tpl_vars[ 'SEMESTER'          ]                    = array_keys( $_SESSION[ 'SEM' ] );                                      # $conf[ 'SEMESTER' ] ;
+        $tpl_vars[ 'page'              ]                    = 1;                                                                     # Seite 1 = Eingabemaske für die Suchbegriffe bei der Mediensuche */
+        $tpl_vars[ 'searchHits'        ]                    = $searchHits;
+        $tpl_vars[ 'book'              ][ 'title'       ]   = $toSearch[ 'title'         ];
+        $tpl_vars[ 'book'              ][ 'author'      ]   = $toSearch[ 'author'        ];
+        $tpl_vars[ 'book'              ][ 'signature'   ]   = $toSearch[ 'signature'     ];
+        $tpl_vars[ 'maxRecords'        ]                    = $this -> CFG -> CFG[ 'maxRecords' ];
+        $tpl_vars[ 'URLID'             ]                    = $bc_urlID;
+        $tpl_vars[ 'URL'               ]                    = $this -> CFG -> CFG[ 'URL' ].'/htdocs/' ;
+        $tpl_vars[ 'back_URL'          ]                    = "index.php?item=collection&action=show_collection&dc_collection_id=".$collection[ $collection_id           ]->get_dc_collection_id()."&r=".$I[ 'currentUser'  ]->get_role_id();
         $_SESSION[ 'currentCollection' ] = $collection[ $collection_id ] -> obj2array ( );
 
         $this -> RENDERER -> do_template ( 'new_book.tpl' , $tpl_vars ) ;
@@ -148,31 +151,33 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
     $collection_id                        = $I[ 'currentCollection' ] -> get_collection_id();
     $collection                           = $this -> SQL-> getCollection ( $collection_id );
  #deb("Coll");
- #     deb($collection,1);
+    #     deb($collection,1);
 
     $I[ 'operator' ] -> set_url( $I[ 'operator' ] -> get_history( )[ 1 ]  );                  ##  Link für den "zurück"- Button
 
     $_SESSION['url']['currentCollection'] = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 
-    $tpl_vars[ 'collection'             ][ $collection_id ] =  $collection[ $collection_id ] -> obj2array( );
+    $tpl_vars[ 'collection'        ][ $collection_id ] =  $collection[ $collection_id ] -> obj2array( );
 
 
-    $tpl_vars[ 'medium'                 ] = $I[ 'medium'                     ] -> obj2array( ) ;
-    $tpl_vars[ 'user'                   ] = $I[ 'currentUser'                ] -> obj2array( ) ;
-    $tpl_vars[ 'operator'               ] = $I[ 'operator'                   ] -> obj2array( ) ;
-    $tpl_vars[ 'doc_type'               ] = $_SESSION[ 'DOC_TYPE'            ] ;
-    $tpl_vars[ 'MEDIA_STATE'            ] = $_SESSION[ 'MEDIA_STATE'         ] ;
-    $tpl_vars[ 'FACHBIB'                ] = $_SESSION[ 'FACHBIB'             ] ;
-    $tpl_vars[ 'department'             ] = $_SESSION[ 'DEP_2_BIB'           ] ;
-    $tpl_vars[ 'filter'                 ] = $_SESSION[ 'filter'              ] ;
-    $tpl_vars[ 'ACTION_INFO'            ] = $_SESSION[ 'ACTION_INFO'         ];
-    $tpl_vars[ 'DOC_TYPE'               ] = $_SESSION[ 'DOC_TYPE'            ] ;
-    $tpl_vars[ 'CFG'                    ] = $this -> CFG -> getConf();
-    $tpl_vars[ 'errors_info'            ][] = '';
+    $tpl_vars[ 'medium'            ] = $I[ 'medium'                     ] -> obj2array( ) ;
+    $tpl_vars[ 'user'              ] = $I[ 'currentUser'                ] -> obj2array( ) ;
+    $tpl_vars[ 'operator'          ] = $I[ 'operator'                   ] -> obj2array( ) ;
+    $tpl_vars[ 'doc_type'          ] = $_SESSION[ 'DOC_TYPE'            ] ;
+    $tpl_vars[ 'MEDIA_STATE'       ] = $_SESSION[ 'MEDIA_STATE'         ] ;
+    $tpl_vars[ 'FACHBIB'           ] = $_SESSION[ 'FACHBIB'             ] ;
+    $tpl_vars[ 'department'        ] = $_SESSION[ 'DEP_2_BIB'           ] ;
+    $tpl_vars[ 'filter'            ] = $_SESSION[ 'filter'              ] ;
+    $tpl_vars[ 'ACTION_INFO'       ] = $_SESSION[ 'ACTION_INFO'         ];
+    $tpl_vars[ 'DOC_TYPE'          ] = $_SESSION[ 'DOC_TYPE'            ] ;
+    $tpl_vars[ 'CFG'               ] = $this -> CFG -> getConf();
+    $tpl_vars[ 'errors_info'       ][] = '';
+    $tpl_vars[ 'back_URL'          ]  = $_SESSION['history'][0];
+    #$tpl_vars[ 'back_URL'          ]  = "index.php?item=collection&action=show_collection&dc_collection_id=".$collection[ $collection_id  ] -> get_dc_collection_id()."&r=".$I[ 'currentUser'  ] -> get_role_id();
 
     # $this -> RENDERER -> do_template( 'collection.tpl', $tpl_vars, ( $I[ 'operator' ] -> get_mode() != 'print' ) );
 
-    #deb( $tpl_vars[ 'collection'             ],1);
+   # deb( $_SESSION['history'],1);
 
     $this -> RENDERER -> do_template( 'collection.tpl', $tpl_vars );
   }
@@ -191,19 +196,20 @@ function editColMetaData( $I )
   $collection_id = $I[ 'currentCollection'    ] -> get_collection_id();
   $collection    = $this -> SQL -> getCollection( $collection_id ); #( $colID , $filter , $short = null )
 
-  $tpl_vars[ 'collection'      ]  = $collection[  $collection_id          ] -> obj2array (); ;
-  $tpl_vars[ 'user'            ]  = $I[ 'currentUser'                     ] -> obj2array ();
-  $tpl_vars[ 'operator'        ]  = $I[ 'operator'                        ] -> obj2array ();
+  $tpl_vars[ 'collection'        ]  = $collection[  $collection_id          ] -> obj2array (); ;
+  $tpl_vars[ 'user'              ]  = $I[ 'currentUser'                     ] -> obj2array ();
+  $tpl_vars[ 'operator'          ]  = $I[ 'operator'                        ] -> obj2array ();
 
-  $tpl_vars[ 'SEMESTER'        ]  = array_keys( $_SESSION[ 'SEM' ] );
-  $tpl_vars[ 'filter'          ]  = $_SESSION[ 'filter'                   ]  ;
-  $tpl_vars[ 'MEDIA_STATE'     ]  = $_SESSION[ 'MEDIA_STATE'              ]  ; #
-  $tpl_vars[ 'ACTION_INFO'     ]  = $_SESSION[ 'ACTION_INFO'              ]  ; # aus const.php ##===================== ACTION INFO BESSER HIER IM PHP AUSWERTEN, NICHT IM TEMPLATE
-  $tpl_vars[ 'CFG'             ]  = $_SESSION[ 'CFG'                      ]  ; # aus config.class.php
-  $tpl_vars[ 'DEP'             ]  = $_SESSION[ 'DEP_2_BIB'                ]  ; # Liste aller Departments
-  $tpl_vars[ 'FAK'             ]  = $_SESSION[ 'FAK'                      ]  ; # Liste aller Fakultäten
-  $tpl_vars[ 'FACHBIB'         ]  = $_SESSION[ 'FACHBIB'                  ]  ; # Liste aller Fachbibs
-  $tpl_vars[ 'SEMESTER'        ]  = array_keys( $_SESSION[ 'SEM'          ] ); #
+  $tpl_vars[ 'SEMESTER'          ]  = array_keys( $_SESSION[ 'SEM' ] );
+  $tpl_vars[ 'filter'            ]  = $_SESSION[ 'filter'                   ]  ;
+  $tpl_vars[ 'MEDIA_STATE'       ]  = $_SESSION[ 'MEDIA_STATE'              ]  ; #
+  $tpl_vars[ 'ACTION_INFO'       ]  = $_SESSION[ 'ACTION_INFO'              ]  ; # aus const.php ##===================== ACTION INFO BESSER HIER IM PHP AUSWERTEN, NICHT IM TEMPLATE
+  $tpl_vars[ 'CFG'               ]  = $_SESSION[ 'CFG'                      ]  ; # aus config.class.php
+  $tpl_vars[ 'DEP'               ]  = $_SESSION[ 'DEP_2_BIB'                ]  ; # Liste aller Departments
+  $tpl_vars[ 'FAK'               ]  = $_SESSION[ 'FAK'                      ]  ; # Liste aller Fakultäten
+  $tpl_vars[ 'FACHBIB'           ]  = $_SESSION[ 'FACHBIB'                  ]  ; # Liste aller Fachbibs
+  $tpl_vars[ 'SEMESTER'          ]  = array_keys( $_SESSION[ 'SEM'          ] ); #
+  $tpl_vars[ 'back_URL'          ]  = "index.php?item=collection&action=show_collection&dc_collection_id=".$collection[ $collection_id  ] -> get_dc_collection_id()."&r=".$I[ 'currentUser'  ] -> get_role_id();
 
   $conf = $this -> CFG -> getConf();
 
