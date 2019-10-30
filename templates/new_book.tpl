@@ -28,39 +28,254 @@
   <div style="font-size:35px; float:left; padding:10px; margin:5px; margin-bottom:100px;display:block;   background-color:#EFEFEF">B</div>Eine neue Suche starten:<br><br>
  {/if}
 
- <div class="text2" style="  display: block;" >
+ <div class="text2"  style="display: block;" >
    Sie können nun direkt im HAW-Katalog recherchieren und gewünschte Titel durch einen Klick auf  <img src="img/sternchen.png" /> in die dortige Merkliste übernehmen.
      <br />
      <br />
-     <div align="center">
+ </div>
+     <div class="text2" style="text-align: center">
      <button style="padding:20px;" class="ui-button ui-widget ui-corner-all"> <a href="https://elsehaw.beluga-core.de/vufind/?lmsid={$URLID}&lmsurl={$URL}">Im HAW-Katalog recherchieren und die Merkliste füllen</a>
-</div>
      </button>
+     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     <div class="text2">
      <br />
      Über die Merklisten-Verwaltung des HAW-Katalogs <img src="img/merkliste.png" />   können Sie diese Titel dann direkt in Ihr ELSE übernehmen.
      <br />
-
   <br/>
-
-         In ELSE erfolgt die weitere Bearbeitung der einzelnen Titel:
-
-         <ul>
-             <li>
-         Bei einem Print-Buch können Sie entscheiden, ob dieses ein Literaturhinweis sein soll oder in Ihren physischen Semesterapparat (Handapparat) in der Fachbibliothek eingestellt werden soll.
-             </li>
-
-             <li>
-                 Bei Print-Artikeln ist nur die Einbindung als Literaturhinweis möglich.
-             </li>
-             <li>
-            Bei allen Titeln können Sie Anmerkungen für die Studierenden hinzufügen.
-             </li>
-         </ul>
-
+    In ELSE erfolgt die weitere Bearbeitung der einzelnen Titel:
+    <ul>
+       <li>Bei einem Print-Buch können Sie entscheiden, ob dieses ein Literaturhinweis sein soll oder in Ihren physischen Semesterapparat (Handapparat) in der Fachbibliothek eingestellt werden soll </li>
+       <li>Bei Print-Artikeln ist nur die Einbindung als Literaturhinweis möglich.</li>
+       <li>Bei allen Titeln können Sie Anmerkungen für die Studierenden hinzufügen. </li>
+    </ul>
      </div>
-         <div style="  display: none;" >
 
-  oder Medien im OPAC suchen.<br><br>
+   <div style="  display: none;" >
+   oder Medien im OPAC suchen.<br><br>
 
 
          Bitte geben Sie in dieser Suchmaske <b>Titel</b> und / oder <b>Autor</b> und / oder <b>Signatur</b> ein.<br><br>
