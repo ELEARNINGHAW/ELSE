@@ -28,6 +28,7 @@ function __construct( $CFG )
 # ---------------------------------------------------------------------------------------------
 function initMediaMetaData( $book )
 {
+#  deb($book);
 $SQL = '
 INSERT INTO `document`
 SET
@@ -175,8 +176,8 @@ return $ret;
         $collection->set_collection_id         ( $col[ 'collection_id'         ] ); # (> ELSE-ADMIN
         $collection->set_dc_collection_id      (base64_encode ( rawurlencode ( $col[ 'collection_id'    ] ) ) ); # (> ELSE-ADMIN
         $collection->set_bib_id                ( $col[ 'bib_id'                ] ); # (> LS
-        $collection->set_Bib                   ( $this -> get_bib_info    ( $col[ 'bib_id'      ] ) );
-        $collection->set_Med_state             ( $this -> get_med_state   ( $col[ 'id'          ] ) );
+        $collection->set_Bib                   ( $this -> get_bib_info        ( $col[ 'bib_id'      ] ) );
+        $collection->set_MedState              ( $this -> get_med_state        ( $col[ 'id'          ] ) );
         $collection->set_Owner                 ( $this -> getUserMetaData     ( $col[ 'user_id'     ] ) );
       }
     } else {
@@ -918,8 +919,10 @@ function getSAid( $SEM )
     if ( $medium->get_notes_to_studies( ) != '' ) { $SQL .= " AND `notes_to_studies`   = \"" . $this->es ( $medium->get_notes_to_studies  ( ) ) . "\""; }
     $SQL .= " ORDER BY `id` DESC";
 
-    $res = mysqli_query ( $this->DB , $SQL );
-    while ( $ret = $res->fetch_array ( MYSQLI_ASSOC ) )
+    # deb($medium,1);
+    # deb($SQL,1);
+    $res = mysqli_query ( $this -> DB , $SQL );
+    while ( $ret = $res -> fetch_array ( MYSQLI_ASSOC ) )
     {  $ans = $ret[ 'id' ];
     }
 
@@ -1024,7 +1027,7 @@ function getSAid( $SEM )
 
 
         $collection->set_Bib       ( $this -> get_bib_info     ( $row[ 'c_bib_id'      ] ) );
-        $collection->set_Med_state ( $this -> get_med_state    ( $row[ 'c_title_short' ] ) );
+        $collection->set_Medstate  ( $this -> get_med_state    ( $row[ 'c_title_short' ] ) );
         $collection->set_Owner     ( $this -> getUserMetaData  ( $row[ 'c_user_id'     ] ) );
 
         if( !$asObject ) { $collection = $collection->obj2array (); }
