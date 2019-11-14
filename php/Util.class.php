@@ -54,8 +54,6 @@ else
   $currentUser       -> array2obj( $_SESSION[ 'currentUser'       ] );
 }
 
-
-
 #  if ( $_SESSION['currentUser']['Userrole_id'] == ''   ) { die(  '<div style="  display: flex;  position: absolute;  top:45%; right:45%; font-size: 30px; "> TIME OUT <div>'); }
 
 ##
@@ -71,7 +69,7 @@ if (isset(  $_SERVER [ 'HTTP_REFERER'      ] ))
 }
 
 ##
-### ------------------------------- OPERATOR  --------------------------------
+## ------------------------------- OPERATOR  --------------------------------
 ##
 ## Action DEFAULTEEINSTELLUNGEN für die einzelnen Rollen
 if (  $this->hasRole( $currentUser,'admin', 'staff') )       { $operator -> set_action           ( 'show_collection_list' );  }
@@ -84,11 +82,12 @@ if ( isset ( $_GET[ 'action'                                   ] ) ) { $operator
 if ( isset ( $_GET[ 'mode'                                     ] ) ) { $operator -> set_mode             ( $_GET[ 'mode'               ] ) ; }
 if ( isset ( $_GET[ 'category'                                 ] ) ) { $operator -> set_category         ( $_GET[ 'category'           ] ) ; }
 
+if ( isset ( $_GET[ 'msg'                                      ] ) ) { $operator -> set_msg              ( $_GET[ 'msg'                ] ) ; }
+
 if ( isset ( $_GET[ 'lms-download'                             ] ) ) { $operator -> set_action           ( 'lms-download'           ) ;
                                                                        $operator -> set_item             ( 'collection'             ) ;
                                                                        $operator -> set_url              (  $_GET[ 'lms-download'      ] ) ;
 }  ## Hook, für BELUGA IMPORT, wird als action= "Downloadlink", mode
-
 
 ##
 ### ------------------------------- MEDIUM  --------------------------------
@@ -110,6 +109,8 @@ if ( isset ( $_GET[ 'notes_to_staff'                           ] ) )  { $medium 
 if ( isset ( $_GET[ 'notes_to_studies'                         ] ) )  { $medium -> set_notes_to_studies    ( $_GET[ 'notes_to_studies'  ] ) ; }
 if ( isset ( $_GET[ 'shelf_remain'                             ] ) )  { $medium -> set_shelf_remain        ( $_GET[ 'shelf_remain'      ] ) ;
                                                                         $medium -> set_in_SA               ( $_GET[ 'shelf_remain'      ] ) ; }
+if ( isset ( $_GET[ 'lmsid'                                    ] ) )  { $medium -> set_collection_id       ( $this -> splitCourseName_user( $_GET[ 'lmsid'            ] )  ); }
+if ( isset ( $_GET[ 'dc_collection_id'                         ] ) )  { $medium -> set_collection_id       ( $this -> b64de(                $_GET[ 'dc_collection_id' ] )  ); }
 
 ##
 ### ------------------------------- COLLECTION  --------------------------------
@@ -121,14 +122,10 @@ if ( isset ( $_GET[ 'bib_id'                                   ] ) )  { $current
 if ( isset ( $_GET[ 'department_id'                            ] ) )  { $currentCollection -> set_department_id        ( $_GET[ 'department_id'        ] ) ; }
 if ( isset ( $_GET[ 'semester_id'                              ] ) )  { $currentCollection -> set_sem                  ( $_GET[ 'semester_id'          ] ) ; }
 if ( isset ( $_GET[ 'notes_to_studies_col'                     ] ) )  { $currentCollection -> set_notes_to_studies_col ( $_GET[ 'notes_to_studies_col' ] ) ; }
-
-
-if      ( isset ( $_GET[ 'imsid'                               ] ) )  { $currentCollection -> set_collection_id        ( $_GET[ 'imsid'                ] ) ; } ## IMSID sollte zu collection_id geändert werden
-
-if      ( isset ( $_GET[ 'collection_id'                       ] ) )  { $currentCollection -> set_collection_id        ( $_GET[ 'collection_id'        ] ) ; $currentCollection -> set_dc_collection_id ( $this->b64en( $_GET[ 'collection_id'     ] ) ) ; }
+if ( isset ( $_GET[ 'imsid'                                    ] ) )  { $currentCollection -> set_collection_id        ( $_GET[ 'imsid'                ] ) ; } ## IMSID sollte zu collection_id geändert werden
+if ( isset ( $_GET[ 'collection_id'                            ] ) )  { $currentCollection -> set_collection_id        ( $_GET[ 'collection_id'        ] ) ; $currentCollection -> set_dc_collection_id ( $this->b64en( $_GET[ 'collection_id'     ] ) ) ; }
 else if ( isset ( $_GET[ 'dc_collection_id'                    ] ) )  { $currentCollection -> set_dc_collection_id     ( $_GET[ 'dc_collection_id'     ] ) ; $currentCollection -> set_collection_id    ( $this->b64de( $_GET[ 'dc_collection_id'  ] ) ) ; }
-
-
+else if ( isset ( $_GET[ 'lmsid'                               ] ) )  { $currentCollection -> set_dc_collection_id     ( $this-> b64en( $this-> splitCourseName_user( $_GET[ 'lmsid' ] ) ) )  ; $currentCollection -> set_collection_id  (  $this-> splitCourseName_user( $_GET[ 'lmsid' ] )  ); }
 if ( isset ( $_GET[ 'lms-download'                             ] ) )  { $cc  =  $this -> SQL -> getCollection( $_SESSION[ 'currentCollection' ][ 'collection_id' ] );
                                                                         $currentCollection =  array_pop   ( $cc  );  }
 
@@ -162,6 +159,14 @@ $I[ 'filter'             ] = $this -> get_filter( $operator );
 return $I ;
 }
 
+function splitCourseName_user($cnu, $selector = false )
+{
+  $ret =  explode ( '###', $lms = $this -> b64de( $cnu ) );          # deb( $lms );
+  if ($selector)   {  $ret = $ret[ 1 ];  }
+  else             {  $ret = $ret[ 0 ];  }
+
+  return $ret;
+}
 
 # ---------------------------------------------------------------------------------------------
 function getGET_BASE_Values ( )
@@ -290,7 +295,7 @@ function getCollectionMetaData ( $Course, $IDMuser )
 {
   if ( $this -> SQL -> getCollectionMetaData ( $Course[ 'shortname' ] ) )
   {
-    $IC[ 'category_id'    ] = $IDMuser[ 'department' ] ;
+    $IC[ 'category_id'      ] = $IDMuser[ 'department' ] ;
     $IC[ 'title'            ] = $Course[  'fullname'   ] ;
     $IC[ 'title_short'      ] = $Course[  'shortname'  ] ;
     $IC[ 'collection_id'    ] = $Course[  'shortname'  ] ;

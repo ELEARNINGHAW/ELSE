@@ -104,7 +104,7 @@ $this->CONST_ACTION_INFO = array
         'acl' => array (  "physical" => "role=admin,role=staff" ,  ) ,
         'button_visible_if' => array 
         (
-            "loc"      => array ( "1"   ) ,
+            "loc"      => array ( "1" ,"2"  ) ,
             "state"    => array ( "new", "suggest" ) ,
             "mode"     => array ( "staff" , "admin" ) ,
         ) ,

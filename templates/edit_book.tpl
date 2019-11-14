@@ -4,20 +4,20 @@
 {else}                                {$bordercolor= "AAA"}
 {/if}
 
-{$doctypetxt = $DOC_TYPE[ $medium[ 'doc_type_id' ] ][ 'description' ] }
-{$SAready    = $DOC_TYPE[ $medium[ 'doc_type_id' ] ][ 'SA-ready'    ] }
+
+{$SAready    = $DOC_TYPE[ $medium.doc_type_id ][ 'SA-ready'    ] }
+{$doctypetxt = $DOC_TYPE[ $medium.doc_type_id ][ 'description' ] }
 
     {if ($medium.shelf_remain == 0)}  {$c0 = 'checked="checked"' } {else} {$c0 = ''} {/if}
     {if ($medium.shelf_remain == 1)}  {$c1 = 'checked="checked"' } {else} {$c1 = ''} {/if}
     {if ($medium.shelf_remain == 2)}  {$c2 = 'checked="checked"' } {else} {$c2 = ''} {/if}
 
-    {if $operator.mode == 'suggest' }
+    {if $medium.doc_type_id == 16 }
         <h3 style="margin:10px; margin-bottom:0px; margin-top:0px; padding:10px; color: #FFF;" class="bgDef bg{$collection.bib_id}">Erwerbungsvorschlag für: {$collection.title}
             <a style="float:right;" href="index.php"><img  class="icon" style="margin-top:-4px;" title="Zurück" src="img/svg/chevron-left_w.svg" /></a></h3>
         <div style="margin:10px;  padding:10px; border:solid 1px black; ">
             Wenn Sie ein Buch zur Anschaffung in der Bibliothek vorschlagen m&ouml;chten und dieses in  Ihren Semesterapparat aufgenommen werden soll, benutzen Sie bitte diese Formular.<br/><br/>Wir geben Ihnen eine Rückmeldung, ob wir Ihnen das Buch beschaffen k&ouml;nnen.
         </div>
-        {**}
     {else}
         <h5 style="margin:10px; padding:10px; color: #FFF"  class="bgDef bg{$collection.bib_id}" >{$collection.title}<br/> {$doctypetxt} bearbeiten <a style="float:right;" href="index.php{$operator.url}"><img  class="icon" style="margin-top:-15px;" title="Zurück" src="img/svg/chevron-left_w.svg" /></a>
             <span   style="position:relative; font-size:25px; float:right; top:-18px; padding-right: 15px; " >  {$currentElement+1}/{$maxElement} </span>
@@ -55,7 +55,7 @@
 
 <tr><td class = "editmedia">Medientyp: </td><td> {$doctypetxt} </td></tr>
 
-{if ( $SAready== 1 AND  ( $operator.mode == 'new'  OR $operator.mode == 'suggest'  ) ) }
+{if ( $SAready== 1 AND  ( $operator.mode == 'new'  OR $medium.doc_type_id == 16 ) ) }
   <tr><td  class = "editmedia" style="vertical-align: top; font-weight: bold;">  Ort:  <span style="color: #F03; vertical-align: top; font-weight: bold;">(bitte auswählen)</span> </td><td>
      <div  style="border:1px solid {$bordercolor};    height:59px; padding: 5px; font-size: 13px; width: calc(100% - 20px); ">
      <input {$c2} value="2" class='i' type="radio" name="shelf_remain" id="radio-2"><label for="radio-2"><div style="display: inline-block;  font-weight:700; width:125px; text-align:left; ">Literaturhinweis:</div> Buch verbleibt im Regal der Bibliothek.</label><br/>
@@ -65,22 +65,30 @@
   </td></tr>
 {/if}
 
+{if ($medium.doc_type_id != 16 ) }
 
-<tr><td class = "editmedia">Titel:    </td><td><textarea  cols="60" rows="2"    name="title">{$medium.title}</textarea>   </td></tr>
+<tr><td class = "editmedia">Titel:    </td><td><textarea  cols="80" rows="2"    name="title">{$medium.title}</textarea>   </td></tr>
 <tr><td class = "editmedia">Autor:    </td><td><input size="80" value="{$medium.author}"     {$restricted} name="author"> </td></tr>
 
-
-{if ($medium.doc_type_id == 1) && $operator.mode != 'suggest'  }
+{if ($medium.doc_type_id == 1)  }
 <tr><td class = "editmedia">ISBN:    </td><td><input size="80" value="{$medium.ISBN}"               {$restricted} name="ISBN">   </td></tr>
 <tr><td class = "editmedia">Signatur:</td><td><input size="20" value="{$medium.signature|escape}" {$restricted} name="signature"></td></tr>
 {/if}
 
+<tr><td class = "editmedia">Anmerkung <br>f&uuml;r Studierende:)<br/>(Optional)</td><td><textarea  cols="80" rows="5"    name="notes_to_studies">{$medium.notes_to_studies|escape}</textarea></td></tr>
 
-<tr><td class = "editmedia">Anmerkung <br>f&uuml;r Studierende:)<br/>(Optional)</td><td><textarea  cols="60" rows="3"    name="notes_to_studies">{$medium.notes_to_studies|escape}</textarea></td></tr>
+{/if}
+
+{if ($medium[ 'item' ] == 'physical' OR $medium.doc_type_id == 16 )} {* doc_type 1 = Buch oder CD im SA *}
+<tr>
 
 
-{if ($medium[ 'item' ] == 'physical')} {* doc_type 1 = Buch oder CD im SA *}
-<tr><td class = "editmedia"> Anmerkung <br>f&uuml;r die Bibliothek:<br/>(Optional)</td><td><textarea cols="60" rows="3" name="notes_to_staff">{$medium.notes_to_staff|escape}</textarea></td></tr>
+    {if ($medium.doc_type_id == 16 ) }
+        <td class = "editmedia"> Ihr Erwerbungs-</br>vorschlag:</td>
+    {else}
+        <td class = "editmedia"> Anmerkung <br>f&uuml;r die Bibliothek:<br/>(Optional)</td>
+    {/if}
+    <td><textarea cols="80" rows="5" name="notes_to_staff">{$medium.notes_to_staff|escape}</textarea></td></tr>
 {/if}
 
 

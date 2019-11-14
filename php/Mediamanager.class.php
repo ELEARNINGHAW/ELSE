@@ -65,6 +65,7 @@ function editMediaMetaData( $I )
 ###############################################################################################
 function annoteNewMedia_showForm( $I )
 {
+
   if( isset($_SESSION[ 'books' ][ 'booksHitList' ][0]) )
   {
     $bookHit = $_SESSION[ 'books' ][ 'booksHitList' ][  $_SESSION[ 'books' ][ 'currentElement' ] ]; ## Metadaten des aus der Trefferliste ausgeählte Mediums
@@ -85,21 +86,48 @@ function annoteNewMedia_showForm( $I )
   $tpl_vars[ 'medium'          ]  =  $I[ 'medium'                          ] -> obj2array ( );
   $tpl_vars[ 'user'            ]  =  $I[ 'currentUser'                     ] -> obj2array ( );
   $tpl_vars[ 'operator'        ]  =  $I[ 'operator'                        ] -> obj2array ( );
-  $tpl_vars[ 'filter'          ]  =  $I[ 'filter'                          ] -> obj2array ( ) ;
+  $tpl_vars[ 'filter'          ]  =  $I[ 'filter'                          ] -> obj2array ( );
   $tpl_vars[ 'SEMESTER'        ]  =  array_keys( $_SESSION[ 'SEM'          ] );
-  $tpl_vars[ 'DOC_TYPE'        ]  =  $_SESSION[ 'DOC_TYPE'                 ] ;
+  $tpl_vars[ 'DOC_TYPE'        ]  =  $_SESSION[ 'DOC_TYPE'                 ];
   $tpl_vars[ 'currentElement'  ]  =  $_SESSION['books'][ 'currentElement'  ];
   $tpl_vars[ 'maxElement'      ]  =  $_SESSION['books'][ 'maxElement'      ];
 
-  #deb($tpl_vars,1);
+ # deb($tpl_vars,1);
   $this -> RENDERER -> do_template ( 'edit_book.tpl' , $tpl_vars ) ;
   exit(0);
 }
 
 
+
+function purchaseSuggestion( $I )
+{
+  $arr = str_split(sha1 ( rand() ), 20 );
+  $KVppn = 'KV' . $arr[ 0 ];
+
+  $_SESSION[ 'books' ][ 'currentCollection'                     ]  =  dc_collection_id;
+  $_SESSION[ 'books' ][ 'booksHitList' ][ 0 ][ 'id'             ]  =  0;
+  $_SESSION[ 'books' ][ 'booksHitList' ][ 0 ][ 'title'          ]  = 'Kaufvorschlag';
+  $_SESSION[ 'books' ][ 'booksHitList' ][ 0 ][ 'ppn'            ]  =  $KVppn;
+  $_SESSION[ 'books' ][ 'booksHitList' ][ 0 ][ 'format'         ]  = 'Purchase suggestion';
+  $_SESSION[ 'books' ][ 'booksHitList' ][ 0 ][ 'item'           ]  = 'physical';
+  $_SESSION[ 'books' ][ 'booksHitList' ][ 0 ][ 'doc_type_id'    ]  =  16;
+  $_SESSION[ 'books' ][ 'booksHitList' ][ 0 ][ 'status_id'      ]  =  9;
+  $_SESSION[ 'books' ][ 'booksHitList' ][ 0 ][ 'doc_type'       ]  = 'Purchase suggestion';
+  $_SESSION[ 'books' ][ 'booksHitList' ][ 0 ][ 'notes_to_staff' ]  = '........';
+  $_SESSION[ 'books' ][ 'currentElement'                        ]  =  0;
+  $_SESSION[ 'books' ][ 'maxElement'                            ]  =  1;
+  $_SESSION[ 'books' ][ 'url'                                   ]  = 'index.php?ppn=1028111126&item=media&loc=1&action=annoteNewMedia&dc_collection_id=VEkuLk1QLlcxOSUyMEVQMUIlMjBCbW4=&mode=new&r=Mg==';
+
+  # deb (  $KVppn  );
+  # deb ($_SESSION[ 'books' ]);
+
+  annoteNewMedia_showForm( $I );
+}
+
 ###############################################################################################
 function saveMediaMetaData( $I )
 {
+
   if (  $I[ 'operator' ] -> item == 'media'   AND $I[ 'medium' ] -> get_shelf_remain() == '0' )   #  Bei physischem Medium Keine Auswahl getroffen, ob Literaturhinweis oder Handapparat
   {
     $I[ 'operator' ] -> set_msg            ( 'shelf_remain' );
@@ -107,11 +135,21 @@ function saveMediaMetaData( $I )
     $this -> annoteNewMedia_showForm( $I );
   }
 
+  if ( $I[ 'medium' ] -> get_doc_type_id () == '16' )                                                      ## Kaufvorschlag
+  {
+    $_SESSION ['books']['booksHitList'][0] = $I[ 'medium' ]->obj2array() ;
+  }
+
+ #deb($_SESSION ['books']['booksHitList']);
+
+ # deb($I[ 'medium' ] );
+
+
   if ( $I[ 'medium' ] -> get_id() == 0 )                            ##  NEUES MEDIUM
   {
       $ppn = $I[ 'medium' ]->get_ppn() ;
       foreach($_SESSION ['books']['booksHitList'] as $m)
-      {
+      { # deb($_SESSION ['books']['booksHitList'],1);
           if ($m['ppn'] == $ppn)
           {   $I[ 'medium' ] -> set_leader       ( $m[ 'leader'        ]  ); ## Datensatz aus dem Bibkatlog wird übernommen (zu den manuellen Metadaten-Einträgen)
               $I[ 'medium' ] -> set_item         ( $m[ 'item'          ]  );
@@ -141,8 +179,25 @@ function saveMediaMetaData( $I )
                 $I[ 'medium' ] -> set_state_id     ( 3 );                                                              ## und der Status wird 'aktiv'         , Status 3
               }
 
-              $I[ 'medium' ] -> set_id            ( '' );
-              $I[ 'medium' ] -> set_collection_id ( $I[ 'currentCollection' ] -> get_collection_id () );
+
+            if ( $I[ 'medium' ] -> get_doc_type_id () == '16' )                                                      ## Kaufvorschlag
+            {
+              $I[ 'medium' ] -> set_doc_type ( $_SESSION[ 'DOC_TYPE' ][ 16 ][ 'description' ] );
+              $I[ 'medium' ] -> set_in_SA    ( $_SESSION[ 'DOC_TYPE' ][ 16 ][ 'SA-ready'    ] );
+              $I[ 'medium' ] -> set_item     ( $_SESSION[ 'DOC_TYPE' ][ 16 ][ 'item'        ] );
+             # $I[ 'medium' ] -> set_shelf_remain ( 2 );                                                              ## ist der Medienort: 'Bibliothek' ;)      , Status 3
+              $I[ 'medium' ] -> set_state_id     ( 9 );                                                              ## und der Status wird 'Kaufvorschlag'         , Status 3
+              $_SESSION ['books']['booksHitList'][0] = $I[ 'medium' ]->obj2array() ;
+            }
+
+
+            $I[ 'medium' ] -> set_id            ( '' );
+            $I[ 'medium' ] -> set_collection_id ( $I[ 'currentCollection' ] -> get_collection_id () );
+
+
+   #deb($I[ 'medium' ] ,1);
+
+
 
               break;
           }
@@ -227,7 +282,7 @@ function searchMediaOnLibraryServer( $I )  ## -- OPAC --
   $_SESSION['books'][ 'maxElement'       ] = 1;
 
   if    ( $hits < 1 )  { $this -> showNewMediaForm( $I, $toSearch, $hits, $maxhits );  }   ## -- Suche ergab keinen Treffer
-  else                 { $this -> showHitList    ( $I, $bk , $hits, $maxhits);                                          }
+  else                 { $this -> showHitList    ( $I, $bk , $hits, $maxhits);         }
 }
 
 
@@ -235,8 +290,29 @@ function searchMediaOnLibraryServer( $I )  ## -- OPAC --
 # ---------------------------------------------------------------------------------------------
 function purchase_suggestion( $I )
 {
-  $collection_id = $I[ 'currentCollection'    ] -> get_collection_id();
+  #deb( $I[ 'operator'             ] );
+  #deb( $I );
+  $collection_id = $I[ 'currentCollection' ] -> get_collection_id();
   $collection    = $this -> SQL -> getCollection ( $collection_id );
+  # deb($I[ 'medium' ] );
+  #deb($collection,1);
+
+#deb($_SESSION['DOC_TYPE'] ,1);
+
+  $arr = str_split(sha1 ( rand() ), 20 );
+  $KVppn = 'KV' . $arr[ 0 ];
+
+  $I[ 'medium' ] -> set_title ( 'Kaufvorschlag' );
+  $I[ 'medium' ] -> set_notes_to_staff ( $I[ 'operator' ] -> get_msg() );
+  $I[ 'medium' ] -> set_doc_type_id ( 16 );
+  $I[ 'medium' ] -> set_doc_type ( $_SESSION[ 'DOC_TYPE' ][ 16 ][ 'description' ] );
+  $I[ 'medium' ] -> set_in_SA    ( $_SESSION[ 'DOC_TYPE' ][ 16 ][ 'SA-ready'    ] );
+  $I[ 'medium' ] -> set_item     ( $_SESSION[ 'DOC_TYPE' ][ 16 ][ 'item'        ] );
+  $I[ 'medium' ] -> set_ppn      ( $KVppn );
+  $I[ 'medium' ] -> set_state_id ( 9 );
+
+  #deb('purchase_suggestion');
+  #deb($I[ 'medium' ]);
   $tpl_vars[ 'collection'      ]            =  $collection[  $collection_id          ] -> obj2array ( );
   $tpl_vars[ 'medium'          ]            =  $I[ 'medium'                          ] -> obj2array ( );
   $tpl_vars[ 'user'            ]            =  $I[ 'currentUser'                     ] -> obj2array ( );
@@ -246,8 +322,12 @@ function purchase_suggestion( $I )
   $tpl_vars[ 'filter'          ]            =  $I[ 'filter'                          ] -> obj2array ( ) ;
   $tpl_vars[ 'SEMESTER'        ]            =  array_keys( $_SESSION[ 'SEM' ] );                                      # $conf[ 'SEMESTER' ] ;
   $tpl_vars[ 'CFG'             ]            =  $this -> CFG -> getConf();
+  $tpl_vars[ 'DOC_TYPE'        ]            =  $_SESSION[ 'DOC_TYPE' ];
+
+  #deb($tpl_vars[ 'medium'          ]);
 
   $this -> RENDERER -> do_template ( 'edit_book.tpl' , $tpl_vars ) ;
+
   exit(0);
 }
 

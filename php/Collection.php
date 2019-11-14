@@ -71,7 +71,7 @@ class Collection
   function get_dc_collection_id()      { return $this -> dc_collection_id     ; }
   function get_bib_id ()               { return $this -> bib_id               ; }
   function get_Owner()                 { return $this -> Owner                ; }
-  function get_Med_state()             { return $this -> Med_state            ; }
+  function get_Medstate()              { return $this -> MedState             ; }
   function get_Bib()                   { return $this -> Bib                  ; }
   function get_media()                 { return $this -> media                ; }
 
@@ -94,7 +94,7 @@ class Collection
   function set_dc_collection_id        ( $val ) { $this -> dc_collection_id     =  $val ; }
   function set_bib_id                  ( $val ) { $this -> bib_id               =  $val ; }
   function set_Owner                   ( $val ) { $this -> Owner                =  $val ; }
-  function set_Med_state               ( $val ) { $this -> MedState             =  $val ; }
+  function set_Medstate                ( $val ) { $this -> MedState             =  $val ; }
   function set_Bib                     ( $val ) { $this -> Bib                  =  $val ; }
   function set_media                   ( $val ) { $this -> media                =  $val ; }
 

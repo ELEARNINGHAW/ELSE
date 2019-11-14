@@ -91,7 +91,7 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
     function showNewMediaForm( $I, $toSearch = NULL, $searchHits = 1 )
     {
         $collection_id                                      = $I[ 'currentCollection'               ] -> get_collection_id( );
-        $bc_urlID                                           = $_SESSION['bc_urlID'] = urlencode( base64_encode ($collection_id.'###'. $I[ 'currentUser']-> get_hawaccount() ) );
+        $bc_urlID                                           = $_SESSION['bc_urlID'] = $this -> UTIL -> b64en($collection_id.'###'. $I[ 'currentUser']-> get_hawaccount() );
         $collection                                         = $this -> SQL -> getCollection ( $collection_id );
         $tpl_vars[ 'collection'        ]                    = $collection[ $collection_id           ] -> obj2array ( );
         $tpl_vars[ 'user'              ]                    = $I[ 'currentUser'                     ] -> obj2array ( );
@@ -174,13 +174,11 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
     $tpl_vars[ 'errors_info'       ][] = '';
     $tpl_vars[ 'back_URL'          ]  = $_SESSION[ 'history' ][ 0 ];
    # $tpl_vars[ 'medIndex'          ]  = $_SESSION[ 'medIndex' ];
-    #$tpl_vars[ 'back_URL'          ]  = "index.php?item=collection&action=show_collection&dc_collection_id=".$collection[ $collection_id  ] -> get_dc_collection_id()."&r=".$I[ 'currentUser'  ] -> get_role_id();
-
-    # $this -> RENDERER -> do_template( 'collection.tpl', $tpl_vars, ( $I[ 'operator' ] -> get_mode() != 'print' ) );
-
+   # $tpl_vars[ 'back_URL'          ]  = "index.php?item=collection&action=show_collection&dc_collection_id=".$collection[ $collection_id  ] -> get_dc_collection_id()."&r=".$I[ 'currentUser'  ] -> get_role_id();
+   # $this -> RENDERER -> do_template( 'collection.tpl', $tpl_vars, ( $I[ 'operator' ] -> get_mode() != 'print' ) );
    # deb( $_SESSION );
-   #  deb($tpl_vars,1);
-    $this -> RENDERER -> do_template( 'collection.tpl', $tpl_vars );
+   # deb($tpl_vars);
+   $this -> RENDERER -> do_template( 'collection.tpl', $tpl_vars );
   }
 
 function saveNewCollection( $I )
@@ -290,12 +288,13 @@ function etCollectionState_inactive( $I )
 }
 */
 
-
+/*
 function  saveColMetaData( $I )
 {
   $url = "index.php?[ $PPN ]=collection&collection_id=".$I[ 'W' ][ 'collection_id' ]."&ro=".$I[ 'U' ][ 'role_encode' ]."&item=collection&action=show_collection";
   $this->RENDERER->doRedirect( $url );
 }
+*/
 
 ###############################################################################################
 function updateColMetaData( $I )
@@ -405,13 +404,13 @@ function lmsDownload( $I )
 
   $url  =  $I[ 'operator' ] -> get_url() ;
 
-  $lmsDownload = explode( '?lmsid=', $url );
+  $lmsDownload = explode( '?lmsid=', $url );                                             # deb( $lmsDownload );
 
-  $lms = explode ( '###', $lms= base64_decode ( $lmsDownload[ 1 ])  );
+  #$lms = explode ( '###', $lms = $this -> UTIL -> b64de( $lmsDownload[ 1 ] ) );          # deb( $lms );
 
-  $url = $url ."&format=".$conf[ 'recordSchema' ];
-#deb($url,1);
-  $medList = $this -> LMSLoader( $url );
+  $url = $url ."&format=".$conf[ 'recordSchema' ];                                                # deb( $url );
+
+  $medList = $this -> LMSLoader( $url );                                                          # deb( $medList,1 );
 
   $medList = $this -> UTIL -> xml2array( $medList );
 
@@ -436,7 +435,7 @@ function lmsDownload( $I )
     $ret[] = $m;
   }
 
-  $_SESSION[ 'books' ][ 'currentCollection' ] = $lmsDownload[1];
+  $_SESSION[ 'books' ][ 'currentCollection' ] = $lmsDownload[ 1 ];
   $_SESSION[ 'books' ][ 'booksHitList'      ] = $this -> UTIL -> xml2array( $ret );
   $_SESSION[ 'books' ][ 'currentElement'    ] = 0;
   $_SESSION[ 'books' ][ 'maxElement'        ] = sizeof($_SESSION[ 'books' ][ 'booksHitList' ]);
@@ -445,11 +444,13 @@ function lmsDownload( $I )
   $user_role_id                = $I[ 'currentUser'       ] -> get_role_encode();
   $b_ppn                       = $_SESSION[ 'books'      ][ 'booksHitList' ][ 0 ][ 'ppn' ];
 
+  #deb($collection_dc_collection_id,1);
+
   $_SESSION[ 'books' ][ 'url' ] =  "index.php?ppn=$b_ppn&item=media&loc=1&action=annoteNewMedia&dc_collection_id=$collection_dc_collection_id&mode=new&r=$user_role_id";
   $this -> RENDERER -> doRedirect( $_SESSION[ 'books' ][ 'url' ]  );
 }
 
-function LMSLoader( $strXml )
+function LMSLoader( $url )
 {
 	$arrContextOptions=array(
         "ssl"=>array(
@@ -457,16 +458,16 @@ function LMSLoader( $strXml )
         "verify_peer_name"=>false,
          ), );
 
-  $url = 'https://haw.beluga-core.de/vufind/Cart/lmsdownload?lmsid='.$_SESSION['bc_urlID'].'&format=marc21';
+  #$url = 'https://haw.beluga-core.de/vufind/Cart/lmsdownload?lmsid='.$_SESSION['bc_urlID'].'&format=marc21';
 
   ### ------ TEST -------
   # $url = 'C:\xampp\htdocs\ELSE-DEV\htdocs\format.xml';
   ### ------ TEST -------
-
+  #deb($url,1);
   $strXml = file_get_contents( $url , false, stream_context_create($arrContextOptions));
 
   $xml = simplexml_load_string( $strXml);
-
+  # deb($xml,1);
   $i = 0;
   foreach( $xml -> record as $xmlrec )
   {
