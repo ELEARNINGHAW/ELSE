@@ -41,23 +41,19 @@
      <br />
      Über die Merklisten-Verwaltung des HAW-Katalogs <img src="img/merkliste.png" />   können Sie diese Titel dann direkt in Ihr ELSE übernehmen.
      <br />
-  <br/>
+         <hr/>
     In ELSE erfolgt die weitere Bearbeitung der einzelnen Titel:
     <ul>
        <li>Bei einem Print-Buch können Sie entscheiden, ob dieses ein Literaturhinweis sein soll oder in Ihren physischen Semesterapparat (Handapparat) in der Fachbibliothek eingestellt werden soll </li>
        <li>Bei Print-Artikeln ist nur die Einbindung als Literaturhinweis möglich.</li>
        <li>Bei allen Titeln können Sie Anmerkungen für die Studierenden hinzufügen. </li>
     </ul>
-
-
-         <div class="text2" style="text-align: center">
-             <button style="padding:20px;" class="ui-button ui-widget ui-corner-all"> <a href="index.php/?msg=&action=purchase_suggestion&loc=1&lmsid={$collection.dc_collection_id}">Erwerbungsvorschlag tätigen</a>
-             </button>
-         </div>
-
-
-
-
+         <hr/>
+    Haben Sie nicht das Gewünschte gefunden?<br/><br/>
+    <div class="text2" style="text-align: center">
+      <button style="padding:20px;" class="ui-button ui-widget ui-corner-all"> <a href="index.php?msg=&action=purchase_suggestion&loc=1&lmsid={$collection.dc_collection_id}"> Erwerbungsvorschlag für Ihren Semesterapparat</a>
+      </button>
+     </div>
      </div>
 
    <div style="  display: none;" >

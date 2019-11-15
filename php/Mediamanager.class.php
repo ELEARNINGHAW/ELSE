@@ -324,7 +324,7 @@ function purchase_suggestion( $I )
   $tpl_vars[ 'CFG'             ]            =  $this -> CFG -> getConf();
   $tpl_vars[ 'DOC_TYPE'        ]            =  $_SESSION[ 'DOC_TYPE' ];
 
-  #deb($tpl_vars[ 'medium'          ]);
+  #deb($tpl_vars[ 'collection'          ],1);
 
   $this -> RENDERER -> do_template ( 'edit_book.tpl' , $tpl_vars ) ;
 
