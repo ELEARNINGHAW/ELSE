@@ -51,7 +51,7 @@
 
 
          <div class="text2" style="text-align: center">
-             <button style="padding:20px;" class="ui-button ui-widget ui-corner-all"> <a href="https://141.22.117.12/ELSE-DEV//htdocs/?msg=&action=purchase_suggestion&loc=1&lmsid={$collection.dc_collection_id}">Erwerbungsvorschlag tätigen</a>
+             <button style="padding:20px;" class="ui-button ui-widget ui-corner-all"> <a href="index.php/?msg=&action=purchase_suggestion&loc=1&lmsid={$collection.dc_collection_id}">Erwerbungsvorschlag tätigen</a>
              </button>
          </div>
 
