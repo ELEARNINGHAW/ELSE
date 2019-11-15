@@ -1,7 +1,7 @@
 <div id="basic-modal-content">
  <img src="img/loader.gif" style="width:80px; heigth:80px" /></div>
 <script type='text/javascript' src='lib/jquery.simplemodal.js'></script>
-
+  
 <h3 style="margin:10px; padding:10px; color: #FFF;" class="bgDef bg{$collection.bib_id}" >
     {$collection.title} : Suche im HAW-Katalog <a style="float:right;" href="{$back_URL}"><img  class="icon" style="margin-top:-4px;" title="Zurück" src="img/svg/chevron-left_w.svg" /></a>
 </h3>

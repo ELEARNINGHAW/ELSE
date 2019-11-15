@@ -1,5 +1,5 @@
 {if $user.role_name == "staff" OR  $user.role_name == "admin" OR  $operator.mode == 'suggest' } {$restricted  = "" }  {else}  {$restricted = "disabled=\"yes\""}  {/if}
-
+  
 {if  $operator.msg == "shelf_remain"} {$bordercolor= "red"}
 {else}                                {$bordercolor= "AAA"}
 {/if}

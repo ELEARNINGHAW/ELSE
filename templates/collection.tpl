@@ -3,7 +3,7 @@
 {* SA.tpl                :   $CFG, $MEDIA_STATE                             *}
 {* action_button_bar.tpl :   $ACTION_INFO , $dc_collection_id, $role_encode *}
 {* footer.tpl            :                                                  *}
-
+  
 {$user_role_name     = $user.role_name  }
 {$user_role_id       = $user.role_id    }
 {$operator_action    = $operator.action }

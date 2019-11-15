@@ -1,8 +1,6 @@
 <?php
-
 class KollDB
 {
-
   var $db ;
   var $log ;
   var $status ;

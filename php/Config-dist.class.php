@@ -1,6 +1,6 @@
 <?php
 class Config
-{
+{  
 var $CONST;  
 
 function getConf()

@@ -1,6 +1,6 @@
 {* $operator, $filter, $collectionList  *}
 {if $filter.sem == 'X'}{$filter.sem = " Alle Semester "}{/if}
-
+  
 {if      $filter.bib == 'X'   }  <div class="depName bg{$filter.bib}" >  Semesterapparate der gesamten HAW                  : {$filter.sem} </div>
 {elseif  $filter.bib == 'DMI'
       or $filter.bib == 'LS'

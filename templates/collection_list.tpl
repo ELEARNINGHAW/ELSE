@@ -1,6 +1,6 @@
 {if $user.role_name == "admin"  OR  $user.role_name == "staff" OR  $user.role_name == "edit"  } {assign var="edit_mode"  value="1"} {else}  {assign var="edit_mode"   value="0"}  {/if}
 {if $user.role_name == "admin"  OR  $user.role_name == "staff"                                } {assign var="staff_mode" value="1"} {else}  {assign var="staff_mode"  value="0"}  {/if}
-
+  
 <div class="column">
 {foreach key=cid item=ci from=$collection_info}
 

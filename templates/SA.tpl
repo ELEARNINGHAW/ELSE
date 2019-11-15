@@ -2,7 +2,7 @@
 
 {$edit_mode  = "0"}
 {$staff_mode = "0"}
-
+  
 {$doctypedescription = $DOC_TYPE[ $di[ 'doc_type_id' ] ]['description'] }
 {$doctype            = $DOC_TYPE[ $di[ 'doc_type_id' ] ]['item'       ] }
 

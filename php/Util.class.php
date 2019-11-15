@@ -1,6 +1,6 @@
 <?php
 class Util   /// \brief check user input
-{
+{   
   var $SQL ;
   var $CFG ;
   var $conf;

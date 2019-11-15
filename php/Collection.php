@@ -1,7 +1,6 @@
 <?php
-
 class Collection
-{
+{  
   public $id;
   public $state_id;
   public $state_name;

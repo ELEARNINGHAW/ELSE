@@ -1,7 +1,6 @@
 <?php
-
 class MedState
-{
+{  
   public $med_state_GE;
   public $med_state_SA;
   public $med_state_LH;

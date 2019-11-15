@@ -1,6 +1,6 @@
 <?php
 class MEDIAMANAGER
-{
+{  
 var $RENDERER;
 var $SQL;
 var $UTIL;

@@ -1,7 +1,6 @@
 <?php
-
 class COLLECTIONMANAGER
-{
+{  
 var $CFG;
 var $RENDERER;
 var $SQL;

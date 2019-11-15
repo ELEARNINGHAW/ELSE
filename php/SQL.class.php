@@ -1,7 +1,6 @@
 <?php
-
 class SQL
-{
+{  
 var $DB;
 var $conf;
 var $CFG;

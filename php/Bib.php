@@ -1,7 +1,6 @@
 <?php
-
 class Bib
-{
+{  
   public $bib_APMail  ;
   public $bib_id      ;
   public $bib_Name    ;

@@ -1,6 +1,6 @@
 <?php
 class CONSTANT
-{
+{  
 var $default_role_id;
 var $sem;
 var $debug_level  = 1;

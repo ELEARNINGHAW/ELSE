@@ -2,7 +2,7 @@
   <head>
     <title>Semesterapparate</title>
     <meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8" />
-
+  
     <link   type="text/css"        href="lib/style.css"     rel="stylesheet"  />
     <link   type="text/css"        href="lib/jquery-ui.css" rel="stylesheet" />
     <link   href="https://fonts.googleapis.com/css?family=Fira+Sans|Open+Sans&display=swap" rel="stylesheet">

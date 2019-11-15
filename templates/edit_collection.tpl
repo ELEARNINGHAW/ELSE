@@ -2,7 +2,7 @@
 <meta charset="utf-8">
 <script src="lib/dropzone.min.js"></script>
 <link rel="stylesheet" href="lib/dropzone.min.css">
-
+  
 
 <h3 style="margin:20px; padding:10px; color: #FFF; "  class="bgDef bg{$collection.bib_id}"  >
 {if $operator.mode == "new"}

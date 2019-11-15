@@ -1,5 +1,4 @@
 <?php
-
 class Operator
 {
   public $item;

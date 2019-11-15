@@ -1,5 +1,4 @@
 <?php
-
 class Filter
 {
   public $bib;

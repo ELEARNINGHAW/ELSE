@@ -2,7 +2,7 @@
 {$collection.title} : {$collection.media[ 0 ].title } : Email
 <a style="float:right;" href="{$operator.url}"> <img  class="icon" style="margin-top:-4px;" title="Zurück" src="img/svg/chevron-left_w.svg" /></a>
 </h3>
-
+  
 
 {if $operator.msg == ''}
 <br />
