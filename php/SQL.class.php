@@ -89,18 +89,24 @@ $ret = NULL;
 $filter_state  = '';
 $filter_type   = '';
 
+#deb($filter,1);
+
 if( $filter )
-{ $filter_state  = $filter->get_state ();
-  $filter_type   = $filter->get_type  ();
+{
+  $filterSem = $filter->get_sem();
+  $filterBib = $filter->get_bib();
+  $filterState = $filter->get_state();
+  $filterType = $filter->get_type();
 }
 
 $SQL =
 "SELECT * FROM `document`
 WHERE `collection_id` = \"" . $colID . "\"";
-if (  $filter_state != ''  AND  $filter_state != 0   ) { $SQL .= " AND `state_id`    = "   . $this -> es ( $filter_state  ); }
-if (  $filter_type  != ''                            ) { $SQL .= " AND `doc_type_id` = "   . $this -> es ( $filter_type   ); }
+if (  $filterState != ''  AND  $filterState != 0   ) { $SQL .= " AND `state_id`     = "  . $this -> es ( $filterState  ); }
+#if (  $filter_type  != ''                            ) { $SQL .= " AND `doc_type_id` = "  . $this -> es ( $filter_type   ); }
+if (  $filterType   != ''  AND  $filterType != 'X'   ) { $SQL .= " AND `doc_type_id`  = "  . $this -> es ( $filterType   ); }
 
-#deb($SQL);
+deb($SQL);
 $res = mysqli_query ( $this -> DB , $SQL );
 
 
@@ -203,16 +209,18 @@ function getCollection( $colID = null , $filter = false ,  $short = null )
   $filterSem   =  '';
   $filterBib   =  '';
   $filterState =  '';
+  $filterType  =  '';
 
   if($filter)
   {
     $filterSem   =  $filter -> get_sem();
     $filterBib   =  $filter -> get_bib();
     $filterState =  $filter -> get_state();
+    #$filterType  =  $filter -> get_type();
 
-    if ( $filterSem != ''  AND   $filterSem != 'X'                           )  {  $semesterFilter = " AND c.sem     = '" .   $filterSem . "' "; }  # SEMESTER filter
-    if ( $filterBib != ''  AND   $filterBib != 'X' AND   $filterBib != '0'   )  {  $bibFilter      = " AND c.bib_id  = '" .   $filterBib . "' "; }  # Bibliotheks filter
-    else                                                                        {  $bibFilter      = " AND c.bib_id != '' "                    ; }
+    if ( $filterSem  != ''  AND   $filterSem  != 'X'                           )  {  $semesterFilter  = " AND c.sem           = '" .   $filterSem  . "' "; }  # SEMESTER filter
+    if ( $filterBib  != ''  AND   $filterBib  != 'X' AND   $filterBib != '0'   )  {  $bibFilter       = " AND c.bib_id        = '" .   $filterBib  . "' "; }  # Bibliotheks filter
+    else                                                                          {  $bibFilter       = " AND c.bib_id       != '' "                     ; }
   }
 
   if ( $colID )   { $collection .= " AND c.id = \"" . $this->es ( $colID ) . "\" ";  }
@@ -221,6 +229,8 @@ function getCollection( $colID = null , $filter = false ,  $short = null )
   $SQL .= " FROM `collection` c , `user` u";
   $SQL .= " WHERE  u.hawaccount = c.user_id " .  $collection  . " " . $bibFilter . " " . $semesterFilter;  # ."  ".$user;
   $SQL .= " ORDER BY c.id ";
+
+ # deb($SQL,1);
 
   $res = mysqli_query ( $this->DB , $SQL );
 

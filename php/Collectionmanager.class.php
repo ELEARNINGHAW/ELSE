@@ -23,10 +23,11 @@ function  showMediaList( $I )  ##---------- Medien gefiltert nach Status
   ## $state_id:    1 = neu bestellt, 2 wird bearbeitet, 3 aktiv, 4 wird entfernt, 5 inaktiv, 6 gelöscht, 9 Erwerbvorschlag
   ## $doc_type_id: 1 = Buch, 3, = CD, 4 = E-Book,
 
-  $I[ 'filter' ]->set_type( 1 );  ## NUR Semesterappartat Medien/Bücher werden angezeigt
+  #$I[ 'filter' ]->set_type( 1 );  ## NUR Semesterappartat Medien/Bücher werden angezeigt
 
   $collection = $this -> SQL -> getCollection( null,  $I[ 'filter' ]  , true );
 
+  deb($collection);
 
   if( isset( $collection ) )  foreach ($collection as $c )   { $col_list[] = $c -> obj2array( );  }
 
@@ -150,8 +151,8 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
     $collection_id                        = $I[ 'currentCollection' ] -> get_collection_id();
     $collection                           = $this -> SQL-> getCollection ( $collection_id );
 
-    # deb("Coll");
-    # deb($collection,1);
+     #deb("Coll");
+     #deb($collection,1);
 
     $I[ 'operator' ] -> set_url( $I[ 'operator' ] -> get_history( )[ 1 ]  );                  ##  Link für den "zurück"- Button
 

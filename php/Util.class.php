@@ -61,10 +61,10 @@ else
 ##
 if (isset(  $_SERVER [ 'HTTP_REFERER'      ] ))
 {
-  $_SESSION[ 'history' ][ 3 ] = $_SESSION[ 'history' ][ 2 ];
-  $_SESSION[ 'history' ][ 2 ] = $_SESSION[ 'history' ][ 1 ];
-  $_SESSION[ 'history' ][ 1 ] = $_SESSION[ 'history' ][ 0 ];
-  $_SESSION[ 'history' ][ 0 ] = $_SERVER [ 'HTTP_REFERER' ];
+  if (isset( $_SESSION[ 'history' ][ 2 ]  )) { $_SESSION[ 'history' ][ 3 ] = $_SESSION[ 'history' ][ 2 ]; }
+  if (isset( $_SESSION[ 'history' ][ 1 ]  )) { $_SESSION[ 'history' ][ 2 ] = $_SESSION[ 'history' ][ 1 ]; }
+  if (isset( $_SESSION[ 'history' ][ 0 ]  )) { $_SESSION[ 'history' ][ 1 ] = $_SESSION[ 'history' ][ 0 ]; }
+  if (isset( $_SERVER [ 'HTTP_REFERER' ]  )) { $_SESSION[ 'history' ][ 0 ] = $_SERVER [ 'HTTP_REFERER' ]; }
   $operator->set_history ( $_SESSION[ 'history' ] );
 }
 
@@ -477,13 +477,12 @@ else { return false;    }
 
 function get_filter( $operator )
 {
-
   $filter = new Filter();
 
-  $filter -> set_bib     ( $_SESSION[ 'filter' ]['bib'  ]  );
-  $filter -> set_sem     ( $_SESSION[ 'filter' ]['sem'  ]  );
-  $filter -> set_state   ( $_SESSION[ 'filter' ]['state']  );
-  $filter -> set_type    ( $_SESSION[ 'filter' ]['type' ]  );
+  $filter -> set_bib     ( $_SESSION[ 'filter' ][ 'bib'  ]  );
+  $filter -> set_sem     ( $_SESSION[ 'filter' ][ 'sem'  ]  );
+  $filter -> set_state   ( $_SESSION[ 'filter' ][ 'state']  );
+  $filter -> set_type    ( $_SESSION[ 'filter' ][ 'type' ]  );
 
   if ( $operator -> get_mode() == 'filterBib'   ) { $filter -> set_bib   ( $operator -> get_category() );  $filter -> set_state ( 0 );  } # Filter State wird auf ALLE zurückgesetzt bei Filter auf Bib
   if ( $operator -> get_mode() == 'filterSem'   ) { $filter -> set_sem   ( $operator -> get_category() );  $filter -> set_state ( 0 );  } # Filter State wird auf ALLE zurückgesetzt bei Filter auf Sem

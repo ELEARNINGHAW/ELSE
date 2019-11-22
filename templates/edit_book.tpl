@@ -16,7 +16,7 @@
         <h3 style="margin:10px; margin-bottom:0px; margin-top:0px; padding:10px; color: #FFF;" class="bgDef bg{$collection.bib_id}">Erwerbungsvorschlag für: {$collection.title}
             <a style="float:right;" href="index.php"><img  class="icon" style="margin-top:-4px;" title="Zurück" src="img/svg/chevron-left_w.svg" /></a></h3>
         <div style="margin:10px;  padding:10px; border:solid 1px black; ">
-            Wenn Sie ein Buch zur Anschaffung in der Bibliothek vorschlagen m&ouml;chten und dieses in  Ihren Semesterapparat aufgenommen werden soll, benutzen Sie bitte diese Formular.<br/><br/>Wir geben Ihnen eine Rückmeldung, ob wir Ihnen das Buch beschaffen k&ouml;nnen.
+            Wenn Sie ein Medium zur Anschaffung in der Bibliothek vorschlagen m&ouml;chten und dieses in  Ihren Semesterapparat aufgenommen werden soll, benutzen Sie bitte dieses Formular.
         </div>
     {else}
         <h5 style="margin:10px; padding:10px; color: #FFF"  class="bgDef bg{$collection.bib_id}" >{$collection.title}<br/> {$doctypetxt} bearbeiten <a style="float:right;" href="index.php{$operator.url}"><img  class="icon" style="margin-top:-15px;" title="Zurück" src="img/svg/chevron-left_w.svg" /></a>
