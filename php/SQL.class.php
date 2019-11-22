@@ -86,8 +86,10 @@ function getDokumentList( $colID , $filter = null  )
 {
 $ret = NULL;
 
-$filter_state  = '';
-$filter_type   = '';
+  $filterSem   = '';
+  $filterBib   = '';
+  $filterState = '';
+  $filterType  = '';
 
 #deb($filter,1);
 

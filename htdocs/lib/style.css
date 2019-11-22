@@ -811,16 +811,18 @@ td{
   font-size: 14px;
   font-family: Arial, Helvetica, sans-serif;
   margin: 0px;
-  padding: 0px;
-  padding-top: 6px;
+  padding: 4px;
+  padding-top: 4px;
   color: #FFF;
   line-height: 95%;
   font-weight: 700;
-  height: 30px;
+  height: 27px;
   display: inline-block;
   position:absolute;
-  left:620px;
+  left:0px;
+  background-color:#999;
 }
+
 
 
 .s_standard

@@ -43,7 +43,7 @@
 {/if}
 
 
-<ul id="nav2" style="position:absolute; right:110px;   top:3px;">
+<ul id="nav2" style="position:absolute; right:77px;   top:3px;">
     {if      $filter.state == 0}<li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=0" title="Alle SemApp"         ><img src="img/svg/Xa.svg" width="32" height="32"/></a>
     {elseif  $filter.state == 1}<li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=1" title="Neu Bestellte"       ><img src="img/svg/Na.svg" width="32" height="32"/></a>
     {elseif  $filter.state == 2}<li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=2" title="Wird Bearbeitet"     ><img src="img/svg/Ba.svg" width="32" height="32"/></a>
@@ -68,8 +68,8 @@
   </li>
 </ul>
 
-
-  <ul id="nav2" style="position:absolute; right:77px;   top:3px;">
+{*
+  <ul id="nav2" style="position:absolute; right:110px;   top:3px;">
     {if      $filter.type == 0 }<li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterType&amp;category=0"  title="Alle Medien"         ><img src="img/svg/Xa.svg" width="32" height="32"/></a>
     {elseif  $filter.type == 6 }<li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterType&amp;category=6"  title="Artikel"             ><img src="img/svg/Ar.svg" width="32" height="32"/></a>
     {elseif  $filter.type == 4 }<li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterType&amp;category=4"  title="E-Book"              ><img src="img/svg/EB.svg" width="32" height="32"/></a>
@@ -106,7 +106,7 @@
       </ul>
     </li>
   </ul>
-
+*}
 
 
 

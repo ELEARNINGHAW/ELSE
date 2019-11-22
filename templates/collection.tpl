@@ -21,7 +21,7 @@
     <div class="SAMeta bgDef bg{$ci.bib_id}">
 
     {if ( $staff_mode )}
-    <div  style="width:630px; display: inline-block; padding-top:5px; line-height: 80% ">
+    <div style="width:630px; display: inline-block; position:absolute; padding-top:5px; left:50px; line-height: 80% ">
     <a class = "medHead2"  style="float:left;"  > {$ci.title|truncate:70:"...":true} </a><br/>
     <a class = "medHead2"  style="float:left;"  >von: {$ci.Owner.forename|escape} {$ci.Owner.surname} </a>
     <a class = "medHead2"  style="float:left;"  >&nbsp;&nbsp;/&nbsp;&nbsp;Dep:   {$ci.Owner.dep_name}</a>
@@ -44,7 +44,7 @@
 
     {if $edit_mode AND $ci.dc_collection_id != "" }
     <a href="index.php?dc_collection_id={$ci.dc_collection_id}&amp;item=collection&amp;action=add_media&amp;r={$user_role_id}"  title="Neues Medium (Buch, E-Book,...) dem Semesterapparat hinzufügen"  >
-    <img src="img/svg/addBook_w.svg"   width="32"  height="32" style="position:relative; float:right;  margin:2px; " /></a>
+    <img src="img/svg/addBook_w.svg"   width="64"  height="32" style="position:relative; float:right;  margin:2px; " /></a>
     {/if}
 
     {else}
