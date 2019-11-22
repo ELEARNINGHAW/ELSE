@@ -27,7 +27,7 @@ function  showMediaList( $I )  ##---------- Medien gefiltert nach Status
 
   $collection = $this -> SQL -> getCollection( null,  $I[ 'filter' ]  , true );
 
-  deb($collection);
+  #deb($collection);
 
   if( isset( $collection ) )  foreach ($collection as $c )   { $col_list[] = $c -> obj2array( );  }
 

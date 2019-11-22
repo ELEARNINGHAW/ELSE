@@ -106,7 +106,7 @@ if (  $filterState != ''  AND  $filterState != 0   ) { $SQL .= " AND `state_id` 
 #if (  $filter_type  != ''                            ) { $SQL .= " AND `doc_type_id` = "  . $this -> es ( $filter_type   ); }
 if (  $filterType   != ''  AND  $filterType != 'X'   ) { $SQL .= " AND `doc_type_id`  = "  . $this -> es ( $filterType   ); }
 
-deb($SQL);
+#deb($SQL);
 $res = mysqli_query ( $this -> DB , $SQL );
 
 
