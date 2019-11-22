@@ -34,17 +34,18 @@
     {if ($operator.mode != "print" AND ($edit_mode OR $staff_mode)) }
 
     <a target="help_win" class="modalLink" href="#helpit" rel="modal:open"  title="Weitere Informationen über ELSE"                  ><img src="img/svg/help.svg"        width="32"  height="32" style="position:relative; float:right; padding-right: 2px; margin:2px; margin-right:-1px;"  /></a>
+
     <a target="_blank" href="index.php?item=collection&amp;dc_collection_id={$ci.dc_collection_id}&amp;action=show_collection&amp;mode=print&amp;r={$user_role_id}">
-    <img src="img/svg/print_w.svg"    width="32"  height="32" style="position:relative; float:right; padding-right: 2px; margin:2px; margin-right:-1px;" title="Druckversion SA"   /></a>
+    <img src="img/svg/print_w.svg"    width="32"  height="32" style="position:relative; float:right; padding-right: 2px; margin:2px; margin-right:6px;" title="Druckversion SA"   /></a>
 
     {if ($edit_mode OR $staff_mode)}
     <a href="index.php?item=collection&amp;action=coll_meta_edit&amp;dc_collection_id={$ci.dc_collection_id}&amp;redirect=SA&amp;r={$user_role_id}" title="Bearbeiten der allgemeinen Infos des Semesterapparats">
-    <img src="img/svg/settings_w.svg"  width="32"  height="32" style="position:relative; float:right;  margin:2px; " /></a>
+    <img src="img/svg/settings_w.svg"  width="32"  height="32" style="position:relative; float:right;  margin:2px;  margin-right:0px" /></a>
     {/if}
 
     {if $edit_mode AND $ci.dc_collection_id != "" }
     <a href="index.php?dc_collection_id={$ci.dc_collection_id}&amp;item=collection&amp;action=add_media&amp;r={$user_role_id}"  title="Neues Medium (Buch, E-Book,...) dem Semesterapparat hinzufügen"  >
-    <img src="img/svg/addBook_w.svg"   width="64"  height="32" style="position:relative; float:right;  margin:2px; " /></a>
+    <img src="img/svg/addBook_w.svg"   width="64"  height="32" style="position:relative; float:right;  margin:2px;  margin-right:6px; " /></a>
     {/if}
 
     {else}
