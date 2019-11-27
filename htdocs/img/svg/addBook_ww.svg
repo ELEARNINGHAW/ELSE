@@ -55,7 +55,7 @@
      showgrid="true"
      inkscape:zoom="11.313709"
      inkscape:cx="16.1437"
-     inkscape:cy="16.287749"
+     inkscape:cy="16.243555"
      inkscape:window-x="1672"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
@@ -89,6 +89,17 @@
   </g>
   <g
      style="font-size:16px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;font-family:HAW Frutiger Next Regular"
+     id="g5891"
+     transform="matrix(0.6800609,0,0,0.7586666,17.375354,4.0828578)">
+    <path
+       id="path3013"
+       style="fill:#ffffff"
+       d="M 19.521998,18.821033 L 19.521999,8.9352683 L 17.316313,10.50573 L 17.316313,7.6171663 L 19.521998,6.2990643 L 22.462912,6.2990643 L 22.462912,18.821034 C 21.697792,18.835874 21.27596,18.874374 19.521998,18.821033 L 19.521998,18.821033 z M 12.904944,14.207676 L 12.904944,18.161982 L 9.9640295,18.161982 L 9.9640295,14.207676 L 5.5526603,14.207676 L 5.5526603,11.571472 L 9.9640295,11.571472 L 9.9640295,7.6171663 L 12.904944,7.6171663 L 12.904944,11.571472 L 17.316313,11.571473 L 17.316313,14.207676 L 12.904944,14.207676 z M 28.327645,3.8907849 L 28.327645,29.890785 L 7.3276449,29.890785 C 5.6706449,29.890785 4.3276449,28.547785 4.3276449,26.890785 C 4.3276449,25.233785 5.6706449,23.890785 7.3276449,23.890785 L 26.327645,23.890785 L 26.327645,-0.10921501 L 6.3276449,-0.10921501 C 4.1276449,-0.10921501 2.3276449,1.6907849 2.3276449,3.8907849 L 2.3276449,27.890785 C 2.3276449,30.090785 4.1276449,31.890785 6.3276449,31.890785 L 30.327645,31.890785 L 30.327645,3.8907849 L 28.327645,3.8907849 z M 8.3276449,25.890785 L 26.327645,25.890785 L 26.327645,27.890785 L 8.3276449,27.890785 L 8.3276449,25.890785 z "
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccccccccccccccccccsssccsssscccccccc" />
+  </g>
+  <g
+     style="font-size:16px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;font-family:HAW Frutiger Next Regular"
      id="g3148"
      transform="matrix(0.6800609,0,0,0.7586666,-6.624645,4.0828588)">
     <path
@@ -98,10 +109,4 @@
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="csssccssssccccccccc" />
   </g>
-  <path
-     id="path3170"
-     style="font-size:16px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;font-family:HAW Frutiger Next Regular"
-     d="M 33.391304,22.969475 L 33.391304,11.940942 L 31.434781,13.692946 L 31.434781,10.470472 L 33.391304,9 L 36,9 L 36,22.969477 C 35.321311,22.986031 34.947131,23.028983 33.391304,22.969475 L 33.391304,22.969475 z M 27.52174,17.822826 L 27.52174,22.23424 L 24.913043,22.23424 L 24.913043,17.822826 L 21,17.822826 L 21,14.881884 L 24.913043,14.881884 L 24.913043,10.470472 L 27.52174,10.470472 L 27.52174,14.881884 L 31.434781,14.881886 L 31.434781,17.822826 L 27.52174,17.822826 z "
-     inkscape:connector-curvature="0"
-     sodipodi:nodetypes="cccccccccccccccccccccc" />
 </svg>
