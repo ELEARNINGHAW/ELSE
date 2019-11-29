@@ -176,12 +176,16 @@ function getGET_BASE_Values ( )
   $currentUser             =  new user();
   $medium                  =  new medium();
 
-
   $_SESSION[ 'filter' ][ 'bib'   ] = '';
   $_SESSION[ 'filter' ][ 'sem'   ] = '';
   $_SESSION[ 'filter' ][ 'state' ] = '';
   $_SESSION[ 'filter' ][ 'type'  ] = '';
   $_SESSION[ 'filter' ][ 'user'  ] = '';
+
+  $_SESSION[ 'history' ][ 3 ] = '';
+  $_SESSION[ 'history' ][ 2 ] = '';
+  $_SESSION[ 'history' ][ 1 ] = '';
+  $_SESSION[ 'history' ][ 0 ] = '';
 
   #### Übergabe aus Moodle / IDM
 #------------------------------------------------------------------------

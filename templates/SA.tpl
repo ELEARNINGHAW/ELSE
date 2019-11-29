@@ -32,8 +32,8 @@
 {if $di.notes_to_studies != "" }   <div class="medhint">Zur Beachtung: {$di.notes_to_studies|nl2br}  </div> {/if}
 
 <div class="bibStandort">
-   doc_id  {$di.doc_type_id}
-   shelf {$di.shelf_remain}
+
+
     {if $ci.bib_id != "" }
     {if $di.shelf_remain == 1  }  {$FACHBIB[ $ci.bib_id ].bib_name|escape},<br/> im Regal "Semesterapparate"      {/if}{* SA Medium        *}
     {if $di.shelf_remain == 2  }  Im Buchbestand der Fachbibliothek<br/> (wie im Online-Katalog angegeben).       {/if}{* LitHinweis Buch  *}

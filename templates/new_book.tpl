@@ -29,31 +29,31 @@
  {/if}
 
  <div class="text2"  style="display: block;" >
-   Sie können nun direkt im HAW-Katalog recherchieren und gewünschte Titel durch einen Klick auf  <img src="img/sternchen.png" /> in die dortige Merkliste übernehmen.
-     <br />
-     <br />
+<ul><li>
+     Recherchieren Sie nun im HAW Bibliothekskatalog .
+    </li>
+    <li>
+        Durch einen Klick auf den jeweiligen Stern <img src="img/sternchen.png">,  übernehmen Sie Ihre gewünschten Medien in die "Merkliste"
+     </li>
+ </ul>
+
+
  </div>
      <div class="text2" style="text-align: center">
      <button style="padding:20px;" class="ui-button ui-widget ui-corner-all"> <a href="https://elsehaw.beluga-core.de/vufind/?lmsid={$URLID}&lmsurl={$URL}">Im HAW-Katalog recherchieren und die Merkliste füllen</a>
      </button>
      </div>
      <div class="text2">
-     <br />
-     Über die Merklisten-Verwaltung des HAW-Katalogs <img src="img/merkliste.png" />   können Sie diese Titel dann direkt in Ihr ELSE übernehmen.
-     <br />
-         <hr/>
-    In ELSE erfolgt die weitere Bearbeitung der einzelnen Titel:
-    <ul>
-       <li>Bei einem Print-Buch können Sie entscheiden, ob dieses ein Literaturhinweis sein soll oder in Ihren physischen Semesterapparat (Handapparat) in der Fachbibliothek eingestellt werden soll </li>
-       <li>Bei Print-Artikeln ist nur die Einbindung als Literaturhinweis möglich.</li>
-       <li>Bei allen Titeln können Sie Anmerkungen für die Studierenden hinzufügen. </li>
-    </ul>
-         <hr/>
-    Haben Sie nicht das Gewünschte gefunden?<br/><br/>
-    <div class="text2" style="text-align: center">
-      <button style="padding:20px;" class="ui-button ui-widget ui-corner-all"> <a href="index.php?msg=&action=purchase_suggestion&loc=1&lmsid={$collection.dc_collection_id}"> Erwerbungsvorschlag für Ihren Semesterapparat</a>
-      </button>
-     </div>
+
+         <dov class="text2">
+             <hr>
+
+             <ul>
+                 <li>  Haben Sie nicht das Gewünschte gefunden?<BR></li></ul>
+             <div class="text2" style="text-align: center;">
+                 <button style="padding:20px;" class="ui-button ui-widget ui-corner-all"> <a href="index.php?msg=&action=purchase_suggestion&loc=1&lmsid={$collection.dc_collection_id}"> Erwerbungsvorschlag für Ihren Semesterapparat</a>
+                 </button>
+             </div>
      </div>
 
    <div style="  display: none;" >
