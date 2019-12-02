@@ -58,8 +58,8 @@
 {if ( $SAready== 1 AND  ( $operator.mode == 'new'  OR $medium.doc_type_id == 16 ) ) }
   <tr><td  class = "editmedia" style="vertical-align: top; font-weight: bold;">  Ort:  <span style="color: #F03; vertical-align: top; font-weight: bold;">(bitte auswählen)</span> </td><td>
      <div  style="border:1px solid {$bordercolor};    height:59px; padding: 5px; font-size: 13px; width: calc(100% - 20px); ">
-     <input {$c2} value="2" class='i' type="radio" name="shelf_remain" id="radio-2"><label for="radio-2"><div style="display: inline-block;  font-weight:700; width:125px; text-align:left; ">Literaturhinweis:</div> Buch verbleibt im Regal der Bibliothek.</label><br/>
-     <input {$c1} value="1" class='i' type="radio" name="shelf_remain" id="radio-1"><label for="radio-1"><div style="display: inline-block;  font-weight:700; width:125px; text-align:left; ">Handapparat:</div> Buch wird in Ihren Handapparat eingestellt.</label>
+     <input {$c2} value="2" class='i' type="radio" name="shelf_remain" id="radio-2"><label for="radio-2"><div style="display: inline-block;  font-weight:700; width:125px; text-align:left; ">Literaturhinweis:</div> <div style="display: inline-block; width:400px; text-align:left;" > Buch verbleibt im Regal der Bibliothek.   </div></label><br/>
+     <input {$c1} value="1" class='i' type="radio" name="shelf_remain" id="radio-1"><label for="radio-1"><div style="display: inline-block;  font-weight:700; width:125px; text-align:left; ">Handapparat:</div> <div style="display: inline-block; width:400px; text-align:left;" >Buch wird in Ihren Handapparat eingestellt.</div></label>
      <input {$c0} value="0"           type="radio" name="shelf_remain" id="radio-1" style="visibility: hidden;">
      </div>
   </td></tr>
