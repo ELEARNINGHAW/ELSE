@@ -49,10 +49,17 @@ if ( isset ( $_GET[ 'uid' ] ) )  ##  Initiale Parameterübergabe über  Moodle #
 
   $_SESSION[ 'currentUser'       ] = (array) $currentUser      ;
 }
+else if  ( ( isset (  $_SESSION[ 'currentUser'       ]   ) ) )
+{
+  $currentUser -> array2obj( $_SESSION[ 'currentUser'       ] );
+}
 else
 {
-  $currentUser       -> array2obj( $_SESSION[ 'currentUser'       ] );
+ # header("Location:index.html");
+  die("<div style='text-align:center;'><h1>ACCESS ERROR<h1><h3>Netzwerkfehler!</h3>Bitte ELSE neu starten</div>");
+
 }
+
 
 #  if ( $_SESSION['currentUser']['Userrole_id'] == ''   ) { die(  '<div style="  display: flex;  position: absolute;  top:45%; right:45%; font-size: 30px; "> TIME OUT <div>'); }
 
@@ -144,8 +151,6 @@ if      ( isset ( $_GET[ 'to'                                  ] ) )
  if ( isset ( $_GET[ 'mailtext'                          ] ) )  { $email -> set_mailtext        ( $_GET[ 'mailtext'         ] ) ; }
  $I[ 'email'  ] = $email;
 }
-
-
 
 ##
 ### ------------------------------- Rückgabewerte I  --------------------------------
