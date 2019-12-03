@@ -41,7 +41,7 @@ $cu = $I[ 'currentUser' ];
 $ca = $I[ 'operator'    ] -> get_action();
 $ci = $I[ 'operator'    ] -> get_item();
 
-deb($I,1);
+deb($_SESSION,1);
 
 # -- Default: item = collection -- (user) action = show_collection, (staff) action = show_collection_list
 if ( $ci  == 'collection'  AND   $UTIL->hasRole( $cu,'admin', 'staff', 'edit') )

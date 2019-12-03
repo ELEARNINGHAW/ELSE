@@ -85,7 +85,7 @@ $this->CONST_ACTION_INFO = array
         'input'             => array () ,
         'button_visible_if' => array
         (
-            "state"    => array ( "inactive" ) ,
+            "state"    => array ( "inactive", 'suggest' ) ,
             "mode"     => array ( "edit" , "admin" , "staff" ) ,
             "loc"      => array ( "1", "2", "3"  ) ,
         ) ,
