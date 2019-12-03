@@ -53,10 +53,12 @@
     <img src="img/svg/print_w.svg"    width="32"  height="32" style="position:relative; float:right; padding-right: 2px; margin:2px; margin-right:-1px;" title="Zum Drucker senden"   /></a>
     {/if}
 
+    {if ($edit_mode OR $staff_mode)}
     <div class="medHeadBlock">
     <a class = "medHead3"  href="index.php?mode=filterBib&r=2&category={$ci.bib_id}" >{$ci.bib_id}</a>
     <a class = "medHead3"  href="index.php??category={$ci.sem}&mode=filterSem&r=2">{$ci.sem}</a>
     </div>
+    {/if}
 
     </div>
     {/if}
@@ -70,7 +72,6 @@
     {if isset($ci.media)}
     {foreach from=$ci.media item=di}
     {if    $edit_mode == 0  AND  $di.state_id == 3  OR $edit_mode   == 1 AND $di.state_id != 6 OR $operator_action == 'show_media_list' }
-
 
     <div class='{$di.id}'>
       {include file = "SA.tpl" }

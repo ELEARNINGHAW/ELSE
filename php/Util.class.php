@@ -46,19 +46,30 @@ if ( isset ( $_GET[ 'uid' ] ) )  ##  Initiale Parameterübergabe über  Moodle #
   $currentCollection = $O[ 'currentCollection' ] ;
   $currentUser       = $O[ 'currentUser'       ] ;
   $medium            = $O[ 'medium'            ] ;
-
   $_SESSION[ 'currentUser'       ] = (array) $currentUser      ;
 }
+
 else if  ( ( isset (  $_SESSION[ 'currentUser'       ]   ) ) )
 {
   $currentUser -> array2obj( $_SESSION[ 'currentUser'       ] );
 }
+
 else
 {
- # header("Location:index.html");
+  # header("Location:index.html");
   die("<div style='text-align:center;'><h1>ACCESS ERROR<h1><h3>Netzwerkfehler!</h3>Bitte ELSE neu starten</div>");
-
 }
+
+
+if  ( ( isset (  $_SESSION[ 'currentCollection'       ]   ) ) )
+{
+  $currentCollection -> array2obj( $_SESSION[ 'currentCollection'       ] );
+}
+
+
+
+
+
 
 
 #  if ( $_SESSION['currentUser']['Userrole_id'] == ''   ) { die(  '<div style="  display: flex;  position: absolute;  top:45%; right:45%; font-size: 30px; "> TIME OUT <div>'); }
@@ -200,6 +211,7 @@ function getGET_BASE_Values ( )
   if ( isset ( $_GET[ 'sn' ] ) )  { $currentCollection -> set_title_short  ( $this -> b64de( $_GET[ 'sn' ]  ) );  }
   if ( isset ( $_GET[ 'cn' ] ) )  { $currentCollection -> set_title        ( $this -> b64de( $_GET[ 'cn' ]  ) );  }
 
+ # deb($currentCollection,1);
 #------------------------------------------------------------------------
 
   if ( isset ( $_GET[ 'uid'] ) )  { $currentUser -> set_id                 ( $this -> b64de( $_GET[ 'uid']  ) ) ; }
@@ -212,9 +224,9 @@ function getGET_BASE_Values ( )
   if ( isset ( $_GET[ 'ro' ] ) )  { $currentUser -> set_role_id            ( $this -> b64de( $_GET[ 'ro' ]  ) ) ; }
   if ( isset ( $_GET[ 'ro' ] ) )  { $currentUser -> set_role_encode        (                 $_GET[ 'ro' ]    ) ; }
 
-  $currentUser = $this -> getRole   ( $currentUser, $currentCollection );
-  $currentUser = $this -> getFachBIB( $currentUser );
-  $currentUser = $this -> getSex    ( $currentUser );
+  $currentUser  =  $this -> getRole    ( $currentUser  , $currentCollection  );
+  $currentUser  =  $this -> getFachBIB ( $currentUser );
+  $currentUser  =  $this -> getSex     ( $currentUser );
 
 #-------------------------------------------------------------------------
 
@@ -226,11 +238,12 @@ function getGET_BASE_Values ( )
 
   #-------------------------------------------------------------------------
 
+#  deb($currentCollection);
   $O[ 'operator'          ]  =  $operator;
   $O[ 'currentCollection' ]  =  $this -> updateCollection(  $currentCollection, $currentUser );
   $O[ 'currentUser'       ]  =  $this -> updateUser( $currentUser  );
   $O[ 'medium'            ]  =  $medium;
-
+#  deb($O[ 'currentCollection' ] ,1);
   return $O;
 }
 
@@ -279,8 +292,8 @@ function getSex( $user )
 # ---------------------------------------------------------------------------------------------
 function getFachBIB( $user )
 {
-  if ( isset( $_SESSION[ 'DEP_2_BIB' ][ $user->get_department()  ] ) )
-              {  $bib = $_SESSION[ 'DEP_2_BIB' ][ $user->get_department() ];  }
+  if ( isset( $_SESSION[ 'DEP_2_BIB' ][ $user -> get_department()  ] ) )
+              {  $bib = $_SESSION[ 'DEP_2_BIB' ][ $user -> get_department() ];  }
   else        {  $bib = $_SESSION[ 'DEP_2_BIB' ][ 101 ];                }  ## Preset auf FachBib = HAW, falls dem User kein Department zugeordnet wurde.
 
   $user -> set_dep_id       (  $bib[ 'dep_id'      ] ) ;
@@ -330,9 +343,8 @@ function updateUser ( $user )
     $user = $this -> getRole   ( $user );
     $user = $this -> getFachBIB( $user );
     $user = $this -> getSex    ( $user );
-
-  return $user;
   }
+  return $user;
 }
 
 
@@ -353,10 +365,10 @@ function updateCollection ( $collection , $user )
       $ret = $this -> SQL -> initCollection( $collection , $user );                        #  echo "- NEUER Semesterapparat (INIT DB )-";
     }
 
-    $upd_collection = $this -> SQL -> getCollectionMetaData( $collection->get_title_short() ) ;
-
-    return $upd_collection;
   }
+
+  $collection = $this -> SQL -> getCollectionMetaData( $collection->get_title_short() ) ;
+  return $collection;
 }
 
 
