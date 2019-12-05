@@ -1105,6 +1105,20 @@ td{
 }
 
 
+a.medimove, a.medimove:hover
+{
+  background-repeat:no-repeat;
+  background-position:99.5% 5px;
+  background-image:url(../img/svg/move.svg);
+}
+
+a.medimove:hover
+{
+  background-image:url(../img/svg/moveH.svg);
+}
+
+
+
 
 a.medi_1  /* Buch */
 {
@@ -1135,6 +1149,8 @@ a.medi_4 /* E-Book */
   background-position:100% 15px;
   background-image:url(../img/svg/newspaper.svg);
 }
+
+
 
 a.medi_1:hover  /* Buch */
 {

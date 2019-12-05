@@ -33,7 +33,7 @@
     Um ein Medium in Ihren Semesterapparat hinzuzufügen,<br />recherchieren Sie nun bitte im HAW Bibliothekskatalog.
     </li>
     <li>
-        Durch einen Klick auf den Stern <img style="position:relative;  top:5px;" src="img/sternchen.png"> des gewünschten Mediums,<br />  übernehmen Sie dieses dann dort in Ihre  in Ihre "Merkliste".
+        Durch einen Klick auf den <strong>Stern</strong> <img style="position:relative;  top:5px;" src="img/sternchen.png"> des gewünschten Mediums,<br />  übernehmen Sie dieses dann dort in Ihre  in Ihre <strong>"Merkliste"</strong>.
      </li>
  </ul>
 

@@ -834,6 +834,7 @@ SET `state_id` = '" . $this->es ( $state ) . "' WHERE `document`.`id` = " . $thi
   }
 
 
+
 # ---------------------------------------------------------------------------------------------
   function exportCollection( $collection_id )
   {
@@ -845,11 +846,11 @@ SET `state_id` = '" . $this->es ( $state ) . "' WHERE `document`.`id` = " . $thi
 
     if ( $res )
     { while ( $row = mysqli_fetch_assoc ( $res ) )
-      { foreach ( $this->conf[ 'expoimp' ] as $exim )
-        { $csv_export .= $row[ $exim ] . ";;";
-        }
-        $csv_export .= "\r\n";
-      }
+    { foreach ( $this->conf[ 'expoimp' ] as $exim )
+    { $csv_export .= $row[ $exim ] . ";;";
+    }
+      $csv_export .= "\r\n";
+    }
     }
     return $csv_export;
   }
@@ -864,21 +865,19 @@ function importCollection( $collection_id , $medium )
     $SQL = "INSERT INTO document SET ";
     $med = explode ( ";;" , $medium );
 
-#    $fp       = fopen('dataIMP.txt', 'w');
-
-    foreach ( $this->conf[ 'expoimp' ] as $exim ) {
+    foreach ( $this->conf[ 'expoimp' ] as $exim )
+    {
       if ( isset( $med[ 4 ] ) ) ## Zu importierender Datensatz hat zumindest ein Titel
       {
         $SQL .= " $exim  = \"" . $med[ $i++ ] . "\"  , ";
       }
     }
 
-
     $SQL .= " collection_id     = \"" . $collection_id . "\"  , ";
     $SQL .= " last_modified     = NOW()                         ";
 
-
-#    fwrite($fp, $SQL  ) ;
+   $fp       = fopen('dataIMP.txt', 'w');
+   fwrite($fp, $SQL  ) ;
 
     $res = mysqli_query ( $this->DB , $SQL );
     return $res;
@@ -887,9 +886,7 @@ function importCollection( $collection_id , $medium )
 
 
 
-
-
-function getSAid( $SEM )
+  function getSAid( $SEM )
 {
   $SQL = " SELECT id, title,  bib_id  FROM `collection` wHERE sem = '" . $SEM . "' ORDER BY bib_id DESC;";
   $res = mysqli_query ( $this->DB , $SQL );

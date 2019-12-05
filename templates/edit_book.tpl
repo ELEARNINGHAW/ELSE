@@ -1,9 +1,8 @@
 {if $user.role_name == "staff" OR  $user.role_name == "admin" OR  $operator.mode == 'suggest' } {$restricted  = "" }  {else}  {$restricted = "disabled=\"yes\""}  {/if}
   
-{if  $operator.msg == "shelf_remain"} {$bordercolor= "red"}
-{else}                                {$bordercolor= "AAA"}
+{if  $operator.msg == "shelf_remain"} {$color= "red"}
+{else}                                {$color= "AAA"}
 {/if}
-
 
 {$SAready    = $DOC_TYPE[ $medium.doc_type_id ][ 'SA-ready'    ] }
 {$doctypetxt = $DOC_TYPE[ $medium.doc_type_id ][ 'description' ] }
@@ -14,15 +13,16 @@
 
     {if $medium.doc_type_id == 16 }
         <h3 style="margin:10px; margin-bottom:0px; margin-top:0px; padding:10px; color: #FFF;" class="bgDef bg{$collection.bib_id}">Erwerbungsvorschlag für: {$collection.title}
-            <a style="float:right;" href="index.php"><img  class="icon" style="margin-top:-4px;" title="Zurück" src="img/svg/chevron-left_w.svg" /></a></h3>
+            {if $operator.action != 'annoteNewMedia' }  <a style="float:right;" href="index.php"><img  class="icon" style="margin-top:-4px;" title="Zurück" src="img/svg/chevron-left_w.svg" /></a> {/if}</h3>
         <div style="margin:10px;  padding:10px; border:solid 1px black; ">
             Wenn Sie ein Medium zur Anschaffung in der Bibliothek vorschlagen m&ouml;chten und dieses in  Ihren Semesterapparat aufgenommen werden soll, benutzen Sie bitte dieses Formular.
         </div>
     {else}
-        <h5 style="margin:10px; padding:10px; color: #FFF"  class="bgDef bg{$collection.bib_id}" >{$collection.title}<br/> {$doctypetxt} bearbeiten <a style="float:right;" href="index.php{$operator.url}"><img  class="icon" style="margin-top:-15px;" title="Zurück" src="img/svg/chevron-left_w.svg" /></a>
+        <h5 style="margin:10px; padding:10px; color: #FFF"  class="bgDef bg{$collection.bib_id}" >{$collection.title}<br/> {$doctypetxt} bearbeiten
+            {if $operator.action != 'annoteNewMedia' AND $operator.action != 'save' }
+              <a style="float:right;" href="index.php{$operator.url}">x<img  class="icon" style="margin-top:-15px;" title="Zurück" src="img/svg/chevron-left_w.svg" /></a>{/if}
             <span   style="position:relative; font-size:25px; float:right; top:-18px; padding-right: 15px; " >  {$currentElement+1}/{$maxElement} </span>
         </h5>
-
     {/if}
 
     <div style="margin:10px; margin-top:0px;  padding:10px; border:solid 1px black; ">
@@ -56,14 +56,16 @@
 <tr><td class = "editmedia">Medientyp: </td><td> {$doctypetxt} </td></tr>
 
 {if ( $SAready== 1 AND  ( $operator.mode == 'new'  OR $medium.doc_type_id == 16 ) ) }
-  <tr><td  class = "editmedia" style="vertical-align: top; font-weight: bold;">  Ort:  <span style="color: #F03; vertical-align: top; font-weight: bold;">(bitte auswählen)</span> </td><td>
-     <div  style="border:1px solid {$bordercolor};    height:59px; padding: 5px; font-size: 13px; width: calc(100% - 20px); ">
-     <input {$c2} value="2" class='i' type="radio" name="shelf_remain" id="radio-2"><label for="radio-2"><div style="display: inline-block;  font-weight:700; width:125px; text-align:left; ">Literaturhinweis:</div> <div style="display: inline-block; width:400px; text-align:left;" > Buch verbleibt im Regal der Bibliothek.   </div></label><br/>
-     <input {$c1} value="1" class='i' type="radio" name="shelf_remain" id="radio-1"><label for="radio-1"><div style="display: inline-block;  font-weight:700; width:125px; text-align:left; ">Handapparat:</div> <div style="display: inline-block; width:400px; text-align:left;" >Buch wird in Ihren Handapparat eingestellt.</div></label>
-     <input {$c0} value="0"           type="radio" name="shelf_remain" id="radio-1" style="visibility: hidden;">
-     </div>
-  </td></tr>
+    <tr><td  class = "editmedia" style="vertical-align: top; font-weight: bold;">  Ort:  <span style="color: {$color}; vertical-align: top; font-weight: bold;">(bitte auswählen)</span> </td><td>
+            <div style="border:1px solid {$color}; float: left;    height:59px; padding: 5px; font-size: 13px; width: calc(100% - 165px); ">
+                <input {$c2} value="2" class='i' type="radio" name="shelf_remain" id="radio-2"><label for="radio-2"><div style="display: inline-block;  font-weight:700; width:120px; text-align:left; ">Literaturhinweis: </div> <div style="display: inline-block; width:300px; text-align:left;" > Buch verbleibt im Regal der Bibliothek.   </div></label><br/>
+                <input {$c1} value="1" class='i' type="radio" name="shelf_remain" id="radio-1"><label for="radio-1"><div style="display: inline-block;  font-weight:700; width:120px; text-align:left; ">Handapparat:      </div> <div style="display: inline-block; width:300px; text-align:left;" >Buch wird in Ihren Handapparat eingestellt.</div></label>
+                <input {$c0} value="0"           type="radio" name="shelf_remain" id="radio-1" style="visibility: hidden;">
+            </div>
+            <input style="float: right; width:150px; height:50px;" name="ok" value="&nbsp;&nbsp;&nbsp;SPEICHERN&nbsp;&nbsp;&nbsp;" type="submit">
+        </td></tr>
 {/if}
+
 
 {if ($medium.doc_type_id != 16 ) }
 

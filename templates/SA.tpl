@@ -13,7 +13,7 @@
 
 <div  id="{$di.ppn}" class="mediaInSA medium_{$di.shelf_remain} {$current} " >
 <a name="{$di.ppn}" style="position:relative; top:-220px;"></a>
-<a title="Medium Im Onlinekatalog anzeigen" class="medLink medi_{$di.doc_type_id} .s_standard state_{$di.state_id}" href="{$CFG.catURLlnk[$DOC_TYPE[$di.doc_type_id]['indexID']]}{$di.ppn}" target="_blank" onclick="return -1">
+<a title="Medium Im Onlinekatalog anzeigen" class="medLink  medimove  .s_standard state_{$di.state_id}" href="{$CFG.catURLlnk[$DOC_TYPE[$di.doc_type_id]['indexID']]}{$di.ppn}" target="_blank" onclick="return -1">
 <table>
 
 {if $doctypedescription != ""           }  <tr><td><div class="mediaListHeader">Medientyp: </div></td><td><div  class="mediaTxt" >{$doctypedescription}  </div>            {/if}
