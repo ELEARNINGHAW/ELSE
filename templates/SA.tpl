@@ -3,8 +3,11 @@
 {$edit_mode  = "0"}
 {$staff_mode = "0"}
   
-{$doctypedescription = $DOC_TYPE[ $di[ 'doc_type_id' ] ]['description'] }
-{$doctype            = $DOC_TYPE[ $di[ 'doc_type_id' ] ]['item'       ] }
+{$doctypedescription = $DOC_TYPE[ 16 ]['description'] }
+{$doctype            = $DOC_TYPE[ 16 ]['item'       ] }
+
+{$doctypedescription = $DOC_TYPE[ $di.doc_type_id ]['description'] }
+{$doctype            = $DOC_TYPE[ $di.doc_type_id ]['item'       ] }
 
 {if $user_role_name == "admin"  OR  $user_role_name == "staff" OR  $user_role_name == "edit"  } {$edit_mode  = "1"} {/if}
 {if $user_role_name == "admin"  OR  $user_role_name == "staff"                                } {$staff_mode = "1"} {/if}
@@ -32,8 +35,6 @@
 {if $di.notes_to_studies != "" }   <div class="medhint">Zur Beachtung: {$di.notes_to_studies|nl2br}  </div> {/if}
 
 <div class="bibStandort">
-
-
     {if $ci.bib_id != "" }
     {if $di.shelf_remain == 1  }  {$FACHBIB[ $ci.bib_id ].bib_name|escape},<br/> im Regal "Semesterapparate"      {/if}{* SA Medium        *}
     {if $di.shelf_remain == 2  }  Im Buchbestand der Fachbibliothek<br/> (wie im Online-Katalog angegeben).       {/if}{* LitHinweis Buch  *}

@@ -847,7 +847,7 @@ SET `state_id` = '" . $this->es ( $state ) . "' WHERE `document`.`id` = " . $thi
     if ( $res )
     { while ( $row = mysqli_fetch_assoc ( $res ) )
     { foreach ( $this->conf[ 'expoimp' ] as $exim )
-    { $csv_export .= $row[ $exim ] . ";;";
+    {  $csv_export .=  preg_replace("(\r\n|\n|\r)" , "<br/>",  $row[ $exim  ]  ) . ";;";
     }
       $csv_export .= "\r\n";
     }
@@ -865,7 +865,7 @@ function importCollection( $collection_id , $medium )
     $SQL = "INSERT INTO document SET ";
     $med = explode ( ";;" , $medium );
 
-    foreach ( $this->conf[ 'expoimp' ] as $exim )
+    foreach ( $this -> conf[ 'expoimp' ] as $exim )
     {
       if ( isset( $med[ 4 ] ) ) ## Zu importierender Datensatz hat zumindest ein Titel
       {
