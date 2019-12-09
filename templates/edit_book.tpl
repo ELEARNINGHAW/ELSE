@@ -46,7 +46,7 @@
 <input type = "hidden" name = "edition"          value = "{$medium.edition}"      >
 <input type = "hidden" name = "signature"        value = "{$medium.signature}"    >
 <input type = "hidden" name = "ppn"              value = "{$medium.ppn}"          >
-{/if}               
+{/if}
 
 <table style="text-align: left; width: 100%;" border="0" cellpadding="2" cellspacing="2">
 <tbody>

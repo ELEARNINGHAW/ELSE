@@ -1,5 +1,5 @@
 ﻿<?php
-session_start();     #  session_destroy ();unset($_SESSION);
+session_start();    #  session_destroy ();unset($_SESSION);
 
 require_once ( '../php/Const.class.php'               );
 require_once ( '../php/Config.class.php'              );

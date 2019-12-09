@@ -480,22 +480,23 @@ function LMSLoader( $url )
     $hasAuthor = false;
     foreach ( $xmlrec -> datafield as $a => $b )
     {
-      $b_att = $b->attributes ();
+      $b_att = $b -> attributes ();
+
       ## -- Autor --
       if ( $b_att == '100' )
       {
         foreach ( $b -> subfield as $sf )
         {
-          if( $sf -> attributes() -> code == 'a'  )  {  $medium[ $PPN ][ 'author'        ] = (string)$sf .":100";  $hasAuthor = true;  }
+          if( $sf -> attributes() -> code == 'a'  )  {  $medium[ $PPN ][ 'author'        ] = (string)$sf  ; $hasAuthor = true;  }
         }
       }
 
       if ( $hasAuthor == false AND $b_att == '245' )
       {
-         foreach ($b -> subfield as $sf )
-         {
-           if( $sf -> attributes() -> code == 'c'  )  {  $medium[ $PPN ][ 'author'        ] =  (string)$sf .":245";   }
-         }
+        foreach ($b -> subfield as $sf )
+        {
+          if( $sf -> attributes() -> code == 'c'  )  {  $medium[ $PPN ][ 'author'        ] =  (string)$sf ;   }
+        }
       }
 
 
@@ -505,6 +506,7 @@ function LMSLoader( $url )
         foreach ( $b -> subfield as $sf   )
         {
           if( $sf -> attributes() -> code == 'a'  )  {  $medium[ $PPN ][ 'title'        ]  =  (string)$sf;   }
+          if( $sf -> attributes() -> code == 'b'  )  {  $medium[ $PPN ][ 'title'        ] .= ' - '.  (string)$sf;   }
         }
       }
 
@@ -514,7 +516,7 @@ function LMSLoader( $url )
       {
           foreach ($b -> subfield as $sf   )
           {
-              if( $sf -> attributes() -> code == 'a'  )  {  $medium[ $PPN ][ 'physicaldesc'        ] =  (string)$sf;   }
+              if( $sf -> attributes() -> code == 'a' )  {  $medium[ $PPN ][ 'physicaldesc'        ] =  (string)$sf;   }
           }
       }
 

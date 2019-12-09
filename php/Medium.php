@@ -108,7 +108,10 @@ function array2obj( $array )   {  foreach ($array as $k => $v )  { $this->$k = $
 
 function calcDocType()
 {
-  $dt = $_SESSION[ 'DOC_TYPE' ][ $this->get_doc_type_id() ];
+  $pos = $this->get_doc_type_id() ;
+
+  $dt = $_SESSION[ 'DOC_TYPE' ][ $pos  ];
+
   $this -> set_doc_type( $dt[ 'doc_type'   ] );
 }
 
