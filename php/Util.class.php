@@ -90,8 +90,8 @@ if (isset(  $_SERVER [ 'HTTP_REFERER'      ] ))
 ## ------------------------------- OPERATOR  --------------------------------
 ##
 ## Action DEFAULTEEINSTELLUNGEN für die einzelnen Rollen
-if (  $this->hasRole( $currentUser,'admin', 'staff') )       { $operator -> set_action           ( 'show_collection_list' );  }
-else                                                                 { $operator -> set_action           ( 'show_collection'      );  }
+if (  $this -> hasRole( $currentUser,'admin', 'staff') )     { $operator -> set_action           ( 'show_collection_list'    ); }
+else                                                                 { $operator -> set_action           ( 'show_collection'         ); }
 
 if ( isset ( $_GET[ 'item'                                     ] ) ) { $operator -> set_item             ( $_GET[ 'item'               ] ) ; }
 if ( isset ( $_GET[ 'loc'                                      ] ) ) { $operator -> set_loc              ( $_GET[ 'loc'                ] ) ; }
@@ -126,7 +126,8 @@ if ( isset ( $_GET[ 'signature'                                ] ) )  { $medium 
 if ( isset ( $_GET[ 'notes_to_staff'                           ] ) )  { $medium -> set_notes_to_staff      ( $_GET[ 'notes_to_staff'    ] ) ; }
 if ( isset ( $_GET[ 'notes_to_studies'                         ] ) )  { $medium -> set_notes_to_studies    ( $_GET[ 'notes_to_studies'  ] ) ; }
 if ( isset ( $_GET[ 'shelf_remain'                             ] ) )  { $medium -> set_shelf_remain        ( $_GET[ 'shelf_remain'      ] ) ;
-                                                                        $medium -> set_in_SA               ( $_GET[ 'shelf_remain'      ] ) ; }
+                                                                        $medium -> set_location_id         ( $_GET[ 'shelf_remain'      ] ) ; }
+if ( isset ( $_GET[ 'location_id'                              ] ) )  { $medium -> set_location_id         ( $_GET[ 'location_id'       ] ) ; }
 if ( isset ( $_GET[ 'lmsid'                                    ] ) )  { $medium -> set_collection_id       ( $this -> splitCourseName_user( $_GET[ 'lmsid'            ] )  ); }
 if ( isset ( $_GET[ 'dc_collection_id'                         ] ) )  { $medium -> set_collection_id       ( $this -> b64de(                $_GET[ 'dc_collection_id' ] )  ); }
 

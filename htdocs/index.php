@@ -1,5 +1,5 @@
 ﻿<?php
-session_start();    #  session_destroy ();unset($_SESSION);
+session_start();    #  session_destroy (); unset($_SESSION);
 
 require_once ( '../php/Const.class.php'               );
 require_once ( '../php/Config.class.php'              );
@@ -32,9 +32,9 @@ $I = $UTIL -> getInput();                                #--- GET ALL INPUT (GET
 ## ----------------------------------------------------------------------------------------
 
 $cu = $I[ 'currentUser' ];
-$ca = $I[ 'operator'    ] -> get_action();
-$ci = $I[ 'operator'    ] -> get_item();
-$cl = $I[ 'operator'    ] -> get_loc();
+$ca = $I[ 'operator'    ] -> get_action();   # ACTION
+$ci = $I[ 'operator'    ] -> get_item();     # ITEM
+$cl = $I[ 'operator'    ] -> get_loc();      # LOCATOR
 
 #deb($I,1);
 #deb($_GET);
@@ -48,7 +48,7 @@ if ( $ci  == 'collection'  AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit')
   else if ( $ca  == 'show_collection_list'   )  { $COLLMGR -> showCollectionList        ( $I ) ; }  ## ++ 1 STAFF:: SA wird angezeigt (deren Editierbarkeit ist abhängig von der Rolle des Nuters)
   else if ( $ca  == 'show_collection'        )  { $COLLMGR -> showCollection            ( $I ) ; }  ## ++ 2 SA wird angezeigt (deren Editierbarkeit ist abhängig von der Rolle des Nuters)
   else if ( $ca  == 'show_media_list'        )  { $COLLMGR -> showMediaList             ( $I ) ; }  ## ++ STAFF:: Zeigt die Liste der SAs, geoperatort nach deren STATUS
-  else if ( $ca  == 'add_media'              )  { $COLLMGR -> showNewMediaForm          ( $I ) ; }   ## ++ 3 Eingabemaske für Mediensuche anzeigen   [Neues Medium dem SA hinzufügen]
+  else if ( $ca  == 'add_media'              )  { $COLLMGR -> showNewMediaForm          ( $I ) ; }  ## ++ 3 Eingabemaske für Mediensuche anzeigen   [Neues Medium dem SA hinzufügen]
   else if ( $ca  == 'new_init'               )  { $COLLMGR -> saveNewCollection         ( $I ) ; }  ## Metadaten des NEUEN SA wird gepeichert -> SA wird angelegt
   else if ( $ca  == 'coll_meta_edit'         )  { $COLLMGR -> editColMetaData           ( $I ) ; }  ## Anzeigen des Formulars um Metadaten des SA zu bearbeiten
   else if ( $ca  == 'coll_meta_save'         )  { $COLLMGR -> updateColMetaData         ( $I ) ; }  ## Metadaten des SA updaten

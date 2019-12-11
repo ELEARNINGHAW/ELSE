@@ -17,6 +17,7 @@ class Medium
   public  $in_SA;
   public  $physicaldesc;
   public  $collection_id;
+  public  $location_id;
   public  $state_id;
   public  $shelf_remain;
   public  $notes_to_studies;
@@ -44,6 +45,7 @@ function __construct( )
   $this -> physicaldesc                 = '';
   $this -> collection_id                = '';
   $this -> state_id                     = '';
+  $this -> location_id                     = '';
   $this -> shelf_remain                 = '';
   $this -> notes_to_studies             = '';
   $this -> notes_to_staff               = '';
@@ -69,6 +71,7 @@ function get_in_SA            ()   { return $this -> in_SA                ; }
 function get_physicaldesc     ()   { return $this -> physicaldesc         ; }
 function get_collection_id    ()   { return $this -> collection_id        ; }
 function get_state_id         ()   { return $this -> state_id             ; }
+function get_location_id      ()   { return $this -> location_id          ; }
 function get_shelf_remain     ()   { return $this -> shelf_remain         ; }
 function get_notes_to_studies ()   { return $this -> notes_to_studies     ; }
 function get_notes_to_staff   ()   { return $this -> notes_to_staff       ; }
@@ -94,6 +97,7 @@ function set_in_SA                       ( $val )  { return $this -> in_SA      
 function set_physicaldesc                ( $val )  {        $this -> physicaldesc                =  $val ;                     return $this -> format    =  $val ; }
 function set_collection_id               ( $val )  { return $this -> collection_id               =  $val ; }
 function set_state_id                    ( $val )  { return $this -> state_id                    =  $val ; }
+function set_location_id                 ( $val )  { return $this -> location_id                 =  $val ; }
 function set_shelf_remain                ( $val )  { return $this -> shelf_remain                =  $val ; }
 function set_notes_to_studies            ( $val )  { return $this -> notes_to_studies            =  $val ; }
 function set_notes_to_staff              ( $val )  { return $this -> notes_to_staff              =  $val ; }

@@ -3,7 +3,7 @@
 {if  $operator.msg == "shelf_remain"} {$color= "red"} {$bw ="2"}
 {else}                                {$color= "AAA"} {$bw ="1"}
 {/if}
-{$DOC_TYPE}
+
 {$SAready    = $DOC_TYPE[ $medium.doc_type_id ][ 'SA-ready'    ] }
 {$doctypetxt = $DOC_TYPE[ $medium.doc_type_id ][ 'description' ] }
 
@@ -20,7 +20,7 @@
     {else}
     <h5 style="margin:10px; padding:10px; color: #FFF"  class="bgDef bg{$collection.bib_id}" >{$collection.title}<br/> {$doctypetxt} bearbeiten
       {if $operator.action != 'annoteNewMedia' AND $operator.action != 'save' }
-        <a style="float:right;" href="index.php{$operator.url}">x<img  class="icon" style="margin-top:-15px;" title="Zurück" src="img/svg/chevron-left_w.svg" /></a>{/if}
+        <a style="float:right;" href="index.php{$operator.url}"><img  class="icon" style="margin-top:-15px;" title="Zurück" src="img/svg/chevron-left_w.svg" /></a>{/if}
         <span  style="position:relative; font-size:25px; float:right; top:-18px; padding-right: 15px; " >  {$currentElement+1}/{$maxElement} </span>
     </h5>
 {/if}
@@ -48,48 +48,47 @@
 <input type = "hidden" name = "ppn"              value = "{$medium.ppn}"          >
 {/if}
 
-<table style="text-align: left; width: 100%;" border="0" cellpadding="2" cellspacing="2">
+<table style="text-align: left; width: 100%;" border="0"  >
 <tbody>
 
-<tr><td class = "editmedia">Medientyp: </td><td> {$doctypetxt} </td></tr>
+<tr><td class = "editmedia">Medientyp: </td><td> {$doctypetxt} </td>
+ <td rowspan="10" >   <input style="width:125px; height:50px;" name="ok" value="&nbsp;&nbsp;&nbsp;SPEICHERN&nbsp;&nbsp;&nbsp;" type="submit"> </td>
+</tr>
 
 {if ( $SAready== 1 AND  ( $operator.mode == 'new'  OR $medium.doc_type_id == 16 ) ) }
   <tr><td  class = "editmedia" style="vertical-align: top; font-weight: bold;">  Ort:  <span style="color: {$color}; vertical-align: top; font-weight: bold;">(bitte auswählen)</span> </td><td>
-    <div style="border:{$bw}px solid {$color}; float: left;  height:59px; padding: 5px; font-size: 12px; width: calc(100% - 155px); ">
-      <input {$c2} value="2" class='i' type="radio" name="shelf_remain" id="radio-2"><label for="radio-2"><div style="display: inline-block;  font-weight:700; width:110px; text-align:left; ">Literaturhinweis: </div> <div style="display: inline-block; width:300px; text-align:left;" >Buch verbleibt im Regal der Bibliothek.     </div></label><br/>
-      <input {$c1} value="1" class='i' type="radio" name="shelf_remain" id="radio-1"><label for="radio-1"><div style="display: inline-block;  font-weight:700; width:110px; text-align:left; ">Handapparat:      </div> <div style="display: inline-block; width:300px; text-align:left;" >Buch wird in Ihren Handapparat eingestellt. </div></label>
+    <div style="border:{$bw}px solid {$color}; float: left;  height:59px; padding: 5px; font-size: 12px; width: calc(100% - 15px); ">
+      <input {$c2} value="2" class='i' type="radio" name="shelf_remain" id="radio-2"><label for="radio-2"><span style="font-weight:700; "> Literaturhinweis - verbleibt im Regal der Bibliothek.     </span></label><br/>
+      <input {$c1} value="1" class='i' type="radio" name="shelf_remain" id="radio-1"><label for="radio-1"><span style="font-weight:700; "> Handapparat  -     wird in Ihren Handapparat eingestellt. </span></label>
       <input {$c0} value="0"           type="radio" name="shelf_remain" id="radio-1" style="visibility: hidden;">
     </div>
-    <input style="float: right; width:125px; height:50px;" name="ok" value="&nbsp;&nbsp;&nbsp;SPEICHERN&nbsp;&nbsp;&nbsp;" type="submit">
-  </td></tr>
+   </tr>
 {/if}
 
 {if ($medium.doc_type_id != 16 ) }  {* doc_type 16 = Erwerbungsvorschlag *}
-  <tr><td class = "editmedia">Titel:    </td><td><textarea  cols="80" rows="2"    name="title">{$medium.title}</textarea>   </td></tr>
-  <tr><td class = "editmedia">Autor:    </td><td><input size="80" value="{$medium.author}"     {$restricted} name="author"> </td></tr>
+  <tr><td class = "editmedia">Titel:    </td><td><textarea  cols="60" rows="2"    name="title">{$medium.title}</textarea>           </td></tr>
+  <tr><td class = "editmedia">Autor:    </td><td><input size="80" value="{$medium.author}"     {$restricted} name="author">         </td></tr>
 
   {if ($medium.doc_type_id == 1)  } {* doc_type 1 = Buch *}
-  <tr><td class = "editmedia">ISBN:    </td><td><input size="80" value="{$medium.ISBN}"             {$restricted} name="ISBN">   </td></tr>
-  <tr><td class = "editmedia">Signatur:</td><td><input size="20" value="{$medium.signature|escape}" {$restricted} name="signature"></td></tr>
+  <tr><td class = "editmedia">ISBN:    </td><td><input size="80" value="{$medium.ISBN}"             {$restricted} name = "ISBN">    </td></tr>
+  <tr><td class = "editmedia">Signatur:</td><td><input size="20" value="{$medium.signature|escape}" {$restricted} name = "signature"></td></tr>
   {/if}
 
-  <tr><td class = "editmedia">Anmerkung <br>f&uuml;r Studierende:)<br/>(Optional)</td><td><textarea  cols="80" rows="5"    name="notes_to_studies">{$medium.notes_to_studies|escape}</textarea></td></tr>
+  <tr><td class = "editmedia">Anmerkung <br>f&uuml;r Studierende:<br/>(Optional)</td>
+      <td><textarea  cols="60" rows="5"    name="notes_to_studies">{$medium.notes_to_studies|escape}</textarea>                       </td></tr>
 {/if}
 
 {if ($medium[ 'item' ] == 'physical' OR $medium.doc_type_id == 16 )} {* doc_type 1 = Buch oder CD im SA *}
 <tr>
-    {if ($medium.doc_type_id == 16 ) }
-        <td class = "editmedia"> Ihr Erwerbungs-</br>vorschlag:</td>
-    {else}
-        <td class = "editmedia"> Anmerkung <br>f&uuml;r die Bibliothek:<br/>(Optional)</td>
+    {if ($medium.doc_type_id == 16 ) }  <td class = "editmedia"> Ihr Erwerbungs-<br/>vorschlag:                                     </td>
+    {else}                              <td class = "editmedia"> Anmerkung <br/>f&uuml;r die Bibliothek:<br/>(Optional)                  </td>
     {/if}
-    <td><textarea cols="80" rows="5" name="notes_to_staff">{$medium.notes_to_staff|escape}</textarea></td></tr>
+                                 <td><textarea cols="60" rows="5" name="notes_to_staff">{$medium.notes_to_staff|escape}</textarea>  </td></tr>
 {/if}
 
 </tbody>
 </table>
 <br>
   <script>$( function() {		$( ".i" ).checkboxradio();	} ); </script>
-  <input style="float: right; width:125px; height:50px;" name="ok" value="&nbsp;&nbsp;&nbsp;SPEICHERN&nbsp;&nbsp;&nbsp;" type="submit">
 </form>
 </div>

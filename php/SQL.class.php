@@ -465,6 +465,7 @@ function get_med_state( $collection_id )
       $ret = mysqli_fetch_assoc ( $res );
     }
     return $ret;
+    return $ret;
   }
 
 
@@ -525,7 +526,8 @@ function get_med_state( $collection_id )
       $m->set_created          ( $row[ 'created'           ] );
       $m->set_last_modified    ( $row[ 'last_modified'     ] );
       $m->set_last_state_change( $row[ 'last_state_change' ] );
-     # $m->set_shelf_remain     ( $row[ 'shelf_remain'      ] );
+      $m->set_location_id      ( $row[ 'location_id'       ] );
+      $m->set_shelf_remain     ( $row[ 'shelf_remain'      ] );
     }
     }
 
