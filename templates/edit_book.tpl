@@ -3,7 +3,7 @@
 {if  $operator.msg == "shelf_remain"} {$color= "red"} {$bw ="2"}
 {else}                                {$color= "AAA"} {$bw ="1"}
 {/if}
-
+{$DOC_TYPE}
 {$SAready    = $DOC_TYPE[ $medium.doc_type_id ][ 'SA-ready'    ] }
 {$doctypetxt = $DOC_TYPE[ $medium.doc_type_id ][ 'description' ] }
 

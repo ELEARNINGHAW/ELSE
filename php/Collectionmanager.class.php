@@ -806,19 +806,4 @@ if (!empty($_FILES))
   {
     return trim ( $u->get_hawaccount().'::'.  trim ( $u->get_surname()) ) .'::'. trim ( $u->get_forename() ) ;
   }
-
-
-####################### --- COLLECTION --- #######################
-  /*
-  function ereaseCollection( $I[ 'W' ], $I[ 'U' ])
-  {
-    $this->SQL->deleteCollection($I[ 'W' ], $I[ 'U' ]);
-    $url       = "index.php?collection=0";
-    $this->RENDERER->doRedirect( $url );
-  }
-  */
-
-
-
-
-}
+ }
