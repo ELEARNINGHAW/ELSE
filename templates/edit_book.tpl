@@ -67,10 +67,10 @@
 
 {if ($medium.doc_type_id != 16 ) }  {* doc_type 16 = Erwerbungsvorschlag *}
   <tr><td class = "editmedia">Titel:    </td><td><textarea  cols="60" rows="2"    name="title">{$medium.title}</textarea>           </td></tr>
-  <tr><td class = "editmedia">Autor:    </td><td><input size="80" value="{$medium.author}"     {$restricted} name="author">         </td></tr>
+  <tr><td class = "editmedia">Autor:    </td><td><input size="50" value="{$medium.author}"     {$restricted} name="author">         </td></tr>
 
   {if ($medium.doc_type_id == 1)  } {* doc_type 1 = Buch *}
-  <tr><td class = "editmedia">ISBN:    </td><td><input size="80" value="{$medium.ISBN}"             {$restricted} name = "ISBN">    </td></tr>
+  <tr><td class = "editmedia">ISBN:    </td><td><input size="50" value="{$medium.ISBN}"             {$restricted} name = "ISBN">    </td></tr>
   <tr><td class = "editmedia">Signatur:</td><td><input size="20" value="{$medium.signature|escape}" {$restricted} name = "signature"></td></tr>
   {/if}
 
