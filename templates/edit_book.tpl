@@ -26,7 +26,7 @@
 {/if}
 
 <div style="margin:10px; margin-top:0px;  padding:10px; border:solid 1px black; ">
-    <form  action="index.php" method="get">
+<form  action="index.php" method="get">
 
 <input type = "hidden" name = "dc_collection_id" value = "{$collection.dc_collection_id}" >
 <input type = "hidden" name = "item"             value = "media"                          >
@@ -51,10 +51,12 @@
 <table style="text-align: left; width: 100%;" border="0"  >
 <tbody>
 
+{* SPEICHERBUTTON: ALLE  *}
 <tr><td class = "editmedia">Medientyp: </td><td> {$doctypetxt} </td>
  <td rowspan="10" >   <input style="width:125px; height:50px;" name="ok" value="&nbsp;&nbsp;&nbsp;SPEICHERN&nbsp;&nbsp;&nbsp;" type="submit"> </td>
 </tr>
 
+{* ORT:  SA fähig UND ( Neues Medium ODER Erwerbungsvorschlag ) *}
 {if ( $SAready== 1 AND  ( $operator.mode == 'new'  OR $medium.doc_type_id == 16 ) ) }
   <tr><td  class = "editmedia" style="vertical-align: top; font-weight: bold;">  Ort:  <span style="color: {$color}; vertical-align: top; font-weight: bold;">(bitte auswählen)</span> </td><td>
     <div style="border:{$bw}px solid {$color}; float: left;  height:59px; padding: 5px; font-size: 12px; width: calc(100% - 15px); ">
@@ -65,25 +67,30 @@
    </tr>
 {/if}
 
+{* Wenn KEIN Erwerbungsvorschlag *}
 {if ($medium.doc_type_id != 16 ) }  {* doc_type 16 = Erwerbungsvorschlag *}
+  {* Titel, Autor*}
   <tr><td class = "editmedia">Titel:    </td><td><textarea  cols="60" rows="2"    name="title">{$medium.title}</textarea>           </td></tr>
   <tr><td class = "editmedia">Autor:    </td><td><input size="50" value="{$medium.author}"     {$restricted} name="author">         </td></tr>
 
+  {* ISBN, Signatur: Wenn Medientyp BUCH *}
   {if ($medium.doc_type_id == 1)  } {* doc_type 1 = Buch *}
   <tr><td class = "editmedia">ISBN:    </td><td><input size="50" value="{$medium.ISBN}"             {$restricted} name = "ISBN">    </td></tr>
   <tr><td class = "editmedia">Signatur:</td><td><input size="20" value="{$medium.signature|escape}" {$restricted} name = "signature"></td></tr>
   {/if}
 
-  <tr><td class = "editmedia">Anmerkung <br>f&uuml;r Studierende:<br/>(Optional)</td>
-      <td><textarea  cols="60" rows="5"    name="notes_to_studies">{$medium.notes_to_studies|escape}</textarea>                       </td></tr>
+  {* Info für Studis *}
+  <tr><td class = "editmedia">Anmerkung <br>f&uuml;r Studierende:<br/>(Optional)</td><td><textarea  cols="60" rows="5"    name="notes_to_studies">{$medium.notes_to_studies|escape}</textarea>                      </td></tr>
 {/if}
 
-{if ($medium[ 'item' ] == 'physical' OR $medium.doc_type_id == 16 )} {* doc_type 1 = Buch oder CD im SA *}
+
+{* Infos für die BIB: Wenn SA-fähiges Medium ODER Erwerbugnsvorschlag  *}
+{if $DOC_TYPE[ $medium.doc_type_id ]['SA-ready']  == 1 OR $medium.doc_type_id == 16 } {* doc_type 1 = Buch oder CD im SA *}
 <tr>
     {if ($medium.doc_type_id == 16 ) }  <td class = "editmedia"> Ihr Erwerbungs-<br/>vorschlag:                                     </td>
     {else}                              <td class = "editmedia"> Anmerkung <br/>f&uuml;r die Bibliothek:<br/>(Optional)                  </td>
     {/if}
-                                 <td><textarea cols="60" rows="5" name="notes_to_staff">{$medium.notes_to_staff|escape}</textarea>  </td></tr>
+                                        <td><textarea cols="60" rows="5" name="notes_to_staff">{$medium.notes_to_staff|escape}</textarea>  </td></tr>
 {/if}
 
 </tbody>

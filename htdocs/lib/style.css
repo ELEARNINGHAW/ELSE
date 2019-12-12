@@ -720,15 +720,38 @@ td{
   left:30px;
 }
 
-.state_1  /* new */
+.state_1,
+.state_2,
+.state_3,
+.state_4,
+.state_5,
+.state_6,
+.state_7,
+.state_8,
+.state_9,
+.state_10,
+.state_11
 {
- /*  background-color: #9295C2; */
+  background-color: #999999;
 }
 
-.state_2  /* open */ 
+.state_1:hover,
+.state_2:hover,
+.state_3:hover,
+.state_4:hover,
+.state_5:hover,
+.state_6:hover,
+.state_7:hover,
+.state_8:hover,
+.state_9:hover,
+.state_10:hover,
+.state_11:hover
 {
- /* background-color: #6666cc; */
+  background-color: #FFFFFF;
 }
+
+
+
 
 .state_3  /* active */
 {
@@ -737,15 +760,7 @@ td{
   color:#000;
 }
 
-.state_4  /* active */.obsolete
-{
-  /*background-color: #cc66cc;*/
-}
 
-.state_5  /* inactive */  
-{
-  /* background-color: #555; */
-}
 
 
 .headlineDozent

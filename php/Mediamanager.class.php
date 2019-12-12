@@ -57,7 +57,7 @@ function editMediaMetaData( $I )
   $tpl_vars[ 'currentElement'  ]                          =  0 ;
   $tpl_vars[ 'maxElement'      ]                          =  1 ;
 
-  #deb( $tpl_vars[ 'medium'          ] ,1);
+ # deb( $tpl_vars[ 'medium'          ] ,1);
   $this -> RENDERER -> do_template ( 'edit_book.tpl' , $tpl_vars ) ;
   exit(0);
 }
@@ -67,16 +67,21 @@ function editMediaMetaData( $I )
 function annoteNewMedia_showForm( $I )
 {
 
-  if( isset($_SESSION[ 'books' ][ 'booksHitList' ][0]) )
+  if( isset($_SESSION[ 'books' ][ 'booksHitList' ][0]) AND   $I[ 'medium' ] -> get_doc_type_id() != 16 )
   {
     $bookHit = $_SESSION[ 'books' ][ 'booksHitList' ][  $_SESSION[ 'books' ][ 'currentElement' ] ]; ## Metadaten des aus der Trefferliste ausgeählte Mediums
     $I[ 'medium' ] -> array2obj ( $bookHit );
   }
 
-  else if( $I[ 'medium' ] -> get_title() == '' )
+  else if( $I[ 'medium' ] -> get_title() == ''  AND $I[ 'medium' ] -> get_doc_type_id() != 16 )   ## Kein Titel UND kein Erwerbungsvorschlag
   {
     $bookHit = $_SESSION[ 'books' ][ 'booksHitList' ][ $I[ 'medium' ] -> get_ppn() ]; ## Metadaten des aus der Trefferliste ausgeählte Mediums
     $I[ 'medium' ] -> array2obj ( $bookHit );
+  }
+  else
+  {
+    $_SESSION['books'][ 'currentElement'  ] = 1;
+    $_SESSION['books'][ 'maxElement'      ] = 1;
   }
 
   $collection_id = $I[ 'currentCollection'    ] -> get_collection_id();
@@ -128,6 +133,7 @@ function purchaseSuggestion( $I )
 ###############################################################################################
 function saveMediaMetaData( $I )
 {
+  #deb($I[ 'medium' ] ,1);
 
   if (  $I[ 'operator' ] -> item == 'media'   AND $I[ 'medium' ] -> get_shelf_remain() == '0' )   #  Bei physischem Medium Keine Auswahl getroffen, ob Literaturhinweis oder Handapparat
   {
@@ -143,7 +149,7 @@ function saveMediaMetaData( $I )
 
  #deb($_SESSION ['books']['booksHitList']);
 
- # deb($I[ 'medium' ] );
+
 
 
   if ( $I[ 'medium' ] -> get_id() == 0 )                            ##  NEUES MEDIUM
@@ -799,24 +805,22 @@ function getHitList( $searchQuery )
       # $col_info  = $CI[ $doc_info[ 'collection_id' ] ] ;
       # $user_info = $col_info [ 'user_info' ] ;
 
-      $collection_id = $I[ 'currentCollection' ]->get_collection_id ();
-      $collection = $this->SQL->getCollection ( $collection_id );
+      $collection_id = $I[ 'currentCollection' ] -> get_collection_id ();
+      $collection    = $this -> SQL -> getCollection ( $collection_id );
 
       $tpl_vars[ 'collection' ] = $collection[ $collection_id ]->obj2array ();
-      $tpl_vars[ 'medium' ] = $I[ 'medium' ]->obj2array ();
-      $tpl_vars[ 'user' ] = $I[ 'currentUser' ]->obj2array ();
-      $tpl_vars[ 'operator' ] = $I[ 'operator' ]->obj2array ();
-      $tpl_vars[ 'filter' ] = $I[ 'filter' ]->obj2array ();;
-      $tpl_vars[ 'SEMESTER' ] = array_keys ( $_SESSION[ 'SEM' ] );
+      $tpl_vars[ 'medium'     ] = $I[ 'medium'                ]->obj2array ();
+      $tpl_vars[ 'user'       ] = $I[ 'currentUser'           ]->obj2array ();
+      $tpl_vars[ 'operator'   ] = $I[ 'operator'              ]->obj2array ();
+      $tpl_vars[ 'filter'     ] = $I[ 'filter'                ]->obj2array ();
+      $tpl_vars[ 'SEMESTER'   ] = array_keys ( $_SESSION[ 'SEM' ] );
 
-      if ( $tpl_vars[ 'collection' ][ 'Owner' ][ 'sex' ] == 'w' ) {
-        $salutaton = 'Sehr geehrte/r' . $tpl_vars[ 'collection' ][ 'Owner' ][ 'forename' ] . ' ' . $tpl_vars[ 'collection' ][ 'Owner' ][ 'surname' ];
-      } else {
-        $salutaton = 'Sehr geehrte/r ' . $tpl_vars[ 'collection' ][ 'Owner' ][ 'forename' ] . ' ' . $tpl_vars[ 'collection' ][ 'Owner' ][ 'surname' ];
-      }
+      if    ( $tpl_vars[ 'collection' ][ 'Owner' ][ 'sex' ] == 'w' ) { $salutaton = 'Sehr geehrte/r' . $tpl_vars[ 'collection' ][ 'Owner' ][ 'forename' ] . ' ' . $tpl_vars[ 'collection' ][ 'Owner' ][ 'surname' ]; }
+      else                                                           { $salutaton = 'Sehr geehrte/r' . $tpl_vars[ 'collection' ][ 'Owner' ][ 'forename' ] . ' ' . $tpl_vars[ 'collection' ][ 'Owner' ][ 'surname' ]; }
 
       $tpl_vars[ 'salutaton' ] = $salutaton;
-      $this->RENDERER->do_template ( 'email.tpl' , $tpl_vars );
+     # deb($tpl_vars);
+      $this -> RENDERER -> do_template ( 'email.tpl' , $tpl_vars );
     }
 
 

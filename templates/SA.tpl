@@ -2,9 +2,6 @@
 
 {$edit_mode  = "0"}
 {$staff_mode = "0"}
-  
-{$doctypedescription = $DOC_TYPE[ 16 ]['description'] }
-{$doctype            = $DOC_TYPE[ 16 ]['item'       ] }
 
 {$doctypedescription = $DOC_TYPE[ $di.doc_type_id ]['description'] }
 {$doctype            = $DOC_TYPE[ $di.doc_type_id ]['item'       ] }
@@ -14,9 +11,9 @@
 
 {if $medium.id == $di.id}  {$current = "currentDoc"} {else}  {$current = "XXX"}   {/if}{* Das zuletzt angeklickte Medium wird zur Unterscheidung in der Liste farblich unterlegt*}
 
-<div  id="{$di.ppn}" class="mediaInSA medium_{$di.shelf_remain} {$current} " >
+<div id="{$di.ppn}" class="mediaInSA medium_{$di.shelf_remain} {$current} " >
 <a name="{$di.ppn}" style="position:relative; top:-220px;"></a>
-<a title="Medium Im Onlinekatalog anzeigen" class="medLink  medimove  .s_standard state_{$di.state_id}" href="{$CFG.catURLlnk[$DOC_TYPE[$di.doc_type_id]['indexID']]}{$di.ppn}" target="_blank" onclick="return -1">
+<a title="Medium Im Onlinekatalog anzeigen" class="medimove medLink  s_standard state_{$di.state_id} {if $edit_mode == '1'} {/if} " href="{$CFG.catURLlnk[$DOC_TYPE[$di.doc_type_id]['indexID']]}{$di.ppn}" target="_blank" onclick="return -1">
 <table>
 
 {if $doctypedescription != ""           }  <tr><td><div class="mediaListHeader">Medientyp: </div></td><td><div  class="mediaTxt" >{$doctypedescription}  </div>            {/if}

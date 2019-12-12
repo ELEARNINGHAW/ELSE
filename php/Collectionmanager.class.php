@@ -154,7 +154,7 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
      #deb("Coll");
      #deb($collection,1);
 
-    $I[ 'operator' ] -> set_url( $I[ 'operator' ] -> get_history( )[ 1 ]  );                  ##  Link für den "zurück"- Button
+   # $I[ 'operator' ] -> set_url( $I[ 'operator' ] -> get_history( )[ 1 ]  );                  ##  Link für den "zurück"- Button
 
     $_SESSION['url']['currentCollection'] = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 
@@ -507,6 +507,7 @@ function LMSLoader( $url )
         {
           if( $sf -> attributes() -> code == 'a'  )  {  $medium[ $PPN ][ 'title'        ]  =  (string)$sf;   }
           if( $sf -> attributes() -> code == 'b'  )  {  $medium[ $PPN ][ 'title'        ] .= ' - '.  (string)$sf;   }
+          if( $sf -> attributes() -> code == 'n'  )  {  $medium[ $PPN ][ 'title'        ] .= ' - '.  (string)$sf;   }
         }
       }
 

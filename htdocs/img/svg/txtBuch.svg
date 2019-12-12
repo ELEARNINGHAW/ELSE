@@ -19,7 +19,10 @@
    sodipodi:version="0.32"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
    sodipodi:docbase="C:\xampp\htdocs\ELSE-DEV\htdocs\img\svg"
-   sodipodi:modified="true">
+   inkscape:export-filename="C:\xampp\htdocs\ELSE-DEV\htdocs\img\svg\txtBuch.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90"
+   sodipodi:modified="TRUE">
   <defs
      id="defs4">
     <radialGradient
@@ -2689,21 +2692,21 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="3.959798"
-     inkscape:cx="78.066169"
-     inkscape:cy="12.791057"
+     inkscape:cx="12.635661"
+     inkscape:cy="18.916946"
      inkscape:document-units="px"
      inkscape:current-layer="_98045400"
      showgrid="false"
-     inkscape:window-width="874"
-     inkscape:window-height="781"
-     inkscape:window-x="1929"
-     inkscape:window-y="95"
+     inkscape:window-width="1680"
+     inkscape:window-height="860"
+     inkscape:window-x="1691"
+     inkscape:window-y="43"
      inkscape:window-maximized="1"
      showguides="true"
      inkscape:guide-bbox="true">
     <sodipodi:guide
        orientation="1,0"
-       position="34.107143,82.053571"
+       position="33.928571"
        id="guide4001" />
   </sodipodi:namedview>
   <metadata
@@ -5668,12 +5671,29 @@
            id="_119340792" />
         <g
            id="_98045400">
+          <text
+             xml:space="preserve"
+             style="font-size:190.6239624px;fill-rule:evenodd"
+             x="-253.8956"
+             y="170.50685"
+             id="text3102"
+             transform="matrix(0,-1,1,0,0,0)"
+             inkscape:transform-center-y="564.33671"
+             inkscape:transform-center-x="-64.873268"><tspan
+               sodipodi:role="line"
+               id="tspan3104"
+               x="-253.8956"
+               y="170.50685"
+               style="font-size:64.63146973px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;font-family:Open Sans">SemApp</tspan></text>
           <g
              id="g4437"
              transform="matrix(1.8830663,0,0,0.67793324,-640.88922,174.29055)"
-             style="fill:#f9f9f9">
+             style="fill:#e4f4b8"
+             inkscape:export-filename="C:\xampp\htdocs\ELSE-DEV\htdocs\img\svg\txtLHBuch.png"
+             inkscape:export-xdpi="90"
+             inkscape:export-ydpi="90">
             <rect
-               style="fill:#f9f9f9;fill-opacity:1;fill-rule:nonzero;stroke:#b3b3b3;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+               style="fill:#e4f4b8;fill-opacity:1;fill-rule:nonzero;stroke:#b3b3b3;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
                id="rect5432"
                width="13.131983"
                height="120.20815"
@@ -5684,16 +5704,18 @@
           </g>
           <text
              xml:space="preserve"
-             style="font-size:74.15629578px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:HAW Frutiger Next Regular"
-             x="-381.02811"
-             y="174.42683"
+             style="font-size:190.6239624px"
+             x="-214.22095"
+             y="171.1339"
              id="text3110"
-             sodipodi:linespacing="125%"
-             transform="matrix(0,-1,1,0,0,0)"><tspan
+             transform="matrix(0,-1,1,0,0,0)"
+             inkscape:transform-center-y="564.33671"
+             inkscape:transform-center-x="-64.873268"><tspan
                sodipodi:role="line"
                id="tspan3112"
-               x="-381.02811"
-               y="174.42683">Bibliothek</tspan></text>
+               x="-214.22095"
+               y="171.1339"
+               style="font-size:64.63146973px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;font-family:Open Sans">Bibliothek</tspan></text>
         </g>
       </g>
     </g>

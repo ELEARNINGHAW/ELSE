@@ -77,7 +77,7 @@ if  ( ( isset (  $_SESSION[ 'currentCollection'       ]   ) ) )
 ##
 ### ------------------------------- SET HISTORY  --------------------------------
 ##
-if (isset(  $_SERVER [ 'HTTP_REFERER'      ] ))
+if ( (isset( $_SERVER [ 'HTTP_REFERER'      ] ) AND   $_SERVER [ 'HTTP_REFERER'      ] != $_SESSION[ 'history' ][ 0 ] ))
 {
   if (isset( $_SESSION[ 'history' ][ 2 ]  )) { $_SESSION[ 'history' ][ 3 ] = $_SESSION[ 'history' ][ 2 ]; }
   if (isset( $_SESSION[ 'history' ][ 1 ]  )) { $_SESSION[ 'history' ][ 2 ] = $_SESSION[ 'history' ][ 1 ]; }
