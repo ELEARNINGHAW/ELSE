@@ -732,7 +732,7 @@ td{
 .state_10,
 .state_11
 {
-  background-color: #999999;
+  background-color: #AAAAAA;
 }
 
 .state_1:hover,
@@ -903,7 +903,7 @@ td{
 {
   background-image:url(../img/svg/txtSemApp.png);
   background-repeat:repeat-y;
-  background-color: #F0F0F0;
+  background-color: #FFF;
 }
 
 .medium_3 /* CD-ROM */

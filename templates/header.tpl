@@ -113,8 +113,8 @@
   <div  style="position:absolute; right:44px;   top:3px;">
   <a href="javascript:window.print() " title="Druckversion Seite" >  <img src="img/svg/print_w.svg"   width="32"  height="32"   /></a>
 </div>
-<div  style="position:absolute; right:1px;   top:2px;">
-  <a href='index.php' title="Zurück"            ><img src="img/svg/chevron-l.svg" width="32" height="32"/></a>
+<div  style="position:absolute; right:2px;   top:3px;">
+  <a href='index.php' title="HOME" ><img src="img/svg/home.svg" width="32" height="32"/></a>
 </div>
 </div>
 
