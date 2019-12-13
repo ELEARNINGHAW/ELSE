@@ -893,31 +893,31 @@ td{
 
 .medium_1 /* Buch */
 {
-  background-image:url(../img/svg/txtBuch.png);
+  background-image:url(../img/svg/txtBibliothek.png);
   background-repeat:repeat-y;
-  background-color: transparent; 
+  background-color: transparent;
 }
 
 
 .medium_2 /* Buch Literaturhinweis */
 {
-  background-image:url(../img/svg/txtLHBuch.png);
+  background-image:url(../img/svg/txtSemApp.png);
   background-repeat:repeat-y;
-  background-color: #F0F0F0; 
+  background-color: #F0F0F0;
 }
 
 .medium_3 /* CD-ROM */
 {
   background-image:url(../img/svg/txtOnline.png);
   background-repeat:repeat-y;
-  background-color: transparent; 
+  background-color: transparent;
 }
 
 .medium_4 /* E-Book */
 {
   background-image:url(../img/svg/txtE-Book.png);
   background-repeat:repeat-y;
-  background-color: #FFF; 
+  background-color: #FFF;
 }
 
 

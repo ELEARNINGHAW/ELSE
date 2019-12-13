@@ -15,14 +15,13 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.45pre1"
-   sodipodi:docname="txtOnline.svg"
+   sodipodi:docname="txtLHBuch.svg"
    sodipodi:version="0.32"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
    sodipodi:docbase="C:\xampp\htdocs\ELSE-DEV\htdocs\img\svg"
-   inkscape:export-filename="C:\xampp\htdocs\ELSE-DEV\htdocs\img\svg\txtOnline.png"
+   inkscape:export-filename="C:\xampp\htdocs\ELSE-DEV\htdocs\img\svg\txtLHBuch.png"
    inkscape:export-xdpi="90"
-   inkscape:export-ydpi="90"
-   sodipodi:modified="TRUE">
+   inkscape:export-ydpi="90">
   <defs
      id="defs4">
     <radialGradient
@@ -2699,8 +2698,8 @@
      showgrid="false"
      inkscape:window-width="1680"
      inkscape:window-height="987"
-     inkscape:window-x="1680"
-     inkscape:window-y="24"
+     inkscape:window-x="1750"
+     inkscape:window-y="44"
      inkscape:window-maximized="1"
      showguides="true"
      inkscape:guide-bbox="true">
@@ -5673,6 +5672,37 @@
            id="_98045400">
           <text
              xml:space="preserve"
+             style="font-size:190.6239624px"
+             x="-214.22095"
+             y="171.1339"
+             id="text3110"
+             transform="matrix(0,-1,1,0,0,0)"
+             inkscape:transform-center-y="564.33671"
+             inkscape:transform-center-x="-64.873268"><tspan
+               sodipodi:role="line"
+               id="tspan3112"
+               x="-214.22095"
+               y="171.1339"
+               style="font-size:64.63146973px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;font-family:Open Sans">Bibliothek</tspan></text>
+          <g
+             id="g4437"
+             transform="matrix(1.8830663,0,0,0.67793324,-640.88922,174.29055)"
+             style="fill:#c4c080"
+             inkscape:export-filename="C:\xampp\htdocs\ELSE-DEV\htdocs\img\svg\txtBuch.png"
+             inkscape:export-xdpi="90"
+             inkscape:export-ydpi="90">
+            <rect
+               style="fill:#c4c080;fill-opacity:1;fill-rule:nonzero;stroke:#b3b3b3;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+               id="rect5432"
+               width="13.131983"
+               height="120.20815"
+               x="30.304577"
+               y="-7.5812459"
+               transform="matrix(4.3417443,0,0,4.6347686,259.28381,-178.20767)"
+               ry="0" />
+          </g>
+          <text
+             xml:space="preserve"
              style="font-size:190.6239624px;fill-rule:evenodd"
              x="-253.8956"
              y="170.50685"
@@ -5685,34 +5715,6 @@
                x="-253.8956"
                y="170.50685"
                style="font-size:64.63146973px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;font-family:Open Sans">SemApp</tspan></text>
-          <g
-             id="g4437"
-             transform="matrix(1.8830663,0,0,0.67793324,-640.88922,174.29055)"
-             style="fill:#d5e5ff">
-            <rect
-               style="fill:#d5e5ff;fill-opacity:1;fill-rule:nonzero;stroke:#b3b3b3;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-               id="rect5432"
-               width="13.131983"
-               height="120.20815"
-               x="30.304577"
-               y="-7.5812459"
-               transform="matrix(4.3417443,0,0,4.6347686,259.28381,-178.20767)"
-               ry="0" />
-          </g>
-          <text
-             xml:space="preserve"
-             style="font-size:190.6239624px;fill-rule:evenodd"
-             x="-253.89558"
-             y="170.50685"
-             id="text3124"
-             transform="matrix(0,-1,1,0,0,0)"
-             inkscape:transform-center-y="564.33671"
-             inkscape:transform-center-x="-64.873268"><tspan
-               sodipodi:role="line"
-               id="tspan3126"
-               x="-253.89558"
-               y="170.50685"
-               style="font-size:64.63146973px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;font-family:Open Sans">Online</tspan></text>
         </g>
       </g>
     </g>
