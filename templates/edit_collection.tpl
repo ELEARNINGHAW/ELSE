@@ -16,6 +16,7 @@ Neuen Semesterapparat anlegen für: {$collection.title}
 
 <div style="margin:20px; margin-top:0px;  padding:10px; border:solid 1px black; ">
 <form action="index.php" method="get">
+
 <input type="hidden" name="item"              value="collection"  >
 <input type="hidden" name="r"                 value="{$user.role_id}"  >
 
@@ -36,11 +37,14 @@ Neuen Semesterapparat anlegen für: {$collection.title}
 <tr>
 <td style="vertical-align: top;"><span class="medHead2">Standort des Semesterapparats:</span></td>
     <td>{html_options name="bib_id" options=$tpl.bib_info selected=$collection.bib_id } <br/><span  style="font-weight: bold; font-size: 12px;" >im Regal &quot;Semesterapparate&quot;</span><br/></td>
+     <td rowspan="10" >   <input style="width:125px; height:50px;" name="ok" value="&nbsp;&nbsp;&nbsp;SPEICHERN&nbsp;&nbsp;&nbsp;" type="submit"> </td>
+   </tr>
+
 </tr>
 
 <tr>
 <td style="vertical-align: top;"><span  class="medHead2">(Optional)<br/>Bemerkungen für die Studierenden zum Semesterapparat:</span></td>
-<td> <textarea name="notes_to_studies_col" cols="60" rows="5" >{$collection.notes_to_studies_col}</textarea> </td>
+<td> <textarea name="notes_to_studies_col" cols="40" rows="5" >{$collection.notes_to_studies_col}</textarea> </td>
 </tr>
 
 
@@ -51,7 +55,7 @@ Neuen Semesterapparat anlegen für: {$collection.title}
 
 </tbody>
 </table>
-<input style="float: right;" name="b_ok" value="&nbsp;&nbsp;&nbsp;SPEICHERN&nbsp;&nbsp;&nbsp;" type="submit">
+
 </form>
 </div>
 

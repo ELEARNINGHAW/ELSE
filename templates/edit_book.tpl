@@ -61,7 +61,7 @@
   <tr><td  class = "editmedia" style="vertical-align: top; font-weight: bold;">  Ort:  <span style="color: {$color}; vertical-align: top; font-weight: bold;">(bitte auswählen)</span> </td><td>
     <div style="border:{$bw}px solid {$color}; float: left;  height:59px; padding: 5px; font-size: 12px; width: calc(100% - 15px); ">
       <input {$c2} value="2" class='i' type="radio" name="shelf_remain" id="radio-2"><label for="radio-2"><span style="font-weight:700; "> Literaturhinweis - verbleibt im Regal der Bibliothek.     </span></label><br/>
-      <input {$c1} value="1" class='i' type="radio" name="shelf_remain" id="radio-1"><label for="radio-1"><span style="font-weight:700; "> Handapparat  -     wird in Ihren Handapparat eingestellt. </span></label>
+      <input {$c1} value="1" class='i' type="radio" name="shelf_remain" id="radio-1"><label for="radio-1"><span style="font-weight:700; "> Semesterapparat  -     wird in Ihren Handapparat eingestellt. </span></label>
       <input {$c0} value="0"           type="radio" name="shelf_remain" id="radio-1" style="visibility: hidden;">
     </div>
    </tr>

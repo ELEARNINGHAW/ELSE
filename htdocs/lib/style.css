@@ -893,7 +893,7 @@ td{
 
 .medium_1 /* Buch */
 {
-  background-image:url(../img/svg/txtBibliothek.png);
+  background-image:url(../img/svg/txtSemApp.png);
   background-repeat:repeat-y;
   background-color: transparent;
 }
@@ -901,7 +901,7 @@ td{
 
 .medium_2 /* Buch Literaturhinweis */
 {
-  background-image:url(../img/svg/txtSemApp.png);
+  background-image:url(../img/svg/txtBibliothek.png);
   background-repeat:repeat-y;
   background-color: #FFF;
 }
