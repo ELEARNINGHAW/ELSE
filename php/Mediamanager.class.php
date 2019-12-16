@@ -1055,10 +1055,14 @@ function getHitList( $searchQuery )
 ###############################################################################################
     function ereaseMedia( $I )
     {
+      #   deb($I[ 'medium' ] );
+      $this->SQL->deleteMedia ( $I[ 'medium' ] , $I[ 'currentUser' ] );
 
-      $this->SQL->deleteMedia ( $I[ 'medium' ]->get_id () , $I[ 'operator' ] );
+      #$url = "index.php?item=collection&action=show_collection&dc_collection_id=" . $I[ 'currentCollection' ]->get_dc_collection_id () . "&r=" . $I[ 'currentUser' ]->get_role_id ();
+      $url = "index.php?item=collection&action=show_media_list&r=" . $I[ 'currentUser' ] -> get_role_id ();
 
-      $url = "index.php?item=collection&action=show_collection&dc_collection_id=" . $I[ 'currentCollection' ]->get_dc_collection_id () . "&r=" . $I[ 'currentUser' ]->get_role_id ();
+
+
       if ( $this->CFG->CFG[ 'ajaxON' ] ) {
         $this->showSA ( $I );
       } else {

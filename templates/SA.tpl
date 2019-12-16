@@ -13,7 +13,7 @@
 
 <div id="{$di.ppn}" class="mediaInSA medium_{$di.shelf_remain} {$current} " >
 <a name="{$di.ppn}" style="position:relative; top:-220px;"></a>
-<a title="Medium Im Onlinekatalog anzeigen" class="medimove medLink  s_standard state_{$di.state_id} {if $edit_mode == '1'} {/if} " href="{$CFG.catURLlnk[$DOC_TYPE[$di.doc_type_id]['indexID']]}{$di.ppn}" target="_blank" onclick="return -1">
+<a title="Medium Im Onlinekatalog anzeigen" class="{if $edit_mode  == "1"}medimove{/if} medLink  s_standard state_{$di.state_id} {if $edit_mode == '1'} {/if} " href="{$CFG.catURLlnk[$DOC_TYPE[$di.doc_type_id]['indexID']]}{$di.ppn}" target="_blank" onclick="return -1">
 <table>
 
 {if $doctypedescription != ""           }  <tr><td><div class="mediaListHeader">Medientyp: </div></td><td><div  class="mediaTxt" >{$doctypedescription}  </div>            {/if}
@@ -40,7 +40,7 @@
 </div>
 
 {if ($staff_mode or $edit_mode) and ($operator.mode != "print")}
-<div class="status s_{$di.state_id}"/>{$MEDIA_STATE[$di.state_id].description}</div>
+<div class="status s_{$di.state_id}">{$MEDIA_STATE[$di.state_id].description}</div>
 <div class="iconlist">
 
 {foreach  item=action  key=action_name  name=ACTION_INFO  from=$ACTION_INFO}

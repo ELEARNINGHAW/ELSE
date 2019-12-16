@@ -26,7 +26,7 @@ $medium            = new medium();
 $this -> HAWdb     = new HAW_DB();                                    # Aus der SQLite DB
 
 
-if ( ! isset ( $_SESSION [ 'DEP_2_BIB' ] ) )  // Standardkonstanten werden nur beim ersten Aufruf eingelesen.
+#if ( ! isset ( $_SESSION [ 'DEP_2_BIB' ] ) )  // Standardkonstanten werden nur beim ersten Aufruf eingelesen.
 {
   $_SESSION[ 'DEP_2_BIB'    ] = $this -> HAWdb -> getDEP_2_BIB ();
   $_SESSION[ 'FAK'          ] = $this -> HAWdb -> getAllFak ();
