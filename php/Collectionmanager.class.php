@@ -589,10 +589,8 @@ $ds          = DIRECTORY_SEPARATOR;  //1
 
 $storeFolder = 'uploads';   //2
 
-if (!empty($_FILES))
+#if (!empty($_FILES))
 {
-  #$tempFile = $_FILES[ 'file' ][ 'tmp_name' ];          //3
-
   $tempFile =  ($_FILES['file']['tmp_name']);
 
 #  $fp       = fopen('data.txt', 'w');
@@ -602,12 +600,28 @@ if (!empty($_FILES))
   #$targetFile =  $targetPath. $_FILES[ 'file' ][ 'name' ];  //5
   #move_uploaded_file($tempFile,$targetFile); //6
 
-  $newSA = file ($tempFile , FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+  #$newSA = file ($tempFile , FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
- 
+     $collection         = $this -> SQL-> getCollection ( $I[ 'medium' ] ->get_collection_id() );
+      $c =  $collection [$I[ 'medium' ] ->get_collection_id() ] -> media;
+
+    $newSA = file ("ELSE.exp");
+
+foreach ( $c  as $m)
+{
+   $medppn[] = $m -> get_ppn();  ## PPN Liste aller Medien des SA
+}
+   deb(    $medppn  );
+
   foreach( $newSA as $medium )
   {
-    $this->SQL-> importCollection( $I[ 'currentCollection' ] -> get_collection_id (), $medium );
+      $tmp = explode(';', $medium);
+      deb( $tmp[20]);
+      #deb($tmp,1);
+      if (! in_array(  $tmp[20],  $medppn  ))
+      {
+         $this->SQL->importCollection($I['currentCollection']->get_collection_id(), $medium);
+      }
 #    fwrite($fp, $medium ) ;
   }
 #  fclose($fp);

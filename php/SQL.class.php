@@ -328,31 +328,31 @@ function getUserList(  )
   FROM user,state,role
   WHERE state.name    = 'active'
   AND user.state_id   = state.id
-  AND user.hawaccount = \"" . $this -> es ( $hawAccount ) . "\"
+  AND user.hawaccount = \"" . $this->es ( $hawAccount ) . "\"
   AND user.role_id    = role.id LIMIT 1";
 
 
-    $res    = mysqli_query       ( $this->DB , $SQL );
-    $userdb = mysqli_fetch_assoc ( $res             );
+    $res = mysqli_query ( $this->DB , $SQL );
+    $userdb = mysqli_fetch_assoc ( $res );
 
-    $user->set_id           ( $userdb[ 'u_id'            ] );
-    $user->set_forename     ( $userdb[ 'u_forename'      ] );
-    $user->set_surname      ( $userdb[ 'u_surname'       ] );
-    $user->set_hawaccount   ( $userdb[ 'u_hawaccount'    ] );
-    $user->set_sex          ( $userdb[ 'u_sex'           ] );
-    $user->set_email        ( $userdb[ 'u_mail'          ] );
-    $user->set_role_id      ( $userdb[ 'u_role'          ] );
-    $user->set_department   ( $userdb[ 'u_department_id' ] );
-    $user->set_bib_id       ( $userdb[ 'u_bib_id'        ] );
+    $user->set_id           ( $userdb[ 'u_id' ] );
+    $user->set_forename     ( $userdb[ 'u_forename' ] );
+    $user->set_surname     ( $userdb[ 'u_surname' ] );
+    $user->set_hawaccount  ( $userdb[ 'u_hawaccount' ] );
+    $user->set_sex ( $userdb[ 'u_sex' ] );
+    $user->set_email ( $userdb[ 'u_mail' ] );
+    $user->set_role_id ( $userdb[ 'u_role' ] );
+    $user->set_department ( $userdb[ 'u_department_id' ] );
+    $user->set_bib_id ( $userdb[ 'u_bib_id' ] );
 
-    if( isset( $_SESSION[ 'DEP_2_BIB' ][ $userdb[ 'u_department_id' ] ][ 'dep_name' ] ) )
+    if( isset($_SESSION['DEP_2_BIB'][$userdb[ 'u_department_id' ] ]['dep_name']))
     {
-      $user -> set_dep_name( $_SESSION[ 'DEP_2_BIB' ][ $userdb[ 'u_department_id' ] ][ 'dep_name' ] );
+      $user->set_dep_name( $_SESSION['DEP_2_BIB'][$userdb[ 'u_department_id' ] ]['dep_name']);
     }
     else
     {
-      $user -> set_dep_name( 'nicht erkannt' );
-      $user -> set_dep_id( 0 );
+      $user->set_dep_name( 'nicht erkannt');
+      $user->set_dep_id( 0 );
     }
 
     return $user;
@@ -470,18 +470,17 @@ function get_med_state( $collection_id )
 
 
 # ---------------------------------------------------------------------------------------------
-  function deleteMedia( $IW ,  $IU  )
+  function deleteMedia( $IW , $operator )
   { #trigger_error("Deprecated function called: deleteMedia()", E_USER_NOTICE);
     $ret = '';
-
-    if (  $IU -> get_role_name () == 'staff' ||  $IU -> get_role_name == 'admin' ) {
+    $r = $operator->getrole_name();
+    if ( $r == 'staff' || $r == 'admin' ) {
     $SQL = "
     DELETE
     FROM `document`
-    WHERE `document`.`id` = " . $this->es ( $IW->get_id() );
-
-     $res = mysqli_query ( $this->DB , $SQL );
-     #  return  mysqli_fetch_assoc( $res );
+    WHERE `document`.`id` = " . $this->es ( $IW[ 'document_id' ] );
+      $res = mysqli_query ( $this->DB , $SQL );
+      #  return  mysqli_fetch_assoc( $res );
     }
     return $ret;
   }

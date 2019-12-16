@@ -40,7 +40,7 @@ $cl = $I[ 'operator'    ] -> get_loc();      # LOCATOR
 #deb($_GET);
 #deb($ci);
 #deb($_SESSION[ 'DOC_TYPE'            ]);
-
+$COLLMGR -> importCollection( $I );
 # -- Default: item = collection -- (user) action = show_collection, (staff) action = show_collection_list
 if ( $ci  == 'collection'  AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit') )
 {
