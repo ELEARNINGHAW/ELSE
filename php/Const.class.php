@@ -2,35 +2,12 @@
 class CONSTANT
 {  
 var $default_role_id;
-var $sem;
-var $debug_level  = 1;
 var $bib_id ;
 var $CONST_letter_header;
 var $CONST_ACTION_INFO ;
 
 function __construct()
 {
-#$this->sem[ 'W12' ] = array( '2012_09_01' , '2013_02_28' );
-#$this->sem[ 'S13' ] = array( '2013_03_01' , '2013_08_31' );
-#$this->sem[ 'W13' ] = array( '2013_09_01' , '2014_02_28' );
-#$this->sem[ 'S14' ] = array( '2014_03_01' , '2014_08_31' );
-#$this->sem[ 'W14' ] = array( '2014_09_01' , '2015_02_28' );
-#$this->sem[ 'S15' ] = array( '2015_03_01' , '2015_08_31' );
-#$this->sem[ 'W15' ] = array( '2015_09_01' , '2016_02_29' );
-#$this->sem[ 'S16' ] = array( '2016_03_01' , '2016_08_31' );
-#$this->sem[ 'W16' ] = array( '2016_09_01' , '2017_02_28' );
-#$this->sem[ 'S17' ] = array( '2017_03_01' , '2017_08_31' );
-#$this->sem[ 'W17' ] = array( '2017_09_01' , '2018_02_03' );
-#$this->sem[ 'S18' ] = array( '2018_02_03' , '2018_07_14' );
-    $this->sem[ 'W18' ] = array( '2018_07_14' , '2019_02_02' );
-    $this->sem[ 'S19' ] = array( '2019_02_02' , '2019_07_13' );
-    $this->sem[ 'W19' ] = array( '2019_09_10' , '2020_01_31' );
-#$this->sem[ 'S20' ] = array( '2020_03_09' , '2020_07_10' );
-#$this->sem[ 'W20' ] = array( '2020_09_14' , '2021_01_29' );
-#$this->sem[ 'S21' ] = array( '2021_03_15' , '2021_07_16' );
-#$this->sem[ 'W21' ] = array( '2021_09_20' , '2022_02_04' );
-#$this->sem[ 'S22' ] = array( '2022_03_21' , '2022_07_22' );
-
 
 if   ( !isset ($this->default_role_id)) $this->default_role_id = 3;
 

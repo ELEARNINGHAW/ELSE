@@ -39,7 +39,7 @@ $cl = $I[ 'operator'    ] -> get_loc();      # LOCATOR
 #deb($I,1);
 #deb($_GET);
 #deb($ci);
-#deb($_SESSION[ 'DOC_TYPE'            ]);
+deb($_SESSION['CFG'] ,1);
 
 # -- Default: item = collection -- (user) action = show_collection, (staff) action = show_collection_list
 if ( $ci  == 'collection'  AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit') )

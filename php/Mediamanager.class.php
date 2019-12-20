@@ -26,7 +26,7 @@ function showHitList( $I , $books, $hits, $maxhits)
   $tpl_vars[ 'user'            ]  = $I[ 'currentUser'                     ] -> obj2array ( );
   $tpl_vars[ 'operator'        ]  = $I[ 'operator'                        ] -> obj2array ( );
   $tpl_vars[ 'filter'          ]  = $I[ 'filter'                          ] -> obj2array ( ) ;
-  $tpl_vars[ 'SEMESTER'        ]  = array_keys( $_SESSION[ 'SEM' ] );                                      # $conf[ 'SEMESTER' ] ;
+  $tpl_vars[ 'SEMESTER'        ]  = array_keys( $_SESSION[ 'CFG' ][ 'SEM' ] );                                      # $conf[ 'SEMESTER' ] ;
   $tpl_vars[ 'page'            ]  = 2;                                                                  /* Seite 2 = Anzeige der Trefferliste nach der Suche */
 
   $tpl_vars[ 'searchHits'      ]  = $hits;
@@ -49,7 +49,7 @@ function editMediaMetaData( $I )
   $tpl_vars[ 'user'            ]                          =  $I[ 'currentUser' ] -> obj2array();
   $tpl_vars[ 'operator'        ]                          =  $I[ 'operator'    ] -> obj2array();
   $tpl_vars[ 'operator'        ][ 'mode'         ]        =  "save";
-  $tpl_vars[ 'SEMESTER'        ]                          =  array_keys( $_SESSION[ 'SEM' ] );  #$conf[ 'SEMESTER' ] ;
+  $tpl_vars[ 'SEMESTER'        ]                          =  array_keys( $_SESSION[ 'CFG' ][ 'SEM' ] );  #$conf[ 'SEMESTER' ] ;
   $tpl_vars[ 'CFG'             ]                          =  $this -> CFG -> getConf();
   $tpl_vars[ 'filter'          ]                          =  $I[ 'filter'                          ] -> obj2array ( ) ;
   $tpl_vars[ 'DOC_TYPE'        ]                          =  $_SESSION[ 'DOC_TYPE'                 ];
@@ -93,7 +93,7 @@ function annoteNewMedia_showForm( $I )
   $tpl_vars[ 'user'            ]  =  $I[ 'currentUser'                     ] -> obj2array ( );
   $tpl_vars[ 'operator'        ]  =  $I[ 'operator'                        ] -> obj2array ( );
   $tpl_vars[ 'filter'          ]  =  $I[ 'filter'                          ] -> obj2array ( );
-  $tpl_vars[ 'SEMESTER'        ]  =  array_keys( $_SESSION[ 'SEM'          ] );
+  $tpl_vars[ 'SEMESTER'        ]  =  array_keys( $_SESSION[ 'CFG' ][ 'SEM'          ] );
   $tpl_vars[ 'DOC_TYPE'        ]  =  $_SESSION[ 'DOC_TYPE'                 ];
   $tpl_vars[ 'currentElement'  ]  =  $_SESSION['books'][ 'currentElement'  ];
   $tpl_vars[ 'maxElement'      ]  =  $_SESSION['books'][ 'maxElement'      ];
@@ -327,7 +327,7 @@ function purchase_suggestion( $I )
   $tpl_vars[ 'operator'        ]            =  $I[ 'operator'                        ] -> obj2array ( );
   $tpl_vars[ 'operator'        ][ 'mode' ]  =  "suggest";
   $tpl_vars[ 'filter'          ]            =  $I[ 'filter'                          ] -> obj2array ( ) ;
-  $tpl_vars[ 'SEMESTER'        ]            =  array_keys( $_SESSION[ 'SEM' ] );                                      # $conf[ 'SEMESTER' ] ;
+  $tpl_vars[ 'SEMESTER'        ]            =  array_keys( $_SESSION[ 'CFG' ][ 'SEM' ] );                                      # $conf[ 'SEMESTER' ] ;
   $tpl_vars[ 'CFG'             ]            =  $this -> CFG -> getConf();
   $tpl_vars[ 'DOC_TYPE'        ]            =  $_SESSION[ 'DOC_TYPE' ];
 
@@ -813,7 +813,7 @@ function getHitList( $searchQuery )
       $tpl_vars[ 'user'       ] = $I[ 'currentUser'           ]->obj2array ();
       $tpl_vars[ 'operator'   ] = $I[ 'operator'              ]->obj2array ();
       $tpl_vars[ 'filter'     ] = $I[ 'filter'                ]->obj2array ();
-      $tpl_vars[ 'SEMESTER'   ] = array_keys ( $_SESSION[ 'SEM' ] );
+      $tpl_vars[ 'SEMESTER'   ] = array_keys ( $_SESSION[ 'CFG' ][ 'SEM' ] );
 
       if    ( $tpl_vars[ 'collection' ][ 'Owner' ][ 'sex' ] == 'w' ) { $salutaton = 'Sehr geehrte/r' . $tpl_vars[ 'collection' ][ 'Owner' ][ 'forename' ] . ' ' . $tpl_vars[ 'collection' ][ 'Owner' ][ 'surname' ]; }
       else                                                           { $salutaton = 'Sehr geehrte/r' . $tpl_vars[ 'collection' ][ 'Owner' ][ 'forename' ] . ' ' . $tpl_vars[ 'collection' ][ 'Owner' ][ 'surname' ]; }
@@ -868,7 +868,7 @@ function getHitList( $searchQuery )
       $tpl_vars[ 'user' ] = $I[ 'currentUser' ]->obj2array ();
       $tpl_vars[ 'operator' ] = $I[ 'operator' ]->obj2array ();
       $tpl_vars[ 'filter' ] = $I[ 'filter' ]->obj2array ();
-      $tpl_vars[ 'SEMESTER' ] = array_keys ( $_SESSION[ 'SEM' ] );
+      $tpl_vars[ 'SEMESTER' ] = array_keys ( $_SESSION[ 'CFG' ][ 'SEM' ] );
 
       $this->RENDERER->do_template ( 'email.tpl' , $tpl_vars );
     }

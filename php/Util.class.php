@@ -26,7 +26,7 @@ $medium            = new medium();
 $this -> HAWdb     = new HAW_DB();                                    # Aus der SQLite DB
 
 
-if ( ! isset ( $_SESSION [ 'DEP_2_BIB' ] ) )  // Standardkonstanten werden nur beim ersten Aufruf eingelesen.
+#if ( ! isset ( $_SESSION [ 'DEP_2_BIB' ] ) )  // Standardkonstanten werden nur beim ersten Aufruf eingelesen.
 {
   $_SESSION[ 'DEP_2_BIB'    ] = $this -> HAWdb -> getDEP_2_BIB ();
   $_SESSION[ 'FAK'          ] = $this -> HAWdb -> getAllFak ();
@@ -35,7 +35,7 @@ if ( ! isset ( $_SESSION [ 'DEP_2_BIB' ] ) )  // Standardkonstanten werden nur b
   $_SESSION[ 'MEDIA_STATE'  ] = $this -> SQL -> getAllMedStates ();
   $_SESSION[ 'ACTION_INFO'  ] = $this -> CFG -> C -> CONST_ACTION_INFO ;
   $_SESSION[ 'CFG'          ] = $this -> CFG -> getConf();
-  $_SESSION[ 'SEM'          ] = $this -> CFG -> C -> sem;
+  #$_SESSION[ 'SEM'          ] = $_SESSION[ 'sem' ];
   $_SESSION[ 'CUR_SEM'      ] = $this -> getCurrentSem ();
 }
 
@@ -685,4 +685,6 @@ function check_acl ( $acl_list , $item , $id )
         return $page_url.'://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
     }
 }
+
+function deb($obj, $kill=false) {   echo "<pre>";  print_r ($obj);  echo "</pre>";  if($kill){die();} }
 ?>

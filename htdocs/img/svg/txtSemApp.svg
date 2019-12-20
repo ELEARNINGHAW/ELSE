@@ -15,13 +15,14 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.45pre1"
-   sodipodi:docname="txtLHBuch.svg"
+   sodipodi:docname="txtSemApp.svg"
    sodipodi:version="0.32"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
    sodipodi:docbase="C:\xampp\htdocs\ELSE-DEV\htdocs\img\svg"
-   inkscape:export-filename="C:\xampp\htdocs\ELSE-DEV\htdocs\img\svg\txtLHBuch.png"
+   inkscape:export-filename="C:\xampp\htdocs\ELSE-DEV\htdocs\img\svg\txtSemApp.png"
    inkscape:export-xdpi="90"
-   inkscape:export-ydpi="90">
+   inkscape:export-ydpi="90"
+   sodipodi:modified="TRUE">
   <defs
      id="defs4">
     <radialGradient
@@ -2696,10 +2697,10 @@
      inkscape:document-units="px"
      inkscape:current-layer="_98045400"
      showgrid="false"
-     inkscape:window-width="1680"
-     inkscape:window-height="987"
-     inkscape:window-x="1750"
-     inkscape:window-y="44"
+     inkscape:window-width="1678"
+     inkscape:window-height="978"
+     inkscape:window-x="1673"
+     inkscape:window-y="0"
      inkscape:window-maximized="1"
      showguides="true"
      inkscape:guide-bbox="true">
@@ -5687,12 +5688,12 @@
           <g
              id="g4437"
              transform="matrix(1.8830663,0,0,0.67793324,-640.88922,174.29055)"
-             style="fill:#c4c080"
+             style="fill:#e9ddaf"
              inkscape:export-filename="C:\xampp\htdocs\ELSE-DEV\htdocs\img\svg\txtBuch.png"
              inkscape:export-xdpi="90"
              inkscape:export-ydpi="90">
             <rect
-               style="fill:#c4c080;fill-opacity:1;fill-rule:nonzero;stroke:#b3b3b3;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+               style="fill:#e9ddaf;fill-opacity:1;fill-rule:nonzero;stroke:#b3b3b3;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
                id="rect5432"
                width="13.131983"
                height="120.20815"
