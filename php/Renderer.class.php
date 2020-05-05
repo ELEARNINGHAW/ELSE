@@ -7,12 +7,13 @@ class Renderer
 var $smarty;
 var $Util;
 
-function   __construct( $CONFIG, $Util  )
+function   __construct(  $Util  )
 {
+  $conf_cwd = $_SESSION[ 'CFG' ][ 'SERVER' ];
+
   $this->smarty = new Smarty;
   $this->Util = $Util;
-  $conf = $CONFIG->getConf();
-  $this->smarty->compile_dir   = $conf['templates_compile_dir'];
+  $this->smarty->compile_dir   = $conf_cwd['templates_compile_dir'];
   $this->smarty->template_dir  = "../templates";
   $this->smarty->config_dir    = "../configs";
   $this->smarty->compile_check = true;

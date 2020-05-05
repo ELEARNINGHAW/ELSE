@@ -43,7 +43,7 @@
 {/if}
 
 
-<ul id="nav2" style="position:absolute; right:77px;   top:3px;">
+<ul id="nav2" style="position:absolute; right:110px;   top:3px;">
     {if      $filter.state == 0}<li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=0" title="Alle SemApp"         ><img src="img/svg/Xa.svg" width="32" height="32"/></a>
     {elseif  $filter.state == 1}<li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=1" title="Neu Bestellte"       ><img src="img/svg/Na.svg" width="32" height="32"/></a>
     {elseif  $filter.state == 2}<li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=2" title="Wird Bearbeitet"     ><img src="img/svg/Ba.svg" width="32" height="32"/></a>
@@ -52,8 +52,7 @@
     {elseif  $filter.state == 5}<li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=5" title="Inaktiv"             ><img src="img/svg/Ia.svg" width="32" height="32"/></a>
     {elseif  $filter.state == 6}<li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=6" title="Gelöschte"           ><img src="img/svg/Ga.svg" width="32" height="32"/></a>
     {elseif  $filter.type == 16}<li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterType&amp;category=16" title="Erwerbungsvorschlag" ><img src="img/svg/EV.svg" width="32" height="32"/></a>
-
-        {/if}
+    {/if}
 
     <ul>
       <li><a href='index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=0' title="Alle Semapp"         ><img src="img/svg/X.svg" width="24" height="24"/><span style="position:absolute; padding:12px;"> Alle Medien        </span></a></li>
@@ -108,11 +107,21 @@
   </ul>
 *}
 
-
-
-  <div  style="position:absolute; right:44px;   top:3px;">
+<div  style="position:absolute; right:77px;   top:3px;">
   <a href="javascript:window.print() " title="Druckversion Seite" >  <img src="img/svg/print_w.svg"   width="32"  height="32"   /></a>
 </div>
+
+
+  <ul id="nav2" style="position:absolute; right:36px;   top:3px;">
+    <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=0" title="Alle SemApp"         ><img src="img/svg/edit_w.svg" width="32" height="32"/></a>
+     <ul>
+        <li><a href='../php/editconf.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=0' title="Alle Semapp"         ><img src="img/svg/edit_w.svg" width="24" height="24"/><span style="position:absolute; padding:12px;"> EDIT CONFIG    </span></a></li>
+      </ul>
+    </li>
+  </ul>
+
+
+
 <div  style="position:absolute; right:2px;   top:3px;">
   <a href='index.php' title="HOME" ><img src="img/svg/home.svg" width="32" height="32"/></a>
 </div>

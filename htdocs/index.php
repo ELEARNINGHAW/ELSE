@@ -1,5 +1,5 @@
 ﻿<?php
-session_start();    #  session_destroy (); unset($_SESSION);
+session_start();  #  session_destroy (); unset($_SESSION);
 
 require_once ( '../php/Const.class.php'               );
 require_once ( '../php/Config.class.php'              );
@@ -19,14 +19,14 @@ require_once ( '../php/Bib.php'                       );
 require_once ( '../php/Filter.class.php'              );
 
 $CFG        = new ConfigELSE( new CONSTANT()                       );
-$SQL        = new SQL(               $CFG                          );
-$UTIL       = new UTIL(              $CFG, $SQL                    );
-$RENDERER   = new RENDERER(          $CFG                 , $UTIL  );
+$SQL        = new SQL(                                  );
+$UTIL       = new UTIL(              $SQL                    );
+$RENDERER   = new RENDERER(                $UTIL  );
 $COLLMGR    = new COLLECTIONMANAGER( $CFG, $SQL, $RENDERER, $UTIL  );
 $MEDIAMGR   = new MEDIAMANAGER(      $CFG, $SQL, $RENDERER, $UTIL  );
 
 # $UTIL->checkER();                              ## Listet alle SA zum Semesterwechsel auf
-
+#deb($CFG,1);
 ## ----------------------------------------------------------------------------------------
 $I = $UTIL -> getInput();                                #--- GET ALL INPUT (GET) ---
 ## ----------------------------------------------------------------------------------------
@@ -39,7 +39,7 @@ $cl = $I[ 'operator'    ] -> get_loc();      # LOCATOR
 #deb($I,1);
 #deb($_GET);
 #deb($ci);
-deb($_SESSION['CFG'] ,1);
+
 
 # -- Default: item = collection -- (user) action = show_collection, (staff) action = show_collection_list
 if ( $ci  == 'collection'  AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit') )
@@ -62,7 +62,6 @@ if ( $ci  == 'collection'  AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit')
  #else if ( $ca  == 'coll_delete'            )  { $COLLMGR -> setCollectionState_delete ( $I ) ; }  ## Zustand 6 = 'GELÖSCHT'/Mülleimer
  #else if ( $ca  == 'kill'                   )  { $COLLMGR -> ereaseCollection          ( $I ) ; }  ## Löscht SA endgültig
 }
-
 
 
 else if (   $cl  == 1    AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit'))

@@ -2,17 +2,16 @@
 class Util   /// \brief check user input
 {   
   var $SQL ;
-  var $CFG ;
-  var $conf;
   var $currentUser;
   var $currentCollection;
-
+  private $conf;
+  private $CONST;
 # ---------------------------------------------------------------------------------------------
-function __construct ( $CFG, $SQL )
+function __construct ( $SQL )
 {
   $this -> SQL    = $SQL;
-  $this -> CFG    = $CFG;
-  $this -> conf   = $this -> CFG -> getConf();
+  $this -> conf  = $_SESSION[ 'CFG' ];
+  $this -> CONST = $_SESSION[ 'CONST' ];
 }
 
 # ---------------------------------------------------------------------------------------------
@@ -26,18 +25,18 @@ $medium            = new medium();
 $this -> HAWdb     = new HAW_DB();                                    # Aus der SQLite DB
 
 
+
 #if ( ! isset ( $_SESSION [ 'DEP_2_BIB' ] ) )  // Standardkonstanten werden nur beim ersten Aufruf eingelesen.
 {
+
   $_SESSION[ 'DEP_2_BIB'    ] = $this -> HAWdb -> getDEP_2_BIB ();
   $_SESSION[ 'FAK'          ] = $this -> HAWdb -> getAllFak ();
   $_SESSION[ 'FACHBIB'      ] = $this -> HAWdb -> getAllFachBib ();
   $_SESSION[ 'DOC_TYPE'     ] = $this -> SQL -> getAllDocTypes();
   $_SESSION[ 'MEDIA_STATE'  ] = $this -> SQL -> getAllMedStates ();
-  $_SESSION[ 'ACTION_INFO'  ] = $this -> CFG -> C -> CONST_ACTION_INFO ;
-  $_SESSION[ 'CFG'          ] = $this -> CFG -> getConf();
-  #$_SESSION[ 'SEM'          ] = $_SESSION[ 'sem' ];
+  $_SESSION[ 'ACTION_INFO'  ] = $this -> CONST -> CONST_ACTION_INFO;
   $_SESSION[ 'CUR_SEM'      ] = $this -> getCurrentSem ();
-}
+ }
 
 
 if ( isset ( $_GET[ 'uid' ] ) )  ##  Initiale Parameterübergabe über  Moodle ## // Kurskurzname   /* Paramterübergabe von EMIL  */
@@ -90,7 +89,7 @@ if ( (isset( $_SERVER [ 'HTTP_REFERER'      ] ) AND   $_SERVER [ 'HTTP_REFERER' 
 ## ------------------------------- OPERATOR  --------------------------------
 ##
 ## Action DEFAULTEEINSTELLUNGEN für die einzelnen Rollen
-if (  $this -> hasRole( $currentUser,'admin', 'staff') )     { $operator -> set_action           ( 'show_collection_list'    ); }
+if (  $this -> hasRole( $currentUser,'admin', 'staff') )      { $operator -> set_action           ( 'show_collection_list'    ); }
 else                                                                 { $operator -> set_action           ( 'show_collection'         ); }
 
 if ( isset ( $_GET[ 'item'                                     ] ) ) { $operator -> set_item             ( $_GET[ 'item'               ] ) ; }
@@ -262,7 +261,9 @@ function controller( $operator )
 # ---------------------------------------------------------------------------------------------
 function getRole( $user, $collection = null  )
 {
-  if ( isset( $collection ) AND in_array( $collection->get_title_short() , $this -> conf[ 'adminzone' ]  ) ) ## Alle Nuztzer die ELSE in einem moodle Raum aufrufen, die in 'adminzone' aufgelistet sind, erhalten automatisch die Rolle 'staff'
+  $az =  explode("," ,  str_replace( " ", "", $this -> conf['CONF'][ 'adminzone' ]   ) );      #  --- Optimierung??  nicht jedes Mal in ein Array umwandeln?
+
+  if ( isset( $collection ) AND in_array( $collection->get_title_short() ,  $az ) ) ## Alle Nuztzer die ELSE in einem moodle Raum aufrufen, die in 'adminzone' aufgelistet sind, erhalten automatisch die Rolle 'staff'
   { $role[ 'role'   ] = 2;
     $role[ 'tmpcat' ] = 1;
   }
@@ -376,8 +377,8 @@ function updateCollection ( $collection , $user )
 # ---------------------------------------------------------------------------------------------
 function sendBIB_APmails()
 {
-  $BIB_Anrede  = $this -> conf[ 'BIB_Anrede' ]; #= "Liebe ELSE/HIBS Mitarbeiterin  \r\n\r\n";
-  $BIB_Gruss   = $this -> conf[ 'BIB_Gruss'  ]; #= "\r\n\r\nIhr ELSE Server \r\n\r\n http://www.elearning.haw-hamburg.de/mod/else/view.php?id=443297  \r\n\r\n";
+  $BIB_Anrede  = $this -> conf[ 'BIBMAIL' ][ 'Anrede' ]; #= "Liebe ELSE/HIBS Mitarbeiterin  \r\n\r\n";
+  $BIB_Gruss   = $this -> conf[ 'BIBMAIL' ][ 'Gruss'  ]; #= "\r\n\r\nIhr ELSE Server \r\n\r\n http://www.elearning.haw-hamburg.de/mod/else/view.php?id=443297  \r\n\r\n";
 
   $mailInfos =     $this -> SQL -> getAdminEmailInfos ( ) ;
 
@@ -407,9 +408,9 @@ function sendBIB_APmails()
 function sendAMail($to, $subject='ELSE:', $message)
 {
 
-    $BIB_BCC = $this -> conf['BIB_BCC'];
-    $BIB_FROM = $this -> conf['BIB_FROM'];
-    $BIB_RPTO = $this -> conf['BIB_RPTO'];
+    $BIB_BCC  = $this -> conf[ 'BIBMAIL' ]['BCC'];
+    $BIB_FROM = $this -> conf[ 'BIBMAIL' ]['FROM'];
+    $BIB_RPTO = $this -> conf[ 'BIBMAIL' ]['RPTO'];
 
     $bcc = $BIB_BCC;  # 'daniela.mayer@haw-hamburg.de, werner.welte@haw-hamburg.de' ;
     $from = $BIB_FROM;  # 'ELSE-noreply@haw-hamburg.de' ;
@@ -450,7 +451,7 @@ function get_new_expiry_date ()
 function getCurrentSem()
 {
   date_default_timezone_set('UTC');
-  foreach( $_SESSION[ 'SEM' ] as $SemKurz => $SemT )
+  foreach( $_SESSION[ 'CFG' ][ 'SEM' ] as $SemKurz => $SemT )
   {
     $sA   = explode('_' , $SemT[0] );
     $semA = mktime( 0 , 0  , 0  , $sA[1] , $sA[2] , $sA[0] );
@@ -662,7 +663,7 @@ function check_acl ( $acl_list , $item , $id )
         if  ( isset ($_SERVER['HTTP_REFERER' ] ) )
         {   $host1 = explode('/', $_SERVER['HTTP_REFERER']);
 
-            if ( ! in_array( $host1[2], $this -> conf['ok_host'] ) )  {  die("<div style='text-align:center;'><h1>ACCESS ERROR<h1><h3>Unzul&auml;ssiger Zugriff!</h3><a href=\"javascript:window.back()\">Zur&uuml;ck</a></div>"); }
+            if ( ! in_array( $host1[2],$this -> conf[ 'CONF' ]['ok_host'] ) )  {  die("<div style='text-align:center;'><h1>ACCESS ERROR<h1><h3>Unzul&auml;ssiger Zugriff!</h3><a href=\"javascript:window.back()\">Zur&uuml;ck</a></div>"); }
         }
         else
         {  if( $_SERVER['SERVER_NAME' ] != 'localhost' )

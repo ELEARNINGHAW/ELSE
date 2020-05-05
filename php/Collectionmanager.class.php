@@ -1,14 +1,21 @@
 <?php
 class COLLECTIONMANAGER
 {  
-var $CFG;
 var $RENDERER;
 var $SQL;
 var $UTIL;
 
+private $conf;
+private $CONST;
+
+
+
+# ---------------------------------------------------------------------------------------------
 function __construct( $CONFIG, $SQL, $RENDERER, $UTIL )
 {
-  $this->CFG        = $CONFIG;
+  $this -> conf  = $_SESSION[ 'CFG'   ];
+  $this -> CONST = $_SESSION[ 'CONST' ];
+
   $this->SQL        = $SQL;
   $this->RENDERER   = $RENDERER;
   $this->UTIL       = $UTIL;
@@ -40,11 +47,11 @@ function  showMediaList( $I )  ##---------- Medien gefiltert nach Status
   $tpl_vars[ 'DOC_TYPE'        ]  = $_SESSION[ 'DOC_TYPE' ] ;
   $tpl_vars[ 'MEDIA_STATE'     ]  = $_SESSION[ 'MEDIA_STATE'              ]  ; #
   $tpl_vars[ 'ACTION_INFO'     ]  = $_SESSION[ 'ACTION_INFO'              ]  ; # ===================== ACTION INFO BESSER HIER IM PHP AUSWERTEN, NICHT IM TEMPLATE
-  $tpl_vars[ 'CFG'             ]  = $_SESSION[ 'CFG'                      ]  ; # aus config.class.php
+  $tpl_vars[ 'CFG'             ]  = $this -> conf                              ; # aus config.class.php
   $tpl_vars[ 'DEP'             ]  = $_SESSION[ 'DEP_2_BIB'                ]  ; # Liste aller Departments (Categories)
   $tpl_vars[ 'FAK'             ]  = $_SESSION[ 'FAK'                      ]  ; # Liste aller Fakultäten
   $tpl_vars[ 'FACHBIB'         ]  = $_SESSION[ 'FACHBIB'                  ]  ; # Liste aller Fachbibs
-  $tpl_vars[ 'SEMESTER'        ]  = array_keys( $_SESSION[ 'CFG' ][ 'SEM'  ] ); #
+  $tpl_vars[ 'SEMESTER'        ]  = array_keys( $this -> conf [ 'SEM'  ] ); #
 
   #deb($tpl_vars,1);
 
@@ -69,13 +76,13 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
   $tpl_vars[ 'collectionList' ]                  = $this -> getAllCollection ( $I )      ;
   $tpl_vars[ 'user'           ]                  = $I[ 'currentUser'                     ] -> obj2array ();
   $tpl_vars[ 'operator'       ]                  = $I[ 'operator'                        ] -> obj2array ();
-  $tpl_vars[ 'SEMESTER'       ]    =   array_keys( $_SESSION[ 'CFG' ][ 'SEM'                      ] ); #$conf[ 'SEMESTER' ] ;
+  $tpl_vars[ 'SEMESTER'       ]    =   array_keys( $this -> conf [ 'SEM'                      ] ); #$conf[ 'SEMESTER' ] ;
   $tpl_vars[ 'html_options'   ][ 'DEP'     ]     = $_SESSION[ 'DEP_2_BIB'                ]; ## $this -> SQL -> getAllDepartments() ;             ## Liste aller Departments (Categories)
   $tpl_vars[ 'html_options'   ][ 'FAK'     ]     = $_SESSION[ 'FAK'                      ]; ## Liste aller Fakultäten
   $tpl_vars[ 'html_options'   ][ 'FACHBIB' ]     = $_SESSION[ 'FACHBIB'                  ]; ## Liste aller Fachbibs
   $tpl_vars[ 'filter'         ]                  = $_SESSION[ 'filter'                   ] ;
   $tpl_vars[ 'ACTION_INFO'    ]                  =  $_SESSION[ 'ACTION_INFO'             ] ;                                 # aus const.php ##===================== ACTION INFO BESSER HIER IM PHP AUSWERTEN, NICHT IM TEMPLATE
-  $tpl_vars[ 'CFG'            ]                  = $this -> CFG -> getConf()              ;                                                 # aus config.class.php ##===================== ACTION INFO BESSER HIER IM PHP AUSWERTEN, NICHT IM TEMPLATE
+  $tpl_vars[ 'CFG'            ]                  = $this -> conf                           ;                                                 # aus config.class.php ##===================== ACTION INFO BESSER HIER IM PHP AUSWERTEN, NICHT IM TEMPLATE
   $tpl_vars[ 'source'         ]                  = 'index.php'                            ;
   $tpl_vars[ 'toLastPage'     ]                  =  true                                  ;
   $tpl_vars[ 'back_URL'       ]  = "#";
@@ -89,7 +96,7 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
 ###############################################################################################
 # ---------------------------------------------------------------------------------------------
     function showNewMediaForm( $I, $toSearch = NULL, $searchHits = 1 )
-    {
+    {  # deb( $this -> conf);
         $collection_id                                      = $I[ 'currentCollection'               ] -> get_collection_id( );
         $bc_urlID                                           = $_SESSION['bc_urlID'] = $this -> UTIL -> b64en($collection_id.'###'. $I[ 'currentUser']-> get_hawaccount() );
         $collection                                         = $this -> SQL -> getCollection ( $collection_id );
@@ -97,15 +104,15 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
         $tpl_vars[ 'user'              ]                    = $I[ 'currentUser'                     ] -> obj2array ( );
         $tpl_vars[ 'operator'          ]                    = $I[ 'operator'                        ] -> obj2array ( );
         $tpl_vars[ 'filter'            ]                    = $I[ 'filter'                          ] -> obj2array ( ) ;
-        $tpl_vars[ 'SEMESTER'          ]                    = array_keys( $_SESSION[ 'CFG' ][ 'SEM' ] );                                      # $conf[ 'SEMESTER' ] ;
+        $tpl_vars[ 'SEMESTER'          ]                    = array_keys( $this -> conf [ 'SEM' ] );                                      # $conf[ 'SEMESTER' ] ;
         $tpl_vars[ 'page'              ]                    = 1;                                                                     # Seite 1 = Eingabemaske für die Suchbegriffe bei der Mediensuche */
         $tpl_vars[ 'searchHits'        ]                    = $searchHits;
         $tpl_vars[ 'book'              ][ 'title'       ]   = $toSearch[ 'title'         ];
         $tpl_vars[ 'book'              ][ 'author'      ]   = $toSearch[ 'author'        ];
         $tpl_vars[ 'book'              ][ 'signature'   ]   = $toSearch[ 'signature'     ];
-        $tpl_vars[ 'maxRecords'        ]                    = $this -> CFG -> CFG[ 'maxRecords' ];
+        $tpl_vars[ 'maxRecords'        ]                    = $this -> conf  [ 'SRU' ][ 'maxRecords' ];
         $tpl_vars[ 'URLID'             ]                    = $bc_urlID;
-        $tpl_vars[ 'URL'               ]                    = $this -> CFG -> CFG[ 'URL' ].'/htdocs/' ;
+        $tpl_vars[ 'URL'               ]                    = $this -> conf [ 'SERVER' ][ 'URL' ].'/htdocs/' ;
         $tpl_vars[ 'back_URL'          ]                    = "index.php?item=collection&action=show_collection&dc_collection_id=".$collection[ $collection_id           ]->get_dc_collection_id()."&r=".$I[ 'currentUser'  ]->get_role_id();
         $_SESSION[ 'currentCollection' ] = $collection[ $collection_id ] -> obj2array ( );
 
@@ -146,7 +153,7 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
 ###############################################################################################
   function showCollection( $I )
   {
-    $tpl_vars[ 'SEMESTER'               ] = array_keys( $_SESSION[ 'CFG' ][ 'SEM' ] );
+    $tpl_vars[ 'SEMESTER'               ] = array_keys( $this -> conf [ 'SEM' ] );
 
     $collection_id                        = $I[ 'currentCollection' ] -> get_collection_id();
     $collection                           = $this -> SQL-> getCollection ( $collection_id );
@@ -170,14 +177,14 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
     $tpl_vars[ 'filter'            ] = $_SESSION[ 'filter'              ] ;
     $tpl_vars[ 'ACTION_INFO'       ] = $_SESSION[ 'ACTION_INFO'         ];
     $tpl_vars[ 'DOC_TYPE'          ] = $_SESSION[ 'DOC_TYPE'            ] ;
-    $tpl_vars[ 'CFG'               ] = $this -> CFG -> getConf();
+    $tpl_vars[ 'CFG'               ] = $this -> conf ;
     $tpl_vars[ 'errors_info'       ][] = '';
     $tpl_vars[ 'back_URL'          ]  = $_SESSION[ 'history' ][ 0 ];
    # $tpl_vars[ 'medIndex'          ]  = $_SESSION[ 'medIndex' ];
    # $tpl_vars[ 'back_URL'          ]  = "index.php?item=collection&action=show_collection&dc_collection_id=".$collection[ $collection_id  ] -> get_dc_collection_id()."&r=".$I[ 'currentUser'  ] -> get_role_id();
    # $this -> RENDERER -> do_template( 'collection.tpl', $tpl_vars, ( $I[ 'operator' ] -> get_mode() != 'print' ) );
    # deb( $_SESSION );
-   # deb( $tpl_vars[ 'collection'         ]   );
+   #deb( $tpl_vars[ 'CFG'               ],1   );
    $this -> RENDERER -> do_template( 'collection.tpl', $tpl_vars );
   }
 
@@ -199,22 +206,22 @@ function editColMetaData( $I )
   $tpl_vars[ 'user'              ]  = $I[ 'currentUser'                     ] -> obj2array ();
   $tpl_vars[ 'operator'          ]  = $I[ 'operator'                        ] -> obj2array ();
 
-  $tpl_vars[ 'SEMESTER'          ]  = array_keys( $_SESSION[ 'CFG' ][ 'SEM' ] );
+  $tpl_vars[ 'SEMESTER'          ]  = array_keys($this -> conf [ 'SEM' ] );
   $tpl_vars[ 'filter'            ]  = $_SESSION[ 'filter'                   ]  ;
   $tpl_vars[ 'MEDIA_STATE'       ]  = $_SESSION[ 'MEDIA_STATE'              ]  ; #
   $tpl_vars[ 'ACTION_INFO'       ]  = $_SESSION[ 'ACTION_INFO'              ]  ; # aus const.php ##===================== ACTION INFO BESSER HIER IM PHP AUSWERTEN, NICHT IM TEMPLATE
-  $tpl_vars[ 'CFG'               ]  = $_SESSION[ 'CFG'                      ]  ; # aus config.class.php
+  $tpl_vars[ 'CFG'               ]  = $this -> conf                            ; # aus config.class.php
   $tpl_vars[ 'DEP'               ]  = $_SESSION[ 'DEP_2_BIB'                ]  ; # Liste aller Departments
   $tpl_vars[ 'FAK'               ]  = $_SESSION[ 'FAK'                      ]  ; # Liste aller Fakultäten
   $tpl_vars[ 'FACHBIB'           ]  = $_SESSION[ 'FACHBIB'                  ]  ; # Liste aller Fachbibs
-  $tpl_vars[ 'SEMESTER'          ]  = array_keys( $_SESSION[ 'CFG' ][ 'SEM'          ] ); #
+  $tpl_vars[ 'SEMESTER'          ]  = array_keys( $this -> conf [ 'SEM'          ] ); #
   $tpl_vars[ 'back_URL'          ]  = "index.php?item=collection&action=show_collection&dc_collection_id=".$collection[ $collection_id  ] -> get_dc_collection_id()."&r=".$I[ 'currentUser'  ] -> get_role_id();
+  #deb( $this -> conf );
+  #conf = $this -> CFG -> getConf();
 
-  $conf = $this -> CFG -> getConf();
+    $this -> conf[ 'SEMESTER' ] =  array_keys( $this -> conf [ 'SEM' ] );
 
-  $conf[ 'SEMESTER' ] =  array_keys( $_SESSION[ 'CFG' ][ 'SEM' ] );
-
-  foreach ( $conf[ 'SEMESTER'      ] as $semTMP )   {  $semesterA[ $semTMP ] = $semTMP;                     } # Liste aller Semesterkürzel
+  foreach ( $this -> conf[ 'SEMESTER'      ] as $semTMP )   {  $semesterA[ $semTMP ] = $semTMP;                     } # Liste aller Semesterkürzel
 
   foreach ( $_SESSION[ 'FACHBIB'   ] as $FBI    )   {  $bib_info[ $FBI[ 'bib_id' ] ] = $FBI[ 'bib_name' ];  }
 
@@ -241,8 +248,6 @@ function deleteCollection( $I )
 
   $tpl_vars[ 'errors_info'    ][] = '';
   $tpl_vars[ 'ACTION_INFO'    ]   =  $_SESSION[ 'ACTION_INFO'              ];
-
-  $conf = $this->CFG->getConf();
 
   $this->RENDERER->do_template( 'collection.tpl', $tpl_vars, ( $I[ 'operator' ][ 'mode' ] != 'print' ) );
 }
@@ -321,7 +326,7 @@ function setCollectionForNextSem( $I )
     $collection_id  = $I[ 'W' ][ 'cid2' ];
     $conf = $this->CFG->getConf();
 
-    $sem =  $conf[ 'SEMESTER' ] ;   #     array( 'S16', 'W16', 'S17'  );
+    $sem =  $this -> conf[ 'SEMESTER' ] ;   #     array( 'S16', 'W16', 'S17'  );
 
     $collectionData = $this->SQL->getCollectionMetaData( $collection_id );
 
@@ -408,7 +413,7 @@ function lmsDownload( $I )
 
   #$lms = explode ( '###', $lms = $this -> UTIL -> b64de( $lmsDownload[ 1 ] ) );          # deb( $lms );
 
-  $url = $url ."&format=".$conf[ 'recordSchema' ];                                                # deb( $url );
+  $url = $url ."&format=".$this -> conf [SRU][ 'recordSchema' ];                                                # deb( $url );
 
   $medList = $this -> LMSLoader( $url );                                                          # deb( $medList,1 );
 
@@ -622,7 +627,7 @@ if (!empty($_FILES))
     function updateSASem( $I )
     {
         # -- Aktuelles und vorheriges Semester wird bestimmt.
-        $SEM = array_keys( $_SESSION[ 'CFG' ][ 'SEM' ] );
+        $SEM = array_keys( $this -> conf [ 'SEM' ] );
 
         WHILE (in_array($_SESSION[ 'CUR_SEM' ], $SEM ))
         {
@@ -733,7 +738,7 @@ if (!empty($_FILES))
         }
         else
         {
-            $conf[ 'SEMESTER' ] =  array_keys( $_SESSION[ 'CFG' ][ 'SEM' ] );
+            $conf[ 'SEMESTER' ] =  array_keys( $this -> conf [ 'SEM' ] );
             $I[ 'C' ][ 'currentSemester' ]= array_pop(  $conf[ 'SEMESTER' ] ); # aktuelle Semester ist an erster Stelle des Arrays
             $conf[ 'SEMESTER' ] =  array_keys( $_SESSION[ 'SEM' ] );
             foreach ( $conf[ 'SEMESTER' ]  as $sem )
@@ -784,8 +789,10 @@ if (!empty($_FILES))
       $SAlist     =  array();
 
       if ( $SAlistTMP )
-      { foreach ( $SAlistTMP as $SA )
-        { if  ( !in_array( $SA -> get_id(),  $this -> CFG -> CFG[ 'doNotShow'  ] ) )                                          ## SA die nicht angzeigt werden sollen, werden aus der Liste entfernt
+      {
+        $dns =  explode("," ,  str_replace( " ", "", $this -> conf ['CONF'] [ 'doNotShow'  ]   ) );    #  --- Optimierung??  nicht jedes Mal in ein Array umwandeln?
+        foreach ( $SAlistTMP as $SA )
+        { if  ( !in_array( $SA -> get_id(),  $dns ) )                                          ## SA die nicht angzeigt werden sollen, werden aus der Liste entfernt
           {  $SAlist[] = $SA -> obj2array ();
           }
 

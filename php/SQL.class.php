@@ -2,20 +2,19 @@
 class SQL
 {  
 var $DB;
-var $conf;
-var $CFG;
 var $user;
 var $collection;
 
-function __construct( $CFG )
+function __construct( )
 {
-  $this -> CFG  = $CFG;
-  $this -> conf = $CFG -> getConf ();
+  $conf_cwd = $_SESSION[ 'CFG' ][ 'SERVER' ];
+  error_reporting( $conf_cwd[ 'error_reporting' ] );
+    ini_set("display_errors", $conf_cwd[ 'display_errors ' ]);
 
-  $this -> DB = new mysqli( $this -> conf[ 'db' ][ 'db_host' ] ,
-  $this -> conf[ 'db' ][ 'db_user' ] ,
-  $this -> conf[ 'db' ][ 'db_pass' ] ,
-  $this -> conf[ 'db' ][ 'db_name' ] );
+  $this -> DB = new \MySQLi( $conf_cwd[ 'db_host' ] ,
+  $conf_cwd[ 'db_user' ] ,
+  $conf_cwd[ 'db_pass' ] ,
+  $conf_cwd[ 'db_name' ] );
 
   if ( mysqli_connect_errno () )
   {
@@ -27,7 +26,7 @@ function __construct( $CFG )
 # ---------------------------------------------------------------------------------------------
 function initMediaMetaData( $book )
 {
-#  deb($book);
+
 $SQL = '
 INSERT INTO `document`
 SET
@@ -50,7 +49,7 @@ created            = NOW() ,
 last_modified      = NOW() ,
 last_state_change  = NOW()';
 
-#deb($SQL,1);
+
 
 $res = mysqli_query ( $this -> DB , $SQL );
 
@@ -58,7 +57,6 @@ $ret = $this->getDocumentID ( $book );
 
 return $ret;
 }
-
 
 # ---------------------------------------------------------------------------------------------
   function updateMediaMetaData( $medium )
@@ -73,8 +71,6 @@ return $ret;
     if ( $medium -> get_notes_to_staff     ( ) != '' )  {  $SQL .= " notes_to_staff   = \"" . $this -> es (  $medium -> get_notes_to_staff     ( ) ) . "\" ,";  }
                                                            $SQL .= " last_modified    = NOW()  ";
                                                            $SQL .= " WHERE id         = \"" . $this -> es (  $medium -> get_id                 ( ) ) . "\"  ";
-
-
     $res = mysqli_query ( $this -> DB , $SQL );
     return $res;
   }
@@ -104,9 +100,8 @@ if( $filter )
 $SQL =
 "SELECT * FROM `document`
 WHERE `collection_id` = \"" . $colID . "\"";
-if (  $filterState != ''  AND  $filterState != 0   ) { $SQL .= " AND `state_id`     = "  . $this -> es ( $filterState  ); }
-#if (  $filter_type  != ''                            ) { $SQL .= " AND `doc_type_id` = "  . $this -> es ( $filter_type   ); }
-if (  $filterType   != ''  AND  $filterType != 'X'   ) { $SQL .= " AND `doc_type_id`  = "  . $this -> es ( $filterType   ); }
+if (  $filterState  != ''  AND  $filterState != 0   ) { $SQL .= " AND `state_id`     = "  . $this -> es ( $filterState  ); }
+if (  $filterType   != ''  AND  $filterType != 'X'  ) { $SQL .= " AND `doc_type_id`  = "  . $this -> es ( $filterType   ); }
 
 #deb($SQL);
 $res = mysqli_query ( $this -> DB , $SQL );

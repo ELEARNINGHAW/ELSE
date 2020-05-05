@@ -13,7 +13,7 @@
 
 <div id="{$di.ppn}" class="mediaInSA medium_{$di.shelf_remain} {$current} " >
 <a name="{$di.ppn}" style="position:relative; top:-220px;"></a>
-<a title="Medium Im Onlinekatalog anzeigen" class="medimove medLink  s_standard state_{$di.state_id} {if $edit_mode == '1'} {/if} " href="{$CFG.catURLlnk[$DOC_TYPE[$di.doc_type_id]['indexID']]}{$di.ppn}" target="_blank" onclick="return -1">
+<a title="Medium Im Onlinekatalog anzeigen" class="medimove medLink  s_standard state_{$di.state_id} {if $edit_mode == '1'} {/if} " href="{$CFG.CATALOG_URL[$DOC_TYPE[$di.doc_type_id]['indexID']]}{$di.ppn}" target="_blank" onclick="return -1">
 <table>
 
 {if $doctypedescription != ""           }  <tr><td><div class="mediaListHeader">Medientyp: </div></td><td><div  class="mediaTxt" >{$doctypedescription}  </div>            {/if}
@@ -60,7 +60,7 @@
     {/foreach}
   {/if}
   {if $visible == 1}
-    {if $CFG[ 'ajaxON' ]} {* AJAX *} <a class='icon' href='javascript:;' onCLick="{literal}${/literal}.ajax({literal}{{/literal}url: 'index.php?dc_collection_id={$ci.dc_collection_id}&item={$di.item}&action={$action.button}&r={$user.role_encode}&d_info={$di.id}#{$di.id}' ,type: 'GET', success: function(data){literal}{{/literal}{literal}${/literal}('.{$di.id}').html(data);{literal}}}{/literal});"><img  class="icon" title="{$action.button_label}" src="img/svg/{$action.button}.svg" /></a>
+    {if $CFG['CONF'][ 'ajaxON' ]} {* AJAX *} <a class='icon' href='javascript:;' onCLick="{literal}${/literal}.ajax({literal}{{/literal}url: 'index.php?dc_collection_id={$ci.dc_collection_id}&item={$di.item}&action={$action.button}&r={$user.role_encode}&d_info={$di.id}#{$di.id}' ,type: 'GET', success: function(data){literal}{{/literal}{literal}${/literal}('.{$di.id}').html(data);{literal}}}{/literal});"><img  class="icon" title="{$action.button_label}" src="img/svg/{$action.button}.svg" /></a>
     {else}                {* HTTP *} <a class="icon" href="index.php?loc={$di.shelf_remain}&dc_collection_id={$ci.dc_collection_id}&amp;item={$di.item}&amp;action={$action.button}&amp;r={$user.role_encode}&amp;document_id={$di.id}#{$di.id}">                                                                                                                                                                              <img  class="icon" title="{$action.button_label}" src="img/svg/{$action.button}.svg" /></a>
     {/if}
   {/if}
