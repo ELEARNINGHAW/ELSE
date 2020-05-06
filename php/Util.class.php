@@ -5,13 +5,13 @@ class Util   /// \brief check user input
   var $currentUser;
   var $currentCollection;
   private $conf;
-  private $CONST;
+  private $CONS;
 # ---------------------------------------------------------------------------------------------
 function __construct ( $SQL )
 {
   $this -> SQL    = $SQL;
   $this -> conf  = $_SESSION[ 'CFG' ];
-  $this -> CONST = $_SESSION[ 'CONST' ];
+  $this -> CONS = $_SESSION[ 'CON' ];
 }
 
 # ---------------------------------------------------------------------------------------------
@@ -34,7 +34,7 @@ $this -> HAWdb     = new HAW_DB();                                    # Aus der 
   $_SESSION[ 'FACHBIB'      ] = $this -> HAWdb -> getAllFachBib ();
   $_SESSION[ 'DOC_TYPE'     ] = $this -> SQL -> getAllDocTypes();
   $_SESSION[ 'MEDIA_STATE'  ] = $this -> SQL -> getAllMedStates ();
-  $_SESSION[ 'ACTION_INFO'  ] = $this -> CONST -> CONST_ACTION_INFO;
+  $_SESSION[ 'ACTION_INFO'  ] = $this -> CONS -> CONST_ACTION_INFO;
   $_SESSION[ 'CUR_SEM'      ] = $this -> getCurrentSem ();
  }
 

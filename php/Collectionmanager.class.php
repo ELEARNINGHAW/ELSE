@@ -14,7 +14,7 @@ private $CONST;
 function __construct( $CONFIG, $SQL, $RENDERER, $UTIL )
 {
   $this -> conf  = $_SESSION[ 'CFG'   ];
-  $this -> CONST = $_SESSION[ 'CONST' ];
+  $this -> CON = $_SESSION[ 'CON' ];
 
   $this->SQL        = $SQL;
   $this->RENDERER   = $RENDERER;
