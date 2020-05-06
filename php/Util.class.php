@@ -676,6 +676,7 @@ function check_acl ( $acl_list , $item , $id )
 
     // Get the full URL of the current page
 # ---------------------------------------------------------------------------------------------
+   /*
     function current_page_url()
     {
         $page_url   = 'http';
@@ -685,6 +686,7 @@ function check_acl ( $acl_list , $item , $id )
         }
         return $page_url.'://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
     }
+   */
 }
 
 function deb($obj, $kill=false) {   echo "<pre>";  print_r ($obj);  echo "</pre>";  if($kill){die();} }
