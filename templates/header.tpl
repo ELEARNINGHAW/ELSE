@@ -11,7 +11,7 @@
     <script type="text/javascript" src="lib/else.js"></script>
   </head>
 
-
+  {$user.role_name}
   {if  $user.role_name == "admin" ||  $user.role_name == "staff"}
 <body style='margin:0px; padding:0px;' >
 {else}
