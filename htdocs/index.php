@@ -17,9 +17,8 @@ require_once ( '../php/Operator.class.php'            );
 require_once ( '../php/MedState.class.php'            );
 require_once ( '../php/Bib.php'                       );
 require_once ( '../php/Filter.class.php'              );
-echo "1";
+
 $CFG        = new ConfigELSE( new CONSTANT()                       );
-#print_r($CFG->getConf(),1);
 $SQL        = new SQL(                                  );
 $UTIL       = new UTIL(              $SQL                    );
 $RENDERER   = new RENDERER(                $UTIL  );
