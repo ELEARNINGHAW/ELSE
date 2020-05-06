@@ -689,5 +689,5 @@ function check_acl ( $acl_list , $item , $id )
    */
 }
 
-function deb($obj, $kill=false) {   echo "<pre>";  print_r ($obj);  echo "</pre>";  if($kill){die();} }
+#function deb($obj, $kill=false) {   echo "<pre>";  print_r ($obj);  echo "</pre>";  if($kill){die();} }
 ?>
