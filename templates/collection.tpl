@@ -15,19 +15,17 @@
 {if $user_role_name == "admin"  OR  $user_role_name == "staff"                                } {$staff_mode = "1"} {/if}
 
 <div class="column">
-    {foreach key=cid item=ci from=$collection}
+  {foreach key=cid item=ci from=$collection}
 
-    {if $ci.dc_collection_id != "" OR  $operator_action == 'show_media_list'}
-    <div class="SAMeta bgDef bg{$ci.bib_id}">
+  {if $ci.dc_collection_id != "" OR  $operator_action == 'show_media_list'}
+  <div class="SAMeta bgDef bg{$ci.bib_id}">
 
-
-    {if ( $staff_mode )}
-    <div style="width:630px; display: inline-block; position:absolute; padding-top:5px; left:50px; line-height: 80% ">
-    <a class = "medHead2"  style="float:left;"  > {$ci.title|truncate:70:"...":true} </a><br/>
-    <a class = "medHead2"  style="float:left;"  >von: {$ci.Owner.forename|escape} {$ci.Owner.surname} </a>
-    <a class = "medHead2"  style="float:left;"  >&nbsp;&nbsp;/&nbsp;&nbsp;Dep:   {$ci.Owner.dep_name}</a>
-    </div>
-
+  {if ( $staff_mode )}
+  <div style="width:630px; display: inline-block; position:absolute; padding-top:5px; left:50px; line-height: 80% ">
+  <a class = "medHead2"  style="float:left;"  > {$ci.title|truncate:70:"...":true} </a><br/>
+  <a class = "medHead2"  style="float:left;"  >von: {$ci.Owner.forename|escape} {$ci.Owner.surname} </a>
+  <a class = "medHead2"  style="float:left;"  >&nbsp;&nbsp;/&nbsp;&nbsp;Dep:   {$ci.Owner.dep_name}</a>
+  </div>
 
     {else}
     <div class="SAdozName" style="margin-left: 25px;">ELSE<br />Der elektronische Semesterapparat </div>
@@ -73,11 +71,9 @@
     {foreach from=$ci.media item=di}
     {if    $edit_mode == 0  AND  $di.state_id == 3  OR $edit_mode   == 1 AND $di.state_id != 6 OR $operator_action == 'show_media_list' }
 
-
     <div class='{$di.id}'>
       {include file = "SA.tpl" }
     </div>
-
 
     </div>
     {/if}
