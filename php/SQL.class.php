@@ -6,7 +6,7 @@ var $user;
 var $collection;
 
 function __construct( )
-{
+{print_r($_SESSION[ 'CFG' ]);
   $conf_cwd = $_SESSION[ 'CFG' ][ 'SERVER' ];
   error_reporting( $conf_cwd[ 'error_reporting' ] );
     ini_set("display_errors", $conf_cwd[ 'display_errors ' ]);

@@ -1,4 +1,3 @@
 /.idea
 .gitignore
-/php/Config.class.php
 /php/config/*

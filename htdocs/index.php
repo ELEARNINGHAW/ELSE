@@ -17,8 +17,9 @@ require_once ( '../php/Operator.class.php'            );
 require_once ( '../php/MedState.class.php'            );
 require_once ( '../php/Bib.php'                       );
 require_once ( '../php/Filter.class.php'              );
-
+echo "1";
 $CFG        = new ConfigELSE( new CONSTANT()                       );
+#print_r($CFG->getConf(),1);
 $SQL        = new SQL(                                  );
 $UTIL       = new UTIL(              $SQL                    );
 $RENDERER   = new RENDERER(                $UTIL  );
@@ -26,7 +27,7 @@ $COLLMGR    = new COLLECTIONMANAGER( $CFG, $SQL, $RENDERER, $UTIL  );
 $MEDIAMGR   = new MEDIAMANAGER(      $CFG, $SQL, $RENDERER, $UTIL  );
 
 # $UTIL->checkER();                              ## Listet alle SA zum Semesterwechsel auf
-#deb($CFG,1);
+# deb($CFG,1);
 ## ----------------------------------------------------------------------------------------
 $I = $UTIL -> getInput();                                #--- GET ALL INPUT (GET) ---
 ## ----------------------------------------------------------------------------------------
@@ -39,7 +40,6 @@ $cl = $I[ 'operator'    ] -> get_loc();      # LOCATOR
 #deb($I,1);
 #deb($_GET);
 #deb($ci);
-
 
 # -- Default: item = collection -- (user) action = show_collection, (staff) action = show_collection_list
 if ( $ci  == 'collection'  AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit') )
@@ -66,7 +66,7 @@ if ( $ci  == 'collection'  AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit')
 
 else if (   $cl  == 1    AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit'))
 {
-  if      ( 1==2 ) {;}
+  if      ( 1 == 2 ) {;}
   else if ( $ca  == 'search'                )  {  $MEDIAMGR -> searchMediaOnLibraryServer    ( $I ); }   ## ++ 4 Suchprozess des Mediums wird gestartet
   else if ( $ca  == 'annoteNewMedia'        )  {  $MEDIAMGR -> annoteNewMedia_showForm       ( $I ); }   ## ++ 5 Eingabemaske Metadaten für Buch Annotation anzeigen
   else if ( $ca  == 'save'                  )  {  $MEDIAMGR -> saveMediaMetaData             ( $I ); }   ## ++ 6 Metadaten eines neues Buch speichern
