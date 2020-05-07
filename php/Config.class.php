@@ -6,7 +6,12 @@ var $CFG;
 
 function getConf()
 {
-  $conf = parse_ini_file("../php/config/config.ini", true);
+  $iniFile = "../php/config/config.ini";
+  $ini     = file_get_contents( $iniFile );
+  $conf    = parse_ini_string( $ini, true );
+
+  #$conf = parse_ini_file("../php/config/config.ini", true);
+
   foreach ( $conf[ 'SEM' ] as $sem => $startend ) { $cfg[ 'SEM' ][ $sem ] =  explode( ',',  str_replace( ' ' , '' , $startend ) ) ; }
   $conf[ 'SEM' ] = $cfg[ 'SEM' ];
 

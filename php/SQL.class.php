@@ -8,7 +8,7 @@ var $collection;
 function __construct( )
 {
   $conf_cwd = $_SESSION[ 'CFG' ][ 'SERVER' ];
-  print_r($conf_cwd);
+
   error_reporting( $conf_cwd[ 'error_reporting' ] );
   ini_set("display_errors", $conf_cwd[ 'display_errors ' ]);
 
