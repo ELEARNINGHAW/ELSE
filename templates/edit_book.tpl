@@ -25,7 +25,7 @@
     </h5>
 {/if}
 
-<div style="margin:10px; margin-top:0px;  padding:10px; border:solid 1px black; ">
+<div  style="margin:10px; margin-top:0px;  padding:10px; border:solid 1px black; ">
 <form  action="index.php" method="get">
 
 <input type = "hidden" name = "dc_collection_id" value = "{$collection.dc_collection_id}" >
