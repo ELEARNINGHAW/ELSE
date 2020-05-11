@@ -8,8 +8,6 @@ var $UTIL;
 private $conf;
 private $CONST;
 
-
-
 # ---------------------------------------------------------------------------------------------
 function __construct( $CONFIG, $SQL, $RENDERER, $UTIL )
 {
@@ -44,10 +42,10 @@ function  showMediaList( $I )  ##---------- Medien gefiltert nach Status
   $tpl_vars[ 'medium'          ] =  $I[ 'medium'                          ] -> obj2array ( ) ;
   $tpl_vars[ 'filter'          ]  = $I[ 'filter'                          ] -> obj2array ( )  ;
 
-  $tpl_vars[ 'DOC_TYPE'        ]  = $_SESSION[ 'DOC_TYPE' ] ;
+  $tpl_vars[ 'DOC_TYPE'        ]  = $_SESSION[ 'DOC_TYPE'                 ] ;
   $tpl_vars[ 'MEDIA_STATE'     ]  = $_SESSION[ 'MEDIA_STATE'              ]  ; #
   $tpl_vars[ 'ACTION_INFO'     ]  = $_SESSION[ 'ACTION_INFO'              ]  ; # ===================== ACTION INFO BESSER HIER IM PHP AUSWERTEN, NICHT IM TEMPLATE
-  $tpl_vars[ 'CFG'             ]  = $this -> conf                              ; # aus config.class.php
+  $tpl_vars[ 'CFG'             ]  = $this -> conf                            ; # aus config.class.php
   $tpl_vars[ 'DEP'             ]  = $_SESSION[ 'DEP_2_BIB'                ]  ; # Liste aller Departments (Categories)
   $tpl_vars[ 'FAK'             ]  = $_SESSION[ 'FAK'                      ]  ; # Liste aller Fakultäten
   $tpl_vars[ 'FACHBIB'         ]  = $_SESSION[ 'FACHBIB'                  ]  ; # Liste aller Fachbibs
@@ -70,7 +68,6 @@ function  showMediaList( $I )  ##---------- Medien gefiltert nach Status
 function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert nach Dozenten,  Fakuläten, Departtments, Status
 {
   /* ----------------- LISTE DER INPUTPARAMETER  ------------------ */
-
 
   #$I[ 'operator' ] -> set_url( $I[ 'operator' ] -> get_history( )[ 1 ]  );                  ##  Link für den "zurück"- Button
   $tpl_vars[ 'collectionList' ]                  = $this -> getAllCollection ( $I )      ;
@@ -158,8 +155,7 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
     $collection_id                        = $I[ 'currentCollection' ] -> get_collection_id();
     $collection                           = $this -> SQL-> getCollection ( $collection_id );
 
-     #deb("Coll");
-     #deb($collection,1);
+
 
    # $I[ 'operator' ] -> set_url( $I[ 'operator' ] -> get_history( )[ 1 ]  );                  ##  Link für den "zurück"- Button
 
@@ -216,10 +212,8 @@ function editColMetaData( $I )
   $tpl_vars[ 'FACHBIB'           ]  = $_SESSION[ 'FACHBIB'                  ]  ; # Liste aller Fachbibs
   $tpl_vars[ 'SEMESTER'          ]  = array_keys( $this -> conf [ 'SEM'          ] ); #
   $tpl_vars[ 'back_URL'          ]  = "index.php?item=collection&action=show_collection&dc_collection_id=".$collection[ $collection_id  ] -> get_dc_collection_id()."&r=".$I[ 'currentUser'  ] -> get_role_id();
-  #deb( $this -> conf );
-  #conf = $this -> CFG -> getConf();
 
-    $this -> conf[ 'SEMESTER' ] =  array_keys( $this -> conf [ 'SEM' ] );
+  $this -> conf[ 'SEMESTER' ] =  array_keys( $this -> conf [ 'SEM' ] );
 
   foreach ( $this -> conf[ 'SEMESTER'      ] as $semTMP )   {  $semesterA[ $semTMP ] = $semTMP;                     } # Liste aller Semesterkürzel
 
@@ -405,7 +399,7 @@ function setCollectionForNextSem( $I )
 
 function lmsDownload( $I )
 {
-  $conf = $this -> CFG -> getConf();
+  $conf = $this -> conf;
 
   $url  =  $I[ 'operator' ] -> get_url() ;
 

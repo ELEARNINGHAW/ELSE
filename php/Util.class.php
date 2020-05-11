@@ -28,7 +28,6 @@ $this -> HAWdb     = new HAW_DB();                                    # Aus der 
 
 #if ( ! isset ( $_SESSION [ 'DEP_2_BIB' ] ) )  // Standardkonstanten werden nur beim ersten Aufruf eingelesen.
 {
-
   $_SESSION[ 'DEP_2_BIB'    ] = $this -> HAWdb -> getDEP_2_BIB ();
   $_SESSION[ 'FAK'          ] = $this -> HAWdb -> getAllFak ();
   $_SESSION[ 'FACHBIB'      ] = $this -> HAWdb -> getAllFachBib ();
@@ -36,7 +35,7 @@ $this -> HAWdb     = new HAW_DB();                                    # Aus der 
   $_SESSION[ 'MEDIA_STATE'  ] = $this -> SQL -> getAllMedStates ();
   $_SESSION[ 'ACTION_INFO'  ] = $this -> CONS -> CONST_ACTION_INFO;
   $_SESSION[ 'CUR_SEM'      ] = $this -> getCurrentSem ();
- }
+}
 
 
 if ( isset ( $_GET[ 'uid' ] ) )  ##  Initiale Parameterübergabe über  Moodle ## // Kurskurzname   /* Paramterübergabe von EMIL  */
@@ -64,12 +63,6 @@ if  ( ( isset (  $_SESSION[ 'currentCollection'       ]   ) ) )
 {
   $currentCollection -> array2obj( $_SESSION[ 'currentCollection'       ] );
 }
-
-
-
-
-
-
 
 #  if ( $_SESSION['currentUser']['Userrole_id'] == ''   ) { die(  '<div style="  display: flex;  position: absolute;  top:45%; right:45%; font-size: 30px; "> TIME OUT <div>'); }
 
@@ -133,6 +126,15 @@ if ( isset ( $_GET[ 'dc_collection_id'                         ] ) )  { $medium 
 ##
 ### ------------------------------- COLLECTION  --------------------------------
 ##
+
+if ( isset ( $_GET[ 'collection_id'                            ] ) )  { $currentCollection =   $this ->   SQL-> getCollection ( $_GET[ 'collection_id'  ]   );$currentCollection -> set_collection_id    ( $_GET[ 'collection_id'        ] ) ; $currentCollection -> set_dc_collection_id ( $this->b64en( $_GET[ 'collection_id'     ] ) ) ; }
+else if ( isset ( $_GET[ 'dc_collection_id'                    ] ) )  {
+       $cc = $this ->   SQL-> getCollection (  $this->b64de( $_GET[ 'dc_collection_id'  ] ) );
+       $currentCollection =   $cc[$this->b64de( $_GET[ 'dc_collection_id'  ] )] ;
+       $currentCollection -> set_dc_collection_id     ( $_GET[ 'dc_collection_id'     ] ) ; $currentCollection -> set_collection_id    ( $this->b64de( $_GET[ 'dc_collection_id'  ] ) ) ;
+
+}
+else if ( isset ( $_GET[ 'lmsid'                               ] ) )  { $currentCollection -> set_dc_collection_id     ( $this-> b64en( $this-> splitCourseName_user( $_GET[ 'lmsid' ] ) ) )  ; $currentCollection -> set_collection_id  (  $this-> splitCourseName_user( $_GET[ 'lmsid' ] )  ); }
 if ( isset ( $_GET[ 'sortorder'                                ] ) )  { $currentCollection -> set_sortorder            ( $_GET[ 'sortorder'            ] ) ; }
 if ( isset ( $_GET[ 'expiry_date'                              ] ) )  { $currentCollection -> set_expiry_date          ( $_GET[ 'expiry_date'          ] ) ; }
 if ( isset ( $_GET[ 'user_id'                                  ] ) )  { $currentCollection -> set_user_id              ( $_GET[ 'user_id'              ] ) ; }
@@ -141,9 +143,6 @@ if ( isset ( $_GET[ 'department_id'                            ] ) )  { $current
 if ( isset ( $_GET[ 'semester_id'                              ] ) )  { $currentCollection -> set_sem                  ( $_GET[ 'semester_id'          ] ) ; }
 if ( isset ( $_GET[ 'notes_to_studies_col'                     ] ) )  { $currentCollection -> set_notes_to_studies_col ( $_GET[ 'notes_to_studies_col' ] ) ; }
 if ( isset ( $_GET[ 'imsid'                                    ] ) )  { $currentCollection -> set_collection_id        ( $_GET[ 'imsid'                ] ) ; } ## IMSID sollte zu collection_id geändert werden
-if ( isset ( $_GET[ 'collection_id'                            ] ) )  { $currentCollection -> set_collection_id        ( $_GET[ 'collection_id'        ] ) ; $currentCollection -> set_dc_collection_id ( $this->b64en( $_GET[ 'collection_id'     ] ) ) ; }
-else if ( isset ( $_GET[ 'dc_collection_id'                    ] ) )  { $currentCollection -> set_dc_collection_id     ( $_GET[ 'dc_collection_id'     ] ) ; $currentCollection -> set_collection_id    ( $this->b64de( $_GET[ 'dc_collection_id'  ] ) ) ; }
-else if ( isset ( $_GET[ 'lmsid'                               ] ) )  { $currentCollection -> set_dc_collection_id     ( $this-> b64en( $this-> splitCourseName_user( $_GET[ 'lmsid' ] ) ) )  ; $currentCollection -> set_collection_id  (  $this-> splitCourseName_user( $_GET[ 'lmsid' ] )  ); }
 if ( isset ( $_GET[ 'lms-download'                             ] ) )  { $cc  =  $this -> SQL -> getCollection( $_SESSION[ 'currentCollection' ][ 'collection_id' ] );
                                                                         $currentCollection =  array_pop   ( $cc  );  }
 
@@ -689,5 +688,5 @@ function check_acl ( $acl_list , $item , $id )
    */
 }
 
-#function deb($obj, $kill=false) {   echo "<pre>";  print_r ($obj);  echo "</pre>";  if($kill){die();} }
+function deb($obj, $kill=false) {   echo "<pre>";  print_r ($obj);  echo "</pre>";  if($kill){die();} }
 ?>

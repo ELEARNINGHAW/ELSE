@@ -81,14 +81,14 @@ return $ret;
 # ---------------------------------------------------------------------------------------------
 function getDokumentList( $colID , $filter = null  )
 {
-$ret = NULL;
+
+  $ret = NULL;
 
   $filterSem   = '';
   $filterBib   = '';
   $filterState = '';
   $filterType  = '';
 
-#deb($filter,1);
 
 if( $filter )
 {
@@ -104,7 +104,7 @@ WHERE `collection_id` = \"" . $colID . "\"";
 if (  $filterState  != ''  AND  $filterState != 0   ) { $SQL .= " AND `state_id`     = "  . $this -> es ( $filterState  ); }
 if (  $filterType   != ''  AND  $filterType != 'X'  ) { $SQL .= " AND `doc_type_id`  = "  . $this -> es ( $filterType   ); }
 
-#deb($SQL);
+
 $res = mysqli_query ( $this -> DB , $SQL );
 
 
@@ -209,12 +209,12 @@ function getCollection( $colID = null , $filter = false ,  $short = null )
   $filterState =  '';
   $filterType  =  '';
 
-  if($filter)
+  if( $filter )
   {
     $filterSem   =  $filter -> get_sem();
     $filterBib   =  $filter -> get_bib();
     $filterState =  $filter -> get_state();
-    #$filterType  =  $filter -> get_type();
+    $filterType  =  $filter -> get_type();
 
     if ( $filterSem  != ''  AND   $filterSem  != 'X'                           )  {  $semesterFilter  = " AND c.sem           = '" .   $filterSem  . "' "; }  # SEMESTER filter
     if ( $filterBib  != ''  AND   $filterBib  != 'X' AND   $filterBib != '0'   )  {  $bibFilter       = " AND c.bib_id        = '" .   $filterBib  . "' "; }  # Bibliotheks filter
@@ -228,12 +228,12 @@ function getCollection( $colID = null , $filter = false ,  $short = null )
   $SQL .= " WHERE  u.hawaccount = c.user_id " .  $collection  . " " . $bibFilter . " " . $semesterFilter;  # ."  ".$user;
   $SQL .= " ORDER BY c.id ";
 
- # deb($SQL,1);
+
 
   $res = mysqli_query ( $this->DB , $SQL );
 
   ## ---------------------------------------------------------------------------------------------------------------------------------------------------
-  ##  ALLE Medieninfo zu dem entsprechenden SA werden ermittelt
+  ## ALLE Medieninfo zu dem entsprechenden SA werden ermittelt
   ## ---------------------------------------------------------------------------------------------------------------------------------------------------
 
   if ( $res )
@@ -241,7 +241,8 @@ function getCollection( $colID = null , $filter = false ,  $short = null )
     {
       $ret[ $row[ 'c_id' ] ] =  $this -> getCollectionMetaData( $row[ 'c_id' ] );                                       ## Metadaten des Semesterapparats
 
-      $dl                    =  $this -> getDokumentList ( $row[ 'c_id' ] , $filter );             ## Alle/gefilterte Medien des SA ( $doc_ID, $doc_type_id = null , $doc_state_id = null  )
+      $dl                    =  $this -> getDokumentList ( $row[ 'c_id' ] , $filter );                                  ## Alle/gefilterte Medien des SA ( $doc_ID, $doc_type_id = null , $doc_state_id = null  )
+
       if ( $dl )
       { # Medien nach 'sortorder' neu anordnen
         $withoutSortOrder = array();
@@ -278,7 +279,7 @@ function getCollection( $colID = null , $filter = false ,  $short = null )
 
         $ret[ $row[ 'c_id' ] ]->set_media( $withSortOrder );
       }
-      elseif ( $filterState != '' )   #Wenn SA keine Medien beinhaltet, wird er wieder entfernt
+      elseif (  $filterState != '' OR  $filterType != '' )   #Wenn SA keine Medien beinhaltet, wird dieser wieder entfernt
       { unset ( $ret[ $row[ 'c_id' ] ] );
       }
     }

@@ -19,9 +19,9 @@ require_once ( '../php/Bib.php'                       );
 require_once ( '../php/Filter.class.php'              );
 
 $CFG        = new ConfigELSE( new CONSTANT()                       );
-$SQL        = new SQL(                                  );
-$UTIL       = new UTIL(              $SQL                    );
-$RENDERER   = new RENDERER(                $UTIL  );
+$SQL        = new SQL(                                             );
+$UTIL       = new UTIL(              $SQL                          );
+$RENDERER   = new RENDERER(                                 $UTIL  );
 $COLLMGR    = new COLLECTIONMANAGER( $CFG, $SQL, $RENDERER, $UTIL  );
 $MEDIAMGR   = new MEDIAMANAGER(      $CFG, $SQL, $RENDERER, $UTIL  );
 
@@ -36,10 +36,10 @@ $ca = $I[ 'operator'    ] -> get_action();   # ACTION
 $ci = $I[ 'operator'    ] -> get_item();     # ITEM
 $cl = $I[ 'operator'    ] -> get_loc();      # LOCATOR
 
-#deb($I,1);
+
 #deb($_GET);
 #deb($ci);
-
+#deb($I,1);
 # -- Default: item = collection -- (user) action = show_collection, (staff) action = show_collection_list
 if ( $ci  == 'collection'  AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit') )
 {
