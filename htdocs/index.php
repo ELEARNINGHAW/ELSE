@@ -26,7 +26,7 @@ $COLLMGR    = new COLLECTIONMANAGER( $CFG, $SQL, $RENDERER, $UTIL  );
 $MEDIAMGR   = new MEDIAMANAGER(      $CFG, $SQL, $RENDERER, $UTIL  );
 
 # $UTIL->checkER();                              ## Listet alle SA zum Semesterwechsel auf
-# deb($CFG,1);
+ # deb($CFG,1);
 ## ----------------------------------------------------------------------------------------
 $I = $UTIL -> getInput();                                #--- GET ALL INPUT (GET) ---
 ## ----------------------------------------------------------------------------------------
@@ -36,10 +36,9 @@ $ca = $I[ 'operator'    ] -> get_action();   # ACTION
 $ci = $I[ 'operator'    ] -> get_item();     # ITEM
 $cl = $I[ 'operator'    ] -> get_loc();      # LOCATOR
 
-
-#deb($_GET);
+# deb($I,1);
 #deb($ci);
-#deb($I,1);
+
 # -- Default: item = collection -- (user) action = show_collection, (staff) action = show_collection_list
 if ( $ci  == 'collection'  AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit') )
 {

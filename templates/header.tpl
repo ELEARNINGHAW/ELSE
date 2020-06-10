@@ -60,7 +60,7 @@
     {/if}
 
     <ul>
-      <li><a href='index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=0' title="Alle Semapp"         ><img src="img/svg/X.svg" width="24" height="24"/><span style="position:absolute; padding:12px;"> Alle Medien        </span></a></li>
+      <li><a href='index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=0' title="Alle Medien"         ><img src="img/svg/X.svg" width="24" height="24"/><span style="position:absolute; padding:12px;"> Alle Medien        </span></a></li>
       <li><a href='index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=1' title="Neu Bestellt"        ><img src="img/svg/N.svg" width="24" height="24"/><span style="position:absolute; padding:12px;"> Neu bestellte M.   </span></a></li>
       <li><a href='index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=2' title="Wird Bearbeitet"     ><img src="img/svg/B.svg" width="24" height="24"/><span style="position:absolute; padding:12px;"> Zu bearbeitende    </span></a></li>
       <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterType&amp;category=16" title="Erwerbungsvorschlag" ><img src="img/svg/K.svg" width="24" height="24"/><span style="position:absolute; padding:12px;"> Erwerbungsvorsch.  </span></a></li>
@@ -116,7 +116,6 @@
   <a href="javascript:window.print() " title="Druckversion Seite" >  <img src="img/svg/print_w.svg"   width="32"  height="32"   /></a>
 </div>
 
-
   <ul id="nav2" style="position:absolute; right:36px;   top:3px;">
     <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=0" title="Alle SemApp"         ><img src="img/svg/edit_w.svg" width="32" height="32"/></a>
      <ul>
@@ -124,8 +123,6 @@
       </ul>
     </li>
   </ul>
-
-
 
 <div  style="position:absolute; right:2px;   top:3px;">
   <a href='index.php' title="HOME" ><img src="img/svg/home.svg" width="32" height="32"/></a>

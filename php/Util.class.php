@@ -17,13 +17,11 @@ function __construct ( $SQL )
 # ---------------------------------------------------------------------------------------------
 function getInput ( )
 {
-
 $operator          = new operator();
 $currentCollection = new collection();
 $currentUser       = new User();
 $medium            = new medium();
 $this -> HAWdb     = new HAW_DB();                                    # Aus der SQLite DB
-
 
 
 #if ( ! isset ( $_SESSION [ 'DEP_2_BIB' ] ) )  // Standardkonstanten werden nur beim ersten Aufruf eingelesen.
@@ -506,11 +504,11 @@ function get_filter( $operator )
   $filter -> set_state   ( $_SESSION[ 'filter' ][ 'state']  );
   $filter -> set_type    ( $_SESSION[ 'filter' ][ 'type' ]  );
 
-  if ( $operator -> get_mode() == 'filterBib'   ) { $filter -> set_bib   ( $operator -> get_category() );  $filter -> set_state ( 0 );  } # Filter State wird auf ALLE zurückgesetzt bei Filter auf Bib
-  if ( $operator -> get_mode() == 'filterSem'   ) { $filter -> set_sem   ( $operator -> get_category() );  $filter -> set_state ( 0 );  } # Filter State wird auf ALLE zurückgesetzt bei Filter auf Sem
-  if ( $operator -> get_mode() == 'filterState' ) { $filter -> set_state ( $operator -> get_category() );  }
-  if ( $operator -> get_mode() == 'filterType'  ) { $filter -> set_type  ( $operator -> get_category() );  }
-  if ( $operator -> get_mode() == 'filterUser'  ) { $filter -> set_user  ( $operator -> get_category() );  }
+  if ( $operator -> get_mode() == 'filterBib'   ) { $filter -> set_bib   ( $operator -> get_category( ) );  $filter -> set_state ( 0 ); $filter -> set_type ( 0 );  } # Filter State u. Type  wird auf ALLE zurückgesetzt bei Filter auf Bib
+  if ( $operator -> get_mode() == 'filterSem'   ) { $filter -> set_sem   ( $operator -> get_category( ) );  $filter -> set_state ( 0 ); $filter -> set_type ( 0 );  } # Filter State u. Type  wird auf ALLE zurückgesetzt bei Filter auf Sem
+  if ( $operator -> get_mode() == 'filterState' ) { $filter -> set_state ( $operator -> get_category( ) );  if (  $operator -> get_category( ) == 0 ) { $filter -> set_type ( 0 );  }}
+  if ( $operator -> get_mode() == 'filterType'  ) { $filter -> set_type  ( $operator -> get_category( ) );  }
+  if ( $operator -> get_mode() == 'filterUser'  ) { $filter -> set_user  ( $operator -> get_category( ) );  }
 
   $_SESSION[ 'filter' ] = $filter -> obj2array ();
 

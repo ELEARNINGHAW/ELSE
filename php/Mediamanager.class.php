@@ -181,6 +181,13 @@ function saveMediaMetaData( $I )
                 $I[ 'medium' ] -> set_state_id     ( 3 );                                                              ##  und der Status wird 'aktiv'         , Status 3
               }
 
+              else if ( $I[ 'medium' ] -> get_shelf_remain () == '3'  )                                                ##  Wenn Medien'ORT' 'Scanservice' (status: 2)
+              { $I[ 'medium' ] -> set_shelf_remain ( 3 );                                                              ##  ist der Medienort: 'verbleibt im Regal' ;) , Status 2
+                 $I[ 'medium' ] -> set_state_id     ( 3 );                                                              ##  und der Status wird 'aktiv'         , Status 3
+                  $I[ 'medium' ] -> set_notes_to_staff  ( "[SCANSERVICE]\n " .   $I[ 'medium' ] -> get_notes_to_staff() ) ;
+
+              }
+
               if ( $I[ 'medium' ] -> get_item () == 'online' )                                                         ## Bei ONLINE Medien
               { $I[ 'medium' ] -> set_shelf_remain ( 3 );                                                              ## ist der Medienort: 'Online' ;) , Status 3
                 $I[ 'medium' ] -> set_state_id     ( 3 );                                                              ## und der Status wird 'aktiv'         , Status 3
@@ -433,23 +440,13 @@ function getHitList( $searchQuery )
 
         foreach ( $r->datafield as $a => $b ) {
 
-          if ( $b->attributes () == '100' ) {
-            $author = $b;
-          }
-          if ( $b->attributes () == '245' ) {
-            $title = $b;
-          }
-          if ( $b->attributes () == '300' ) {
-            $physicaldesc = $b;
-          }
-          if ( $b->attributes () == '264' ) {
-            $publisher = $b;
-          }
+          if ( $b->attributes () == '100' ) {$author = $b;}
+          if ( $b->attributes () == '245' ) {$title = $b;}
+          if ( $b->attributes () == '300' ) {$physicaldesc = $b;}
+          if ( $b->attributes () == '264' ) {$publisher = $b;}
           if ( $b->attributes () == '020' ) {
-            foreach ( $b->subfield as $sub => $val ) {
-              if ( $val[ 'code' ][ 0 ] == 9 ) {
-                $ISBN[] = (string) $val[ 0 ];
-              }
+            foreach ( $b->subfield as $sub => $val )
+            { if ( $val[ 'code' ][ 0 ] == 9 ) { $ISBN[] = (string) $val[ 0 ]; }
             }
           }
        }
@@ -648,18 +645,18 @@ function getHitList( $searchQuery )
               $directory = '';
             }# Inhaltsverzeichnis als PDF / oder Coverpic als jpg
 
-            $book[ 'titleNonSortPart' ] = ( ( string ) $r->titleInfo->nonSort );  # Buchtitel (unsortierter Teil)
-            $book[ 'title' ] = ( ( string ) $r->titleInfo->title );  # Buchtitel
-            $book[ 'subTitle' ] = ( ( string ) $r->titleInfo->subTitle );  # Subtitel
-            $book[ 'publisher' ] = ( ( string ) $r->originInfo->publisher );  # Verlag
-            $book[ 'edition' ] = ( ( string ) $r->originInfo->edition );  # Edition
-            $book[ 'dateissued' ] = ( ( string ) $r->originInfo->dateIssued );  # Jahr
-            $book[ 'author' ] = $authors;                                           # list of autors with links
-            $book[ 'signature' ] = ( string ) ' ';                                     # Signature
-            $book[ 'ppn' ] = ( ( string ) $r->recordInfo->recordIdentifier );  # PPN
-            $book[ 'physicaldesc' ] = ( ( string ) $r->physicalDescription->form[ 0 ] );  # Form: electronic /  print
-            $book[ 'extend' ] = ( ( string ) $r->physicalDescription->extent );  # Anzahl Seiten, Speicherplatz (Höhe in cm / kB)
-            $book[ 'directory' ] = $directory;                                        # Inhaltsverzeichnis als PDF
+            $book[ 'titleNonSortPart' ] = ( ( string ) $r->titleInfo->nonSort );            # Buchtitel (unsortierter Teil)
+            $book[ 'title' ] = ( ( string ) $r->titleInfo->title );                         # Buchtitel
+            $book[ 'subTitle' ] = ( ( string ) $r->titleInfo->subTitle );                   # Subtitel
+            $book[ 'publisher' ] = ( ( string ) $r->originInfo->publisher );                # Verlag
+            $book[ 'edition' ] = ( ( string ) $r->originInfo->edition );                    # Edition
+            $book[ 'dateissued' ] = ( ( string ) $r->originInfo->dateIssued );              # Jahr
+            $book[ 'author' ] = $authors;                                                   # list of autors with links
+            $book[ 'signature' ] = ( string ) ' ';                                          # Signature
+            $book[ 'ppn' ] = ( ( string ) $r->recordInfo->recordIdentifier );               # PPN
+            $book[ 'physicaldesc' ] = ( ( string ) $r->physicalDescription->form[ 0 ] );    # Form: electronic /  print
+            $book[ 'extend' ] = ( ( string ) $r->physicalDescription->extent );             # Anzahl Seiten, Speicherplatz (Höhe in cm / kB)
+            $book[ 'directory' ] = $directory;                                              # Inhaltsverzeichnis als PDF
 
             $ret[ $book[ 'ppn' ] ] = $book;
           }
@@ -747,17 +744,17 @@ function getHitList( $searchQuery )
       $docID = $I[ 'W' ] [ 'document_id' ];
 
       $tpl_vars[ 'errors_info' ][] = '';
-      $tpl_vars[ 'doc_type' ] = $_SESSION[ 'DOC_TYPE' ];
+      $tpl_vars[ 'doc_type'    ] = $_SESSION[ 'DOC_TYPE' ];
       $tpl_vars[ 'MEDIA_STATE' ] = $_SESSION[ 'MEDIA_STATE' ];
-      $tpl_vars[ 'FACHBIB' ] = $_SESSION[ 'FACHBIB' ];
-      $tpl_vars[ 'department' ] = $_SESSION[ 'DEP_2_BIB' ];
-      $tpl_vars[ 'operator' ] = $_SESSION[ 'operator' ];
+      $tpl_vars[ 'FACHBIB'     ] = $_SESSION[ 'FACHBIB' ];
+      $tpl_vars[ 'department'  ] = $_SESSION[ 'DEP_2_BIB' ];
+      $tpl_vars[ 'operator'    ] = $_SESSION[ 'operator' ];
 
       $tpl_vars[ 'ACTION_INFO' ] = $_SESSION[ 'ACTION_INFO' ];
 
-      $tpl_vars[ 'CFG' ] = $this->CFG->getConf ();
-      $tpl_vars[ 'work' ] = $I[ 'W' ];
-      $tpl_vars[ 'user' ] = $I[ 'U' ];
+      $tpl_vars[ 'CFG'         ] = $this->CFG->getConf ();
+      $tpl_vars[ 'work'        ] = $I[ 'W' ];
+      $tpl_vars[ 'user'        ] = $I[ 'U' ];
 
       #  $_SESSION[ 'operator' ][ 'off' ] = true;
       $ci = $this->SQL->getCollection ( $I[ 'W' ][ 'collection_id' ] );
@@ -1056,8 +1053,9 @@ function getHitList( $searchQuery )
     function ereaseMedia( $I )
     {
 
-      $this->SQL->deleteMedia ( $I[ 'medium' ]->get_id () , $I[ 'operator' ] );
-
+      $this->SQL->deleteMedia ( $I );
+                             #   $I[ 'medium' ] -> get_id () , $I[ 'operator' ] ;
+                             #   $IW                         , $operator
       $url = "index.php?item=collection&action=show_collection&dc_collection_id=" . $I[ 'currentCollection' ]->get_dc_collection_id () . "&r=" . $I[ 'currentUser' ]->get_role_id ();
       if ( $this->CFG->CFG[ 'ajaxON' ] ) {
         $this->showSA ( $I );

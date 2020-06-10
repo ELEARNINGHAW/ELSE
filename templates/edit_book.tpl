@@ -11,6 +11,8 @@
 {if ($medium.shelf_remain == 1)}  {$c1 = 'checked="checked"' } {else} {$c1 = ''} {/if}
 {if ($medium.shelf_remain == 2)}  {$c2 = 'checked="checked"' } {else} {$c2 = ''} {/if}
 
+
+
 {if $medium.doc_type_id == 16 }
   <h3 style="margin:10px; margin-bottom:0px; margin-top:0px; padding:10px; color: #FFF;" class="bgDef bg{$collection.bib_id}">Erwerbungsvorschlag für: {$collection.title}
   {if $operator.action != 'annoteNewMedia' }  <a style="float:right;" href="index.php"><img  class="icon" style="margin-top:-4px;" title="Zurück" src="img/svg/chevron-left_w.svg" /></a> {/if}</h3>
@@ -55,13 +57,22 @@
 <tr><td class = "editmedia">Medientyp: </td><td> {$doctypetxt} </td>
  <td rowspan="10" >   <input style="width:125px; height:50px;" name="ok" value="&nbsp;&nbsp;&nbsp;SPEICHERN&nbsp;&nbsp;&nbsp;" type="submit"> </td>
 </tr>
-
+{$medium.doc_type_id  }
 {* ORT:  SA fähig UND ( Neues Medium ODER Erwerbungsvorschlag ) *}
 {if ( $SAready== 1 AND  ( $operator.mode == 'new'  OR $medium.doc_type_id == 16 ) ) }
   <tr><td  class = "editmedia" style="vertical-align: top; font-weight: bold;">  Ort:  <span style="color: {$color}; vertical-align: top; font-weight: bold;">(bitte auswählen)</span> </td><td>
-    <div style="border:{$bw}px solid {$color}; float: left;  height:59px; padding: 5px; font-size: 12px; width: calc(100% - 15px); ">
+    <div style="border:{$bw}px solid {$color}; float: left;  height:80px; padding: 5px; font-size: 12px; width: calc(100% - 15px); ">
       <input {$c2} value="2" class='i' type="radio" name="shelf_remain" id="radio-2"><label for="radio-2"><span style="font-weight:700; "> Literaturhinweis - verbleibt im Regal der Bibliothek.     </span></label><br/>
-      <input {$c1} value="1" class='i' type="radio" name="shelf_remain" id="radio-1"><label for="radio-1"><span style="font-weight:700; "> Semesterapparat  -     wird in Ihren Handapparat eingestellt. </span></label>
+      <input {$c1} value="1" class='i' type="radio" name="shelf_remain" id="radio-1"><label for="radio-1"><span style="font-weight:700; "> Semesterapparat  -  wird in Ihren Handapparat eingestellt. </span></label>
+
+      {if ( $medium.doc_type_id == 1 ||  $medium.doc_type_id == 12 ||  $medium.doc_type_id == 13 ||  $medium.doc_type_id == 15  )  }
+      <input {$c3} value="3" class='i' type="radio" name="shelf_remain" id="radio-3"><label for="radio-3"><span style="font-weight:700; "> Scanauftrag  - Teile des Printmediums als PDF. </span></label>
+      {/if}
+
+      {if ( $medium.doc_type_id == 6 )  }
+      <input {$c4} value="4" class='i' type="radio" name="shelf_remain" id="radio-4"><label for="radio-4"><span style="font-weight:700; "> Scanauftrag  -  Dieser Artikel als PDF. </span></label>
+      {/if}
+
       <input {$c0} value="0"           type="radio" name="shelf_remain" id="radio-1" style="visibility: hidden;">
     </div>
    </tr>

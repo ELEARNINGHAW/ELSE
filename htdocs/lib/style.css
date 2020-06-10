@@ -691,7 +691,7 @@ a.name
 
 
 td{
-  padding:5px;
+  padding:1px;
   vertical-align: top;
   height:100%;
 }
@@ -946,10 +946,10 @@ td{
 .addMedInSA
 {
   padding:10px;
-	padding-left:50px; 
-	margin:10px; 
-	background-color: #E0E0E0; 
-	border-bottom:1px solid #666;  
+  padding-left:50px;
+  margin:10px;
+  background-color: #E0E0E0;
+  border-bottom:1px solid #666;
 }
 
 
@@ -1010,13 +1010,13 @@ td{
 .txtin
 {
   height:30px;
-  width:400px;
+  width:500px;
 }
 
 .txtin2
 {
   height:60px;
-  width:400px;
+  width:500px;
 }
 
 .text
@@ -1248,7 +1248,7 @@ a.hitlink_print:hover, a.hitlink_electronic:hover , a.hitlink_cd-rom:hover
   padding-right:35px;
   text-align:  left; 
   background-color: #FAFAFA;
-  width: 300px;
+  width: 450px;
 }
 
 .border2top

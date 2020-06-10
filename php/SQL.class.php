@@ -461,22 +461,26 @@ function get_med_state( $collection_id )
       $res = mysqli_query ( $this->DB , $SQL );
       $ret = mysqli_fetch_assoc ( $res );
     }
-    return $ret;
+
     return $ret;
   }
 
 
 # ---------------------------------------------------------------------------------------------
-  function deleteMedia( $IW , $operator )
+  function deleteMedia( $I )
+
+
   { #trigger_error("Deprecated function called: deleteMedia()", E_USER_NOTICE);
     $ret = '';
-    $r = $operator->getrole_name();
+    $r = $I[ 'currentUser' ]->get_role_name();
+
     if ( $r == 'staff' || $r == 'admin' ) {
     $SQL = "
     DELETE
     FROM `document`
-    WHERE `document`.`id` = " . $this->es ( $IW[ 'document_id' ] );
-      $res = mysqli_query ( $this->DB , $SQL );
+    WHERE `document`.`id` = " . $this->es ( $I[ 'medium' ] -> get_id () );
+
+    $res = mysqli_query ( $this->DB , $SQL );
       #  return  mysqli_fetch_assoc( $res );
     }
     return $ret;
@@ -845,40 +849,52 @@ SET `state_id` = '" . $this->es ( $state ) . "' WHERE `document`.`id` = " . $thi
 
     if ( $res )
     { while ( $row = mysqli_fetch_assoc ( $res ) )
-    { foreach ( $this->conf[ 'expoimp' ] as $exim )
+    { foreach ( $_SESSION[ 'CFG' ]['EXPO_IMPO'] as $exim )
     {  $csv_export .=  preg_replace("(\r\n|\n|\r)" , "<br/>",  $row[ $exim  ]  ) . ";;";
     }
       $csv_export .= "\r\n";
     }
     }
+
     return $csv_export;
   }
 
 
 # ---------------------------------------------------------------------------------------------
-function importCollection( $collection_id , $medium )
-{
-  #if ( substr_count ( $medium , ';;' ) >= 17 ) # Plausibilitätscheck des Inhalts. ';;' ist der Delimiter
+function importMedium( $collection_id , $medium ,$fp)
+{ #  deb($medium);
+  #  deb(substr_count ( $medium , ';;' ),1);
+  #  if ( substr_count ( $medium , ';;' ) >= 17 ) # Plausibilitätscheck des Inhalts. ';;' ist der Delimiter
   {
+    # $medInfo  = $this -> getMediaMetaData( $mediaID );
+    $res = 0;
     $i = 0;
-    $SQL = "INSERT INTO document SET ";
     $med = explode ( ";;" , $medium );
 
-    foreach ( $this -> conf[ 'expoimp' ] as $exim )
-    {
-      if ( isset( $med[ 4 ] ) ) ## Zu importierender Datensatz hat zumindest ein Titel
+     #  fwrite($fp, deb($this -> getDocumentInfos( $med[10]  ) ) ) ;
+     #  deb($this -> getDocumentInfos( $med[10]  ) );
+     if ( $this -> getDocumentInfos( $med[10]  ) != '' )  ## Medium ist bereits Element des SA
+     {
+      #  deb( $this -> getDocumentInfos( $med[10]  ) );
+     }
+    else if ( isset( $med[ 4 ] ) ) ## Zu importierender Datensatz hat zumindest ein Titel
+    {   echo " ##- " . deb( $med[10]  );
+        $SQL = "INSERT INTO document SET ";
+        foreach (  $_SESSION[ 'CFG' ]['EXPO_IMPO'] as $exim )
       {
         $SQL .= " $exim  = \"" . $med[ $i++ ] . "\"  , ";
+        #exit();
       }
-    }
-
     $SQL .= " collection_id     = \"" . $collection_id . "\"  , ";
     $SQL .= " last_modified     = NOW()                         ";
 
-   $fp       = fopen('dataIMP.txt', 'w');
-   fwrite($fp, $SQL  ) ;
-
+    ## -- FOR  DEBUGING  --##
+    $fp   = fopen('dataIMP.txt', 'a');
+    fwrite($fp, $SQL."\n"  ) ;
     $res = mysqli_query ( $this->DB , $SQL );
+    ## -- FOR  DEBUGING  --##
+  }
+    # deb($res);
     return $res;
   }
 }
@@ -900,7 +916,8 @@ function importCollection( $collection_id , $medium )
 # ---------------------------------------------------------------------------------------------
   function getDocumentInfos( $docID )  ## Kartesisches Produkt aller Dokumenten mit allen dazugehörigen Infos
   {
-    $SQL = "SELECT * FROM `document` WHERE `id`  = " . $this->es ( $docID );
+    $SQL = "SELECT * FROM `document` WHERE `ppn`  = " . $this->es ( $docID );
+
     $res = mysqli_query ( $this->DB , $SQL );
     $ans = mysqli_fetch_assoc ( $res );
     return $ans;
