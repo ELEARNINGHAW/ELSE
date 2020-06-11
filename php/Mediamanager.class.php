@@ -69,13 +69,13 @@ function annoteNewMedia_showForm( $I )
 
   if( isset($_SESSION[ 'books' ][ 'booksHitList' ][0]) AND   $I[ 'medium' ] -> get_doc_type_id() != 16 )
   {
-    $bookHit = $_SESSION[ 'books' ][ 'booksHitList' ][  $_SESSION[ 'books' ][ 'currentElement' ] ]; ## Metadaten des aus der Trefferliste ausgeählte Mediums
+    $bookHit = $_SESSION[ 'books' ][ 'booksHitList' ][  $_SESSION[ 'books' ][ 'currentElement' ] ]; ## Metadaten des aus der Trefferliste ausgewählte Mediums
     $I[ 'medium' ] -> array2obj ( $bookHit );
   }
 
-  else if( $I[ 'medium' ] -> get_title() == ''  AND $I[ 'medium' ] -> get_doc_type_id() != 16 )   ## Kein Titel UND kein Erwerbungsvorschlag
+  else if( $I[ 'medium' ] -> get_title() == ''  AND $I[ 'medium' ] -> get_doc_type_id() != 16 )     ## Kein Titel UND kein Erwerbungsvorschlag
   {
-    $bookHit = $_SESSION[ 'books' ][ 'booksHitList' ][ $I[ 'medium' ] -> get_ppn() ]; ## Metadaten des aus der Trefferliste ausgeählte Mediums
+    $bookHit = $_SESSION[ 'books' ][ 'booksHitList' ][ $I[ 'medium' ] -> get_ppn() ];               ## Metadaten des aus der Trefferliste ausgeählte Mediums
     $I[ 'medium' ] -> array2obj ( $bookHit );
   }
   else
@@ -98,7 +98,7 @@ function annoteNewMedia_showForm( $I )
   $tpl_vars[ 'currentElement'  ]  =  $_SESSION['books'][ 'currentElement'  ];
   $tpl_vars[ 'maxElement'      ]  =  $_SESSION['books'][ 'maxElement'      ];
 
-  #deb($tpl_vars,1);
+  # deb($tpl_vars,1);
   $this -> RENDERER -> do_template ( 'edit_book.tpl' , $tpl_vars ) ;
   exit(0);
 }
@@ -133,7 +133,7 @@ function purchaseSuggestion( $I )
 ###############################################################################################
 function saveMediaMetaData( $I )
 {
-  #deb($I[ 'medium' ] ,1);
+#deb($I[ 'medium' ] ,1);
 
   if (  $I[ 'operator' ] -> item == 'media'   AND $I[ 'medium' ] -> get_shelf_remain() == '0' )   #  Bei physischem Medium Keine Auswahl getroffen, ob Literaturhinweis oder Handapparat
   {
@@ -166,6 +166,12 @@ function saveMediaMetaData( $I )
               $I[ 'medium' ] -> set_state_id     ( $m[ 'state_id'      ]  );
               $I[ 'medium' ] -> set_format       ( $m[ 'format'        ]  );
 
+
+              if ( $I[ 'medium' ] -> get_item () == 'online' )                                                         ## Bei ONLINE Medien
+              { $I[ 'medium' ] -> set_shelf_remain ( 3 );                                                              ## ist der Medienort: 'Online' ;) , Status 3
+                  $I[ 'medium' ] -> set_state_id     ( 3 );                                                              ## und der Status wird 'aktiv'         , Status 3
+              }
+
               if     ( $I[ 'medium' ] -> get_shelf_remain () == '0'  OR $I[ 'medium' ] -> get_shelf_remain () == '' )  ##  Wenn kein Medien'ORT' angeklickt wurde, dann bleibt dass Medium im Regal (status: 2)
               { $I[ 'medium' ] -> set_shelf_remain ( 2 );                                                              ##  ist der Medienort: 'verbleibt im Regal' ;) , Status 2
                 $I[ 'medium' ] -> set_state_id     ( 3 );                                                              ##  und der Status wird 'aktiv'         , Status 3
@@ -181,17 +187,14 @@ function saveMediaMetaData( $I )
                 $I[ 'medium' ] -> set_state_id     ( 3 );                                                              ##  und der Status wird 'aktiv'         , Status 3
               }
 
-              else if ( $I[ 'medium' ] -> get_shelf_remain () == '3'  )                                                ##  Wenn Medien'ORT' 'Scanservice' (status: 2)
-              { $I[ 'medium' ] -> set_shelf_remain ( 3 );                                                              ##  ist der Medienort: 'verbleibt im Regal' ;) , Status 2
-                 $I[ 'medium' ] -> set_state_id     ( 3 );                                                              ##  und der Status wird 'aktiv'         , Status 3
+              else if ( $I[ 'medium' ] -> get_shelf_remain () == '4'  )                                                ##  Wenn Medien'ORT' 'Scanservice' (status: 2)
+              { $I[ 'medium' ] -> set_shelf_remain ( 4 );                                                              ##  ist der Medienort: 'verbleibt im Regal' ;) , Status 2
+                 $I[ 'medium' ] -> set_state_id     ( 1 );                                                              ##  und der Status wird 'aktiv'         , Status 3
                   $I[ 'medium' ] -> set_notes_to_staff  ( "[SCANSERVICE]\n " .   $I[ 'medium' ] -> get_notes_to_staff() ) ;
 
               }
 
-              if ( $I[ 'medium' ] -> get_item () == 'online' )                                                         ## Bei ONLINE Medien
-              { $I[ 'medium' ] -> set_shelf_remain ( 3 );                                                              ## ist der Medienort: 'Online' ;) , Status 3
-                $I[ 'medium' ] -> set_state_id     ( 3 );                                                              ## und der Status wird 'aktiv'         , Status 3
-              }
+
 
 
             if ( $I[ 'medium' ] -> get_doc_type_id () == '16' )                                                      ## Kaufvorschlag

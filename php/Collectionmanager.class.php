@@ -180,7 +180,7 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
    # $tpl_vars[ 'back_URL'          ]  = "index.php?item=collection&action=show_collection&dc_collection_id=".$collection[ $collection_id  ] -> get_dc_collection_id()."&r=".$I[ 'currentUser'  ] -> get_role_id();
    # $this -> RENDERER -> do_template( 'collection.tpl', $tpl_vars, ( $I[ 'operator' ] -> get_mode() != 'print' ) );
    # deb( $_SESSION );
-   #deb( $tpl_vars[ 'CFG'               ],1   );
+   # deb( $tpl_vars ,1   );
    $this -> RENDERER -> do_template( 'collection.tpl', $tpl_vars );
   }
 
@@ -408,6 +408,7 @@ function lmsDownload( $I )
   #$lms = explode ( '###', $lms = $this -> UTIL -> b64de( $lmsDownload[ 1 ] ) );          # deb( $lms );
 
   $url = $url ."&format=".$this -> conf [SRU][ 'recordSchema' ];                                                # deb( $url );
+  #  $url = 'https://haw.beluga-core.de/vufind/Cart/lmsdownload?lmsid=V1MuLlNBLlMxOSUyMFRIR1JfQkFTQSUyMyUyMyUyM2FkbWlu&format=marc21';
 
   $medList = $this -> LMSLoader( $url );                                                          # deb( $medList,1 );
 
@@ -434,6 +435,7 @@ function lmsDownload( $I )
     $ret[] = $m;
   }
 
+  #deb($ret);
   $_SESSION[ 'books' ][ 'currentCollection' ] = $lmsDownload[ 1 ];
   $_SESSION[ 'books' ][ 'booksHitList'      ] = $this -> UTIL -> xml2array( $ret );
   $_SESSION[ 'books' ][ 'currentElement'    ] = 0;

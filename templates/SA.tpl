@@ -15,8 +15,10 @@
 <a name="{$di.ppn}" style="position:relative; top:-220px;"></a>
 <a title="Medium Im Onlinekatalog anzeigen" class="medimove medLink  s_standard state_{$di.state_id} {if $edit_mode == '1'} {/if} " href="{$CFG.CATALOG_URL[$DOC_TYPE[$di.doc_type_id]['indexID']]}{$di.ppn}" target="_blank" onclick="return -1">
 <table>
+{$preMedTyp = ''}{$di.shelf_remain}
+{if ($di.shelf_remain == 4)}{$preMedTyp = '[SCAN] '  }{/if}
 
-{if $doctypedescription != ""           }  <tr><td><div class="mediaListHeader">Medientyp: </div></td><td><div  class="mediaTxt" >{$doctypedescription}  </div>            {/if}
+{if $doctypedescription != ""           }  <tr><td><div class="mediaListHeader">Medientyp: </div></td><td><div  class="mediaTxt" >{$preMedTyp}{$doctypedescription}  </div>            {/if}
 {if $di.title           != ""           }  <tr><td><div class="mediaListHeader">Titel:     </div></td><td><div  class="mediaTxt" >{$di.title}            </div>            {/if}
 {if $di.author          != ""           }  <tr><td><div class="mediaListHeader">Autor:     </div></td><td><div  class="mediaTxt" >{$di.author}           </div> </td></tr> {/if}
 {if $di.doc_type        == 'electronic' }  <tr><td><div class="mediaListHeader">Format:    </div></td><td><span class="mediaTxt" >Online-Ressource       </span></td></tr> {/if}
