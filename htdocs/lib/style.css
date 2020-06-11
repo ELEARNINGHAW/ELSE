@@ -906,16 +906,16 @@ td{
   background-color: #FFF;
 }
 
-.medium_3 /* CD-ROM */
+.medium_3 /* Online */
 {
   background-image:url(../img/svg/txtOnline.png);
   background-repeat:repeat-y;
   background-color: transparent;
 }
 
-.medium_4 /* E-Book */
+.medium_4 /* SCAN SERVICE  */
 {
-  background-image:url(../img/svg/txtE-Book.png);
+  background-image:url(../img/svg/txtScan.png);
   background-repeat:repeat-y;
   background-color: #FFF;
 }
