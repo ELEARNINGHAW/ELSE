@@ -36,7 +36,11 @@ function __construct( $CONSTANT )
 
   $_SESSION[ 'CFG'    ] =  $this -> CFG;
   $_SESSION[ 'CON'  ] =  $CONSTANT;
-#  deb($_SESSION);
+  
+  $conf_cwd =$this->CFG[ 'SERVER' ];
+ 
+  error_reporting( $conf_cwd[ 'error_reporting' ] );
+  ini_set("display_errors", $conf_cwd[ 'display_errors' ]);
 }
 
 }

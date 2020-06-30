@@ -9,9 +9,6 @@ function __construct( )
 {
   $conf_cwd = $_SESSION[ 'CFG' ][ 'SERVER' ];
 
-  error_reporting( $conf_cwd[ 'error_reporting' ] );
-  ini_set("display_errors", $conf_cwd[ 'display_errors ' ]);
-
   $this -> DB = new \MySQLi( $conf_cwd[ 'db_host' ] ,
   $conf_cwd[ 'db_user' ] ,
   $conf_cwd[ 'db_pass' ] ,

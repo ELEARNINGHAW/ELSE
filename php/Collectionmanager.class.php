@@ -117,9 +117,6 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
         exit(0);
     }
 
-
-
-
 /*
 ###############################################################################################
   function showCollectionList( $I )
@@ -400,7 +397,7 @@ function setCollectionForNextSem( $I )
 function lmsDownload( $I )
 {
   $conf = $this -> conf;
-
+ 
   $url  =  $I[ 'operator' ] -> get_url() ;
 
   $lmsDownload = explode( '?lmsid=', $url );                                             # deb( $lmsDownload );
@@ -408,6 +405,8 @@ function lmsDownload( $I )
   #$lms = explode ( '###', $lms = $this -> UTIL -> b64de( $lmsDownload[ 1 ] ) );          # deb( $lms );
 
   $url = $url ."&format=".$this -> conf [SRU][ 'recordSchema' ];                                                # deb( $url );
+ # deb($url,1);
+  
   #  $url = 'https://haw.beluga-core.de/vufind/Cart/lmsdownload?lmsid=V1MuLlNBLlMxOSUyMFRIR1JfQkFTQSUyMyUyMyUyM2FkbWlu&format=marc21';
 
   $medList = $this -> LMSLoader( $url );                                                          # deb( $medList,1 );
@@ -435,12 +434,12 @@ function lmsDownload( $I )
     $ret[] = $m;
   }
 
-  #deb($ret);
+
   $_SESSION[ 'books' ][ 'currentCollection' ] = $lmsDownload[ 1 ];
   $_SESSION[ 'books' ][ 'booksHitList'      ] = $this -> UTIL -> xml2array( $ret );
   $_SESSION[ 'books' ][ 'currentElement'    ] = 0;
   $_SESSION[ 'books' ][ 'maxElement'        ] = sizeof($_SESSION[ 'books' ][ 'booksHitList' ]);
-
+ #  deb($_SESSION[ 'books' ]);
   $collection_dc_collection_id = $I[ 'currentCollection' ] -> get_dc_collection_id();
   $user_role_id                = $I[ 'currentUser'       ] -> get_role_encode();
   $b_ppn                       = $_SESSION[ 'books'      ][ 'booksHitList' ][ 0 ][ 'ppn' ];
@@ -451,6 +450,68 @@ function lmsDownload( $I )
   $this -> RENDERER -> doRedirect( $_SESSION[ 'books' ][ 'url' ]  );
 }
 
+
+
+
+function getMediaList( $I )
+{
+    $conf = $this -> conf;
+
+    $mediaListID  =  $I[ 'operator' ] -> get_mediaListID() ;
+    # $mediaListID  =  16 ;
+    # $this -> conf [ 'SRU' ][ 'vuFindListURL'    ]  = 'https://dev.haw.beluga-core.de/vufind/MyResearch/MyList/';
+    # $this -> conf [ 'SRU' ][ 'vuFindListParams' ]  = '?export=true&format=turbomarc';
+
+    $url =  $this -> conf ['SRU'][ 'vuFindListURL'    ]  .$mediaListID  . $this -> conf ['SRU'][ 'vuFindListParams' ];                                                # deb( $url );
+  
+ # deb( $url,1);
+    
+    $medList = $this -> LMSLoader( $url );                                                          # deb( $medList,1 );
+   # deb( $medList,1);
+    $medList = $this -> UTIL -> xml2array( $medList );
+
+    foreach ( $medList as $med )
+    {
+        $m = new Medium();
+
+        if( isset( $med[ 'title'       ][ 0 ] ) ) { $m -> set_title         ( trim ( $med[ 'title'        ]  ) ); }
+        if( isset( $med[ 'author'      ][ 0 ] ) ) { $m -> set_author        ( trim ( $med[ 'author'       ]  ) ); }
+        if( isset( $med[ 'publisher'   ][ 0 ] ) ) { $m -> set_publisher     ( trim ( $med[ 'publisher'    ]  ) ); }
+        if( isset( $med[ 'physicaldesc'][ 0 ] ) ) { $m -> set_physicaldesc  ( trim ( $med[ 'physicaldesc' ]  ) ); }
+        if( isset( $med[ 'ppn'         ][ 0 ] ) ) { $m -> set_ppn           ( trim ( $med[ 'ppn'          ]  ) ); }
+        if( isset( $med[ 'leader'      ][ 0 ] ) ) { $m -> set_leader        ( trim ( $med[ 'leader'       ]  ) ); }
+        if( isset( $med[ 'ISBN'        ][ 0 ] ) ) { $m -> set_ISBN          ( trim ( $med[ 'ISBN'         ]  ) ); }
+        if( isset( $med[ 'signature'   ][ 0 ] ) ) { $m -> set_signature     ( trim ( $med[ 'signature'    ]  ) ); }
+        if( isset( $med[ 'format'      ][ 0 ] ) ) { $m -> set_format        ( trim ( $med[ 'format'       ]  ) );
+            $m -> set_doc_type      ( trim ( $med[ 'format'       ]  ) );
+            $m -> calcDocTypeID();
+            $m -> calcItem();
+        }
+
+        $ret[] = $m;
+    }
+
+    #deb($ret);
+  #  $_SESSION[ 'books' ][ 'currentCollection' ] = $lmsDownload[ 1 ];
+    $_SESSION[ 'books' ][ 'booksHitList'      ] = $this -> UTIL -> xml2array( $ret );
+    $_SESSION[ 'books' ][ 'currentElement'    ] = 0;
+    $_SESSION[ 'books' ][ 'maxElement'        ] = sizeof($_SESSION[ 'books' ][ 'booksHitList' ]);
+
+    $collection_dc_collection_id = $I[ 'currentCollection' ] -> get_dc_collection_id();
+    $user_role_id                = $I[ 'currentUser'       ] -> get_role_encode();
+    $b_ppn                       = $_SESSION[ 'books'      ][ 'booksHitList' ][ 0 ][ 'ppn' ];
+
+    #deb($collection_dc_collection_id,1);
+
+    $_SESSION[ 'books' ][ 'url' ] =  "index.php?ppn=$b_ppn&item=media&loc=1&action=annoteNewMedia&dc_collection_id=$collection_dc_collection_id&mode=new&r=$user_role_id";
+    #deb($_SESSION[ 'books' ],1);
+    $this -> RENDERER -> doRedirect( $_SESSION[ 'books' ][ 'url' ]  );
+}
+
+
+
+
+
 function LMSLoader( $url )
 {
 	$arrContextOptions=array(
@@ -458,24 +519,27 @@ function LMSLoader( $url )
         "verify_peer"=>false,
         "verify_peer_name"=>false,
          ), );
-
+  $medium = null;
   #$url = 'https://haw.beluga-core.de/vufind/Cart/lmsdownload?lmsid='.$_SESSION['bc_urlID'].'&format=marc21';
 
   ### ------ TEST -------
   # $url = 'C:\xampp\htdocs\ELSE-DEV\htdocs\format.xml';
   ### ------ TEST -------
-  #deb($url,1);
+   #deb($url,1);
   $strXml = file_get_contents( $url , false, stream_context_create($arrContextOptions));
-
+  #deb($strXml,1);
   $xml = simplexml_load_string( $strXml);
-  # deb($xml,1);
+#  deb($xml,1);
   $i = 0;
   foreach( $xml -> record as $xmlrec )
   {
     foreach ( $xmlrec -> controlfield as $a => $b )
-    {
+    {# deb( $b);
       ## --- PPN
-      if ( $b[ 'tag' ]       == '001' ) { $PPN            = (string)$b;   $medium[(string)$PPN][ 'ppn'          ] = $PPN;      }
+      if ( $b[ 'tag' ]       == '001' )
+      {
+        $PPN            = (string)$b;
+        $medium[(string)$PPN][ 'ppn'          ] = $PPN;      }
     }
 
     $hasAuthor = false;

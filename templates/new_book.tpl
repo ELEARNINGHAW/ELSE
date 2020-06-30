@@ -28,33 +28,45 @@
   <div style="font-size:35px; float:left; padding:10px; margin:5px; margin-bottom:100px;display:block;   background-color:#EFEFEF">B</div>Eine neue Suche starten:<br><br>
  {/if}
 
+ <div class="text2">
+   <ul>
+     <li> Medienliste aus dem HAW-Katalog übernehmen<BR></li></ul>
+     <form action="index.php" method="get">
+         <div class="text2" style="text-align: center;">
+             mediaListID  <input   name="mediaListID">       </div>
+         <input type="hidden" name="item"             value="collection">
+         <input type="hidden" name="action"           value="getMediaList" >
+         <input type="hidden" name="loc"              value="1">
+         <input type="hidden" name="r"                value="{$user.role_encode}">
+         <input type="hidden" name="dc_collection_id" value="{$collection.dc_collection_id}">
+     </form>
+     </div>
+
+     <hr>
  <div class="text2"  style="display: block;" >
+     <hr>
 <ul><li>
-    Um ein Medium in Ihren Semesterapparat hinzuzufügen,<br />recherchieren Sie nun bitte im HAW Bibliothekskatalog.
+    Um ein Medium direkt in Ihren Semesterapparat hinzuzufügen,<br />recherchieren Sie nun bitte im HAW Bibliothekskatalog.
     </li>
     <li>
         Durch einen Klick auf den <strong>Stern</strong> <img style="position:relative;  top:5px;" src="img/sternchen.png"> des gewünschten Mediums,<br />  übernehmen Sie dieses dann dort in Ihre  in Ihre <strong>"Merkliste"</strong>.
      </li>
  </ul>
 
-
  </div>
-     <div class="text2" style="text-align: center">
 
-         <a  onClick="$('#FButton').spin('modal');"  id ="FButton"  href="https://elsehaw.beluga-core.de/vufind/?lmsid={$URLID}&lmsurl={$URL}"> <button style="padding:20px;" class="ui-button ui-widget ui-corner-all" > Im HAW-Katalog recherchieren und die Merkliste füllen      </button></a>
+ <div class="text2" style="text-align: center">
+   <a  onClick="$('#FButton').spin('modal');"  id ="FButton"  href="https://elsehaw.beluga-core.de/vufind/?lmsid={$URLID}&lmsurl={$URL}"> <button style="padding:20px;" class="ui-button ui-widget ui-corner-all" > Im HAW-Katalog recherchieren und die Merkliste füllen      </button></a>
+ </div>
 
+ <div class="text2">
+ <hr>
+  <ul>
+   <li> Haben Sie nicht das Gewünschte gefunden?<BR></li></ul>
+     <div class="text2" style="text-align: center;">
+       <a   onClick="$('#FButton').spin('modal');"  href="index.php?msg=&action=purchase_suggestion&loc=1&lmsid={$collection.dc_collection_id}">  <button  style="padding:20px;" class="ui-button ui-widget ui-corner-all"> Erwerbungsvorschlag für Ihren Semesterapparat </button></a>
      </div>
-     <div class="text2">
-
-         <dov class="text2">
-             <hr>
-
-             <ul>
-                 <li>  Haben Sie nicht das Gewünschte gefunden?<BR></li></ul>
-             <div class="text2" style="text-align: center;">
-                  <a   onClick="$('#FButton').spin('modal');"  href="index.php?msg=&action=purchase_suggestion&loc=1&lmsid={$collection.dc_collection_id}">  <button  style="padding:20px;" class="ui-button ui-widget ui-corner-all"> Erwerbungsvorschlag für Ihren Semesterapparat </button></a>
-             </div>
-     </div>
+   </div>
 
    <div style="  display: none;" >
   oder Medien im OPAC suchen.<br><br>

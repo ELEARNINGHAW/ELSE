@@ -10,7 +10,7 @@ class Operator
   public $msg;
   public $url;
   public $history;
-  public $sortorder;
+  public $mediaListID;
   public $shelf_remain;
 
   function __construct()
@@ -24,8 +24,9 @@ class Operator
     $this -> msg              = '' ;
     $this -> url              = '#' ;
     $this -> history          = '' ;
+    $this -> mediaListID      = '' ;
     $this -> shelf_remain     = '' ;
-}
+  }
 
   function get_item               ()   { return $this -> item          ; }
   function get_loc                ()   { return $this -> loc           ; }
@@ -36,6 +37,7 @@ class Operator
   function get_msg                ()   { return $this -> msg           ; }
   function get_url                ()   { return $this -> url           ; }
   function get_history            ()   { return $this -> history       ; }
+  function get_mediaListID        ()   { return $this -> mediaListID   ; }
   function get_shelf_remain       ()   { return $this -> shelf_remain  ; }
 
 
@@ -48,6 +50,7 @@ class Operator
   function set_msg                  ( $val )  { return $this -> msg           =  $val ; }
   function set_url                  ( $val )  { return $this -> url           =  $val ; }
   function set_history              ( $val )  { return $this -> history       =  $val ; }
+  function set_mediaListID          ( $val )  { return $this -> mediaListID   =  $val ; }
   function set_shelf_remain         ( $val )  { return $this -> shelf_remain  =  $val ; }
 
 

@@ -10,8 +10,8 @@ class Util   /// \brief check user input
 function __construct ( $SQL )
 {
   $this -> SQL    = $SQL;
-  $this -> conf  = $_SESSION[ 'CFG' ];
-  $this -> CONS = $_SESSION[ 'CON' ];
+  $this -> conf   = $_SESSION[ 'CFG' ];
+  $this -> CONS   = $_SESSION[ 'CON' ];
 }
 
 # ---------------------------------------------------------------------------------------------
@@ -89,7 +89,7 @@ if ( isset ( $_GET[ 'shelf_remain'                             ] ) ) { $operator
 if ( isset ( $_GET[ 'action'                                   ] ) ) { $operator -> set_action           ( $_GET[ 'action'             ] ) ; }
 if ( isset ( $_GET[ 'mode'                                     ] ) ) { $operator -> set_mode             ( $_GET[ 'mode'               ] ) ; }
 if ( isset ( $_GET[ 'category'                                 ] ) ) { $operator -> set_category         ( $_GET[ 'category'           ] ) ; }
-
+if ( isset ( $_GET[ 'mediaListID'                              ] ) ) { $operator -> set_mediaListID      ( $_GET[ 'mediaListID'        ] ) ; }
 if ( isset ( $_GET[ 'msg'                                      ] ) ) { $operator -> set_msg              ( $_GET[ 'msg'                ] ) ; }
 
 if ( isset ( $_GET[ 'lms-download'                             ] ) ) { $operator -> set_action           ( 'lms-download'           ) ;

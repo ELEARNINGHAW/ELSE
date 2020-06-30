@@ -10,7 +10,7 @@
 {if ($medium.shelf_remain == 0)}  {$c0 = 'checked="checked"' } {else} {$c0 = ''} {/if}
 {if ($medium.shelf_remain == 1)}  {$c1 = 'checked="checked"' } {else} {$c1 = ''} {/if}
 {if ($medium.shelf_remain == 2)}  {$c2 = 'checked="checked"' } {else} {$c2 = ''} {/if}
-
+{if ($medium.shelf_remain == 3)}  {$c3 = 'checked="checked"' } {else} {$c3 = ''} {/if}
 
 
 {if $medium.doc_type_id == 16 }

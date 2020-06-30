@@ -26,7 +26,7 @@ $COLLMGR    = new COLLECTIONMANAGER( $CFG, $SQL, $RENDERER, $UTIL  );
 $MEDIAMGR   = new MEDIAMANAGER(      $CFG, $SQL, $RENDERER, $UTIL  );
 
 # $UTIL->checkER();                              ## Listet alle SA zum Semesterwechsel auf
-# deb($CFG,1);
+ #deb($CFG,1);
 ## ----------------------------------------------------------------------------------------
 $I = $UTIL -> getInput();                                #--- GET ALL INPUT (GET) ---
 ## ----------------------------------------------------------------------------------------
@@ -36,7 +36,7 @@ $ca = $I[ 'operator'    ] -> get_action();   # ACTION
 $ci = $I[ 'operator'    ] -> get_item();     # ITEM
 $cl = $I[ 'operator'    ] -> get_loc();      # LOCATOR
 
-#deb($I,1);
+ #deb($I,1);
 #$ci = 'collection';
 #$ca = 'lms-download';
 
@@ -57,6 +57,7 @@ if ( $ci  == 'collection'  AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit')
   else if ( $ca  == 'export'                 )  { $COLLMGR -> exportCollection          ( $I ) ; }  ## Exportiert den SA
   else if ( $ca  == 'import'                 )  { $COLLMGR -> importCollection          ( $I ) ; }  ## Importiert den SA
   else if ( $ca  == 'lms-download'           )  { $COLLMGR -> lmsDownload               ( $I ) ; }  ## Importiert Medien-Metadaten direkt aus Beluga Core
+  else if ( $ca  == 'getMediaList'           )  { $COLLMGR -> getMediaList              ( $I ) ; }  ## Importiert Medien-Metadaten direkt aus Beluga Core
  #else if ( $ca  == 'coll_delete'            )  { $COLLMGR -> deleteCollection          ( $I ) ; }  ## SAs wird angezeigt (deren Editierbarkeit ist abhängig von der Rolle des Nuters)
  #else if ( $ca  == 'coll_revive'            )  { $COLLMGR -> setCollectionState_active ( $I ) ; }  ## Zustand 3 = 'AKTIV'
  #else if ( $ca  == 'coll_release'           )  { $COLLMGR -> setCollectionState_inactive($I ) ; }  ## Zustand 5 = 'AUFGELÖST'
@@ -69,6 +70,7 @@ else if (   $cl  == 1    AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit'))
 {
   if      ( 1 == 2 ) {;}
   else if ( $ca  == 'search'                )  {  $MEDIAMGR -> searchMediaOnLibraryServer    ( $I ); }   ## ++ 4 Suchprozess des Mediums wird gestartet
+
   else if ( $ca  == 'annoteNewMedia'        )  {  $MEDIAMGR -> annoteNewMedia_showForm       ( $I ); }   ## ++ 5 Eingabemaske Metadaten für Buch Annotation anzeigen
   else if ( $ca  == 'save'                  )  {  $MEDIAMGR -> saveMediaMetaData             ( $I ); }   ## ++ 6 Metadaten eines neues Buch speichern
   else if ( $ca  == 'suggest'               )  {  $MEDIAMGR -> saveNewMediaSuggest           ( $I ); }   ## Metadaten eines Literaturvoschlag speichern
