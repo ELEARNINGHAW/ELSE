@@ -12,11 +12,11 @@ private $CONST;
 function __construct( $CONFIG, $SQL, $RENDERER, $UTIL )
 {
   $this -> conf  = $_SESSION[ 'CFG'   ];
-  $this -> CON = $_SESSION[ 'CON' ];
+  $this -> CON   = $_SESSION[ 'CON' ];
 
-  $this->SQL        = $SQL;
-  $this->RENDERER   = $RENDERER;
-  $this->UTIL       = $UTIL;
+  $this -> SQL        = $SQL;
+  $this -> RENDERER   = $RENDERER;
+  $this -> UTIL       = $UTIL;
 }
 
 ###############################################################################################
@@ -28,7 +28,7 @@ function  showMediaList( $I )  ##---------- Medien gefiltert nach Status
   ## $state_id:    1 = neu bestellt, 2 wird bearbeitet, 3 aktiv, 4 wird entfernt, 5 inaktiv, 6 gelöscht, 9 Erwerbvorschlag
   ## $doc_type_id: 1 = Buch, 3, = CD, 4 = E-Book,
 
-  #$I[ 'filter' ]->set_type( 1 );  ## NUR Semesterappartat Medien/Bücher werden angezeigt
+  #$I[ 'filter' ] -> set_type( 1 );  ## NUR Semesterappartat Medien/Bücher werden angezeigt
 
   $collection = $this -> SQL -> getCollection( null,  $I[ 'filter' ]  , true );
 
@@ -240,7 +240,7 @@ function deleteCollection( $I )
   $tpl_vars[ 'errors_info'    ][] = '';
   $tpl_vars[ 'ACTION_INFO'    ]   =  $_SESSION[ 'ACTION_INFO'              ];
 
-  $this->RENDERER->do_template( 'collection.tpl', $tpl_vars, ( $I[ 'operator' ][ 'mode' ] != 'print' ) );
+  $this -> RENDERER -> do_template( 'collection.tpl', $tpl_vars, ( $I[ 'operator' ][ 'mode' ] != 'print' ) );
 }
 
 /*
@@ -451,8 +451,6 @@ function lmsDownload( $I )
 }
 
 
-
-
 function getMediaList( $I )
 {
     $conf = $this -> conf;
@@ -487,7 +485,9 @@ function getMediaList( $I )
             $m -> calcDocTypeID();
             $m -> calcItem();
         }
-
+  
+        #$this->checkDoublette('DMI.MD.W19 ET1.LAB_16',  $m -> get_ppn() );
+        
         $ret[] = $m;
     }
 
@@ -523,13 +523,13 @@ function LMSLoader( $url )
   #$url = 'https://haw.beluga-core.de/vufind/Cart/lmsdownload?lmsid='.$_SESSION['bc_urlID'].'&format=marc21';
 
   ### ------ TEST -------
-  # $url = 'C:\xampp\htdocs\ELSE-DEV\htdocs\format.xml';
+  # $url = 'X:\xampp\htdocs\ELSE-DEV\htdocs\haw-marc21.xml';
   ### ------ TEST -------
-   #deb($url,1);
+   # deb($url,1);
   $strXml = file_get_contents( $url , false, stream_context_create($arrContextOptions));
   #deb($strXml,1);
   $xml = simplexml_load_string( $strXml);
-#  deb($xml,1);
+  #deb($xml,1);
   $i = 0;
   foreach( $xml -> record as $xmlrec )
   {
@@ -867,7 +867,26 @@ $storeFolder = 'uploads';   //2
   #  deb($collectionList,1);
     return $collectionList;
   }
-
+  
+  
+  ###############################################################################################
+  function checkDoublette( $colID, $docID)
+  {    deb("1");
+    $docs = $this -> SQL -> getDokumentList( $colID );
+    if ($docs)
+      foreach( $docs as $d )
+      {
+        if ($d->ppn == $docID) { $ret = 1 ; break; }
+        else                   { $ret = 0 ;}
+      }
+    
+    deb($ret);
+    
+    return $ret;
+    
+  }
+  
+  
 # ---------------------------------------------------------------------------------------------
   function getKey( $u )
   {

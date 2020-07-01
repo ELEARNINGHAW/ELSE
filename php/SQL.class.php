@@ -101,7 +101,7 @@ WHERE `collection_id` = \"" . $colID . "\"";
 if (  $filterState  != ''  AND  $filterState != 0   ) { $SQL .= " AND `state_id`     = "  . $this -> es ( $filterState  ); }
 if (  $filterType   != ''  AND  $filterType != 'X'  ) { $SQL .= " AND `doc_type_id`  = "  . $this -> es ( $filterType   ); }
 
-
+#deb($SQL);
 $res = mysqli_query ( $this -> DB , $SQL );
 
 

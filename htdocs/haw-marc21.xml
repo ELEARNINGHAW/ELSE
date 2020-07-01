@@ -1,0 +1,1532 @@
+<?xml version="1.0"?>
+<collection>
+
+<record xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.loc.gov/MARC21/slim" xsi:schemaLocation="http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd" type="Bibliographic">
+  <leader>11679nam a22018012  4500</leader>
+  <controlfield tag="001">1686013310</controlfield>
+  <controlfield tag="003">DE-627</controlfield>
+  <controlfield tag="005">20191219105015.0</controlfield>
+  <controlfield tag="007">cr uuu---uuuuu</controlfield>
+  <controlfield tag="008">191219s2019    xx |||||o     00| ||ger c</controlfield>
+  <datafield tag="020" ind1=" " ind2=" ">
+   <subfield code="a">9783111360362</subfield>
+   <subfield code="9">978-3-11-136036-2</subfield>
+  </datafield>
+  <datafield tag="024" ind1="7" ind2=" ">
+   <subfield code="a">10.1515/9783111360362</subfield>
+   <subfield code="2">doi</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+   <subfield code="a">(DE-627)1686013310</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+   <subfield code="a">(DE-599)KEP045261636</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+   <subfield code="a">(DE-B1597)66495</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+   <subfield code="a">(EBP)045261636</subfield>
+  </datafield>
+  <datafield tag="040" ind1=" " ind2=" ">
+   <subfield code="a">DE-627</subfield>
+   <subfield code="b">eng</subfield>
+   <subfield code="c">DE-627</subfield>
+   <subfield code="e">rda</subfield>
+  </datafield>
+  <datafield tag="041" ind1=" " ind2=" ">
+   <subfield code="a">ger</subfield>
+  </datafield>
+  <datafield tag="044" ind1=" " ind2=" ">
+   <subfield code="c">XA-DE</subfield>
+  </datafield>
+  <datafield tag="084" ind1=" " ind2=" ">
+   <subfield code="a">BUS069000</subfield>
+   <subfield code="2">BISAC</subfield>
+  </datafield>
+  <datafield tag="084" ind1=" " ind2=" ">
+   <subfield code="a">BUS000000</subfield>
+   <subfield code="2">BISAC</subfield>
+  </datafield>
+  <datafield tag="100" ind1="1" ind2=" ">
+   <subfield code="a">Jaeger, Fritz</subfield>
+   <subfield code="e">verfasserin</subfield>
+   <subfield code="4">aut</subfield>
+  </datafield>
+  <datafield tag="245" ind1="1" ind2="0">
+   <subfield code="a">Afrika</subfield>
+   <subfield code="b">Teil 1: Der Lebensraum</subfield>
+   <subfield code="c">Fritz Jaeger</subfield>
+  </datafield>
+  <datafield tag="250" ind1=" " ind2=" ">
+   <subfield code="a">2., umgearb. Aufl. Reprint 2019</subfield>
+  </datafield>
+  <datafield tag="264" ind1=" " ind2="1">
+   <subfield code="a">Berlin</subfield>
+   <subfield code="a">Boston</subfield>
+   <subfield code="b">De Gruyter</subfield>
+   <subfield code="c">[2019]</subfield>
+  </datafield>
+  <datafield tag="300" ind1=" " ind2=" ">
+   <subfield code="a">1 Online-Ressource</subfield>
+   <subfield code="b">1 Faltaf</subfield>
+  </datafield>
+  <datafield tag="336" ind1=" " ind2=" ">
+   <subfield code="a">Text</subfield>
+   <subfield code="b">txt</subfield>
+   <subfield code="2">rdacontent</subfield>
+  </datafield>
+  <datafield tag="337" ind1=" " ind2=" ">
+   <subfield code="a">Computermedien</subfield>
+   <subfield code="b">c</subfield>
+   <subfield code="2">rdamedia</subfield>
+  </datafield>
+  <datafield tag="338" ind1=" " ind2=" ">
+   <subfield code="a">Online-Ressource</subfield>
+   <subfield code="b">cr</subfield>
+   <subfield code="2">rdacarrier</subfield>
+  </datafield>
+  <datafield tag="490" ind1="0" ind2=" ">
+   <subfield code="a">Sammlung G&#xF6;schen</subfield>
+   <subfield code="v">910</subfield>
+  </datafield>
+  <datafield tag="520" ind1=" " ind2=" ">
+   <subfield code="a">Frontmatter -- Inhalt -- Schrifttum -- Erstes Kapitel: Die Weltlage Afrikas -- Zweites Kapitel: Das Klima Afrikas -- Drittes Kapitel: Bau und Bodengestalt Afrikas -- Viertes Kapitel: Die Gew&#xE4;sser Afrikas -- F&#xFC;nftes Kapitel: Die Bodendecke Afrikas und ihre Zerst&#xF6;rung. Die Austrocknungsfrage -- Sechstes Kapitel: Die Pflanzen- und Tierwelt Afrikas -- Siebentes Kapitel: Afrikas Eignung als Lebensraum -- Achtes Kapitel: Die landschaftliche Gliederung Afrikas -- Register -- Front Matter 2 -- Sammlung G&#xF6;schen. Unser Heutiges Wissen In Kurzen, Klaren, Allgemeinverst&#xE4;ndlichen Einzeldarstellungen -- Naturwissenschaften und Technik -- Geisteswissenschaften -- Sammlung G&#xF6;schen / Bandnummernfolge</subfield>
+  </datafield>
+  <datafield tag="533" ind1=" " ind2=" ">
+   <subfield code="a">[Online-Ausg.]</subfield>
+  </datafield>
+  <datafield tag="538" ind1=" " ind2=" ">
+   <subfield code="a">Mode of access: Internet via World Wide Web.</subfield>
+  </datafield>
+  <datafield tag="546" ind1=" " ind2=" ">
+   <subfield code="a">In German</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="4">
+   <subfield code="a">BUSINESS &amp; ECONOMICS / General</subfield>
+  </datafield>
+  <datafield tag="776" ind1="1" ind2=" ">
+   <subfield code="z">9783111003078</subfield>
+  </datafield>
+  <datafield tag="776" ind1="0" ind2="8">
+   <subfield code="i">Erscheint auch als</subfield>
+   <subfield code="n">print</subfield>
+   <subfield code="z">9783111003078</subfield>
+  </datafield>
+  <datafield tag="856" ind1="4" ind2="0">
+   <subfield code="u">https://doi.org/10.1515/9783111360362</subfield>
+   <subfield code="m">X:GRUY</subfield>
+   <subfield code="x">Resolving-System</subfield>
+  </datafield>
+  <datafield tag="856" ind1="4" ind2="2">
+   <subfield code="u">https://www.degruyter.com/doc/cover/9783111360362.jpg</subfield>
+   <subfield code="m">X:GRUY</subfield>
+   <subfield code="x">Verlag</subfield>
+   <subfield code="3">Cover</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">EBA-BACKALL</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">EBA-CL-LAEC</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">EBA-DGALL</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV-deGruyter-alles</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">PDA11SSHE</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">PDA14ALL</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">PDA16SSH</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">PDA1ALL</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">PDA2</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">PDA2HUM</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">PDA5EBK</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_11</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">SYSFLAG_1</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_KXP</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_21</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_23</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_30</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_31</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_34</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_65</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_72</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_74</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_90</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_95</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_110</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_120</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_122</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_140</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_264</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_2005</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_2014</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_2021</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_2025</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_2049</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_2063</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_2108</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_2111</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_2118</subfield>
+  </datafield>
+  <datafield tag="951" ind1=" " ind2=" ">
+   <subfield code="a">BO</subfield>
+  </datafield>
+  <datafield tag="980" ind1=" " ind2=" ">
+   <subfield code="2">11</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="b">3660463116</subfield>
+   <subfield code="f">5</subfield>
+   <subfield code="g">Bestand: . - Zugriff f&#xFC;r registrierte Benutzer der SBB</subfield>
+   <subfield code="h">DeGruyter</subfield>
+   <subfield code="k">REMOTE ACCESS</subfield>
+   <subfield code="k">Tempor&#xE4;r im Bestand der Staatsbibliothek</subfield>
+   <subfield code="x">0001</subfield>
+   <subfield code="y">k</subfield>
+   <subfield code="z">06-05-20</subfield>
+  </datafield>
+  <datafield tag="980" ind1=" " ind2=" ">
+   <subfield code="2">21</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="b">358844324X</subfield>
+   <subfield code="h">ebook_2019_degruyter_ebs</subfield>
+   <subfield code="k">Freie Nutzung im Campusnetz der Universitaet und der Hochschulen im Lande Bremen</subfield>
+   <subfield code="x">0046</subfield>
+   <subfield code="y">zza</subfield>
+   <subfield code="z">05-02-20</subfield>
+  </datafield>
+  <datafield tag="980" ind1=" " ind2=" ">
+   <subfield code="2">23</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="b">3569106519</subfield>
+   <subfield code="h">olr-degruyter3</subfield>
+   <subfield code="k">Vervielf&#xE4;ltigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Keine Weitergabe an Dritte. Kein systematisches Downloaden durch Robots.</subfield>
+   <subfield code="x">0830</subfield>
+   <subfield code="y">z</subfield>
+   <subfield code="z">21-12-19</subfield>
+  </datafield>
+  <datafield tag="980" ind1=" " ind2=" ">
+   <subfield code="2">30</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="b">3569188078</subfield>
+   <subfield code="h">OLR-DG-PDA</subfield>
+   <subfield code="k">Campusweiter Zugriff. - Vervielf&#xE4;ltigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Keine Weitergabe an Dritte. Kein systematisches Downloaden durch Robots.</subfield>
+   <subfield code="x">0104</subfield>
+   <subfield code="y">z</subfield>
+   <subfield code="z">21-12-19</subfield>
+  </datafield>
+  <datafield tag="980" ind1=" " ind2=" ">
+   <subfield code="2">31</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="b">3586379080</subfield>
+   <subfield code="k">** Dieses E-Book steht Ihnen 2020 zur Verf&#xFC;gung. **</subfield>
+   <subfield code="k">Vervielf&#xE4;ltigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Keine Weitergabe an Dritte. Kein systematisches Downloaden.</subfield>
+   <subfield code="x">0027</subfield>
+   <subfield code="y">z</subfield>
+   <subfield code="z">01-02-20</subfield>
+  </datafield>
+  <datafield tag="980" ind1=" " ind2=" ">
+   <subfield code="2">34</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="b">3630325610</subfield>
+   <subfield code="h">OLR-DG-Corona</subfield>
+   <subfield code="k">Vervielf&#xE4;ltigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Die Weitergabe an Dritte sowie systematisches Downloaden sind untersagt.</subfield>
+   <subfield code="x">3551</subfield>
+   <subfield code="y">z</subfield>
+   <subfield code="z">22-04-20</subfield>
+  </datafield>
+  <datafield tag="980" ind1=" " ind2=" ">
+   <subfield code="2">65</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="b">3598898819</subfield>
+   <subfield code="d">ebook</subfield>
+   <subfield code="h">OLR-ZDB-23-GBE</subfield>
+   <subfield code="k">Vervielf&#xE4;ltigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Keine Weitergabe an Dritte. Kein systematisches Downloaden durch Robots.</subfield>
+   <subfield code="x">0003</subfield>
+   <subfield code="y">k3o</subfield>
+   <subfield code="z">27-02-20</subfield>
+  </datafield>
+  <datafield tag="980" ind1=" " ind2=" ">
+   <subfield code="2">72</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="b">3568385651</subfield>
+   <subfield code="h">OLR-DG-PDA11SSHE</subfield>
+   <subfield code="k">Vervielf&#xE4;ltigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Keine Weitergabe an Dritte. Kein systematisches Downloaden durch Robots.</subfield>
+   <subfield code="x">0035</subfield>
+   <subfield code="y">z</subfield>
+   <subfield code="z">20-12-19</subfield>
+  </datafield>
+  <datafield tag="980" ind1=" " ind2=" ">
+   <subfield code="2">74</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="b">3640728084</subfield>
+   <subfield code="h">OLR-ESP</subfield>
+   <subfield code="k">Vervielf&#xE4;ltigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Die Weitergabe an Dritte sowie systematisches Downloaden sind untersagt.</subfield>
+   <subfield code="x">0354</subfield>
+   <subfield code="y">ze</subfield>
+   <subfield code="z">28-04-20</subfield>
+  </datafield>
+  <datafield tag="980" ind1=" " ind2=" ">
+   <subfield code="2">90</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="b">356926971X</subfield>
+   <subfield code="h">OLR-HILdegruyter</subfield>
+   <subfield code="k">Vervielf&#xE4;ltigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Die Weitergabe an Dritte sowie systematisches Downloaden sind untersagt.</subfield>
+   <subfield code="x">3090</subfield>
+   <subfield code="y">z</subfield>
+   <subfield code="z">21-12-19</subfield>
+  </datafield>
+  <datafield tag="980" ind1=" " ind2=" ">
+   <subfield code="2">95</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="b">356846778X</subfield>
+   <subfield code="h">OLR-DEGRUYTER</subfield>
+   <subfield code="k">Ausdruck und Kopien sind ausschlie&#xDF;lich f&#xFC;r den eigenen wissenschaftlichen Gebrauch gestattet</subfield>
+   <subfield code="x">3095</subfield>
+   <subfield code="y">z1</subfield>
+   <subfield code="z">20-12-19</subfield>
+  </datafield>
+  <datafield tag="980" ind1=" " ind2=" ">
+   <subfield code="2">110</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="b">3569351440</subfield>
+   <subfield code="h">OLR-DEGRUYTER-EBS-2018</subfield>
+   <subfield code="k">Vervielf&#xE4;ltigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Die Weitergabe an Dritte sowie systematisches Downloaden sind untersagt.</subfield>
+   <subfield code="k">Volltextzugriff nur f&#xFC;r berechtigte Personen &#xFC;ber das Campusnetz</subfield>
+   <subfield code="l">GBV-deGruyter-PDA5EBK</subfield>
+   <subfield code="x">3110</subfield>
+   <subfield code="y">z</subfield>
+   <subfield code="z">21-12-19</subfield>
+  </datafield>
+  <datafield tag="980" ind1=" " ind2=" ">
+   <subfield code="2">120</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="b">3569704645</subfield>
+   <subfield code="k">Campusweiter Zugriff (Universit&#xE4;t Oldenburg). - Vervielf&#xE4;ltigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Keine Weitergabe an Dritte. Kein systematisches Downloaden durch Robots.</subfield>
+   <subfield code="x">0715</subfield>
+   <subfield code="y">z</subfield>
+   <subfield code="z">21-12-19</subfield>
+  </datafield>
+  <datafield tag="980" ind1=" " ind2=" ">
+   <subfield code="2">120</subfield>
+   <subfield code="1">02</subfield>
+   <subfield code="b">3586685084</subfield>
+   <subfield code="e">g</subfield>
+   <subfield code="h">alma</subfield>
+   <subfield code="x">0715</subfield>
+   <subfield code="y">z</subfield>
+   <subfield code="z">03-02-20</subfield>
+  </datafield>
+  <datafield tag="980" ind1=" " ind2=" ">
+   <subfield code="2">122</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="b">3568544091</subfield>
+   <subfield code="h">OLR-deGruyter-EBS</subfield>
+   <subfield code="k">Vervielf&#xE4;ltigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Keine Weitergabe an Dritte. Kein systematisches Downloaden durch Robots</subfield>
+   <subfield code="x">0897</subfield>
+   <subfield code="y">z</subfield>
+   <subfield code="z">20-12-19</subfield>
+  </datafield>
+  <datafield tag="980" ind1=" " ind2=" ">
+   <subfield code="2">140</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="b">3568954826</subfield>
+   <subfield code="h">OLR-deGruyter-EBS</subfield>
+   <subfield code="k">Vervielf&#xE4;ltigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Keine Weitergabe an Dritte. Kein systematisches Downloaden durch Robots</subfield>
+   <subfield code="x">0839</subfield>
+   <subfield code="y">z</subfield>
+   <subfield code="z">20-12-19</subfield>
+  </datafield>
+  <datafield tag="980" ind1=" " ind2=" ">
+   <subfield code="2">264</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="b">3571429230</subfield>
+   <subfield code="h">OLR-deGruyter-EBS</subfield>
+   <subfield code="k">Vervielf&#xE4;ltigungen (z.B. Kopien, Downloads) sind nur von einzelnen Kapiteln oder Seiten und nur zum eigenen wissenschaftlichen Gebrauch erlaubt. Keine Weitergabe an Dritte. Kein systematisches Downloaden durch Robots</subfield>
+   <subfield code="x">3264</subfield>
+   <subfield code="y">z</subfield>
+   <subfield code="z">02-01-20</subfield>
+  </datafield>
+  <datafield tag="980" ind1=" " ind2=" ">
+   <subfield code="2">2005</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="b">3673459899</subfield>
+   <subfield code="k">Zugriff nur aus dem Universit&#xE4;tsnetz</subfield>
+   <subfield code="x">21355</subfield>
+   <subfield code="y">l01</subfield>
+   <subfield code="z">28-05-20</subfield>
+  </datafield>
+  <datafield tag="980" ind1=" " ind2=" ">
+   <subfield code="2">2014</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="b">3673459902</subfield>
+   <subfield code="x">20592</subfield>
+   <subfield code="y">l01</subfield>
+   <subfield code="z">28-05-20</subfield>
+  </datafield>
+  <datafield tag="980" ind1=" " ind2=" ">
+   <subfield code="2">2021</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="b">3672514705</subfield>
+   <subfield code="x">20731</subfield>
+   <subfield code="y">l01</subfield>
+   <subfield code="z">27-05-20</subfield>
+  </datafield>
+  <datafield tag="980" ind1=" " ind2=" ">
+   <subfield code="2">2025</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="b">3672514713</subfield>
+   <subfield code="k">Campuslizenz - F&#xFC;r Mitglieder der Hochschule auch von ausserhalb des Campusnetzes via VPN oder Shibboleth verf&#xFC;gbar.</subfield>
+   <subfield code="x">20735</subfield>
+   <subfield code="y">l01</subfield>
+   <subfield code="z">27-05-20</subfield>
+  </datafield>
+  <datafield tag="980" ind1=" " ind2=" ">
+   <subfield code="2">2049</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="b">3672514721</subfield>
+   <subfield code="k">Elektronischer Volltext - nur f&#xFC;r Angeh&#xF6;rige der KH Freiburg</subfield>
+   <subfield code="l">nutzbar bis 30.06.2020</subfield>
+   <subfield code="x">20828</subfield>
+   <subfield code="y">l01</subfield>
+   <subfield code="z">27-05-20</subfield>
+  </datafield>
+  <datafield tag="980" ind1=" " ind2=" ">
+   <subfield code="2">2063</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="b">367251473X</subfield>
+   <subfield code="d">eBook de Gruyter</subfield>
+   <subfield code="e">n</subfield>
+   <subfield code="k">Elektronischer Volltext - Campuslizenz</subfield>
+   <subfield code="x">20838</subfield>
+   <subfield code="y">l01</subfield>
+   <subfield code="z">27-05-20</subfield>
+  </datafield>
+  <datafield tag="980" ind1=" " ind2=" ">
+   <subfield code="2">2108</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="b">3672514748</subfield>
+   <subfield code="d">eBook deGruyter</subfield>
+   <subfield code="k">Elektronischer Volltext - Campuslizenz</subfield>
+   <subfield code="x">20866</subfield>
+   <subfield code="y">l01</subfield>
+   <subfield code="z">27-05-20</subfield>
+  </datafield>
+  <datafield tag="980" ind1=" " ind2=" ">
+   <subfield code="2">2111</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="b">3672514756</subfield>
+   <subfield code="d">E-Book De Gruyter</subfield>
+   <subfield code="k">Elektronischer Volltext - Campuslizenz</subfield>
+   <subfield code="x">20869</subfield>
+   <subfield code="y">l01</subfield>
+   <subfield code="z">27-05-20</subfield>
+  </datafield>
+  <datafield tag="980" ind1=" " ind2=" ">
+   <subfield code="2">2118</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="b">3672514764</subfield>
+   <subfield code="d">de Gruyter</subfield>
+   <subfield code="k">Elektronischer Volltext - Campuslizenz</subfield>
+   <subfield code="x">20877</subfield>
+   <subfield code="y">l01</subfield>
+   <subfield code="z">27-05-20</subfield>
+  </datafield>
+  <datafield tag="981" ind1=" " ind2=" ">
+   <subfield code="2">11</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="r">http://erf.sbb.spk-berlin.de/han/609779974/doi.org/10.1515/9783111360362</subfield>
+  </datafield>
+  <datafield tag="981" ind1=" " ind2=" ">
+   <subfield code="2">21</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="r">https://doi.org/10.1515/9783111360362</subfield>
+  </datafield>
+  <datafield tag="981" ind1=" " ind2=" ">
+   <subfield code="2">23</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="y">E-books (deGruyter)</subfield>
+   <subfield code="r">https://doi.org/10.1515/9783111360362</subfield>
+  </datafield>
+  <datafield tag="981" ind1=" " ind2=" ">
+   <subfield code="2">30</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="r">https://doi.org/10.1515/9783111360362</subfield>
+  </datafield>
+  <datafield tag="981" ind1=" " ind2=" ">
+   <subfield code="2">31</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="r">https://doi.org/10.1515/9783111360362</subfield>
+  </datafield>
+  <datafield tag="981" ind1=" " ind2=" ">
+   <subfield code="2">34</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="r">https://doi.org/10.1515/9783111360362</subfield>
+  </datafield>
+  <datafield tag="981" ind1=" " ind2=" ">
+   <subfield code="2">65</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="y">Volltextzugang Campus</subfield>
+   <subfield code="r">https://doi.org/10.1515/9783111360362</subfield>
+  </datafield>
+  <datafield tag="981" ind1=" " ind2=" ">
+   <subfield code="2">72</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="r">http://hanproxy.gwlb.de/han/degruyter/doi.org/10.1515/9783111360362</subfield>
+  </datafield>
+  <datafield tag="981" ind1=" " ind2=" ">
+   <subfield code="2">74</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="y">Volltext, Campuszugriff</subfield>
+   <subfield code="r">https://doi.org/10.1515/9783111360362</subfield>
+  </datafield>
+  <datafield tag="981" ind1=" " ind2=" ">
+   <subfield code="2">74</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="y">Volltext, Externer Zugriff</subfield>
+   <subfield code="r">http://HAN.mh-hannover.de/han/springer-ebook/doi.org/10.1515/9783111360362</subfield>
+  </datafield>
+  <datafield tag="981" ind1=" " ind2=" ">
+   <subfield code="2">90</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="r">https://doi.org/10.1515/9783111360362</subfield>
+  </datafield>
+  <datafield tag="981" ind1=" " ind2=" ">
+   <subfield code="2">95</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="r">https://doi.org/10.1515/9783111360362</subfield>
+  </datafield>
+  <datafield tag="981" ind1=" " ind2=" ">
+   <subfield code="2">110</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="r">https://doi.org/10.1515/9783111360362</subfield>
+  </datafield>
+  <datafield tag="981" ind1=" " ind2=" ">
+   <subfield code="2">120</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="r">https://doi.org/10.1515/9783111360362</subfield>
+  </datafield>
+  <datafield tag="981" ind1=" " ind2=" ">
+   <subfield code="2">120</subfield>
+   <subfield code="1">02</subfield>
+   <subfield code="r">http://49gbv-uob-primo.hosted.exlibrisgroup.com/openurl/49GBV_UOB/UOB_services_page?u.ignore_date_coverage=true&amp;rft.mms_id=991014965618003501</subfield>
+  </datafield>
+  <datafield tag="981" ind1=" " ind2=" ">
+   <subfield code="2">122</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="r">https://doi.org/10.1515/9783111360362</subfield>
+  </datafield>
+  <datafield tag="981" ind1=" " ind2=" ">
+   <subfield code="2">140</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="r">https://doi.org/10.1515/9783111360362</subfield>
+  </datafield>
+  <datafield tag="981" ind1=" " ind2=" ">
+   <subfield code="2">264</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="r">https://doi.org/10.1515/9783111360362</subfield>
+  </datafield>
+  <datafield tag="981" ind1=" " ind2=" ">
+   <subfield code="2">2005</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="r">https://doi.org/10.1515/9783111360362</subfield>
+  </datafield>
+  <datafield tag="981" ind1=" " ind2=" ">
+   <subfield code="2">2014</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="r">https://doi.org/10.1515/9783111360362</subfield>
+  </datafield>
+  <datafield tag="981" ind1=" " ind2=" ">
+   <subfield code="2">2021</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="r">https://doi.org/10.1515/9783111360362</subfield>
+  </datafield>
+  <datafield tag="981" ind1=" " ind2=" ">
+   <subfield code="2">2025</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="r">https://doi.org/10.1515/9783111360362</subfield>
+  </datafield>
+  <datafield tag="981" ind1=" " ind2=" ">
+   <subfield code="2">2049</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="r">https://doi.org/10.1515/9783111360362</subfield>
+  </datafield>
+  <datafield tag="981" ind1=" " ind2=" ">
+   <subfield code="2">2063</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="r">https://doi.org/10.1515/9783111360362</subfield>
+  </datafield>
+  <datafield tag="981" ind1=" " ind2=" ">
+   <subfield code="2">2108</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="r">https://doi.org/10.1515/9783111360362</subfield>
+  </datafield>
+  <datafield tag="981" ind1=" " ind2=" ">
+   <subfield code="2">2111</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="r">https://doi.org/10.1515/9783111360362</subfield>
+  </datafield>
+  <datafield tag="981" ind1=" " ind2=" ">
+   <subfield code="2">2118</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="r">https://doi.org/10.1515/9783111360362</subfield>
+  </datafield>
+  <datafield tag="982" ind1=" " ind2=" ">
+   <subfield code="2">31</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="8">00</subfield>
+   <subfield code="a">deGruyter E-Book (PDA 2020)</subfield>
+  </datafield>
+  <datafield tag="983" ind1=" " ind2=" ">
+   <subfield code="2">120</subfield>
+   <subfield code="1">00</subfield>
+   <subfield code="8">99</subfield>
+   <subfield code="a">ww</subfield>
+  </datafield>
+  <datafield tag="983" ind1=" " ind2=" ">
+   <subfield code="2">2049</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="8">00</subfield>
+   <subfield code="0">(DE-627)1696742277</subfield>
+   <subfield code="a">eBook CORfree DeGruyter</subfield>
+  </datafield>
+  <datafield tag="983" ind1=" " ind2=" ">
+   <subfield code="2">2111</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="8">00</subfield>
+   <subfield code="0">(DE-627)1353370437</subfield>
+   <subfield code="a">e-Book</subfield>
+  </datafield>
+  <datafield tag="985" ind1=" " ind2=" ">
+   <subfield code="2">23</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="a">2019-01998, 2019-01999, 2019-02000, 2019-02001, 2019-02002</subfield>
+  </datafield>
+  <datafield tag="985" ind1=" " ind2=" ">
+   <subfield code="2">72</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="a">ebk1</subfield>
+  </datafield>
+  <datafield tag="995" ind1=" " ind2=" ">
+   <subfield code="2">11</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="a">DeGruyter</subfield>
+  </datafield>
+  <datafield tag="995" ind1=" " ind2=" ">
+   <subfield code="2">21</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="a">ebook_2019_degruyter_ebs</subfield>
+  </datafield>
+  <datafield tag="995" ind1=" " ind2=" ">
+   <subfield code="2">23</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="a">olr-degruyter3</subfield>
+  </datafield>
+  <datafield tag="995" ind1=" " ind2=" ">
+   <subfield code="2">30</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="a">OLR-DG-PDA</subfield>
+  </datafield>
+  <datafield tag="995" ind1=" " ind2=" ">
+   <subfield code="2">34</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="a">OLR-DG-Corona</subfield>
+  </datafield>
+  <datafield tag="995" ind1=" " ind2=" ">
+   <subfield code="2">65</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="a">OLR-ZDB-23-GBE</subfield>
+  </datafield>
+  <datafield tag="995" ind1=" " ind2=" ">
+   <subfield code="2">72</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="a">OLR-DG-PDA11SSHE</subfield>
+  </datafield>
+  <datafield tag="995" ind1=" " ind2=" ">
+   <subfield code="2">74</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="a">OLR-ESP</subfield>
+  </datafield>
+  <datafield tag="995" ind1=" " ind2=" ">
+   <subfield code="2">90</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="a">OLR-HILdegruyter</subfield>
+  </datafield>
+  <datafield tag="995" ind1=" " ind2=" ">
+   <subfield code="2">95</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="a">OLR-DEGRUYTER</subfield>
+  </datafield>
+  <datafield tag="995" ind1=" " ind2=" ">
+   <subfield code="2">110</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="a">OLR-DEGRUYTER-EBS-2018</subfield>
+  </datafield>
+  <datafield tag="995" ind1=" " ind2=" ">
+   <subfield code="2">120</subfield>
+   <subfield code="1">02</subfield>
+   <subfield code="a">alma</subfield>
+  </datafield>
+  <datafield tag="995" ind1=" " ind2=" ">
+   <subfield code="2">122</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="a">OLR-deGruyter-EBS</subfield>
+  </datafield>
+  <datafield tag="995" ind1=" " ind2=" ">
+   <subfield code="2">140</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="a">OLR-deGruyter-EBS</subfield>
+  </datafield>
+  <datafield tag="995" ind1=" " ind2=" ">
+   <subfield code="2">264</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="a">OLR-deGruyter-EBS</subfield>
+  </datafield>
+  <datafield tag="998" ind1=" " ind2=" ">
+   <subfield code="2">23</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="0">2020.02.12</subfield>
+  </datafield>
+ <format>eBook</format></record>
+
+
+<record xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.loc.gov/MARC21/slim" xsi:schemaLocation="http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd" type="Bibliographic">
+  <leader>03215cam a2200961  c4500</leader>
+  <controlfield tag="001">308466047</controlfield>
+  <controlfield tag="003">DE-627</controlfield>
+  <controlfield tag="005">20190527213002.0</controlfield>
+  <controlfield tag="007">tu</controlfield>
+  <controlfield tag="008">991228s1999    xx |||||      00| ||ger c</controlfield>
+  <datafield tag="035" ind1=" " ind2=" ">
+   <subfield code="a">(DE-627)308466047</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+   <subfield code="a">(DE-599)GBV308466047</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+   <subfield code="a">(OCoLC)313577504</subfield>
+  </datafield>
+  <datafield tag="040" ind1=" " ind2=" ">
+   <subfield code="a">DE-627</subfield>
+   <subfield code="b">ger</subfield>
+   <subfield code="c">DE-627</subfield>
+   <subfield code="e">rakwb</subfield>
+  </datafield>
+  <datafield tag="041" ind1=" " ind2=" ">
+   <subfield code="a">ger</subfield>
+  </datafield>
+  <datafield tag="044" ind1=" " ind2=" ">
+   <subfield code="c">XA-DE</subfield>
+  </datafield>
+  <datafield tag="100" ind1="1" ind2=" ">
+   <subfield code="a">Beckwith, Carol</subfield>
+   <subfield code="e">verfasserin</subfield>
+   <subfield code="4">aut</subfield>
+  </datafield>
+  <datafield tag="245" ind1="1" ind2="0">
+   <subfield code="a">Afrika</subfield>
+   <subfield code="b">Kulte, Feste, Rituale</subfield>
+   <subfield code="n">Bd. 1</subfield>
+   <subfield code="c">Carol Beckwith,  Angela Fisher</subfield>
+  </datafield>
+  <datafield tag="264" ind1=" " ind2="1">
+   <subfield code="a">M&#xFC;nchen</subfield>
+   <subfield code="b">Bucher</subfield>
+   <subfield code="c">1999</subfield>
+  </datafield>
+  <datafield tag="300" ind1=" " ind2=" ">
+   <subfield code="a">384 S</subfield>
+   <subfield code="b">&#xFC;berw. Ill</subfield>
+  </datafield>
+  <datafield tag="336" ind1=" " ind2=" ">
+   <subfield code="a">Text</subfield>
+   <subfield code="b">txt</subfield>
+   <subfield code="2">rdacontent</subfield>
+  </datafield>
+  <datafield tag="337" ind1=" " ind2=" ">
+   <subfield code="a">ohne Hilfsmittel zu benutzen</subfield>
+   <subfield code="b">n</subfield>
+   <subfield code="2">rdamedia</subfield>
+  </datafield>
+  <datafield tag="338" ind1=" " ind2=" ">
+   <subfield code="a">Band</subfield>
+   <subfield code="b">nc</subfield>
+   <subfield code="2">rdacarrier</subfield>
+  </datafield>
+  <datafield tag="700" ind1="1" ind2=" ">
+   <subfield code="a">Fisher, Angela</subfield>
+   <subfield code="e">verfasserin</subfield>
+   <subfield code="4">aut</subfield>
+  </datafield>
+  <datafield tag="773" ind1="1" ind2="8">
+   <subfield code="w">(DE-627)304779296</subfield>
+   <subfield code="g">Bd. 1</subfield>
+   <subfield code="q">1.1999</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_31</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">SYSFLAG_1</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_KXP</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_34</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_65</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_66</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_127</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_135</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_203</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_203_m01608</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_283</subfield>
+  </datafield>
+  <datafield tag="951" ind1=" " ind2=" ">
+   <subfield code="a">MV</subfield>
+  </datafield>
+  <datafield tag="980" ind1=" " ind2=" ">
+   <subfield code="2">31</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="b">383241693</subfield>
+   <subfield code="f">J 24</subfield>
+   <subfield code="d">GGR:PA:1000:Bec:1:1999</subfield>
+   <subfield code="e">d</subfield>
+   <subfield code="x">0027</subfield>
+   <subfield code="y">z</subfield>
+   <subfield code="z">27-03-00</subfield>
+  </datafield>
+  <datafield tag="980" ind1=" " ind2=" ">
+   <subfield code="2">34</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="b">372754767</subfield>
+   <subfield code="f">18/285</subfield>
+   <subfield code="d">Ka.99.1</subfield>
+   <subfield code="e">c</subfield>
+   <subfield code="x">3551</subfield>
+   <subfield code="y">zi005</subfield>
+   <subfield code="z">28-12-99</subfield>
+  </datafield>
+  <datafield tag="980" ind1=" " ind2=" ">
+   <subfield code="2">65</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="b">393039412</subfield>
+   <subfield code="d">00 C 1 (1)</subfield>
+   <subfield code="e">d</subfield>
+   <subfield code="x">0003</subfield>
+   <subfield code="y">k3</subfield>
+   <subfield code="z">20-06-00</subfield>
+  </datafield>
+  <datafield tag="980" ind1=" " ind2=" ">
+   <subfield code="2">66</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="b">569022886</subfield>
+   <subfield code="d">FH 2 Bec</subfield>
+   <subfield code="e">i</subfield>
+   <subfield code="d">C 915</subfield>
+   <subfield code="x">3066</subfield>
+   <subfield code="y">z</subfield>
+   <subfield code="z">02-09-02</subfield>
+  </datafield>
+  <datafield tag="980" ind1=" " ind2=" ">
+   <subfield code="2">127</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="b">502594950</subfield>
+   <subfield code="f">18/258-Gro2</subfield>
+   <subfield code="d">Ck, Beck, Afri, (1)</subfield>
+   <subfield code="e">c</subfield>
+   <subfield code="x">3564</subfield>
+   <subfield code="y">zt25801</subfield>
+   <subfield code="z">28-06-01</subfield>
+  </datafield>
+  <datafield tag="980" ind1=" " ind2=" ">
+   <subfield code="2">135</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="b">682753661</subfield>
+   <subfield code="f">AR</subfield>
+   <subfield code="d">G/198</subfield>
+   <subfield code="x">3313</subfield>
+   <subfield code="y">k</subfield>
+   <subfield code="z">10-11-04</subfield>
+  </datafield>
+  <datafield tag="980" ind1=" " ind2=" ">
+   <subfield code="2">203</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="b">914706950</subfield>
+   <subfield code="f">H16</subfield>
+   <subfield code="d">Af 172 d / 1</subfield>
+   <subfield code="e">c</subfield>
+   <subfield code="x">3522</subfield>
+   <subfield code="y">zm01608</subfield>
+   <subfield code="z">11-12-08</subfield>
+  </datafield>
+  <datafield tag="980" ind1=" " ind2=" ">
+   <subfield code="2">283</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="b">404897169</subfield>
+   <subfield code="d">GN645 Beck1999/1</subfield>
+   <subfield code="e">s</subfield>
+   <subfield code="x">3283</subfield>
+   <subfield code="y">z</subfield>
+   <subfield code="z">29-09-00</subfield>
+  </datafield>
+  <datafield tag="982" ind1=" " ind2=" ">
+   <subfield code="2">203</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="8">00</subfield>
+   <subfield code="a">Afrika</subfield>
+  </datafield>
+  <datafield tag="982" ind1=" " ind2=" ">
+   <subfield code="2">203</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="8">01</subfield>
+   <subfield code="a">Gesellschaft</subfield>
+  </datafield>
+  <datafield tag="982" ind1=" " ind2=" ">
+   <subfield code="2">203</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="8">02</subfield>
+   <subfield code="a">Religion</subfield>
+  </datafield>
+  <datafield tag="982" ind1=" " ind2=" ">
+   <subfield code="2">203</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="8">03</subfield>
+   <subfield code="a">Kindheit</subfield>
+  </datafield>
+  <datafield tag="982" ind1=" " ind2=" ">
+   <subfield code="2">203</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="8">04</subfield>
+   <subfield code="a">Beschneidung</subfield>
+  </datafield>
+  <datafield tag="982" ind1=" " ind2=" ">
+   <subfield code="2">203</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="8">05</subfield>
+   <subfield code="a">Ritual</subfield>
+  </datafield>
+  <datafield tag="982" ind1=" " ind2=" ">
+   <subfield code="2">203</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="8">06</subfield>
+   <subfield code="a">Pubert&#xE4;tsritual</subfield>
+  </datafield>
+  <datafield tag="982" ind1=" " ind2=" ">
+   <subfield code="2">203</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="8">07</subfield>
+   <subfield code="a">Reiferitual</subfield>
+  </datafield>
+  <datafield tag="982" ind1=" " ind2=" ">
+   <subfield code="2">203</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="8">08</subfield>
+   <subfield code="a">Brauch</subfield>
+  </datafield>
+  <datafield tag="982" ind1=" " ind2=" ">
+   <subfield code="2">203</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="8">09</subfield>
+   <subfield code="a">Hochzeitsbrauch</subfield>
+  </datafield>
+  <datafield tag="982" ind1=" " ind2=" ">
+   <subfield code="2">203</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="8">10</subfield>
+   <subfield code="a">Ehe</subfield>
+  </datafield>
+  <datafield tag="982" ind1=" " ind2=" ">
+   <subfield code="2">203</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="8">11</subfield>
+   <subfield code="a">K&#xF6;nigtum</subfield>
+  </datafield>
+  <datafield tag="982" ind1=" " ind2=" ">
+   <subfield code="2">203</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="8">12</subfield>
+   <subfield code="a">Afrikaner</subfield>
+  </datafield>
+  <datafield tag="982" ind1=" " ind2=" ">
+   <subfield code="2">283</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="8">00</subfield>
+   <subfield code="a">Africa</subfield>
+  </datafield>
+  <datafield tag="982" ind1=" " ind2=" ">
+   <subfield code="2">283</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="8">01</subfield>
+   <subfield code="a">Rites and ceremonies</subfield>
+  </datafield>
+  <datafield tag="982" ind1=" " ind2=" ">
+   <subfield code="2">283</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="8">02</subfield>
+   <subfield code="a">Ritual</subfield>
+  </datafield>
+  <datafield tag="982" ind1=" " ind2=" ">
+   <subfield code="2">283</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="8">03</subfield>
+   <subfield code="a">Marriage rites and customs</subfield>
+  </datafield>
+  <datafield tag="982" ind1=" " ind2=" ">
+   <subfield code="2">283</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="8">04</subfield>
+   <subfield code="a">Religious life and customs</subfield>
+  </datafield>
+  <datafield tag="982" ind1=" " ind2=" ">
+   <subfield code="2">283</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="8">05</subfield>
+   <subfield code="a">Initiation rites</subfield>
+  </datafield>
+  <datafield tag="982" ind1=" " ind2=" ">
+   <subfield code="2">283</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="8">06</subfield>
+   <subfield code="a">Social life and customs</subfield>
+  </datafield>
+  <datafield tag="983" ind1=" " ind2=" ">
+   <subfield code="2">203</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="8">00</subfield>
+   <subfield code="a">Af 171</subfield>
+  </datafield>
+  <datafield tag="983" ind1=" " ind2=" ">
+   <subfield code="2">203</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="8">01</subfield>
+   <subfield code="a">Af 205</subfield>
+  </datafield>
+  <datafield tag="983" ind1=" " ind2=" ">
+   <subfield code="2">283</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="8">00</subfield>
+   <subfield code="a">GN643</subfield>
+  </datafield>
+  <datafield tag="983" ind1=" " ind2=" ">
+   <subfield code="2">283</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="8">01</subfield>
+   <subfield code="a">A35</subfield>
+  </datafield>
+  <datafield tag="984" ind1=" " ind2=" ">
+   <subfield code="2">31</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="a">27$007722303</subfield>
+  </datafield>
+  <datafield tag="984" ind1=" " ind2=" ">
+   <subfield code="2">34</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="a">GE017551</subfield>
+  </datafield>
+  <datafield tag="984" ind1=" " ind2=" ">
+   <subfield code="2">65</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="a">3$002548011</subfield>
+  </datafield>
+  <datafield tag="984" ind1=" " ind2=" ">
+   <subfield code="2">66</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="a">HA125$00526541</subfield>
+  </datafield>
+  <datafield tag="984" ind1=" " ind2=" ">
+   <subfield code="2">127</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="a">0000051648</subfield>
+  </datafield>
+  <datafield tag="984" ind1=" " ind2=" ">
+   <subfield code="2">135</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="a">682753661</subfield>
+  </datafield>
+  <datafield tag="984" ind1=" " ind2=" ">
+   <subfield code="2">283</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="a">3283$001480X</subfield>
+  </datafield>
+  <datafield tag="985" ind1=" " ind2=" ">
+   <subfield code="2">31</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="a">A39217/1</subfield>
+  </datafield>
+  <datafield tag="985" ind1=" " ind2=" ">
+   <subfield code="2">34</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="a">99.649</subfield>
+  </datafield>
+  <datafield tag="985" ind1=" " ind2=" ">
+   <subfield code="2">66</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="a">BG 02/646</subfield>
+  </datafield>
+  <datafield tag="985" ind1=" " ind2=" ">
+   <subfield code="2">127</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="a">2001:574</subfield>
+  </datafield>
+  <datafield tag="985" ind1=" " ind2=" ">
+   <subfield code="2">135</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="a">2004/1278</subfield>
+  </datafield>
+  <datafield tag="985" ind1=" " ind2=" ">
+   <subfield code="2">203</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="a">00:327</subfield>
+  </datafield>
+  <datafield tag="985" ind1=" " ind2=" ">
+   <subfield code="2">283</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="a">2000/1725,1</subfield>
+  </datafield>
+ <format>Book</format></record>
+
+
+<record xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.loc.gov/MARC21/slim" xsi:schemaLocation="http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd" type="Bibliographic">
+  <leader>02564naa a22007932  4500</leader>
+  <controlfield tag="001">1455205524</controlfield>
+  <controlfield tag="003">DE-627</controlfield>
+  <controlfield tag="005">20130702110621.0</controlfield>
+  <controlfield tag="007">tu</controlfield>
+  <controlfield tag="008">130702s2012    xx |||||      00| ||ger c</controlfield>
+  <datafield tag="035" ind1=" " ind2=" ">
+   <subfield code="a">(DE-627)1455205524</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+   <subfield code="a">(DE-576)38520552X</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+   <subfield code="a">(DE-599)BSZ38520552X</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+   <subfield code="a">(DE-615)00854838</subfield>
+  </datafield>
+  <datafield tag="040" ind1=" " ind2=" ">
+   <subfield code="a">DE-627</subfield>
+   <subfield code="b">ger</subfield>
+   <subfield code="c">DE-627</subfield>
+   <subfield code="e">rakwb</subfield>
+  </datafield>
+  <datafield tag="041" ind1=" " ind2=" ">
+   <subfield code="a">ger</subfield>
+  </datafield>
+  <datafield tag="084" ind1=" " ind2=" ">
+   <subfield code="a">SB07</subfield>
+   <subfield code="2">FIV</subfield>
+  </datafield>
+  <datafield tag="084" ind1=" " ind2=" ">
+   <subfield code="a">RE</subfield>
+   <subfield code="2">FIV</subfield>
+  </datafield>
+  <datafield tag="100" ind1="1" ind2=" ">
+   <subfield code="a">Berensmann, Kathrin</subfield>
+   <subfield code="e">verfasserin</subfield>
+   <subfield code="4">aut</subfield>
+  </datafield>
+  <datafield tag="245" ind1="1" ind2="0">
+   <subfield code="a">AfDB - Afrikanische Entwicklungsbank</subfield>
+   <subfield code="c">Kathrin Berensmann</subfield>
+  </datafield>
+  <datafield tag="264" ind1=" " ind2="1">
+   <subfield code="c">2012</subfield>
+  </datafield>
+  <datafield tag="300" ind1=" " ind2=" ">
+   <subfield code="e">Lit. S. 42-43</subfield>
+  </datafield>
+  <datafield tag="336" ind1=" " ind2=" ">
+   <subfield code="a">Text</subfield>
+   <subfield code="b">txt</subfield>
+   <subfield code="2">rdacontent</subfield>
+  </datafield>
+  <datafield tag="337" ind1=" " ind2=" ">
+   <subfield code="a">ohne Hilfsmittel zu benutzen</subfield>
+   <subfield code="b">n</subfield>
+   <subfield code="2">rdamedia</subfield>
+  </datafield>
+  <datafield tag="338" ind1=" " ind2=" ">
+   <subfield code="a">Band</subfield>
+   <subfield code="b">nc</subfield>
+   <subfield code="2">rdacarrier</subfield>
+  </datafield>
+  <datafield tag="591" ind1=" " ind2=" ">
+   <subfield code="a">IMD-Felder und 1131 maschinell erg&#xE4;nzt (SWB)</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="4">
+   <subfield code="a">Afrika</subfield>
+   <subfield code="x">Internationale Organisation</subfield>
+   <subfield code="x">African Development Bank (Abidjan)</subfield>
+   <subfield code="x">Entwicklung internationalen Akteurs</subfield>
+   <subfield code="x">Entwicklungsperspektive und -tendenz</subfield>
+  </datafield>
+  <datafield tag="773" ind1="0" ind2="8">
+   <subfield code="i">In</subfield>
+   <subfield code="t">Handbuch Internationale Organisationen</subfield>
+   <subfield code="d">M&#xFC;nchen : Oldenbourg, 2012</subfield>
+   <subfield code="g">, Seite 38-43</subfield>
+   <subfield code="h">VI, 311 S.</subfield>
+   <subfield code="w">(DE-627)525481273</subfield>
+   <subfield code="w">(DE-576)262622378</subfield>
+   <subfield code="z">9783486583106</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_2040</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">SYSFLAG_1</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_KXP</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_11</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_20</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_21</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_22</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_24</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_26</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_31</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_34</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_40</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_60</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_62</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_63</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_65</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_69</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_70</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_90</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_100</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_120</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_121</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_130</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_131</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_132</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_138</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_227</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_231</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_274</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_276</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_285</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_ILN_2470</subfield>
+  </datafield>
+  <datafield tag="936" ind1="u" ind2="w">
+   <subfield code="h">38-43</subfield>
+  </datafield>
+  <datafield tag="951" ind1=" " ind2=" ">
+   <subfield code="a">AR</subfield>
+  </datafield>
+  <datafield tag="952" ind1=" " ind2=" ">
+   <subfield code="h">38-43</subfield>
+  </datafield>
+  <datafield tag="980" ind1=" " ind2=" ">
+   <subfield code="2">2040</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="b">2752612095</subfield>
+   <subfield code="d">Hp IV A 102</subfield>
+   <subfield code="x">20821</subfield>
+   <subfield code="y">l01</subfield>
+   <subfield code="z">27-06-12</subfield>
+  </datafield>
+  <datafield tag="980" ind1=" " ind2=" ">
+   <subfield code="2">2470</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="b">2758341859</subfield>
+   <subfield code="e">p</subfield>
+   <subfield code="x">21737</subfield>
+   <subfield code="y">l01</subfield>
+   <subfield code="z">27-06-12</subfield>
+  </datafield>
+  <datafield tag="980" ind1=" " ind2=" ">
+   <subfield code="2">2470</subfield>
+   <subfield code="1">02</subfield>
+   <subfield code="b">2808330758</subfield>
+   <subfield code="e">n</subfield>
+   <subfield code="x">21737</subfield>
+   <subfield code="y">l02</subfield>
+   <subfield code="z">31-01-14</subfield>
+  </datafield>
+  <datafield tag="982" ind1=" " ind2=" ">
+   <subfield code="2">2470</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="8">00</subfield>
+   <subfield code="a">Afrika; Internationale Organisation; African Development Bank (Abidjan); Entwicklung internationalen Akteurs; Entwicklungsperspektive und -tendenz</subfield>
+  </datafield>
+  <datafield tag="983" ind1=" " ind2=" ">
+   <subfield code="2">2470</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="8">00</subfield>
+   <subfield code="a">SB07 Internationale Organisationen/Institutionen</subfield>
+  </datafield>
+  <datafield tag="983" ind1=" " ind2=" ">
+   <subfield code="2">2470</subfield>
+   <subfield code="1">01</subfield>
+   <subfield code="8">01</subfield>
+   <subfield code="a">RE Afrika (insgesamt)</subfield>
+  </datafield>
+ <format>Article</format></record>
+
+
+<record xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.loc.gov/MARC21/slim" xsi:schemaLocation="http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd" type="Bibliographic">
+  <leader>03614nab a22004092  4500</leader>
+  <controlfield tag="001">DOAJ048062405</controlfield>
+  <controlfield tag="003">DE-627</controlfield>
+  <controlfield tag="005">20200523091805.0</controlfield>
+  <controlfield tag="007">cr uuu---uuuuu</controlfield>
+  <controlfield tag="008">200523s2012    xx |||||o     00| ||eng c</controlfield>
+  <datafield tag="024" ind1="7" ind2=" ">
+   <subfield code="a">10.1016/j.afju.2012.07.003</subfield>
+   <subfield code="2">doi</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+   <subfield code="a">(DE-627)DOAJ048062405</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+   <subfield code="a">(DE-599)DOAJbef345ed960246e5a25b1682866cf1c5</subfield>
+  </datafield>
+  <datafield tag="040" ind1=" " ind2=" ">
+   <subfield code="a">DE-627</subfield>
+   <subfield code="b">ger</subfield>
+   <subfield code="c">DE-627</subfield>
+   <subfield code="e">rakwb</subfield>
+  </datafield>
+  <datafield tag="041" ind1=" " ind2=" ">
+   <subfield code="a">eng</subfield>
+  </datafield>
+  <datafield tag="050" ind1=" " ind2="0">
+   <subfield code="a">RC870-923</subfield>
+  </datafield>
+  <datafield tag="100" ind1="0" ind2=" ">
+   <subfield code="a">G. Afrika Gasana</subfield>
+   <subfield code="e">verfasserin</subfield>
+   <subfield code="4">aut</subfield>
+  </datafield>
+  <datafield tag="245" ind1="1" ind2="0">
+   <subfield code="a">Pattern of presentation and management of patients with undescended testis at Kilimanjaro Christian Medical Center, Tanzania</subfield>
+  </datafield>
+  <datafield tag="264" ind1=" " ind2="1">
+   <subfield code="c">2012</subfield>
+  </datafield>
+  <datafield tag="336" ind1=" " ind2=" ">
+   <subfield code="a">Text</subfield>
+   <subfield code="b">txt</subfield>
+   <subfield code="2">rdacontent</subfield>
+  </datafield>
+  <datafield tag="337" ind1=" " ind2=" ">
+   <subfield code="a">Computermedien</subfield>
+   <subfield code="b">c</subfield>
+   <subfield code="2">rdamedia</subfield>
+  </datafield>
+  <datafield tag="338" ind1=" " ind2=" ">
+   <subfield code="a">Online-Ressource</subfield>
+   <subfield code="b">cr</subfield>
+   <subfield code="2">rdacarrier</subfield>
+  </datafield>
+  <datafield tag="520" ind1=" " ind2=" ">
+   <subfield code="a">Objective: To assess the pattern or presentation, management and advice given to the parents or guardians of patients with undescended testes (UDT) at Kilimanjaro Christian Medical Center, Tanzania. Subjects and methods: From July 2010 to May 2011, 30 patients with UDT were prospectively evaluated regarding age at surgery, place of birth, information given to parents or guardians, side and site affected, results of ultrasonography, findings on surgical exploration, follow-up and surgical outcome. Results: The median age at surgery was 6 years (range 1&#x2013;36 years), 4 patients (13.3%) had orchidopexy before 2 years of age, 6 (20%) before 5 years and 4 (13.3%) after 18 years of age. The UDT was on the right side in 56.7%, on the left side in 26.7%, bilateral in 16.7%, in the inguinal region in 70% and in the abdomen in 30%. An associated malformation was found in 53.5% of patients: a hernia sac in 13 (43.3%), hypospadias in 2 (6.7%) and a hydrocele in 1 (3.3%). The UDT was detected by the parents in 13 cases (43.3%), by the patient himself in 9 (30%) and by health care staff in 8 cases (26.7%). Only 10 parents (33.3%) received advice from health care staff: 6 were advised for surgery and 4 were advised to await spontaneous descent. Preoperative ultrasonography was false negative in 56% of cases. Orchidopexy was performed in 28 (93.3%) patients (the testis was secured in the scrotum in 23 and in the high inguino-scrotal position in 5), and 2 (6.7%) underwent orchidectomy. At 3-month follow-up the testes were situated in the scrotum (not retracted) in 25 patients (3 were lost to follow-up). Conclusions: The late presentation detected in this study is alarming, because the majority of patients were diagnosed and treated after 2 years of age. The role of ultrasound in diagnosis of UDT is limited. Health care workers should perform neonatal examination to detect UDT and inform parents that early correction of UDT will decrease the risk of infertility and facilitate future examination to detect the development of testicular malignancy.</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="4">
+   <subfield code="a">Undescended testis</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="4">
+   <subfield code="a">Testis</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="4">
+   <subfield code="a">Infertility orchidopexy</subfield>
+  </datafield>
+  <datafield tag="653" ind1=" " ind2="0">
+   <subfield code="a">Diseases of the genitourinary system. Urology</subfield>
+  </datafield>
+  <datafield tag="700" ind1="0" ind2=" ">
+   <subfield code="a">K.A. Mteta</subfield>
+   <subfield code="e">verfasserin</subfield>
+   <subfield code="4">aut</subfield>
+  </datafield>
+  <datafield tag="773" ind1="0" ind2="8">
+   <subfield code="i">In</subfield>
+   <subfield code="t">African Journal of Urology</subfield>
+   <subfield code="d">SpringerOpen, 2016</subfield>
+   <subfield code="g">18(2012), 3, Seite 124-126</subfield>
+   <subfield code="w">(DE-627)DOAJ044340818</subfield>
+   <subfield code="x">11105704</subfield>
+  </datafield>
+  <datafield tag="856" ind1="4" ind2="0">
+   <subfield code="u">https://doi.org/10.1016/j.afju.2012.07.003</subfield>
+   <subfield code="z">Kostenfrei</subfield>
+  </datafield>
+  <datafield tag="856" ind1="4" ind2="0">
+   <subfield code="u">https://doaj.org/article/bef345ed960246e5a25b1682866cf1c5</subfield>
+   <subfield code="z">Kostenfrei</subfield>
+  </datafield>
+  <datafield tag="856" ind1="4" ind2="0">
+   <subfield code="u">http://www.sciencedirect.com/science/article/pii/S111057041200046X</subfield>
+   <subfield code="z">Kostenfrei</subfield>
+  </datafield>
+  <datafield tag="856" ind1="4" ind2="2">
+   <subfield code="u">https://doaj.org/toc/1110-5704</subfield>
+   <subfield code="y">Journal toc</subfield>
+   <subfield code="z">Kostenfrei</subfield>
+  </datafield>
+  <datafield tag="912" ind1=" " ind2=" ">
+   <subfield code="a">GBV_DOAJ</subfield>
+  </datafield>
+  <datafield tag="936" ind1="u" ind2="w">
+   <subfield code="d">18</subfield>
+   <subfield code="j">2012</subfield>
+   <subfield code="e">3</subfield>
+   <subfield code="h">124-126</subfield>
+  </datafield>
+  <datafield tag="951" ind1=" " ind2=" ">
+   <subfield code="a">AR</subfield>
+  </datafield>
+  <datafield tag="952" ind1=" " ind2=" ">
+   <subfield code="d">18</subfield>
+   <subfield code="j">2012</subfield>
+   <subfield code="e">3</subfield>
+   <subfield code="h">124-126</subfield>
+  </datafield>
+ <format>electronic Article</format></record>
+
+</collection>

@@ -27,9 +27,14 @@
  {if $searchHits < 1}
   <div style="font-size:35px; float:left; padding:10px; margin:5px; margin-bottom:100px;display:block;   background-color:#EFEFEF">B</div>Eine neue Suche starten:<br><br>
  {/if}
-
+     <div class="text2" style="text-align: center">
+         <a  target="_blank"   id ="FButton2"  href="https://katalog.haw-hamburg.de/?lmsid={$URLID}&lmsurl={$URL}"> <button style="padding:20px;" class="ui-button ui-widget ui-corner-all" > Im HAW-Katalog recherchieren und die Literaturliste erstellen       </button></a>
+     </div>
  <div class="text2">
    <ul>
+
+       <li>
+           Um Medien zu Ihren Semesterapparat hinzuzufügen, recherchieren Sie bitte im HAW-Katalog, erstellen dort eine Literaturliste und speichern diese in Ihrem Nutzerkonto.       </li>
      <li> Medienliste aus dem HAW-Katalog übernehmen<BR></li></ul>
      <form action="index.php" method="get">
          <div class="text2" style="text-align: center;">
