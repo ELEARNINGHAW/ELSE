@@ -28,12 +28,11 @@
   <div style="font-size:35px; float:left; padding:10px; margin:5px; margin-bottom:100px;display:block;   background-color:#EFEFEF">B</div>Eine neue Suche starten:<br><br>
  {/if}
      <div class="text2" style="text-align: center">
-         <a  target="_blank"   id ="FButton2"  href="https://katalog.haw-hamburg.de/?lmsid={$URLID}&lmsurl={$URL}"> <button style="padding:20px;" class="ui-button ui-widget ui-corner-all" > Im HAW-Katalog recherchieren und die Literaturliste erstellen       </button></a>
+         <a  target="_blank"   id ="FButton2"  href="https://katalog.haw-hamburg.de/vufind/?lmsid={$URLID}&lmsurl={$URL}"> <button style="padding:20px;" class="ui-button ui-widget ui-corner-all" > Im HAW-Katalog recherchieren und die Literaturliste erstellen       </button></a>
      </div>
  <div class="text2">
    <ul>
-
-       <li>
+     <li>
            Um Medien zu Ihren Semesterapparat hinzuzufügen, recherchieren Sie bitte im HAW-Katalog, erstellen dort eine Literaturliste und speichern diese in Ihrem Nutzerkonto.       </li>
      <li> Medienliste aus dem HAW-Katalog übernehmen<BR></li></ul>
      <form action="index.php" method="get">
@@ -46,10 +45,10 @@
          <input type="hidden" name="dc_collection_id" value="{$collection.dc_collection_id}">
      </form>
      </div>
-
+<!--
      <hr>
  <div class="text2"  style="display: block;" >
-     <hr>
+
 <ul><li>
     Um ein Medium direkt in Ihren Semesterapparat hinzuzufügen,<br />recherchieren Sie nun bitte im HAW Bibliothekskatalog.
     </li>
@@ -63,7 +62,7 @@
  <div class="text2" style="text-align: center">
    <a  onClick="$('#FButton').spin('modal');"  id ="FButton"  href="https://elsehaw.beluga-core.de/vufind/?lmsid={$URLID}&lmsurl={$URL}"> <button style="padding:20px;" class="ui-button ui-widget ui-corner-all" > Im HAW-Katalog recherchieren und die Merkliste füllen      </button></a>
  </div>
-
+     -->
  <div class="text2">
  <hr>
   <ul>

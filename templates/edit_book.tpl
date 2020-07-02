@@ -4,6 +4,8 @@
 {else}                                {$color= "AAA"} {$bw ="1"}
 {/if}
 
+{if $maxElement > 0 OR $medium.doc_type_id == 16}
+
 {$SAready    = $DOC_TYPE[ $medium.doc_type_id ][ 'SA-ready'    ] }
 {$doctypetxt = $DOC_TYPE[ $medium.doc_type_id ][ 'description' ] }
 
@@ -11,6 +13,7 @@
 {if ($medium.shelf_remain == 1)}  {$c1 = 'checked="checked"' } {else} {$c1 = ''} {/if}
 {if ($medium.shelf_remain == 2)}  {$c2 = 'checked="checked"' } {else} {$c2 = ''} {/if}
 {if ($medium.shelf_remain == 3)}  {$c3 = 'checked="checked"' } {else} {$c3 = ''} {/if}
+{if ($medium.shelf_remain == 4)}  {$c4 = 'checked="checked"' } {else} {$c4 = ''} {/if}
 
 
 {if $medium.doc_type_id == 16 }
@@ -26,7 +29,7 @@
         <span  style="position:relative; font-size:25px; float:right; top:-18px; padding-right: 15px; " >  {$currentElement+1}/{$maxElement} </span>
     </h5>
 {/if}
-
+{/if}
 <div  style="margin:10px; margin-top:0px;  padding:10px; border:solid 1px black; ">
 <form  action="index.php" method="get">
 
@@ -52,7 +55,7 @@
 
 <table style="text-align: left; width: 100%;" border="0"  >
 <tbody>
-
+{if $maxElement > 0 OR $medium.doc_type_id == 16}
 {* SPEICHERBUTTON: ALLE  *}
 <tr><td class = "editmedia">Medientyp: </td><td> [{$medium.doc_type_id  }] {$doctypetxt} </td>
  <td rowspan="10" >   <input style="width:125px; height:50px;" name="ok" value="&nbsp;&nbsp;&nbsp;SPEICHERN&nbsp;&nbsp;&nbsp;" type="submit"> </td>
@@ -105,6 +108,17 @@
                                         <td><textarea cols="60" rows="5" name="notes_to_staff">{$medium.notes_to_staff|escape}</textarea>  </td></tr>
 {/if}
 
+{else}<tr><td>
+    <input type = "hidden" name = "dc_collection_id" value = "{$collection.dc_collection_id}" >
+    <input type = "hidden" name = "item"             value = "collection"                          >
+    <input type = "hidden" name = "loc"              value = "1"                              >   {* loc ist an dieser Stelle noch nicht definiert, deshalb standard = 1 *}
+    <input type = "hidden" name = "action"           value = "show_collection"                           >
+    </td>
+    </tr>
+    <tr><td> Keine Medien vorhanden. </td>
+        <td rowspan="10" >   <input style="width:125px; height:50px;" name="ok" value="&nbsp;&nbsp;&nbsp;Weiter&nbsp;&nbsp;&nbsp;" type="submit"> </td>
+    </tr>
+{/if}
 </tbody>
 </table>
 <br>

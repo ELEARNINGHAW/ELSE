@@ -407,8 +407,6 @@ function lmsDownload( $I )
   $url = $url ."&format=".$this -> conf [SRU][ 'recordSchema' ];                                                # deb( $url );
  # deb($url,1);
   
-  #  $url = 'https://haw.beluga-core.de/vufind/Cart/lmsdownload?lmsid=V1MuLlNBLlMxOSUyMFRIR1JfQkFTQSUyMyUyMyUyM2FkbWlu&format=marc21';
-
   $medList = $this -> LMSLoader( $url );                                                          # deb( $medList,1 );
 
   $medList = $this -> UTIL -> xml2array( $medList );
@@ -430,22 +428,23 @@ function lmsDownload( $I )
                                                 $m -> calcDocTypeID();
                                                 $m -> calcItem();
     }
-
-    $ret[] = $m;
+  
+    $isDublette = $this->checkDoublette($I['currentCollection']->get_collection_id(),  $m -> get_ppn() );
+    if (! $isDublette )
+    {
+      $ret[] = $m;
+    }
   }
-
-
+ 
   $_SESSION[ 'books' ][ 'currentCollection' ] = $lmsDownload[ 1 ];
   $_SESSION[ 'books' ][ 'booksHitList'      ] = $this -> UTIL -> xml2array( $ret );
   $_SESSION[ 'books' ][ 'currentElement'    ] = 0;
   $_SESSION[ 'books' ][ 'maxElement'        ] = sizeof($_SESSION[ 'books' ][ 'booksHitList' ]);
- #  deb($_SESSION[ 'books' ]);
+ 
   $collection_dc_collection_id = $I[ 'currentCollection' ] -> get_dc_collection_id();
   $user_role_id                = $I[ 'currentUser'       ] -> get_role_encode();
   $b_ppn                       = $_SESSION[ 'books'      ][ 'booksHitList' ][ 0 ][ 'ppn' ];
-
-  #deb($collection_dc_collection_id,1);
-
+ 
   $_SESSION[ 'books' ][ 'url' ] =  "index.php?ppn=$b_ppn&item=media&loc=1&action=annoteNewMedia&dc_collection_id=$collection_dc_collection_id&mode=new&r=$user_role_id";
   $this -> RENDERER -> doRedirect( $_SESSION[ 'books' ][ 'url' ]  );
 }
@@ -456,16 +455,12 @@ function getMediaList( $I )
     $conf = $this -> conf;
 
     $mediaListID  =  $I[ 'operator' ] -> get_mediaListID() ;
-    # $mediaListID  =  16 ;
-    # $this -> conf [ 'SRU' ][ 'vuFindListURL'    ]  = 'https://dev.haw.beluga-core.de/vufind/MyResearch/MyList/';
-    # $this -> conf [ 'SRU' ][ 'vuFindListParams' ]  = '?export=true&format=turbomarc';
+ 
 
     $url =  $this -> conf ['SRU'][ 'vuFindListURL'    ]  .$mediaListID  . $this -> conf ['SRU'][ 'vuFindListParams' ];                                                # deb( $url );
-  
- # deb( $url,1);
-    
+
     $medList = $this -> LMSLoader( $url );                                                          # deb( $medList,1 );
-   # deb( $medList,1);
+ 
     $medList = $this -> UTIL -> xml2array( $medList );
 
     foreach ( $medList as $med )
@@ -485,14 +480,15 @@ function getMediaList( $I )
             $m -> calcDocTypeID();
             $m -> calcItem();
         }
-  
-        #$this->checkDoublette('DMI.MD.W19 ET1.LAB_16',  $m -> get_ppn() );
-        
-        $ret[] = $m;
+ 
+        $isDublette = $this->checkDoublette($I['currentCollection']->get_collection_id(),  $m -> get_ppn() );
+        if (! $isDublette )
+        {
+          $ret[] = $m;
+        }
     }
 
-    #deb($ret);
-  #  $_SESSION[ 'books' ][ 'currentCollection' ] = $lmsDownload[ 1 ];
+ 
     $_SESSION[ 'books' ][ 'booksHitList'      ] = $this -> UTIL -> xml2array( $ret );
     $_SESSION[ 'books' ][ 'currentElement'    ] = 0;
     $_SESSION[ 'books' ][ 'maxElement'        ] = sizeof($_SESSION[ 'books' ][ 'booksHitList' ]);
@@ -501,16 +497,12 @@ function getMediaList( $I )
     $user_role_id                = $I[ 'currentUser'       ] -> get_role_encode();
     $b_ppn                       = $_SESSION[ 'books'      ][ 'booksHitList' ][ 0 ][ 'ppn' ];
 
-    #deb($collection_dc_collection_id,1);
+ 
 
     $_SESSION[ 'books' ][ 'url' ] =  "index.php?ppn=$b_ppn&item=media&loc=1&action=annoteNewMedia&dc_collection_id=$collection_dc_collection_id&mode=new&r=$user_role_id";
-    #deb($_SESSION[ 'books' ],1);
+ 
     $this -> RENDERER -> doRedirect( $_SESSION[ 'books' ][ 'url' ]  );
 }
-
-
-
-
 
 function LMSLoader( $url )
 {
@@ -523,7 +515,7 @@ function LMSLoader( $url )
   #$url = 'https://haw.beluga-core.de/vufind/Cart/lmsdownload?lmsid='.$_SESSION['bc_urlID'].'&format=marc21';
 
   ### ------ TEST -------
-  # $url = 'X:\xampp\htdocs\ELSE-DEV\htdocs\haw-marc21.xml';
+  #$url = 'X:\xampp\htdocs\ELSE-DEV\htdocs\haw-marc21.xml';
   ### ------ TEST -------
    # deb($url,1);
   $strXml = file_get_contents( $url , false, stream_context_create($arrContextOptions));
@@ -871,19 +863,15 @@ $storeFolder = 'uploads';   //2
   
   ###############################################################################################
   function checkDoublette( $colID, $docID)
-  {    deb("1");
+  {
     $docs = $this -> SQL -> getDokumentList( $colID );
     if ($docs)
       foreach( $docs as $d )
       {
-        if ($d->ppn == $docID) { $ret = 1 ; break; }
-        else                   { $ret = 0 ;}
+        if ($d->ppn == $docID) { $ret = 1 ; break; }  #  1 = Doublette
+        else                   { $ret = 0 ;}          #  0 = keine Doublette
       }
-    
-    deb($ret);
-    
-    return $ret;
-    
+      return $ret;
   }
   
   

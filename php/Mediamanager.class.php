@@ -66,41 +66,45 @@ function editMediaMetaData( $I )
 ###############################################################################################
 function annoteNewMedia_showForm( $I )
 {
-
-  if( isset($_SESSION[ 'books' ][ 'booksHitList' ][0]) AND   $I[ 'medium' ] -> get_doc_type_id() != 16 )
+#deb($_SESSION[ 'books' ],1);
+  if (isset($_SESSION['books']['booksHitList'][0]))
   {
-    $bookHit = $_SESSION[ 'books' ][ 'booksHitList' ][  $_SESSION[ 'books' ][ 'currentElement' ] ]; ## Metadaten des aus der Trefferliste ausgewählte Mediums
-    $I[ 'medium' ] -> array2obj ( $bookHit );
-  }
-
-  else if( $I[ 'medium' ] -> get_title() == ''  AND $I[ 'medium' ] -> get_doc_type_id() != 16 )     ## Kein Titel UND kein Erwerbungsvorschlag
-  {
-    $bookHit = $_SESSION[ 'books' ][ 'booksHitList' ][ $I[ 'medium' ] -> get_ppn() ];               ## Metadaten des aus der Trefferliste ausgeählte Mediums
-    $I[ 'medium' ] -> array2obj ( $bookHit );
-  }
+    if ($I['medium']->get_doc_type_id() != 16) {
+      $bookHit = $_SESSION['books']['booksHitList'][$_SESSION['books']['currentElement']]; ## Metadaten des aus der Trefferliste ausgewählte Mediums
+      $I['medium']->array2obj($bookHit);
+    } else if ($I['medium']->get_title() == '' AND $I['medium']->get_doc_type_id() != 16)     ## Kein Titel UND kein Erwerbungsvorschlag
+    {
+      $bookHit = $_SESSION['books']['booksHitList'][$I['medium']->get_ppn()];               ## Metadaten des aus der Trefferliste ausgeählte Mediums
+      $I['medium']->array2obj($bookHit);
+    } else {
+      $_SESSION['books']['currentElement'] = 1;
+      $_SESSION['books']['maxElement'] = 1;
+    }
+   }
   else
   {
-    $_SESSION['books'][ 'currentElement'  ] = 1;
-    $_SESSION['books'][ 'maxElement'      ] = 1;
+    $_SESSION['books']['currentElement'] = 0;
+    $_SESSION['books']['maxElement'] = 0;
   }
+    $collection_id = $I['currentCollection']->get_collection_id();
+  
+    $collection = $this->SQL->getCollection($collection_id);
+  
+    $tpl_vars['collection'] = $collection[$collection_id]->obj2array();
+    $tpl_vars['medium'] = $I['medium']->obj2array();
+    $tpl_vars['user'] = $I['currentUser']->obj2array();
+    $tpl_vars['operator'] = $I['operator']->obj2array();
+    $tpl_vars['filter'] = $I['filter']->obj2array();
+    $tpl_vars['SEMESTER'] = array_keys($_SESSION['CFG']['SEM']);
+    $tpl_vars['DOC_TYPE'] = $_SESSION['DOC_TYPE'];
+    $tpl_vars['currentElement'] = $_SESSION['books']['currentElement'];
+    $tpl_vars['maxElement'] = $_SESSION['books']['maxElement'];
+  
+    # deb($tpl_vars,1);
+    $this->RENDERER->do_template('edit_book.tpl', $tpl_vars);
+    exit(0);
+ 
 
-  $collection_id = $I[ 'currentCollection'    ] -> get_collection_id();
-
-  $collection    = $this -> SQL -> getCollection ( $collection_id );
-
-  $tpl_vars[ 'collection'      ]  =  $collection[  $collection_id          ] -> obj2array ( );
-  $tpl_vars[ 'medium'          ]  =  $I[ 'medium'                          ] -> obj2array ( );
-  $tpl_vars[ 'user'            ]  =  $I[ 'currentUser'                     ] -> obj2array ( );
-  $tpl_vars[ 'operator'        ]  =  $I[ 'operator'                        ] -> obj2array ( );
-  $tpl_vars[ 'filter'          ]  =  $I[ 'filter'                          ] -> obj2array ( );
-  $tpl_vars[ 'SEMESTER'        ]  =  array_keys( $_SESSION[ 'CFG' ][ 'SEM'          ] );
-  $tpl_vars[ 'DOC_TYPE'        ]  =  $_SESSION[ 'DOC_TYPE'                 ];
-  $tpl_vars[ 'currentElement'  ]  =  $_SESSION['books'][ 'currentElement'  ];
-  $tpl_vars[ 'maxElement'      ]  =  $_SESSION['books'][ 'maxElement'      ];
-
-  # deb($tpl_vars,1);
-  $this -> RENDERER -> do_template ( 'edit_book.tpl' , $tpl_vars ) ;
-  exit(0);
 }
 
 
@@ -336,7 +340,8 @@ function purchase_suggestion( $I )
   $tpl_vars[ 'SEMESTER'        ]            =  array_keys( $_SESSION[ 'CFG' ][ 'SEM' ] );                                      # $conf[ 'SEMESTER' ] ;
   $tpl_vars[ 'CFG'             ]            =  $this -> CFG -> getConf();
   $tpl_vars[ 'DOC_TYPE'        ]            =  $_SESSION[ 'DOC_TYPE' ];
-
+  $tpl_vars[ 'currentElement'  ]            =  0 ;
+  $tpl_vars[ 'maxElement'      ]            =  1 ;
  
 
   $this -> RENDERER -> do_template ( 'edit_book.tpl' , $tpl_vars ) ;
@@ -552,7 +557,7 @@ function getHitList( $searchQuery )
 #--------------------------------
 
       #$datasourceURL = 'http://localhost/ELSE/imsdownload.xml';
-      $datasourceURL = "https://haw.beluga-core.de/vufind/Cart/imsdownload?imsid=$imsid";
+      $datasourceURL = "https://katalog.haw-hamburg.de/vufind/Cart/imsdownload?imsid=$imsid";
 
       try {
         $page = file_get_contents ( $datasourceURL );
@@ -1047,9 +1052,20 @@ function getHitList( $searchQuery )
         $this->RENDERER->doRedirect ( $url );
       }
     }
-  
-  
 
+###############################################################################################
+  function ereaseMedia( $I )
+  {
+    
+    $this->SQL->deleteMedia ( $I[ 'medium' ]->get_id () , $I[ 'operator' ] );
+    
+    $url = "index.php?item=collection&action=show_collection&dc_collection_id=" . $I[ 'currentCollection' ]->get_dc_collection_id () . "&r=" . $I[ 'currentUser' ]->get_role_id ();
+    if ( $this->CFG->CFG[ 'ajaxON' ] ) {
+      $this->showSA ( $I );
+    } else {
+      $this->RENDERER->doRedirect ( $url );
+    }
+  }
   
   
 }
