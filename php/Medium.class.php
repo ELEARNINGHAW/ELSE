@@ -9,9 +9,11 @@ class Medium
   public  $signature;
   public  $ISBN;
   public  $ppn;
+  public  $sigel;
   public  $leader;
   public  $format;
   public  $item;
+ 
   public  $doc_type_id;
   public  $doc_type;
   public  $in_SA;
@@ -36,6 +38,7 @@ function __construct( )
   $this -> signature                    = '';
   $this -> ISBN                         = '';
   $this -> ppn                          = '';
+  $this -> sigel                        = '';
   $this -> leader                       = '';
   $this -> format                       = '';
   $this -> item                         = '';
@@ -62,6 +65,7 @@ function get_edition          ()   { return $this -> edition              ; }
 function get_signature        ()   { return $this -> signature            ; }
 function get_ISBN             ()   { return $this -> ISBN                 ; }
 function get_ppn              ()   { return $this -> ppn                  ; }
+function get_sigel            ()   { return $this -> sigel                ; }
 function get_leader           ()   { return $this -> leader               ; }
 function get_format           ()   { return $this -> format               ; }
 function get_item             ()   { return $this -> item                 ; }
@@ -88,6 +92,7 @@ function set_edition                     ( $val )  { return $this -> edition    
 function set_signature                   ( $val )  { return $this -> signature                   =  $val ; }
 function set_ISBN                        ( $val )  { return $this -> ISBN                        =  $val ; }
 function set_ppn                         ( $val )  { return $this -> ppn                         =  $val ; }
+function set_sigel                       ( $val )  { return $this -> sigel                       =  $val ; }
 function set_leader                      ( $val )  { return $this -> leader                      =  $val ; }
 function set_format                      ( $val )  { return $this -> format                      =  $val ; }
 function set_item                        ( $val )  { return $this -> item                        =  $val ; }
@@ -112,7 +117,7 @@ function array2obj( $array )   {  foreach ($array as $k => $v )  { $this->$k = $
 
 function calcDocType()
 {
-  $pos = $this->get_doc_type_id() ;
+  $pos = $this -> get_doc_type_id() ;
  
   $dt = $_SESSION[ 'DOC_TYPE' ][ $pos  ];
 

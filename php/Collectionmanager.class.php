@@ -93,7 +93,9 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
 ###############################################################################################
 # ---------------------------------------------------------------------------------------------
     function showNewMediaForm( $I, $toSearch = NULL, $searchHits = 1 )
-    {  # deb( $this -> conf);
+    {
+        if( !isset(  $this ->conf  [ 'VUFIND' ][ 'maxRecords' ]))  {  $this ->conf  [ 'VUFIND' ][ 'maxRecords' ] = 0; }
+      
         $collection_id                                      = $I[ 'currentCollection'               ] -> get_collection_id( );
         $bc_urlID                                           = $_SESSION['bc_urlID'] = $this -> UTIL -> b64en($collection_id.'###'. $I[ 'currentUser']-> get_hawaccount() );
         $collection                                         = $this -> SQL -> getCollection ( $collection_id );
@@ -107,7 +109,7 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
         $tpl_vars[ 'book'              ][ 'title'       ]   = $toSearch[ 'title'         ];
         $tpl_vars[ 'book'              ][ 'author'      ]   = $toSearch[ 'author'        ];
         $tpl_vars[ 'book'              ][ 'signature'   ]   = $toSearch[ 'signature'     ];
-        $tpl_vars[ 'maxRecords'        ]                    = $this -> conf  [ 'SRU' ][ 'maxRecords' ];
+        $tpl_vars[ 'maxRecords'        ]                    = $this -> conf  [ 'VUFIND' ][ 'maxRecords' ];
         $tpl_vars[ 'URLID'             ]                    = $bc_urlID;
         $tpl_vars[ 'URL'               ]                    = $this -> conf [ 'SERVER' ][ 'URL' ].'/htdocs/' ;
         $tpl_vars[ 'back_URL'          ]                    = "index.php?item=collection&action=show_collection&dc_collection_id=".$collection[ $collection_id           ]->get_dc_collection_id()."&r=".$I[ 'currentUser'  ]->get_role_id();
@@ -404,7 +406,7 @@ function lmsDownload( $I )
 
   #$lms = explode ( '###', $lms = $this -> UTIL -> b64de( $lmsDownload[ 1 ] ) );          # deb( $lms );
 
-  $url = $url ."&format=".$this -> conf [SRU][ 'recordSchema' ];                                                # deb( $url );
+  $url = $url ."&format=".$this -> conf [VUFIND][ 'recordSchema' ];                                                # deb( $url );
  # deb($url,1);
   
   $medList = $this -> LMSLoader( $url );                                                          # deb( $medList,1 );
@@ -455,12 +457,10 @@ function getMediaList( $I )
     $conf = $this -> conf;
 
     $mediaListID  =  $I[ 'operator' ] -> get_mediaListID() ;
- 
-
-    $url =  $this -> conf ['SRU'][ 'vuFindListURL'    ]  .$mediaListID  . $this -> conf ['SRU'][ 'vuFindListParams' ];                                                # deb( $url );
+    $url =  $this -> conf ['VUFIND'][ 'vuFindListURL'    ]  .$mediaListID  . $this -> conf ['VUFIND'][ 'vuFindListParams' ];                                                # deb( $url );
 
     $medList = $this -> LMSLoader( $url );                                                          # deb( $medList,1 );
- 
+  # deb($medList,1);
     $medList = $this -> UTIL -> xml2array( $medList );
 
     foreach ( $medList as $med )
@@ -512,10 +512,12 @@ function LMSLoader( $url )
         "verify_peer_name"=>false,
          ), );
   $medium = null;
+  
   #$url = 'https://haw.beluga-core.de/vufind/Cart/lmsdownload?lmsid='.$_SESSION['bc_urlID'].'&format=marc21';
-
+  
+  #deb ($url,1);
   ### ------ TEST -------
-  #$url = 'X:\xampp\htdocs\ELSE-DEV\htdocs\haw-marc21.xml';
+  $url = 'X:\xampp\htdocs\ELSE-DEV\htdocs\haw-marc21.xml';
   ### ------ TEST -------
    # deb($url,1);
   $strXml = file_get_contents( $url , false, stream_context_create($arrContextOptions));
@@ -526,7 +528,7 @@ function LMSLoader( $url )
   foreach( $xml -> record as $xmlrec )
   {
     foreach ( $xmlrec -> controlfield as $a => $b )
-    {# deb( $b);
+    { # deb( $b);
       ## --- PPN
       if ( $b[ 'tag' ]       == '001' )
       {
@@ -562,7 +564,7 @@ function LMSLoader( $url )
       {
         foreach ( $b -> subfield as $sf   )
         {
-          if( $sf -> attributes() -> code == 'a'  )  {  $medium[ $PPN ][ 'title'        ]  =  (string)$sf;   }
+          if( $sf -> attributes() -> code == 'a'  )  {  $medium[ $PPN ][ 'title'        ]  =         (string)$sf;   }
           if( $sf -> attributes() -> code == 'b'  )  {  $medium[ $PPN ][ 'title'        ] .= ' - '.  (string)$sf;   }
           if( $sf -> attributes() -> code == 'n'  )  {  $medium[ $PPN ][ 'title'        ] .= ' - '.  (string)$sf;   }
         }
@@ -579,18 +581,35 @@ function LMSLoader( $url )
       }
 
 
-      ## -- Signatur --
+      ## -- Signatur / Sigel --
       if ( $b_att == '980' )
       { $hit = false;
         foreach ( $b -> subfield as $sf   )
-        { if( $sf -> attributes() -> code == 2  )    {  if ( $sf  == 34 ){ $hit = true; }  }  }
+        { if( $sf -> attributes() -> code == 2  )    {  if ( $sf  == 34 ){ $hit = true;  }  }  }
 
         if ( $hit )
-        foreach ( $b -> subfield as $sf   )
-        { if( $sf -> attributes() -> code == 'd' )    { $medium[ $PPN ][ 'signature' ] =  (string)$sf; }  }
+        {
+          $medium[ $PPN ][ 'sigel' ] = 'HAW-Hamburg';
+          foreach ( $b -> subfield as $sf   )
+          { if( $sf -> attributes() -> code == 'd' )    { $medium[ $PPN ][ 'signature' ] =  (string)$sf; }
+          }
+        }
       }
-
-
+  
+      if ( $b_att == '912' )
+      { $hit = false;
+        foreach ( $b -> subfield as $sf   )
+        { if( $sf -> attributes() -> code == 'a'  )    {  if ( $sf  == 'GBV_ILN_34' ){ $hit = true;  }  }  }
+    
+        if ( $hit )
+        {
+          $medium[ $PPN ][ 'sigel' ] = 'HAW-Hamburg';
+ 
+        }
+      }
+  
+  
+  
       ## -- Verlag --
       if ( $b_att == '264' )
       {
@@ -605,7 +624,7 @@ function LMSLoader( $url )
       {
           foreach ($b -> subfield as $sf   )
           {
-              if( $sf -> attributes() -> code == '9'  )  {  $medium[ $PPN ][ '$ISBN'        ] =  (string)$sf;   }
+              if( $sf -> attributes() -> code == '9'  )  {  $medium[ $PPN ][ 'ISBN'        ] =  (string)$sf;   }
           }
       }
     }
@@ -614,6 +633,7 @@ function LMSLoader( $url )
     $medium[(string)$PPN][ 'format'          ] =   (string)$xmlrec -> format;
 
   }
+ 
   return  $medium;
 }
 

@@ -57,7 +57,7 @@
 <tbody>
 {if $maxElement > 0 OR $medium.doc_type_id == 16}
 {* SPEICHERBUTTON: ALLE  *}
-<tr><td class = "editmedia">Medientyp: </td><td> [{$medium.doc_type_id  }] {$doctypetxt} </td>
+<tr><td class = "editmedia">Medientyp: </td><td> {$doctypetxt} </td>
  <td rowspan="10" >   <input style="width:125px; height:50px;" name="ok" value="&nbsp;&nbsp;&nbsp;SPEICHERN&nbsp;&nbsp;&nbsp;" type="submit"> </td>
 </tr>
 
@@ -66,14 +66,14 @@
   <tr><td  class = "editmedia" style="vertical-align: top; font-weight: bold;">  Ort:  <span style="color: {$color}; vertical-align: top; font-weight: bold;">(bitte auswählen)</span> </td><td>
     <div style="border:{$bw}px solid {$color}; float: left;  height:80px; padding: 5px; font-size: 12px; width: calc(100% - 15px); ">
       <input {$c2} value="2" class='i' type="radio" name="shelf_remain" id="radio-2"><label for="radio-2"><span style="font-weight:700; "> Literaturhinweis - verbleibt im Regal der Bibliothek.     </span></label><br/>
-      {if (   $medium.doc_type_id != 6)  }
+      {if (  $medium.sigel == 'HAW-Hamburg' AND  $medium.doc_type_id != 6)  }
       <input {$c1} value="1" class='i' type="radio" name="shelf_remain" id="radio-1"><label for="radio-1"><span style="font-weight:700; "> Semesterapparat  -  wird in Ihren Handapparat eingestellt. </span></label>
       {/if}
-      {if ( $medium.doc_type_id == 1 ||  $medium.doc_type_id == 12 ||  $medium.doc_type_id == 13 ||  $medium.doc_type_id == 15  )  }
+      {if ( ($CONF.scanServiceON   AND $medium.sigel == 'HAW-Hamburg' ) AND  ( $medium.doc_type_id == 1 ||  $medium.doc_type_id == 12 ||  $medium.doc_type_id == 13 ||  $medium.doc_type_id == 15  ) )}
       <input {$c3} value="4" class='i' type="radio" name="shelf_remain" id="radio-3"><label for="radio-3"><span style="font-weight:700; "> Scanauftrag  - Teile dieses Printmediums als PDF. </span></label>
       {/if}
 
-      {if ( $medium.doc_type_id == 6 )  }
+      {if ($CONF.scanServiceON   AND $medium.doc_type_id == 6 )  }
       <input {$c4} value="4" class='i' type="radio" name="shelf_remain" id="radio-4"><label for="radio-4"><span style="font-weight:700; "> Scanauftrag  -  Diesen Artikel als PDF. </span></label>
       {/if}
 
