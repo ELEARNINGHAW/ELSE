@@ -517,9 +517,14 @@ function LMSLoader( $url )
   
   #deb ($url,1);
   ### ------ TEST -------
-  $url = 'X:\xampp\htdocs\ELSE-DEV\htdocs\haw-marc21.xml';
+  if ($this -> conf['CONF'] ['cwd']  == 'ELSE-DEV');
+  {
+    $url = 'X:\xampp\htdocs\ELSE-DEV\htdocs\haw-marc21.xml';
+  }
+  # deb($url,1);
   ### ------ TEST -------
-   # deb($url,1);
+  
+
   $strXml = file_get_contents( $url , false, stream_context_create($arrContextOptions));
   #deb($strXml,1);
   $xml = simplexml_load_string( $strXml);
