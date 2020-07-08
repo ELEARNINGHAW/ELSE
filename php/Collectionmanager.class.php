@@ -457,7 +457,7 @@ function getMediaList( $I )
     $conf = $this -> conf;
 
     $mediaListID  =  $I[ 'operator' ] -> get_mediaListID() ;
-    $url =  $this -> conf ['VUFIND'][ 'vuFindListURL'    ]  .$mediaListID  . $this -> conf ['VUFIND'][ 'vuFindListParams' ];                                                # deb( $url );
+    $url =  $this -> conf ['VUFIND'][ 'vuFindListURL'    ]  .'MyResearch/MyList/'.$mediaListID  . $this -> conf ['VUFIND'][ 'vuFindListParams' ];                                                # deb( $url );
 
     $medList = $this -> LMSLoader( $url );                                                          # deb( $medList,1 );
   # deb($medList,1);
@@ -513,7 +513,7 @@ function LMSLoader( $url )
          ), );
   $medium = null;
   
-  #$url = 'https://haw.beluga-core.de/vufind/Cart/lmsdownload?lmsid='.$_SESSION['bc_urlID'].'&format=marc21';
+ # $url = 'https://haw.beluga-core.de/vufind/Cart/lmsdownload?lmsid='.$_SESSION['bc_urlID'].'&format=marc21';
   
   #deb ($url,1);
   ### ------ TEST -------

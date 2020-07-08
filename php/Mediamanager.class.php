@@ -545,7 +545,7 @@ function getHitList( $searchQuery )
     function getIMS_pack()
     {
 
-      $imsid = 16;
+     $imsid = 16;
 
       $error = false;
 
@@ -558,9 +558,9 @@ function getHitList( $searchQuery )
 #--------------------------------
 
       #$datasourceURL = 'http://localhost/ELSE/imsdownload.xml';
-  
       #$datasourceURL = "https://katalog.haw-hamburg.de/vufind/Cart/imsdownload?imsid=$imsid";
-      $datasourceURL = "haw.beluga-core.de/vufind/Cart/imsdownload?imsid=$imsid";
+ 
+      $datasourceURL =  $this -> conf ['VUFIND'][ 'vuFindListURL'    ] . "Cart/imsdownload?imsid=$imsid";
       
       try {
         $page = file_get_contents ( $datasourceURL );
