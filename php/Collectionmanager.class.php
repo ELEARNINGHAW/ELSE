@@ -113,6 +113,8 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
         $tpl_vars[ 'URLID'             ]                    = $bc_urlID;
         $tpl_vars[ 'URL'               ]                    = $this -> conf [ 'SERVER' ][ 'URL' ].'/htdocs/' ;
         $tpl_vars[ 'back_URL'          ]                    = "index.php?item=collection&action=show_collection&dc_collection_id=".$collection[ $collection_id           ]->get_dc_collection_id()."&r=".$I[ 'currentUser'  ]->get_role_id();
+        $tpl_vars[ 'VUFIND'            ]                     = $_SESSION[ 'CFG'      ]['VUFIND'];
+ 
         $_SESSION[ 'currentCollection' ] = $collection[ $collection_id ] -> obj2array ( );
 
         $this -> RENDERER -> do_template ( 'new_book.tpl' , $tpl_vars ) ;
@@ -457,7 +459,7 @@ function getMediaList( $I )
     $conf = $this -> conf;
 
     $mediaListID  =  $I[ 'operator' ] -> get_mediaListID() ;
-    $url =  $this -> conf ['VUFIND'][ 'vuFindListURL'    ]  .'MyResearch/MyList/'.$mediaListID  . $this -> conf ['VUFIND'][ 'vuFindListParams' ];                                                # deb( $url );
+    $url =  $this -> conf ['VUFIND'][ 'vuFindURL'    ]  .'MyResearch/MyList/'.$mediaListID  . $this -> conf ['VUFIND'][ 'vuFindListParams' ];                                                # deb( $url );
 
     $medList = $this -> LMSLoader( $url );                                                          # deb( $medList,1 );
   # deb($medList,1);
@@ -854,14 +856,13 @@ $storeFolder = 'uploads';   //2
 #    $userlist = $this -> SQL -> getUserList ( $I[ 'filter' ] -> get_user () );                                                                         ## Array der Metadaten aller ELSE Owner
     $userlist = $this -> SQL -> getUserList ( );                                                                         ## Array der Metadaten aller ELSE Owner
 
-    # deb($userlist,1);
+ 
      $collectionList = null;
 
     foreach ( $userlist as $user )                                                                                            ## Liste wird mit entsprechenden SAs erweitert
     {
       $SAlistTMP  =  $this -> SQL -> getSAlist( $user, $I  );
-
-      # deb($SAlistTMP);
+ 
       $SAlist     =  array();
 
       if ( $SAlistTMP )
@@ -880,21 +881,21 @@ $storeFolder = 'uploads';   //2
       else
       { $collectionList[ ] = 0 ;                                                                  }
     }
-
-  #  deb($collectionList,1);
+ 
     return $collectionList;
   }
   
   
   ###############################################################################################
-  function checkDoublette( $colID, $docID)
+  function checkDoublette( $colID, $docID )
   {
     $docs = $this -> SQL -> getDokumentList( $colID );
+ 
     if ($docs)
       foreach( $docs as $d )
       {
-        if ($d->ppn == $docID) { $ret = 1 ; break; }  #  1 = Doublette
-        else                   { $ret = 0 ;}          #  0 = keine Doublette
+        if ($d->state_id != 6 AND $d->ppn == $docID) { $ret = 1 ; break; }  #  1 = Doublette
+        else                                         { $ret = 0 ;        }  #  0 = keine Doublette
       }
       return $ret;
   }

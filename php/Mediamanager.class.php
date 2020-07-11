@@ -17,7 +17,7 @@ function __construct( $CFG , $SQL, $RENDERER, $UTIL )
 }
 ####################### --- MEDIA  --- #######################
 
-function showHitList( $I , $books, $hits, $maxhits)
+function showHitList( $I , $books, $hits, $maxhits )
 {
   $collection_id = $I[ 'currentCollection'    ] -> get_collection_id();
   $collection    = $this -> SQL -> getCollection ( $collection_id );
@@ -26,6 +26,7 @@ function showHitList( $I , $books, $hits, $maxhits)
   $tpl_vars[ 'user'            ]  = $I[ 'currentUser'                     ] -> obj2array ( );
   $tpl_vars[ 'operator'        ]  = $I[ 'operator'                        ] -> obj2array ( );
   $tpl_vars[ 'filter'          ]  = $I[ 'filter'                          ] -> obj2array ( ) ;
+
   $tpl_vars[ 'SEMESTER'        ]  = array_keys( $_SESSION[ 'CFG' ][ 'SEM' ] );                                      # $conf[ 'SEMESTER' ] ;
   $tpl_vars[ 'page'            ]  = 2;                                                                  /* Seite 2 = Anzeige der Trefferliste nach der Suche */
 
@@ -560,7 +561,7 @@ function getHitList( $searchQuery )
       #$datasourceURL = 'http://localhost/ELSE/imsdownload.xml';
       #$datasourceURL = "https://katalog.haw-hamburg.de/vufind/Cart/imsdownload?imsid=$imsid";
  
-      $datasourceURL =  $this -> conf ['VUFIND'][ 'vuFindListURL'    ] . "Cart/imsdownload?imsid=$imsid";
+      $datasourceURL =  $this -> conf ['VUFIND'][ 'vuFindURL'    ] . "Cart/imsdownload?imsid=$imsid";
       
       try {
         $page = file_get_contents ( $datasourceURL );

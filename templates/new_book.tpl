@@ -28,7 +28,7 @@
   <div style="font-size:35px; float:left; padding:10px; margin:5px; margin-bottom:100px;display:block;   background-color:#EFEFEF">B</div>Eine neue Suche starten:<br><br>
  {/if}
      <div class="text2" style="text-align: center">
-         <a  target="_blank"   id ="FButton2"    href="https://dev.haw.beluga-core.de/vufind/?lmsid={$URLID}&lmsurl={$URL}"> <button style="padding:20px;" class="ui-button ui-widget ui-corner-all" > Im HAW-Katalog recherchieren und die Literaturliste erstellen       </button></a>
+         <a  target="_blank"   id ="FButton2"    href="{$VUFIND.vuFindURL}"> <button style="padding:20px;" class="ui-button ui-widget ui-corner-all" > Im HAW-Katalog recherchieren und die Literaturliste erstellen       </button></a>
      </div>
  <div class="text2">
    <ul>
@@ -60,7 +60,7 @@
  </div>
 
  <div class="text2" style="text-align: center">
-   <a  onClick="$('#FButton').spin('modal');"  id ="FButton"  href="https://elsehaw.beluga-core.de/vufind/?lmsid={$URLID}&lmsurl={$URL}"> <button style="padding:20px;" class="ui-button ui-widget ui-corner-all" > Im HAW-Katalog recherchieren und die Merkliste füllen      </button></a>
+   <a  onClick="$('#FButton').spin('modal');"  id ="FButton"  href="$CONF.VUFIND.vuListURL}?lmsid={$URLID}&lmsurl={$URL}"> <button style="padding:20px;" class="ui-button ui-widget ui-corner-all" > Im HAW-Katalog recherchieren und die Merkliste füllen      </button></a>
  </div>
      -->
  <div class="text2">
