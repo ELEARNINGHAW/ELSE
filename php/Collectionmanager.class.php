@@ -406,11 +406,10 @@ function lmsDownload( $I )
 
   $lmsDownload = explode( '?lmsid=', $url );                                             # deb( $lmsDownload );
 
-  #$lms = explode ( '###', $lms = $this -> UTIL -> b64de( $lmsDownload[ 1 ] ) );          # deb( $lms );
+ 
 
   $url = $url ."&format=".$this -> conf [VUFIND][ 'recordSchema' ];                                                # deb( $url );
- # deb($url,1);
-  
+ 
   $medList = $this -> LMSLoader( $url );                                                          # deb( $medList,1 );
 
   $medList = $this -> UTIL -> xml2array( $medList );
@@ -427,11 +426,12 @@ function lmsDownload( $I )
     if( isset( $med[ 'leader'      ][ 0 ] ) ) { $m -> set_leader        ( trim ( $med[ 'leader'       ]  ) ); }
     if( isset( $med[ 'ISBN'        ][ 0 ] ) ) { $m -> set_ISBN          ( trim ( $med[ 'ISBN'         ]  ) ); }
     if( isset( $med[ 'signature'   ][ 0 ] ) ) { $m -> set_signature     ( trim ( $med[ 'signature'    ]  ) ); }
+    if( isset( $med[ 'sigel'       ][ 0 ] ) ) { $m -> set_sigel         ( trim ( $med[ 'sigel'        ]  ) ); }
     if( isset( $med[ 'format'      ][ 0 ] ) ) { $m -> set_format        ( trim ( $med[ 'format'       ]  ) );
                                                 $m -> set_doc_type      ( trim ( $med[ 'format'       ]  ) );
                                                 $m -> calcDocTypeID();
                                                 $m -> calcItem();
-    }
+  }
   
     $isDublette = $this->checkDoublette($I['currentCollection']->get_collection_id(),  $m -> get_ppn() );
     if (! $isDublette )
@@ -462,7 +462,7 @@ function getMediaList( $I )
     $url =  $this -> conf ['VUFIND'][ 'vuFindURL'    ]  .'MyResearch/MyList/'.$mediaListID  . $this -> conf ['VUFIND'][ 'vuFindParams' ];                                                # deb( $url );
 
     $medList = $this -> LMSLoader( $url );                                                          # deb( $medList,1 );
- #deb($medList,1);
+ 
     $medList = $this -> UTIL -> xml2array( $medList );
 
     foreach ( $medList as $med )
@@ -477,6 +477,7 @@ function getMediaList( $I )
         if( isset( $med[ 'leader'      ][ 0 ] ) ) { $m -> set_leader        ( trim ( $med[ 'leader'       ]  ) ); }
         if( isset( $med[ 'ISBN'        ][ 0 ] ) ) { $m -> set_ISBN          ( trim ( $med[ 'ISBN'         ]  ) ); }
         if( isset( $med[ 'signature'   ][ 0 ] ) ) { $m -> set_signature     ( trim ( $med[ 'signature'    ]  ) ); }
+        if( isset( $med[ 'sigel'       ][ 0 ] ) ) { $m -> set_sigel         ( trim ( $med[ 'sigel'        ]  ) ); }
         if( isset( $med[ 'format'      ][ 0 ] ) ) { $m -> set_format        ( trim ( $med[ 'format'       ]  ) );
             $m -> set_doc_type      ( trim ( $med[ 'format'       ]  ) );
             $m -> calcDocTypeID();
@@ -499,7 +500,7 @@ function getMediaList( $I )
     $user_role_id                = $I[ 'currentUser'       ] -> get_role_encode();
     $b_ppn                       = $_SESSION[ 'books'      ][ 'booksHitList' ][ 0 ][ 'ppn' ];
 
- 
+ #deb(  $_SESSION[ 'books' ][ 'booksHitList'      ] ,1);
 
     $_SESSION[ 'books' ][ 'url' ] =  "index.php?ppn=$b_ppn&item=media&loc=1&action=annoteNewMedia&dc_collection_id=$collection_dc_collection_id&mode=new&r=$user_role_id";
  
@@ -514,28 +515,26 @@ function LMSLoader( $url )
         "verify_peer_name"=>false,
          ), );
   $medium = null;
-  
- # $url = 'https://haw.beluga-core.de/vufind/Cart/lmsdownload?lmsid='.$_SESSION['bc_urlID'].'&format=marc21';
-  
-  #deb ($url,1);
+ 
+ 
   ### ------ TEST -------
   if ($this -> conf['CONF'] ['cwd']  == 'ELSE-DEV')
   {
     $url = 'X:\xampp\htdocs\ELSE-DEV\htdocs\haw-marc21.xml';
   }
-  # deb($url,1);
+ 
   ### ------ TEST -------
   
 
   $strXml = file_get_contents( $url , false, stream_context_create($arrContextOptions));
-  #deb($strXml,1);
+ 
   $xml = simplexml_load_string( $strXml);
-  #deb($xml,1);
+ 
   $i = 0;
   foreach( $xml -> record as $xmlrec )
   {
     foreach ( $xmlrec -> controlfield as $a => $b )
-    { # deb( $b);
+    {
       ## --- PPN
       if ( $b[ 'tag' ]       == '001' )
       {
@@ -600,6 +599,7 @@ function LMSLoader( $url )
           foreach ( $b -> subfield as $sf   )
           { if( $sf -> attributes() -> code == 'd' )    { $medium[ $PPN ][ 'signature' ] =  (string)$sf; }
           }
+          $hit = false;
         }
       }
   
@@ -611,7 +611,7 @@ function LMSLoader( $url )
         if ( $hit )
         {
           $medium[ $PPN ][ 'sigel' ] = 'HAW-Hamburg';
- 
+          $hit = false;
         }
       }
   
@@ -640,7 +640,8 @@ function LMSLoader( $url )
     $medium[(string)$PPN][ 'format'          ] =   (string)$xmlrec -> format;
 
   }
- 
+ #deb($medium,1);
+  
   return  $medium;
 }
 

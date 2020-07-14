@@ -68,10 +68,11 @@ function editMediaMetaData( $I )
 function annoteNewMedia_showForm( $I )
 {
 #deb($_SESSION[ 'books' ],1);
-  if (isset($_SESSION['books']['booksHitList'][0]))
+  if ( isset( $_SESSION[ 'books' ][ 'booksHitList' ][ 0 ]))
   {
-    if ($I['medium']->get_doc_type_id() != 16) {
-      $bookHit = $_SESSION['books']['booksHitList'][$_SESSION['books']['currentElement']]; ## Metadaten des aus der Trefferliste ausgewählte Mediums
+    if ($I['medium']->get_doc_type_id() != 16)
+    {
+      $bookHit = $_SESSION[ 'books' ]['booksHitList'][$_SESSION['books']['currentElement']]; ## Metadaten des aus der Trefferliste ausgewählte Mediums
       $I['medium']->array2obj($bookHit);
     } else if ($I['medium']->get_title() == '' AND $I['medium']->get_doc_type_id() != 16)     ## Kein Titel UND kein Erwerbungsvorschlag
     {
