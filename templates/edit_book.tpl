@@ -60,7 +60,7 @@
 <tr><td class = "editmedia">Medientyp: </td><td> {$doctypetxt} </td>
  <td rowspan="10" >   <input style="width:125px; height:50px;" name="ok" value="&nbsp;&nbsp;&nbsp;SPEICHERN&nbsp;&nbsp;&nbsp;" type="submit"> </td>
 </tr>
-    {$medium.doc_type_id}
+
     {* ORT:  SA fähig UND ( Neues Medium ODER Erwerbungsvorschlag ) *}
 {if ( $SAready == 1 AND  ( $operator.mode == 'new'  OR  ($medium.doc_type_id == 16   OR  $medium.doc_type_id == 6) )  )   }
   <tr><td  class = "editmedia" style="vertical-align: top; font-weight: bold;">  Ort:  <span style="color: {$color}; vertical-align: top; font-weight: bold;">(bitte auswählen)</span> </td><td>
