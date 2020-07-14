@@ -519,7 +519,7 @@ function LMSLoader( $url )
   
   #deb ($url,1);
   ### ------ TEST -------
-  if ($this -> conf['CONF'] ['cwd']  == 'ELSE-DEV');
+  if ($this -> conf['CONF'] ['cwd']  == 'ELSE-DEV')
   {
     $url = 'X:\xampp\htdocs\ELSE-DEV\htdocs\haw-marc21.xml';
   }
