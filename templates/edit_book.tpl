@@ -62,7 +62,7 @@
 </tr>
 
 {* ORT:  SA fähig UND ( Neues Medium ODER Erwerbungsvorschlag ) *}
-{if ( $SAready == 1 AND  ( $operator.mode == 'new'  OR $medium.doc_type_id == 16 )   OR  $medium.doc_type_id == 6)   }
+{if ( $SAready == 1 AND  ( $operator.mode == 'new'  OR  ($medium.doc_type_id == 16   OR  $medium.doc_type_id == 6) )  )   }
   <tr><td  class = "editmedia" style="vertical-align: top; font-weight: bold;">  Ort:  <span style="color: {$color}; vertical-align: top; font-weight: bold;">(bitte auswählen)</span> </td><td>
     <div style="border:{$bw}px solid {$color}; float: left;  height:80px; padding: 5px; font-size: 12px; width: calc(100% - 15px); ">
       <input {$c2} value="2" class='i' type="radio" name="shelf_remain" id="radio-2"><label for="radio-2"><span style="font-weight:700; "> Literaturhinweis - verbleibt im Regal der Bibliothek.     </span></label><br/>
@@ -105,7 +105,7 @@
     {if ($medium.doc_type_id == 16 ) }  <td class = "editmedia"> Ihr Erwerbungs-<br/>vorschlag:                                     </td>
     {else}                              <td class = "editmedia"> Anmerkung <br/>f&uuml;r die Bibliothek:<br/>(Optional)                  </td>
     {/if}
-                                        <td><textarea cols="60" rows="5" name="notes_to_staff">{$medium.notes_to_staff|escape}</textarea>  </td></tr>
+                                        <td><p class="para">Bitte geben Sie hier die zu scannenden Seiten an:</p> <textarea cols="60" rows="5" name="notes_to_staff">{$medium.notes_to_staff|escape}</textarea> 	 </td></tr>
 {/if}
 
 {else}<tr><td>
@@ -122,6 +122,18 @@
 </tbody>
 </table>
 <br>
-  <script>$( function() {		$( ".i" ).checkboxradio();	} ); </script>
+  <script>$( function() {		$( ".i" ).checkboxradio();	} );
+      $(document).ready(function(){
+          $("#radio-1").click(function(){
+              $("p.para").hide();
+          });
+          $("#radio-2").click(function(){
+              $("p.para").hide();
+          });
+          $("#radio-3").click(function(){
+              $("p.para").show();
+          });
+      });
+  </script>
 </form>
 </div>
