@@ -101,7 +101,7 @@ WHERE `collection_id` = \"" . $colID . "\"";
 if (  $filterState  != ''  AND  $filterState != 0   ) { $SQL .= " AND `state_id`     = "  . $this -> es ( $filterState  ); }
 if (  $filterType   != ''  AND  $filterType != 'X'  ) { $SQL .= " AND `doc_type_id`  = "  . $this -> es ( $filterType   ); }
 
-#deb($SQL);
+
 $res = mysqli_query ( $this -> DB , $SQL );
 
 
@@ -130,9 +130,10 @@ if ( $res )
       $m -> set_created              ( $row[ 'created'             ] );
       $m -> set_last_modified        ( $row[ 'last_modified'       ] );
       $m -> set_last_state_change    ( $row[ 'last_state_change'   ] );
+      $ret[ $row[ 'id' ] ] = $m;
     }
 
-    $ret[ $row[ 'id' ] ] = $m;
+   
   }
 }
 return $ret;
@@ -237,7 +238,7 @@ function getCollection( $colID = null , $filter = false ,  $short = null )
     while ( $row = mysqli_fetch_assoc ( $res ) )
     {
       $ret[ $row[ 'c_id' ] ] =  $this -> getCollectionMetaData( $row[ 'c_id' ] );                                       ## Metadaten des Semesterapparats
-
+ 
       $dl                    =  $this -> getDokumentList ( $row[ 'c_id' ] , $filter );                                  ## Alle/gefilterte Medien des SA ( $doc_ID, $doc_type_id = null , $doc_state_id = null  )
 
       if ( $dl )
