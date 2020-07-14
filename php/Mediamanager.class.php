@@ -345,7 +345,7 @@ function purchase_suggestion( $I )
   $tpl_vars[ 'DOC_TYPE'        ]            =  $_SESSION[ 'DOC_TYPE' ];
   $tpl_vars[ 'currentElement'  ]            =  0 ;
   $tpl_vars[ 'maxElement'      ]            =  1 ;
- 
+  $tpl_vars[ 'CONF'            ]            = $_SESSION[ 'CFG'      ]['CONF'];
 
   $this -> RENDERER -> do_template ( 'edit_book.tpl' , $tpl_vars ) ;
 
