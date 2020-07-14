@@ -32,9 +32,9 @@ function  showMediaList( $I )  ##---------- Medien gefiltert nach Status
 
   $collection = $this -> SQL -> getCollection( null,  $I[ 'filter' ]  , true );
 
-  #deb($collection);
+  # deb($collection);
   $col_list = null;
-  if( isset( $collection ) )  foreach ($collection as $c )   { $col_list[] = $c -> obj2array( );  }
+  if(( $collection ) )  foreach ($collection as $c )   { $col_list[] = $c -> obj2array( );  }
 
   $tpl_vars[ 'collection'      ]  = $col_list;
   $tpl_vars[ 'user'            ]  = $I[ 'currentUser'                     ] -> obj2array ( );
@@ -459,10 +459,10 @@ function getMediaList( $I )
     $conf = $this -> conf;
 
     $mediaListID  =  $I[ 'operator' ] -> get_mediaListID() ;
-    $url =  $this -> conf ['VUFIND'][ 'vuFindURL'    ]  .'MyResearch/MyList/'.$mediaListID  . $this -> conf ['VUFIND'][ 'vuFindListParams' ];                                                # deb( $url );
+    $url =  $this -> conf ['VUFIND'][ 'vuFindURL'    ]  .'MyResearch/MyList/'.$mediaListID  . $this -> conf ['VUFIND'][ 'vuFindParams' ];                                                # deb( $url );
 
     $medList = $this -> LMSLoader( $url );                                                          # deb( $medList,1 );
-  # deb($medList,1);
+ #deb($medList,1);
     $medList = $this -> UTIL -> xml2array( $medList );
 
     foreach ( $medList as $med )
@@ -519,7 +519,7 @@ function LMSLoader( $url )
   
   #deb ($url,1);
   ### ------ TEST -------
-  if ($this -> conf['CONF'] ['cwd']  == 'ELSE-DEV');
+  if ($this -> conf['CONF'] ['cwd']  == 'ELSE-DEV')
   {
     $url = 'X:\xampp\htdocs\ELSE-DEV\htdocs\haw-marc21.xml';
   }

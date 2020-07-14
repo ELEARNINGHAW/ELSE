@@ -499,19 +499,19 @@ function get_filter( $operator )
 {
   $filter = new Filter();
 
-  $filter -> set_bib     ( $_SESSION[ 'filter' ][ 'bib'  ]  );
-  $filter -> set_sem     ( $_SESSION[ 'filter' ][ 'sem'  ]  );
-  $filter -> set_state   ( $_SESSION[ 'filter' ][ 'state']  );
-  $filter -> set_type    ( $_SESSION[ 'filter' ][ 'type' ]  );
+  $filter -> set_bib     ( $_SESSION[ 'filter' ][ 'bib'   ]  );
+  $filter -> set_sem     ( $_SESSION[ 'filter' ][ 'sem'   ]  );
+  $filter -> set_state   ( $_SESSION[ 'filter' ][ 'state' ]  );
+  $filter -> set_type    ( $_SESSION[ 'filter' ][ 'type'  ]  );
 
   if ( $operator -> get_mode() == 'filterBib'   ) { $filter -> set_bib   ( $operator -> get_category( ) );  $filter -> set_state ( 0 ); $filter -> set_type ( 0 );  } # Filter State u. Type  wird auf ALLE zurückgesetzt bei Filter auf Bib
   if ( $operator -> get_mode() == 'filterSem'   ) { $filter -> set_sem   ( $operator -> get_category( ) );  $filter -> set_state ( 0 ); $filter -> set_type ( 0 );  } # Filter State u. Type  wird auf ALLE zurückgesetzt bei Filter auf Sem
   if ( $operator -> get_mode() == 'filterState' ) { $filter -> set_state ( $operator -> get_category( ) );  if (  $operator -> get_category( ) == 0 ) { $filter -> set_type ( 0 );  }}
-  if ( $operator -> get_mode() == 'filterType'  ) { $filter -> set_type  ( $operator -> get_category( ) );  }
+  if ( $operator -> get_mode() == 'filterType'  ) { $filter -> set_type  ( $operator -> get_category( ) );  $filter -> set_state ( 0 );  }
   if ( $operator -> get_mode() == 'filterUser'  ) { $filter -> set_user  ( $operator -> get_category( ) );  }
 
   $_SESSION[ 'filter' ] = $filter -> obj2array ();
-
+#deb($_SESSION[ 'filter' ]);
   return $filter;
 }
 
