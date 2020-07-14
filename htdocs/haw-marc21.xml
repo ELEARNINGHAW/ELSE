@@ -842,7 +842,7 @@
    <subfield code="a">GBV_KXP</subfield>
   </datafield>
   <datafield tag="912" ind1=" " ind2=" ">
-   <subfield code="a">GBV_ILN_344</subfield>
+   <subfield code="a">GBV_ILN_34</subfield>
   </datafield>
   <datafield tag="912" ind1=" " ind2=" ">
    <subfield code="a">GBV_ILN_65</subfield>
@@ -880,7 +880,7 @@
    <subfield code="z">27-03-00</subfield>
   </datafield>
   <datafield tag="980" ind1=" " ind2=" ">
-   <subfield code="2">344</subfield>
+   <subfield code="2">34</subfield>
    <subfield code="1">01</subfield>
    <subfield code="b">372754767</subfield>
    <subfield code="f">18/285</subfield>
