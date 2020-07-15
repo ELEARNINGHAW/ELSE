@@ -37,7 +37,7 @@
      <li> Medienliste aus dem HAW-Katalog übernehmen<BR></li></ul>
      <form action="index.php" method="get">
          <div class="text2" style="text-align: center;">
-             mediaListID  <input   name="mediaListID">       </div>
+             mediaListID  <input  type="text" name="mediaListID">       </div>
          <input type="hidden" name="item"             value="collection">
          <input type="hidden" name="action"           value="getMediaList" >
          <input type="hidden" name="loc"              value="1">
