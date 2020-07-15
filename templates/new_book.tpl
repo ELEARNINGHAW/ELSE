@@ -36,8 +36,8 @@
            Um Medien zu Ihren Semesterapparat hinzuzufügen, recherchieren Sie bitte im HAW-Katalog, erstellen dort eine Literaturliste und speichern diese in Ihrem Nutzerkonto.       </li>
      <li> Medienliste aus dem HAW-Katalog übernehmen<BR></li></ul>
      <form action="index.php" method="get">
-         <div class="text2" style="text-align: center;">
-             mediaListID  <input  type="text" name="mediaListID">       </div>
+         <span class="text2" style="text-align: center;"> mediaListID <input type="text" name="mediaListID">
+		 <input type="submit" value="OK" style="padding: 15px;     -webkit-border-radius: 5px; border-radius: 5px; ">   </span>
          <input type="hidden" name="item"             value="collection">
          <input type="hidden" name="action"           value="getMediaList" >
          <input type="hidden" name="loc"              value="1">
