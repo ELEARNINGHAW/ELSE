@@ -89,13 +89,27 @@ if ( isset ( $_GET[ 'shelf_remain'                             ] ) ) { $operator
 if ( isset ( $_GET[ 'action'                                   ] ) ) { $operator -> set_action           ( $_GET[ 'action'             ] ) ; }
 if ( isset ( $_GET[ 'mode'                                     ] ) ) { $operator -> set_mode             ( $_GET[ 'mode'               ] ) ; }
 if ( isset ( $_GET[ 'category'                                 ] ) ) { $operator -> set_category         ( $_GET[ 'category'           ] ) ; }
-if ( isset ( $_GET[ 'mediaListID'                              ] ) ) { $operator -> set_mediaListID      ( $_GET[ 'mediaListID'        ] ) ; }
+
 if ( isset ( $_GET[ 'msg'                                      ] ) ) { $operator -> set_msg              ( $_GET[ 'msg'                ] ) ; }
 
 if ( isset ( $_GET[ 'lms-download'                             ] ) ) { $operator -> set_action           ( 'lms-download'           ) ;
                                                                        $operator -> set_item             ( 'collection'             ) ;
                                                                        $operator -> set_url              (  $_GET[ 'lms-download'      ] ) ;
 }  ## Hook, für BELUGA IMPORT, wird als action= "Downloadlink", mode
+
+if ( isset ( $_GET[ 'mediaListID'                              ] ) )
+{
+  if ( strlen ('' . $_GET[ 'mediaListID' ]  ) > 5 )   ##  https://dev.haw.beluga-core.de/vufind/MyResearch/MyList/28
+  {
+    $idTMP = explode('/', $_GET[ 'mediaListID' ] );
+    $_GET[ 'mediaListID' ] = array_pop($idTMP);
+  }
+  #if ( is_int( $_GET[ 'mediaListID' ]  ) )
+  {
+  $operator->set_mediaListID($_GET['mediaListID']) ;
+  #deb($_GET['mediaListID'], 1);
+  }
+}
 
 ##
 ### ------------------------------- MEDIUM  --------------------------------
