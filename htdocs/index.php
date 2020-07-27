@@ -36,11 +36,11 @@ $ca = $I[ 'operator'    ] -> get_action();   # ACTION
 $ci = $I[ 'operator'    ] -> get_item();     # ITEM
 $cl = $I[ 'operator'    ] -> get_loc();      # LOCATOR
 
- # deb($I,1);
+ #  deb($I,1);
 #$ci = 'collection';
 #$ca = 'lms-download';
 
-#deb($ci);
+# deb($cl);
 
 # -- Default: item = collection -- (user) action = show_collection, (staff) action = show_collection_list
 if ( $ci  == 'collection'  AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit') )
@@ -66,11 +66,10 @@ if ( $ci  == 'collection'  AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit')
 }
 
 
-else if (   $cl  == 1    AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit'))
+else if (   $cl  ==  1   AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit'))
 {
   if      ( 1 == 2 ) {;}
   else if ( $ca  == 'search'                )  {  $MEDIAMGR -> searchMediaOnLibraryServer    ( $I ); }   ## ++ 4 Suchprozess des Mediums wird gestartet
-
   else if ( $ca  == 'annoteNewMedia'        )  {  $MEDIAMGR -> annoteNewMedia_showForm       ( $I ); }   ## ++ 5 Eingabemaske Metadaten für Buch Annotation anzeigen
   else if ( $ca  == 'save'                  )  {  $MEDIAMGR -> saveMediaMetaData             ( $I ); }   ## ++ 6 Metadaten eines neues Buch speichern
   else if ( $ca  == 'suggest'               )  {  $MEDIAMGR -> saveNewMediaSuggest           ( $I ); }   ## Metadaten eines Literaturvoschlag speichern
@@ -87,7 +86,7 @@ else if (   $cl  == 1    AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit'))
   else if ( $ca  == 'cancel_order'          )  {  $MEDIAMGR -> cancelMedia                   ( $I ); }   ## ActionHandler: Buchbestellung wird storiert
 }
  
-else if (  ( $cl  == 2  OR $cl  == 3)   AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit'))
+else if (  ( $cl == 2  OR $cl  == 3)   AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit'))
 { if      ( 1 == 2 ) {;}
   else if ( $ca  == 'annoteNewMedia'        )  {  $MEDIAMGR -> annoteNewMedia_showForm       ( $I ); }   ## Eingabemaske Metadaten für Buch Annotation anzeigen
   else if ( $ca  == 'edit'                  )  {  $MEDIAMGR -> editMediaMetaData             ( $I ); }   ## ActionHandler: Metadaten des SA bearbeiten

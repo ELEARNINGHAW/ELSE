@@ -16,10 +16,10 @@
  <h3 style="margin:10px; margin-bottom: 0px; margin-top: 0px; padding:10px; color: #FFF; background-color: #600000;">Suchergebniss: {$searchHits} Treffer  für {$book.title}{$book.author}{$book.signature}</h3>
  <div style="margin:10px;  padding:0px;">Sie k&ouml;nnen nun:</div>
  <div style="margin:10px; margin-bottom: 10px; padding:10px;  padding-bottom:20px;  text-height: 150%; border:solid 1px black; ">
-  <div style="font-size:35px; float:left; padding:10px; margin:5px; display:block;   background-color:#EFEFEF">A</div> Einen Bestellwunsch über einen Erwerbungsvorschlag vornehmen.<br/><br> Die Bearbeitung kann 2-3 Wochen dauern.<br><br>
-  <div style="display:block; padding:4px; margin-left:55px; width:450px;" >
-   <a style ="text-decoration: none;"href="index.php?item=book&action=purchase_suggestion&dc_collection_id={$collection.dc_collection_id}&r={$user.role_id}"><div style="border:1px solid black; font-weight: 700; 14px; color:#000; background-color: #EFEFEF; padding:3px; " >Zum Erwerbungsvorschlag</div></a>
-  </div>
+ <div style="font-size:35px; float:left; padding:10px; margin:5px; display:block;   background-color:#EFEFEF">A</div> Einen Bestellwunsch über einen Erwerbungsvorschlag vornehmen.<br/><br> Die Bearbeitung kann 2-3 Wochen dauern.<br><br>
+ <div style="display:block; padding:4px; margin-left:55px; width:450px;" >
+ <a style ="text-decoration: none;"href="index.php?item=book&action=purchase_suggestion&dc_collection_id={$collection.dc_collection_id}&r={$user.role_id}"><div style="border:1px solid black; font-weight: 700; 14px; color:#000; background-color: #EFEFEF; padding:3px; " >Zum Erwerbungsvorschlag</div></a>
+ </div>
  </div>
 {/if}
 
@@ -27,69 +27,75 @@
  {if $searchHits < 1}
   <div style="font-size:35px; float:left; padding:10px; margin:5px; margin-bottom:100px;display:block;   background-color:#EFEFEF">B</div>Eine neue Suche starten:<br><br>
  {/if}
-     <div class="text2" style="text-align: center">
-         <a  target="_blank"   id ="FButton2"    href="{$VUFIND.vuFindURL}"> <button style="padding:20px;" class="ui-button ui-widget ui-corner-all" > Im HAW-Katalog recherchieren und die Literaturliste erstellen       </button></a>
-     </div>
- <div class="text2">
-   <ul>
-     <li>
-           Um Medien zu Ihren Semesterapparat hinzuzufügen, recherchieren Sie bitte im HAW-Katalog, erstellen dort eine Literaturliste und speichern diese in Ihrem Nutzerkonto.       </li>
-     <li> Medienliste aus dem HAW-Katalog übernehmen<BR></li></ul>
-     <form action="index.php" method="get">
-         <span class="text2" style="text-align: center;"> mediaListID <input type="text" name="mediaListID">
-		 <input type="submit" value="OK" style="padding: 15px;     -webkit-border-radius: 5px; border-radius: 5px; ">   </span>
-         <input type="hidden" name="item"             value="collection">
-         <input type="hidden" name="action"           value="getMediaList" >
-         <input type="hidden" name="loc"              value="1">
-         <input type="hidden" name="r"                value="{$user.role_encode}">
-         <input type="hidden" name="dc_collection_id" value="{$collection.dc_collection_id}">
-     </form>
-     </div>
-<!--
-     <hr>
- <div class="text2"  style="display: block;" >
+     <div class="text2">
 
-<ul><li>
-    Um ein Medium direkt in Ihren Semesterapparat hinzuzufügen,<br />recherchieren Sie nun bitte im HAW Bibliothekskatalog.
-    </li>
-    <li>
-        Durch einen Klick auf den <strong>Stern</strong> <img style="position:relative;  top:5px;" src="img/sternchen.png"> des gewünschten Mediums,<br />  übernehmen Sie dieses dann dort in Ihre  in Ihre <strong>"Merkliste"</strong>.
-     </li>
- </ul>
+    <h3> Medien hinzufügen </h3>
+<ul>
+<li>Gehen Sie über den Button unten auf den HAW-Katalog und melden Sie sich dort mit Ihrer Bibliothekskennung an.</li>
+<li>Recherchieren Sie im Katalog und markieren Sie die gewünschten Medien mit einem Sternchen. Diese Medien werden der Merkliste hinzugefügt.</li>
+<li>Klicken sie auf „Merkliste“ und speichern Sie die Liste unter einem selbstgewählten Namen ab.</li>
+<li>Über den Button „Listen-ID für ELSE kopieren“ können Sie den link der Literaturliste in den Zwischenspeicher kopieren.</li>
+<li>Wechseln Sie zurück zu ELSE und fügen Sie den link aus dem Zwischenspeicher in das Feld unten ein.</li>
+<li>Nun werden die Medien nacheinander dem Semesterapparat hinzugefügt und Sie können diese annotieren.</li>
+</ul>
 
- </div>
+<div class="text2" style="text-align: center">
+   <a  target="_blank"   id ="FButton2"    href="{$VUFIND.vuFindURL}"> <button style="padding:20px;" class="ui-button ui-widget ui-corner-all" > Im HAW-Katalog recherchieren und die Literaturliste erstellen       </button></a>
+</div>
 
- <div class="text2" style="text-align: center">
-   <a  onClick="$('#FButton').spin('modal');"  id ="FButton"  href="$CONF.VUFIND.vuListURL}?lmsid={$URLID}&lmsurl={$URL}"> <button style="padding:20px;" class="ui-button ui-widget ui-corner-all" > Im HAW-Katalog recherchieren und die Merkliste füllen      </button></a>
- </div>
-     -->
- <div class="text2">
  <hr>
-  <ul>
-   <li> Haben Sie nicht das Gewünschte gefunden?<BR></li></ul>
-     <div class="text2" style="text-align: center;">
-       <a   onClick="$('#FButton').spin('modal');"  href="index.php?msg=&action=purchase_suggestion&loc=1&lmsid={$collection.dc_collection_id}">  <button  style="padding:20px;" class="ui-button ui-widget ui-corner-all"> Erwerbungsvorschlag für Ihren Semesterapparat </button></a>
-     </div>
-   </div>
 
-   <div style="  display: none;" >
-  oder Medien im OPAC suchen.<br><br>
-  Bitte geben Sie in dieser Suchmaske <b>Titel</b> und / oder <b>Autor</b> und / oder <b>Signatur</b> ein.<br><br>
-  Das Buch wird dann im HIBS Online-Katalog gesucht.<br><br>
-  Bei mehreren Treffern erscheint eine Auswahlliste. Es werden maximal {$maxRecords|escape} Treffer angezeigt.<br><br>
-  Ihre Auswahl wird  &uuml;bernommen und erscheint in Ihrer Literaturliste. <br><br>
+<div class="text2">
   <form action="index.php" method="get">
-   <input type="hidden" name="action"           value="search" >
-   <input type="hidden" name="item"             value="book">
-   <input type="hidden" name="r"                value="{$user.role_encode}">
-   <input type="hidden" name="dc_collection_id" value="{$collection.dc_collection_id}">
-   <table style="text-align: left; width: 100%;" border="0" cellpadding="2" cellspacing="2">
-    <tbody>
-    <tr><td class="head1">Titel (Stichwort): </td><td><input class="txtin"  size="80" value="{$book.title|escape}"     name="title"></td></tr>
-    <tr><td class="head1">Autor (Nachname):  </td><td><input class="txtin"  size="80" value="{$book.author|escape}"    name="author"></td></tr>
-    <tr><td class="head1">Signatur:          </td><td><input class="txtin"  size="80" value="{$book.signature|escape}" name="signature"></td></tr>
-    </tbody>
-   </table>
+  <span class="text2" style="text-align: center;"> Link Literaturliste: <input type="text" name="mediaListID">
+  <input type="submit" value="OK" style="padding: 15px;     -webkit-border-radius: 5px; border-radius: 5px; ">   </span>
+  <input type="hidden" name="item"             value="collection">
+  <input type="hidden" name="action"           value="getMediaList" >
+  <input type="hidden" name="loc"              value="1">
+         <input type="hidden" name="r"                value="{$user.role_encode}">
+           <input type="hidden" name="dc_collection_id" value="{$collection.dc_collection_id}">
+       </form>
+   </div>
+     <!--
+ <hr>
+<div class="text2"  style="display: block;" >
+<ul><li> Um ein Medium direkt in Ihren Semesterapparat hinzuzufügen,<br />recherchieren Sie nun bitte im HAW Bibliothekskatalog.</li>
+    <li> Durch einen Klick auf den <strong>Stern</strong> <img style="position:relative;  top:5px;" src="img/sternchen.png"> des gewünschten Mediums,<br />  übernehmen Sie dieses dann dort in Ihre  in Ihre <strong>"Merkliste"</strong>. </li>
+</ul>
+</div>
+
+<div class="text2" style="text-align: center">
+<a  onClick="$('#FButton').spin('modal');"  id ="FButton"  href="$CONF.VUFIND.vuListURL}?lmsid={$URLID}&lmsurl={$URL}"> <button style="padding:20px;" class="ui-button ui-widget ui-corner-all" > Im HAW-Katalog recherchieren und die Merkliste füllen      </button></a>
+</div>
+-->
+<hr>
+<div class="text2">
+<ul><li> Haben Sie nicht das Gewünschte gefunden?<BR></li></ul>
+<div class="text2" style="text-align: center;">
+ <a   onClick="$('#FButton').spin('modal');"  href="index.php?msg=&action=purchase_suggestion&loc=1&lmsid={$collection.dc_collection_id}">  <button  style="padding:20px;" class="ui-button ui-widget ui-corner-all"> Erwerbungsvorschlag für Ihren Semesterapparat </button></a>
+</div>
+</div>
+
+<div style="display: none;" >
+         oder Medien im OPAC suchen.<br><br>
+         Bitte geben Sie in dieser Suchmaske <b>Titel</b> und / oder <b>Autor</b> und / oder <b>Signatur</b> ein.<br><br>
+         Das Buch wird dann im HIBS Online-Katalog gesucht.<br><br>
+         Bei mehreren Treffern erscheint eine Auswahlliste. Es werden maximal {$maxRecords|escape} Treffer angezeigt.<br><br>
+         Ihre Auswahl wird  &uuml;bernommen und erscheint in Ihrer Literaturliste. <br><br>
+         <form action="index.php" method="get">
+             <table style="text-align: left; width: 100%;" border="0" cellpadding="2" cellspacing="2">
+                 <tbody>
+                 <tr><td class="head1">Titel (Stichwort): </td><td><input class="txtin"  size="80" value="{$book.title|escape}"     name="title"></td></tr>
+                 <tr><td class="head1">Autor (Nachname):  </td><td><input class="txtin"  size="80" value="{$book.author|escape}"    name="author"></td></tr>
+                 <tr><td class="head1">Signatur:          </td><td><input class="txtin"  size="80" value="{$book.signature|escape}" name="signature"></td></tr>
+                 </tbody>
+             <input type="hidden" name="loc"              value="1" >
+             <input type="hidden" name="action"           value="search" >
+             <input type="hidden" name="item"             value="book">
+             <input type="hidden" name="r"                value="{$user.role_encode}">
+             <input type="hidden" name="dc_collection_id" value="{$collection.dc_collection_id}">
+
+             </table>
    <input style="float: right;" name="basic"  class="basic" value="&nbsp;&nbsp;&nbsp;SUCHE&nbsp;&nbsp;&nbsp;" type="submit">
   </form>
      </div>
@@ -117,8 +123,8 @@
                {/if}
 
                {if ($b.doc_type == 'print') }
-                   {if (isset ( $b.signature    ) AND $b.signature    != "" )}<tr><td><div class="mediaListHeader">Format: </div></td><td><span class="mediaTxt">Print - Sig:{$b.signature|escape}        </span></td></tr>{/if}
-                   {if (isset ( $b.ISBN )        AND $b.ISBN         != "" )}<tr><td><div class="mediaListHeader">ISBN:   </div></td><td><span class="mediaTxt">{$b.ISBN|escape:"br"}                     </span></td></tr>{/if}
+                   {if (isset ( $b.signature  ) AND $b.signature    != "" )}<tr><td><div class="mediaListHeader">Format: </div></td><td><span class="mediaTxt">Print - Sig:{$b.signature|escape}        </span></td></tr>{/if}
+                   {if (isset ( $b.ISBN       ) AND $b.ISBN         != "" )}<tr><td><div class="mediaListHeader">ISBN:   </div></td><td><span class="mediaTxt">{$b.ISBN|escape:"br"}                     </span></td></tr>{/if}
                {/if}
 
                {if (isset ( $b.publisher    ) AND $b.publisher    != "" )}<tr><td><div class="mediaListHeader">Verlag:   </div></td><td><span class="mediaTxt">{$b.publisher|escape}                       </span></td></tr>{/if}

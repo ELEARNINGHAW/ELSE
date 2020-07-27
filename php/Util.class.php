@@ -16,7 +16,8 @@ function __construct ( $SQL )
 
 # ---------------------------------------------------------------------------------------------
 function getInput ( )
-{
+{# deb($_POST);
+# deb($_GET,1);
 $operator          = new operator();
 $currentCollection = new collection();
 $currentUser       = new User();
@@ -175,7 +176,7 @@ if      ( isset ( $_GET[ 'to'                                  ] ) )
 }
 
 ##
-### ------------------------------- Rückgabewerte I  --------------------------------
+## ------------------------------- Rückgabewerte I  --------------------------------
 ##
 $I[ 'operator'           ] = $operator;
 $I[ 'currentCollection'  ] = $currentCollection;

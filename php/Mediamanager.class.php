@@ -277,38 +277,6 @@ function saveNewMediaSuggest ( $I )
 }
 
 
-###############################################################################################
-function searchMediaOnLibraryServer( $I )  ## -- OPAC --
-{
-  $bk = array();
-
-  $toSearch[ 'title'     ]      = $I[ 'medium' ] -> get_title();
-  $toSearch[ 'author'    ]      = $I[ 'medium' ] -> get_author();
-  $toSearch[ 'signature' ]      = $I[ 'medium' ] -> get_signature();
-
-  $books =  $this -> getHitList ( $toSearch ) ;
-
-  $maxhits  = $books['maxRecords'];
-  $hits     = $books['hits'];
-
-  foreach ($books['hitlist'] as $key => $b)
-  {
-    $b -> calcDocTypeID();
-    $b -> calcDocType();
-
-    $bk[$key] = $b -> obj2array();
-  }
-
-  $_SESSION['books'][ 'booksHitList'     ] = $this->UTIL->xml2array($bk);
-  $_SESSION['books'][ 'currentElement'   ] = 0;
-  $_SESSION['books'][ 'maxElement'       ] = 1;
-
-  if    ( $hits < 1 )  { $this -> showNewMediaForm( $I, $toSearch, $hits, $maxhits );  }   ## -- Suche ergab keinen Treffer
-  else                 { $this -> showHitList    ( $I, $bk , $hits, $maxhits);         }
-}
-
-
-
 
 
 ###############################################################################################
@@ -360,18 +328,56 @@ function purchase_suggestion( $I )
  * - Speichern des Mediums in den SA
  */
 
- # ---------------------------------------------------------------------------------------------
+
+
+
+###############################################################################################
+  function searchMediaOnLibraryServer( $I )  ## -- OPAC --
+  {
+    $bk = array();
+    
+    $toSearch[ 'title'     ]      = $I[ 'medium' ] -> get_title();
+    $toSearch[ 'author'    ]      = $I[ 'medium' ] -> get_author();
+    $toSearch[ 'signature' ]      = $I[ 'medium' ] -> get_signature();
+    
+    $books =  $this -> getHitList ( $toSearch ) ;
+    
+    $maxhits  = $books['maxRecords'];
+    $hits     = $books['hits'];
+    
+    
+    deb($books,1);
+    foreach ($books['hitlist'] as $key => $b)
+    {
+      $b -> calcDocTypeID();
+      $b -> calcDocType();
+      
+      $bk[$key] = $b -> obj2array();
+    }
+    
+    $_SESSION['books'][ 'booksHitList'     ] = $this->UTIL->xml2array($bk);
+    $_SESSION['books'][ 'currentElement'   ] = 0;
+    $_SESSION['books'][ 'maxElement'       ] = 1;
+    
+    if    ( $hits < 1 )  { $this -> showNewMediaForm( $I, $toSearch, $hits, $maxhits );  }   ## -- Suche ergab keinen Treffer
+    else                 { $this -> showHitList    ( $I, $bk , $hits, $maxhits);         }
+  }
+  
+  
+  
+  # ---------------------------------------------------------------------------------------------
 function getHitList( $searchQuery )
 {
   #$this->getIMS_pack( );
   $error = false;
 
 #--------------------------------
-  $conf = $this->CFG->getConf ();
-  $cat = $conf[ 'cat' ]; #'opac-de-18-302';  # HIBS
-  $recordSchema = $conf[ 'recordSchema2' ]; #'turbomarc';       # turbomarc / mods / marcxml
-  $maxRecords = $conf[ 'maxRecords' ]; # 50;
-  $catURL = $conf[ 'catURL' ]; #'http://sru.gbv.de/';
+  $conf = $this -> CFG -> getConf ();
+  # deb( $conf );
+  $cat          = $conf[ 'SRU' ][ 'cat'            ]; #'opac-de-18-302';  # HIBS
+  $recordSchema = $conf[ 'SRU' ][ 'recordSchema2'  ]; #'turbomarc';       # turbomarc / mods / marcxml
+  $maxRecords   = $conf[ 'SRU' ][ 'maxRecords'     ]; # 50;
+  $catURL       = $conf[ 'SRU' ][ 'catURL'         ]; #'http://sru.gbv.de/';
 #--------------------------------
 
   $query = $this->build_sru_query ( $searchQuery );
@@ -386,7 +392,7 @@ function getHitList( $searchQuery )
   }
 
   else
-  {
+  { #deb($page,1);
     $sxm = simplexml_load_string ( str_replace ( array( 'diag:' , 'zs:' ) , '' , $page ) );
 
     $hits = $sxm -> numberOfRecords;  # Anzahl Treffer
@@ -600,7 +606,7 @@ function getHitList( $searchQuery )
             $m->set_physicaldesc ( trim ( $r->d300->sa ) );
             $m->set_ISBN ( trim ( $ISBN ) );
             $m->set_publisher ( trim ( $r->d264->sb . ' ' . $r->d264->sa . ' ' . $r->d264->sc ) );
-
+            $m->set_ISBN ( trim ( $ISBN ) );
             # $m->set_subTitle     ( trim ( $r -> d245 -> sb   ) );
             # $m->set_edition      ( trim ( $r -> d250 -> sa   ) );
             # $m->set_directory    ( trim ( $r -> d856 -> su   ) );
