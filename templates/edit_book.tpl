@@ -115,24 +115,20 @@
     <input type = "hidden" name = "action"           value = "show_collection"                           >
     </td>
     </tr>
-    <tr><td> Die Medien sind bereits im Semesterapparat vorhanden. </td>
+    <tr><td> Keine neue Medien oder die Medien sind bereits im Semesterapparat vorhanden. </td>
         <td rowspan="10" >   <input style="width:125px; height:50px;" name="ok" value="&nbsp;&nbsp;&nbsp;Weiter&nbsp;&nbsp;&nbsp;" type="submit"> </td>
     </tr>
 {/if}
 </tbody>
 </table>
 <br>
-  <script>$( function() {		$( ".i" ).checkboxradio();	} );
-      $(document).ready(function(){
-          $("#radio-1").click(function(){
-              $("p.para").hide();
-          });
-          $("#radio-2").click(function(){
-              $("p.para").hide();
-          });
-          $("#radio-3").click(function(){
-              $("p.para").show();
-          });
+  <script>
+      $( function() { $( ".i" ).checkboxradio( );	} );
+      $(document).ready(function()
+      {
+          $( "#radio-1" ).click( function( ){ $( "p.para" ).hide( ); } );
+          $( "#radio-2" ).click( function( ){ $( "p.para" ).hide( ); } );
+          $( "#radio-3" ).click( function( ){ $( "p.para" ).show() ; } );
       });
   </script>
 </form>

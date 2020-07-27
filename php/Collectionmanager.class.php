@@ -515,17 +515,14 @@ function LMSLoader( $url )
         "verify_peer_name"=>false,
          ), );
   $medium = null;
- 
- 
+  
   ### ------ TEST -------
   if ($this -> conf['CONF'] ['cwd']  == 'ELSE-DEV')
   {
-    $url = 'X:\xampp\htdocs\ELSE-DEV\htdocs\haw-marc21.xml';
+    $url = 'X:\home\ELSE\haw-marc21.xml';
   }
- 
   ### ------ TEST -------
   
-
   $strXml = file_get_contents( $url , false, stream_context_create($arrContextOptions));
  
   $xml = simplexml_load_string( $strXml);
