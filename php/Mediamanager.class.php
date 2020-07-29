@@ -34,7 +34,7 @@ function showHitList( $I , $books, $hits, $maxhits )
   $tpl_vars[ 'maxHits'         ]  = $maxhits;
 
   $tpl_vars[ 'books_info'  ]  = $books;
-
+ 
   $this -> RENDERER -> do_template ( 'new_book.tpl' , $tpl_vars ) ;
 
   exit(0);
@@ -54,7 +54,7 @@ function editMediaMetaData( $I )
   $tpl_vars[ 'CFG'             ]                          =  $this -> CFG -> getConf();
   $tpl_vars[ 'filter'          ]                          =  $I[ 'filter'                          ] -> obj2array ( ) ;
   $tpl_vars[ 'DOC_TYPE'        ]                          =  $_SESSION[ 'DOC_TYPE'                 ];
-
+  $tpl_vars[ 'CONF'            ]                          = $_SESSION[ 'CFG'      ]['CONF'];
   $tpl_vars[ 'currentElement'  ]                          =  0 ;
   $tpl_vars[ 'maxElement'      ]                          =  1 ;
 
@@ -66,10 +66,10 @@ function editMediaMetaData( $I )
 
 ###############################################################################################
 function annoteNewMedia_showForm( $I )
-{
-#deb($_SESSION[ 'books' ],1);
+{ #deb( $I[ 'medium' ] -> get_ppn() );
+# deb($_SESSION[ 'books' ][ 'booksHitList' ] ,1);
   if ( isset( $_SESSION[ 'books' ][ 'booksHitList' ][ 0 ]))
-  {
+  { #deb('1');
     if ($I['medium']->get_doc_type_id() != 16)
     {
       $bookHit = $_SESSION[ 'books' ]['booksHitList'][$_SESSION['books']['currentElement']]; ## Metadaten des aus der Trefferliste ausgewählte Mediums
@@ -83,8 +83,16 @@ function annoteNewMedia_showForm( $I )
       $_SESSION[ 'books' ][ 'maxElement'     ] = 1;
     }
    }
+  elseif ( $I[ 'medium' ] -> get_ppn() != '' )
+  { #deb('2');
+  unset($_SESSION[ 'books' ][ 'booksHitList' ]);
+    $_SESSION[ 'books' ][ 'booksHitList' ][ 0 ] = $_SESSION[ 'books' ][ 'booksHitList' ][ $I[ 'medium' ] -> get_ppn() ]; # Hitliste kommt aus der OPAC Trefferliste
+    $_SESSION[ 'books' ][ 'currentElement' ] = 1;
+    $_SESSION[ 'books' ][ 'maxElement'     ] = 1;
+    deb($_SESSION[ 'books' ]);
+  }
   else
-  {
+  {# deb('3');
     $_SESSION[ 'books' ][ 'currentElement' ] = 0;
     $_SESSION[ 'books' ][ 'maxElement'     ] = 0;
   }
@@ -102,8 +110,8 @@ function annoteNewMedia_showForm( $I )
     $tpl_vars[ 'DOC_TYPE'       ] = $_SESSION[ 'DOC_TYPE' ];
     $tpl_vars[ 'currentElement' ] = $_SESSION[ 'books'    ][ 'currentElement' ];
     $tpl_vars[ 'maxElement'     ] = $_SESSION[ 'books'    ][ 'maxElement'     ];
-  
-    # deb($_SESSION[ 'CFG'      ],1);
+ 
+    #  deb($tpl_vars,1);
     $this -> RENDERER -> do_template( 'edit_book.tpl' , $tpl_vars );
     exit( 0 );
  
@@ -346,7 +354,7 @@ function purchase_suggestion( $I )
     $hits     = $books['hits'];
     
     
-    deb($books,1);
+
     foreach ($books['hitlist'] as $key => $b)
     {
       $b -> calcDocTypeID();
@@ -354,11 +362,11 @@ function purchase_suggestion( $I )
       
       $bk[$key] = $b -> obj2array();
     }
-    
+
     $_SESSION['books'][ 'booksHitList'     ] = $this->UTIL->xml2array($bk);
     $_SESSION['books'][ 'currentElement'   ] = 0;
     $_SESSION['books'][ 'maxElement'       ] = 1;
-    
+ 
     if    ( $hits < 1 )  { $this -> showNewMediaForm( $I, $toSearch, $hits, $maxhits );  }   ## -- Suche ergab keinen Treffer
     else                 { $this -> showHitList    ( $I, $bk , $hits, $maxhits);         }
   }

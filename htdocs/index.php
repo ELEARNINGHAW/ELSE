@@ -36,9 +36,9 @@ $ca = $I[ 'operator'    ] -> get_action();   # ACTION
 $ci = $I[ 'operator'    ] -> get_item();     # ITEM
 $cl = $I[ 'operator'    ] -> get_loc();      # LOCATOR
 
- #  deb($I,1);
-#$ci = 'collection';
-#$ca = 'lms-download';
+#  deb($I,1);
+# $ci = 'collection';
+# $ca = 'lms-download';
 
 # deb($cl);
 
@@ -129,8 +129,8 @@ if ( $ci  == 'email' AND $UTIL->hasRole( $cu,'staff', 'edit', 'mailuser'  ) )
 
 if ( $ci  == 'collection' AND $UTIL->hasRole( $cu,'staff', 'edit', 'mailuser'  ))
 { if      ( 1 == 2 ) {;}
-  else if ( $ca  == 'updateSem'             )  {  $COLLMGR -> updateSASem                    ( $I ); }   ##  SA wird für das nächste Semester genutzt. Bisheriger SA - Bücher im physSA werden zu reienen Literatur Hinweisen
-  else if ( $ca  == 'ERASA'                 )  {  $COLLMGR -> setCollectionForNextSem        ( $I ); }   ##  Email wird verschickt
+  else if ( $ca  == 'updateSem'             )  {  $COLLMGR  -> updateSASem                    ( $I ); }   ##  SA wird für das nächste Semester genutzt. Bisheriger SA - Bücher im physSA werden zu reienen Literatur Hinweisen
+  else if ( $ca  == 'ERASA'                 )  {  $COLLMGR  -> setCollectionForNextSem        ( $I ); }   ##  Email wird verschickt
   else if ( $ca  == 'ims-download'          )  {  $MEDIAMGR -> searchMediaOnLibraryServer    ( $I ); }   ##  IMPORT DER BELUGA Liste
   else if ( $ca  == 'purchase_suggestion'   )  {  $MEDIAMGR -> purchase_suggestion           ( $I ); }   ##  Erwebungsvorschlag
 }
@@ -142,8 +142,8 @@ if ( $ci  == 'collection' AND $UTIL->hasRole( $cu,'staff', 'edit', 'mailuser'  )
 else
 { if ( $ci  == 'collection' )
   { if      ( 1 == 2 ) {;}
-    else if ( $ca  == 'show_collection'      )  { $COLLMGR->showCollection                  ( $I ); }    ## SAs wird angezeigt (deren Editierbarkeit ist abhängig von der Rolle des Nuters)
-    else if ( $ca  == 'show_media_list'      )  { $COLLMGR->showMediaList                   ( $I ); }    ## Zeigt die Liste der SAs, geoperatort nach deren Zustand
+    else if ( $ca  == 'show_collection'      )  { $COLLMGR -> showCollection                  ( $I ); }    ## SAs wird angezeigt (deren Editierbarkeit ist abhängig von der Rolle des Nuters)
+    else if ( $ca  == 'show_media_list'      )  { $COLLMGR -> showMediaList                   ( $I ); }    ## Zeigt die Liste der SAs, geoperatort nach deren Zustand
   }
 }
 

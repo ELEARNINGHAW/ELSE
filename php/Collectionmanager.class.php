@@ -109,14 +109,14 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
         $tpl_vars[ 'book'              ][ 'title'       ]   = $toSearch[ 'title'         ];
         $tpl_vars[ 'book'              ][ 'author'      ]   = $toSearch[ 'author'        ];
         $tpl_vars[ 'book'              ][ 'signature'   ]   = $toSearch[ 'signature'     ];
-        $tpl_vars[ 'maxRecords'        ]                    = $this -> conf  [ 'VUFIND' ][ 'maxRecords' ];
+        $tpl_vars[ 'maxRecords'        ]                    = $this -> conf  [ 'SRU' ][ 'maxRecords' ];
         $tpl_vars[ 'URLID'             ]                    = $bc_urlID;
         $tpl_vars[ 'URL'               ]                    = $this -> conf [ 'SERVER' ][ 'URL' ].'/htdocs/' ;
         $tpl_vars[ 'back_URL'          ]                    = "index.php?item=collection&action=show_collection&dc_collection_id=".$collection[ $collection_id           ]->get_dc_collection_id()."&r=".$I[ 'currentUser'  ]->get_role_id();
         $tpl_vars[ 'VUFIND'            ]                     = $_SESSION[ 'CFG'      ]['VUFIND'];
- 
+        $tpl_vars[ 'CONF'            ]                       = $_SESSION[ 'CFG'      ];
         $_SESSION[ 'currentCollection' ] = $collection[ $collection_id ] -> obj2array ( );
-
+#deb( $tpl_vars[ 'CONF'            ]);
         $this -> RENDERER -> do_template ( 'new_book.tpl' , $tpl_vars ) ;
         exit(0);
     }
@@ -450,6 +450,7 @@ function lmsDownload( $I )
   $b_ppn                       = $_SESSION[ 'books'      ][ 'booksHitList' ][ 0 ][ 'ppn' ];
  
   $_SESSION[ 'books' ][ 'url' ] =  "index.php?ppn=$b_ppn&item=media&loc=1&action=annoteNewMedia&dc_collection_id=$collection_dc_collection_id&mode=new&r=$user_role_id";
+  deb($_SESSION[ 'books' ],1);
   $this -> RENDERER -> doRedirect( $_SESSION[ 'books' ][ 'url' ]  );
 }
 
@@ -500,7 +501,7 @@ function getMediaList( $I )
     $user_role_id                = $I[ 'currentUser'       ] -> get_role_encode();
     $b_ppn                       = $_SESSION[ 'books'      ][ 'booksHitList' ][ 0 ][ 'ppn' ];
 
- #deb(  $_SESSION[ 'books' ][ 'booksHitList'      ] ,1);
+#  deb(  $_SESSION[ 'books' ]  ,1);
 
     $_SESSION[ 'books' ][ 'url' ] =  "index.php?ppn=$b_ppn&item=media&loc=1&action=annoteNewMedia&dc_collection_id=$collection_dc_collection_id&mode=new&r=$user_role_id";
  
