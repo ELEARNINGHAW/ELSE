@@ -42,8 +42,7 @@
 <div class="text2" style="text-align: center">
    <a  target="_blank"   id ="FButton2"    href="{$VUFIND.vuFindURL}"> <button style="padding:20px;" class="ui-button ui-widget ui-corner-all" > Im HAW-Katalog recherchieren und die Literaturliste erstellen       </button></a>
 </div>
-
- <hr>
+<hr>
 
 <div class="text2">
   <form action="index.php" method="get">
@@ -52,12 +51,12 @@
   <input type="hidden" name="item"             value="collection">
   <input type="hidden" name="action"           value="getMediaList" >
   <input type="hidden" name="loc"              value="1">
-         <input type="hidden" name="r"                value="{$user.role_encode}">
-           <input type="hidden" name="dc_collection_id" value="{$collection.dc_collection_id}">
-       </form>
-   </div>
-     <!--
- <hr>
+  <input type="hidden" name="r"                value="{$user.role_encode}">
+  <input type="hidden" name="dc_collection_id" value="{$collection.dc_collection_id}">
+  </form>
+  </div>
+<!--
+<hr>
 <div class="text2"  style="display: block;" >
 <ul><li> Um ein Medium direkt in Ihren Semesterapparat hinzuzufügen,<br />recherchieren Sie nun bitte im HAW Bibliothekskatalog.</li>
     <li> Durch einen Klick auf den <strong>Stern</strong> <img style="position:relative;  top:5px;" src="img/sternchen.png"> des gewünschten Mediums,<br />  übernehmen Sie dieses dann dort in Ihre  in Ihre <strong>"Merkliste"</strong>. </li>
@@ -68,20 +67,30 @@
 <a  onClick="$('#FButton').spin('modal');"  id ="FButton"  href="$CONF.VUFIND.vuListURL}?lmsid={$URLID}&lmsurl={$URL}"> <button style="padding:20px;" class="ui-button ui-widget ui-corner-all" > Im HAW-Katalog recherchieren und die Merkliste füllen      </button></a>
 </div>
 -->
-<hr>
+         <hr>
 <div class="text2">
-<ul><li> Haben Sie nicht das Gewünschte gefunden?<BR></li></ul>
+<ul><li> Haben Sie im HAW-Katalog nicht das Gewünschte gefunden?<BR></li></ul>
 <div class="text2" style="text-align: center;">
- <a   onClick="$('#FButton').spin('modal');"  href="index.php?msg=&action=purchase_suggestion&loc=1&lmsid={$collection.dc_collection_id}">  <button  style="padding:20px;" class="ui-button ui-widget ui-corner-all"> Erwerbungsvorschlag für Ihren Semesterapparat </button></a>
+ <a   onClick="$('#FButton').spin('modal');"  href="index.php?msg=&action=purchase_suggestion&loc=1&lmsid={$collection.dc_collection_id}">  <button  style="padding:20px;" class="ui-button ui-widget ui-corner-all">Erwerbungsvorschlag für den Semesterapparat </button></a>
 </div>
 </div>
+         {if $CONF.SRU.SRUenabled}
+         <hr>
 
-<div style="display: none;" >
-         oder Medien im OPAC suchen.<br><br>
-         Bitte geben Sie in dieser Suchmaske <b>Titel</b> und / oder <b>Autor</b> und / oder <b>Signatur</b> ein.<br><br>
-         Das Buch wird dann im HIBS Online-Katalog gesucht.<br><br>
-         Bei mehreren Treffern erscheint eine Auswahlliste. Es werden maximal {$maxRecords|escape} Treffer angezeigt.<br><br>
-         Ihre Auswahl wird  &uuml;bernommen und erscheint in Ihrer Literaturliste. <br><br>
+
+    <div style="display: block;" class="text2"> <h3> oder Medien im OPAC suchen.</h3>
+        <ul>
+            <li>Bitte geben Sie in dieser Suchmaske <b>Titel</b> und / oder <b>Autor</b> und / oder <b>Signatur</b> ein. </li>
+            <li>Das Buch wird dann im HIBS Online-Katalog gesucht. </li>
+            <li>Bei mehreren Treffern erscheint eine Auswahlliste.<br>Es werden maximal {$maxRecords} Treffer angezeigt. </li>
+            <li>Ihre Auswahl wird  &uuml;bernommen und erscheint in Ihrer Literaturliste. </li>
+
+        </ul>
+
+
+
+
+
          <form action="index.php" method="get">
              <table style="text-align: left; width: 100%;" border="0" cellpadding="2" cellspacing="2">
                  <tbody>
@@ -98,7 +107,7 @@
              </table>
    <input style="float: right;" name="basic"  class="basic" value="&nbsp;&nbsp;&nbsp;SUCHE&nbsp;&nbsp;&nbsp;" type="submit">
   </form>
-     </div>
+     </div>   {/if}
    <!-- -->
      {/if}
 
@@ -112,8 +121,8 @@
 
          {foreach from=$books_info item=b}
              {if (isset ( $b.title ))}
-
-          <a class="hitlink_{$b.doc_type}" href="index.php?ppn={$b.ppn}&item={$b.item}&action=annoteNewMedia&dc_collection_id={$collection.dc_collection_id}&mode=new&r={$user.role_id}">
+<hr>
+          <a class="hitlink_{$b.doc_type}" href="index.php?ppn={$b.ppn}&item={$b.item}&action=annoteNewMedia&dc_collection_id={$collection.dc_collection_id}&mode=new&r={$user.role_id}&loc=2">
            <table>
                {if (isset ( $b.title        ) AND $b.title        != "" )}<tr><td><div class="mediaListHeader">Titel:    </div></td><td><span class="mediaTxt">{$b.title|escape}                           </span></td></tr>{/if}
                {if (isset ( $b.author       ) AND $b.author       != "" )}<tr><td><div class="mediaListHeader">Autor:    </div></td><td><span class="mediaTxt">{$b.author|escape}                          </span></td></tr>{/if}
