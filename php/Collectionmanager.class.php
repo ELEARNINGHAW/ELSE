@@ -501,10 +501,10 @@ function getMediaList( $I )
     $user_role_id                = $I[ 'currentUser'       ] -> get_role_encode();
     $b_ppn                       = $_SESSION[ 'books'      ][ 'booksHitList' ][ 0 ][ 'ppn' ];
 
-#  deb(  $_SESSION[ 'books' ]  ,1);
+
 
     $_SESSION[ 'books' ][ 'url' ] =  "index.php?ppn=$b_ppn&item=media&loc=1&action=annoteNewMedia&dc_collection_id=$collection_dc_collection_id&mode=new&r=$user_role_id";
- 
+ # deb(  $_SESSION[ 'books' ]  ,1);
     $this -> RENDERER -> doRedirect( $_SESSION[ 'books' ][ 'url' ]  );
 }
 
