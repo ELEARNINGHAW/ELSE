@@ -31,16 +31,16 @@
 
     <h3> Medien hinzufügen </h3>
 <ul>
-<li>Gehen Sie über den Button unten auf den HAW-Katalog und melden Sie sich dort mit Ihrer Bibliothekskennung an.</li>
-<li>Recherchieren Sie im Katalog und markieren Sie die gewünschten Medien mit einem Sternchen. Diese Medien werden der Merkliste hinzugefügt.</li>
-<li>Klicken sie auf „Merkliste“ und speichern Sie die Liste unter einem selbstgewählten Namen ab.</li>
+<li>Wechseln Sie über den Button unten zum HAW-Katalog und melden Sie sich dort mit Ihrer Bibliothekskennung an.
+<li>Recherchieren Sie im Katalog und markieren Sie die gewünschten Medien mit <img src="img/sternchen.png"/> . Diese Medien werden der Merkliste hinzugefügt.
+<li>Klicken sie auf <img src="img/merkliste.png"/> und speichern Sie die Liste unter einem selbstgewählten Namen ab.</li>
 <li>Über den Button „Listen-ID für ELSE kopieren“ können Sie den link der Literaturliste in den Zwischenspeicher kopieren.</li>
 <li>Wechseln Sie zurück zu ELSE und fügen Sie den link aus dem Zwischenspeicher in das Feld unten ein.</li>
 <li>Nun werden die Medien nacheinander dem Semesterapparat hinzugefügt und Sie können diese annotieren.</li>
 </ul>
 
 <div class="text2" style="text-align: center">
-   <a  target="_blank"   id ="FButton2"    href="{$VUFIND.vuFindURL}"> <button style="padding:20px;" class="ui-button ui-widget ui-corner-all" > Im HAW-Katalog recherchieren und die Literaturliste erstellen       </button></a>
+   <a  target="_blank"   id ="FButton2"    href="{$VUFIND.vuFindReserchURL}"> <button style="padding:20px;" class="ui-button ui-widget ui-corner-all" > Im HAW-Katalog recherchieren und die Literaturliste erstellen       </button></a>
 </div>
 <hr>
 

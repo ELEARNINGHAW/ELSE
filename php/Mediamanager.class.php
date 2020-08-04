@@ -67,7 +67,7 @@ function editMediaMetaData( $I )
 ###############################################################################################
 function annoteNewMedia_showForm( $I )
 { #deb( $I[ 'medium' ] -> get_ppn() );
-# deb($_SESSION[ 'books' ][ 'booksHitList' ] ,1);
+ # deb($_SESSION[ 'books' ]  ,1);
   if ( isset( $_SESSION[ 'books' ][ 'booksHitList' ][ 0 ]))
   { #deb('1');
     if ($I['medium']->get_doc_type_id() != 16)
@@ -85,11 +85,12 @@ function annoteNewMedia_showForm( $I )
    }
   elseif ( $I[ 'medium' ] -> get_ppn() != '' )
   { #deb('2');
-  unset($_SESSION[ 'books' ][ 'booksHitList' ]);
-    $_SESSION[ 'books' ][ 'booksHitList' ][ 0 ] = $_SESSION[ 'books' ][ 'booksHitList' ][ $I[ 'medium' ] -> get_ppn() ]; # Hitliste kommt aus der OPAC Trefferliste
-    $_SESSION[ 'books' ][ 'currentElement' ] = 1;
+   $tmpBook = $_SESSION[ 'books' ][ 'booksHitList' ][ $I[ 'medium' ] -> get_ppn() ];
+    unset($_SESSION[ 'books' ][ 'booksHitList' ]);
+    $_SESSION[ 'books' ][ 'booksHitList' ][ 0 ] = $tmpBook ; # Hitliste kommt aus der OPAC Trefferliste
+    $_SESSION[ 'books' ][ 'currentElement' ] = 0;
     $_SESSION[ 'books' ][ 'maxElement'     ] = 1;
-    deb($_SESSION[ 'books' ]);
+   # deb($_SESSION[ 'books' ]);
   }
   else
   {# deb('3');
@@ -111,7 +112,7 @@ function annoteNewMedia_showForm( $I )
     $tpl_vars[ 'currentElement' ] = $_SESSION[ 'books'    ][ 'currentElement' ];
     $tpl_vars[ 'maxElement'     ] = $_SESSION[ 'books'    ][ 'maxElement'     ];
  
-    #  deb($tpl_vars,1);
+  #   deb($tpl_vars,1);
     $this -> RENDERER -> do_template( 'edit_book.tpl' , $tpl_vars );
     exit( 0 );
  
