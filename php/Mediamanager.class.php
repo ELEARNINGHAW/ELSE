@@ -63,11 +63,10 @@ function editMediaMetaData( $I )
   exit(0);
 }
 
-
 ###############################################################################################
 function annoteNewMedia_showForm( $I )
 { #deb( $I[ 'medium' ] -> get_ppn() );
- # deb($_SESSION[ 'books' ]  ,1);
+ #  deb($_SESSION[ 'books' ]  ,1);
   if ( isset( $_SESSION[ 'books' ][ 'booksHitList' ][ 0 ]))
   { #deb('1');
     if ($I['medium']->get_doc_type_id() != 16)
@@ -115,8 +114,6 @@ function annoteNewMedia_showForm( $I )
   #   deb($tpl_vars,1);
     $this -> RENDERER -> do_template( 'edit_book.tpl' , $tpl_vars );
     exit( 0 );
- 
-
 }
 
 
@@ -1076,10 +1073,10 @@ function getHitList( $searchQuery )
 ###############################################################################################
   function ereaseMedia( $I )
   {
-    
-    $this->SQL->deleteMedia ( $I[ 'medium' ]->get_id () , $I[ 'operator' ] );
-    
-    $url = "index.php?item=collection&action=show_collection&dc_collection_id=" . $I[ 'currentCollection' ]->get_dc_collection_id () . "&r=" . $I[ 'currentUser' ]->get_role_id ();
+    $this->SQL->deleteMedia ( $I  );
+   # $url = "index.php?item=collection&action=show_collection&dc_collection_id=" . $I[ 'currentCollection' ]->get_dc_collection_id () . "&r=" . $I[ 'currentUser' ]->get_role_id ();
+    $url = "index.php?item=collection&action=show_media_list&mode=filterState&category=6";
+    #deb($url,1);
     if ( $this->CFG->CFG[ 'ajaxON' ] ) {
       $this->showSA ( $I );
     } else {

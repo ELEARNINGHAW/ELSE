@@ -469,6 +469,8 @@ function get_med_state( $collection_id )
 
 
   { #trigger_error("Deprecated function called: deleteMedia()", E_USER_NOTICE);
+   #deb($I ,1);
+   
     $ret = '';
     $r = $I[ 'currentUser' ]->get_role_name();
 
