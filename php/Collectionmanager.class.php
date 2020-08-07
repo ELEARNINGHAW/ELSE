@@ -403,16 +403,10 @@ function lmsDownload( $I )
   $conf = $this -> conf;
  
   $url  =  $I[ 'operator' ] -> get_url() ;
-
+ 
   $lmsDownload = explode( '?lmsid=', $url );                                             # deb( $lmsDownload );
-
  
-
-  $url = $url ."&format=".$this -> conf [VUFIND][ 'recordSchema' ];                                                # deb( $url );
- 
-  $medList = $this -> LMSLoader( $url );                                                          # deb( $medList,1 );
-
-  $medList = $this -> UTIL -> xml2array( $medList );
+  $medList = $this -> UTIL -> xml2array( $this -> LMSLoader( $url ."&format=".$this -> conf [VUFIND][ 'recordSchema' ] ) );
 
   foreach ( $medList as $med )
   {

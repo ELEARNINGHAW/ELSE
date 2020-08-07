@@ -31,12 +31,10 @@
 
     <h3> Medien hinzufügen </h3>
 <ul>
-<li>Wechseln Sie über den Button unten zum HAW-Katalog und melden Sie sich dort mit Ihrer Bibliothekskennung an.
-<li>Recherchieren Sie im Katalog und markieren Sie die gewünschten Medien mit <img src="img/sternchen.png"/> . Diese Medien werden der Merkliste hinzugefügt.
-<li>Klicken sie auf <img src="img/merkliste.png"/> und speichern Sie die Liste unter einem selbstgewählten Namen ab.</li>
-<li>Über den Button „Listen-ID für ELSE kopieren“ können Sie den link der Literaturliste in den Zwischenspeicher kopieren.</li>
-<li>Wechseln Sie zurück zu ELSE und fügen Sie den link aus dem Zwischenspeicher in das Feld unten ein.</li>
-<li>Nun werden die Medien nacheinander dem Semesterapparat hinzugefügt und Sie können diese annotieren.</li>
+  <li>Wechseln Sie über den Button unten zum HAW-Katalog und melden Sie sich dort mit Ihrer Bibliothekskennung an.</li>
+  <li> Im HAW-Katalog erstellen Sie eine Literaturliste (weitere Infos finden Sie dort).</li>
+  <li>Wechseln Sie dann zurück zu dieser Seite und fügen Sie den link der Literaturliste in das Feld unten ein.</li>
+  <li> Nun werden die Medien nacheinander dem Semesterapparat hinzugefügt und Sie können diese annotieren und bearbeiten. </li>
 </ul>
 
 <div class="text2" style="text-align: center">
