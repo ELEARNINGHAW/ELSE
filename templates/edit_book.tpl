@@ -61,7 +61,7 @@
  <td rowspan="10" >   <input style="width:125px; height:50px;" name="ok" value="&nbsp;&nbsp;&nbsp;SPEICHERN&nbsp;&nbsp;&nbsp;" type="submit"> </td>
 </tr>
     {* ORT:  SA fähig UND ( Neues Medium ODER Erwerbungsvorschlag ) *}
-{$medium.sigel}
+
     {$scanserviceArticle = false}
     {$scanservicePrint   = false}
     {$semApp             = false}
