@@ -59,8 +59,8 @@ else
 
 
 if  ( ( isset (  $_SESSION[ 'currentCollection'       ]   ) ) )
-{
-  $currentCollection -> array2obj( $_SESSION[ 'currentCollection'       ] );
+{# deb($_SESSION);
+   $currentCollection -> array2obj( $_SESSION[ 'currentCollection'       ] );
 }
 
 #  if ( $_SESSION['currentUser']['Userrole_id'] == ''   ) { die(  '<div style="  display: flex;  position: absolute;  top:45%; right:45%; font-size: 30px; "> TIME OUT <div>'); }
@@ -239,7 +239,7 @@ function getGET_BASE_Values ( )
   $currentUser  =  $this -> getRole    ( $currentUser  , $currentCollection  );
   $currentUser  =  $this -> getFachBIB ( $currentUser );
   $currentUser  =  $this -> getSex     ( $currentUser );
-
+ 
 #-------------------------------------------------------------------------
 
   $operator->set_sem ( $_SESSION[ 'CUR_SEM' ] );
@@ -284,12 +284,12 @@ function getRole( $user, $collection = null  )
     $role[ 'tmpcat' ] = '';
   }
   $role[ 'role_name' ] = $this -> SQL -> getRoleName ( $role[ 'role' ] ) ;  ## echo "--Transformiert EMIL-Rechte zu ELSE-Rechte/Rollennamen --";
-
+  
   $user -> set_tmpcat      ( $role[ 'tmpcat'                ]   ) ; 
   $user -> set_role_name   ( $role[ 'role_name'             ]   ) ;
   $user -> set_role_id     ( $role[ 'role'                  ]   ) ;
   $user -> set_role_encode ( $this -> b64en ( $role[ 'role' ] ) ) ;
-
+ 
   return  $user;
 }
 
@@ -392,7 +392,7 @@ function sendBIB_APmails()
   $BIB_Anrede  = $this -> conf[ 'BIBMAIL' ][ 'Anrede' ]; #= "Liebe ELSE/HIBS Mitarbeiterin  \r\n\r\n";
   $BIB_Gruss   = $this -> conf[ 'BIBMAIL' ][ 'Gruss'  ]; #= "\r\n\r\nIhr ELSE Server \r\n\r\n http://www.elearning.haw-hamburg.de/mod/else/view.php?id=443297  \r\n\r\n";
 
-  $mailInfos =     $this -> SQL -> getAdminEmailInfos ( ) ;
+  $mailInfos =     $this -> HAWdb -> getAdminEmailInfos ( ) ;
 
   foreach ($mailInfos as $mi)
   {
@@ -512,6 +512,7 @@ else { return false;    }
 
 function get_filter( $operator )
 {
+  
   $filter = new Filter();
 
   $filter -> set_bib     ( $_SESSION[ 'filter' ][ 'bib'   ]  );
@@ -519,14 +520,36 @@ function get_filter( $operator )
   $filter -> set_state   ( $_SESSION[ 'filter' ][ 'state' ]  );
   $filter -> set_type    ( $_SESSION[ 'filter' ][ 'type'  ]  );
 
-  if ( $operator -> get_mode() == 'filterBib'   ) { $filter -> set_bib   ( $operator -> get_category( ) );  $filter -> set_state ( 0 ); $filter -> set_type ( 0 );  } # Filter State u. Type  wird auf ALLE zurückgesetzt bei Filter auf Bib
-  if ( $operator -> get_mode() == 'filterSem'   ) { $filter -> set_sem   ( $operator -> get_category( ) );  $filter -> set_state ( 0 ); $filter -> set_type ( 0 );  } # Filter State u. Type  wird auf ALLE zurückgesetzt bei Filter auf Sem
-  if ( $operator -> get_mode() == 'filterState' ) { $filter -> set_state ( $operator -> get_category( ) );  if (  $operator -> get_category( ) == 0 ) { $filter -> set_type ( 0 );  }}
-  if ( $operator -> get_mode() == 'filterType'  ) { $filter -> set_type  ( $operator -> get_category( ) );  $filter -> set_state ( 0 );  }
-  if ( $operator -> get_mode() == 'filterUser'  ) { $filter -> set_user  ( $operator -> get_category( ) );  }
+  if ( $operator -> get_mode() == 'filterBib'   )                 # Filter State u. Type  wird auf ALLE zurückgesetzt bei Filter auf Bib
+  { $filter -> set_bib   ( $operator -> get_category( ) );
+    $filter -> set_state ( 0 );
+    $filter -> set_type  ( 0 );
+  }
+  
+  if ( $operator -> get_mode() == 'filterSem'   )                  # Filter State u. Type  wird auf ALLE zurückgesetzt bei Filter auf Sem
+  { $filter -> set_sem   ( $operator -> get_category( ) );
+    $filter -> set_state ( 0 );
+    $filter -> set_type  ( 0 );
+  }
+  
+  if ( $operator -> get_mode() == 'filterState' )
+  { $filter -> set_state ( $operator -> get_category( ) );
+    # if (  $operator -> get_category( ) == 0 )
+    {  $filter -> set_type ( 'X' );
+    }
+  }
+  
+  if ( $operator -> get_mode() == 'filterType'  )
+  { $filter -> set_type  ( $operator -> get_category( ) );
+    $filter -> set_state ( 0 );
+  }
+  
+  if ( $operator -> get_mode() == 'filterUser'  )
+  { $filter -> set_user  ( $operator -> get_category( ) );
+  }
 
   $_SESSION[ 'filter' ] = $filter -> obj2array ();
-#deb($_SESSION[ 'filter' ]);
+  
   return $filter;
 }
 

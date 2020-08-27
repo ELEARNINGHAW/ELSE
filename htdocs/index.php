@@ -1,5 +1,5 @@
 ﻿<?php
-session_start();  #  session_destroy (); unset($_SESSION);
+session_start();    #session_destroy (); unset($_SESSION);
 
 require_once ( '../php/Const.class.php'               );
 require_once ( '../php/Config.class.php'              );
@@ -35,12 +35,12 @@ $cu = $I[ 'currentUser' ];
 $ca = $I[ 'operator'    ] -> get_action();   # ACTION
 $ci = $I[ 'operator'    ] -> get_item();     # ITEM
 $cl = $I[ 'operator'    ] -> get_loc();      # LOCATOR
+#deb($cu );
 
- #deb($I);
 # $ci = 'collection';
 # $ca = 'lms-download';
 
-# deb($cl);
+
 
 # -- Default: item = collection -- (user) action = show_collection, (staff) action = show_collection_list
 if ( $ci  == 'collection'  AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit') )
@@ -86,7 +86,7 @@ else if (   $cl  ==  1   AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit'))
   else if ( $ca  == 'cancel_order'          )  {  $MEDIAMGR -> cancelMedia                   ( $I ); }   ## ActionHandler: Buchbestellung wird storiert
 }
  
-else if (  ( $cl == 2  OR $cl  == 3)   AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit'))
+else if (  ( $cl == 2  OR $cl  == 3 OR $cl  == 5)   AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit'))
 { if      ( 1 == 2 ) {;}
   else if ( $ca  == 'annoteNewMedia'        )  {  $MEDIAMGR -> annoteNewMedia_showForm       ( $I ); }   ## Eingabemaske Metadaten für Buch Annotation anzeigen
   else if ( $ca  == 'edit'                  )  {  $MEDIAMGR -> editMediaMetaData             ( $I ); }   ## ActionHandler: Metadaten des SA bearbeiten
@@ -102,7 +102,9 @@ else if (  ( $cl == 2  OR $cl  == 3)   AND   $UTIL -> hasRole( $cu,'admin', 'sta
 }
 
 else if (  ( $cl  == 4)   AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit'))
-{ if      ( 1 == 2 ) {;}
+{
+ 
+  if      ( 1 == 2 ) {;}
 else if ( $ca  == 'annoteNewMedia'        )  {  $MEDIAMGR -> annoteNewMedia_showForm       ( $I ); }   ## Eingabemaske Metadaten für Buch Annotation anzeigen
 else if ( $ca  == 'edit'                  )  {  $MEDIAMGR -> editMediaMetaData             ( $I ); }   ## ActionHandler: Metadaten des SA bearbeiten
 else if ( $ca  == 'save'                  )  {  $MEDIAMGR -> saveMediaMetaData             ( $I ); }   ## Speichern der Metadaten des Mediums
@@ -122,7 +124,8 @@ else if ( $ca  == 'new_email'             )  {  $MEDIAMGR -> showMailForm       
 ## ----------------------------------------------------------------------------------------
 
 if ( $ci  == 'email' AND $UTIL->hasRole( $cu,'staff', 'edit', 'mailuser'  ) )
-{ if      ( 1 == 2 ) {;}
+{
+  if      ( 1 == 2 ) {;}
   else if ( $ca  == 'sendmail'              )  {  $MEDIAMGR -> send_email                    ( $I ); }    ## Email wird verschickt
   else if ( $ca  == 'HIBSAPmail'            )  {  $UTIL     -> sendBIB_APmails               (    ); }    ## Cronjob: HIBS Ansprechpartner Infomail
 }

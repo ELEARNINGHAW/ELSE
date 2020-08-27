@@ -14,7 +14,7 @@
 {if ($medium.shelf_remain == 2)}  {$c2 = 'checked="checked"' } {else} {$c2 = ''} {/if}
 {if ($medium.shelf_remain == 3)}  {$c3 = 'checked="checked"' } {else} {$c3 = ''} {/if}
 {if ($medium.shelf_remain == 4)}  {$c4 = 'checked="checked"' } {else} {$c4 = ''} {/if}
-
+{if ($medium.shelf_remain == 5)}  {$c5 = 'checked="checked"' } {else} {$c5 = ''} {/if}
 
 {if $medium.doc_type_id == 16 }
   <h3 style="margin:10px; margin-bottom:0px; margin-top:0px; padding:10px; color: #FFF;" class="bgDef bg{$collection.bib_id}">Erwerbungsvorschlag für: {$collection.title}
@@ -60,20 +60,47 @@
 <tr><td class = "editmedia">Medientyp: </td><td> {$doctypetxt} </td>
  <td rowspan="10" >   <input style="width:125px; height:50px;" name="ok" value="&nbsp;&nbsp;&nbsp;SPEICHERN&nbsp;&nbsp;&nbsp;" type="submit"> </td>
 </tr>
-
     {* ORT:  SA fähig UND ( Neues Medium ODER Erwerbungsvorschlag ) *}
+{$medium.sigel}
+    {$scanserviceArticle = false}
+    {$scanservicePrint   = false}
+    {$semApp             = false}
+    {$checked            = ''   }
+
+
+
+    {if ($CONF.scanServiceON   AND $medium.doc_type_id == 6 ) }
+      {$scanserviceArticle = true}
+    {/if}
+    {if ( ($CONF.scanServiceON   AND $medium.sigel == 'HAW-Hamburg' ) AND  ( $medium.doc_type_id == 1 ||  $medium.doc_type_id == 12 ||  $medium.doc_type_id == 13 ||  $medium.doc_type_id == 15  ) )}
+      {$scanservicePrint = true}
+    {/if}
+    {if (  $medium.sigel == 'HAW-Hamburg' AND  $medium.doc_type_id != 6   OR $medium.doc_type_id == 16)  }
+      {$semApp = true}
+    {/if}
+    {if ($scanserviceArticle == false AND $scanservicePrint  == false AND $semApp  == false) } {* Wenn Medium ausschließlich als Literaturhinweis angeboten wird, ist dieses  schon  per default ausgewählt *}
+        {$checked = 'checked="checked"' } {$c0 = '' }
+    {/if}
+
 {if ( $SAready == 1 AND  ( $operator.mode == 'new'  OR  ($medium.doc_type_id == 16   OR  $medium.doc_type_id == 6) )  )   }
   <tr><td  class = "editmedia" style="vertical-align: top; font-weight: bold;">  Ort:  <span style="color: {$color}; vertical-align: top; font-weight: bold;">(bitte auswählen)</span> </td><td>
     <div style="border:{$bw}px solid {$color}; float: left;  height:80px; padding: 5px; font-size: 12px; width: calc(100% - 15px); ">
-      <input {$c2} value="2" class='i' type="radio" name="shelf_remain" id="radio-2"><label for="radio-2"><span style="font-weight:700; "> Literaturhinweis - verbleibt im Regal der Bibliothek.     </span></label><br/>
-      {if (  $medium.sigel == 'HAW-Hamburg' AND  $medium.doc_type_id != 6   OR $medium.doc_type_id == 16)  }
+
+    {if  $medium.sigel == 'HAW-Hamburg'}
+      <input {$c2} value="2" class='i' type="radio" name="shelf_remain" id="radio-2" {$checked}><label for="radio-2"><span style="font-weight:700; "> Literaturhinweis - verbleibt im Regal der Bibliothek.     </span></label><br/>
+    {else}
+        <input {$c2} value="5" class='i' type="radio" name="shelf_remain" id="radio-5" {$checked}><label for="radio-5"><span style="font-weight:700; "> Titel nicht aus HAW-Bestand, daher Literaturhinweis   </span></label><br/>
+    {/if}
+
+      {if $semApp}
       <input {$c1} value="1" class='i' type="radio" name="shelf_remain" id="radio-1"><label for="radio-1"><span style="font-weight:700; "> Semesterapparat  -  wird in Ihren Handapparat eingestellt. </span></label>
       {/if}
-      {if ( ($CONF.scanServiceON   AND $medium.sigel == 'HAW-Hamburg' ) AND  ( $medium.doc_type_id == 1 ||  $medium.doc_type_id == 12 ||  $medium.doc_type_id == 13 ||  $medium.doc_type_id == 15  ) )}
+
+      {if $scanservicePrint}
       <input {$c3} value="4" class='i' type="radio" name="shelf_remain" id="radio-3"><label for="radio-3"><span style="font-weight:700; "> Scanauftrag  - Teile dieses Printmediums als PDF. </span></label>
       {/if}
 
-      {if ($CONF.scanServiceON   AND $medium.doc_type_id == 6 )  }
+      {if $scanserviceArticle}
       <input {$c4} value="4" class='i' type="radio" name="shelf_remain" id="radio-4"><label for="radio-4"><span style="font-weight:700; "> Scanauftrag  -  Diesen Artikel als PDF. </span></label>
       {/if}
 

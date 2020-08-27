@@ -35,10 +35,11 @@
 
 <div class="bibStandort">
     {if $ci.bib_id != "" }
-    {if $di.shelf_remain == 1  }  {$FACHBIB[ $ci.bib_id ].bib_name|escape},<br/> im Regal "Semesterapparate"      {/if}{* SA Medium        *}
-    {if $di.shelf_remain == 2  }  Im Buchbestand der Fachbibliothek<br/> (wie im Online-Katalog angegeben).       {/if}{* LitHinweis Buch  *}
-    {if $di.shelf_remain == 3  }  Im Online-Katalog,<br/>  erreichbar nur aus dem HAW-Netz (oder VPN).            {/if}{* PDF *}
-    {if $di.shelf_remain == 4  }  Im HIBS Medienserver,<br/>  erreichbar! (oder nicht)                            {/if}{* Scanservice / Medienserver *}
+    {if $di.shelf_remain == 1  }  {$FACHBIB[ $ci.bib_id ].bib_name|escape},<br/> im Regal "Semesterapparate"   {/if}{* SA Medium        *}
+    {if $di.shelf_remain == 2  }  Im Buchbestand der Fachbibliothek<br/> (wie im HAW-Katalog angegeben).       {/if}{* LitHinweis Buch  *}
+    {if $di.shelf_remain == 3  }  Im HAW-Katalog,<br/>  erreichbar nur aus dem HAW-Netz (oder VPN).            {/if}{* PDF *}
+    {if $di.shelf_remain == 4  }  Im HIBS Medienserver,<br/>  erreichbar! (oder nicht)                         {/if}{* Scanservice / Medienserver *}
+    {if $di.shelf_remain == 5  }  Im Bestand einer externen Bibliothek (wie im HAW-Katalog angegeben).         {/if}{* LitHinweis Buch  *}
   {/if}
 </div>
 

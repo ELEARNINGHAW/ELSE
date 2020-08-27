@@ -27,9 +27,8 @@
  {if $searchHits < 1}
   <div style="font-size:35px; float:left; padding:10px; margin:5px; margin-bottom:100px;display:block;   background-color:#EFEFEF">B</div>Eine neue Suche starten:<br><br>
  {/if}
-     <div class="text2">
-
-    <h3> Medien hinzufügen </h3>
+  <div class="text2">
+  <h3> Medien hinzufügen </h3>
 <ul>
   <li>Wechseln Sie über den Button unten zum HAW-Katalog und melden Sie sich dort mit Ihrer Bibliothekskennung an.</li>
   <li> Im HAW-Katalog erstellen Sie eine Literaturliste (weitere Infos finden Sie dort).</li>
@@ -65,46 +64,38 @@
 <a  onClick="$('#FButton').spin('modal');"  id ="FButton"  href="$CONF.VUFIND.vuListURL}?lmsid={$URLID}&lmsurl={$URL}"> <button style="padding:20px;" class="ui-button ui-widget ui-corner-all" > Im HAW-Katalog recherchieren und die Merkliste füllen      </button></a>
 </div>
 -->
-         <hr>
+<hr>
 <div class="text2">
 <ul><li> Haben Sie im HAW-Katalog nicht das Gewünschte gefunden?<BR></li></ul>
 <div class="text2" style="text-align: center;">
  <a   onClick="$('#FButton').spin('modal');"  href="index.php?msg=&action=purchase_suggestion&loc=1&lmsid={$collection.dc_collection_id}">  <button  style="padding:20px;" class="ui-button ui-widget ui-corner-all">Erwerbungsvorschlag für den Semesterapparat </button></a>
 </div>
 </div>
-         {if $CONF.SRU.SRUenabled}
-         <hr>
+  {if $CONF.SRU.SRUenabled}
+  <hr>
+  <div style="display: block;" class="text2"> <h3> oder Medien im OPAC suchen.</h3>
+    <ul>
+      <li>Bitte geben Sie in dieser Suchmaske <b>Titel</b> und / oder <b>Autor</b> und / oder <b>Signatur</b> ein. </li>
+      <li>Das Buch wird dann im HIBS Online-Katalog gesucht. </li>
+      <li>Bei mehreren Treffern erscheint eine Auswahlliste.<br>Es werden maximal {$maxRecords} Treffer angezeigt. </li>
+      <li>Ihre Auswahl wird  &uuml;bernommen und erscheint in Ihrer Literaturliste. </li>
+    </ul>
 
-
-    <div style="display: block;" class="text2"> <h3> oder Medien im OPAC suchen.</h3>
-        <ul>
-            <li>Bitte geben Sie in dieser Suchmaske <b>Titel</b> und / oder <b>Autor</b> und / oder <b>Signatur</b> ein. </li>
-            <li>Das Buch wird dann im HIBS Online-Katalog gesucht. </li>
-            <li>Bei mehreren Treffern erscheint eine Auswahlliste.<br>Es werden maximal {$maxRecords} Treffer angezeigt. </li>
-            <li>Ihre Auswahl wird  &uuml;bernommen und erscheint in Ihrer Literaturliste. </li>
-
-        </ul>
-
-
-
-
-
-         <form action="index.php" method="get">
-             <table style="text-align: left; width: 100%;" border="0" cellpadding="2" cellspacing="2">
-                 <tbody>
-                 <tr><td class="head1">Titel (Stichwort): </td><td><input class="txtin"  size="80" value="{$book.title|escape}"     name="title"></td></tr>
-                 <tr><td class="head1">Autor (Nachname):  </td><td><input class="txtin"  size="80" value="{$book.author|escape}"    name="author"></td></tr>
-                 <tr><td class="head1">Signatur:          </td><td><input class="txtin"  size="80" value="{$book.signature|escape}" name="signature"></td></tr>
-                 </tbody>
-             <input type="hidden" name="loc"              value="1" >
-             <input type="hidden" name="action"           value="search" >
-             <input type="hidden" name="item"             value="book">
-             <input type="hidden" name="r"                value="{$user.role_encode}">
-             <input type="hidden" name="dc_collection_id" value="{$collection.dc_collection_id}">
-
-             </table>
-   <input style="float: right;" name="basic"  class="basic" value="&nbsp;&nbsp;&nbsp;SUCHE&nbsp;&nbsp;&nbsp;" type="submit">
-  </form>
+     <form action="index.php" method="get">
+     <table style="text-align: left; width: 100%;" border="0" cellpadding="2" cellspacing="2">
+       <tbody>
+        <tr><td class="head1">Titel (Stichwort): </td><td><input class="txtin"  size="80" value="{$book.title|escape}"     name="title"></td></tr>
+        <tr><td class="head1">Autor (Nachname):  </td><td><input class="txtin"  size="80" value="{$book.author|escape}"    name="author"></td></tr>
+        <tr><td class="head1">Signatur:          </td><td><input class="txtin"  size="80" value="{$book.signature|escape}" name="signature"></td></tr>
+       </tbody>
+       <input type="hidden" name="loc"              value="1" >
+       <input type="hidden" name="action"           value="search" >
+       <input type="hidden" name="item"             value="book">
+       <input type="hidden" name="r"                value="{$user.role_encode}">
+       <input type="hidden" name="dc_collection_id" value="{$collection.dc_collection_id}">
+      </table>
+     <input style="float: right;" name="basic"  class="basic" value="&nbsp;&nbsp;&nbsp;SUCHE&nbsp;&nbsp;&nbsp;" type="submit">
+     </form>
      </div>   {/if}
    <!-- -->
      {/if}

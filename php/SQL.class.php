@@ -78,7 +78,6 @@ return $ret;
 # ---------------------------------------------------------------------------------------------
 function getDokumentList( $colID , $filter = null  )
 {
-
   $ret = NULL;
 
   $filterSem   = '';
@@ -86,13 +85,13 @@ function getDokumentList( $colID , $filter = null  )
   $filterState = '';
   $filterType  = '';
 
-
+ ;
 if( $filter )
 {
-  $filterSem = $filter->get_sem();
-  $filterBib = $filter->get_bib();
+  $filterSem   = $filter->get_sem();
+  $filterBib   = $filter->get_bib();
   $filterState = $filter->get_state();
-  $filterType = $filter->get_type();
+  $filterType  = $filter->get_type();
 }
 
 $SQL =
@@ -100,16 +99,15 @@ $SQL =
 WHERE `collection_id` = \"" . $colID . "\"";
 if (  $filterState  != ''  AND  $filterState != 0   ) { $SQL .= " AND `state_id`     = "  . $this -> es ( $filterState  ); }
 if (  $filterType   != ''  AND  $filterType != 'X'  ) { $SQL .= " AND `doc_type_id`  = "  . $this -> es ( $filterType   ); }
-
+  
 
 $res = mysqli_query ( $this -> DB , $SQL );
-
 
 if ( $res )
 { while ( $row = mysqli_fetch_assoc ( $res ) )
   {
-    #  deb($row );
-    if( $row[ 'state_id' ] != 6 OR  $filter_state = 6 )  ## Gelöschte Medien werden NICHT angezeigt, außer in der Liste der gelöschten Medien
+   
+    if( $row[ 'state_id' ] != 6 OR  $filterState == 6 )  ## Gelöschte Medien werden NICHT angezeigt, außer in der Liste der gelöschten Medien
     {
       $m = new Medium();
       $m -> set_id                   ( $row[ 'id'                  ] );
@@ -132,15 +130,10 @@ if ( $res )
       $m -> set_last_state_change    ( $row[ 'last_state_change'   ] );
       $ret[ $row[ 'id' ] ] = $m;
     }
-
-   
   }
 }
 return $ret;
 }
-
-
-
 
 # ---------------------------------------------------------------------------------------------
   function getCollectionMetaData( $collection_id )
@@ -225,8 +218,6 @@ function getCollection( $colID = null , $filter = false ,  $short = null )
   $SQL .= " FROM `collection` c , `user` u";
   $SQL .= " WHERE  u.hawaccount = c.user_id " .  $collection  . " " . $bibFilter . " " . $semesterFilter;  # ."  ".$user;
   $SQL .= " ORDER BY c.id ";
-
-
 
   $res = mysqli_query ( $this->DB , $SQL );
 
@@ -942,9 +933,7 @@ function importMedium( $collection_id , $medium ,$fp)
    #if ( $medium->get_shelf_remain    ( ) != '' ) { $SQL .= " AND `shelf_remain`       = \"" . $this->es ( $medium->get_shelf_remain      ( ) ) . "\""; }
     if ( $medium->get_notes_to_studies( ) != '' ) { $SQL .= " AND `notes_to_studies`   = \"" . $this->es ( $medium->get_notes_to_studies  ( ) ) . "\""; }
     $SQL .= " ORDER BY `id` DESC";
-
-    # deb($medium,1);
-    # deb($SQL,1);
+ 
     $res = mysqli_query ( $this -> DB , $SQL );
     while ( $ret = $res -> fetch_array ( MYSQLI_ASSOC ) )
     {  $ans = $ret[ 'id' ];
@@ -978,7 +967,7 @@ function importMedium( $collection_id , $medium ,$fp)
     while ( $row = mysqli_fetch_assoc ( $res ) ) {
       $ret = $row[ 'name' ];
     }
-
+ 
     return $ret;
   }
 
