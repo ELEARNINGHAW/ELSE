@@ -926,6 +926,12 @@ td{
   background-color: #FFF;
 }
 
+.medium_5 /* Externe Bib - Literaturhinweis */
+{
+  background-image:url(../img/svg/txtExtBib.png);
+  background-repeat:repeat-y;
+  background-color: #FFF;
+}
 
 .medium_6 /* Artikel */
 {
@@ -947,6 +953,7 @@ td{
   background-repeat:repeat-y;
   background-color: #FFF;
 }
+
 
 
 .addMedInSA

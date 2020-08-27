@@ -64,7 +64,7 @@ $this->CONST_ACTION_INFO = array
         (
             "state"    => array ( "inactive", 'suggest' ) ,
             "mode"     => array ( "edit" , "admin" , "staff" ) ,
-            "loc"      => array ( "1", "2", "3"  , "4"  ) ,
+            "loc"      => array ( "1", "2", "3"  , "4", "5"  ) ,
         ) ,
         'acl' => array
         (
@@ -81,7 +81,7 @@ $this->CONST_ACTION_INFO = array
         'acl' => array (  "physical" => "role=admin,role=staff" ,  ) ,
         'button_visible_if' => array 
         (
-            "loc"      => array ( "1" ,"2"  , "4"  ) ,
+            "loc"      => array ( "1" ,"2"  , "4", "5"  ) ,
             "state"    => array ( "new", "suggest" ) ,
             "mode"     => array ( "staff" , "admin" ) ,
         ) ,
@@ -185,7 +185,7 @@ $this->CONST_ACTION_INFO = array
         'button_visible_if' => array
         (
             "state"  => array ( "active" ) ,
-            "loc"      => array (  "2", "3" , "4"   ) ,
+            "loc"      => array (  "2", "3" , "4", "5"   ) ,
             "mode"   => array ( "edit" , "admin" ,'staff' ) ,
         ) ,
         'acl' => array 
@@ -205,7 +205,7 @@ $this->CONST_ACTION_INFO = array
          (
 
             "state"   => array ( "inactive" ,"delete" ) ,
-            "loc"      => array (  "2", "3"  , "4"  ) ,
+            "loc"      => array (  "2", "3"  , "4" , "5" ) ,
             "mode"   => array ( "edit" , "admin" ,'staff' ) ,
         ) ,
         'acl' => array 
@@ -222,7 +222,7 @@ $this->CONST_ACTION_INFO = array
         'input'             => array ( "mode" => "edit" ) ,
         'button_visible_if' => array 
         (
-            "loc"      => array ( "1" ,  "2", "3"  , "4"  ) ,
+            "loc"      => array ( "1" ,  "2", "3"  , "4", "5"  ) ,
             "mode"     => array ( "edit" , "staff" , "admin" ) ,
         ) ,
         'acl'               => array 
@@ -241,7 +241,7 @@ $this->CONST_ACTION_INFO = array
         'acl'               => array ( "any" => "role=admin,role=staff" , ) ,
         'button_visible_if' => array 
         (
-            "loc"      => array ( "1" ,  "2", "3"  , "4"  ) ,
+            "loc"      => array ( "1" ,  "2", "3"  , "4" , "5" ) ,
             "mode" => array ( "staff" , "admin" ) ,
         ) ,
     ) ,
@@ -255,7 +255,7 @@ $this->CONST_ACTION_INFO = array
         'button_visible_if' => array 
         (
             "state"  => array ( "delete" ) ,
-            "loc"      => array ( "1" ,  "2", "3" , "4"  ) ,
+            "loc"      => array ( "1" ,  "2", "3" , "4", "5"  ) ,
             "mode"   => array ( "staff" , "admin" ) ,
         ) ,
     ) ,

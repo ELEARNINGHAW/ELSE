@@ -53,7 +53,7 @@ function  showMediaList( $I )  ##---------- Medien gefiltert nach Status
 
   #deb($tpl_vars,1);
 
-   $this->RENDERER -> do_template( 'collection.tpl', $tpl_vars );
+  $this->RENDERER -> do_template( 'collection.tpl', $tpl_vars );
 }
 
 # ---------------------------------------------------------------------------------------------

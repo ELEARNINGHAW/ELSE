@@ -207,9 +207,14 @@ function saveMediaMetaData( $I )
 
               }
 
-
-
-
+              else if  ( $I[ 'medium' ] -> get_shelf_remain () == '5'  )                                               ##  Wenn kein Medium aus externer Bibliothek ist
+              { $I[ 'medium' ] -> set_shelf_remain ( 5 );                                                              ##  ist der Medienort: 'verbleibt im Regal' ;) , Status 2
+                $I[ 'medium' ] -> set_state_id     ( 3 );                                                              ##  und der Status wird 'aktiv'         , Status 3
+              }
+  
+  
+  
+  
             if ( $I[ 'medium' ] -> get_doc_type_id () == '16' )                                                      ## Kaufvorschlag
             {
               $I[ 'medium' ] -> set_doc_type ( $_SESSION[ 'DOC_TYPE' ][ 16 ][ 'description' ] );

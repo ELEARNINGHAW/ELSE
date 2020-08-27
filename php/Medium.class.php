@@ -83,7 +83,6 @@ function get_created          ()   { return $this -> created              ; }
 function get_last_modified    ()   { return $this -> last_modified        ; }
 function get_last_state_change()   { return $this -> last_state_change    ; }
 
-
 function set_id                          ( $val )  { return $this -> id                          =  $val ; }
 function set_title                       ( $val )  { return $this -> title                       =  $val ; }
 function set_author                      ( $val )  { return $this -> author                      =  $val ; }
