@@ -667,10 +667,52 @@ function check_acl ( $acl_list , $item , $id )
 
     return $out;
   }
+  
+  
+  ####################### --- PRE DEPRECATED TOOLS --- #######################
+  
+  function getOPACDocType($book)
+  {
+    
+    if (isset ($book['physicaldesc']) AND !isset ($book['state_id'] )  )
+    {                                                                                                      $book['state_id'   ]  =  1 ;
+      if(      stristr(  $book['physicaldesc']  , 'Online') == TRUE ) { $book['doc_type_id']  = 4;  $book['state_id'   ]  =  3;}
+      else if( stristr(  $book['physicaldesc']  , 'CD-ROM') == TRUE ) { $book['doc_type_id']  = 3;  $book['state_id'   ]  =  1;}
+    }
+    
+    if (!isset ($book['doc_type_id']))
+    {  $book['doc_type_id'] = 1;
+    }
+    
+    if( $book['doc_type_id']  == 4 )
+    {
+      $book['doc_type'   ]  = "electronic";   #  E-BOOK
+      $book['item'       ]  = 'ebook';
+    }
+    else if( $book['doc_type_id']  == 3 )     # CD-ROM
+    {
+      $book['doc_type'   ]  = "cd-rom";
+      $book['item'       ]  = 'book';
+      /* Status: NEU BESTELLT  */
+    }
+    else if( $book['doc_type_id']  == 2 )      # BUCH als Literaturhinweis
+    {
+      $book['doc_type'   ]  = "print";
+      $book['item'       ]  = 'lh_book';
+    }
+    else                                       # BUCH im Semesterapparat
+    {
+      $book['doc_type'   ]  = "print";
+      $book['item'       ]  = 'book';
+      $book['doc_type_id']  =  1;
+    }
+  
+    $book['sigel'   ]  = "HAW-Hamburg";
+    return $book;
+  }
 
-
-
-
+  
+  
 
 ####################### --- DEPRECATED TOOLS --- #######################
 # ---------------------------------------------------------------------------------------------
