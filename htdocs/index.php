@@ -1,5 +1,5 @@
 ﻿<?php
-session_start();    #session_destroy (); unset($_SESSION);
+session_start();   #session_destroy (); unset($_SESSION);
 
 require_once ( '../php/Const.class.php'               );
 require_once ( '../php/Config.class.php'              );
@@ -36,11 +36,9 @@ $ca = $I[ 'operator'    ] -> get_action();   # ACTION
 $ci = $I[ 'operator'    ] -> get_item();     # ITEM
 $cl = $I[ 'operator'    ] -> get_loc();      # LOCATOR
 #deb($cu );
-
+ #deb($I );
 # $ci = 'collection';
 # $ca = 'lms-download';
-
-
 
 # -- Default: item = collection -- (user) action = show_collection, (staff) action = show_collection_list
 if ( $ci  == 'collection'  AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit') )

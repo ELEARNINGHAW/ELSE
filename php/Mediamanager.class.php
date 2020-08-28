@@ -65,34 +65,36 @@ function editMediaMetaData( $I )
 
 ###############################################################################################
 function annoteNewMedia_showForm( $I )
-{ #deb( $I[ 'medium' ] -> get_ppn() );
- #  deb($_SESSION[ 'books' ]  ,1);
+{
   if ( isset( $_SESSION[ 'books' ][ 'booksHitList' ][ 0 ]))
-  { #deb('1');
+  {  #deb('--- 1 ---');
     if ($I['medium']->get_doc_type_id() != 16)
     {
-      $bookHit = $_SESSION[ 'books' ]['booksHitList'][$_SESSION['books']['currentElement']]; ## Metadaten des aus der Trefferliste ausgewählte Mediums
-      $I['medium']->array2obj($bookHit);
-    } else if ($I['medium']->get_title() == '' AND $I['medium']->get_doc_type_id() != 16)     ## Kein Titel UND kein Erwerbungsvorschlag
+      $tmpBook = $_SESSION[ 'books' ][ 'booksHitList' ][ $_SESSION[ 'books' ][ 'currentElement' ] ];  ## Metadaten des aus der Trefferliste ausgewählte Mediums
+      $I[ 'medium' ] -> array2obj( $tmpBook );
+    } else if ( $I[ 'medium' ] -> get_title( ) == '' AND $I[ 'medium' ] -> get_doc_type_id( ) != 16 )     ## Kein Titel UND kein Erwerbungsvorschlag
     {
-      $bookHit = $_SESSION['books']['booksHitList'][$I['medium']->get_ppn()];               ## Metadaten des aus der Trefferliste ausgeählte Mediums
-      $I[ 'medium' ] -> array2obj( $bookHit );
+      $tmpBook = $_SESSION[ 'books' ][ 'booksHitList' ][ $I[ 'medium' ] -> get_ppn( ) ];                 ## Metadaten des aus der Trefferliste ausgeählte Mediums
+      $I[ 'medium' ] -> array2obj( $tmpBook );
     } else {
       $_SESSION[ 'books' ][ 'currentElement' ] = 1;
       $_SESSION[ 'books' ][ 'maxElement'     ] = 1;
     }
    }
   elseif ( $I[ 'medium' ] -> get_ppn() != '' )
-  { #deb('2');
-   $tmpBook = $_SESSION[ 'books' ][ 'booksHitList' ][ $I[ 'medium' ] -> get_ppn() ];
+  { # deb('--- 2 ---');
+    $tmpBook = $_SESSION[ 'books' ][ 'booksHitList' ][ $I[ 'medium' ] -> get_ppn() ];
+    $tmpBook = $this -> UTIL -> getOPACDocType( $tmpBook );
+    
+    $I[ 'medium' ] -> array2obj( $tmpBook );
     unset($_SESSION[ 'books' ][ 'booksHitList' ]);
     $_SESSION[ 'books' ][ 'booksHitList' ][ 0 ] = $tmpBook ; # Hitliste kommt aus der OPAC Trefferliste
     $_SESSION[ 'books' ][ 'currentElement' ] = 0;
     $_SESSION[ 'books' ][ 'maxElement'     ] = 1;
-   # deb($_SESSION[ 'books' ]);
+    
   }
   else
-  {# deb('3');
+  { #deb('--- 3 ---');
     $_SESSION[ 'books' ][ 'currentElement' ] = 0;
     $_SESSION[ 'books' ][ 'maxElement'     ] = 0;
   }
@@ -111,7 +113,7 @@ function annoteNewMedia_showForm( $I )
     $tpl_vars[ 'currentElement' ] = $_SESSION[ 'books'    ][ 'currentElement' ];
     $tpl_vars[ 'maxElement'     ] = $_SESSION[ 'books'    ][ 'maxElement'     ];
  
-  #   deb($tpl_vars,1);
+    #deb($tpl_vars );
     $this -> RENDERER -> do_template( 'edit_book.tpl' , $tpl_vars );
     exit( 0 );
 }
@@ -352,10 +354,11 @@ function purchase_suggestion( $I )
     $toSearch[ 'signature' ]      = $I[ 'medium' ] -> get_signature();
     
     $books =  $this -> getHitList ( $toSearch ) ;
-    
+  
+ 
     $maxhits  = $books['maxRecords'];
     $hits     = $books['hits'];
-    
+ 
     
 
     foreach ($books['hitlist'] as $key => $b)
@@ -365,11 +368,13 @@ function purchase_suggestion( $I )
       
       $bk[$key] = $b -> obj2array();
     }
+  
 
+    unset($_SESSION['books']);
     $_SESSION['books'][ 'booksHitList'     ] = $this->UTIL->xml2array($bk);
     $_SESSION['books'][ 'currentElement'   ] = 0;
     $_SESSION['books'][ 'maxElement'       ] = 1;
- 
+   # deb( $_SESSION['books']);
     if    ( $hits < 1 )  { $this -> showNewMediaForm( $I, $toSearch, $hits, $maxhits );  }   ## -- Suche ergab keinen Treffer
     else                 { $this -> showHitList    ( $I, $bk , $hits, $maxhits);         }
   }

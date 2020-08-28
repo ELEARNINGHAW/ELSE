@@ -117,16 +117,14 @@ function array2obj( $array )   {  foreach ($array as $k => $v )  { $this->$k = $
 function calcDocType()
 {
   $pos = $this -> get_doc_type_id() ;
-
-  #deb($_SESSION[ 'DOC_TYPE' ],1);
+ 
   if (isset($_SESSION[ 'DOC_TYPE' ][ $pos  ])) {
     $dt = $_SESSION['DOC_TYPE'][$pos];
   }
   else {
     $dt =  0 ;
   }
-  # deb($pos);
- # deb($this);
+ 
   $this -> set_doc_type( $dt[ 'doc_type'   ] );
 }
 
@@ -147,5 +145,8 @@ function calcItem()  ## docTypeID and Item
     {  $this -> set_item(  $dt[ 'item' ] ); }
   }
 }
+  
+  
+
 
 }
