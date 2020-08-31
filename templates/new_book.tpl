@@ -28,22 +28,23 @@
   <div style="font-size:35px; float:left; padding:10px; margin:5px; margin-bottom:100px;display:block;   background-color:#EFEFEF">B</div>Eine neue Suche starten:<br><br>
  {/if}
   <div class="text2">
-  <h3> Medien hinzufügen </h3>
-<ul>
-  <li>Wechseln Sie über den Button unten zum HAW-Katalog und melden Sie sich dort mit Ihrer Bibliothekskennung an.</li>
-  <li> Im HAW-Katalog erstellen Sie eine Literaturliste (weitere Infos finden Sie dort).</li>
-  <li>Wechseln Sie dann zurück zu dieser Seite und fügen Sie den link der Literaturliste in das Feld unten ein.</li>
-  <li> Nun werden die Medien nacheinander dem Semesterapparat hinzugefügt und Sie können diese annotieren und bearbeiten. </li>
-</ul>
+  <h3> Medien hinzufügen – NEU über den HAW-Katalog incl. Artikelindex: </h3>
+<ol>
+  <li>Wechseln Sie über den Button unten zum HAW-Katalog und melden Sie sich dort mit Ihrer Bibliothekskennung an. </li>
+  <li><b>Im HAW-Katalog erstellen Sie eine Literaturliste (weitere Infos finden Sie dort).</b> </li>
+  <li>Wechseln Sie dann zurück zu dieser Seite und fügen Sie den link der Literaturliste in das Feld unten ein. </li>
+  <li>Nun werden die Medien nacheinander dem Semesterapparat hinzugefügt und Sie können diese annotieren und bearbeiten. </li>
+</ol>
 
 <div class="text2" style="text-align: center">
-   <a  target="_blank"   id ="FButton2"    href="{$VUFIND.vuFindReserchURL}"> <button style="padding:20px;" class="ui-button ui-widget ui-corner-all" > Im HAW-Katalog recherchieren und die Literaturliste erstellen       </button></a>
+   <a  target="_blank"   id ="FButton2"    href="{$VUFIND.vuFindReserchURL}"> <button style="padding:20px;" class="ui-button ui-widget ui-corner-all" > Im HAW-Katalog recherchieren und die Literaturliste erstellen
+       </button></a>
 </div>
 <hr>
 
 <div class="text2">
   <form action="index.php" method="get">
-  <span class="text2" style="text-align: center;"> Link Literaturliste: <input type="text" name="mediaListID">
+  <span class="text2" style="text-align: center;"> Link Literaturliste:  <input type="text" name="mediaListID">
   <input type="submit" value="OK" style="padding: 15px;     -webkit-border-radius: 5px; border-radius: 5px; ">   </span>
   <input type="hidden" name="item"             value="collection">
   <input type="hidden" name="action"           value="getMediaList" >
@@ -66,20 +67,19 @@
 -->
 <hr>
 <div class="text2">
-<ul><li> Haben Sie im HAW-Katalog nicht das Gewünschte gefunden?<BR></li></ul>
+<ul><li>Haben Sie im HAW-Katalog nicht das Gewünschte gefunden</li></ul>
 <div class="text2" style="text-align: center;">
  <a   onClick="$('#FButton').spin('modal');"  href="index.php?msg=&action=purchase_suggestion&loc=1&lmsid={$collection.dc_collection_id}">  <button  style="padding:20px;" class="ui-button ui-widget ui-corner-all">Erwerbungsvorschlag für den Semesterapparat </button></a>
 </div>
 </div>
   {if $CONF.SRU.SRUenabled}
   <hr>
-  <div style="display: block;" class="text2"> <h3> oder Medien im OPAC suchen.</h3>
-    <ul>
-      <li>Bitte geben Sie in dieser Suchmaske <b>Titel</b> und / oder <b>Autor</b> und / oder <b>Signatur</b> ein. </li>
-      <li>Das Buch wird dann im HIBS Online-Katalog gesucht. </li>
-      <li>Bei mehreren Treffern erscheint eine Auswahlliste.<br>Es werden maximal {$maxRecords} Treffer angezeigt. </li>
-      <li>Ihre Auswahl wird  &uuml;bernommen und erscheint in Ihrer Literaturliste. </li>
-    </ul>
+  <div style="display: block;" class="text2"> <h3>Alternativ:  Medien hinzufügen über Suche im alten online-Katalog (OPAC):</h3>
+    <ol>
+      <li>Bitte geben Sie in dieser Suchmaske <b>Titel</b> und/oder <b>Autor*in</b> und/oder <b>Signatur</b> ein.</li>
+        <li> Bei mehreren Treffern erscheint eine Auswahlliste (es werden max. 50 Treffer angezeigt).</li>
+        <li>Ihre Auswahl wird übernommen und Sie können die einzelnen Medien annotieren und bearbeiten. </li>
+    </ol>
 
      <form action="index.php" method="get">
      <table style="text-align: left; width: 100%;" border="0" cellpadding="2" cellspacing="2">
