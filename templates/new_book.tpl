@@ -45,7 +45,7 @@
 <div class="text2">
   <form action="index.php" method="get">
   <span class="text2" style="text-align: center;"> Link Literaturliste:  <input type="text" name="mediaListID">
-  <input type="submit" value="OK" style="padding: 15px;     -webkit-border-radius: 5px; border-radius: 5px; ">   </span>
+  <input type="submit" value="OK"  class="ui-button ui-widget ui-corner-all"  style="padding: 15px;     -webkit-border-radius: 5px; border-radius: 5px; ">   </span>
   <input type="hidden" name="item"             value="collection">
   <input type="hidden" name="action"           value="getMediaList" >
   <input type="hidden" name="loc"              value="1">
