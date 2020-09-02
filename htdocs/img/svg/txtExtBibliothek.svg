@@ -10,14 +10,14 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    inkscape:export-ydpi="90"
    inkscape:export-xdpi="90"
-   inkscape:export-filename="C:\xampp\htdocs\ELSE-DEV\htdocs\img\svg\txtBuch.png"
+   inkscape:export-filename="C:\xampp\htdocs\ELSE-DEV\htdocs\img\svg\txtBibliothek.png"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
    sodipodi:version="0.32"
    sodipodi:docname="txtExtBibliothek.svg"
    inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
    version="1.1"
    id="svg2"
-   height="125"
+   height="90"
    width="50">
   <defs
      id="defs4">
@@ -2684,18 +2684,18 @@
      units="px"
      inkscape:document-rotation="0"
      inkscape:guide-bbox="true"
-     showguides="true"
-     inkscape:window-maximized="1"
-     inkscape:window-y="-8"
-     inkscape:window-x="-8"
-     inkscape:window-height="1057"
-     inkscape:window-width="1920"
+     showguides="false"
+     inkscape:window-maximized="0"
+     inkscape:window-y="13"
+     inkscape:window-x="15"
+     inkscape:window-height="1048"
+     inkscape:window-width="1627"
      showgrid="false"
      inkscape:current-layer="_98045400"
      inkscape:document-units="px"
-     inkscape:cy="13.676141"
-     inkscape:cx="-41.375606"
-     inkscape:zoom="1.979899"
+     inkscape:cy="79.064117"
+     inkscape:cx="42.517857"
+     inkscape:zoom="5.6"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
      borderopacity="1.0"
@@ -2704,7 +2704,7 @@
      id="base">
     <sodipodi:guide
        id="guide4001"
-       position="33.928571"
+       position="35,150.35714"
        orientation="1,0" />
   </sodipodi:namedview>
   <metadata
@@ -2774,7 +2774,7 @@
         <polygon
            style="fill:url(#id157);fill-rule:nonzero"
            class="fil5"
-           points="640.234,172.38 640.234,181.754 637.892,181.754 637.892,172.38 "
+           points="637.892,181.754 637.892,172.38 640.234,172.38 640.234,181.754 "
            id="polygon3488" />
         <path
            style="fill:url(#id158);fill-rule:nonzero"
@@ -2791,17 +2791,17 @@
         <polygon
            style="fill:url(#id107);fill-rule:nonzero"
            class="fil8"
-           points="649.608,188.788 649.608,202.85 628.516,202.85 628.516,188.788 "
+           points="628.516,202.85 628.516,188.788 649.608,188.788 649.608,202.85 "
            id="polygon3494" />
         <polygon
            style="fill:url(#id93);fill-rule:nonzero"
            class="fil9"
-           points="647.266,191.13 647.266,200.504 630.858,200.504 630.858,191.13 "
+           points="630.858,200.504 630.858,191.13 647.266,191.13 647.266,200.504 "
            id="polygon3496" />
         <polygon
            style="fill:url(#id84);fill-rule:nonzero"
            class="fil10"
-           points="649.608,184.1 649.608,186.442 628.516,186.442 628.516,184.1 "
+           points="628.516,186.442 628.516,184.1 649.608,184.1 649.608,186.442 "
            id="polygon3498" />
         <path
            style="fill:url(#id69);fill-rule:nonzero"
@@ -2812,17 +2812,17 @@
         <polygon
            style="fill:url(#id113);fill-rule:nonzero"
            class="fil12"
-           points="680.058,177.068 680.058,191.13 658.966,191.13 658.966,177.068 "
+           points="658.966,191.13 658.966,177.068 680.058,177.068 680.058,191.13 "
            id="polygon3502" />
         <polygon
            style="fill:url(#id99);fill-rule:nonzero"
            class="fil13"
-           points="677.721,179.413 677.721,188.788 661.313,188.788 661.313,179.413 "
+           points="661.313,188.788 661.313,179.413 677.721,179.413 677.721,188.788 "
            id="polygon3504" />
         <polygon
            style="fill:url(#id89);fill-rule:nonzero"
            class="fil14"
-           points="680.058,172.38 680.058,174.721 658.966,174.721 658.966,172.38 "
+           points="658.966,174.721 658.966,172.38 680.058,172.38 680.058,174.721 "
            id="polygon3506" />
         <path
            style="fill:url(#id63);fill-rule:nonzero"
@@ -2833,17 +2833,17 @@
         <polygon
            style="fill:url(#id108);fill-rule:nonzero"
            class="fil16"
-           points="649.608,155.975 649.608,170.038 628.516,170.038 628.516,155.975 "
+           points="628.516,170.038 628.516,155.975 649.608,155.975 649.608,170.038 "
            id="polygon3510" />
         <polygon
            style="fill:url(#id94);fill-rule:nonzero"
            class="fil17"
-           points="647.266,158.318 647.266,167.692 630.858,167.692 630.858,158.318 "
+           points="630.858,167.692 630.858,158.318 647.266,158.318 647.266,167.692 "
            id="polygon3512" />
         <polygon
            style="fill:url(#id85);fill-rule:nonzero"
            class="fil18"
-           points="649.608,151.301 649.608,153.642 628.516,153.642 628.516,151.301 "
+           points="628.516,153.642 628.516,151.301 649.608,151.301 649.608,153.642 "
            id="polygon3514" />
       </symbol>
       <symbol
@@ -3338,92 +3338,92 @@
         <polygon
            style="fill:url(#id50);fill-rule:nonzero"
            class="fil35"
-           points="682.387,178.713 682.387,195.121 654.28,195.121 654.28,178.713 "
+           points="654.28,195.121 654.28,178.713 682.387,178.713 682.387,195.121 "
            id="polygon3665" />
         <polygon
            style="fill:url(#id58);fill-rule:nonzero"
            class="fil36"
-           points="680.045,181.055 680.045,192.772 654.28,192.772 654.28,181.055 "
+           points="654.28,192.772 654.28,181.055 680.045,181.055 680.045,192.772 "
            id="polygon3667" />
         <polygon
            style="fill:url(#id48);fill-rule:nonzero"
            class="fil37"
-           points="677.7,183.401 677.7,190.434 654.28,190.434 654.28,183.401 "
+           points="654.28,190.434 654.28,183.401 677.7,183.401 677.7,190.434 "
            id="polygon3669" />
         <polygon
            style="fill:url(#id52);fill-rule:nonzero"
            class="fil38"
-           points="673.033,148.242 673.033,204.475 656.625,204.475 656.625,148.242 "
+           points="656.625,204.475 656.625,148.242 673.033,148.242 673.033,204.475 "
            id="polygon3671" />
         <polygon
            style="fill:url(#id60);fill-rule:nonzero"
            class="fil39"
-           points="670.684,150.588 670.684,202.134 658.966,202.134 658.966,150.588 "
+           points="658.966,202.134 658.966,150.588 670.684,150.588 670.684,202.134 "
            id="polygon3673" />
         <polygon
            style="fill:url(#id53);fill-rule:nonzero"
            class="fil40"
-           points="668.345,152.929 668.345,199.788 661.313,199.788 661.313,152.929 "
+           points="661.313,199.788 661.313,152.929 668.345,152.929 668.345,199.788 "
            id="polygon3675" />
         <polygon
            style="fill:url(#id51);fill-rule:nonzero"
            class="fil41"
-           points="682.387,157.617 682.387,174.025 654.28,174.025 654.28,157.617 "
+           points="654.28,174.025 654.28,157.617 682.387,157.617 682.387,174.025 "
            id="polygon3677" />
         <polygon
            style="fill:url(#id59);fill-rule:nonzero"
            class="fil42"
-           points="680.045,159.963 680.045,171.679 654.28,171.679 654.28,159.963 "
+           points="654.28,171.679 654.28,159.963 680.045,159.963 680.045,171.679 "
            id="polygon3679" />
         <polygon
            style="fill:url(#id49);fill-rule:nonzero"
            class="fil43"
-           points="677.7,162.305 677.7,169.338 654.28,169.338 654.28,162.305 "
+           points="654.28,169.338 654.28,162.305 677.7,162.305 677.7,169.338 "
            id="polygon3681" />
         <polygon
            style="fill:url(#id42);fill-rule:nonzero"
            class="fil44"
-           points="654.28,157.617 654.28,174.025 626.17,174.025 626.17,157.617 "
+           points="626.17,174.025 626.17,157.617 654.28,157.617 654.28,174.025 "
            id="polygon3683" />
         <polygon
            style="fill:url(#id56);fill-rule:nonzero"
            class="fil45"
-           points="654.283,159.963 654.283,171.679 628.516,171.679 628.516,159.963 "
+           points="628.516,171.679 628.516,159.963 654.283,159.963 654.283,171.679 "
            id="polygon3685" />
         <polygon
            style="fill:url(#id44);fill-rule:nonzero"
            class="fil46"
-           points="654.28,162.305 654.28,169.338 630.858,169.338 630.858,162.305 "
+           points="630.858,169.338 630.858,162.305 654.28,162.305 654.28,169.338 "
            id="polygon3687" />
         <polygon
            style="fill:url(#id46);fill-rule:nonzero"
            class="fil47"
-           points="651.954,148.242 651.954,204.475 635.546,204.475 635.546,148.242 "
+           points="635.546,204.475 635.546,148.242 651.954,148.242 651.954,204.475 "
            id="polygon3689" />
         <polygon
            style="fill:url(#id57);fill-rule:nonzero"
            class="fil48"
-           points="649.608,150.588 649.608,202.134 637.892,202.134 637.892,150.588 "
+           points="637.892,202.134 637.892,150.588 649.608,150.588 649.608,202.134 "
            id="polygon3691" />
         <polygon
            style="fill:url(#id47);fill-rule:nonzero"
            class="fil49"
-           points="647.266,152.929 647.266,199.788 640.234,199.788 640.234,152.929 "
+           points="640.234,199.788 640.234,152.929 647.266,152.929 647.266,199.788 "
            id="polygon3693" />
         <polygon
            style="fill:url(#linearGradient5374);fill-rule:nonzero"
            class="fil50"
-           points="654.28,178.713 654.28,195.121 626.17,195.121 626.17,178.713 "
+           points="626.17,195.121 626.17,178.713 654.28,178.713 654.28,195.121 "
            id="polygon3695" />
         <polygon
            style="fill:url(#linearGradient5376);fill-rule:nonzero"
            class="fil51"
-           points="654.283,181.055 654.283,192.772 628.516,192.772 628.516,181.055 "
+           points="628.516,192.772 628.516,181.055 654.283,181.055 654.283,192.772 "
            id="polygon3697" />
         <polygon
            style="fill:url(#id43);fill-rule:nonzero"
            class="fil52"
-           points="654.28,183.401 654.28,190.434 630.858,190.434 630.858,183.401 "
+           points="630.858,190.434 630.858,183.401 654.28,183.401 654.28,190.434 "
            id="polygon3699" />
       </symbol>
       <symbol
@@ -3432,47 +3432,47 @@
         <polygon
            style="fill:url(#id70);fill-rule:nonzero"
            class="fil53"
-           points="682.404,167.075 682.404,204.559 663.654,204.559 663.654,167.075 "
+           points="663.654,204.559 663.654,167.075 682.404,167.075 682.404,204.559 "
            id="polygon3702" />
         <polygon
            style="fill:url(#id90);fill-rule:nonzero"
            class="fil54"
-           points="680.063,169.418 680.063,202.213 666,202.213 666,169.418 "
+           points="666,202.213 666,169.418 680.063,169.418 680.063,202.213 "
            id="polygon3704" />
         <polygon
            style="fill:url(#id162);fill-rule:nonzero"
            class="fil55"
-           points="677.716,171.763 677.716,199.871 668.342,199.871 668.342,171.763 "
+           points="668.342,199.871 668.342,171.763 677.716,171.763 677.716,199.871 "
            id="polygon3706" />
         <polygon
            style="fill:url(#id78);fill-rule:nonzero"
            class="fil56"
-           points="663.671,148.342 663.671,204.575 644.92,204.575 644.92,148.342 "
+           points="644.92,204.575 644.92,148.342 663.671,148.342 663.671,204.575 "
            id="polygon3708" />
         <polygon
            style="fill:url(#id169);fill-rule:nonzero"
            class="fil57"
-           points="661.33,150.684 661.33,202.23 647.266,202.23 647.266,150.684 "
+           points="647.266,202.23 647.266,150.684 661.33,150.684 661.33,202.23 "
            id="polygon3710" />
         <polygon
            style="fill:url(#id82);fill-rule:nonzero"
            class="fil58"
-           points="658.966,153.03 658.966,199.888 649.592,199.888 649.592,153.03 "
+           points="649.592,199.888 649.592,153.03 658.966,153.03 658.966,199.888 "
            id="polygon3712" />
         <polygon
            style="fill:url(#id115);fill-rule:nonzero"
            class="fil59"
-           points="644.92,176.45 644.92,204.559 626.17,204.559 626.17,176.45 "
+           points="626.17,204.559 626.17,176.45 644.92,176.45 644.92,204.559 "
            id="polygon3714" />
         <polygon
            style="fill:url(#id143);fill-rule:nonzero"
            class="fil60"
-           points="642.58,178.792 642.58,202.213 628.516,202.213 628.516,178.792 "
+           points="628.516,202.213 628.516,178.792 642.58,178.792 642.58,202.213 "
            id="polygon3716" />
         <polygon
            style="fill:url(#id134);fill-rule:nonzero"
            class="fil61"
-           points="640.234,181.138 640.234,199.888 630.858,199.888 630.858,181.138 "
+           points="630.858,199.888 630.858,181.138 640.234,181.138 640.234,199.888 "
            id="polygon3718" />
       </symbol>
       <symbol
@@ -3661,62 +3661,62 @@
         <polygon
            style="fill:url(#id105);fill-rule:nonzero"
            class="fil74"
-           points="677.716,188.85 677.716,202.912 666,202.912 666,188.85 "
+           points="666,202.912 666,188.85 677.716,188.85 677.716,202.912 "
            id="polygon3777" />
         <polygon
            style="fill:url(#id131);fill-rule:nonzero"
            class="fil75"
-           points="675.375,191.196 675.375,200.572 668.342,200.572 668.342,191.196 "
+           points="668.342,200.572 668.342,191.196 675.375,191.196 675.375,200.572 "
            id="polygon3779" />
         <polygon
            style="fill:url(#id127);fill-rule:nonzero"
            class="fil76"
-           points="673.03,193.538 673.03,198.226 670.687,198.226 670.687,193.538 "
+           points="670.687,198.226 670.687,193.538 673.03,193.538 673.03,198.226 "
            id="polygon3781" />
         <polygon
            style="fill:url(#id79);fill-rule:nonzero"
            class="fil77"
-           points="677.716,172.446 677.716,186.508 666,186.508 666,172.446 "
+           points="666,186.508 666,172.446 677.716,172.446 677.716,186.508 "
            id="polygon3783" />
         <polygon
            style="fill:url(#id170);fill-rule:nonzero"
            class="fil78"
-           points="675.375,174.788 675.375,184.162 668.342,184.162 668.342,174.788 "
+           points="668.342,184.162 668.342,174.788 675.375,174.788 675.375,184.162 "
            id="polygon3785" />
         <polygon
            style="fill:url(#id83);fill-rule:nonzero"
            class="fil79"
-           points="673.03,177.134 673.03,181.821 670.687,181.821 670.687,177.134 "
+           points="670.687,181.821 670.687,177.134 673.03,177.134 673.03,181.821 "
            id="polygon3787" />
         <polygon
            style="fill:url(#id151);fill-rule:nonzero"
            class="fil80"
-           points="670.687,151.367 670.687,207.6 630.858,207.6 630.858,151.367 "
+           points="630.858,207.6 630.858,151.367 670.687,151.367 670.687,207.6 "
            id="polygon3789" />
         <polygon
            style="fill:url(#id109);fill-rule:nonzero"
            class="fil81"
-           points="668.345,153.712 668.345,205.259 633.204,205.259 633.204,153.712 "
+           points="633.204,205.259 633.204,153.712 668.345,153.712 668.345,205.259 "
            id="polygon3791" />
         <polygon
            style="fill:url(#id95);fill-rule:nonzero"
            class="fil82"
-           points="666,156.055 666,202.912 635.546,202.912 635.546,156.055 "
+           points="635.546,202.912 635.546,156.055 666,156.055 666,202.912 "
            id="polygon3793" />
         <polygon
            style="fill:url(#id71);fill-rule:nonzero"
            class="fil83"
-           points="677.716,156.055 677.716,170.117 666,170.117 666,156.055 "
+           points="666,170.117 666,156.055 677.716,156.055 677.716,170.117 "
            id="polygon3795" />
         <polygon
            style="fill:url(#id91);fill-rule:nonzero"
            class="fil84"
-           points="675.375,158.4 675.375,167.776 668.342,167.776 668.342,158.4 "
+           points="668.342,167.776 668.342,158.4 675.375,158.4 675.375,167.776 "
            id="polygon3797" />
         <polygon
            style="fill:url(#id163);fill-rule:nonzero"
            class="fil85"
-           points="673.03,160.742 673.03,165.429 670.687,165.429 670.687,160.742 "
+           points="670.687,165.429 670.687,160.742 673.03,160.742 673.03,165.429 "
            id="polygon3799" />
         <path
            style="fill:url(#id166);fill-rule:nonzero"
@@ -4083,7 +4083,7 @@
         <polygon
            style="fill:url(#radialGradient5408);fill-rule:nonzero"
            class="fil113"
-           points="673.03,193.817 673.03,200.85 635.546,200.85 635.546,193.817 "
+           points="635.546,200.85 635.546,193.817 673.03,193.817 673.03,200.85 "
            id="polygon3915" />
         <path
            style="fill:url(#id194);fill-rule:nonzero"
@@ -4100,7 +4100,7 @@
         <polygon
            style="fill:url(#id189);fill-rule:nonzero"
            class="fil116"
-           points="673.03,175.067 673.03,182.1 635.546,182.1 635.546,175.067 "
+           points="635.546,182.1 635.546,175.067 673.03,175.067 673.03,182.1 "
            id="polygon3921" />
         <path
            style="fill:url(#id195);fill-rule:nonzero"
@@ -4117,7 +4117,7 @@
         <polygon
            style="fill:url(#id190);fill-rule:nonzero"
            class="fil119"
-           points="673.03,156.333 673.03,163.367 635.546,163.367 635.546,156.333 "
+           points="635.546,163.367 635.546,156.333 673.03,156.333 673.03,163.367 "
            id="polygon3927" />
       </symbol>
       <symbol
@@ -4332,27 +4332,27 @@
         <polygon
            style="fill:url(#id124);fill-rule:nonzero"
            class="fil120"
-           points="680.045,176.529 680.045,199.95 656.625,199.95 656.625,176.529 "
+           points="656.625,199.95 656.625,176.529 680.045,176.529 680.045,199.95 "
            id="polygon3992" />
         <polygon
            style="fill:url(#id149);fill-rule:nonzero"
            class="fil121"
-           points="677.716,178.876 677.716,197.626 658.966,197.626 658.966,178.876 "
+           points="658.966,197.626 658.966,178.876 677.716,178.876 677.716,197.626 "
            id="polygon3994" />
         <polygon
            style="fill:url(#id142);fill-rule:nonzero"
            class="fil122"
-           points="675.375,181.217 675.375,195.279 661.313,195.279 661.313,181.217 "
+           points="661.313,195.279 661.313,181.217 675.375,181.217 675.375,195.279 "
            id="polygon3996" />
         <polygon
            style="fill:url(#id123);fill-rule:nonzero"
            class="fil123"
-           points="682.387,176.529 682.387,185.905 654.28,185.905 654.28,176.529 "
+           points="654.28,185.905 654.28,176.529 682.387,176.529 682.387,185.905 "
            id="polygon3998" />
         <polygon
            style="fill:url(#id141);fill-rule:nonzero"
            class="fil124"
-           points="680.045,178.876 680.045,183.562 656.625,183.562 656.625,178.876 "
+           points="656.625,183.562 656.625,178.876 680.045,178.876 680.045,183.562 "
            id="polygon4000" />
         <path
            style="fill:url(#id75);fill-rule:nonzero"
@@ -4363,27 +4363,27 @@
         <polygon
            style="fill:url(#id119);fill-rule:nonzero"
            class="fil126"
-           points="651.937,176.529 651.937,199.95 628.516,199.95 628.516,176.529 "
+           points="628.516,199.95 628.516,176.529 651.937,176.529 651.937,199.95 "
            id="polygon4004" />
         <polygon
            style="fill:url(#id146);fill-rule:nonzero"
            class="fil127"
-           points="649.608,178.876 649.608,197.626 630.858,197.626 630.858,178.876 "
+           points="630.858,197.626 630.858,178.876 649.608,178.876 649.608,197.626 "
            id="polygon4006" />
         <polygon
            style="fill:url(#id137);fill-rule:nonzero"
            class="fil128"
-           points="647.266,181.217 647.266,195.279 633.204,195.279 633.204,181.217 "
+           points="633.204,195.279 633.204,181.217 647.266,181.217 647.266,195.279 "
            id="polygon4008" />
         <polygon
            style="fill:url(#id116);fill-rule:nonzero"
            class="fil129"
-           points="654.28,176.529 654.28,185.905 626.17,185.905 626.17,176.529 "
+           points="626.17,185.905 626.17,176.529 654.28,176.529 654.28,185.905 "
            id="polygon4010" />
         <polygon
            style="fill:url(#id133);fill-rule:nonzero"
            class="fil130"
-           points="651.937,178.876 651.937,183.562 628.516,183.562 628.516,178.876 "
+           points="628.516,183.562 628.516,178.876 651.937,178.876 651.937,183.562 "
            id="polygon4012" />
         <path
            style="fill:url(#id72);fill-rule:nonzero"
@@ -4394,27 +4394,27 @@
         <polygon
            style="fill:url(#id122);fill-rule:nonzero"
            class="fil132"
-           points="666,153.109 666,176.529 642.58,176.529 642.58,153.109 "
+           points="642.58,176.529 642.58,153.109 666,153.109 666,176.529 "
            id="polygon4016" />
         <polygon
            style="fill:url(#id148);fill-rule:nonzero"
            class="fil133"
-           points="663.671,155.455 663.671,174.205 644.92,174.205 644.92,155.455 "
+           points="644.92,174.205 644.92,155.455 663.671,155.455 663.671,174.205 "
            id="polygon4018" />
         <polygon
            style="fill:url(#id140);fill-rule:nonzero"
            class="fil134"
-           points="661.33,157.797 661.33,171.859 647.266,171.859 647.266,157.797 "
+           points="647.266,171.859 647.266,157.797 661.33,157.797 661.33,171.859 "
            id="polygon4020" />
         <polygon
            style="fill:url(#id121);fill-rule:nonzero"
            class="fil135"
-           points="668.342,153.109 668.342,162.483 640.234,162.483 640.234,153.109 "
+           points="640.234,162.483 640.234,153.109 668.342,153.109 668.342,162.483 "
            id="polygon4022" />
         <polygon
            style="fill:url(#id139);fill-rule:nonzero"
            class="fil136"
-           points="666,155.455 666,160.142 642.58,160.142 642.58,155.455 "
+           points="642.58,160.142 642.58,155.455 666,155.455 666,160.142 "
            id="polygon4024" />
         <path
            style="fill:url(#id74);fill-rule:nonzero"
@@ -4549,32 +4549,32 @@
         <polygon
            style="fill:url(#id120);fill-rule:nonzero"
            class="fil144"
-           points="680.063,154.347 680.063,201.205 628.516,201.205 628.516,154.347 "
+           points="628.516,201.205 628.516,154.347 680.063,154.347 680.063,201.205 "
            id="polygon4066" />
         <polygon
            style="fill:url(#id147);fill-rule:nonzero"
            class="fil145"
-           points="677.716,156.688 677.716,198.859 630.858,198.859 630.858,156.688 "
+           points="630.858,198.859 630.858,156.688 677.716,156.688 677.716,198.859 "
            id="polygon4068" />
         <polygon
            style="fill:url(#id138);fill-rule:nonzero"
            class="fil146"
-           points="675.375,159.033 675.375,196.517 633.204,196.517 633.204,159.033 "
+           points="633.204,196.517 633.204,159.033 675.375,159.033 675.375,196.517 "
            id="polygon4070" />
         <polygon
            style="fill:url(#id117);fill-rule:nonzero"
            class="fil147"
-           points="682.404,154.347 682.404,170.755 626.17,170.755 626.17,154.347 "
+           points="626.17,170.755 626.17,154.347 682.404,154.347 682.404,170.755 "
            id="polygon4072" />
         <polygon
            style="fill:url(#id144);fill-rule:nonzero"
            class="fil148"
-           points="680.063,156.688 680.063,168.404 628.516,168.404 628.516,156.688 "
+           points="628.516,168.404 628.516,156.688 680.063,156.688 680.063,168.404 "
            id="polygon4074" />
         <polygon
            style="fill:url(#id135);fill-rule:nonzero"
            class="fil149"
-           points="677.716,159.033 677.716,166.067 630.858,166.067 630.858,159.033 "
+           points="630.858,166.067 630.858,159.033 677.716,159.033 677.716,166.067 "
            id="polygon4076" />
         <path
            style="fill:url(#id73);fill-rule:nonzero"
@@ -4729,17 +4729,17 @@
         <polygon
            style="fill:url(#linearGradient5412);fill-rule:nonzero"
            class="fil169"
-           points="677.716,151.871 677.716,208.105 640.234,208.105 640.234,151.871 "
+           points="640.234,208.105 640.234,151.871 677.716,151.871 677.716,208.105 "
            id="polygon4127" />
         <polygon
            style="fill:url(#linearGradient5414);fill-rule:nonzero"
            class="fil170"
-           points="675.375,154.217 675.375,205.762 642.58,205.762 642.58,154.217 "
+           points="642.58,205.762 642.58,154.217 675.375,154.217 675.375,205.762 "
            id="polygon4129" />
         <polygon
            style="fill:url(#linearGradient5416);fill-rule:nonzero"
            class="fil171"
-           points="673.03,156.559 673.03,203.417 644.92,203.417 644.92,156.559 "
+           points="644.92,203.417 644.92,156.559 673.03,156.559 673.03,203.417 "
            id="polygon4131" />
         <path
            style="fill:url(#id5);fill-rule:nonzero"
@@ -4756,12 +4756,12 @@
         <polygon
            style="fill:url(#id45);fill-rule:nonzero"
            class="fil174"
-           points="640.237,154.217 640.237,205.762 633.204,205.762 633.204,154.217 "
+           points="633.204,205.762 633.204,154.217 640.237,154.217 640.237,205.762 "
            id="polygon4137" />
         <polygon
            style="fill:url(#id39);fill-rule:nonzero"
            class="fil175"
-           points="637.887,156.559 637.887,203.417 635.546,203.417 635.546,156.559 "
+           points="635.546,203.417 635.546,156.559 637.887,156.559 637.887,203.417 "
            id="polygon4139" />
       </symbol>
       <symbol
@@ -4810,7 +4810,7 @@
         <polygon
            style="fill:#999999;fill-rule:nonzero"
            class="fil19"
-           points="658.579,167.463 628.109,167.463 628.109,176.838 632.795,176.838 632.795,200.259 639.829,200.259 639.829,204.946 665.592,204.946 665.592,195.575 639.829,195.575 639.829,197.918 635.142,197.918 635.142,186.2 639.829,186.2 639.829,190.884 665.592,190.884 665.592,181.525 639.829,181.525 639.829,183.854 635.142,183.854 635.142,176.838 658.579,176.838 "
+           points="639.829,204.946 665.592,204.946 665.592,195.575 639.829,195.575 639.829,197.918 635.142,197.918 635.142,186.2 639.829,186.2 639.829,190.884 665.592,190.884 665.592,181.525 639.829,181.525 639.829,183.854 635.142,183.854 635.142,176.838 658.579,176.838 658.579,167.463 628.109,167.463 628.109,176.838 632.795,176.838 632.795,200.259 639.829,200.259 "
            id="polygon4154" />
       </symbol>
       <symbol
@@ -5445,7 +5445,7 @@
         <polygon
            style="fill:url(#linearGradient5426);fill-rule:nonzero"
            class="fil200"
-           points="668.342,169.955 668.342,174.642 640.234,174.642 640.234,169.955 "
+           points="640.234,174.642 640.234,169.955 668.342,169.955 668.342,174.642 "
            id="polygon4350" />
         <path
            style="fill:#f2efd5;fill-rule:nonzero"
@@ -5462,7 +5462,7 @@
         <polygon
            style="fill:url(#id184);fill-rule:nonzero"
            class="fil202"
-           points="668.342,160.579 668.342,169.955 640.234,169.955 640.234,160.579 "
+           points="640.234,169.955 640.234,160.579 668.342,160.579 668.342,169.955 "
            id="polygon4356" />
         <path
            style="fill:#ffffff;fill-rule:nonzero"
@@ -5669,26 +5669,12 @@
            id="_119340792" />
         <g
            id="_98045400">
-          <text
-             inkscape:transform-center-x="-64.873268"
-             inkscape:transform-center-y="564.33671"
-             transform="rotate(-90)"
-             id="text3102"
-             y="170.50685"
-             x="-253.8956"
-             style="line-height:0%;fill-rule:evenodd"
-             xml:space="preserve"><tspan
-               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:64.6315px;line-height:125%;font-family:'Open Sans';text-align:center;writing-mode:lr-tb;text-anchor:middle"
-               y="170.50685"
-               x="-253.8956"
-               id="tspan3104"
-               sodipodi:role="line">SemApp</tspan></text>
           <g
              inkscape:export-ydpi="90"
              inkscape:export-xdpi="90"
              inkscape:export-filename="C:\xampp\htdocs\ELSE-DEV\htdocs\img\svg\txtLHBuch.png"
-             style="fill:#e4f4b8"
-             transform="matrix(1.8382074,0,0,1.1116196,-622.07692,267.14619)"
+             style="fill:none;stroke:#6495ed;stroke-width:6.62897;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+             transform="matrix(1.8155243,0,0,1.3351321,-581.60896,315.88217)"
              id="g4437">
             <rect
                ry="0"
@@ -5698,22 +5684,22 @@
                height="120.20815"
                width="13.131983"
                id="rect5432"
-               style="fill:#e4f4b8;fill-opacity:1;fill-rule:nonzero;stroke:#b3b3b3;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+               style="fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#6495ed;stroke-width:1.47775;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
           </g>
           <text
              inkscape:transform-center-x="-64.873268"
              inkscape:transform-center-y="564.33671"
              transform="rotate(-90)"
              id="text3110"
-             y="171.1339"
-             x="-345.31201"
-             style="line-height:0%"
+             y="213.92862"
+             x="-221.16644"
+             style="line-height:0%;letter-spacing:-1.25139px;stroke:#53676c"
              xml:space="preserve"><tspan
-               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:64.6315px;line-height:125%;font-family:'Open Sans';text-align:center;writing-mode:lr-tb;text-anchor:middle"
-               y="171.1339"
-               x="-345.31201"
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:74.1563px;font-family:'Malgun Gothic';-inkscape-font-specification:'Malgun Gothic, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke:#53676c"
+               y="213.92862"
+               x="-221.79213"
                id="tspan3112"
-               sodipodi:role="line">externe Biblio</tspan></text>
+               sodipodi:role="line">Bibliothek</tspan></text>
         </g>
       </g>
     </g>
