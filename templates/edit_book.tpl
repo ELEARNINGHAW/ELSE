@@ -18,14 +18,14 @@
 
 {if $medium.doc_type_id == 16 }
   <h3 style="margin:10px; margin-bottom:0px; margin-top:0px; padding:10px; color: #FFF;" class="bgDef bg{$collection.bib_id}">Erwerbungsvorschlag für: {$collection.title}
-  {if $operator.action != 'annoteNewMedia' }  <a style="float:right;" href="index.php"><img  class="icon" style="margin-top:-4px;" title="Zurück" src="img/svg/chevron-left_w.svg" /></a> {/if}</h3>
+  {if $operator.action != 'annoteNewMedia' }  <a style="float:right;" href="{$back_URL}"><img  class="icon" style="margin-top:-4px;" title="Zurück" src="img/svg/chevron-left_w.svg" /></a> {/if}</h3>
     <div style="margin:10px;  padding:10px; border:solid 1px black; ">
       Wenn Sie ein Medium zur Anschaffung in der Bibliothek vorschlagen m&ouml;chten und dieses in  Ihren Semesterapparat aufgenommen werden soll, benutzen Sie bitte dieses Formular.
     </div>
     {else}
     <h5 style="margin:10px; padding:10px; color: #FFF"  class="bgDef bg{$collection.bib_id}" >{$collection.title}<br/> {$doctypetxt} bearbeiten
       {if $operator.action != 'annoteNewMedia' AND $operator.action != 'save' }
-        <a style="float:right;" href="index.php{$operator.url}"><img  class="icon" style="margin-top:-15px;" title="Zurück" src="img/svg/chevron-left_w.svg" /></a>{/if}
+        <a style="float:right;" href="{$back_URL}"><img  class="icon" style="margin-top:-15px;" title="Zurück" src="img/svg/chevron-left_w.svg" /></a>{/if}
         <span  style="position:relative; font-size:25px; float:right; top:-18px; padding-right: 15px; " >  {$currentElement+1}/{$maxElement} </span>
     </h5>
 {/if}
