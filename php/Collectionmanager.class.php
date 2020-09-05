@@ -17,6 +17,7 @@ function __construct( $CONFIG, $SQL, $RENDERER, $UTIL )
   $this -> SQL        = $SQL;
   $this -> RENDERER   = $RENDERER;
   $this -> UTIL       = $UTIL;
+
 }
 
 ###############################################################################################
@@ -116,7 +117,7 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
         $tpl_vars[ 'VUFIND'            ]                     = $_SESSION[ 'CFG'      ]['VUFIND'];
         $tpl_vars[ 'CONF'            ]                       = $_SESSION[ 'CFG'      ];
         $_SESSION[ 'currentCollection' ] = $collection[ $collection_id ] -> obj2array ( );
-#deb( $tpl_vars[ 'CONF'            ]);
+ 
         $this -> RENDERER -> do_template ( 'new_book.tpl' , $tpl_vars ) ;
         exit(0);
     }
@@ -444,7 +445,7 @@ function lmsDownload( $I )
   $b_ppn                       = $_SESSION[ 'books'      ][ 'booksHitList' ][ 0 ][ 'ppn' ];
  
   $_SESSION[ 'books' ][ 'url' ] =  "index.php?ppn=$b_ppn&item=media&loc=1&action=annoteNewMedia&dc_collection_id=$collection_dc_collection_id&mode=new&r=$user_role_id";
-  deb($_SESSION[ 'books' ],1);
+ 
   $this -> RENDERER -> doRedirect( $_SESSION[ 'books' ][ 'url' ]  );
 }
 
@@ -498,7 +499,7 @@ function getMediaList( $I )
 
 
     $_SESSION[ 'books' ][ 'url' ] =  "index.php?ppn=$b_ppn&item=media&loc=1&action=annoteNewMedia&dc_collection_id=$collection_dc_collection_id&mode=new&r=$user_role_id";
- # deb(  $_SESSION[ 'books' ]  ,1);
+ 
     $this -> RENDERER -> doRedirect( $_SESSION[ 'books' ][ 'url' ]  );
 }
 

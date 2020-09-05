@@ -6,14 +6,16 @@ var $SQL;
 var $UTIL;
 var $MED;
 var $CFG;
+var $COLLMGR;
 
 # ---------------------------------------------------------------------------------------------
-function __construct( $CFG , $SQL, $RENDERER, $UTIL )
+function __construct( $CFG , $SQL, $RENDERER, $UTIL, $COLLMGR )
 {
   $this -> CFG        = $CFG;
   $this -> SQL        = $SQL;
   $this -> UTIL       = $UTIL;
   $this -> RENDERER   = $RENDERER;
+  $this -> COLLMGR     = $COLLMGR;
 }
 ####################### --- MEDIA  --- #######################
 
@@ -54,10 +56,10 @@ function editMediaMetaData( $I )
   $tpl_vars[ 'CFG'             ]                          =  $this -> CFG -> getConf();
   $tpl_vars[ 'filter'          ]                          =  $I[ 'filter'                          ] -> obj2array ( ) ;
   $tpl_vars[ 'DOC_TYPE'        ]                          =  $_SESSION[ 'DOC_TYPE'                 ];
-  $tpl_vars[ 'CONF'            ]                          = $_SESSION[ 'CFG'      ]['CONF'];
+  $tpl_vars[ 'CONF'            ]                          =  $_SESSION[ 'CFG'      ]['CONF'];
   $tpl_vars[ 'currentElement'  ]                          =  0 ;
   $tpl_vars[ 'maxElement'      ]                          =  1 ;
-
+  $tpl_vars[ 'back_URL'        ]                          = $_SESSION[ 'history' ][ 0 ];
   # deb( $tpl_vars[ 'medium'          ] ,1);
   $this -> RENDERER -> do_template ( 'edit_book.tpl' , $tpl_vars ) ;
   exit(0);
@@ -327,7 +329,7 @@ function purchase_suggestion( $I )
   $tpl_vars[ 'currentElement'  ]            =  0 ;
   $tpl_vars[ 'maxElement'      ]            =  1 ;
   $tpl_vars[ 'CONF'            ]            = $_SESSION[ 'CFG'      ]['CONF'];
-
+  $tpl_vars[ 'back_URL'        ]            = $_SESSION[ 'history'  ][ 0 ];
   $this -> RENDERER -> do_template ( 'edit_book.tpl' , $tpl_vars ) ;
 
   exit(0);
@@ -348,35 +350,35 @@ function purchase_suggestion( $I )
   function searchMediaOnLibraryServer( $I )  ## -- OPAC --
   {
     $bk = array();
-    
-    $toSearch[ 'title'     ]      = $I[ 'medium' ] -> get_title();
-    $toSearch[ 'author'    ]      = $I[ 'medium' ] -> get_author();
-    $toSearch[ 'signature' ]      = $I[ 'medium' ] -> get_signature();
-    
-    $books =  $this -> getHitList ( $toSearch ) ;
   
- 
-    $maxhits  = $books['maxRecords'];
-    $hits     = $books['hits'];
- 
+    $toSearch[ 'title'     ] = $I[ 'medium' ] -> get_title();
+    $toSearch[ 'author'    ] = $I[ 'medium' ] -> get_author();
+    $toSearch[ 'signature' ] = $I[ 'medium' ] -> get_signature();
+  
+    $books = $this -> getHitList( $toSearch );
+   
+    $maxhits = $books[ 'maxRecords' ];
+    $hits    = $books[ 'hits'       ];
     
-
-    foreach ($books['hitlist'] as $key => $b)
+    if ( $hits > 0 )
     {
-      $b -> calcDocTypeID();
-      $b -> calcDocType();
+      foreach ( $books[ 'hitlist' ] as $key => $b )
+      {
+        $b -> calcDocTypeID();
+        $b -> calcDocType();
+        $bk[ $key ] = $b -> obj2array();
+      }
       
-      $bk[$key] = $b -> obj2array();
-    }
-  
-
-    unset($_SESSION['books']);
-    $_SESSION['books'][ 'booksHitList'     ] = $this->UTIL->xml2array($bk);
-    $_SESSION['books'][ 'currentElement'   ] = 0;
-    $_SESSION['books'][ 'maxElement'       ] = 1;
-   # deb( $_SESSION['books']);
-    if    ( $hits < 1 )  { $this -> showNewMediaForm( $I, $toSearch, $hits, $maxhits );  }   ## -- Suche ergab keinen Treffer
-    else                 { $this -> showHitList    ( $I, $bk , $hits, $maxhits);         }
+      unset( $_SESSION[ 'books' ] );
+      $_SESSION[ 'books' ][ 'booksHitList'   ] = $this -> UTIL -> xml2array( $bk );
+      $_SESSION[ 'books' ][ 'currentElement' ] = 0;
+      $_SESSION[ 'books' ][ 'maxElement'     ] = 1;
+      $this -> showHitList( $I, $bk, $hits, $maxhits );
+    } else
+      {
+        $this -> COLLMGR -> showNewMediaForm( $I );
+ 
+    }   ## -- Suche ergab keinen Treffer
   }
   
   
@@ -384,12 +386,11 @@ function purchase_suggestion( $I )
   # ---------------------------------------------------------------------------------------------
 function getHitList( $searchQuery )
 {
-  #$this->getIMS_pack( );
   $error = false;
 
 #--------------------------------
   $conf = $this -> CFG -> getConf ();
-  # deb( $conf );
+
   $cat          = $conf[ 'SRU' ][ 'cat'            ]; #'opac-de-18-302';  # HIBS
   $recordSchema = $conf[ 'SRU' ][ 'recordSchema2'  ]; #'turbomarc';       # turbomarc / mods / marcxml
   $maxRecords   = $conf[ 'SRU' ][ 'maxRecords'     ]; # 50;
@@ -408,11 +409,11 @@ function getHitList( $searchQuery )
   }
 
   else
-  { #deb($page,1);
+  {
     $sxm = simplexml_load_string ( str_replace ( array( 'diag:' , 'zs:' ) , '' , $page ) );
 
     $hits = $sxm -> numberOfRecords;  # Anzahl Treffer
-
+   
     if ( isset ( $sxm -> records -> record ) )
     foreach ( $sxm -> records -> record as $rec )
     {
@@ -440,11 +441,6 @@ function getHitList( $searchQuery )
 
         if ( $m -> get_publisher () == '' ) { $m -> set_publisher ( trim ( $r -> d260 -> sb . ' ' . $r -> d260 -> sa . ' ' . $r -> d260 -> sc . '' ) );  }
         if ( $m -> get_author    () == '' ) { $m -> set_author    ( trim ( $this -> getPersons ( $r -> d700 ) ) );      }
-
-        # Wenn im Datensatz kein Autor vorhanden ist, wird dafür 'Personen' genommen
-        # $m->set_subTitle     ( trim ( $r -> d245 -> sb   ) );
-        # $m->set_edition      ( trim ( $r -> d250 -> sa   ) );
-        # $m->set_directory    ( trim ( $r -> d856 -> su   ) );
 
         $ret['hitlist'][ $m->get_ppn () ] = $m;
       }
@@ -537,35 +533,34 @@ function getHitList( $searchQuery )
           $directory = '';
         }# Inhaltsverzeichnis als PDF / oder Coverpic als jpg
 
-        $book[ 'titleNonSortPart' ] = ( ( string ) $r->titleInfo->nonSort );  # Buchtitel (unsortierter Teil)
-        $book[ 'title' ] = ( ( string ) $r->titleInfo->title );  # Buchtitel
-        $book[ 'subTitle' ] = ( ( string ) $r->titleInfo->subTitle );  # Subtitel
-        $book[ 'publisher' ] = ( ( string ) $r->originInfo->publisher );  # Verlag
-        $book[ 'edition' ] = ( ( string ) $r->originInfo->edition );  # Edition
-        $book[ 'dateissued' ] = ( ( string ) $r->originInfo->dateIssued );  # Jahr
-        $book[ 'author' ] = $authors;                                           # list of autors with links
-        $book[ 'signature' ] = ( string ) ' ';                                     # Signature
-        $book[ 'ppn' ] = ( ( string ) $r->recordInfo->recordIdentifier );  # PPN
-        $book[ 'physicaldesc' ] = ( ( string ) $r->physicalDescription->form[ 0 ] );  # Form: electronic /  print
-        $book[ 'extend' ] = ( ( string ) $r->physicalDescription->extent );  # Anzahl Seiten, Speicherplatz (Höhe in cm / kB)
-        $book[ 'directory' ] = $directory;                                        # Inhaltsverzeichnis als PDF
+        $book[ 'titleNonSortPart' ] = ( ( string ) $r -> titleInfo -> nonSort              );  # Buchtitel (unsortierter Teil)
+        $book[ 'title'            ] = ( ( string ) $r -> titleInfo -> title                );  # Buchtitel
+        $book[ 'subTitle'         ] = ( ( string ) $r -> titleInfo -> subTitle             );  # Subtitel
+        $book[ 'publisher'        ] = ( ( string ) $r -> originInfo -> publisher           );  # Verlag
+        $book[ 'edition'          ] = ( ( string ) $r -> originInfo -> edition             );  # Edition
+        $book[ 'dateissued'       ] = ( ( string ) $r -> originInfo -> dateIssued          );  # Jahr
+        $book[ 'author'           ] = $authors;                                                # list of autors with links
+        $book[ 'signature'        ] = ( string ) ' ';                                          # Signature
+        $book[ 'ppn'              ] = ( ( string ) $r -> recordInfo -> recordIdentifier    );  # PPN
+        $book[ 'physicaldesc'     ] = ( ( string ) $r -> physicalDescription -> form[ 0 ]  );  # Form: electronic /  print
+        $book[ 'extend'           ] = ( ( string ) $r -> physicalDescription -> extent     );  # Anzahl Seiten, Speicherplatz (Höhe in cm / kB)
+        $book[ 'directory'        ] = $directory;                                              # Inhaltsverzeichnis als PDF
 
-        $ret[ $book[ 'ppn' ] ] = $book;
+        $ret[ $book[ 'ppn' ] ] =  $book;
 
       }
       ## ---------------------------------------------------------------------------------------------------------------
      }
-
-
-     $ret[ 'hits' ] = ( string ) $hits;  ## Erster Datensatz enthalt: Die Anzahl der gefundenen Medien
-     $ret[ 'maxRecords' ] = $maxRecords;       #  Anzahl der gespeicherten Datensätze
+     if   ( ( string ) $hits == "" ) { $ret[ 'hits' ] = 0;                }
+     else                            { $ret[ 'hits' ] = ( string ) $hits; } ## Erster Datensatz enthalt: Die Anzahl der gefundenen Medien
+     $ret[ 'maxRecords' ] = $maxRecords;                                     #  Anzahl der gespeicherten Datensätze
     }
 
 
   return $ret;
 
   }
-
+/*
     function getIMS_pack()
     {
 
@@ -581,9 +576,6 @@ function getHitList( $searchQuery )
       $catURL = $conf[ 'catURL' ]; #'http://sru.gbv.de/';
 #--------------------------------
 
-      #$datasourceURL = 'http://localhost/ELSE/imsdownload.xml';
-      #$datasourceURL = "https://katalog.haw-hamburg.de/vufind/Cart/imsdownload?imsid=$imsid";
- 
       $datasourceURL =  $this -> conf ['VUFIND'][ 'vuFindURL'    ] . "Cart/imsdownload?imsid=$imsid";
       
       try {
@@ -601,9 +593,6 @@ function getHitList( $searchQuery )
           ## ------------- TURBOMARC ---------------
           if ( $recordSchema == 'turbomarc' )
           {
-            ### $r = $rec -> recordData -> r;
-            #$r = $x->r;
-
             $m = new Medium();
 
             $ISBN = '';
@@ -628,18 +617,18 @@ function getHitList( $searchQuery )
             # $m->set_directory    ( trim ( $r -> d856 -> su   ) );
 
 
-            /*
-             $book[ 'title'            ]  =  $r -> d245 -> sa   .'';
-             $book[ 'subTitle'         ]  =  $r -> d245 -> sb   .'';
-             $book[ 'author'           ]  =  $r -> d100 -> sa   .'';   if ($book[ 'author' ]  == '' ) { $book[ 'author'  ]  = $this -> getPersons( $r->d700);} # Wenn im Datensatz kein Autor vorhanden ist, wird dafür 'Peronen' genommen
-             $book[ 'edition'          ]  =  $r -> d250 -> sa   .'';
-             $book[ 'signature'        ]  =  $r -> d954 -> sd   .'';
-             $book[ 'ppn'              ]  =  $r -> c001         .'';
-             $book[ 'directory'        ]  =  $r -> d856 -> su   .'';
-             $book[ 'physicaldesc'     ]  =  $r -> d300 -> sa   .'';
-             $book[ 'ISBN'             ]  =  '';
-             $book[ 'publisher'        ]  =  $r -> d264 -> sb   .' '.  $r -> d264 -> sa .' '. $r -> d264 -> sc.'';
-        */
+            
+         #    $book[ 'title'            ]  =  $r -> d245 -> sa   .'';
+         #    $book[ 'subTitle'         ]  =  $r -> d245 -> sb   .'';
+         #    $book[ 'author'           ]  =  $r -> d100 -> sa   .'';   if ($book[ 'author' ]  == '' ) { $book[ 'author'  ]  = $this -> getPersons( $r->d700);} # Wenn im Datensatz kein Autor vorhanden ist, wird dafür 'Peronen' genommen
+         #    $book[ 'edition'          ]  =  $r -> d250 -> sa   .'';
+         #    $book[ 'signature'        ]  =  $r -> d954 -> sd   .'';
+         #    $book[ 'ppn'              ]  =  $r -> c001         .'';
+         #    $book[ 'directory'        ]  =  $r -> d856 -> su   .'';
+         #    $book[ 'physicaldesc'     ]  =  $r -> d300 -> sa   .'';
+         #    $book[ 'ISBN'             ]  =  '';
+         #   $book[ 'publisher'        ]  =  $r -> d264 -> sb   .' '.  $r -> d264 -> sa .' '. $r -> d264 -> sc.'';
+       
             if ( $m->get_publisher () == '' )
             {
               $m->set_publisher ( trim ( $r->d260->sb . ' ' . $r->d260->sa . ' ' . $r->d260->sc . '' ) );
@@ -707,7 +696,7 @@ function getHitList( $searchQuery )
 
       return $ret;
     }
-
+*/
 # ---------------------------------------------------------------------------------------------
     function getSignature( $ppn = NULL )
     {
@@ -846,8 +835,8 @@ function getHitList( $searchQuery )
       if    ( $tpl_vars[ 'collection' ][ 'Owner' ][ 'sex' ] == 'w' ) { $salutaton = 'Sehr geehrte/r' . $tpl_vars[ 'collection' ][ 'Owner' ][ 'forename' ] . ' ' . $tpl_vars[ 'collection' ][ 'Owner' ][ 'surname' ]; }
       else                                                           { $salutaton = 'Sehr geehrte/r' . $tpl_vars[ 'collection' ][ 'Owner' ][ 'forename' ] . ' ' . $tpl_vars[ 'collection' ][ 'Owner' ][ 'surname' ]; }
 
-      $tpl_vars[ 'salutaton' ] = $salutaton;
-     # deb($tpl_vars);
+      $tpl_vars[ 'salutaton'    ] = $salutaton;
+      $tpl_vars[ 'back_URL'     ]                = $_SESSION[ 'history'  ][ 0 ];
       $this -> RENDERER -> do_template ( 'email.tpl' , $tpl_vars );
     }
 

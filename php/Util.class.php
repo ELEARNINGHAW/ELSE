@@ -16,7 +16,8 @@ function __construct ( $SQL )
 
 # ---------------------------------------------------------------------------------------------
 function getInput ( )
-{# deb($_POST);
+{
+# deb($_POST);
 # deb($_GET,1);
 $operator          = new operator();
 $currentCollection = new collection();
@@ -53,19 +54,15 @@ else if  ( ( isset (  $_SESSION[ 'currentUser'       ]   ) ) )
 
 else
 {
-  # header("Location:index.html");
-  die("<div style='text-align:center;'><h1>ACCESS ERROR<h1><h3>Netzwerkfehler!</h3>Bitte ELSE neu starten</div>");
+   die("<div style='text-align:center;'><h1>ACCESS ERROR<h1><h3>Netzwerkfehler!</h3>Bitte ELSE neu starten</div>");
 }
 
-
 if  ( ( isset (  $_SESSION[ 'currentCollection'       ]   ) ) )
-{# deb($_SESSION);
+{
    $currentCollection -> array2obj( $_SESSION[ 'currentCollection'       ] );
 }
 
-#  if ( $_SESSION['currentUser']['Userrole_id'] == ''   ) { die(  '<div style="  display: flex;  position: absolute;  top:45%; right:45%; font-size: 30px; "> TIME OUT <div>'); }
 
-##
 ### ------------------------------- SET HISTORY  --------------------------------
 ##
 if ( (isset( $_SERVER [ 'HTTP_REFERER'      ] ) AND   $_SERVER [ 'HTTP_REFERER'      ] != $_SESSION[ 'history' ][ 0 ] ))
@@ -80,6 +77,10 @@ if ( (isset( $_SERVER [ 'HTTP_REFERER'      ] ) AND   $_SERVER [ 'HTTP_REFERER' 
 ##
 ## ------------------------------- OPERATOR  --------------------------------
 ##
+
+
+
+
 ## Action DEFAULTEEINSTELLUNGEN für die einzelnen Rollen
 if (  $this -> hasRole( $currentUser,'admin', 'staff') )      { $operator -> set_action           ( 'show_collection_list'    ); }
 else                                                                 { $operator -> set_action           ( 'show_collection'         ); }
@@ -108,7 +109,7 @@ if ( isset ( $_GET[ 'mediaListID'                              ] ) )
   #if ( is_int( $_GET[ 'mediaListID' ]  ) )
   {
   $operator->set_mediaListID($_GET['mediaListID']) ;
-  #deb($_GET['mediaListID'], 1);
+ 
   }
 }
 
@@ -203,9 +204,10 @@ function getGET_BASE_Values ( )
   $currentCollection       =  new collection();
   $currentUser             =  new user();
   $medium                  =  new medium();
-
+  
+  
   $_SESSION[ 'filter' ][ 'bib'   ] = '';
-  $_SESSION[ 'filter' ][ 'sem'   ] = '';
+  $_SESSION[ 'filter' ][ 'sem'   ] = $_SESSION[ 'CUR_SEM'      ] ;
   $_SESSION[ 'filter' ][ 'state' ] = '';
   $_SESSION[ 'filter' ][ 'type'  ] = '';
   $_SESSION[ 'filter' ][ 'user'  ] = '';
@@ -242,20 +244,16 @@ function getGET_BASE_Values ( )
  
 #-------------------------------------------------------------------------
 
-  $operator->set_sem ( $_SESSION[ 'CUR_SEM' ] );
-  $operator->set_item (  'collection' );
 
- # if (  $this->hasRole( $currentUser,'admin', 'staff') )  {  $operator->set_action (  'show_collection_list' );  }
- # else                                                            {  $operator->set_action (  'show_collection'      );  }
+ 
+#-------------------------------------------------------------------------
 
-  #-------------------------------------------------------------------------
-
-#  deb($currentCollection);
+ 
   $O[ 'operator'          ]  =  $operator;
   $O[ 'currentCollection' ]  =  $this -> updateCollection(  $currentCollection, $currentUser );
   $O[ 'currentUser'       ]  =  $this -> updateUser( $currentUser  );
   $O[ 'medium'            ]  =  $medium;
-#  deb($O[ 'currentCollection' ] ,1);
+ 
   return $O;
 }
 
@@ -470,7 +468,7 @@ function getCurrentSem()
 
     if ( $semA <=  time( ) )   { $curSem = $SemKurz; }
   }
-
+#deb($curSem,1);
 return $curSem;
 }
 

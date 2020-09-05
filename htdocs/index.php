@@ -18,15 +18,15 @@ require_once ( '../php/MedState.class.php'            );
 require_once ( '../php/Bib.php'                       );
 require_once ( '../php/Filter.class.php'              );
 
-$CFG        = new ConfigELSE( new CONSTANT()                       );
-$SQL        = new SQL(                                             );
-$UTIL       = new UTIL(              $SQL                          );
-$RENDERER   = new RENDERER(                                 $UTIL  );
-$COLLMGR    = new COLLECTIONMANAGER( $CFG, $SQL, $RENDERER, $UTIL  );
-$MEDIAMGR   = new MEDIAMANAGER(      $CFG, $SQL, $RENDERER, $UTIL  );
+$CFG        = new ConfigELSE( new CONSTANT()                                 );
+$SQL        = new SQL(                                                       );
+$UTIL       = new UTIL(                    $SQL                              );
+$RENDERER   = new RENDERER(                                 $UTIL            );
+$COLLMGR    = new COLLECTIONMANAGER( $CFG, $SQL, $RENDERER, $UTIL            );
+$MEDIAMGR   = new MEDIAMANAGER(      $CFG, $SQL, $RENDERER, $UTIL, $COLLMGR  );
 
 # $UTIL->checkER();                              ## Listet alle SA zum Semesterwechsel auf
-#deb($CFG,1);
+#deb($CFG);
 ## ----------------------------------------------------------------------------------------
 $I = $UTIL -> getInput();                                #--- GET ALL INPUT (GET) ---
 ## ----------------------------------------------------------------------------------------
