@@ -212,6 +212,11 @@ FROM  Fakultaet;";
 
 
 
+# ---------------------------------------------------------------------------------------------
+  function es( $str )   # ESCAPEd Daten
+  {
+    return $this->db->real_escape_string ( $str );
+  }
 
 
 
