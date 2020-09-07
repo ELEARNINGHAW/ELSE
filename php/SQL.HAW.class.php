@@ -116,7 +116,7 @@ FROM  Fakultaet;";
     $ret = NULL;
 
     $SQL = "SELECT collection_id , document.id as document_id,  document.state_id as document_state_id FROM document  ";
-    $res =  mysqli_query ( $this -> DB, $SQL);
+    $res =  mysqli_query ( $this -> db, $SQL);
     $this -> DB -> set_charset('utf8');
     if ($res)
     {
@@ -183,8 +183,8 @@ FROM  Fakultaet;";
     SELECT COUNT( * )
     FROM document
     INNER JOIN collection ON document.collection_id = collection.id
-    WHERE document.state_id = '1' AND collection.bib_id = '" . $this->es ( $HIBS_loc[ 'bib_id' ] ) . "'";    /* Status 1 = Neu Angefordert */
-      $res = mysqli_query ( $this->DB , $SQL1 );
+    WHERE document.state_id = '1' AND collection.bib_id = '" . $this -> es ( $HIBS_loc[ 'bib_id' ] ) . "'";    /* Status 1 = Neu Angefordert */
+      $res = mysqli_query ( $this -> db, $SQL1 );
       $tmp = mysqli_fetch_assoc ( $res );
       $ret[ $HIBS_loc[ 'bib_id' ] ][ 1 ] = $tmp[ 'COUNT( * )' ];
 
@@ -215,7 +215,8 @@ FROM  Fakultaet;";
 # ---------------------------------------------------------------------------------------------
   function es( $str )   # ESCAPEd Daten
   {
-    return $this->db->real_escape_string ( $str );
+    #return  $this->DB->real_escape_string ( $str );
+    return   $str ;
   }
 
 
