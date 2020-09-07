@@ -1080,4 +1080,45 @@ function importMedium( $collection_id , $medium ,$fp)
       }
     }
   }
+
+
+# ---------------------------------------------------------------------------------------------
+  function getAdminEmailInfos()
+  {
+    foreach ( $_SESSION[ 'FACHBIB' ] as $HIBS_loc ) {
+      $ret[ $HIBS_loc[ 'bib_id' ] ] = $HIBS_loc;
+      
+      $SQL1 = "
+    SELECT COUNT( * )
+    FROM document
+    INNER JOIN collection ON document.collection_id = collection.id
+    WHERE document.state_id = '1' AND collection.bib_id = '" . $this -> es ( $HIBS_loc[ 'bib_id' ] ) . "'";    /* Status 1 = Neu Angefordert */
+      $res = mysqli_query (  $this->DB , $SQL1 );
+      $tmp = mysqli_fetch_assoc ( $res );
+      $ret[ $HIBS_loc[ 'bib_id' ] ][ 1 ] = $tmp[ 'COUNT( * )' ];
+      
+      $SQL2 = "
+    SELECT COUNT( * )
+    FROM document
+    INNER JOIN collection ON document.collection_id = collection.id
+    WHERE document.state_id = '9' AND collection.bib_id = '" . $this->es ( $HIBS_loc[ 'bib_id' ] ) . "'";   /* Status 9 = Kaufvorschlag  */
+      $res = mysqli_query ( $this->DB , $SQL2 );
+      $tmp = mysqli_fetch_assoc ( $res );
+      $ret[ $HIBS_loc[ 'bib_id' ] ][ 9 ] = $tmp[ 'COUNT( * )' ];
+      
+      $SQL3 = "
+    SELECT COUNT( * )
+    FROM document
+    INNER JOIN collection ON document.collection_id = collection.id
+    WHERE document.state_id = '4' AND collection.bib_id = '" . $this->es ( $HIBS_loc[ 'bib_id' ] ) . "'";     /* Status 4 = Wird Entfernt  */
+      
+      $res = mysqli_query ( $this->DB , $SQL3 );
+      $tmp = mysqli_fetch_assoc ( $res );
+      $ret[ $HIBS_loc[ 'bib_id' ] ][ 4 ] = $tmp[ 'COUNT( * )' ];
+    }
+    return $ret;
+  }
+
+ 
+  
 }

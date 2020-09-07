@@ -123,7 +123,8 @@
     </li>
   </ul>
 
-<div  style="position:absolute; right:2px;   top:3px;">
+
+<div style="position:absolute; right:2px;   top:3px;">
   <a href='index.php' title="HOME" ><img src="img/svg/home.svg" width="32" height="32"/></a>
 </div>
 </div>

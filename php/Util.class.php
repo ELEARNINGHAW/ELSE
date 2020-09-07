@@ -78,8 +78,9 @@ if ( (isset( $_SERVER [ 'HTTP_REFERER'      ] ) AND   $_SERVER [ 'HTTP_REFERER' 
 ## ------------------------------- OPERATOR  --------------------------------
 ##
 
-
-
+## Übler Workaround für veraltetes ELSE Plugin in EMIL
+if ( $_GET[ 'action' ] == 'b_coll_edit' ) {  unset($_GET[ 'action' ]) ; }
+## -----------------------------------------------------------------------------
 
 ## Action DEFAULTEEINSTELLUNGEN für die einzelnen Rollen
 if (  $this -> hasRole( $currentUser,'admin', 'staff') )      { $operator -> set_action           ( 'show_collection_list'    ); }
@@ -390,15 +391,15 @@ function sendBIB_APmails()
   $BIB_Anrede  = $this -> conf[ 'BIBMAIL' ][ 'Anrede' ]; #= "Liebe ELSE/HIBS Mitarbeiterin  \r\n\r\n";
   $BIB_Gruss   = $this -> conf[ 'BIBMAIL' ][ 'Gruss'  ]; #= "\r\n\r\nIhr ELSE Server \r\n\r\n http://www.elearning.haw-hamburg.de/mod/else/view.php?id=443297  \r\n\r\n";
 
-  $mailInfos =     $this -> HAWdb -> getAdminEmailInfos ( ) ;
-deb($mailInfos,1);
+  $mailInfos =     $this -> SQL -> getAdminEmailInfos ( ) ;
+ 
   foreach ($mailInfos as $mi)
   {
     $message ="";
     $message .= $BIB_Anrede;
     if ( $mi[9] > 0 OR $mi[1] > 0 OR $mi[4] > 0  )
     {
-      {                    $subject  = 'ELSE: Statusbericht -- '.$mi['bib_id'] . " -- [ N:".$mi[1]." ] [ K:".$mi[9]." ] [ E:".$mi[4]." ]";
+      {                    $subject  = "ELSE: Statusbericht -- ".$mi['bib_id'] . " -- [ N:".$mi[1]." ] [ K:".$mi[9]." ] [ E:".$mi[4]." ]";
                            $message .= "ELSE Statusbericht: \r\n\r\n";
         if(  $mi[1] > 0 ) {$message .= " Neu bestellt: "  .$mi[1]. "\r\n"; }
         if(  $mi[9] > 0 ) {$message .= " Kaufvorschlag: " .$mi[9]. "\r\n"; }
@@ -408,6 +409,7 @@ deb($mailInfos,1);
       $message .= $BIB_Gruss;
 
       $to =  $mi[ 'bib_ap_mail' ];
+      deb($message);
       $this -> sendAMail($to, $subject, $message);
     }
   }
