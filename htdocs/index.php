@@ -36,7 +36,7 @@ $ca = $I[ 'operator'    ] -> get_action();   # ACTION
 $ci = $I[ 'operator'    ] -> get_item();     # ITEM
 $cl = $I[ 'operator'    ] -> get_loc();      # LOCATOR
 #deb($cu );
- # deb($I );
+#  deb($I );
 # $ci = 'collection';
 # $ca = 'lms-download';
 
@@ -122,7 +122,7 @@ else if ( $ca  == 'new_email'             )  {  $MEDIAMGR -> showMailForm       
 ## ----------------------------------------------------------------------------------------
 
 if ( $ci  == 'email' AND $UTIL->hasRole( $cu,'staff', 'edit', 'mailuser'  ) )
-{
+{  # deb($I );
   if      ( 1 == 2 ) {;}
   else if ( $ca  == 'sendmail'              )  {  $MEDIAMGR -> send_email                    ( $I ); }    ## Email wird verschickt
   else if ( $ca  == 'HIBSAPmail'            )  {  $UTIL     -> sendBIB_APmails               (    ); }    ## Cronjob: HIBS Ansprechpartner Infomail
