@@ -26,7 +26,7 @@ $COLLMGR    = new COLLECTIONMANAGER( $CFG, $SQL, $RENDERER, $UTIL            );
 $MEDIAMGR   = new MEDIAMANAGER(      $CFG, $SQL, $RENDERER, $UTIL, $COLLMGR  );
 
 # $UTIL->checkER();                              ## Listet alle SA zum Semesterwechsel auf
-#deb($CFG);
+  # deb($_SESSION,1);
 ## ----------------------------------------------------------------------------------------
 $I = $UTIL -> getInput();                                #--- GET ALL INPUT (GET) ---
 ## ----------------------------------------------------------------------------------------
@@ -36,7 +36,7 @@ $ca = $I[ 'operator'    ] -> get_action();   # ACTION
 $ci = $I[ 'operator'    ] -> get_item();     # ITEM
 $cl = $I[ 'operator'    ] -> get_loc();      # LOCATOR
 #deb($cu );
- # deb($I );
+#  deb($I );
 # $ci = 'collection';
 # $ca = 'lms-download';
 
@@ -122,7 +122,7 @@ else if ( $ca  == 'new_email'             )  {  $MEDIAMGR -> showMailForm       
 ## ----------------------------------------------------------------------------------------
 
 if ( $ci  == 'email' AND $UTIL->hasRole( $cu,'staff', 'edit', 'mailuser'  ) )
-{
+{  # deb($I );
   if      ( 1 == 2 ) {;}
   else if ( $ca  == 'sendmail'              )  {  $MEDIAMGR -> send_email                    ( $I ); }    ## Email wird verschickt
   else if ( $ca  == 'HIBSAPmail'            )  {  $UTIL     -> sendBIB_APmails               (    ); }    ## Cronjob: HIBS Ansprechpartner Infomail

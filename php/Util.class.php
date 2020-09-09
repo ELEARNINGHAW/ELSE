@@ -392,7 +392,7 @@ function sendBIB_APmails()
   $BIB_Gruss   = $this -> conf[ 'BIBMAIL' ][ 'Gruss'  ]; #= "\r\n\r\nIhr ELSE Server \r\n\r\n http://www.elearning.haw-hamburg.de/mod/else/view.php?id=443297  \r\n\r\n";
 
   $mailInfos =     $this -> SQL -> getAdminEmailInfos ( ) ;
- 
+ deb($mailInfos);
   foreach ($mailInfos as $mi)
   {
     $message ="";
