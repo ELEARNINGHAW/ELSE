@@ -780,7 +780,6 @@ td{
 
 .status
 { 
-
   text-align: center;
   display:block;
   float:right;
@@ -840,7 +839,6 @@ td{
 .s_standard
 {
   border-right: #FFF solid 10px;  
-  
 }
 
 .s_new, .s_open, .s_active, .s_obsolete, .s_inactive
