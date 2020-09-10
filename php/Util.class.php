@@ -144,10 +144,11 @@ if ( isset ( $_GET[ 'dc_collection_id'                         ] ) )  { $medium 
 
 if ( isset ( $_GET[ 'collection_id'                            ] ) )  { $currentCollection =   $this ->   SQL-> getCollection ( $_GET[ 'collection_id'  ]   );$currentCollection -> set_collection_id    ( $_GET[ 'collection_id'        ] ) ; $currentCollection -> set_dc_collection_id ( $this->b64en( $_GET[ 'collection_id'     ] ) ) ; }
 else if ( isset ( $_GET[ 'dc_collection_id'                    ] ) )  {
-       $cc = $this ->   SQL-> getCollection (  $this->b64de( $_GET[ 'dc_collection_id'  ] ) );
-       $currentCollection =   $cc[$this->b64de( $_GET[ 'dc_collection_id'  ] )] ;
-       $currentCollection -> set_dc_collection_id     ( $_GET[ 'dc_collection_id'     ] ) ; $currentCollection -> set_collection_id    ( $this->b64de( $_GET[ 'dc_collection_id'  ] ) ) ;
-
+  $cid = $this->b64de( $_GET[ 'dc_collection_id'  ] );
+  # deb($cid,1);
+  $cc = $this ->   SQL-> getCollection (  $cid );
+  $currentCollection =   $cc[ $cid ] ;
+  $currentCollection -> set_dc_collection_id     ( $_GET[ 'dc_collection_id'     ] ) ; $currentCollection -> set_collection_id    ( $cid ) ;
 }
 else if ( isset ( $_GET[ 'lmsid'                               ] ) )  { $currentCollection -> set_dc_collection_id     ( $this-> b64en( $this-> splitCourseName_user( $_GET[ 'lmsid' ] ) ) )  ; $currentCollection -> set_collection_id  (  $this-> splitCourseName_user( $_GET[ 'lmsid' ] )  ); }
 if ( isset ( $_GET[ 'sortorder'                                ] ) )  { $currentCollection -> set_sortorder            ( $_GET[ 'sortorder'            ] ) ; }
