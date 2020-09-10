@@ -853,23 +853,24 @@ SET `state_id` = '" . $this->es ( $state ) . "' WHERE `document`.`id` = " . $thi
 
 # ---------------------------------------------------------------------------------------------
 function importMedium( $collection_id , $medium ,$fp)
-{ #  deb($medium);
-  #  deb(substr_count ( $medium , ';;' ),1);
+{   # deb($collection_id);
+  #deb(substr_count ( $medium , ';;' ),1);
   #  if ( substr_count ( $medium , ';;' ) >= 17 ) # Plausibilitätscheck des Inhalts. ';;' ist der Delimiter
   {
     # $medInfo  = $this -> getMediaMetaData( $mediaID );
     $res = 0;
     $i = 0;
     $med = explode ( ";;" , $medium );
-
-     #  fwrite($fp, deb($this -> getDocumentInfos( $med[10]  ) ) ) ;
-     #  deb($this -> getDocumentInfos( $med[10]  ) );
-     if ( $this -> getDocumentInfos( $med[10]  ) != '' )  ## Medium ist bereits Element des SA
-     {
-      #  deb( $this -> getDocumentInfos( $med[10]  ) );
-     }
+   #  deb(  $med   );
+    # deb( $this -> getDocumentInfos( $med[10]  ) );
+    # fwrite($fp, deb($this -> getDocumentInfos( $med[10]  ) ) ) ;
+    # deb($this -> getDocumentInfos( $med[4]  ) );
+    if ( $this -> getDocumentInfos( $med[10], $collection_id  ) != '' )  ## Medium ist bereits Element des SA
+    {
+       deb( "EX SA:". $med[ 4 ]   );
+    }
     else if ( isset( $med[ 4 ] ) ) ## Zu importierender Datensatz hat zumindest ein Titel
-    {   echo " ##- " . deb( $med[10]  );
+    {   # echo " ##- " . deb( $med[10]  );
         $SQL = "INSERT INTO document SET ";
         foreach (  $_SESSION[ 'CFG' ]['EXPO_IMPO'] as $exim )
       {
@@ -881,7 +882,8 @@ function importMedium( $collection_id , $medium ,$fp)
 
     ## -- FOR  DEBUGING  --##
     $fp   = fopen('dataIMP.txt', 'a');
-    fwrite($fp, $SQL."\n"  ) ;
+    #  deb($SQL);
+     fwrite($fp, $SQL."\n"  ) ;
     $res = mysqli_query ( $this->DB , $SQL );
     ## -- FOR  DEBUGING  --##
   }
@@ -890,9 +892,7 @@ function importMedium( $collection_id , $medium ,$fp)
   }
 }
 
-
-
-  function getSAid( $SEM )
+function getSAid( $SEM )
 {
   $SQL = " SELECT id, title,  bib_id  FROM `collection` wHERE sem = '" . $SEM . "' ORDER BY bib_id DESC;";
   $res = mysqli_query ( $this->DB , $SQL );
@@ -905,11 +905,15 @@ function importMedium( $collection_id , $medium ,$fp)
 
 
 # ---------------------------------------------------------------------------------------------
-  function getDocumentInfos( $docID )  ## Kartesisches Produkt aller Dokumenten mit allen dazugehörigen Infos
-  {
-    $SQL = "SELECT * FROM `document` WHERE `ppn`  = " . $this->es ( $docID );
-
+  function getDocumentInfos( $docID, $collection_id = '', $noDel = false )  ## Kartesisches Produkt aller Dokumenten mit allen dazugehörigen Infos
+  { $SQLtmp = '';
+    $SQLtmp2 = '';
+    if ($collection_id != '') { $SQLtmp = ' AND collection_id = "'. $collection_id .'" '; }
+    if ($noDel              ) { $SQLtmp2 = ' AND state_id =! "6' ; }
+    $SQL = "SELECT * FROM `document` WHERE `ppn`  = " . $this->es ( $docID ) .$SQLtmp ;
+    #deb($SQL);
     $res = mysqli_query ( $this->DB , $SQL );
+    #deb($res);
     $ans = mysqli_fetch_assoc ( $res );
     return $ans;
   }

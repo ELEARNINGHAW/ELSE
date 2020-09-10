@@ -79,7 +79,7 @@ if ( (isset( $_SERVER [ 'HTTP_REFERER'      ] ) AND   $_SERVER [ 'HTTP_REFERER' 
 ##
 
 ## Übler Workaround für veraltetes ELSE Plugin in EMIL
-if ( $_GET[ 'action' ] == 'b_coll_edit' ) {  unset($_GET[ 'action' ]) ; }
+if ( isset( $_GET[ 'action' ] ) AND  $_GET[ 'action' ] == 'b_coll_edit' ) {  unset($_GET[ 'action' ]) ; }
 ## -----------------------------------------------------------------------------
 
 ## Action DEFAULTEEINSTELLUNGEN für die einzelnen Rollen
