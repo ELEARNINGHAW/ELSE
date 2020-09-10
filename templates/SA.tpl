@@ -1,5 +1,17 @@
 {* $di, $ci, $user, $operator, $CFG, $MEDIA_STATE *}
 
+
+
+{if $di.shelf_remain == 1  }  {$whereIs =  $FACHBIB[$ci.bib_id] + "bib_name|escape},<br/> im Regal Semesterapparate" }   {/if}{* SA Medium                  *}
+{if $di.shelf_remain == 2  }  {$whereIs = "Im Buchbestand der Fachbibliothek<br/> (wie im HAW-Katalog angegeben). "}      {/if}{* LitHinweis Buch            *}
+{if $di.shelf_remain == 3  }  {$whereIs = "Im HAW-Katalog,<br/>  erreichbar nur aus dem HAW-Netz (oder HAW-VPN). "}        {/if}{* PDF                        *}
+{if $di.shelf_remain == 4  }  {$whereIs = "Im HIBS Medienserver,<br/>  erreichbar! (oder nicht)                 "}        {/if}{* Scanservice / Medienserver *}
+{if $di.shelf_remain == 5  }  {$whereIs = "Im Bestand einer externen Bibliothek (wie im HAW-Katalog angegeben).  "}       {/if}{* LitHinweis Buch            *}
+
+{if $di.doc_type_id  == 6 OR   $di.doc_type_id  == 7 }  {$whereIs = "Artikel können im HAW-Bestand oder einer externen Bibl. sein.<br/>Print-Artikel können auch im Volltext online zugreifbar sein.  "}       {/if}{* LitHinweis Buch *}
+
+
+
 {$edit_mode  = "0"}
 {$staff_mode = "0"}
 
@@ -36,12 +48,7 @@
 
 <div class="bibStandort">
     {if $ci.bib_id != "" }
-    {if $di.shelf_remain == 1  }  {$FACHBIB[ $ci.bib_id ].bib_name|escape},<br/> im Regal "Semesterapparate"   {/if}{* SA Medium                  *}
-    {if $di.shelf_remain == 2  }  Im Buchbestand der Fachbibliothek<br/> (wie im HAW-Katalog angegeben).       {/if}{* LitHinweis Buch            *}
-    {if $di.shelf_remain == 3  }  Im HAW-Katalog,<br/>  erreichbar nur aus dem HAW-Netz (oder VPN).            {/if}{* PDF                        *}
-    {if $di.shelf_remain == 4  }  Im HIBS Medienserver,<br/>  erreichbar! (oder nicht)                         {/if}{* Scanservice / Medienserver *}
-    {if $di.shelf_remain == 5  }  Im Bestand einer externen Bibliothek (wie im HAW-Katalog angegeben).         {/if}{* LitHinweis Buch            *}
-  {/if}
+        {$whereIs}  {/if}
 </div>
 
 {if ($staff_mode or $edit_mode) and ($operator.mode != "print")}
