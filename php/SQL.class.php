@@ -278,7 +278,7 @@ function getCollection( $colID = null , $filter = false ,  $short = null )
 
 function getUserList(  )
 {
-  { $SQL = 'SELECT `hawaccount` FROM `user` WHERE 1';
+  { $SQL = 'SELECT `hawaccount` FROM `user` WHERE 1  ORDER BY `surname`  ASC';
 
     $res = mysqli_query ( $this -> DB , $SQL );
     if ( isset ( $res ) )
@@ -867,7 +867,7 @@ function importMedium( $collection_id , $medium ,$fp)
     # deb($this -> getDocumentInfos( $med[4]  ) );
     if ( $this -> getDocumentInfos( $med[10], $collection_id  ) != '' )  ## Medium ist bereits Element des SA
     {
-       deb( "EX SA:". $med[ 4 ]   );
+      # deb( "EX SA:". $med[ 4 ]   );
     }
     else if ( isset( $med[ 4 ] ) ) ## Zu importierender Datensatz hat zumindest ein Titel
     {   # echo " ##- " . deb( $med[10]  );

@@ -848,11 +848,10 @@ $storeFolder = 'uploads';   //2
   {
    # if ( $I[ 'filter' ] -> get_user () != "" )  $user = '';
    # else                                        $user = ( $I[ 'filter' ] -> get_user () );
-#    $userlist = $this -> SQL -> getUserList ( $I[ 'filter' ] -> get_user () );                                                                         ## Array der Metadaten aller ELSE Owner
-    $userlist = $this -> SQL -> getUserList ( );                                                                         ## Array der Metadaten aller ELSE Owner
+   # $userlist = $this -> SQL -> getUserList ( $I[ 'filter' ] -> get_user () );                                                                         ## Array der Metadaten aller ELSE Owner
+   $userlist = $this -> SQL -> getUserList ( );                                                                         ## Array der Metadaten aller ELSE Owner
 
- 
-     $collectionList = null;
+   $collectionList = null;
 
     foreach ( $userlist as $user )                                                                                            ## Liste wird mit entsprechenden SAs erweitert
     {
