@@ -364,7 +364,7 @@ function updateUser ( $user )
 # ---------------------------------------------------------------------------------------------
 function updateCollection ( $collection , $user )
 {
-  if ( $user -> get_role_id () == 1    OR   $user -> get_role_id () == 2    OR   $user -> get_role_id () == 3)
+  if ( $collection->get_id() != '' AND ( $user -> get_role_id () == 1    OR   $user -> get_role_id () == 2    OR   $user -> get_role_id () == 3) )
   {
     $old_collection = $this -> SQL -> getCollectionMetaData( $collection->get_title_short() ) ;
 
@@ -386,34 +386,37 @@ function updateCollection ( $collection , $user )
 
 
 # ---------------------------------------------------------------------------------------------
-function sendBIB_APmails()
-{
-  $BIB_Anrede  = $this -> conf[ 'BIBMAIL' ][ 'Anrede' ]; #= "Liebe ELSE/HIBS Mitarbeiterin  \r\n\r\n";
-  $BIB_Gruss   = $this -> conf[ 'BIBMAIL' ][ 'Gruss'  ]; #= "\r\n\r\nIhr ELSE Server \r\n\r\n http://www.elearning.haw-hamburg.de/mod/else/view.php?id=443297  \r\n\r\n";
-
-  $mailInfos =     $this -> SQL -> getAdminEmailInfos ( ) ;
- deb($mailInfos);
-  foreach ($mailInfos as $mi)
+  function sendBIB_APmails()
   {
-    $message ="";
-    $message .= $BIB_Anrede;
-    if ( $mi[9] > 0 OR $mi[1] > 0 OR $mi[4] > 0  )
-    {
-      {                    $subject  = "ELSE: Statusbericht -- ".$mi['bib_id'] . " -- [ N:".$mi[1]." ] [ K:".$mi[9]." ] [ E:".$mi[4]." ]";
-                           $message .= "ELSE Statusbericht: \r\n\r\n";
-        if(  $mi[1] > 0 ) {$message .= " Neu bestellt: "  .$mi[1]. "\r\n"; }
-        if(  $mi[9] > 0 ) {$message .= " Kaufvorschlag: " .$mi[9]. "\r\n"; }
-        if(  $mi[4] > 0 ) {$message .= " Entfernen: "     .$mi[4]. "\r\n"; }
+    
+    $BIB_Anrede  = $this -> conf[ 'BIBMAIL' ][ 'Anrede' ]; #= "Liebe ELSE/HIBS Mitarbeiterin  \r\n\r\n";
+    $BIB_Gruss   = $this -> conf[ 'BIBMAIL' ][ 'Gruss'  ]; #= "\r\n\r\nIhr ELSE Server \r\n\r\n http://www.elearning.haw-hamburg.de/mod/else/view.php?id=443297  \r\n\r\n";
+    
+    $mailInfos =     $this -> SQL -> getAdminEmailInfos ( ) ;
+    deb($mailInfos );
+    foreach ($mailInfos as $mi)
+    { $trenner ="---------------------------------------";
+      $message ="";
+      $message .= $BIB_Anrede. "\r\n\r\n";
+      if ( $mi[9] > 0 OR $mi[1] > 0 OR $mi[4] > 0  )
+      {
+        {                    $subject  = "ELSE: Statusbericht -- ".$mi['bib_id'] . " -- [ N:".$mi[1]." ] [ K:".$mi[9]." ] [ E:".$mi[4]." ]";
+          $message .= "ELSE Statusbericht: \r\n\r\n";
+          $message .= $trenner. "\r\n";
+          if(  $mi[1] > 0 ) {$message .= " Neu bestellt: "  .$mi[1]. "\r\n"; }
+          if(  $mi[9] > 0 ) {$message .= " Kaufvorschlag: " .$mi[9]. "\r\n"; }
+          if(  $mi[4] > 0 ) {$message .= " Entfernen: "     .$mi[4]. "\r\n"; }
+          $message .= $trenner. "\r\n";
+        }
+        
+        $message .= "\r\n\r\n" . $BIB_Gruss;
+        
+        $to =  $mi[ 'bib_ap_mail' ];
+        deb($message);
+        $this -> sendAMail($to, $subject, $message);
       }
-
-      $message .= $BIB_Gruss;
-
-      $to =  $mi[ 'bib_ap_mail' ];
-      deb($message);
-      $this -> sendAMail($to, $subject, $message);
     }
   }
-}
 
 
 # ---------------------------------------------------------------------------------------------
