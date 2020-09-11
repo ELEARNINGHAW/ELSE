@@ -26,7 +26,7 @@ $COLLMGR    = new COLLECTIONMANAGER( $CFG, $SQL, $RENDERER, $UTIL            );
 $MEDIAMGR   = new MEDIAMANAGER(      $CFG, $SQL, $RENDERER, $UTIL, $COLLMGR  );
 
 # $UTIL->checkER();                              ## Listet alle SA zum Semesterwechsel auf
-  # deb($_SESSION,1);
+  #  deb($_SESSION,1);
 ## ----------------------------------------------------------------------------------------
 $I = $UTIL -> getInput();                                #--- GET ALL INPUT (GET) ---
 ## ----------------------------------------------------------------------------------------
