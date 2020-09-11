@@ -1,6 +1,6 @@
 {* $di, $ci, $user, $operator, $CFG, $MEDIA_STATE *}
 
-{if $di.shelf_remain == 1  }  {$whereIs = $FACHBIB[$ci.bib_id].bib_name|escape}<br/>{$CFG['MEDIA_PLACE'][1]} }   {/if}{* SA Medium                  *}
+{if $di.shelf_remain == 1  }  {$whereIs = $FACHBIB[$ci.bib_id].bib_name|escape}<br/>{$CFG['MEDIA_PLACE'][1]} {/if}{* SA Medium                  *}
 {if $di.shelf_remain == 2  }  {$whereIs = $CFG['MEDIA_PLACE'][2]}      {/if}{* LitHinweis Buch            *}
 {if $di.shelf_remain == 3  }  {$whereIs = $CFG['MEDIA_PLACE'][3]}        {/if}{* PDF                        *}
 {if $di.shelf_remain == 4  }  {$whereIs = $CFG['MEDIA_PLACE'][4]}        {/if}{* Scanservice / Medienserver *}
