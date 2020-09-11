@@ -1,17 +1,13 @@
 {* $di, $ci, $user, $operator, $CFG, $MEDIA_STATE *}
 
+{if $di.shelf_remain == 1  }  {$whereIs = $FACHBIB[$ci.bib_id].bib_name|escape}<br/>{$CFG['MEDIA_PLACE'][1]} }   {/if}{* SA Medium                  *}
+{if $di.shelf_remain == 2  }  {$whereIs = $CFG['MEDIA_PLACE'][2]}      {/if}{* LitHinweis Buch            *}
+{if $di.shelf_remain == 3  }  {$whereIs = $CFG['MEDIA_PLACE'][3]}        {/if}{* PDF                        *}
+{if $di.shelf_remain == 4  }  {$whereIs = $CFG['MEDIA_PLACE'][4]}        {/if}{* Scanservice / Medienserver *}
+{if $di.shelf_remain == 5  }  {$whereIs = $CFG['MEDIA_PLACE'][5]}       {/if}{* LitHinweis Buch            *}
 
-
-{if $di.shelf_remain == 1  }  {$whereIs =  $FACHBIB[$ci.bib_id] + "bib_name|escape},<br/> im Regal Semesterapparate" }   {/if}{* SA Medium                  *}
-{if $di.shelf_remain == 2  }  {$whereIs = "Im Buchbestand der Fachbibliothek<br/> (wie im HAW-Katalog angegeben). "}      {/if}{* LitHinweis Buch            *}
-{if $di.shelf_remain == 3  }  {$whereIs = "Im HAW-Katalog,<br/>  erreichbar nur aus dem HAW-Netz (oder HAW-VPN). "}        {/if}{* PDF                        *}
-{if $di.shelf_remain == 4  }  {$whereIs = "Im HIBS Medienserver,<br/>  erreichbar! (oder nicht)                 "}        {/if}{* Scanservice / Medienserver *}
-{if $di.shelf_remain == 5  }  {$whereIs = "Im Bestand einer externen Bibliothek (wie im HAW-Katalog angegeben).  "}       {/if}{* LitHinweis Buch            *}
-
-{if $di.doc_type_id  == 6 OR   $di.doc_type_id  == 7 }  {$whereIs = "Artikel können im HAW-Bestand oder einer externen Bibl. sein.<br/>Print-Artikel können auch im Volltext online zugreifbar sein.  "}       {/if}{* LitHinweis Buch *}
-
-
-
+{if $di.doc_type_id  == 6  }    {$whereIs = $CFG['MEDIA_PLACE'][6 ]}       {/if}{* Artikel           *}
+{if $di.doc_type_id  == 7  }    {$whereIs = $CFG['MEDIA_PLACE'][7 ]}       {/if}{* eArtikel           *}
 {$edit_mode  = "0"}
 {$staff_mode = "0"}
 
