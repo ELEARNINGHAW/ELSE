@@ -373,14 +373,12 @@ function updateCollection ( $collection , $user )
     {
       $ret = $this -> SQL -> updateColMetaData( $collection  );                       #  echo "- Bestehender Semesterapparat (UPDATE DB )-";
     }
-    else                                                                        #  echo "Semesterapparat existiert NOCH NICHT ";
-    {
-      $collection->set_expiry_date ( $this -> get_new_expiry_date() );
-      $ret = $this -> SQL -> initCollection( $collection , $user );                        #  echo "- NEUER Semesterapparat (INIT DB )-";
-    }
-
   }
-
+  else                                                                        #  echo "Semesterapparat existiert NOCH NICHT ";
+  {
+    $collection->set_expiry_date ( $this -> get_new_expiry_date() );
+    $ret = $this -> SQL -> initCollection( $collection , $user );                        #  echo "- NEUER Semesterapparat (INIT DB )-";
+  }
   $collection = $this -> SQL -> getCollectionMetaData( $collection->get_title_short() ) ;
   return $collection;
 }
