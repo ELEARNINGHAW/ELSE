@@ -367,19 +367,19 @@ function updateCollection ( $collection , $user )
 {
   if ( $collection->get_id() != '' AND ( $user -> get_role_id () == 1    OR   $user -> get_role_id () == 2    OR   $user -> get_role_id () == 3) )
   {
-    $old_collection = $this -> SQL -> getCollectionMetaData( $collection->get_title_short() ) ;
+    $old_collection = $this -> SQL -> getCollectionMetaData( $collection -> get_title_short() ) ;
 
-    if (  $old_collection->get_id() != '' )                                          #  echo "Semesterapparat existiert schon";
+    if (  $old_collection -> get_id() != '' )                                            #  echo "Semesterapparat existiert schon";
     {
-      $ret = $this -> SQL -> updateColMetaData( $collection  );                       #  echo "- Bestehender Semesterapparat (UPDATE DB )-";
+      $ret = $this -> SQL -> updateColMetaData( $collection  );                          #  echo "- Bestehender Semesterapparat (UPDATE DB )-";
     }
   }
-  else                                                                        #  echo "Semesterapparat existiert NOCH NICHT ";
+  else                                                                                    #  echo "Semesterapparat existiert NOCH NICHT ";
   {
-    $collection->set_expiry_date ( $this -> get_new_expiry_date() );
-    $ret = $this -> SQL -> initCollection( $collection , $user );                        #  echo "- NEUER Semesterapparat (INIT DB )-";
+    $collection -> set_expiry_date ( $this -> get_new_expiry_date() );
+    $ret = $this -> SQL -> initCollection( $collection , $user );                         #  echo "- NEUER Semesterapparat (INIT DB )-";
   }
-  $collection = $this -> SQL -> getCollectionMetaData( $collection->get_title_short() ) ;
+  $collection = $this -> SQL -> getCollectionMetaData( $collection -> get_title_short() ) ;
   return $collection;
 }
 

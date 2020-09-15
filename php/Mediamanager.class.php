@@ -35,7 +35,9 @@ function showHitList( $I , $books, $hits, $maxhits )
   $tpl_vars[ 'searchHits'      ]  = $hits;
   $tpl_vars[ 'maxHits'         ]  = $maxhits;
 
-  $tpl_vars[ 'books_info'  ]  = $books;
+  $tpl_vars[ 'books_info'      ]  = $books;
+  $tpl_vars[ 'back_URL'          ]                    = "index.php?item=collection&action=add_media&dc_collection_id=".$collection[ $collection_id           ]->get_dc_collection_id()."&r=".$I[ 'currentUser'  ]->get_role_id();
+ 
  
   $this -> RENDERER -> do_template ( 'new_book.tpl' , $tpl_vars ) ;
 
@@ -356,7 +358,7 @@ function purchase_suggestion( $I )
     $toSearch[ 'signature' ] = $I[ 'medium' ] -> get_signature();
   
     $books = $this -> getHitList( $toSearch );
-   
+ 
     $maxhits = $books[ 'maxRecords' ];
     $hits    = $books[ 'hits'       ];
     
@@ -423,7 +425,7 @@ function getHitList( $searchQuery )
       if ( $recordSchema == 'turbomarc' )
       {
         $r = $rec -> recordData -> r;
-
+ 
         $ISBN = '';
         foreach ( $r -> d020 as $i )
         {
@@ -441,7 +443,17 @@ function getHitList( $searchQuery )
 
         if ( $m -> get_publisher () == '' ) { $m -> set_publisher ( trim ( $r -> d260 -> sb . ' ' . $r -> d260 -> sa . ' ' . $r -> d260 -> sc . '' ) );  }
         if ( $m -> get_author    () == '' ) { $m -> set_author    ( trim ( $this -> getPersons ( $r -> d700 ) ) );      }
-
+  
+        if( strstr  (trim ( $r -> d300 -> sa ), 'Online'))
+        {
+          $m -> set_doc_type_id( '4') ;
+          $m -> set_doc_type( $_SESSION['DOC_TYPE'][4]['doc_type']); ;
+        }
+        else {
+          $m -> set_doc_type_id( '1') ;
+          $m -> set_doc_type( $_SESSION['DOC_TYPE'][1]['doc_type']); ;
+        }
+ 
         $ret['hitlist'][ $m->get_ppn () ] = $m;
       }
 
