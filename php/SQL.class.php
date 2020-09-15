@@ -853,11 +853,9 @@ SET `state_id` = '" . $this->es ( $state ) . "' WHERE `document`.`id` = " . $thi
 
 # ---------------------------------------------------------------------------------------------
 function importMedium( $collection_id , $medium ,$fp)
-{   # deb($collection_id);
-  #deb(substr_count ( $medium , ';;' ),1);
+{
   #  if ( substr_count ( $medium , ';;' ) >= 17 ) # Plausibilitätscheck des Inhalts. ';;' ist der Delimiter
   {
-    # $medInfo  = $this -> getMediaMetaData( $mediaID );
     $res = 0;
     $i = 0;
     $med = explode ( ";;" , $medium );
@@ -870,21 +868,22 @@ function importMedium( $collection_id , $medium ,$fp)
       # deb( "EX SA:". $med[ 4 ]   );
     }
     else if ( isset( $med[ 4 ] ) ) ## Zu importierender Datensatz hat zumindest ein Titel
-    {   # echo " ##- " . deb( $med[10]  );
+    {
         $SQL = "INSERT INTO document SET ";
         foreach (  $_SESSION[ 'CFG' ]['EXPO_IMPO'] as $exim )
       {
         $SQL .= " $exim  = \"" . $med[ $i++ ] . "\"  , ";
-        #exit();
+      
       }
     $SQL .= " collection_id     = \"" . $collection_id . "\"  , ";
     $SQL .= " last_modified     = NOW()                         ";
 
     ## -- FOR  DEBUGING  --##
-    $fp   = fopen('dataIMP.txt', 'a');
+   $fp2   = fopen('dataIMP.txt', 'a');
     #  deb($SQL);
-     fwrite($fp, $SQL."\n"  ) ;
+     fwrite($fp2, $SQL."\n"  ) ;
     $res = mysqli_query ( $this->DB , $SQL );
+      fwrite($fp2, $res."\n"  ) ;
     ## -- FOR  DEBUGING  --##
   }
     # deb($res);
@@ -910,8 +909,8 @@ function getSAid( $SEM )
     $SQLtmp2 = '';
     if ($collection_id != '') { $SQLtmp = ' AND collection_id = "'. $collection_id .'" '; }
     if ($noDel              ) { $SQLtmp2 = ' AND state_id =! "6' ; }
-    $SQL = "SELECT * FROM `document` WHERE `ppn`  = " . $this->es ( $docID ) .$SQLtmp ;
-    #deb($SQL);
+    $SQL = "SELECT * FROM `document` WHERE `ppn`  ='" . $this->es ( $docID ) .$SQLtmp ."'";
+   
     $res = mysqli_query ( $this->DB , $SQL );
     #deb($res);
     $ans = mysqli_fetch_assoc ( $res );

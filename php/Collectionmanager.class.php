@@ -70,7 +70,7 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
 {
   /* ----------------- LISTE DER INPUTPARAMETER  ------------------ */
 
-  #$I[ 'operator' ] -> set_url( $I[ 'operator' ] -> get_history( )[ 1 ]  );                  ##  Link für den "zurück"- Button
+ 
   $tpl_vars[ 'collectionList' ]                  = $this -> getAllCollection ( $I )      ;
   $tpl_vars[ 'user'           ]                  = $I[ 'currentUser'                     ] -> obj2array ();
   $tpl_vars[ 'operator'       ]                  = $I[ 'operator'                        ] -> obj2array ();
@@ -669,23 +669,25 @@ $storeFolder = 'uploads';   //2
 
 #if (!empty($_FILES))
 {
-   $tempFile = "ELSE_20200909174703.exp";          //3
+   $tempFile = "ELSE_20200915165812.exp";          //3
 
-   $tempFile =  ($_FILES['file']['tmp_name']);
+#   $tempFile =  ($_FILES['file']['tmp_name']);
 
   $fp       = fopen('data.txt', 'w');
   
-  fwrite($fp, $I[ 'currentCollection' ] -> get_collection_id ()  ) ;
+  fwrite($fp, $tempFile ) ;
 
-  $targetPath = dirname( __FILE__ ) . $ds. $storeFolder . $ds;  //4
-  $targetFile =  $targetPath. $_FILES[ 'file' ][ 'name' ];  //5
-  move_uploaded_file($tempFile,$targetFile); //6
+  #$targetPath = dirname( __FILE__ ) . $ds. $storeFolder . $ds;  //4
+  #$targetFile =  $targetPath. $_FILES[ 'file' ][ 'name' ];  //5
+  #move_uploaded_file($tempFile,$targetFile); //6
 
-  $newSA = file ($tempFile , FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-  #deb($newSA,1);
+  $newSA = file ($tempFile ,  FILE_SKIP_EMPTY_LINES);
+ # deb($newSA,1);
+  
+  $collection_id =  $I[ 'currentCollection' ] -> get_collection_id ();
   foreach( $newSA as $medium )
   {
-    $this -> SQL -> importMedium( $I[ 'currentCollection' ] -> get_collection_id (), $medium , $fp);
+    $this -> SQL -> importMedium( $collection_id, $medium , $fp);
     fwrite($fp, $medium ) ;
   }
   fclose($fp);

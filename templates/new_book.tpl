@@ -37,7 +37,7 @@
 </ol>
 
 <div class="text2" style="text-align: center">
-   <a  target="_blank"   id ="FButton2"    href="{$VUFIND.vuFindReserchURL}"> <button style="padding:20px;" class="ui-button ui-widget ui-corner-all" > Im HAW-Katalog recherchieren und die Literaturliste erstellen
+   <a  target="_blank"   id ="FButton2"    href="{$back_URL}"> <button style="padding:20px;" class="ui-button ui-widget ui-corner-all" > Im HAW-Katalog recherchieren und die Literaturliste erstellen
        </button></a>
 </div>
 <hr>
@@ -106,16 +106,16 @@
                {if (isset ( $b.title        ) AND $b.title        != "" )}<tr><td><div class="mediaListHeader">Titel:    </div></td><td><span class="mediaTxt">{$b.title|escape}                           </span></td></tr>{/if}
                {if (isset ( $b.author       ) AND $b.author       != "" )}<tr><td><div class="mediaListHeader">Autor:    </div></td><td><span class="mediaTxt">{$b.author|escape}                          </span></td></tr>{/if}
 
-               {if ($b.doc_type == 'electronic' )}
-                <tr><td><div class="mediaListHeader">Format: </div></td><td><span class="mediaTxt">Online-Ressource                              </span></td></tr>
+               {if ($b.doc_type == 'eBook' )}
+                <tr><td><div class="mediaListHeader">Format: </div></td><td><span class="mediaTxt"> {$b.doc_type}               </span></td></tr>
                {/if}
 
-               {if ($b.doc_type == 'print') }
+               {if ($b.doc_type == 'Book') }
                    {if (isset ( $b.signature  ) AND $b.signature    != "" )}<tr><td><div class="mediaListHeader">Format: </div></td><td><span class="mediaTxt">Print - Sig:{$b.signature|escape}        </span></td></tr>{/if}
                    {if (isset ( $b.ISBN       ) AND $b.ISBN         != "" )}<tr><td><div class="mediaListHeader">ISBN:   </div></td><td><span class="mediaTxt">{$b.ISBN|escape:"br"}                     </span></td></tr>{/if}
                {/if}
 
-               {if (isset ( $b.publisher    ) AND $b.publisher    != "" )}<tr><td><div class="mediaListHeader">Verlag:   </div></td><td><span class="mediaTxt">{$b.publisher|escape}                       </span></td></tr>{/if}
+               {* {if (isset ( $b.publisher    ) AND $b.publisher    != "" )}<tr><td><div class="mediaListHeader">Verlag:   </div></td><td><span class="mediaTxt">{$b.publisher|escape}                       </span></td></tr>{/if} *}
                {if (isset ( $b.year         ) AND $b.year         != "" )}<tr><td><div class="mediaListHeader">:         </div></td><td><span class="mediaTxt">{$b.year|escape}                            </span></td></tr>{/if}
                {if (isset ( $b.volume       ) AND $b.volume       != "" )}<tr><td><div class="mediaListHeader">:         </div></td><td><span class="mediaTxt">{$b.volume|escape}                          </span></td></tr>{/if}
            </table>
@@ -124,10 +124,7 @@
              {foreachelse}   <h3 style="color:red; text-align:center; width:100%; height:50px;  vertical-align: middle; border: 2px solid red;">ERROR: Zur Zeit keine Verbindung zum Bibliotheksserver möglich.<br>(OPAC)</h3>
           {/foreach}
 
-      <div class="text">
-       Haben Sie nicht das Gewünschte gefunden?<br/> Machen Sie doch einen
-       <a  class="erwebungsvorschlag"  href="index.php?item=book&action=purchase_suggestion&dc_collection_id={$collection.dc_collection_id}&r={$user.role_id}">Erwerbungsvorschlag</a>
-      </div>
+
      {/if}
  </div>
 </div>
