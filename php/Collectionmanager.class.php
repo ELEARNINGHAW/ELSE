@@ -669,17 +669,17 @@ $storeFolder = 'uploads';   //2
 
 #if (!empty($_FILES))
 {
-   $tempFile = "ELSE_20200915165812.exp";          //3
+  # $tempFile = "ELSE_20200915165812.exp";          //3
 
-#   $tempFile =  ($_FILES['file']['tmp_name']);
+ $tempFile =  ($_FILES['file']['tmp_name']);
 
   $fp       = fopen('data.txt', 'w');
   
   fwrite($fp, $tempFile ) ;
 
-  #$targetPath = dirname( __FILE__ ) . $ds. $storeFolder . $ds;  //4
-  #$targetFile =  $targetPath. $_FILES[ 'file' ][ 'name' ];  //5
-  #move_uploaded_file($tempFile,$targetFile); //6
+  $targetPath = dirname( __FILE__ ) . $ds. $storeFolder . $ds;  //4
+  $targetFile =  $targetPath. $_FILES[ 'file' ][ 'name' ];  //5
+  move_uploaded_file($tempFile,$targetFile); //6
 
   $newSA = file ($tempFile ,  FILE_SKIP_EMPTY_LINES);
  # deb($newSA,1);
