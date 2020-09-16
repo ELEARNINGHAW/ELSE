@@ -37,7 +37,7 @@
 </ol>
 
 <div class="text2" style="text-align: center">
-   <a  target="_blank"   id ="FButton2"    href="{$back_URL}"> <button style="padding:20px;" class="ui-button ui-widget ui-corner-all" > Im HAW-Katalog recherchieren und die Literaturliste erstellen
+   <a  target="_blank"   id ="FButton2"    href="{$VUFIND.vuFindReserchURL}"> <button style="padding:20px;" class="ui-button ui-widget ui-corner-all" > Im HAW-Katalog recherchieren und die Literaturliste erstellen
        </button></a>
 </div>
 <hr>
