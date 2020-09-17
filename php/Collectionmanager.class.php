@@ -515,7 +515,7 @@ function LMSLoader( $url )
   ### ------ TEST -------
   if ($this -> conf['CONF'] ['cwd']  == 'ELSE-DEV')
   {
-    $url = 'X:\home\ELSE\haw-marc21.xml';
+   # $url = 'X:\home\ELSE\haw-marc21.xml';
   }
   ### ------ TEST -------
   

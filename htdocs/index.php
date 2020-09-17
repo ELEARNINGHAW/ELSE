@@ -30,13 +30,13 @@ $MEDIAMGR   = new MEDIAMANAGER(      $CFG, $SQL, $RENDERER, $UTIL, $COLLMGR  );
 ## ----------------------------------------------------------------------------------------
 $I = $UTIL -> getInput();                                #--- GET ALL INPUT (GET) ---
 ## ----------------------------------------------------------------------------------------
-
+#deb($I );
 $cu = $I[ 'currentUser' ];
 $ca = $I[ 'operator'    ] -> get_action();   # ACTION
 $ci = $I[ 'operator'    ] -> get_item();     # ITEM
 $cl = $I[ 'operator'    ] -> get_loc();      # LOCATOR
 # deb($cu );
- # deb($I,1);
+#  deb($I,1);
 # $ci = 'collection';
   # $ca = 'import';
 
