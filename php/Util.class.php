@@ -39,7 +39,7 @@ $this -> HAWdb     = new HAW_DB();                                    # Aus der 
 
 
 if ( isset ( $_GET[ 'uid' ] ) )  ##  Initiale Parameterübergabe über  Moodle ## // Kurskurzname   /* Paramterübergabe von EMIL  */
-{
+{ #deb( $_GET[ 'uid' ] ,1);
   $O = $this -> getGET_BASE_Values () ;
   $currentCollection = $O[ 'currentCollection' ] ;
   $currentUser       = $O[ 'currentUser'       ] ;
@@ -47,20 +47,24 @@ if ( isset ( $_GET[ 'uid' ] ) )  ##  Initiale Parameterübergabe über  Moodle #
   $_SESSION[ 'currentUser'       ] = (array) $currentUser      ;
 }
 
-else if  ( ( isset (  $_SESSION[ 'currentUser'       ]   ) ) )
-{
-  $currentUser -> array2obj( $_SESSION[ 'currentUser'       ] );
-}
-
 else
 {
-   die("<div style='text-align:center;'><h1>ACCESS ERROR<h1><h3>Netzwerkfehler!</h3>Bitte ELSE neu starten</div>");
+  if  ( ( isset (  $_SESSION[ 'currentCollection'       ]   ) ) )
+  {
+    $currentCollection -> array2obj( $_SESSION[ 'currentCollection'       ] );
+  }
+  if  ( ( isset (  $_SESSION[ 'currentUser'       ]   ) ) )
+  {
+    $currentUser->array2obj($_SESSION['currentUser']);
+  }
+  else
+  {
+    die("<div style='text-align:center;'><h1>ACCESS ERROR<h1><h3>Netzwerkfehler!</h3>Bitte ELSE neu starten</div>");
+  }
 }
 
-if  ( ( isset (  $_SESSION[ 'currentCollection'       ]   ) ) )
-{
-   $currentCollection -> array2obj( $_SESSION[ 'currentCollection'       ] );
-}
+
+
 
 
 ### ------------------------------- SET HISTORY  --------------------------------
@@ -142,10 +146,10 @@ if ( isset ( $_GET[ 'dc_collection_id'                         ] ) )  { $medium 
 ### ------------------------------- COLLECTION  --------------------------------
 ##
 
-if ( isset ( $_GET[ 'collection_id'                            ] ) )  { $currentCollection =   $this ->   SQL-> getCollection ( $_GET[ 'collection_id'  ]   );$currentCollection -> set_collection_id    ( $_GET[ 'collection_id'        ] ) ; $currentCollection -> set_dc_collection_id ( $this->b64en( $_GET[ 'collection_id'     ] ) ) ; }
+if      ( isset ( $_GET[ 'collection_id'                            ] ) )  { $currentCollection =   $this ->   SQL-> getCollection ( $_GET[ 'collection_id'  ]   );$currentCollection -> set_collection_id    ( $_GET[ 'collection_id'        ] ) ; $currentCollection -> set_dc_collection_id ( $this->b64en( $_GET[ 'collection_id'     ] ) ) ; }
 else if ( isset ( $_GET[ 'dc_collection_id'                    ] ) )  {
   $cid = $this->b64de( $_GET[ 'dc_collection_id'  ] );
-  # deb($cid,1);
+
   $cc = $this ->   SQL-> getCollection (  $cid );
   $currentCollection =   $cc[ $cid ] ;
   $currentCollection -> set_dc_collection_id     ( $_GET[ 'dc_collection_id'     ] ) ; $currentCollection -> set_collection_id    ( $cid ) ;
@@ -161,7 +165,7 @@ if ( isset ( $_GET[ 'notes_to_studies_col'                     ] ) )  { $current
 if ( isset ( $_GET[ 'imsid'                                    ] ) )  { $currentCollection -> set_collection_id        ( $_GET[ 'imsid'                ] ) ; } ## IMSID sollte zu collection_id geändert werden
 if ( isset ( $_GET[ 'lms-download'                             ] ) )  { $cc  =  $this -> SQL -> getCollection( $_SESSION[ 'currentCollection' ][ 'collection_id' ] );
                                                                         $currentCollection =  array_pop   ( $cc  );  }
-
+ 
 
 ##
 ### ------------------------------- EMAIL  --------------------------------
@@ -227,7 +231,7 @@ function getGET_BASE_Values ( )
   if ( isset ( $_GET[ 'sn' ] ) )  { $currentCollection -> set_title_short  ( $this -> b64de( $_GET[ 'sn' ]  ) );  }
   if ( isset ( $_GET[ 'cn' ] ) )  { $currentCollection -> set_title        ( $this -> b64de( $_GET[ 'cn' ]  ) );  }
 
- # deb($currentCollection,1);
+ #  deb($currentCollection,1);
 #------------------------------------------------------------------------
 
   if ( isset ( $_GET[ 'uid'] ) )  { $currentUser -> set_id                 ( $this -> b64de( $_GET[ 'uid']  ) ) ; }
@@ -255,7 +259,7 @@ function getGET_BASE_Values ( )
   $O[ 'currentCollection' ]  =  $this -> updateCollection(  $currentCollection, $currentUser );
   $O[ 'currentUser'       ]  =  $this -> updateUser( $currentUser  );
   $O[ 'medium'            ]  =  $medium;
- 
+   # deb($O[ 'currentCollection' ] ,1);
   return $O;
 }
 

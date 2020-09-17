@@ -28,7 +28,7 @@
   </div>
 
     {else}
-    <div class="SAdozName" style="margin-left: 25px;">ELSE<br />Der elektronische Semesterapparat </div>
+    <div class="SAdozName" style="margin-left: 25px;">ELSE - {$ci.title}<br />Der elektronische Semesterapparat </div>
     {/if}
 
     {if ($operator.mode != "print" AND ($edit_mode OR $staff_mode)) }
