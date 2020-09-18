@@ -650,7 +650,7 @@ $csv_filename = 'ELSE_' . date("YmdHis") . '.exp';
 // Export the data and prompt a csv file for download
 
 $csv_export =  $this -> SQL -> exportCollection( $I[ 'currentCollection' ]->get_collection_id() );
-header("Content-type: text/x-csv");
+header('Content-Type: text/x-csv; charset=utf-8');
 header("Content-Disposition: attachment; filename=".$csv_filename."");
 
 echo $csv_export;
@@ -668,29 +668,42 @@ $ds          = DIRECTORY_SEPARATOR;  //1
 $storeFolder = 'uploads';   //2
 
 #if (!empty($_FILES))
-{
-  # $tempFile = "ELSE_20200915165812.exp";          //3
-
- $tempFile =  ($_FILES['file']['tmp_name']);
-
+{ $debug = false;
   $fp       = fopen('data.txt', 'w');
+ if ($debug)
+ {
+   $tempFile = "ELSE_20200915165812.exp";         ## DEBUGGING ONLY
+ }
+ else
+ {
+   $tempFile   =  ($_FILES['file']['tmp_name']);
+   #fwrite($fp, $tempFile ) ;
+   $targetPath = dirname( __FILE__ ) . $ds. $storeFolder . $ds;
+   $targetFile =  $targetPath. $_FILES[ 'file' ][ 'name' ];
+   move_uploaded_file($tempFile,$targetFile);
+ }
   
-  fwrite($fp, $tempFile ) ;
-
-  $targetPath = dirname( __FILE__ ) . $ds. $storeFolder . $ds;  //4
-  $targetFile =  $targetPath. $_FILES[ 'file' ][ 'name' ];  //5
-  move_uploaded_file($tempFile,$targetFile); //6
-
-  $newSA = file ($tempFile ,  FILE_SKIP_EMPTY_LINES);
- # deb($newSA,1);
+  $newSA = file ( $tempFile ,  FILE_SKIP_EMPTY_LINES );
   
+
+  $bom = pack("CCC", 0xef, 0xbb, 0xbf);
+
+
+  #fwrite($fp, $tempFile ) ;
+  #fwrite($fp, implode( $newSA )) ;
   $collection_id =  $I[ 'currentCollection' ] -> get_collection_id ();
+  #deb($newSA);
   foreach( $newSA as $medium )
   {
+    if (0 == strncmp($medium, $bom, 3)) {   $medium = substr($medium, 3);   }  ## UTF8 BOM entfernen
+    $med = explode ( ";;" , $medium );
+    # deb($med);
     $this -> SQL -> importMedium( $collection_id, $medium , $fp);
-    fwrite($fp, $medium ) ;
+    #fwrite($fp, $medium ) ;
+    #echo "<br>".$med[0]. ' '.$med[15];
   }
   fclose($fp);
+
 }
 
 }

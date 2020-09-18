@@ -852,43 +852,47 @@ SET `state_id` = '" . $this->es ( $state ) . "' WHERE `document`.`id` = " . $thi
 
 
 # ---------------------------------------------------------------------------------------------
-function importMedium( $collection_id , $medium ,$fp)
+function importMedium( $collection_id , $medium , $fp)
 {
-  #  if ( substr_count ( $medium , ';;' ) >= 17 ) # Plausibilitätscheck des Inhalts. ';;' ist der Delimiter
-  {
     $res = 0;
     $i = 0;
-    $med = explode ( ";;" , $medium );
-   #  deb(  $med   );
-    # deb( $this -> getDocumentInfos( $med[10]  ) );
-    # fwrite($fp, deb($this -> getDocumentInfos( $med[10]  ) ) ) ;
-    # deb($this -> getDocumentInfos( $med[4]  ) );
+  
+
+    
+    
+    $rowCnt    = sizeof( $_SESSION[ 'CFG' ][ 'EXPO_IMPO' ] );
+    $spacerCnt =  substr_count ( $medium , ';;' ) ;
+
+    $med       = explode ( ";;" , $medium );
+    
     if ( $this -> getDocumentInfos( $med[10], $collection_id  ) != '' )  ## Medium ist bereits Element des SA
     {
       # deb( "EX SA:". $med[ 4 ]   );
     }
-    else if ( isset( $med[ 4 ] ) ) ## Zu importierender Datensatz hat zumindest ein Titel
+    else if ( isset( $med[ 4 ] )  AND ($rowCnt == $spacerCnt )   ) ## Zu importierender Datensatz hat zumindest ein Titel UND es werden soviele Elemente aus der Import-Dateizeile eingelesen wie auch erwartet werden
     {
-        $SQL = "INSERT INTO document SET ";
-        foreach (  $_SESSION[ 'CFG' ]['EXPO_IMPO'] as $exim )
-      {
-        $SQL .= " $exim  = \"" . $med[ $i++ ] . "\"  , ";
-      
+      if ( $med[ 0] == '1'  AND ( $med[ 15 ] == 1 ) ) { $med[ 2 ] = 10; }  ## IF doc_type_id = 1 (Buch) AND shelf_remain = 1 (SA) -> state_id = 10 (contiue)
+    
+      $SQL = "INSERT INTO document SET ";
+      foreach (  $_SESSION[ 'CFG' ][ 'EXPO_IMPO' ] as $exim )
+      { $m =   trim( $med[ $i++ ] ) ;
+  
+        #$m =  preg_replace('/[\x00-\x1F\x80-\xFF]/', '', trim( $m ) );  ## UTF8 Artefakte entfernen
+        #$m =  utf8_encode( trim( $m  ) );
+        
+        $val = mysqli_real_escape_string(   $this -> DB, $m );
+        $SQL .= " $exim  = \"" . ''.$val . "\"  , ";
       }
-    $SQL .= " collection_id     = \"" . $collection_id . "\"  , ";
-    $SQL .= " last_modified     = NOW()                         ";
-
-    ## -- FOR  DEBUGING  --##
-   $fp2   = fopen('dataIMP.txt', 'a');
-    #  deb($SQL);
-     fwrite($fp2, $SQL."\n"  ) ;
+      $SQL .= " collection_id     = \"" . $collection_id . "\"  , ";
+      $SQL .= " last_modified     = NOW()                         ";
+ 
     $res = mysqli_query ( $this->DB , $SQL );
-      fwrite($fp2, $res."\n"  ) ;
-    ## -- FOR  DEBUGING  --##
-  }
+    fwrite($fp, $SQL."\n"  ) ;  ## -- FOR  DEBUGING  --##
+  
+   }
     # deb($res);
     return $res;
-  }
+  
 }
 
 function getSAid( $SEM )
@@ -1118,7 +1122,18 @@ function getSAid( $SEM )
       $res = mysqli_query ( $this->DB , $SQL3 );
       $tmp = mysqli_fetch_assoc ( $res );
       $ret[ $HIBS_loc[ 'bib_id' ] ][ 4 ] = $tmp[ 'COUNT( * )' ];
-    }
+ 
+    $SQL4 = "
+    SELECT COUNT( * )
+    FROM document
+    INNER JOIN collection ON document.collection_id = collection.id
+    WHERE document.state_id = '10' AND collection.bib_id = '" . $this->es ( $HIBS_loc[ 'bib_id' ] ) . "'";     /* Status 10 = Wird Verlängert  */
+  
+    $res = mysqli_query ( $this->DB , $SQL4 );
+    $tmp = mysqli_fetch_assoc ( $res );
+    $ret[ $HIBS_loc[ 'bib_id' ] ][ 10 ] = $tmp[ 'COUNT( * )' ];
+  }
+    
     return $ret;
   }
 
