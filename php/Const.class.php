@@ -204,8 +204,8 @@ $this->CONST_ACTION_INFO = array
         'button_visible_if' => array
          (
 
-            "state"   => array ( "inactive" ,"delete" ) ,
-            "loc"      => array (  "2", "3"  , "4" , "5" ) ,
+            "state"   => array ( "inactive" ,"delete", 'continue' ) ,
+            "loc"      => array (  "1","2", "3"  , "4" , "5" ) ,
             "mode"   => array ( "edit" , "admin" ,'staff' ) ,
         ) ,
         'acl' => array 

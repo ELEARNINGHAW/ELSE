@@ -49,14 +49,15 @@
 
 
 <ul id="nav2" style="position:absolute; right:110px;   top:3px;">
-    {if      $filter.state == 0 AND $filter.type != 16}<li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=0" title="Alle SemApp"         ><img src="img/svg/Xa.svg" width="32" height="32"/></a>
-    {elseif  $filter.state == 1}                       <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=1" title="Neu Bestellte"       ><img src="img/svg/Na.svg" width="32" height="32"/></a>
-    {elseif  $filter.state == 2}                       <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=2" title="Wird Bearbeitet"     ><img src="img/svg/Ba.svg" width="32" height="32"/></a>
-    {elseif  $filter.state == 3}                       <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=3" title="Aktiv"               ><img src="img/svg/Aa.svg" width="32" height="32"/></a>
-    {elseif  $filter.state == 4}                       <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=4" title="Wird Entfernt"       ><img src="img/svg/Ea.svg" width="32" height="32"/></a>
-    {elseif  $filter.state == 5}                       <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=5" title="Inaktiv"             ><img src="img/svg/Ia.svg" width="32" height="32"/></a>
-    {elseif  $filter.state == 6}                       <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=6" title="Gelöschte"           ><img src="img/svg/Ga.svg" width="32" height="32"/></a>
-    {elseif  $filter.type == 16}                       <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterType&amp;category=16" title="Erwerbungsvorschlag" ><img src="img/svg/K.svg" width="32" height="32"/></a>
+    {if      $filter.state ==  0 AND $filter.type != 16}<li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=0"  title="Alle SemApp"         ><img src="img/svg/Xa.svg" width="32" height="32"/></a>
+    {elseif  $filter.state ==  1}                       <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=1"  title="Neu Bestellte"       ><img src="img/svg/Na.svg" width="32" height="32"/></a>
+    {elseif  $filter.state ==  2}                       <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=2"  title="Wird Bearbeitet"     ><img src="img/svg/Ba.svg" width="32" height="32"/></a>
+    {elseif  $filter.state ==  3}                       <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=3"  title="Aktiv"               ><img src="img/svg/Aa.svg" width="32" height="32"/></a>
+    {elseif  $filter.state ==  4}                       <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=4"  title="Wird Entfernt"       ><img src="img/svg/Ea.svg" width="32" height="32"/></a>
+    {elseif  $filter.state ==  5}                       <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=5"  title="Inaktiv"             ><img src="img/svg/Ia.svg" width="32" height="32"/></a>
+    {elseif  $filter.state ==  6}                       <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=6"  title="Gelöschte"           ><img src="img/svg/Ga.svg" width="32" height="32"/></a>
+    {elseif  $filter.state == 10}                       <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=10" title="Verlängerte"         ><img src="img/svg/Va.svg" width="32" height="32"/></a>
+    {elseif  $filter.type  == 16}                       <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterType&amp;category=16"  title="Erwerbungsvorschlag" ><img src="img/svg/K.svg"  width="32" height="32"/></a>
     {/if}
 
     <ul>
@@ -66,6 +67,7 @@
       <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterType&amp;category=16" title="Erwerbungsvorschlag" ><img src="img/svg/K.svg" width="24" height="24"/><span style="position:absolute; padding:12px;"> Erwerbungsvorsch.  </span></a></li>
       <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=3" title="Aktiv"               ><img src="img/svg/A.svg" width="24" height="24"/><span style="position:absolute; padding:12px;"> Aktive M.          </span></a></li>
       <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=5" title="Inaktiv"             ><img src="img/svg/I.svg" width="24" height="24"/><span style="position:absolute; padding:12px;"> Inaktive M.        </span></a></li>
+      <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=10" title="Verlängert"         ><img src="img/svg/V.svg" width="24" height="24"/><span style="position:absolute; padding:12px;"> Verlängerte M.     </span></a></li>
       <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=6" title="Gelöschte"           ><img src="img/svg/G.svg" width="24" height="24"/><span style="position:absolute; padding:12px;"> Gelöschte M.       </span></a></li>
     </ul>
   </li>

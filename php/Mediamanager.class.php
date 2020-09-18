@@ -947,6 +947,7 @@ function getHitList( $searchQuery )
 ###############################################################################################
     function activateMedia( $I )
     {
+   
       $this->SQL->setMediaState ( $I[ 'medium' ]->get_id () , 3 );
 
       $url = "index.php?item=collection&action=show_collection&dc_collection_id=" . $I[ 'currentCollection' ]->get_dc_collection_id () . "&r=" . $I[ 'currentUser' ]->get_role_id ();

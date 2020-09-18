@@ -1,5 +1,5 @@
 ﻿<?php
-session_start();   #session_destroy (); unset($_SESSION);
+session_start();   #  session_destroy (); unset($_SESSION);
 
 require_once ( '../php/Const.class.php'               );
 require_once ( '../php/Config.class.php'              );
@@ -36,9 +36,9 @@ $ca = $I[ 'operator'    ] -> get_action();   # ACTION
 $ci = $I[ 'operator'    ] -> get_item();     # ITEM
 $cl = $I[ 'operator'    ] -> get_loc();      # LOCATOR
 # deb($cu );
-#  deb($I,1);
+ #deb($I,1);
 # $ci = 'collection';
-  # $ca = 'import';
+#$ca = 'import';
 
 # -- Default: item = collection -- (user) action = show_collection, (staff) action = show_collection_list
 if ( $ci  == 'collection'  AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit') )
@@ -80,6 +80,7 @@ else if (   $cl  ==  1   AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit'))
   else if ( $ca  == 'delete'                )  {  $MEDIAMGR -> deleteMedia                   ( $I ); }   ## ActionHandler: Buch wird aus SA gelöscht
   else if ( $ca  == 'return'                )  {  $MEDIAMGR -> returnDoneMedia               ( $I ); }   ## ActionHandler: Buchrückgabe ist erledigt
   else if ( $ca  == 'cancel_release'        )  {  $MEDIAMGR -> cancel_release                ( $I ); }   ## ActionHandler: Buch verlängern / Buchrückgabe abbrechen
+  else if ( $ca  == 'activate'              )  {  $MEDIAMGR -> activateMedia                 ( $I ); }   ## ActionHandler: Medium Aktivieren
   else if ( $ca  == 'new_email'             )  {  $MEDIAMGR -> showMailForm                  ( $I ); }   ## ActionHandler: Mailformular für Infomail an Nutzer
   else if ( $ca  == 'cancel_order'          )  {  $MEDIAMGR -> cancelMedia                   ( $I ); }   ## ActionHandler: Buchbestellung wird storiert
 }
