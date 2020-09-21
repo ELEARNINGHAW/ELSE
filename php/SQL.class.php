@@ -856,9 +856,6 @@ function importMedium( $collection_id , $medium , $fp)
 {
     $res = 0;
     $i = 0;
-  
-
-    
     
     $rowCnt    = sizeof( $_SESSION[ 'CFG' ][ 'EXPO_IMPO' ] );
     $spacerCnt =  substr_count ( $medium , ';;' ) ;
@@ -871,15 +868,12 @@ function importMedium( $collection_id , $medium , $fp)
     }
     else if ( isset( $med[ 4 ] )  AND ($rowCnt == $spacerCnt )   ) ## Zu importierender Datensatz hat zumindest ein Titel UND es werden soviele Elemente aus der Import-Dateizeile eingelesen wie auch erwartet werden
     {
-      if ( $med[ 0] == '1'  AND ( $med[ 15 ] == 1 ) ) { $med[ 2 ] = 10; }  ## IF doc_type_id = 1 (Buch) AND shelf_remain = 1 (SA) -> state_id = 10 (contiue)
+      #### if ( $med[ 0] == '1'  AND ( $med[ 15 ] == 1 ) ) { $med[ 2 ] = 10; }  ## IF doc_type_id = 1 (Buch) AND shelf_remain = 1 (SA) -> state_id = 10 (contiue)
     
       $SQL = "INSERT INTO document SET ";
       foreach (  $_SESSION[ 'CFG' ][ 'EXPO_IMPO' ] as $exim )
       { $m =   trim( $med[ $i++ ] ) ;
   
-        #$m =  preg_replace('/[\x00-\x1F\x80-\xFF]/', '', trim( $m ) );  ## UTF8 Artefakte entfernen
-        #$m =  utf8_encode( trim( $m  ) );
-        
         $val = mysqli_real_escape_string(   $this -> DB, $m );
         $SQL .= " $exim  = \"" . ''.$val . "\"  , ";
       }

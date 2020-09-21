@@ -663,48 +663,32 @@ return;
 ###############################################################################################
 function importCollection( $I )
 {
-$ds          = DIRECTORY_SEPARATOR;  //1
-
-$storeFolder = 'uploads';   //2
-
-#if (!empty($_FILES))
-{ $debug = false;
-  $fp       = fopen('data.txt', 'w');
- if ($debug)
- {
-   $tempFile = "ELSE_20200915165812.exp";         ## DEBUGGING ONLY
- }
- else
- {
-   $tempFile   =  ($_FILES['file']['tmp_name']);
-   #fwrite($fp, $tempFile ) ;
-   $targetPath = dirname( __FILE__ ) . $ds. $storeFolder . $ds;
-   $targetFile =  $targetPath. $_FILES[ 'file' ][ 'name' ];
-   move_uploaded_file($tempFile,$targetFile);
- }
+  $ds          = DIRECTORY_SEPARATOR;  //1
+  $storeFolder = 'uploads';   //2
+  $fp          = fopen('data.txt', 'w');
+  $debug       = false;
   
-  $newSA = file ( $tempFile ,  FILE_SKIP_EMPTY_LINES );
-  
-
-  $bom = pack("CCC", 0xef, 0xbb, 0xbf);
-
-
-  #fwrite($fp, $tempFile ) ;
-  #fwrite($fp, implode( $newSA )) ;
+  if ( $debug )    { $tempFile = "ELSE_20200915165812.exp"; }     ## DEBUGGING ONLY
+  else
+  {
+    $tempFile   = ( $_FILES[ 'file' ][ 'tmp_name' ] );
+    $targetPath = dirname( __FILE__ ) . $ds. $storeFolder . $ds;
+    $targetFile =  $targetPath. $_FILES[ 'file' ][ 'name' ];
+    move_uploaded_file($tempFile,$targetFile);
+  }
+  $newSA         = file ( $tempFile ,  FILE_SKIP_EMPTY_LINES );
+  $bom           = pack("CCC", 0xef, 0xbb, 0xbf);
   $collection_id =  $I[ 'currentCollection' ] -> get_collection_id ();
-  #deb($newSA);
+
   foreach( $newSA as $medium )
   {
-    if (0 == strncmp($medium, $bom, 3)) {   $medium = substr($medium, 3);   }  ## UTF8 BOM entfernen
-    $med = explode ( ";;" , $medium );
-    # deb($med);
-    $this -> SQL -> importMedium( $collection_id, $medium , $fp);
-    #fwrite($fp, $medium ) ;
-    #echo "<br>".$med[0]. ' '.$med[15];
+    if (0 == strncmp( $medium, $bom, 3 ) ) {   $medium = substr( $medium, 3 );   }  ## UTF8 BOM entfernen
+    # $med = explode ( ";;" , $medium ); # deb($med);
+   
+    $this -> SQL -> importMedium( $collection_id, $medium , $fp );
   }
   fclose($fp);
-
-}
+ 
 
 }
 
