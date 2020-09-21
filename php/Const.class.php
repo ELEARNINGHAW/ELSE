@@ -123,7 +123,7 @@ $this->CONST_ACTION_INFO = array
         'button_visible_if' => array
         (
             "loc"      => array ( "1"    ) ,
-            "state" => array ( "active" ) ,
+            "state" => array ( "active" ,'continue') ,
             "mode" => array ( "edit" , "admin" ,"staff" ) ,
         ) ,
     ) ,
@@ -197,23 +197,43 @@ $this->CONST_ACTION_INFO = array
     
     
     'activate'              => array
-    (                                                                           /*  E-Book wird wieder aktiviert         (5 -> 3): [Ist aktiv]       */
-        'button'            => 'activate' ,
-        'button_label'      => 'Aktivieren' ,
-        'input'             => array ( "state" => "active" ) ,
-        'button_visible_if' => array
-         (
-
-            "state"   => array ( "inactive" ,"delete", 'continue' ) ,
-            "loc"      => array (  "1","2", "3"  , "4" , "5" ) ,
-            "mode"   => array ( "edit" , "admin" ,'staff' ) ,
-        ) ,
-        'acl' => array 
-        (
-
-            "online"  => "owner=true,role=admin, role=staff",
-        ) ,
+  (                                                                           /*  E-Book wird wieder aktiviert         (5 -> 3): [Ist aktiv]       */
+    'button'            => 'activate' ,
+    'button_label'      => 'Aktivieren' ,
+    'input'             => array ( "state" => "active" ) ,
+    'button_visible_if' => array
+    (
+      
+      "state"   => array ( "inactive" ,"delete" ) ,
+      "loc"      => array (  "2", "3"  , "4" , "5" ) ,
+      "mode"   => array ( "edit" , "admin" ,'staff' ) ,
     ) ,
+    'acl' => array
+    (
+      
+      "online"  => "owner=true,role=admin, role=staff",
+    ) ,
+  ) ,
+  
+  'activate'              => array
+  (                                                                           /*  E-Book wird wieder aktiviert         (5 -> 3): [Ist aktiv]       */
+    'button'            => 'activate' ,
+    'button_label'      => 'Aktivieren' ,
+    'input'             => array ( "state" => "active" ) ,
+    'button_visible_if' => array
+    (
+      
+      "state"   => array ( 'continue' ) ,
+      "loc"      => array (  "1" ) ,
+      "mode"   => array (  "admin" ,'staff' ) ,
+    ) ,
+    'acl' => array
+    (
+      
+      "online"  => "owner=true,role=admin, role=staff",
+    ) ,
+  ) ,
+    
     
     'edit'                => array
     (                                                                           /* Metadaten des Mediums (Buch, E-Book) wird bearbeiten    (a -> a )State ändert sich nicht */
