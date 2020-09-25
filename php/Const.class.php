@@ -196,7 +196,9 @@ $this->CONST_ACTION_INFO = array
     ) ,
     
     
-    'activate'              => array
+
+  
+  'activate'              => array
   (                                                                           /*  E-Book wird wieder aktiviert         (5 -> 3): [Ist aktiv]       */
     'button'            => 'activate' ,
     'button_label'      => 'Aktivieren' ,
@@ -204,9 +206,9 @@ $this->CONST_ACTION_INFO = array
     'button_visible_if' => array
     (
       
-      "state"   => array ( "inactive" ,"delete" ) ,
-      "loc"      => array (  "2", "3"  , "4" , "5" ) ,
-      "mode"   => array ( "edit" , "admin" ,'staff' ) ,
+      "state"   => array ( 'continue' ) ,
+      "loc"      => array (  "1" ) ,
+      "mode"   => array (  "admin" ,'staff' ) ,
     ) ,
     'acl' => array
     (
@@ -223,9 +225,9 @@ $this->CONST_ACTION_INFO = array
     'button_visible_if' => array
     (
       
-      "state"   => array ( 'continue' ) ,
-      "loc"      => array (  "1" ) ,
-      "mode"   => array (  "admin" ,'staff' ) ,
+      "state"   => array ( "inactive" ,"delete" ) ,
+      "loc"      => array (  "2", "3"  , "4" , "5" ) ,
+      "mode"   => array ( "edit" , "admin" ,'staff' ) ,
     ) ,
     'acl' => array
     (
