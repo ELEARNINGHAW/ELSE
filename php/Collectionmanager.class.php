@@ -579,7 +579,6 @@ function LMSLoader( $url )
           }
       }
 
-
       ## -- Signatur / Sigel --
       if ( $b_att == '980' )
       { $hit = false;
@@ -637,9 +636,6 @@ function LMSLoader( $url )
   
   return  $medium;
 }
-
-
-
 
 ###############################################################################################
 function exportCollection( $I )
