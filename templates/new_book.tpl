@@ -64,7 +64,7 @@
 </div>
   {if $CONF.SRU.SRUenabled}
   <hr>
-  <div style="display: block;" class="text2"> <h3>Medien hinzuf&uuml;gen &ndash; <span style="color: #ff0000;">Alternativ &uuml;ber Suche im alten online-Katalog (OPAC):</span></h3>
+  <div style="display: block;" class="text2"> <h3>Medien hinzuf&uuml;gen &ndash; <span style="color: #ff0000;">Alternativ &uuml;ber Suche im alten online-Katalog (OPAC): <br>Dieser Service steht nur noch übergangsweise bis 31.12.2020 zur Verfügung.</span></h3>
     <ol>
       <li>Bitte geben Sie in dieser Suchmaske <b>Titel</b> und/oder <b>Autor*in</b> und/oder <b>Signatur</b> ein.</li>
         <li> Bei mehreren Treffern erscheint eine Auswahlliste (es werden max. 50 Treffer angezeigt).</li>
