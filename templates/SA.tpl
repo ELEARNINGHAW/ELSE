@@ -1,13 +1,12 @@
 {* $di, $ci, $user, $operator, $CFG, $MEDIA_STATE *}
 {$FB = $FACHBIB[$ci.bib_id].bib_name|escape}
-{if $di.shelf_remain == 1  }  {$whereIs = "{$FB}<br />{$CFG['MEDIA_PLACE'][1]}"} {/if}{* SA Medium      *}
-{if $di.shelf_remain == 2  }  {$whereIs = $CFG['MEDIA_PLACE'][2]}   {/if}{* LitHinweis Buch             *}
-{if $di.shelf_remain == 3  }  {$whereIs = $CFG['MEDIA_PLACE'][3]}   {/if}{* PDF                         *}
-{if $di.shelf_remain == 4  }  {$whereIs = $CFG['MEDIA_PLACE'][4]}   {/if}{* Scanservice / Medienserver  *}
-{if $di.shelf_remain == 5  }  {$whereIs = $CFG['MEDIA_PLACE'][5]}   {/if}{* LitHinweis Buch             *}
-
-{if $di.doc_type_id  == 6  }   {$whereIs = $CFG['MEDIA_PLACE'][6 ]} {/if}{* Artikel                     *}
-{if $di.doc_type_id  == 7  }   {$whereIs = $CFG['MEDIA_PLACE'][7 ]} {/if}{* eArtikel                    *}
+{if $di.shelf_remain == 1  }  {$whereIs = "{$FB}<br />{$CFG[ 'MEDIA_PLACE'][1]}"} {/if}{* Semesterapp    / SA Medium           *}
+{if $di.shelf_remain == 2  }  {$whereIs =              $CFG[ 'MEDIA_PLACE'][ 2 ]} {/if}{* Bibliothek     / LitHinweis Buch     *}
+{if $di.shelf_remain == 3  }  {$whereIs =              $CFG[ 'MEDIA_PLACE'][ 3 ]} {/if}{* online         / PDF                 *}
+{if $di.shelf_remain == 4  }  {$whereIs =              $CFG[ 'MEDIA_PLACE'][ 4 ]} {/if}{* Scanservice    / Medienserver        *}
+{if $di.shelf_remain == 5  }  {$whereIs =              $CFG[ 'MEDIA_PLACE'][ 5 ]} {/if}{* externe Biblio / Titel nicht aus HAW-Bestand -LitHinweis Buch             *}
+{if $di.doc_type_id  == 6  }  {$whereIs =              $CFG[ 'MEDIA_PLACE'][ 6 ]} {/if}{* Artikel                              *}
+{if $di.doc_type_id  == 7  }  {$whereIs =              $CFG[ 'MEDIA_PLACE'][ 7 ]} {/if}{* eArtikel                             *}
 {$edit_mode  = "0"}
 {$staff_mode = "0"}
 
@@ -24,14 +23,16 @@
 
 <a title="Medium Im Onlinekatalog anzeigen" class="medimove medLink  s_standard state_{$di.state_id} {if $edit_mode == '1'} {/if} " href="{$CFG.CATALOG_URL[$DOC_TYPE[$di.doc_type_id]['indexID']]}{$di.ppn}" target="_blank" onclick="return -1">
 <table>   {$preMedTyp = ''}
-    {if ($di.shelf_remain == 4)}{$preMedTyp = '[SCAN] '  }{/if}
+
+{if ($di.shelf_remain == 4)}{$preMedTyp = '[SCAN] '  }{/if}
 {if $di.title           != ""           }  <tr><td><div class="mediaListHeader">Titel:     </div></td><td><div  class="mediaTxt" >{$di.title}            </div>            {/if}
 {if $di.author          != ""           }  <tr><td><div class="mediaListHeader">Autor*in:  </div></td><td><div  class="mediaTxt" >{$di.author}           </div> </td></tr> {/if}
 {if $di.doc_type        == 'electronic' }  <tr><td><div class="mediaListHeader">Format:    </div></td><td><span class="mediaTxt" >Online-Ressource       </span></td></tr> {/if}
-{if $doctypedescription != ""           }  <tr><td><div class="mediaListHeader">Medientyp: </div></td><td><div  class="mediaTxt" >{$preMedTyp}{$doctypedescription}  {if (isset ( $di.signature  ) AND $di.signature  != "" )} ({$di.signature|escape}){/if} </div>            {/if}
+{if $doctypedescription != ""           }  <tr><td><div class="mediaListHeader">Medientyp: </div></td><td><div  class="mediaTxt" >{$preMedTyp}{$doctypedescription}  {if (isset ( $di.signature  ) AND $di.signature  != "" AND $di.signature  != "E-Book" )} ({$di.signature|escape}){/if} </div>            {/if}
 
-    {if $di.doc_type        == 'print'      }
 
+
+{if $di.doc_type        == 'print'      }
 {if (isset ( $di.ISBN       ) AND $di.ISBN       != "" )}<tr><td><div class="mediaListHeader">ISBN:   </div></td><td><span class="mediaTxt">{$di.ISBN|escape:"br"}             </span></td></tr>{/if}
 {/if}
 
@@ -41,8 +42,7 @@
 {if $di.notes_to_studies != "" }   <div class="medhint">Zur Beachtung: {$di.notes_to_studies|nl2br}  </div> {/if}
 
 <div class="bibStandort">
-    {if $ci.bib_id != "" }
-        {$whereIs}  {/if}
+    {if $ci.bib_id != "" }  {$whereIs}  {/if}
 </div>
 
 {if ($staff_mode or $edit_mode) and ($operator.mode != "print")}

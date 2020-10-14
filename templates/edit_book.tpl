@@ -69,15 +69,18 @@
 
 
 
-    {if ($CONF.scanServiceON   AND $medium.doc_type_id == 6 ) }
+    {if ($CONF.scanServiceON   AND $medium.doc_type_id == 6 ) }   ## Artikel
       {$scanserviceArticle = true}
     {/if}
+
     {if ( ($CONF.scanServiceON   AND $medium.sigel == 'HAW-Hamburg' ) AND  ( $medium.doc_type_id == 1 ||  $medium.doc_type_id == 12 ||  $medium.doc_type_id == 13 ||  $medium.doc_type_id == 15  ) )}
       {$scanservicePrint = true}
     {/if}
-    {if (  $medium.sigel == 'HAW-Hamburg' AND  $medium.doc_type_id != 6   OR $medium.doc_type_id == 16)  }
+
+    {if ($medium.sigel == 'HAW-Hamburg' AND   $medium.doc_type_id != 6   OR $medium.doc_type_id == 16)   }
       {$semApp = true}
     {/if}
+
     {if ($scanserviceArticle == false AND $scanservicePrint  == false AND $semApp  == false) } {* Wenn Medium ausschließlich als Literaturhinweis angeboten wird, ist dieses  schon  per default ausgewählt *}
         {$checked = 'checked="checked"' } {$c0 = '' }
     {/if}
@@ -86,7 +89,7 @@
   <tr><td  class = "editmedia" style="vertical-align: top; font-weight: bold;">  Ort:  <span style="color: {$color}; vertical-align: top; font-weight: bold;">(bitte auswählen)</span> </td><td>
     <div style="border:{$bw}px solid {$color}; float: left;  height:80px; padding: 5px; font-size: 12px; width: calc(100% - 15px); ">
 
-    {if  $medium.sigel == 'HAW-Hamburg' OR $medium.doc_type_id == 16 }
+    {if  ($medium.doc_type_id == 1 AND $medium.sigel == 'HAW-Hamburg') OR $medium.doc_type_id == 16 }   ## Buch mit HAW Sigel oder Erwebungsvorschlag
       <input {$c2} value="2" class='i' type="radio" name="shelf_remain" id="radio-2" {$checked}><label for="radio-2"><span style="font-weight:700; "> Literaturhinweis - verbleibt im Regal der Bibliothek.     </span></label><br/>
     {else}
         <input {$c2} value="5" class='i' type="radio" name="shelf_remain" id="radio-5" {$checked}><label for="radio-5"><span style="font-weight:700; "> Titel nicht aus HAW-Bestand, daher Literaturhinweis   </span></label><br/>

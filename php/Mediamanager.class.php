@@ -70,35 +70,39 @@ function editMediaMetaData( $I )
 ###############################################################################################
 function annoteNewMedia_showForm( $I )
 {
-  if ( isset( $_SESSION[ 'books' ][ 'booksHitList' ][ 0 ]))
-  {  #deb('--- 1 ---');
-    if ($I['medium']->get_doc_type_id() != 16)
+  if ( isset( $_SESSION[ 'books' ][ 'booksHitList' ][ 0 ]))                                #deb('--- 1 ---');
+  {
+    if ( $I[ 'medium' ] -> get_doc_type_id() != 16)                                                     ##  Erwerbungsvorschlag
     {
-      $tmpBook = $_SESSION[ 'books' ][ 'booksHitList' ][ $_SESSION[ 'books' ][ 'currentElement' ] ];  ## Metadaten des aus der Trefferliste ausgewählte Mediums
+      $tmpBook = $_SESSION[ 'books' ][ 'booksHitList' ][ $_SESSION[ 'books' ][ 'currentElement' ] ];
       $I[ 'medium' ] -> array2obj( $tmpBook );
-    } else if ( $I[ 'medium' ] -> get_title( ) == '' AND $I[ 'medium' ] -> get_doc_type_id( ) != 16 )     ## Kein Titel UND kein Erwerbungsvorschlag
+    }
+    else if ( $I[ 'medium' ] -> get_title( ) == '' AND $I[ 'medium' ] -> get_doc_type_id( ) != 16 )     ## Kein Titel UND kein Erwerbungsvorschlag
     {
       $tmpBook = $_SESSION[ 'books' ][ 'booksHitList' ][ $I[ 'medium' ] -> get_ppn( ) ];                 ## Metadaten des aus der Trefferliste ausgeählte Mediums
       $I[ 'medium' ] -> array2obj( $tmpBook );
-    } else {
+    }
+    else
+    {
       $_SESSION[ 'books' ][ 'currentElement' ] = 1;
       $_SESSION[ 'books' ][ 'maxElement'     ] = 1;
     }
-   }
-  elseif ( $I[ 'medium' ] -> get_ppn() != '' )
-  { # deb('--- 2 ---');
-    $tmpBook = $_SESSION[ 'books' ][ 'booksHitList' ][ $I[ 'medium' ] -> get_ppn() ];
+  }
+  
+  elseif ( $I[ 'medium' ] -> get_ppn() != '' )                                              # deb('--- 2 ---');
+  {
+    $tmpBook = $_SESSION[ 'books' ][ 'booksHitList' ][ $I[ 'medium' ] -> get_ppn() ];       # Hitliste kommt aus der OPAC Trefferliste
     $tmpBook = $this -> UTIL -> getOPACDocType( $tmpBook );
     
     $I[ 'medium' ] -> array2obj( $tmpBook );
     unset($_SESSION[ 'books' ][ 'booksHitList' ]);
-    $_SESSION[ 'books' ][ 'booksHitList' ][ 0 ] = $tmpBook ; # Hitliste kommt aus der OPAC Trefferliste
+    $_SESSION[ 'books' ][ 'booksHitList' ][ 0 ] = $tmpBook ;
     $_SESSION[ 'books' ][ 'currentElement' ] = 0;
     $_SESSION[ 'books' ][ 'maxElement'     ] = 1;
     
   }
   else
-  { #deb('--- 3 ---');
+  {                                                                                         #deb('--- 3 ---');
     $_SESSION[ 'books' ][ 'currentElement' ] = 0;
     $_SESSION[ 'books' ][ 'maxElement'     ] = 0;
   }
@@ -191,12 +195,12 @@ function saveMediaMetaData( $I )
         }
               
         #-----------------------------------------------------------------------------------------------------
-        if ( $I[ 'medium' ] -> get_shelf_remain () == '0'  OR $I[ 'medium' ] -> get_shelf_remain () == '' )      ##  Wenn kein Medien'ORT' angeklickt wurde, dann bleibt dass Medium im Regal (status: 2)
-        { $I[ 'medium' ] -> set_shelf_remain ( 2 );                                                              ##  ist der Medienort: 'verbleibt im Regal' ;) , Status 2
-          $I[ 'medium' ] -> set_state_id     ( 3 );                                                              ##  und der Status wird 'aktiv'         , Status 3
-        }
+       # if ( $I[ 'medium' ] -> get_shelf_remain () == '0'  OR $I[ 'medium' ] -> get_shelf_remain () == '' )      ##  Wenn kein Medien'ORT' angeklickt wurde, dann bleibt dass Medium im Regal (status: 2)
+       # { $I[ 'medium' ] -> set_shelf_remain ( 2 );                                                              ##  ist der Medienort: 'verbleibt im Regal' ;) , Status 2
+       #   $I[ 'medium' ] -> set_state_id     ( 3 );                                                              ##  und der Status wird 'aktiv'         , Status 3
+       # }
 
-        else if ( $I[ 'medium' ] -> get_shelf_remain () == '1'  )                                                ##  Wenn Medien'ORT' 'Semesterapparat' (status: 1)
+        if ( $I[ 'medium' ] -> get_shelf_remain () == '1'  )                                                ##  Wenn Medien'ORT' 'Semesterapparat' (status: 1)
         {                                                                                                        ##  ist der Medienort: 'verbleibt im Regal' ;) , Status 1
           $I[ 'medium' ] -> set_state_id     ( 1 );                                                              ##  und der Status wird 'aktiv'         , Status 3
         }
@@ -217,7 +221,7 @@ function saveMediaMetaData( $I )
           $I[ 'medium' ] -> set_state_id     ( 3 );                                                              ##  und der Status wird 'aktiv'         , Status 3
         }
   
-        if ( $I[ 'medium' ] -> get_doc_type_id () == '6' )                                                      ##
+        if ( $I[ 'medium' ] -> get_doc_type_id () == '6' )                                                      ## Artikel
         {
           $I[ 'medium' ] -> set_shelf_remain ( 2 );                                                             ## ist der Medienort: Bibliothek
           $I[ 'medium' ] -> set_state_id     ( 3 );                                                              ## und der Status wird 'aktiv'         , Status 3

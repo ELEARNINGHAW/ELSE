@@ -86,7 +86,8 @@ else if (   $cl  ==  1   AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit'))
 }
  
 else if (  ( $cl == 2  OR $cl  == 3 OR $cl  == 5)   AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit'))
-{ if      ( 1 == 2 ) {;}
+{
+  if      ( 1 == 2 ) {;}
   else if ( $ca  == 'annoteNewMedia'        )  {  $MEDIAMGR -> annoteNewMedia_showForm       ( $I ); }   ## Eingabemaske Metadaten für Buch Annotation anzeigen
   else if ( $ca  == 'edit'                  )  {  $MEDIAMGR -> editMediaMetaData             ( $I ); }   ## ActionHandler: Metadaten des SA bearbeiten
   else if ( $ca  == 'save'                  )  {  $MEDIAMGR -> saveMediaMetaData             ( $I ); }   ## Speichern der Metadaten des Mediums
@@ -102,19 +103,18 @@ else if (  ( $cl == 2  OR $cl  == 3 OR $cl  == 5)   AND   $UTIL -> hasRole( $cu,
 
 else if (  ( $cl  == 4)   AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit'))
 {
- 
   if      ( 1 == 2 ) {;}
-else if ( $ca  == 'annoteNewMedia'        )  {  $MEDIAMGR -> annoteNewMedia_showForm       ( $I ); }   ## Eingabemaske Metadaten für Buch Annotation anzeigen
-else if ( $ca  == 'edit'                  )  {  $MEDIAMGR -> editMediaMetaData             ( $I ); }   ## ActionHandler: Metadaten des SA bearbeiten
-else if ( $ca  == 'save'                  )  {  $MEDIAMGR -> saveMediaMetaData             ( $I ); }   ## Speichern der Metadaten des Mediums
-else if ( $ca  == 'accept'                )  {  $MEDIAMGR -> acceptMedia                   ( $I ); }   ## ActionHandler: angefordertes Buch wird akzeptiert zur Bearbeitung
-else if ( $ca  == 'finished'              )  {  $MEDIAMGR -> doneMedia                     ( $I ); }   ## ActionHandler: angefordertes Buch steht für die Studies bereit
-else if ( $ca  == 'kill'                  )  {  $MEDIAMGR -> ereaseMedia                   ( $I ); }   ## Buch wird endgültig aus SA gelöscht
-else if ( $ca  == 'deactivate'            )  {  $MEDIAMGR -> deactivateMedia               ( $I ); }   ## ActionHandler: Medium Deaktivieren
-else if ( $ca  == 'activate'              )  {  $MEDIAMGR -> activateMedia                 ( $I ); }   ## ActionHandler: Medium Aktivieren
-else if ( $ca  == 'delete'                )  {  $MEDIAMGR -> deleteMedia                   ( $I ); }   ## ActionHandler: Medium wird aus SA gelöscht
-else if ( $ca  == 'delete_ebook'          )  {  $MEDIAMGR -> deleteMedia                   ( $I ); }   ## ActionHandler: Medium wird aus SA gelöscht
-else if ( $ca  == 'new_email'             )  {  $MEDIAMGR -> showMailForm                  ( $I ); }   ## ActionHandler: Erwebungsvorschlag (nach 0 Suchtreffern)
+  else if ( $ca  == 'annoteNewMedia'        )  {  $MEDIAMGR -> annoteNewMedia_showForm       ( $I ); }   ## Eingabemaske Metadaten für Buch Annotation anzeigen
+  else if ( $ca  == 'edit'                  )  {  $MEDIAMGR -> editMediaMetaData             ( $I ); }   ## ActionHandler: Metadaten des SA bearbeiten
+  else if ( $ca  == 'save'                  )  {  $MEDIAMGR -> saveMediaMetaData             ( $I ); }   ## Speichern der Metadaten des Mediums
+  else if ( $ca  == 'accept'                )  {  $MEDIAMGR -> acceptMedia                   ( $I ); }   ## ActionHandler: angefordertes Buch wird akzeptiert zur Bearbeitung
+  else if ( $ca  == 'finished'              )  {  $MEDIAMGR -> doneMedia                     ( $I ); }   ## ActionHandler: angefordertes Buch steht für die Studies bereit
+  else if ( $ca  == 'kill'                  )  {  $MEDIAMGR -> ereaseMedia                   ( $I ); }   ## Buch wird endgültig aus SA gelöscht
+  else if ( $ca  == 'deactivate'            )  {  $MEDIAMGR -> deactivateMedia               ( $I ); }   ## ActionHandler: Medium Deaktivieren
+  else if ( $ca  == 'activate'              )  {  $MEDIAMGR -> activateMedia                 ( $I ); }   ## ActionHandler: Medium Aktivieren
+  else if ( $ca  == 'delete'                )  {  $MEDIAMGR -> deleteMedia                   ( $I ); }   ## ActionHandler: Medium wird aus SA gelöscht
+  else if ( $ca  == 'delete_ebook'          )  {  $MEDIAMGR -> deleteMedia                   ( $I ); }   ## ActionHandler: Medium wird aus SA gelöscht
+  else if ( $ca  == 'new_email'             )  {  $MEDIAMGR -> showMailForm                  ( $I ); }   ## ActionHandler: Erwebungsvorschlag (nach 0 Suchtreffern)
 }
 
 
