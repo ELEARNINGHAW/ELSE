@@ -123,8 +123,6 @@
              {/if}
              {foreachelse}   <h3 style="color:red; text-align:center; width:100%; height:50px;  vertical-align: middle; border: 2px solid red;">ERROR: Zur Zeit keine Verbindung zum Bibliotheksserver möglich.<br>(OPAC)</h3>
           {/foreach}
-
-
      {/if}
  </div>
 </div>

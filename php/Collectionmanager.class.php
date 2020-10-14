@@ -450,7 +450,7 @@ function getMediaList( $I )
     $conf = $this -> conf;
 
     $mediaListID  =  $I[ 'operator' ] -> get_mediaListID() ;
-    $url =  $this -> conf ['VUFIND'][ 'vuFindURL'    ]  .'MyResearch/MyList/'.$mediaListID  . $this -> conf ['VUFIND'][ 'vuFindParams' ];                                                # deb( $url );
+    $url =  $this -> conf [ 'VUFIND' ][ 'vuFindURL'    ]  .'MyResearch/MyList/'.$mediaListID  . $this -> conf [ 'VUFIND' ][ 'vuFindParams' ];                                                # deb( $url );
 
     $medList = $this -> LMSLoader( $url );                                                          # deb( $medList,1 );
  
@@ -527,7 +527,8 @@ function LMSLoader( $url )
       if ( $b[ 'tag' ]       == '001' )
       {
         $PPN            = (string)$b;
-        $medium[(string)$PPN][ 'ppn'          ] = $PPN;      }
+        $medium[(string)$PPN][ 'ppn'          ] = $PPN;
+      }
     }
 
     $hasAuthor = false;
