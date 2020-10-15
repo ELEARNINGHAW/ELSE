@@ -697,7 +697,7 @@ function check_acl ( $acl_list , $item , $id )
     if( $book['doc_type_id']  == 4 )
     {
       $book['doc_type'   ]  = "electronic";   #  E-BOOK
-      $book['item'       ]  = 'ebook';
+      $book['item'       ]  = 'online';
     }
     else if( $book['doc_type_id']  == 3 )     # CD-ROM
     {
