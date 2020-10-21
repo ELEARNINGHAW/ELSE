@@ -173,6 +173,8 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
     $tpl_vars[ 'CFG'               ] = $this -> conf ;
     $tpl_vars[ 'errors_info'       ][] = '';
     $tpl_vars[ 'back_URL'          ]  = $_SESSION[ 'history' ][ 0 ];
+    $tpl_vars[ 'back_URL'          ]  = $_SESSION[ 'history' ][ 0 ];
+  
    # $tpl_vars[ 'medIndex'          ]  = $_SESSION[ 'medIndex' ];
    # $tpl_vars[ 'back_URL'          ]  = "index.php?item=collection&action=show_collection&dc_collection_id=".$collection[ $collection_id  ] -> get_dc_collection_id()."&r=".$I[ 'currentUser'  ] -> get_role_id();
    # $this -> RENDERER -> do_template( 'collection.tpl', $tpl_vars, ( $I[ 'operator' ] -> get_mode() != 'print' ) );

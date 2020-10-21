@@ -71,6 +71,9 @@
     {foreach from=$ci.media item=di}
     {if    $edit_mode == 0  AND  $di.state_id == 3  OR $edit_mode   == 1 AND $di.state_id != 6 OR $operator_action == 'show_media_list' }
 
+
+
+
     <div class='{$di.id}'>
       {include file = "SA.tpl" }
     </div>

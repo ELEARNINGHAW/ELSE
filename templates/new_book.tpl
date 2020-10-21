@@ -32,19 +32,19 @@
 <ol>
   <li>Wechseln Sie über den Button unten zum HAW-Katalog und melden Sie sich dort mit Ihrer Bibliothekskennung an. </li>
   <li><b>Im HAW-Katalog erstellen Sie eine Literaturliste (weitere Infos finden Sie dort).</b> </li>
-  <li>Wechseln Sie dann zurück zu dieser Seite und fügen Sie den link der Literaturliste in das Feld unten ein. </li>
+  <li>Wechseln Sie dann zurück zu dieser Seite und fügen Sie den "Link Literaturliste" in das Feld unten ein. </li>
   <li>Nun werden die Medien nacheinander dem Semesterapparat hinzugefügt und Sie können diese annotieren und bearbeiten. </li>
 </ol>
 
 <div class="text2" style="text-align: center">
-   <a  target="_blank"   id ="FButton2"    href="{$VUFIND.vuFindReserchURL}"> <button style="padding:20px;" class="ui-button ui-widget ui-corner-all" > Im HAW-Katalog recherchieren und die Literaturliste erstellen
+   <a  target="_blank"   id ="FButton2"    href="{$VUFIND.vuFindReserchURL}"> <button style="padding:20px;" class="ui-button ui-widget ui-corner-all" > Im HAW-Katalog recherchieren, Literaturliste erstellen, Lit.listen-Link kopieren.
        </button></a>
 </div>
-<hr>
+<br/>
 
-<div class="text2">
+<div class="text2" style="padding-left: 30px;">
   <form action="index.php" method="get">
-  <span class="text2" style="text-align: center;"> Link Literaturliste:  <input type="text" name="mediaListID">
+  <span class="text2" style="text-align: center;"> Link Literaturliste aus dem HAW-Katalog hier einfügen:<input type="text" name="mediaListID">
   <input type="submit" value="OK"  class="ui-button ui-widget ui-corner-all"  style="padding: 15px;     -webkit-border-radius: 5px; border-radius: 5px; ">   </span>
   <input type="hidden" name="item"             value="collection">
   <input type="hidden" name="action"           value="getMediaList" >
