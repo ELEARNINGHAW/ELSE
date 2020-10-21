@@ -30,10 +30,10 @@
   <div class="text2">
   <h3> Medien hinzuf&uuml;gen &ndash; <span style="color: #ff0000;">NEU &uuml;ber den HAW-Katalog incl. Artikelindex:</span> </h3>
 <ol>
-  <li>Wechseln Sie über den Button unten zum HAW-Katalog und melden Sie sich dort mit Ihrer Bibliothekskennung an. </li>
-  <li><b>Im HAW-Katalog erstellen Sie eine Literaturliste (weitere Infos finden Sie dort).</b> </li>
-  <li>Wechseln Sie dann zurück zu dieser Seite und fügen Sie den "Link Literaturliste" in das Feld unten ein. </li>
-  <li>Nun werden die Medien nacheinander dem Semesterapparat hinzugefügt und Sie können diese annotieren und bearbeiten. </li>
+    <li>Wechseln Sie über den Button unten zum HAW-Katalog und <br> <span style="color: #ff0000;">Wichtig: Melden Sie sich dort mit Ihrer Bibliothekskennung an. </span></li>
+  <li><b>Im HAW-Katalog erstellen Sie Ihre gewünschte Literaturliste <br>(weitere Infos finden Sie dort).</b> </li>
+  <li>Wechseln Sie dann zurück zu dieser Seite<br>und fügen Sie den "Link Literaturliste" in das Feld unten ein. </li>
+  <li>Nun werden die Medien nacheinander in Ihren Semesterapparat eingelesen<br>und Sie können diese bei Bedarf einzeln annotieren und bearbeiten. </li>
 </ol>
 
 <div class="text2" style="text-align: center">
@@ -64,7 +64,7 @@
 </div>
   {if $CONF.SRU.SRUenabled}
   <hr>
-  <div style="display: block;" class="text2"> <h3>Medien hinzuf&uuml;gen &ndash; <span style="color: #ff0000;">Alternativ &uuml;ber Suche im alten online-Katalog (OPAC): <br>Dieser Service steht nur noch übergangsweise bis 31.12.2020 zur Verfügung.</span></h3>
+  <div style="display: block;" class="text2"> <h3>Medien hinzuf&uuml;gen &ndash; <span style="color: #ff0000;">Alternativ &uuml;ber Suche im alten online-Katalog (OPAC): <br> ACHTUNG: Dieser Service steht nur noch übergangsweise bis 31.12.2020 zur Verfügung.</span></h3>
     <ol>
       <li>Bitte geben Sie in dieser Suchmaske <b>Titel</b> und/oder <b>Autor*in</b> und/oder <b>Signatur</b> ein.</li>
         <li> Bei mehreren Treffern erscheint eine Auswahlliste (es werden max. 50 Treffer angezeigt).</li>
