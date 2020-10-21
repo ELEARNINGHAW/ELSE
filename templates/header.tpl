@@ -67,7 +67,7 @@
       <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterType&amp;category=16" title="Erwerbungsvorschlag" ><img src="img/svg/K.svg" width="24" height="24"/><span style="position:absolute; padding:12px;"> Erwerbungsvorsch.  </span></a></li>
       <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=3" title="Aktiv"               ><img src="img/svg/A.svg" width="24" height="24"/><span style="position:absolute; padding:12px;"> Aktive M.          </span></a></li>
       <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=5" title="Inaktiv"             ><img src="img/svg/I.svg" width="24" height="24"/><span style="position:absolute; padding:12px;"> Inaktive M.        </span></a></li>
-      <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=10" title="Verlängert"         ><img src="img/svg/V.svg" width="24" height="24"/><span style="position:absolute; padding:12px;"> Verlängerte M.     </span></a></li>
+      <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=4" title="Entfernte"           ><img src="img/svg/E.svg" width="24" height="24"/><span style="position:absolute; padding:12px;"> Zu entfernende M.  </span></a></li>
       <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=6" title="Gelöschte"           ><img src="img/svg/G.svg" width="24" height="24"/><span style="position:absolute; padding:12px;"> Gelöschte M.       </span></a></li>
     </ul>
   </li>
