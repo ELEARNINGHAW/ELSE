@@ -165,16 +165,6 @@ function saveMediaMetaData( $I )
     $this -> annoteNewMedia_showForm( $I );
   }
 
-  if ( $I[ 'medium' ] -> get_doc_type_id () == '16' )                                                      ## Kaufvorschlag
-  {
-    $_SESSION ['books']['booksHitList'][0] = $I[ 'medium' ]->obj2array() ;
-  }
-
- 
-
-
-
-
   if ( $I[ 'medium' ] -> get_id() == 0 )                            ##  NEUES MEDIUM
   {
     $ppn = $I[ 'medium' ]->get_ppn() ;
@@ -193,23 +183,23 @@ function saveMediaMetaData( $I )
         { $I[ 'medium' ] -> set_shelf_remain ( 3 );                                                              ## ist der Medienort: 'Online' ;) , Status 3
           $I[ 'medium' ] -> set_state_id     ( 3 );                                                              ## und der Status wird 'aktiv'         , Status 3
         }
-              
+        ;
         #-----------------------------------------------------------------------------------------------------
-       # if ( $I[ 'medium' ] -> get_shelf_remain () == '0'  OR $I[ 'medium' ] -> get_shelf_remain () == '' )      ##  Wenn kein Medien'ORT' angeklickt wurde, dann bleibt dass Medium im Regal (status: 2)
+       # if ( $I[ 'medium' ] -> get_shelf_remain () == '0'  OR $I[ 'medium' ] -> get_shelf_remain () == '' )      ##  Wenn KEIN Medien'ORT' angeklickt wurde, dann bleibt dass Medium im Regal (status: 2)
        # { $I[ 'medium' ] -> set_shelf_remain ( 2 );                                                              ##  ist der Medienort: 'verbleibt im Regal' ;) , Status 2
        #   $I[ 'medium' ] -> set_state_id     ( 3 );                                                              ##  und der Status wird 'aktiv'         , Status 3
        # }
-
-        if ( $I[ 'medium' ] -> get_shelf_remain () == '1'  )                                                ##  Wenn Medien'ORT' 'Semesterapparat' (status: 1)
+      
+        if ( $I[ 'medium' ] -> get_shelf_remain () == '1'  )                                                     ##  Wenn Medien'ORT' 'Semesterapparat' (status: 1)
         {                                                                                                        ##  ist der Medienort: 'verbleibt im Regal' ;) , Status 1
           $I[ 'medium' ] -> set_state_id     ( 1 );                                                              ##  und der Status wird 'aktiv'         , Status 3
         }
 
         else if ( $I[ 'medium' ] -> get_shelf_remain () == '2'  )                                                ##  Wenn Medien'ORT' 'verbleibt im Regal' (status: 2)
         {                                                                                                        ##  ist der Medienort: 'verbleibt im Regal' ;) , Status 2
-          $I[ 'medium' ] -> set_state_id     ( 3 );                                                              ##  und der Status wird 'aktiv'         , Status 3
+          $I[ 'medium' ] -> set_state_id     ( 3 );     deb('1');    deb( $I[ 'medium' ] );                                                      ##  und der Status wird 'aktiv'         , Status 3
         }
-
+       
         else if ( $I[ 'medium' ] -> get_shelf_remain () == '4'  )                                                ##  Wenn Medien'ORT' 'Scanservice' (status: 2)
         {                                                                                                        ##  ist der Medienort: 'verbleibt im Regal' ;) , Status 2
           $I[ 'medium' ] -> set_state_id     ( 1 );                                                              ##  und der Status wird 'aktiv'         , Status 3
@@ -226,30 +216,32 @@ function saveMediaMetaData( $I )
           $I[ 'medium' ] -> set_shelf_remain ( 2 );                                                             ## ist der Medienort: Bibliothek
           $I[ 'medium' ] -> set_state_id     ( 3 );                                                              ## und der Status wird 'aktiv'         , Status 3
         }
-        
-        if ( $I[ 'medium' ] -> get_doc_type_id () == '16' )                                                      ## Kaufvorschlag
-        {
-          $I[ 'medium' ] -> set_doc_type ( $_SESSION[ 'DOC_TYPE' ][ 16 ][ 'description' ] );
-          $I[ 'medium' ] -> set_in_SA    ( $_SESSION[ 'DOC_TYPE' ][ 16 ][ 'SA-ready'    ] );
-          $I[ 'medium' ] -> set_item     ( $_SESSION[ 'DOC_TYPE' ][ 16 ][ 'item'        ] );
-          # $I[ 'medium' ] -> set_shelf_remain ( 2 );                                                            ## ist der Medienort:
-          $I[ 'medium' ] -> set_state_id     ( 9 );                                                              ## und der
-          $_SESSION ['books']['booksHitList'][0] = $I[ 'medium' ]->obj2array() ;
-        }
  
         $I[ 'medium' ] -> set_id            ( '' );
         $I[ 'medium' ] -> set_collection_id ( $I[ 'currentCollection' ] -> get_collection_id () );
 
         break;
         }
+        else
+        {
+          if ( $I[ 'medium' ] -> get_doc_type_id () == '16' )                                                      ## Kaufvorschlag
+          {
+            $I[ 'medium' ] -> set_doc_type ( $_SESSION[ 'DOC_TYPE' ][ 16 ][ 'description' ] );
+            $I[ 'medium' ] -> set_in_SA    ( $_SESSION[ 'DOC_TYPE' ][ 16 ][ 'SA-ready'    ] );
+            $I[ 'medium' ] -> set_item     ( $_SESSION[ 'DOC_TYPE' ][ 16 ][ 'item'        ] );
+            $I[ 'medium' ] -> set_state_id ( 9 );                                                                   ## Status wird 'Vorschlag'
+            $_SESSION ['books']['booksHitList'][0] = $I[ 'medium' ]->obj2array() ;
+          }
+        }
       }
       $this->SQL->initMediaMetaData ( $I[ 'medium' ] );
   }
   else
   {
+  #  deb("3");
     $this -> SQL-> updateMediaMetaData( $I[ 'medium' ]);                                                                   /* Metadaten des neuen Mediums speichern */
   }
-
+  #deb("4",1);
   if( $_SESSION['books'][ 'currentElement'  ] <   $_SESSION['books'][ 'maxElement'  ] -1  )
   {
     $_SESSION['books'][ 'currentElement'  ] ++ ;

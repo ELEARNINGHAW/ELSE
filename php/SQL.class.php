@@ -47,8 +47,6 @@ created            = NOW() ,
 last_modified      = NOW() ,
 last_state_change  = NOW()';
 
-
-
 $res = mysqli_query ( $this -> DB , $SQL );
 
 $ret = $this->getDocumentID ( $book );
@@ -59,7 +57,6 @@ return $ret;
 # ---------------------------------------------------------------------------------------------
   function updateMediaMetaData( $medium )
   {
-
     $SQL = " UPDATE document SET ";
     if ( $medium -> get_title              ( ) != '' )  {  $SQL .= " title            = \"" . $this -> es (  $medium -> get_title              ( ) ) . "\" ,";  }
     if ( $medium -> get_signature          ( ) != '' )  {  $SQL .= " signature        = \"" . $this -> es (  $medium -> get_signature          ( ) ) . "\" ,";  }
@@ -73,7 +70,6 @@ return $ret;
     return $res;
   }
 
-  
   
 # ---------------------------------------------------------------------------------------------
 function getDokumentList( $colID , $filter = null  )
@@ -918,7 +914,7 @@ function getSAid( $SEM )
 
 # ---------------------------------------------------------------------------------------------
   function getDocumentID( $medium ) /* Kartesisches Produkt aller Dokumenten mit allen dazugehörigen Infos */
-  {
+  {  $ans = null;
     $SQL = " SELECT id FROM `document` WHERE" ;
     if ( $medium->get_collection_id   ( ) != '' ) { $SQL .= "     `collection_id`      = \"" . $this->es ( $medium->get_collection_id     ( ) ) . "\""; }
     if ( $medium->get_title           ( ) != '' ) { $SQL .= " AND `title`              = \"" . $this->es ( $medium->get_title             ( ) ) . "\""; }
