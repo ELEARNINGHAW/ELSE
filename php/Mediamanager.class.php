@@ -225,7 +225,7 @@ function saveMediaMetaData( $I )
         else
         {
           if ( $I[ 'medium' ] -> get_doc_type_id () == '16' )                                                      ## Kaufvorschlag
-          {
+          { ##
             $I[ 'medium' ] -> set_doc_type ( $_SESSION[ 'DOC_TYPE' ][ 16 ][ 'description' ] );
             $I[ 'medium' ] -> set_in_SA    ( $_SESSION[ 'DOC_TYPE' ][ 16 ][ 'SA-ready'    ] );
             $I[ 'medium' ] -> set_item     ( $_SESSION[ 'DOC_TYPE' ][ 16 ][ 'item'        ] );
