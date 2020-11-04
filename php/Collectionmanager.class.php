@@ -453,7 +453,7 @@ function getMediaList( $I )
 
     $mediaListID  =  $I[ 'operator' ] -> get_mediaListID() ;
     $url =  $this -> conf [ 'VUFIND' ][ 'vuFindURL'    ]  .'MyResearch/MyList/'.$mediaListID  . $this -> conf [ 'VUFIND' ][ 'vuFindParams' ];                                                # deb( $url );
-   deb($url,1);
+  #  deb($url,1);
     $medList = $this -> LMSLoader( $url );                                                          # deb( $medList,1 );
  
     $medList = $this -> UTIL -> xml2array( $medList );
