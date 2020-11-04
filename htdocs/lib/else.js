@@ -43,7 +43,7 @@ function showIt(id) {
 
 
   /* Drag n Drop - SORTIERFUNKTION der Medien innerhalb des Semesterapparats */
-  $(function() {  $( ".column" ).sortable( {  placeholder: "mediaInSA-placeholder", items: ".mediaInSA",  axis: "y"  }); });
+  $(function() {  $( ".column" ).sortable( {  handle: ".handle",  placeholder: "mediaInSA-placeholder", items: ".mediaInSA",  axis: "y"  }); });
   $( "#column li" ).disableSelection();
   $( ".column" ).on( "sortstop", function( event, ui ) {  sortedIDs = $( ".column" ).sortable( "toArray" );   myURL = "index.php?item=collection&action=resort&sortorder="+sortedIDs+"&dc_collection_id="+dc_collection_id;  $.get( myURL  );  });
  

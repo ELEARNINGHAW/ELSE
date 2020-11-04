@@ -43,8 +43,14 @@ Neuen Semesterapparat anlegen für: {$collection.title}
 </tr>
 
 <tr>
-<td style="vertical-align: top;"><span  class="medHead2">(Optional)<br/>Bemerkungen für die Studierenden zum Semesterapparat:</span></td>
+<td style="vertical-align: top;"><span  class="medHead2">Bemerkungen für die Studierenden zum Semesterapparat:<br/>(Optional)</span></td>
 <td> <textarea name="notes_to_studies_col" cols="40" rows="5" >{$collection.notes_to_studies_col}</textarea> </td>
+</tr>
+
+
+<tr>
+  <td style="vertical-align: top;"><span  class="medHead3">Bemerkungen für die HIBS Mitarbeiter/in zum Semesterapparat:<br/>(Optional)</span></td>
+  <td> <textarea name="notes_to_staff_col" cols="40" rows="5" >{$collection.notes_to_staff_col}</textarea> </td>
 </tr>
 
 
