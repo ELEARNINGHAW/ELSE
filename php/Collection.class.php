@@ -12,6 +12,7 @@ class Collection
   public $last_state_change;
   public $expiry_date;
   public $notes_to_studies_col;
+  public $notes_to_staff_col;
   public $user_id;
   public $course_id;
   public $modul_id;
@@ -38,6 +39,7 @@ class Collection
     $this -> last_state_change     = null;
     $this -> expiry_date           = null;
     $this -> notes_to_studies_col  = null;
+    $this -> notes_to_staff_col    = null;
     $this -> user_id               = null;
     $this -> course_id             = null;
     $this -> modul_id              = null;
@@ -62,6 +64,7 @@ class Collection
   function get_last_state_change()     { return $this -> last_state_change    ; }
   function get_expiry_date()           { return $this -> expiry_date          ; }
   function get_notes_to_studies_col()  { return $this -> notes_to_studies_col ; }
+  function get_notes_to_staff_col()    { return $this -> notes_to_staff_col   ; }
   function get_user_id()               { return $this -> user_id              ; }
   function get_course_id()             { return $this -> course_id            ; }
   function get_modul_id()              { return $this -> modul_id             ; }
@@ -85,6 +88,7 @@ class Collection
   function set_last_state_change       ( $val ) { $this -> last_state_change    =  $val ; }
   function set_expiry_date             ( $val ) { $this -> expiry_date          =  $val ; }
   function set_notes_to_studies_col    ( $val ) { $this -> notes_to_studies_col =  $val ; }
+  function set_notes_to_staff_col      ( $val ) { $this -> notes_to_staff_col   =  $val ; }
   function set_user_id                 ( $val ) { $this -> user_id              =  $val ; }
   function set_course_id               ( $val ) { $this -> course_id            =  $val ; }
   function set_modul_id                ( $val ) { $this -> modul_id             =  $val ; }

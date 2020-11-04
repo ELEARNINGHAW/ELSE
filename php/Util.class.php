@@ -162,6 +162,7 @@ if ( isset ( $_GET[ 'bib_id'                                   ] ) )  { $current
 if ( isset ( $_GET[ 'department_id'                            ] ) )  { $currentCollection -> set_department_id        ( $_GET[ 'department_id'        ] ) ; }
 if ( isset ( $_GET[ 'semester_id'                              ] ) )  { $currentCollection -> set_sem                  ( $_GET[ 'semester_id'          ] ) ; }
 if ( isset ( $_GET[ 'notes_to_studies_col'                     ] ) )  { $currentCollection -> set_notes_to_studies_col ( $_GET[ 'notes_to_studies_col' ] ) ; }
+if ( isset ( $_GET[ 'notes_to_staff_col'                       ] ) )  { $currentCollection -> set_notes_to_staff_col   ( $_GET[ 'notes_to_staff_col'   ] ) ; }
 if ( isset ( $_GET[ 'imsid'                                    ] ) )  { $currentCollection -> set_collection_id        ( $_GET[ 'imsid'                ] ) ; } ## IMSID sollte zu collection_id geändert werden
 if ( isset ( $_GET[ 'lms-download'                             ] ) )  { $cc  =  $this -> SQL -> getCollection( $_SESSION[ 'currentCollection' ][ 'collection_id' ] );
                                                                         $currentCollection =  array_pop   ( $cc  );  }

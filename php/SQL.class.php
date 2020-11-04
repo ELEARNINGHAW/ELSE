@@ -160,6 +160,7 @@ return $ret;
         $collection->set_last_state_change     ( $col[ 'last_state_change'     ] ); # (> 2015-09-15 17:03:57
         $collection->set_expiry_date           ( $col[ 'expiry_date'           ] ); # (> 2016-03-01
         $collection->set_notes_to_studies_col  ( $col[ 'notes_to_studies_col'  ] ); # (>
+        $collection->set_notes_to_staff_col    ( $col[ 'notes_to_staff_col'    ] ); # (>
         $collection->set_course_id             ( $col[ 'course_id'             ] ); # (> 13230
         $collection->set_modul_id              ( $col[ 'modul_id'              ] ); # (> 16
         $collection->set_sortorder             ( $col[ 'sortorder'             ] ); # (>
@@ -731,15 +732,16 @@ SET `state_id` = '" . $this->es ( $state ) . "' WHERE `document`.`id` = " . $thi
   state_id         =      3                                                  ,
   last_modified    =      NOW()                                              ,
   last_state_change=      NOW()                                              ,
-  created          =  \"" . $this->es ( $Course[ 'created' ] ) . "\" ,
+  created          =  \"" . $this->es ( $Course[ 'created'              ] ) . "\" ,
   notes_to_studies =  \"" . $this->es ( $Course[ 'notes_to_studies_col' ] ) . "\" ,
-  expiry_date      =  \"" . $this->es ( $Course[ 'expiry_date' ] ) . "\" ,
-  id               =  \"" . $this->es ( $Course[ 'shortname' ] ) . "\" ,
-  title            =  \"" . $this->es ( $Course[ 'title' ] ) . "\" ,
-  title_short      =  \"" . $this->es ( $Course[ 'title_short' ] ) . "\" ,
-  course_id        =  \"" . $this->es ( $Course[ 'id' ] ) . "\" ,
-  bib_id           =  \"" . $this->es ( $Course[ 'bib_id' ] ) . "\" ,
-  sem              =  \"" . $this->es ( $Course[ 'sem' ] ) . "\", ";
+  notes_to_staff   =  \"" . $this->es ( $Course[ 'notes_to_staff_col'   ] ) . "\" ,
+  expiry_date      =  \"" . $this->es ( $Course[ 'expiry_date'          ] ) . "\" ,
+  id               =  \"" . $this->es ( $Course[ 'shortname'            ] ) . "\" ,
+  title            =  \"" . $this->es ( $Course[ 'title'                ] ) . "\" ,
+  title_short      =  \"" . $this->es ( $Course[ 'title_short'          ] ) . "\" ,
+  course_id        =  \"" . $this->es ( $Course[ 'id'                   ] ) . "\" ,
+  bib_id           =  \"" . $this->es ( $Course[ 'bib_id'               ] ) . "\" ,
+  sem              =  \"" . $this->es ( $Course[ 'sem'                  ] ) . "\", ";
 
     if ( isset ( $Course[ 'sortorder' ] ) ) {
       $SQL .= " sortorder           =  \"" . $this->es ( $Course[ 'sortorder' ] ) . "\" ,";
@@ -775,6 +777,7 @@ SET `state_id` = '" . $this->es ( $state ) . "' WHERE `document`.`id` = " . $thi
   last_modified        =      NOW()                                                      ,
   last_state_change    =      NOW()                                                      ,
   notes_to_studies_col =   ''                                                            ,
+  notes_to_staff_col   =   ''                                                            ,
   expiry_date          =  \"" . $this->es ( $course->get_expiry_date () ) . "\" ,
   id                   =  \"" . $this->es ( $course->get_title_short () ) . "\" ,
   title                =  \"" . $this->es ( $course->get_title () ) . "\" ,
@@ -800,6 +803,7 @@ SET `state_id` = '" . $this->es ( $state ) . "' WHERE `document`.`id` = " . $thi
     if   ( $collection -> get_title                () != '' ) {  $SQL .= " title                = \"" . $this->es ( $collection -> get_title                () ) . "\" ,";  }
  #  if   ( $collection -> get_notes_to_studies_col () != '' ) {  $SQL .= " notes_to_studies_col = \"" . $this->es ( $collection -> get_notes_to_studies_col () ) . "\" ,";  }
                                                               {  $SQL .= " notes_to_studies_col = \"" . $this->es ( $collection -> get_notes_to_studies_col () ) . "\" ,";  }
+                                                              {  $SQL .= " notes_to_staff_col   = \"" . $this->es ( $collection -> get_notes_to_staff_col   () ) . "\" ,";  }
                                                                  $SQL .= " last_modified        = NOW() ";
     if   ( $collection -> get_title_short          () != '' ) {  $SQL .= " WHERE title_short    = \"" . $this->es ( $collection -> get_title_short          () ) . "\"  ";  }
     else {                                                       $SQL .= " WHERE id             = \"" . $this->es ( $collection -> get_collection_id        () ) . "\"  ";  }
@@ -985,6 +989,7 @@ function getSAid( $SEM )
                      c.last_state_change     as c_last_state_change,
                      c.expiry_date           as c_expiry_date,
                      c.notes_to_studies_col  as c_notes_to_studies_col,
+                     c.notes_to_staff_col    as c_notes_to_staff_col,
                      c.course_id             as c_course_id,
                      c.sortorder             as c_sortorder,
                      u.department            as u_department,  
@@ -1029,6 +1034,7 @@ function getSAid( $SEM )
         $collection -> set_last_state_change     ( $row [ 'c_last_state_change' ]  );
         $collection -> set_expiry_date           ( $row [ 'c_expiry_date'       ]  );
         $collection -> set_notes_to_studies_col  ( $row [ 'c_notes_to_studies_col'  ]  );
+        $collection -> set_notes_to_staff_col    ( $row [ 'c_notes_to_staff_col'    ]  );
         $collection -> set_user_id               ( $row [ 'c_user_id'           ]  );
         $collection -> set_course_id             ( $row [ 'c_course_id'         ]  );
         $collection -> set_sortorder             ( $row [ 'c_sortorder'         ]  );

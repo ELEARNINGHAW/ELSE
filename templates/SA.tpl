@@ -26,6 +26,7 @@
 {else}
     <a title="Medium Im Onlinekatalog anzeigen" class="medimove medLink  s_standard state_{$di.state_id} {if $edit_mode == '1'} {/if} " href="{$CFG.CATALOG_URL[$DOC_TYPE[$di.doc_type_id]['indexID']]}{$di.ppn}" target="_blank" onclick="return -1">
 {/if}
+<div title="Neuanordnen des Mediums in der Liste" class="handle" style="float: right;"> </div>
 
  <table>   {$preMedTyp = ''}
 
