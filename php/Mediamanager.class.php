@@ -89,8 +89,8 @@ function annoteNewMedia_showForm( $I )
     }
   }
   
-  elseif ( $I[ 'medium' ] -> get_ppn() != '' )                                              # deb('--- 2 ---');
-  {
+  elseif ( $I[ 'medium' ] -> get_ppn() != '' AND   $I[ 'medium' ] -> get_doc_type_id() != 16 )
+  {                                                                                         #   deb('--- 2 ---');
     $tmpBook = $_SESSION[ 'books' ][ 'booksHitList' ][ $I[ 'medium' ] -> get_ppn() ];       # Hitliste kommt aus der OPAC Trefferliste
     $tmpBook = $this -> UTIL -> getOPACDocType( $tmpBook );
     
@@ -156,7 +156,9 @@ function purchaseSuggestion( $I )
 ###############################################################################################
 function saveMediaMetaData( $I )
 {
-#deb($I[ 'medium' ] ,1);
+#deb($I );
+#deb($_SESSION ['books']);
+
 
   if (  $I[ 'operator' ] -> item == 'media'   AND $I[ 'medium' ] -> get_shelf_remain() == '0' )   #  Bei physischem Medium Keine Auswahl getroffen, ob Literaturhinweis oder Handapparat
   {
@@ -165,11 +167,26 @@ function saveMediaMetaData( $I )
     $this -> annoteNewMedia_showForm( $I );
   }
 
+  
+  
   if ( $I[ 'medium' ] -> get_id() == 0 )                            ##  NEUES MEDIUM
   {
-    $ppn = $I[ 'medium' ]->get_ppn() ;
-    foreach($_SESSION ['books']['booksHitList'] as $m)
+    $ppn = $I[ 'medium' ] -> get_ppn() ;
+    if ( $I[ 'medium' ] -> get_doc_type_id () == '16' )                                                      ## Kaufvorschlag
     {
+      $I[ 'medium' ] -> set_doc_type ( $_SESSION[ 'DOC_TYPE' ][ 16 ][ 'description' ] );
+      $I[ 'medium' ] -> set_in_SA    ( $_SESSION[ 'DOC_TYPE' ][ 16 ][ 'SA-ready'    ] );
+      $I[ 'medium' ] -> set_item     ( $_SESSION[ 'DOC_TYPE' ][ 16 ][ 'item'        ] );
+      $I[ 'medium' ] -> set_state_id ( 9 );                                                                   ## Status wird 'Vorschlag'
+      $_SESSION[ 'books']['booksHitList'][0] = $I[ 'medium' ]->obj2array() ;
+      $_SESSION[ 'books'][ 'currentElement' ] = 1;
+      $_SESSION[ 'books'][ 'maxElement'  ] = 1;
+     # $this->SQL->initMediaMetaData ( $I[ 'medium' ] );
+    }
+    #else
+    { #deb($_SESSION ['books']['booksHitList'],1);
+      foreach($_SESSION ['books']['booksHitList'] as $m)
+      {
       if ($m['ppn'] == $ppn)
       { $I[ 'medium' ] -> set_leader       ( $m[ 'leader'        ]  ); ## Datensatz aus dem Bibkatlog wird übernommen (zu den manuellen Metadaten-Einträgen)
         $I[ 'medium' ] -> set_item         ( $m[ 'item'          ]  );
@@ -183,7 +200,7 @@ function saveMediaMetaData( $I )
         { $I[ 'medium' ] -> set_shelf_remain ( 3 );                                                              ## ist der Medienort: 'Online' ;) , Status 3
           $I[ 'medium' ] -> set_state_id     ( 3 );                                                              ## und der Status wird 'aktiv'         , Status 3
         }
-        ;
+        
         #-----------------------------------------------------------------------------------------------------
        # if ( $I[ 'medium' ] -> get_shelf_remain () == '0'  OR $I[ 'medium' ] -> get_shelf_remain () == '' )      ##  Wenn KEIN Medien'ORT' angeklickt wurde, dann bleibt dass Medium im Regal (status: 2)
        # { $I[ 'medium' ] -> set_shelf_remain ( 2 );                                                              ##  ist der Medienort: 'verbleibt im Regal' ;) , Status 2
@@ -219,26 +236,17 @@ function saveMediaMetaData( $I )
  
         $I[ 'medium' ] -> set_id            ( '' );
         $I[ 'medium' ] -> set_collection_id ( $I[ 'currentCollection' ] -> get_collection_id () );
-
+        # deb($I);
+        $this->SQL->initMediaMetaData ( $I[ 'medium' ] );
         break;
         }
-        else
-        {
-          if ( $I[ 'medium' ] -> get_doc_type_id () == '16' )                                                      ## Kaufvorschlag
-          { ##
-            $I[ 'medium' ] -> set_doc_type ( $_SESSION[ 'DOC_TYPE' ][ 16 ][ 'description' ] );
-            $I[ 'medium' ] -> set_in_SA    ( $_SESSION[ 'DOC_TYPE' ][ 16 ][ 'SA-ready'    ] );
-            $I[ 'medium' ] -> set_item     ( $_SESSION[ 'DOC_TYPE' ][ 16 ][ 'item'        ] );
-            $I[ 'medium' ] -> set_state_id ( 9 );                                                                   ## Status wird 'Vorschlag'
-            $_SESSION ['books']['booksHitList'][0] = $I[ 'medium' ]->obj2array() ;
-          }
-        }
       }
-      $this->SQL->initMediaMetaData ( $I[ 'medium' ] );
+    }
+  #  unset( $I[ 'medium' ]);
   }
   else
   {
-  #  deb("3");
+    # deb("3");
     $this -> SQL-> updateMediaMetaData( $I[ 'medium' ]);                                                                   /* Metadaten des neuen Mediums speichern */
   }
   #deb("4",1);
@@ -251,6 +259,7 @@ function saveMediaMetaData( $I )
   {
     $url = "index.php?item=collection&action=show_collection&dc_collection_id=".$I[ 'currentCollection' ] -> get_dc_collection_id()."&r=".$I[ 'currentUser' ] -> get_role_id();
   }
+ # deb($url,1);
   $this -> RENDERER -> doRedirect( $url );
   exit(0);
 }
