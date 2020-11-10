@@ -4,13 +4,13 @@
 <link rel="stylesheet" href="lib/dropzone.min.css">
   
 
-<h3 style="margin:20px; padding:10px; color: #FFF; "  class="bgDef bg{$collection.bib_id}"  >
+<h3 style="margin:20px; padding:10px;   "  class="bgDef bg{$collection.bib_id}"  >
 {if $operator.mode == "new"}
 Neuen Semesterapparat anlegen für: {$collection.title}
 {else}
     {$collection.title}: Metadaten
 {/if}
-<a style="float:right;" href="index.php?item=collection&action=show_collection&dc_collection_id={$collection.dc_collection_id}&r={$user.role_id}"><img  class="icon" style="margin-top:-4px;" title="Zurück" src="img/svg/chevron-left_w.svg" /></a>
+<a style="float:right;" href="index.php?item=collection&action=show_collection&dc_collection_id={$collection.dc_collection_id}&r={$user.role_id}"><img  class="icon" style="margin-top:-4px;" title="Zurück" src="img/svg/chevron-left.svg" /></a>
 </h3>
 
 

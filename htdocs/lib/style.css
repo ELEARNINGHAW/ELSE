@@ -18,10 +18,26 @@ h3
   font-size:0.9em;
 }
 
-input[type=text] {
-    width: 65%;
+input[type=submit] {
+    width: 80%;
+    padding: 10px;
+    margin: 2px;
+    box-sizing: border-box;
+}
+
+input {
+    width: 100%;
     padding: 15px 22px;
-    margin: 10px 5px;
+    margin: 2px 5px;
+    box-sizing: border-box;
+}
+
+
+textarea
+{
+    width: 100%;
+    padding: 15px 22px;
+    margin: 2px 5px;
     box-sizing: border-box;
 }
 
@@ -199,22 +215,20 @@ list-style-type:none;
 list-style-position:outside;
 position:relative;
 line-height:0em; 
-z-index:10;
+z-index:1;
 }
 
 #nav2 a{
 display:block;
 padding:0px;
-border:1px solid #333;
 color:#fff;
 text-decoration:none;
 }
 
 
 #nav2 a:hover{
-background-color:#fff;
-color:#FFF;
-background-color:#333;
+background-color:#EEE;
+color:#000;
 }
 
 #nav2 li{
@@ -226,7 +240,7 @@ position:relative;
 position:absolute;
 display:none;
 width:12em;
-right:0px;
+right:-25px;
 }
 
 #nav2 li ul a{
@@ -283,9 +297,8 @@ text-decoration:none;
 
 
 #nav3 a:hover{
-background-color:#fff;
-color:#FFF;
-background-color:#333;
+background-color:#EEE;
+color:#000;
 }
 
 #nav3 li{
@@ -325,98 +338,122 @@ display:block;
 
 .bgHAW2x,.bgHAW, .bgX, .bg ,.bg0 , .bgDef
 {
-  background-color: #002664 !important;
+  background-image:url(../img/bg/HAW.png);
+  background-repeat: repeat-x;
 }
 
 .bgHAW1x, .bg1, .bg106
 {
-  background-color:  #234A89 !important;
+   background-image:url(../img/bg/HAW.png);
+   background-repeat: repeat-x;
 }
 
 .bgWuS, .bgSP,   .bg63, .bg64
 {
-background-color: #C60C30 !important;   /* WS ROT */
+    background-image:url(../img/bg/WS.png);
+    background-repeat: repeat-x;
 }
 
 .bgTWI1, .bg61, .bg62 
 {
-background-color: #7f2049 !important;  /* WS ROT2 */
+    background-image:url(../img/bg/TWI1.png);
+    background-repeat: repeat-x;
 }
 
 .bgLS, .bg30, .bg31, .bg32, .bg33, .bg34, .bg35, .bg36, .bg37  
 {
-background-color:  #E98300 !important; /* LS ORANGE */
+    background-image:url(../img/bg/LS.png);
+    background-repeat: repeat-x;
 }
 
 .bgTI, .bg50, .bg51, .bg52, .bg53, .bg54, .bg55
 {
-  background-color:  #0E905A !important; /* TI GRÜN */
+    background-image:url(../img/bg/TI.png);
+    background-repeat: repeat-x;
 }
 
 .bgDMI, .bg20, .bg21, .bg22, .bg23  
 {
-  background-color:  #008B95 !important; /* DMI Grün */
+    background-image:url(../img/bg/DMI.png);
+   background-repeat: repeat-x;
 }
 
 .bgTWI1  /* TWI I */
 {
-  background-color:   #7f2049 !important;  /* WS ROT2 */
+   background-image:url(../img/bg/TWI1.png);
+   background-repeat: repeat-x;
 }
 
 .bgTWI2  /* TWI II */
 {
-  background-color:  #0E905A !important; /* TI GRÜN */
+    background-image:url(../img/bg/TWI2.png);
+    background-repeat: repeat-x;
 }
 
 .bgALLE   /* ALLE */
 {
-  background-color: #002664 !important;/* HAW Blau */
+    background-image:url(../img/bg/HAW.png);
+    background-repeat: repeat-x;
 }
 
 .bgOHNE   /* ´OHNE */
 {
-  background-color: #002664 !important;/* HAW Blau */
+    background-image:url(../img/bg/HAW.png);
+    background-repeat: repeat-x;
 }
 
 
 /* ID der  Fachbibs */
 .bgFBDMI   /* DMI */
 {
-  background-color:  #008B95 !important;/* DMI Grün */
+/*   background-color:  #008B95 !important;/* DMI Grün */
+    background-image:url(../img/bg/DMI.png);
+    background-repeat: repeat-x;
+
 }
 
 .bgFBLS  /* LS */
 {
-  background-color:  #E98300 !important;  /* LS ORANGE */
+ /* background-color:  #E98300 !important;  /* LS ORANGE */
+    background-image:url(../img/bg/LS.png);
+    background-repeat: repeat-x;
 }
 
 .bgFBSP  /* SozArb & Pflege */
 {
-  background-color: #C60C30 !important;  /* WS ROT */
+/*  background-color: #C60C30 !important;  /* WS ROT */
+
+    background-image:url(../img/bg/WS.png);
+    background-repeat: repeat-x;
 }
 
 .bgFBTWI1  /* TWI I */
 {
-  background-color:   #7f2049 !important;  /* WS ROT2 */
+  /*background-color:   #7f2049 !important;  /* WS ROT2 */
+    background-image:url(../img/bg/TWI1.png);
+    background-repeat: repeat-x;
 }
 
 .bgFBTWI2  /* TWI II */
 {
-  background-color:  #0E905A !important; /* TI GRÜN */
+  /*background-color:  #0E905A !important; /* TI GRÜN */
+    background-image:url(../img/bg/TI.png);
+    background-repeat: repeat-x;
 }
 
 .bgFBALLE   /* ALLE */
 {
-  background-color: #002664 !important;/* HAW Blau */
+/*  background-color: #002664 !important;/* HAW Blau */
+    background-image:url(../img/bg/HAW.png);
+    background-repeat: repeat-x;
 }
 
 .bgFBOHNE   /* ´OHNE */
 {
-  background-color: #002664 !important;/* HAW Blau */
+ /* background-color: #002664 !important;/* HAW Blau */
+    background-image:url(../img/bg/HAW.png);
+    background-repeat: repeat-x;
 }
-
-
-
 
 
 
@@ -484,8 +521,8 @@ a.name
 
 .name2
 {  
-  padding-top: 14px;
-  width: calc(100% - 155px);
+  padding-top: 8px;
+  width: calc(100% - 180px);
   font-size: 13px;
 }
 
@@ -500,38 +537,52 @@ a.name
 
 .semapNameListe
 {
-  font-size:15px;
+    font-size:13px;
 
-  background-color: #FFF;
-  margin: 2px;
-  margin-left: 10px;
-  margin-right: 0px;
-  padding-right: 40px;
-  padding-left: 40px;
-  border-top: 1px solid #AEAEAE;
-  border-right: 1px solid #AEAEAE;
-  border-bottom: 1px solid #AEAEAE;
-  border-left: 1px solid #AEAEAE;
+    background-color: #FFF;
+    margin: 2px;
+    margin-left: 10px;
+    margin-right: 0px;
+    padding : 6px;
+    padding-right: 40px;
+    padding-left: 40px;
+    border-top: 1px solid #AEAEAE;
+    border-right: 1px solid #AEAEAE;
+    border-bottom: 1px solid #AEAEAE;
+    border-left: 1px solid #AEAEAE;
 
-  background-image:url(../img/svg/SA.svg);
-  background-repeat:no-repeat;
-  background-position: 3px 9px;
-  background-size: 32px;
-  height: 33px;
+    background-image:url(../img/svg/SA.svg);
+    background-repeat:no-repeat;
+    background-position: 3px -2px;
+    background-size: 32px;
 
-  display: block;
-  float:left;
+    display: block;
+    float:left;
 }
 
 .semapNameListeNumbers {
 
-  text-align: center;
-  right: 180px;
-  padding : 7px;
-  color: #FFFFFF;
-  width: 40px;
-  margin-left: 0px;
-  font-size: 13px;
+    text-align: center;
+    right: 180px;
+    padding : 6px;
+    padding-right: 0px;
+    padding-left: 0px;
+
+    color: #000000;
+    margin-left: 0px;
+    font-size: 13px;
+    margin: 2px;
+    background-color: #FFF;
+    margin-right: 0px;
+
+    border-top: 1px solid #AEAEAE;
+    border-right: 1px solid #AEAEAE;
+    border-bottom: 1px solid #AEAEAE;
+    border-left: 1px solid #AEAEAE;
+
+    display: block;
+    float:left;
+    width: 75px;
 }
 
 
@@ -577,15 +628,14 @@ a.name
 .depName
 {
   font-size:15px;
-
   margin: 10px;
   margin-top: 2px;
   padding: 2px;
   padding-left: 35px;
   border: 1px solid #000;
-  color:#FFFFFF;
-  background-image:url(../img/svg/star.svg);
-  background-repeat:no-repeat;
+  color:#000000;
+/*  background-image:url(../img/svg/star.svg);
+  background-repeat:no-repeat;*/
   font-weight:700;
 }
 
@@ -599,7 +649,7 @@ a.name
     font-size:14px;
     font-weight:700;
     text-decoration: none;
-    color: #FFF;
+    color: #000000;
     display: block;
     width: calc(100% - 60px);
     border:solid #EFEFEF 2px;
@@ -609,7 +659,6 @@ a.name
 .dozentLink 
 {
     text-decoration: none;
-    color: #FFF;
 
 }
 
@@ -635,6 +684,7 @@ a.name
   padding:0px;
   padding-left: 20px;
   height: 35px;
+    color:#000000;
 }
 
 .SAtitel
@@ -1047,10 +1097,12 @@ td{
   font-size:12px;
   
   margin: 5px;
+  margin-right: -8px;
   padding: 5px;
   padding-left: 30px;
   border: 1px solid #EEE;
   background-color: #ffff99;
+
 }
 
 
@@ -1085,7 +1137,8 @@ td{
   margin-top:2px; 
   margin-bottom:2px; 
   margin-right: -7px; 
-  border:    #FFF solid 1px; 
+  border:    #FFF solid 1px;
+  min-height: 50px;
 }
 
 .medLink:hover {
@@ -1109,18 +1162,16 @@ td{
 .handle
 {
    width:60px;
-    height: 100px;
+    height: 60px;
     background-image:url(../img/svg/move.svg);
     background-repeat:no-repeat;
     background-position:50% 5px;
 }
 
-
 .handle:hover
 {
     background-image:url(../img/svg/moveH.svg);
 }
-
 
 a.medimove, a.medimove:hover
 {
@@ -1131,9 +1182,6 @@ a.medimove:hover
 {
 
 }
-
-
-
 
 a.medi_1  /* Buch */
 {
@@ -1241,9 +1289,10 @@ a.hitlink_print:hover, a.hitlink_electronic:hover , a.hitlink_cd-rom:hover
 
 .mediaListHeader
 {
+  font-size: 13px;
   color:#FFF;
   margin-right: 5px;
-  padding:2px;
+  padding:1px;
   width: 90px;
   text-align:  right; 
   background-color: #AEAEAE;
@@ -1252,9 +1301,10 @@ a.hitlink_print:hover, a.hitlink_electronic:hover , a.hitlink_cd-rom:hover
 
 .mediaTxt
 {
+  font-size: 13px;
   color:#000;
   margin-right: 5px;
-  padding:2px;
+  padding:1px;
   padding-right:35px;
   text-align:  left; 
   background-color: #FAFAFA;
@@ -1319,11 +1369,12 @@ fieldset
   display:inline-block;
 }
 
-a.medHead2x
+a.medHead2
 {
-  font-size: 12px;
-  color: #FFFFFF !important;
-    background-color:#A33  !important;
+  font-size: 13px;
+  color: #000000 !important;
+  font-weight: bold;
+
 }
 
 
@@ -1352,7 +1403,8 @@ a.medHead3
 
 
 .editmedia {
-  vertical-align: top; font-weight: bold;
+  vertical-align: top;
+  font-weight: bold;
   font-size: 12px;
 }
 

@@ -21,7 +21,7 @@
   <div class="SAMeta bgDef bg{$ci.bib_id}">
 
   {if ( $staff_mode )}
-  <div style="width:630px; display: inline-block; position:absolute; padding-top:5px; left:50px; line-height: 80% ">
+  <div style="width:630px; display: inline-block; position:absolute; padding-top:6px; left:50px; line-height: 80% ">
   <a class = "medHead2"  style="float:left;"  > {$ci.title|truncate:70:"...":true} </a><br/>
   <a class = "medHead2"  style="float:left;"  >von: {$ci.Owner.forename|escape} {$ci.Owner.surname} </a>
   <a class = "medHead2"  style="float:left;"  >&nbsp;&nbsp;/&nbsp;&nbsp;Dep:   {$ci.Owner.dep_name}</a>
@@ -36,21 +36,21 @@
     <a target="help_win" class="modalLink" href="#helpit" rel="modal:open"  title="Weitere Informationen über ELSE"                  ><img src="img/svg/help.svg"        width="32"  height="32" style="position:relative; float:right; padding-right: 2px; margin:2px; margin-right:-1px;"  /></a>
 
     <a target="_blank" href="index.php?item=collection&amp;dc_collection_id={$ci.dc_collection_id}&amp;action=show_collection&amp;mode=print&amp;r={$user_role_id}">
-    <img src="img/svg/print_w.svg"    width="32"  height="32" style="position:relative; float:right; padding-right: 2px; margin:2px; margin-right:6px;" title="Druckversion SA"   /></a>
+    <img src="img/svg/print.svg"    width="32"  height="32" style="position:relative; float:right; padding-right: 2px; margin:2px; margin-right:6px;" title="Druckversion SA"   /></a>
 
     {if ($edit_mode OR $staff_mode)}
     <a href="index.php?item=collection&amp;action=coll_meta_edit&amp;dc_collection_id={$ci.dc_collection_id}&amp;redirect=SA&amp;r={$user_role_id}" title="Bearbeiten der allgemeinen Infos des Semesterapparats">
-    <img src="img/svg/settings_w.svg"  width="32"  height="32" style="position:relative; float:right;  margin:2px;  margin-right:0px" /></a>
+    <img src="img/svg/settings.svg"  width="32"  height="32" style="position:relative; float:right;  margin:2px;  margin-right:0px" /></a>
     {/if}
 
     {if $edit_mode AND $ci.dc_collection_id != "" }
     <a href="index.php?dc_collection_id={$ci.dc_collection_id}&amp;item=collection&amp;action=add_media&amp;r={$user_role_id}"  title="Neues Medium diesem Semesterapparat hinzufügen"  >
-    <img src="img/svg/addBook_w.svg"   width="64"  height="32" style="position:relative; float:right;  margin:2px;  margin-right:6px; " /></a>
+    <img src="img/svg/addBook_w.svg"   width="64"  height="32" style="position:relative; float:right;  margin:2px;  margin-top:2px; " /></a>
     {/if}
 
     {else}
     <a target="_blank" href="#"  onclick="window.print(); return false;">
-    <img src="img/svg/print_w.svg"    width="32"  height="32" style="position:relative; float:right; padding-right: 2px; margin:2px; margin-right:-1px;" title="Zum Drucker senden"   /></a>
+    <img src="img/svg/print.svg"    width="32"  height="32" style="position:relative; float:right; padding-right: 2px; margin:2px; margin-right:-1px;" title="Zum Drucker senden"   /></a>
     {/if}
 
     {if ($edit_mode OR $staff_mode)}

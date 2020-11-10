@@ -26,7 +26,7 @@
 {if  $operator.mode == 'print'}{* No Header *}
 {else}
 
-<div id="{$medium.id}"; style="position:relative;  padding:0px; height:38px; margin:0px;  background-color: #234A89;  margin-bottom:20px;  margin-left:0px; margin-right: 0px;">
+<div id="{$medium.id}"; style="position:relative;  padding:0px; height:38px; margin:0px; <  margin-bottom:20px;  margin-left:0px; margin-right: 0px;">
   <div style="position:relative;  left:0px; top:0px; height:40px; padding-right: 3px;"  >
     <ul id="nav" style="position:absolute; left:5px;   top:3px; margin-right:60px; border: white solid 2px;"   >
       <li><a title="Alle Semesterapparate"          class="bgHAW2x"  {if $filter.bib == X                            } style=" background-color:#FFF !important; color:#000 !important;  " {/if}  href="index.php?category=X&amp;mode=filterBib&amp;r={$user.role_id}"> X  </a></li>
@@ -116,11 +116,11 @@
 *}
 
 <div  style="position:absolute; right:77px;   top:3px;">
-  <a href="javascript:window.print() " title="Druckversion Seite" >  <img src="img/svg/print_w.svg"   width="32"  height="32"   /></a>
+  <a href="javascript:window.print() " title="Druckversion Seite" >  <img src="img/svg/print.svg"   width="32"  height="32"   /></a>
 </div>
 
   <ul id="nav2" style="position:absolute; right:36px;   top:3px;">
-    <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=0" title="Alle SemApp"         ><img src="img/svg/edit_w.svg" width="32" height="32"/></a>
+    <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=0" title="Alle SemApp"         ><img src="img/svg/settings.svg" width="32" height="32"/></a>
      <ul>
         <li><a href='../php/editconf.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=0' title="Alle Semapp"         ><img src="img/svg/edit_w.svg" width="24" height="24"/><span style="position:absolute; padding:12px;"> EDIT CONFIG    </span></a></li>
       </ul>
@@ -129,7 +129,7 @@
 
 
 <div style="position:absolute; right:2px;   top:3px;">
-  <a href='index.php' title="HOME" ><img src="img/svg/home.svg" width="32" height="32"/></a>
+  <a href='index.php' title="HOME" ><img src="img/svg/home_b.svg" width="32" height="32"/></a>
 </div>
 </div>
 
