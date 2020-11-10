@@ -8,7 +8,7 @@
 <div class="SAMeta bgDef bg{$ci.coll_bib_id}">
 
 {if ( $staff_mode )}
-<div  style="width:630px; display: inline-block; padding-top:5px; line-height: 80% ">
+<div  style="width:630px; display: inline-block; padding-top:6px; line-height: 80% ">
 <a class = "medHead2"  style="float:left;" href="index.php?item=collection&action=show&dc_collection_id={$ci.dc_collID}&r=2"           >{$ci.title|truncate:70:"...":true} </a><br/>
 <a class = "medHead2"  style="float:left;" href="index.php?category=ALLE&mode=filterBib&r=2&user={$ci.user_info.u_hawaccount|escape}">von: {$ci.user_info.u_forename|escape} {$ci.user_info.u_surname|escape} </a>
 <a class = "medHead2"  style="float:left;" href="index.php?mode=filterBib&r=2&category={$ci.user_info.u_department_id}"              >&nbsp;&nbsp;/&nbsp;&nbsp;Dep: {$ci.user_info.DepName|escape}</a>
@@ -24,11 +24,11 @@
 
 <a target="help_win" class="modalLink" href="#helpit" rel="modal:open"  title="Weitere Informationen über ELSE"                  ><img src="img/svg/help.svg"        width="32"  height="32" style="position:relative; float:right; padding-right: 2px; margin:2px; margin-right:-1px;"  /></a>
 <a target="_blank" href="index.php?item=collection&amp;dc_collection_id={$ci.dc_collID|escape:"url"|escape}&amp;action=show&amp;mode=print&amp;r={$user.role}">
-<img src="img/svg/print_w.svg"    width="32"  height="32" style="position:relative; float:right; padding-right: 2px; margin:2px; margin-right:-1px;" title="Druckversion"   /></a>
+<img src="img/svg/print.svg"    width="32"  height="32" style="position:relative; float:right; padding-right: 2px; margin:2px; margin-right:-1px;" title="Druckversion"   /></a>
 
 {if ($edit_mode OR $staff_mode)}
 <a href="index.php?item=collection&amp;action=coll_meta_edit&amp;dc_collection_id={$ci.dc_collID}&amp;redirect=SA&amp;r={$user.role}" title="Bearbeiten der allgemeinen Infos des Semesterapparats">
-<img src="img/svg/settings_w.svg"  width="32"  height="32" style="position:relative; float:right;  margin:2px; " /></a>
+<img src="img/svg/settings.svg"  width="32"  height="32" style="position:relative; float:right;  margin:2px; " /></a>
 {/if}
 
 {if $edit_mode AND $ci.dc_collID != "" }
@@ -38,7 +38,7 @@
 
 {else}
 <a target="_blank" href="#"  onclick="window.print(); return false;">
-<img src="img/svg/print_w.svg"    width="32"  height="32" style="position:relative; float:right; padding-right: 2px; margin:2px; margin-right:-1px;" title="Zum Drucker senden"   /></a>
+<img src="img/svg/print.svg"    width="32"  height="32" style="position:relative; float:right; padding-right: 2px; margin:2px; margin-right:-1px;" title="Zum Drucker senden"   /></a>
 {/if}
 
 <div class="medHeadBlock">

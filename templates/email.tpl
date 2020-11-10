@@ -1,6 +1,6 @@
-<h3 style="margin:10px; padding:10px; color: #FFF; background-color: #800000;">
+<h3 style="margin:10px; padding:10px; ">
 {$collection.title} : {$collection.media[ 0 ].title } : Email
-<a style="float:right;" href="{$back_URL}}"> <img  class="icon" style="margin-top:-4px;" title="Zurück" src="img/svg/chevron-left_w.svg" /></a>
+<a style="float:right;" href="{$back_URL}}"> <img  class="icon" style="margin-top:-4px;" title="Zurück" src="img/svg/chevron-left.svg" /></a>
 </h3>
   
 

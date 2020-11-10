@@ -18,7 +18,7 @@ if( isset( $_POST[ 'submit'] ) )
 }
 
 echo '<form action="editconf.php" method="post">
-<img src="../htdocs/img/svg/home.svg" width="32" height="32"/>
+<img src="../htdocs/img/svg/home_b.svg" width="32" height="32"/>
 <input type="submit" name="submit"  /> 
 <a href=\'../htdocs/index.php\' title="HOME" ><img src="../htdocs/img/svg/home_b.svg" width="32" height="32"/></a>
 

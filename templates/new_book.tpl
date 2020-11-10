@@ -2,8 +2,8 @@
  <img src="img/loader.gif" style="width:80px; heigth:80px" /></div>
 <script type='text/javascript' src='lib/jquery.simplemodal.js'></script>
   
-<h3 style="margin:10px; padding:10px; color: #FFF;" class="bgDef bg{$collection.bib_id}" >
-    {$collection.title} : Suche im HAW-Katalog <a style="float:right;" href="{$back_URL}"><img  class="icon" style="margin-top:-4px;" title="Zurück" src="img/svg/chevron-left_w.svg" /></a>
+<h3 style="margin:10px; padding:10px;  " class="bgDef bg{$collection.bib_id}" >
+    {$collection.title} : Suche im HAW-Katalog <a style="float:right;" href="{$back_URL}"><img  class="icon" style="margin-top:-4px;" title="Zurück" src="img/svg/chevron-left.svg" /></a>
 </h3>
 
 <div id='basic-modal'>
@@ -13,7 +13,7 @@
 
 {if $page == "1"}
 {if $searchHits < 1}
- <h3 style="margin:10px; margin-bottom: 0px; margin-top: 0px; padding:10px; color: #FFF; background-color: #600000;">Suchergebniss: {$searchHits} Treffer  für {$book.title}{$book.author}{$book.signature}</h3>
+ <h3 style="margin:10px; margin-bottom: 0px; margin-top: 0px; padding:10px; ">Suchergebniss: {$searchHits} Treffer  für {$book.title}{$book.author}{$book.signature}</h3>
  <div style="margin:10px;  padding:0px;">Sie k&ouml;nnen nun:</div>
  <div style="margin:10px; margin-bottom: 10px; padding:10px;  padding-bottom:20px;  text-height: 150%; border:solid 1px black; ">
  <div style="font-size:35px; float:left; padding:10px; margin:5px; display:block;   background-color:#EFEFEF">A</div> Einen Bestellwunsch über einen Erwerbungsvorschlag vornehmen.<br/><br> Die Bearbeitung kann 2-3 Wochen dauern.<br><br>
@@ -95,7 +95,7 @@
      {* -------------------------------------------------------------------------------------------------------- *}
 
      {if $page == "2"}
-      <h3 style="margin:10px; margin-bottom: 0px; margin-top: 0px; padding:10px; color: #FFF; background-color: #600000; font-size: 11px; ">Suchergebniss: {$searchHits} Treffer</h3>
+      <h3 style="margin:10px; margin-bottom: 0px; margin-top: 0px; padding:10px;  font-size: 11px; ">Suchergebniss: {$searchHits} Treffer</h3>
       <div style="margin:0px; margin-left:10px; margin-right:10px; padding:10px; font-weight: bold; color:#990000; border: 1px solid #444; font-size: 11px; ">Bitte w&auml;hlen Sie das gew&uuml;nschte Medium aus der Liste aus </div>
 
          {foreach from=$books_info item=b}
