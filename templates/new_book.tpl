@@ -30,14 +30,14 @@
   <div class="text2">
   <h3> Medien hinzuf&uuml;gen &ndash; <span style="color: #ff0000;">NEU &uuml;ber den HAW-Katalog incl. Artikelindex:</span> </h3>
 <ol>
-    <li>Wechseln Sie über den Button unten zum HAW-Katalog und <br> <span style="color: #ff0000;">Wichtig: Melden Sie sich dort mit Ihrer Bibliothekskennung an. </span></li>
+    <li>Wechseln Sie über den Button unten zum HAW-Katalog und <br> <span style="color: #ff0000;">melden Sie sich dort mit Ihrer Bibliothekskennung an. </span></li>
   <li><b>Im HAW-Katalog erstellen Sie Ihre gewünschte Literaturliste <br>(weitere Infos finden Sie dort).</b> </li>
   <li>Wechseln Sie dann zurück zu dieser Seite<br>und fügen Sie den "Link Literaturliste" in das Feld unten ein. </li>
   <li>Nun werden die Medien nacheinander in Ihren Semesterapparat eingelesen<br>und Sie können diese bei Bedarf einzeln annotieren und bearbeiten. </li>
 </ol>
 
 <div class="text2" style="text-align: center">
-   <a  target="_blank"   id ="FButton2"    href="{$VUFIND.vuFindReserchURL}"> <button style="padding:20px;" class="ui-button ui-widget ui-corner-all" > Im HAW-Katalog recherchieren, Literaturliste erstellen, Lit.listen-Link kopieren.
+   <a  target="_blank"   id ="FButton2"    href="{$VUFIND.vuFindReserchURL}"> <button style="padding:20px;" class="ui-button ui-widget ui-corner-all" > Im HAW-Katalog recherchieren und Literaturliste erstellen.
        </button></a>
 </div>
 <br/>
