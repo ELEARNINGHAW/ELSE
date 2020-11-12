@@ -21,7 +21,7 @@
   <div class="SAMeta bgDef bg{$ci.bib_id}">
 
   {if ( $staff_mode )}
-  <div style="width:630px; display: inline-block; position:absolute; padding-top:6px; left:50px; line-height: 80% ">
+  <div style="width:630px; display: inline-block; position:absolute; padding-top:2px; left:70px; ">
   <a class = "medHead2"  style="float:left;"  > {$ci.title|truncate:70:"...":true} </a><br/>
   <a class = "medHead2"  style="float:left;"  >von: {$ci.Owner.forename|escape} {$ci.Owner.surname} </a>
   <a class = "medHead2"  style="float:left;"  >&nbsp;&nbsp;/&nbsp;&nbsp;Dep:   {$ci.Owner.dep_name}</a>

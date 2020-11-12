@@ -38,7 +38,16 @@ function do_template( $template, $kw, $HuF = true )
 {
   foreach ($kw as $k => $v)   {  $this->smarty->assign($k, $v); }
 
-  if ($HuF) { $this->smarty->display('header.tpl'); }
+  
+  
+  if ($HuF) {
+header("Expires: ".gmdate("D, d M Y H:i:s")." GMT");
+header("Last-Modified: ".gmdate("D, d M Y H:i:s")." GMT");
+header("Cache-Control: no-store, no-cache, must-revalidate");
+header("Pragma: no-cache");
+header("Cache-Control: post-check=0, pre-check=0", false);
+    $this->smarty->display('header.tpl');
+  }
 
   $this->smarty->display($template);
 

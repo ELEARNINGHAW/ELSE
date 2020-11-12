@@ -8,7 +8,7 @@
 <div class="SAMeta bgDef bg{$ci.coll_bib_id}">
 
 {if ( $staff_mode )}
-<div  style="width:630px; display: inline-block; padding-top:6px; line-height: 80% ">
+<div  style="width:630px; display: inline-block; padding-top:2px;">
 <a class = "medHead2"  style="float:left;" href="index.php?item=collection&action=show&dc_collection_id={$ci.dc_collID}&r=2"           >{$ci.title|truncate:70:"...":true} </a><br/>
 <a class = "medHead2"  style="float:left;" href="index.php?category=ALLE&mode=filterBib&r=2&user={$ci.user_info.u_hawaccount|escape}">von: {$ci.user_info.u_forename|escape} {$ci.user_info.u_surname|escape} </a>
 <a class = "medHead2"  style="float:left;" href="index.php?mode=filterBib&r=2&category={$ci.user_info.u_department_id}"              >&nbsp;&nbsp;/&nbsp;&nbsp;Dep: {$ci.user_info.DepName|escape}</a>
@@ -49,29 +49,22 @@
 </div>
 {/if}
 
-
-
 {if $ci.notes_to_studies_col != '' AND $work.action != 'show_media_list'}
 <div class="studihint"><div style="color:red;" >Hinweise zur Vorlesung</div>{$ci.notes_to_studies_col|replace:'':' '|nl2br} </div>
 {/if}
 
-
 {if isset($ci.document_info)}
 {foreach from=$ci.document_info item=di}
 
-{if    $edit_mode == 0  AND  $di.state_id == 3  OR $edit_mode   == 1 AND $di.state_id != 6 OR $work.action == 'show_media_list' }
+{if $edit_mode == 0  AND  $di.state_id == 3  OR $edit_mode   == 1 AND $di.state_id != 6 OR $work.action == 'show_media_list' }
   <div class='{$di.id}'>
       {include file = "SA.tpl" }
   </div>
-
 </div>
 {/if}
 
 {/foreach}
 {/if}
-
-
-
 
 {foreachelse} <div style="padding:10px; margin:10px; margin-top:0px; color: #000; font-size: 14px; border: solid #AAA 2px; background-color:#efe96d; ">Es ist kein  Dokument  vorhanden.</div>
 

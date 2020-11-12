@@ -456,6 +456,58 @@ display:block;
 }
 
 
+.cTD1, .cTD2, .cTD3, .cTD4, .cTD5, .cTD6, .cTD9
+{
+    color: #efe96d;
+}
+
+.cWuS, .c60, .c61, .c62, .c63, .c64, .c3
+{
+    color: #C60C30 !important;
+}
+
+.cLS, .c30, .c31, .c32, .c33, .c34, .c35, .c36, .c37 , .c2
+{
+    color: #E98300 !important;
+}
+
+.cTI, .c50, .c51, .c52, .c53, .c54, .c55, .c4
+{
+    color: #0E905A !important;
+}
+
+.cDMI, .c20, .c21, .c22, .c23  , .c6
+{
+    color:#008B95 !important;
+}
+
+.cTWI1
+{
+    color:#7f2049 !important;
+}
+
+.cTWI2
+{
+    color:#0E905A !important;
+}
+
+.cSP
+{
+    color:#C60C30 !important;
+}
+
+
+.cHAW
+{
+    color:#002664 !important;
+}
+
+
+
+
+
+
+
 
 .bgTD1, .bgTD2, .bgTD3, .bgTD4, .bgTD5, .bgTD6, .bgTD9
 {
@@ -537,7 +589,7 @@ a.name
 
 .semapNameListe
 {
-    font-size:13px;
+    font-size:15px;
 
     background-color: #FFF;
     margin: 2px;
@@ -642,7 +694,7 @@ a.name
 .dozentName 
 {
     margin:10px;
-    margin-top: 12px;
+    margin-top: 30px;
     margin-bottom: 2px;
     padding: 4px;
     padding-left: 35px;
@@ -659,6 +711,7 @@ a.name
 .dozentLink 
 {
     text-decoration: none;
+    color: #000000;
 
 }
 
@@ -681,10 +734,10 @@ a.name
 {
   font-size:16px;
   margin: 0px;
-  padding:0px;
+  padding:5px;
   padding-left: 20px;
-  height: 35px;
-    color:#000000;
+  height: 45px;
+  color:#000000;
 }
 
 .SAtitel
@@ -858,13 +911,13 @@ td{
 {
   font-size: 14px;
   text-align: center;
-  margin: 0px;
+  margin: 5px;
   padding: 4px;
   padding-top: 4px;
   color: #FFF;
   line-height: 95%;
   font-weight: 700;
-  height: 27px;
+
   display: inline-block;
   position:absolute;
   left:0px;
@@ -1371,9 +1424,9 @@ fieldset
 
 a.medHead2
 {
-  font-size: 13px;
+  font-size: 15px;
   color: #000000 !important;
-  font-weight: bold;
+  font-weight: 600;
 
 }
 
@@ -1381,7 +1434,7 @@ a.medHead2
 a.medHead3
 {
   font-weight: 700;
-  font-size: 9px;
+  font-size: 14px;
   color: #FFF !important;
   display:block;
 }
