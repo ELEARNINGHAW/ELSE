@@ -13,7 +13,8 @@
 
 {foreach key=key item=c name=collectionList from=$collectionList }
   {if $c != 0}
-    <div class="dozentName  c{$filter.bib} " >                                                                {*  <!-- HEADLINE:  DOZENT  -->   *}
+
+    <div class="dozentName  c{$c[0].Owner.bib_id}" >                                                                {*  <!-- HEADLINE:  DOZENT  -->   *}
       <a class="dozentLink" href="#">{* <!-- Doz.ID -. *} {$c[0].Owner.forename} {$c[0].Owner.surname}   </a>
       <span style="float:right">{$c[0].Owner.dep_name}</span>{*  <!-- Department -.  <!-- Fak.ID, Dozent Titel,  Vorname, Nachname -->   *}
     </div>

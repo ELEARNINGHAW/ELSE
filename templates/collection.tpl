@@ -26,9 +26,10 @@
   <a class = "medHead2"  style="float:left;"  >von: {$ci.Owner.forename|escape} {$ci.Owner.surname} </a>
   <a class = "medHead2"  style="float:left;"  >&nbsp;&nbsp;/&nbsp;&nbsp;Dep:   {$ci.Owner.dep_name}</a>
   </div>
+  {else}
 
-    {else}
-    <div class="SAdozName" style="margin-left: 25px;">ELSE - {$ci.title}<br />Der elektronische Semesterapparat </div>
+    <div style="width:630px; display: inline-block; position:absolute; padding-top:2px; left:70px; ">
+    <div class="medHead2" style="float:left;" >ELSE - {$ci.title}<br />Der elektronische Semesterapparat </div></div>
     {/if}
 
     {if ($operator.mode != "print" AND ($edit_mode OR $staff_mode)) }
@@ -55,8 +56,8 @@
 
     {if ($edit_mode OR $staff_mode)}
     <div class="medHeadBlock">
-    <a class = "medHead3"  href="index.php?mode=filterBib&r=2&category={$ci.bib_id}" >{$ci.bib_id}</a>
-    <a class = "medHead3"  href="index.php??category={$ci.sem}&mode=filterSem&r=2">{$ci.sem}</a>
+    <a class = "medHead3"  href=" {if ( $staff_mode )}index.php?mode=filterBib&r=2&category={$ci.bib_id}{/if}" >{$ci.bib_id}</a>
+    <a class = "medHead3"  href=" {if ( $staff_mode )}index.php??category={$ci.sem}&mode=filterSem&r=2{/if}">{$ci.sem}</a>
     </div>
     {/if}
 
