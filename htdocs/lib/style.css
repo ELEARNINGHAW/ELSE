@@ -554,18 +554,14 @@ a.icon
 }
 
 
-a.name2, a.name 
+a.name2, a.name
 {
-  padding-top: 5px;
-  padding-left: 25px;
-  display:block;
-  color:#000;
-  text-decoration:none;
+
 }
 
 
 a.name 
-{ 
+{
   width: calc(100% - 154px);
   border-right: 0px solid #FFF;
 }
@@ -573,24 +569,50 @@ a.name
 
 .name2
 {  
-  padding-top: 8px;
   width: calc(100% - 180px);
-  font-size: 13px;
 }
 
 
 .name:hover,  a.name2:hover
 {
-  color:#000;
+    display:block;
+
+    color:#000;
   background-color:#DDD;
   text-decoration:none;
 }
+.semapNameListe, .semapNameListeNumbers
+{
+  background-color: #FFF;
 
+  margin: 2px;
+  margin-right: 0px;
+  padding : 6px;
+
+  border-top: 1px solid #AEAEAE;
+  border-right: 1px solid #AEAEAE;
+  border-bottom: 1px solid #AEAEAE;
+  border-left: 1px solid #AEAEAE;
+
+
+  display: block;
+  float:left;
+  right: 180px;
+
+
+  height: 20px;
+
+
+
+
+
+
+}
 
 .semapNameListe
 {
     font-size:15px;
-
+    color: #000000;
     background-color: #FFF;
     margin: 2px;
     margin-left: 10px;
@@ -598,18 +620,12 @@ a.name
     padding : 6px;
     padding-right: 40px;
     padding-left: 40px;
-    border-top: 1px solid #AEAEAE;
-    border-right: 1px solid #AEAEAE;
-    border-bottom: 1px solid #AEAEAE;
-    border-left: 1px solid #AEAEAE;
 
     background-image:url(../img/svg/SA.svg);
     background-repeat:no-repeat;
     background-position: 3px -2px;
     background-size: 32px;
 
-    display: block;
-    float:left;
 }
 
 .semapNameListeNumbers {
@@ -624,16 +640,11 @@ a.name
     margin-left: 0px;
     font-size: 13px;
     margin: 2px;
-    background-color: #FFF;
-    margin-right: 0px;
 
-    border-top: 1px solid #AEAEAE;
-    border-right: 1px solid #AEAEAE;
-    border-bottom: 1px solid #AEAEAE;
-    border-left: 1px solid #AEAEAE;
+        margin-right: 0px;
 
-    display: block;
-    float:left;
+
+
     width: 75px;
 }
 
@@ -713,6 +724,19 @@ a.name
     text-decoration: none;
     color: #000000;
 
+}
+
+.staffhint
+{
+    font-size:13px;
+    background-color: #ffff99;
+    margin: 0px;
+    padding: 5px;
+    padding-left: 15px;
+    border: 1px solid #999;
+    background-position: 25px 5px;
+    background-size: 32px;
+    /*   text-shadow:#AAA 1px 1px;   */
 }
 
 .studihint
@@ -1214,6 +1238,7 @@ td{
 
 .handle
 {
+    cursor: n-resize;
    width:60px;
     height: 60px;
     background-image:url(../img/svg/move.svg);

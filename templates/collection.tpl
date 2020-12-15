@@ -64,16 +64,21 @@
     </div>
     {/if}
 
-    {if $ci.notes_to_studies_col != '' AND $operator_action != 'show_media_list'}
+
+    {if $ci.notes_to_staff_col != '' AND $operator_action != 'show_media_list' AND $staff_mode == 1}
+        <div class="staffhint"><div style="color:red;" >HIBS:</div>{$ci.notes_to_staff_col|replace:'':' '|nl2br} </div>
+    {/if}
+
+
+    {if $ci.notes_to_studies_col != '' AND $operator_action != 'show_media_list' }
     <div class="studihint"><div style="color:red;" >Hinweise zur Vorlesung</div>{$ci.notes_to_studies_col|replace:'':' '|nl2br} </div>
     {/if}
+
+
 
     {if isset($ci.media)}
     {foreach from=$ci.media item=di}
     {if    $edit_mode == 0  AND  $di.state_id == 3  OR $edit_mode   == 1 AND $di.state_id != 6 OR $operator_action == 'show_media_list' }
-
-
-
 
     <div class='{$di.id}'>
       {include file = "SA.tpl" }

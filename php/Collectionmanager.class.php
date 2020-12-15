@@ -153,7 +153,6 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
 
     $collection_id                        = $I[ 'currentCollection' ] -> get_collection_id();
     $collection                           = $this -> SQL-> getCollection ( $collection_id );
-
    # $I[ 'operator' ] -> set_url( $I[ 'operator' ] -> get_history( )[ 1 ]  );                  ##  Link für den "zurück"- Button
 
     $_SESSION['url']['currentCollection'] = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
