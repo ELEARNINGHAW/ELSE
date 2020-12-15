@@ -207,7 +207,7 @@ function saveMediaMetaData( $I )
        #   $I[ 'medium' ] -> set_state_id     ( 3 );                                                              ##  und der Status wird 'aktiv'         , Status 3
        # }
       
-        if ( $I[ 'medium' ] -> get_shelf_remain () == '1'  )                                                     ##  Wenn Medien'ORT' 'Semesterapparat' (status: 1)
+        if ( $I[ 'medium' ] -> get_shelf_remain () == '1')                                                       ##  Wenn Medien'ORT' 'Semesterapparat' (status: 1)
         {                                                                                                        ##  ist der Medienort: 'verbleibt im Regal' ;) , Status 1
           $I[ 'medium' ] -> set_state_id     ( 1 );                                                              ##  und der Status wird 'aktiv'         , Status 3
         }
@@ -233,7 +233,14 @@ function saveMediaMetaData( $I )
           $I[ 'medium' ] -> set_shelf_remain ( 2 );                                                             ## ist der Medienort: Bibliothek
           $I[ 'medium' ] -> set_state_id     ( 3 );                                                              ## und der Status wird 'aktiv'         , Status 3
         }
- 
+  
+  
+        if ( $I[ 'medium' ] -> get_doc_type_id () == '16' )                                                      ## Artikel
+        {
+          $I[ 'medium' ] -> set_state_id     ( 9 );                                                              ## und der Status wird 'aktiv'         , Status 3
+        }
+
+        
         $I[ 'medium' ] -> set_id            ( '' );
         $I[ 'medium' ] -> set_collection_id ( $I[ 'currentCollection' ] -> get_collection_id () );
         # deb($I);
