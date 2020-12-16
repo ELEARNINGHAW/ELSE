@@ -374,26 +374,38 @@ display:block;
 
 .bgDMI, .bg20, .bg21, .bg22, .bg23  
 {
-    background-image:url(../img/bg/DMI.png);
-   background-repeat: repeat-x;
+  background-image:url(../img/bg/DMI.png);
+  background-repeat: repeat-x;
 }
+
+
+
+.cTD1 {  color: #efe96d }
+.cWuS { color: #C60C30 !important; }
+.cLS { color: #E98300 !important; }
+.cTI { color: #0E905A !important; }
+.cDMI { color:#008B95 !important; }
+.cTWI1 { color:#7f2049 !important; }
+.cTWI2 { color:#0E905A !important; }
+.cSP  { color:#C60C30 !important;  }
+.cHAW  {  color:#002664 !important; }
 
 .bgTWI1  /* TWI I */
 {
-   background-image:url(../img/bg/TWI1.png);
-   background-repeat: repeat-x;
+  background-image:url( ../img/bg/TWI1.png );
+  background-repeat: repeat-x;
 }
 
 .bgTWI2  /* TWI II */
 {
-    background-image:url(../img/bg/TWI2.png);
-    background-repeat: repeat-x;
+  background-image:url(../img/bg/TWI2.png);
+  background-repeat: repeat-x;
 }
 
 .bgALLE   /* ALLE */
 {
-    background-image:url(../img/bg/HAW.png);
-    background-repeat: repeat-x;
+  background-image:url(../img/bg/HAW.png);
+  background-repeat: repeat-x;
 }
 
 .bgOHNE   /* ´OHNE */
@@ -594,20 +606,14 @@ a.name
   border-bottom: 1px solid #AEAEAE;
   border-left: 1px solid #AEAEAE;
 
-
   display: block;
   float:left;
   right: 180px;
 
-
   height: 20px;
-
-
-
-
-
-
 }
+
+
 
 .semapNameListe
 {
@@ -1002,7 +1008,7 @@ td{
   padding-top:0px; 
   padding-bottom:0px;
   margin:0px; 
-  margin-bottom: 6px; 
+  margin-bottom: 12px;
   border-top: solid black 2px;
   border-bottom:  solid #999 2px;
   border-right: solid #666 1px;

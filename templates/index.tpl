@@ -30,7 +30,7 @@
       {elseif $c[j].state_name != 'delete'} {* HEADLINE:  SEMAPP -- USER-MODE  *}
         <div class='SAHeadline' style="display: block;" >
           <a href="index.php?item=collection&action=show_collection&dc_collection_id={$c[j].dc_collection_id}&amp;r={$user.role_id}">
-          <div class="name2 semapNameListe"  >{$c[j].title}</div>
+          <div class="name2 semapNameListe"  >{$c[j].title|truncate:85:"...":true}</div>
           <div class="name  semapNameListeNumbers bg{$c[j].bib_id} ">[{$c[j].MedState.med_state_GE}] / {$c[j].bib_id}</div>
           </a>
         </div>
