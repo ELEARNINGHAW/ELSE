@@ -59,7 +59,7 @@
     {elseif  $filter.state ==  5}                       <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=5"  title="Inaktiv"             ><img src="img/svg/Ia.svg" width="32" height="32"/></a>
     {elseif  $filter.state ==  6}                       <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=6"  title="Gelöschte"           ><img src="img/svg/Ga.svg" width="32" height="32"/></a>
     {elseif  $filter.state == 10}                       <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=10" title="Verlängerte"         ><img src="img/svg/Va.svg" width="32" height="32"/></a>
-    {elseif  $filter.type  == 16}                       <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterType&amp;category=16"  title="Erwerbungsvorschlag" ><img src="img/svg/K.svg"  width="32" height="32"/></a>
+    {elseif  $filter.type  == 16}                       <li><a href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterType&amp;category=16"  title="Erwerbungsvorschlag" ><img src="img/svg/Ka.svg"  width="32" height="32"/></a>
     {/if}
 
     <ul>
