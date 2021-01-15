@@ -1,6 +1,6 @@
 {* $di, $ci, $user, $operator, $CFG, $MEDIA_STATE *}
 {$FB = $FACHBIB[$ci.bib_id].bib_name|escape}
-{if $di.shelf_remain == 1  }  {$whereIs = "{$FB}<br />{$CFG[ 'MEDIA_PLACE'][1]}"} {/if}{* Semesterapp    / SA Medium           *}
+{if $di.shelf_remain == 1  }  {$whereIs = "{$FB} - {$CFG[ 'MEDIA_PLACE'][1]}"} {/if}{* Semesterapp    / SA Medium           *}
 {if $di.shelf_remain == 2  }  {$whereIs =              $CFG[ 'MEDIA_PLACE'][ 2 ]} {/if}{* Bibliothek     / LitHinweis Buch     *}
 {if $di.shelf_remain == 3  }  {$whereIs =              $CFG[ 'MEDIA_PLACE'][ 3 ]} {/if}{* online         / PDF                 *}
 {if $di.shelf_remain == 4  }  {$whereIs =              $CFG[ 'MEDIA_PLACE'][ 4 ]} {/if}{* Scanservice    / Medienserver        *}

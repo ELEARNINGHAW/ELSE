@@ -581,7 +581,7 @@ a.name
 
 .name2
 {  
-  width: calc(100% - 180px);
+  width: calc(100% - 150px);
 }
 
 
@@ -624,7 +624,7 @@ a.name
     margin-left: 10px;
     margin-right: 0px;
     padding : 6px;
-    padding-right: 40px;
+    padding-right: 10px;
     padding-left: 40px;
 
     background-image:url(../img/svg/SA.svg);

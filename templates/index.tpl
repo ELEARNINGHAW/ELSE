@@ -38,5 +38,3 @@
     {/section}
   {/if}
 {/foreach}
-
-
