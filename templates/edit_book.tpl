@@ -89,13 +89,11 @@
   <tr><td  class = "editmedia" style="vertical-align: top; font-weight: bold;">  Ort:  <span style="color: {$color}; vertical-align: top; font-weight: bold;">(bitte auswählen)</span> </td><td>
     <div style="border:{$bw}px solid {$color}; float: left;  height:80px; padding: 5px; font-size: 12px; width: calc(100% - 15px); ">
 
-    {if ( $medium.doc_type_id == 16)}
-    {if ($medium.sigel == 'HAW-Hamburg') }
-      <input {$c2} value="2" class='i' type="radio" name="shelf_remain" id="radio-2" {$checked}><label for="radio-2"><span style="font-weight:700; "> Literaturhinweis - verbleibt im Regal der Bibliothek.     </span></label><br/>
-    {else}
-        <input {$c2} value="5" class='i' type="radio" name="shelf_remain" id="radio-5" {$checked}><label for="radio-5"><span style="font-weight:700; "> Titel nicht aus HAW-Bestand, daher Literaturhinweis   </span></label><br/>
-    {/if}
-    {/if}
+        {if  ( $medium.sigel == 'HAW-Hamburg' ) OR $medium.doc_type_id == 16 }
+            <input {$c2} value="2" class='i' type="radio" name="shelf_remain" id="radio-2" {$checked}><label for="radio-2"><span style="font-weight:700; "> Literaturhinweis - verbleibt im Regal der Bibliothek.     </span></label><br/>
+        {else}
+            <input {$c2} value="5" class='i' type="radio" name="shelf_remain" id="radio-5" {$checked}><label for="radio-5"><span style="font-weight:700; "> Titel nicht aus HAW-Bestand, daher Literaturhinweis   </span></label><br/>
+        {/if}
 
       {if $semApp}
       <input {$c1} value="1" class='i' type="radio" name="shelf_remain" id="radio-1"><label for="radio-1"><span style="font-weight:700; "> Semesterapparat  -  wird in Ihren phys. Semesterapparat eingestellt. </span></label>

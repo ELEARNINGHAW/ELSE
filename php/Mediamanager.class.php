@@ -214,7 +214,7 @@ function saveMediaMetaData( $I )
 
         else if ( $I[ 'medium' ] -> get_shelf_remain () == '2'  )                                                ##  Wenn Medien'ORT' 'verbleibt im Regal' (status: 2)
         {                                                                                                        ##  ist der Medienort: 'verbleibt im Regal' ;) , Status 2
-          $I[ 'medium' ] -> set_state_id     ( 3 );     deb('1');    deb( $I[ 'medium' ] );                                                      ##  und der Status wird 'aktiv'         , Status 3
+          $I[ 'medium' ] -> set_state_id     ( 3 );                                                              ##  und der Status wird 'aktiv'         , Status 3
         }
        
         else if ( $I[ 'medium' ] -> get_shelf_remain () == '4'  )                                                ##  Wenn Medien'ORT' 'Scanservice' (status: 2)
