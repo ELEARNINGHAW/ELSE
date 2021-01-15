@@ -18,20 +18,19 @@
   {foreach key=cid item=ci from=$collection}
 
   {if $ci.dc_collection_id != "" OR  $operator_action == 'show_media_list'}
-  <div class="SAMeta bgDef bg{$ci.bib_id}">
-
+  <div class="SAMeta bgDef bg{$ci.bib_id}"  style="height: 65px;" >
+      <div style="width:540px;  display: inline-block; position:absolute; padding-top:2px; left:70px; ">
   {if ( $staff_mode )}
-  <div style="width:630px; display: inline-block; position:absolute; padding-top:2px; left:70px; ">
+
   <a class = "medHead2"  style="float:left;"  > {$ci.title} </a><br/>
   <a class = "medHead2"  style="float:left;"  >von: {$ci.Owner.forename|escape} {$ci.Owner.surname} </a>
   <a class = "medHead2"  style="float:left;"  >&nbsp;&nbsp;/&nbsp;&nbsp;Dep:   {$ci.Owner.dep_name}</a>
-  </div>
-  {else}
+   {else}
 
-    <div style="width:630px; display: inline-block; position:absolute; padding-top:2px; left:70px; ">
-    <div class="medHead2" style="float:left;" >ELSE - {$ci.title}<br />Der elektronische Semesterapparat </div></div>
+
+    <div class="medHead2" style="float:left;" >ELSE - {$ci.title}<br />Der elektronische Semesterapparat </div>
     {/if}
-
+    </div>
     {if ($operator.mode != "print" AND ($edit_mode OR $staff_mode)) }
 
     <a target="help_win" class="modalLink" href="#helpit" rel="modal:open"  title="Weitere Informationen über ELSE"                  ><img src="img/svg/help.svg"        width="32"  height="32" style="position:relative; float:right; padding-right: 2px; margin:2px; margin-right:-1px;"  /></a>

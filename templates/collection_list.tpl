@@ -1,15 +1,15 @@
 {if $user.role_name == "admin"  OR  $user.role_name == "staff" OR  $user.role_name == "edit"  } {assign var="edit_mode"  value="1"} {else}  {assign var="edit_mode"   value="0"}  {/if}
 {if $user.role_name == "admin"  OR  $user.role_name == "staff"                                } {assign var="staff_mode" value="1"} {else}  {assign var="staff_mode"  value="0"}  {/if}
-  
+
 <div class="column">
 {foreach key=cid item=ci from=$collection_info}
 
-    {if $ci.dc_collID != "" OR  $work.action == 'show_media_list'}
+{if $ci.dc_collID != "" OR  $work.action == 'show_media_list'}
 <div class="SAMeta bgDef bg{$ci.coll_bib_id}">
 
 {if ( $staff_mode )}
 <div  style="width:630px; display: inline-block; padding-top:2px;">
-<a class = "medHead2"  style="float:left;" href="index.php?item=collection&action=show&dc_collection_id={$ci.dc_collID}&r=2"           >{$ci.title|truncate:70:"...":true} </a><br/>
+<a class = "medHead2"  style="float:left;" href="index.php?item=collection&action=show&dc_collection_id={$ci.dc_collID}&r=2"           >{$ci.title|truncate:65:"...":true}</a><br/>
 <a class = "medHead2"  style="float:left;" href="index.php?category=ALLE&mode=filterBib&r=2&user={$ci.user_info.u_hawaccount|escape}">von: {$ci.user_info.u_forename|escape} {$ci.user_info.u_surname|escape} </a>
 <a class = "medHead2"  style="float:left;" href="index.php?mode=filterBib&r=2&category={$ci.user_info.u_department_id}"              >&nbsp;&nbsp;/&nbsp;&nbsp;Dep: {$ci.user_info.DepName|escape}</a>
 </div>

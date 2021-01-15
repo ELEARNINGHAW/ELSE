@@ -18,7 +18,6 @@
 <body style='margin:0px; padding:0px;' >
 {/if}
 
-
 {* $user, $operator, $filter, $semester *}
 
 {if  $user.role_name == "admin" ||  $user.role_name == "staff"}

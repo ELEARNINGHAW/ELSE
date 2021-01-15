@@ -28,42 +28,49 @@
   <div style="font-size:35px; float:left; padding:10px; margin:5px; margin-bottom:100px;display:block;   background-color:#EFEFEF">B</div>Eine neue Suche starten:<br><br>
  {/if}
   <div class="text2">
-  <h3> Medien hinzuf&uuml;gen &ndash; <span style="color: #ff0000;">NEU &uuml;ber den HAW-Katalog incl. Artikelindex:</span> </h3>
+  <h3> Medien hinzuf&uuml;gen &ndash; <span style="color: #ff0000;">NEU &uuml;ber den HAW-Katalog </span>&ndash; incl. Artikelindex: </h3>
 <ol>
-    <li>Wechseln Sie über den Button unten zum HAW-Katalog und <br> <span style="color: #ff0000;">melden Sie sich dort mit Ihrer Bibliothekskennung an. </span></li>
+    <li>Wechseln Sie über den Button unten zum HAW-Katalog und <br> melden Sie sich dort mit Ihrer Bibliothekskennung an. </li>
   <li><b>Im HAW-Katalog erstellen Sie Ihre gewünschte Literaturliste <br>(weitere Infos finden Sie dort).</b> </li>
   <li>Wechseln Sie dann zurück zu dieser Seite<br>und fügen Sie den "Link Literaturliste" in das Feld unten ein. </li>
   <li>Nun werden die Medien nacheinander in Ihren Semesterapparat eingelesen<br>und Sie können diese bei Bedarf einzeln annotieren und bearbeiten. </li>
 </ol>
 
-<div class="text2" style="text-align: center">
-   <a  target="_blank"   id ="FButton2"    href="{$VUFIND.vuFindReserchURL}"> <button style="padding:20px;" class="ui-button ui-widget ui-corner-all" > Im HAW-Katalog recherchieren und Literaturliste erstellen.
-       </button></a>
+<div class="text2" style="text-align: left">
+   <a  target="_blank"   id ="FButton2"    href="{$VUFIND.vuFindReserchURL}">
+
+    <button style="padding:20px; width: 650px; margin-left: 30px; " class="ui-button ui-widget ui-corner-all" > Im HAW-Katalog recherchieren und Literaturliste erstellen. </button></a>
 </div>
 <br/>
 
 <div class="text2" style="padding-left: 30px;">
   <form action="index.php" method="get">
-  <span class="text2" style="text-align: center;"> Link Literaturliste aus dem HAW-Katalog hier einfügen:<input type="text" name="mediaListID">
-  <input type="submit" value="OK"  class="ui-button ui-widget ui-corner-all"  style="padding: 15px;     -webkit-border-radius: 5px; border-radius: 5px; ">   </span>
+  <span class="text2" > Link Literaturliste aus dem HAW-Katalog hier einfügen:<input style="text-align: left; width: 650px; margin-left: 2px; " type="text" name="mediaListID">
+  <input type="submit" value="OK"  class="ui-button ui-widget ui-corner-all"  style="padding: 15px; width: 650px;     -webkit-border-radius: 5px; border-radius: 5px; ">   </span>
   <input type="hidden" name="item"             value="collection">
   <input type="hidden" name="action"           value="getMediaList" >
   <input type="hidden" name="loc"              value="1">
   <input type="hidden" name="r"                value="{$user.role_encode}">
   <input type="hidden" name="dc_collection_id" value="{$collection.dc_collection_id}">
   </form>
-  </div>
+</div>
 
 <hr>
+
 <div class="text2">
 <ul><li>Haben Sie im HAW-Katalog nicht das Gewünschte gefunden</li></ul>
-<div class="text2" style="text-align: center;">
- <a   onClick="$('#FButton').spin('modal');"  href="index.php?msg=&action=purchase_suggestion&loc=1&lmsid={$collection.dc_collection_id}">  <button  style="padding:20px;" class="ui-button ui-widget ui-corner-all">Erwerbungsvorschlag für den Semesterapparat </button></a>
+<div class="text2" style="text-align: left;">
+ <a   onClick="$('#FButton').spin('modal');"  href="index.php?msg=&action=purchase_suggestion&loc=1&lmsid={$collection.dc_collection_id}">
+      <button  style="padding:20px; width: 650px; margin-left: 30px;" class="ui-button ui-widget ui-corner-all">Erwerbungsvorschlag für den Semesterapparat </button></a>
 </div>
     <br/>    <br/>
 </div>
-  {if $CONF.SRU.SRUenabled}
+
+{if $CONF.SRU.SRUenabled}
   <hr>
+
+
+
   <div style="display: block;" class="text2"> <h3>Medien hinzuf&uuml;gen &ndash; <span style="color: #ff0000;">Alternativ &uuml;ber Suche im alten online-Katalog (OPAC): <br> ACHTUNG: Dieser Service steht nur noch übergangsweise bis 31.12.2020 zur Verfügung.</span></h3>
     <ol>
       <li>Bitte geben Sie in dieser Suchmaske <b>Titel</b> und/oder <b>Autor*in</b> und/oder <b>Signatur</b> ein.</li>
@@ -99,9 +106,9 @@
       <div style="margin:0px; margin-left:10px; margin-right:10px; padding:10px; font-weight: bold; color:#990000; border: 1px solid #444; font-size: 11px; ">Bitte w&auml;hlen Sie das gew&uuml;nschte Medium aus der Liste aus </div>
 
          {foreach from=$books_info item=b}
-             {if (isset ( $b.title ))}
-<hr>
-          <a class="hitlink_{$b.doc_type}" href="index.php?ppn={$b.ppn}&item={$b.item}&action=annoteNewMedia&dc_collection_id={$collection.dc_collection_id}&mode=new&r={$user.role_id}&loc=2">
+           {if (isset ( $b.title ))}
+           <hr>
+           <a class="hitlink_{$b.doc_type}" href="index.php?ppn={$b.ppn}&item={$b.item}&action=annoteNewMedia&dc_collection_id={$collection.dc_collection_id}&mode=new&r={$user.role_id}&loc=2">
            <table>
                {if (isset ( $b.title        ) AND $b.title        != "" )}<tr><td><div class="mediaListHeader">Titel:    </div></td><td><span class="mediaTxt">{$b.title|escape}                           </span></td></tr>{/if}
                {if (isset ( $b.author       ) AND $b.author       != "" )}<tr><td><div class="mediaListHeader">Autor:    </div></td><td><span class="mediaTxt">{$b.author|escape}                          </span></td></tr>{/if}
