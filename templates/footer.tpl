@@ -6,7 +6,7 @@
   
     <div id="helpit" class="modal">
         <p class="closeBtn" style="float:right;" > <a href="#" rel="modal:close"><img  class="icon" title="close" src="img/svg/chevron-left.svg" /></a></p>
-        <iframe style="width:100%; height:600px;   z-index: 8001; " src="lib/hilfe.html"></iframe>
+        <iframe style="width:100%; height:300px;   z-index: 8001; " src="lib/hilfe2.html"></iframe>
 
     </div>
 {/if}

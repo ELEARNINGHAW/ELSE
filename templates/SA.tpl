@@ -1,14 +1,16 @@
 {* $di, $ci, $user, $operator, $CFG, $MEDIA_STATE *}
 {$FB = $FACHBIB[$ci.bib_id].bib_name|escape}
-{if $di.shelf_remain == 1  }  {$whereIs = "{$FB} - {$CFG[ 'MEDIA_PLACE'][1]}"} {/if}{* Semesterapp    / SA Medium           *}
-{if $di.shelf_remain == 2  }  {$whereIs =              $CFG[ 'MEDIA_PLACE'][ 2 ]} {/if}{* Bibliothek     / LitHinweis Buch     *}
-{if $di.shelf_remain == 3  }  {$whereIs =              $CFG[ 'MEDIA_PLACE'][ 3 ]} {/if}{* online         / PDF                 *}
-{if $di.shelf_remain == 4  }  {$whereIs =              $CFG[ 'MEDIA_PLACE'][ 4 ]} {/if}{* Scanservice    / Medienserver        *}
-{if $di.shelf_remain == 5  }  {$whereIs =              $CFG[ 'MEDIA_PLACE'][ 5 ]} {/if}{* externe Biblio / Titel nicht aus HAW-Bestand -LitHinweis Buch             *}
-{if $di.doc_type_id  == 6  }  {$whereIs =              $CFG[ 'MEDIA_PLACE'][ 6 ]} {/if}{* Artikel                              *}
-{if $di.doc_type_id  == 7  }  {$whereIs =              $CFG[ 'MEDIA_PLACE'][ 7 ]} {/if}{* eArtikel                             *}
+{if $di.shelf_remain == 1  }  {$whereIs =    "{$FB} - {$CFG[ 'MEDIA_PLACE'][ 1 ]}"} {/if}{* Semesterapp    / SA Medium           *}
+{if $di.shelf_remain == 2  }  {$whereIs =              $CFG[ 'MEDIA_PLACE'][ 2 ]}   {/if}{* Bibliothek     / LitHinweis Buch     *}
+{if $di.shelf_remain == 3  }  {$whereIs =              $CFG[ 'MEDIA_PLACE'][ 3 ]}   {/if}{* online         / PDF                 *}
+{if $di.shelf_remain == 4  }  {$whereIs =              $CFG[ 'MEDIA_PLACE'][ 4 ]}   {/if}{* Scanservice    / Medienserver        *}
+{if $di.shelf_remain == 5  }  {$whereIs =              $CFG[ 'MEDIA_PLACE'][ 5 ]}   {/if}{* externe Biblio / Titel nicht aus HAW-Bestand -LitHinweis Buch             *}
+{if $di.doc_type_id  == 6  }  {$whereIs =              $CFG[ 'MEDIA_PLACE'][ 6 ]}   {/if}{* Artikel                              *}
+{if $di.doc_type_id  == 7  }  {$whereIs =              $CFG[ 'MEDIA_PLACE'][ 7 ]}   {/if}{* eArtikel                             *}
 {$edit_mode  = "0"}
 {$staff_mode = "0"}
+
+{$whereIs2 =              $CFG[ 'MEDIA_PRINT'][ $di.shelf_remain ]}
 
 {$doctypedescription = $DOC_TYPE[ $di.doc_type_id ]['description'] }
 {$doctype            = $DOC_TYPE[ $di.doc_type_id ]['item'       ] }
@@ -28,14 +30,14 @@
 {/if}
 <div title="Verschieben des Mediums in der Liste" class="handle" style="float: right;"> </div>
 
- <table>   {$preMedTyp = ''}
+<table>   {$preMedTyp = ''}
 
 {if ($di.shelf_remain == 4)}{$preMedTyp = '[SCAN] '  }{/if}
+{if $operator.mode      == "print"      }  <tr><td><div class="mediaListHeader">TYP:       </div></td><td><div  class="mediaTxt" >{$whereIs2}            </div>            {/if}
 {if $di.title           != ""           }  <tr><td><div class="mediaListHeader">Titel:     </div></td><td><div  class="mediaTxt" >{$di.title}            </div>            {/if}
 {if $di.author          != ""           }  <tr><td><div class="mediaListHeader">Autor*in:  </div></td><td><div  class="mediaTxt" >{$di.author}           </div> </td></tr> {/if}
 {if $di.doc_type        == 'electronic' }  <tr><td><div class="mediaListHeader">Format:    </div></td><td><span class="mediaTxt" >Online-Ressource       </span></td></tr> {/if}
 {if $doctypedescription != ""           }  <tr><td><div class="mediaListHeader">Medientyp: </div></td><td><div  class="mediaTxt" >{$preMedTyp}{$doctypedescription}  {if (isset ( $di.signature  ) AND $di.signature  != "" AND $di.signature  != "E-Book" )} ({$di.signature|escape}){/if} </div>            {/if}
-
 
 
 {if $di.doc_type        == 'print'      }

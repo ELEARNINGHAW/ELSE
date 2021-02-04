@@ -14,20 +14,22 @@
 {if $user_role_name == "admin"  OR  $user_role_name == "staff" OR  $user_role_name == "edit"  } {$edit_mode  = "1"} {/if}
 {if $user_role_name == "admin"  OR  $user_role_name == "staff"                                } {$staff_mode = "1"} {/if}
 
-<div class="column">
+<span style="float:left; position: absolute; background-color: #f8f8f8; width: 75%; height: auto; ">
+
+<div class="column" >
   {foreach key=cid item=ci from=$collection}
 
   {if $ci.dc_collection_id != "" OR  $operator_action == 'show_media_list'}
-  <div class="SAMeta bgDef bg{$ci.bib_id}"  style="height: 65px;" >
+
+
+      <div class="SAMeta bgDef bg{$ci.bib_id}"  style="height: 65px;" >
       <div style="width:540px;  display: inline-block; position:absolute; padding-top:2px; left:70px; ">
   {if ( $staff_mode )}
 
   <a class = "medHead2"  style="float:left;"  > {$ci.title} </a><br/>
   <a class = "medHead2"  style="float:left;"  >von: {$ci.Owner.forename|escape} {$ci.Owner.surname} </a>
   <a class = "medHead2"  style="float:left;"  >&nbsp;&nbsp;/&nbsp;&nbsp;Dep:   {$ci.Owner.dep_name}</a>
-   {else}
-
-
+  {else}
     <div class="medHead2" style="float:left;" >ELSE - {$ci.title}<br />Der elektronische Semesterapparat </div>
     {/if}
     </div>
@@ -93,3 +95,5 @@
 
     {/foreach}
 </div>
+
+</span>
