@@ -10,13 +10,14 @@
 {elseif  $filter.bib == 'HAW' }  <div class="depName bgDef"           >  Semesterapparate ohne Fakultät                    : {$filter.sem} </div>
 {else}                           <div class="depName bg{$filter.bib}" >  Semesterapparate                                                  </div>
 {/if}
-
+<div style="position: absolute; display: block; background-color: #eeeeee; width:100%;">
+<div style="position: relative ; display: block; background-color: #9B410E; width:790px;">
 {foreach key=key item=c name=collectionList from=$collectionList }
   {if $c != 0}
 
-    <div class="dozentName  c{$c[0].Owner.bib_id}" >                                                                {*  <!-- HEADLINE:  DOZENT  -->   *}
+    <div class="dozentName" >                                                                {*  <!-- HEADLINE:  DOZENT  -->   *}
       <a class="dozentLink" href="#">{* <!-- Doz.ID -. *} {$c[0].Owner.forename} {$c[0].Owner.surname}   </a>
-      <span style="float:right">{$c[0].Owner.dep_name}</span>{*  <!-- Department -.  <!-- Fak.ID, Dozent Titel,  Vorname, Nachname -->   *}
+          <span class="fachbibName  c{$c[0].Owner.bib_id}"   style="float:right">{$c[0].Owner.dep_name}</span>{*  <!-- Department -.  <!-- Fak.ID, Dozent Titel,  Vorname, Nachname -->   *}
     </div>
 
     {section name=j loop=$c}
@@ -38,3 +39,6 @@
     {/section}
   {/if}
 {/foreach}
+
+</div>
+</div>

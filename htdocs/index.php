@@ -35,7 +35,7 @@ $cu = $I[ 'currentUser' ];
 $ca = $I[ 'operator'    ] -> get_action();   # ACTION
 $ci = $I[ 'operator'    ] -> get_item();     # ITEM
 $cl = $I[ 'operator'    ] -> get_loc();      # LOCATOR
-# deb($cu );
+#  deb($I[ 'operator'    ]  );
 #deb($I,1);
 # $ci = 'collection';
 #$ca = 'import';

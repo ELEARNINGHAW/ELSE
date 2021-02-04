@@ -392,12 +392,22 @@ function updateCollection ( $collection , $user )
 # ---------------------------------------------------------------------------------------------
   function sendBIB_APmails()
   {
+  
+    # 0 => "Sonntag",
+# 1 => "Montag",
+# 2 => "Dienstag",
+# 3 => "Mittwoch",
+# 4 => "Donnerstag",
+# 5 => "Freitag",
+# 6 => "Samstag";
+    $wt = strftime("%u");
+    if ( 5 >= $wt && $wt >= 1  ) ## Mail wird nur Montag bis Freitag verschickt
+    {
     
     $BIB_Anrede  = $this -> conf[ 'BIBMAIL' ][ 'Anrede' ]; #= "Liebe ELSE/HIBS Mitarbeiterin  \r\n\r\n";
     $BIB_Gruss   = $this -> conf[ 'BIBMAIL' ][ 'Gruss'  ]; #= "\r\n\r\nIhr ELSE Server \r\n\r\n http://www.elearning.haw-hamburg.de/mod/else/view.php?id=443297  \r\n\r\n";
     
     $mailInfos =     $this -> SQL -> getAdminEmailInfos ( ) ;
-    deb($mailInfos );
     foreach ($mailInfos as $mi)
     { $trenner  ="---------------------------------------";
       $message  ="";
@@ -420,12 +430,11 @@ function updateCollection ( $collection , $user )
         $message .= "\r\n\r\n" . $BIB_Gruss;
         
         $to =  $mi[ 'bib_ap_mail' ];
-        deb($message);
         $this -> sendAMail($to, $subject, $message);
       }
     }
   }
-
+ }
 
 # ---------------------------------------------------------------------------------------------
 function sendAMail($to, $subject='ELSE:', $message)
