@@ -14,7 +14,7 @@
 {if $user_role_name == "admin"  OR  $user_role_name == "staff" OR  $user_role_name == "edit"  } {$edit_mode  = "1"} {/if}
 {if $user_role_name == "admin"  OR  $user_role_name == "staff"                                } {$staff_mode = "1"} {/if}
 
-<span style="float:left; position: absolute; background-color: #f8f8f8; width: 75%; height: auto; ">
+<div style="float:left; position: absolute; background-color: #f8f8f8; width: calc(100% - 30px); height: auto; margin-left: 15px;margin-right: 15px; padding-bottom:150px; border-bottom:black solid 1px;">
 
 <div class="column" >
   {foreach key=cid item=ci from=$collection}
@@ -96,4 +96,4 @@
     {/foreach}
 </div>
 
-</span>
+</div>

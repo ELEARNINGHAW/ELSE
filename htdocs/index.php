@@ -25,28 +25,28 @@ $RENDERER   = new RENDERER(                                 $UTIL            );
 $COLLMGR    = new COLLECTIONMANAGER( $CFG, $SQL, $RENDERER, $UTIL            );
 $MEDIAMGR   = new MEDIAMANAGER(      $CFG, $SQL, $RENDERER, $UTIL, $COLLMGR  );
 
-# $UTIL->checkER();                              ## Listet alle SA zum Semesterwechsel auf
- #   deb($_SESSION,1);
+
 ## ----------------------------------------------------------------------------------------
 $I = $UTIL -> getInput();                                #--- GET ALL INPUT (GET) ---
 ## ----------------------------------------------------------------------------------------
-#deb($I );
+
 $cu = $I[ 'currentUser' ];
 $ca = $I[ 'operator'    ] -> get_action();   # ACTION
 $ci = $I[ 'operator'    ] -> get_item();     # ITEM
 $cl = $I[ 'operator'    ] -> get_loc();      # LOCATOR
-#  deb($I[ 'operator'    ]  );
-#deb($I,1);
-# $ci = 'collection';
-#$ca = 'import';
 
-# -- Default: item = collection -- (user) action = show_collection, (staff) action = show_collection_list
+
+# -- Default: item = collection --
+# --(bei role = user)  action = show_collection,
+# --(bei role = staff) action = show_collection_list
+
+## --- AKTIONEN DES SEMESTERAPPARATS ---
 if ( $ci  == 'collection'  AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit') )
 {
   if      ( 1 == 2 ) {;}
   else if ( $ca  == 'show_collection_list'   )  { $COLLMGR -> showCollectionList        ( $I ) ; }  ## ++ 1 STAFF:: SA wird angezeigt (deren Editierbarkeit ist abhängig von der Rolle des Nuters)
   else if ( $ca  == 'show_collection'        )  { $COLLMGR -> showCollection            ( $I ) ; }  ## ++ 2 SA wird angezeigt (deren Editierbarkeit ist abhängig von der Rolle des Nuters)
-  else if ( $ca  == 'show_media_list'        )  { $COLLMGR -> showMediaList             ( $I ) ; }  ## ++ STAFF:: Zeigt die Liste der SAs, geoperatort nach deren STATUS
+  else if ( $ca  == 'show_media_list'        )  { $COLLMGR -> showMediaList             ( $I ) ; }  ## ++    STAFF:: Zeigt die Liste der Medien der SAs, gefiltert nach deren STATUS (und ev. Sem)
   else if ( $ca  == 'add_media'              )  { $COLLMGR -> showNewMediaForm          ( $I ) ; }  ## ++ 3 Eingabemaske für Mediensuche anzeigen   [Neues Medium dem SA hinzufügen]
   else if ( $ca  == 'new_init'               )  { $COLLMGR -> saveNewCollection         ( $I ) ; }  ## Metadaten des NEUEN SA wird gepeichert -> SA wird angelegt
   else if ( $ca  == 'coll_meta_edit'         )  { $COLLMGR -> editColMetaData           ( $I ) ; }  ## Anzeigen des Formulars um Metadaten des SA zu bearbeiten
@@ -56,18 +56,13 @@ if ( $ci  == 'collection'  AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit')
   else if ( $ca  == 'import'                 )  { $COLLMGR -> importCollection          ( $I ) ; }  ## Importiert den SA
   else if ( $ca  == 'lms-download'           )  { $COLLMGR -> lmsDownload               ( $I ) ; }  ## Importiert Medien-Metadaten direkt aus Beluga Core
   else if ( $ca  == 'getMediaList'           )  { $COLLMGR -> getMediaList              ( $I ) ; }  ## Importiert Medien-Metadaten direkt aus Beluga Core
- #else if ( $ca  == 'coll_delete'            )  { $COLLMGR -> deleteCollection          ( $I ) ; }  ## SAs wird angezeigt (deren Editierbarkeit ist abhängig von der Rolle des Nuters)
- #else if ( $ca  == 'coll_revive'            )  { $COLLMGR -> setCollectionState_active ( $I ) ; }  ## Zustand 3 = 'AKTIV'
- #else if ( $ca  == 'coll_release'           )  { $COLLMGR -> setCollectionState_inactive($I ) ; }  ## Zustand 5 = 'AUFGELÖST'
- #else if ( $ca  == 'coll_delete'            )  { $COLLMGR -> setCollectionState_delete ( $I ) ; }  ## Zustand 6 = 'GELÖSCHT'/Mülleimer
- #else if ( $ca  == 'kill'                   )  { $COLLMGR -> ereaseCollection          ( $I ) ; }  ## Löscht SA endgültig
 }
 
 
-else if (   $cl  ==  1   AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit'))
+else if (   $cl  ==  1   AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit'))   ## --- cl = 1 -- Location = phys Semesterapp
 {
   if      ( 1 == 2 ) {;}
-  else if ( $ca  == 'search'                )  {  $MEDIAMGR -> searchMediaOnLibraryServer    ( $I ); }   ## ++ 4 Suchprozess des Mediums wird gestartet
+  else if ( $ca  == 'search'                )  {  $MEDIAMGR -> searchMediaOnLibraryServer    ( $I ); }   ## ++ 4 OPAC -- Suchprozess des Mediums wird gestartet
   else if ( $ca  == 'annoteNewMedia'        )  {  $MEDIAMGR -> annoteNewMedia_showForm       ( $I ); }   ## ++ 5 Eingabemaske Metadaten für Buch Annotation anzeigen
   else if ( $ca  == 'save'                  )  {  $MEDIAMGR -> saveMediaMetaData             ( $I ); }   ## ++ 6 Metadaten eines neues Buch speichern
   else if ( $ca  == 'suggest'               )  {  $MEDIAMGR -> saveNewMediaSuggest           ( $I ); }   ## Metadaten eines Literaturvoschlag speichern
@@ -84,8 +79,8 @@ else if (   $cl  ==  1   AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit'))
   else if ( $ca  == 'new_email'             )  {  $MEDIAMGR -> showMailForm                  ( $I ); }   ## ActionHandler: Mailformular für Infomail an Nutzer
   else if ( $ca  == 'cancel_order'          )  {  $MEDIAMGR -> cancelMedia                   ( $I ); }   ## ActionHandler: Buchbestellung wird storiert
 }
- 
-else if (  ( $cl == 2  OR $cl  == 3 OR $cl  == 5)   AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit'))
+
+else if (  ( $cl == 2  OR $cl  == 3 OR $cl  == 5)   AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit'))  ## cl = 2 Location =  Bibliothek  --  3 Loc =  online --  5 Loc = externe Biblio
 {
   if      ( 1 == 2 ) {;}
   else if ( $ca  == 'annoteNewMedia'        )  {  $MEDIAMGR -> annoteNewMedia_showForm       ( $I ); }   ## Eingabemaske Metadaten für Buch Annotation anzeigen
@@ -101,7 +96,8 @@ else if (  ( $cl == 2  OR $cl  == 3 OR $cl  == 5)   AND   $UTIL -> hasRole( $cu,
   else if ( $ca  == 'new_email'             )  {  $MEDIAMGR -> showMailForm                  ( $I ); }   ## ActionHandler: Erwebungsvorschlag (nach 0 Suchtreffern)
 }
 
-else if (  ( $cl  == 4)   AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit'))
+
+else if (  ( $cl  == 4)   AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit'))   ## cl = 4  Location =  Scanservice
 {
   if      ( 1 == 2 ) {;}
   else if ( $ca  == 'annoteNewMedia'        )  {  $MEDIAMGR -> annoteNewMedia_showForm       ( $I ); }   ## Eingabemaske Metadaten für Buch Annotation anzeigen
@@ -123,16 +119,16 @@ else if (  ( $cl  == 4)   AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit'))
 ## ----------------------------------------------------------------------------------------
 
 if ( $ci  == 'email' AND $UTIL->hasRole( $cu,'staff', 'edit', 'mailuser'  ) )
-{  # deb($I );
-  if      ( 1 == 2 ) {;}
+{ if      ( 1 == 2 ) {;}
   else if ( $ca  == 'sendmail'              )  {  $MEDIAMGR -> send_email                    ( $I ); }    ## Email wird verschickt
   else if ( $ca  == 'HIBSAPmail'            )  {  $UTIL     -> sendBIB_APmails               (    ); }    ## Cronjob: HIBS Ansprechpartner Infomail
 }
 
+
 if ( $ci  == 'collection' AND $UTIL->hasRole( $cu,'staff', 'edit', 'mailuser'  ))
 { if      ( 1 == 2 ) {;}
-  else if ( $ca  == 'updateSem'             )  {  $COLLMGR  -> updateSASem                    ( $I ); }   ##  SA wird für das nächste Semester genutzt. Bisheriger SA - Bücher im physSA werden zu reienen Literatur Hinweisen
-  else if ( $ca  == 'ERASA'                 )  {  $COLLMGR  -> setCollectionForNextSem        ( $I ); }   ##  Email wird verschickt
+  else if ( $ca  == 'updateSem'             )  {  $COLLMGR  -> updateSASem                   ( $I ); }   ##  SA wird für das nächste Semester genutzt. Bisheriger SA - Bücher im physSA werden zu reienen Literatur Hinweisen
+  else if ( $ca  == 'ERASA'                 )  {  $COLLMGR  -> setCollectionForNextSem       ( $I ); }   ##  Email wird verschickt
   else if ( $ca  == 'ims-download'          )  {  $MEDIAMGR -> searchMediaOnLibraryServer    ( $I ); }   ##  IMPORT DER BELUGA Liste
   else if ( $ca  == 'purchase_suggestion'   )  {  $MEDIAMGR -> purchase_suggestion           ( $I ); }   ##  Erwebungsvorschlag
 }

@@ -1404,10 +1404,9 @@ a.hitlink_print:hover, a.hitlink_electronic:hover , a.hitlink_cd-rom:hover
   color:#000;
   margin-right: 5px;
   padding:1px;
-  padding-right:35px;
+  padding-right:20px;
   text-align:  left; 
   background-color: #FAFAFA;
-  width: 450px;
 }
 
 .border2top
@@ -1470,12 +1469,10 @@ fieldset
 
 a.medHead2
 {
-  font-size: 15px;
+  font-size: 13px;
   color: #000000 !important;
   font-weight: 600;
-
 }
-
 
 a.medHead3
 {
@@ -1495,13 +1492,14 @@ a.medHead3
     background-color: #DDD;
 }
 
-.bgHAW2x:hover {
+.bgHAW2x:hover
+{
   background-color: #FFF;
   color: #000;
 }
 
-
-.editmedia {
+.editmedia
+{
   vertical-align: top;
   font-weight: bold;
   font-size: 12px;

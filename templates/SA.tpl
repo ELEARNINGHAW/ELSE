@@ -1,16 +1,16 @@
 {* $di, $ci, $user, $operator, $CFG, $MEDIA_STATE *}
 {$FB = $FACHBIB[$ci.bib_id].bib_name|escape}
-{if $di.shelf_remain == 1  }  {$whereIs =    "{$FB} - {$CFG[ 'MEDIA_PLACE'][ 1 ]}"} {/if}{* Semesterapp    / SA Medium           *}
-{if $di.shelf_remain == 2  }  {$whereIs =              $CFG[ 'MEDIA_PLACE'][ 2 ]}   {/if}{* Bibliothek     / LitHinweis Buch     *}
-{if $di.shelf_remain == 3  }  {$whereIs =              $CFG[ 'MEDIA_PLACE'][ 3 ]}   {/if}{* online         / PDF                 *}
-{if $di.shelf_remain == 4  }  {$whereIs =              $CFG[ 'MEDIA_PLACE'][ 4 ]}   {/if}{* Scanservice    / Medienserver        *}
-{if $di.shelf_remain == 5  }  {$whereIs =              $CFG[ 'MEDIA_PLACE'][ 5 ]}   {/if}{* externe Biblio / Titel nicht aus HAW-Bestand -LitHinweis Buch             *}
-{if $di.doc_type_id  == 6  }  {$whereIs =              $CFG[ 'MEDIA_PLACE'][ 6 ]}   {/if}{* Artikel                              *}
-{if $di.doc_type_id  == 7  }  {$whereIs =              $CFG[ 'MEDIA_PLACE'][ 7 ]}   {/if}{* eArtikel                             *}
+{if $di.location_id == 1  }  {$whereIs =    "{$FB} - {$CFG[ 'MEDIA_LOC'][ 1 ]}"} {/if}{* Semesterapp    / SA Medium           *}
+{if $di.location_id == 2  }  {$whereIs =              $CFG[ 'MEDIA_LOC'][ 2 ]}   {/if}{* Bibliothek     / LitHinweis Buch     *}
+{if $di.location_id == 3  }  {$whereIs =              $CFG[ 'MEDIA_LOC'][ 3 ]}   {/if}{* online         / PDF                 *}
+{if $di.location_id == 4  }  {$whereIs =              $CFG[ 'MEDIA_LOC'][ 4 ]}   {/if}{* Scanservice    / Medienserver        *}
+{if $di.location_id == 5  }  {$whereIs =              $CFG[ 'MEDIA_LOC'][ 5 ]}   {/if}{* externe Biblio / Titel nicht aus HAW-Bestand -LitHinweis Buch             *}
+{if $di.doc_type_id  == 6  }  {$whereIs =              $CFG[ 'MEDIA_LOC'][ 6 ]}   {/if}{* Artikel                              *}
+{if $di.doc_type_id  == 7  }  {$whereIs =              $CFG[ 'MEDIA_LOC'][ 7 ]}   {/if}{* eArtikel                             *}
 {$edit_mode  = "0"}
 {$staff_mode = "0"}
 
-{$whereIs2 =              $CFG[ 'MEDIA_PRINT'][ $di.shelf_remain ]}
+{$whereIs2 =              $CFG[ 'MEDIA_PRINT'][ $di.location_id ]}
 
 {$doctypedescription = $DOC_TYPE[ $di.doc_type_id ]['description'] }
 {$doctype            = $DOC_TYPE[ $di.doc_type_id ]['item'       ] }
@@ -20,7 +20,7 @@
 
 {if $medium.id == $di.id}  {$current = "currentDoc"} {else}  {$current = "XXX"}   {/if}{* Das zuletzt angeklickte Medium wird zur Unterscheidung in der Liste farblich unterlegt*}
 
-<div id="{$di.ppn}" class="mediaInSA medium_{$di.shelf_remain} {$current} " >
+<div id="{$di.ppn}" class="mediaInSA medium_{$di.location_id} {$current} " >
 <a name="{$di.ppn}" style="position:relative; top:-220px;"></a>
 
 {if  $di.doc_type_id  == 16}
@@ -32,7 +32,7 @@
 
 <table>   {$preMedTyp = ''}
 
-{if ($di.shelf_remain == 4)}{$preMedTyp = '[SCAN] '  }{/if}
+{if ($di.location_id == 4)}{$preMedTyp = '[SCAN] '  }{/if}
 {if $operator.mode      == "print"      }  <tr><td><div class="mediaListHeader">TYP:       </div></td><td><div  class="mediaTxt" >{$whereIs2}            </div>            {/if}
 {if $di.title           != ""           }  <tr><td><div class="mediaListHeader">Titel:     </div></td><td><div  class="mediaTxt" >{$di.title}            </div>            {/if}
 {if $di.author          != ""           }  <tr><td><div class="mediaListHeader">Autor*in:  </div></td><td><div  class="mediaTxt" >{$di.author}           </div> </td></tr> {/if}
@@ -67,7 +67,7 @@
       {foreach item=v from=$cond}
         {if ($k == "state") and ($v == $MEDIA_STATE[ $di.state_id ].name) }{$match ="1"}  {/if}
         {if ($k == "mode" ) and ($v == $user.role_name )                  }{$match ="1"}  {/if}
-        {if ($k == "loc"  ) and ($v == $di.shelf_remain )                 }{$match ="1"}  {/if}
+        {if ($k == "loc"  ) and ($v == $di.location_id )                 }{$match ="1"}  {/if}
       {/foreach}
 
       {if $match == 0}  {$visible = "0"}  {/if}
@@ -75,7 +75,7 @@
   {/if}
   {if $visible == 1}
     {if $CFG['CONF'][ 'ajaxON' ]} {* AJAX *} <a class='icon' href='javascript:;' onCLick="{literal}${/literal}.ajax({literal}{{/literal}url: 'index.php?dc_collection_id={$ci.dc_collection_id}&item={$di.item}&action={$action.button}&r={$user.role_encode}&d_info={$di.id}#{$di.id}' ,type: 'GET', success: function(data){literal}{{/literal}{literal}${/literal}('.{$di.id}').html(data);{literal}}}{/literal});"><img  class="icon" title="{$action.button_label}" src="img/svg/{$action.button}.svg" /></a>
-    {else}                {* HTTP *} <a class="icon" href="index.php?loc={$di.shelf_remain}&dc_collection_id={$ci.dc_collection_id}&amp;item={$di.item}&amp;action={$action.button}&amp;r={$user.role_encode}&amp;document_id={$di.id}#{$di.id}">                                                                                                                                                                              <img  class="icon" title="{$action.button_label}" src="img/svg/{$action.button}.svg" /></a>
+    {else}                {* HTTP *} <a class="icon" href="index.php?loc={$di.location_id}&dc_collection_id={$ci.dc_collection_id}&amp;item={$di.item}&amp;action={$action.button}&amp;r={$user.role_encode}&amp;document_id={$di.id}#{$di.id}">                                                                                                                                                                              <img  class="icon" title="{$action.button_label}" src="img/svg/{$action.button}.svg" /></a>
     {/if}
   {/if}
 {/foreach}
