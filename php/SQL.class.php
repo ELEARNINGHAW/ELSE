@@ -41,7 +41,7 @@ physicaldesc       = "' . $this -> es ( $book -> get_physicaldesc      ( ) ) . '
 state_id           = "' . $this -> es ( $book -> get_state_id          ( ) ) . '",
 notes_to_staff     = "' . $this -> es ( $book -> get_notes_to_staff    ( ) ) . '",
 notes_to_studies   = "' . $this -> es ( $book -> get_notes_to_studies  ( ) ) . '",
-shelf_remain       = "' . $this -> es ( $book -> get_shelf_remain      ( ) ) . '",
+location_id       = "' . $this -> es ( $book -> get_location_id      ( ) ) . '",
 
 created            = NOW() ,
 last_modified      = NOW() ,
@@ -116,7 +116,7 @@ if ( $res )
       $m -> set_signature            ( $row[ 'signature'           ] );
       $m -> set_ppn                  ( $row[ 'ppn'                 ] );
       $m -> set_doc_type_id          ( $row[ 'doc_type_id'         ] );
-      $m -> set_shelf_remain         ( $row[ 'shelf_remain'        ] );
+      $m -> set_location_id          ( $row[ 'location_id'         ] );
       $m -> set_physicaldesc         ( $row[ 'physicaldesc'        ] );
       $m -> set_collection_id        ( $row[ 'collection_id'       ] );
       $m -> set_notes_to_studies     ( $row[ 'notes_to_studies'    ] );
@@ -226,7 +226,6 @@ function getCollection( $colID = null , $filter = false ,  $short = null )
     while ( $row = mysqli_fetch_assoc ( $res ) )
     {
       $ret[ $row[ 'c_id' ] ] =  $this -> getCollectionMetaData( $row[ 'c_id' ] );                                       ## Metadaten des Semesterapparats
- 
       $dl                    =  $this -> getDokumentList ( $row[ 'c_id' ] , $filter );                                  ## Alle/gefilterte Medien des SA ( $doc_ID, $doc_type_id = null , $doc_state_id = null  )
 
       if ( $dl )
@@ -516,7 +515,6 @@ function get_med_state( $collection_id )
       $m->set_last_modified    ( $row[ 'last_modified'     ] );
       $m->set_last_state_change( $row[ 'last_state_change' ] );
       $m->set_location_id      ( $row[ 'location_id'       ] );
-      $m->set_shelf_remain     ( $row[ 'shelf_remain'      ] );
     }
     }
 
@@ -692,7 +690,7 @@ SET `state_id` = '" . $this->es ( $state ) . "' WHERE `document`.`id` = " . $thi
         {
           $SQL = " UPDATE document SET ";
           $SQL .= " state_id              = \"" . $row[ 'new_state_id' ] . "\"";
-          $SQL .= " , shelf_remain        =  1 ";
+          $SQL .= " , location_id        =  1 ";
           $SQL .= " , doc_type_id         =  2 ";
           $SQL .= " WHERE `collection_id` = \"" . $IC[ 'collection_id' ] . "\"  AND  id = " . $row[ 'id' ];
           $res3 = mysqli_query ( $this->DB , $SQL );
@@ -760,7 +758,7 @@ SET `state_id` = '" . $this->es ( $state ) . "' WHERE `document`.`id` = " . $thi
   {
     $SQL = " UPDATE document SET ";
     $SQL .= " state_id              =  3 ";
-    #$SQL .= " , shelf_remain        =  1 ";
+    #$SQL .= " , location_id        =  1 ";
     $SQL .= " , doc_type_id         =  2 ";
     $SQL .= " WHERE `collection_id` = \"" . $collectionData[ 'collection_id' ] . "\"  AND  doc_type_id =  1";
     $res3 = mysqli_query ( $this->DB , $SQL );
@@ -868,7 +866,7 @@ function importMedium( $collection_id , $medium , $fp)
     }
     else if ( isset( $med[ 4 ] )  AND ($rowCnt == $spacerCnt )   ) ## Zu importierender Datensatz hat zumindest ein Titel UND es werden soviele Elemente aus der Import-Dateizeile eingelesen wie auch erwartet werden
     {
-      #### if ( $med[ 0] == '1'  AND ( $med[ 15 ] == 1 ) ) { $med[ 2 ] = 10; }  ## IF doc_type_id = 1 (Buch) AND shelf_remain = 1 (SA) -> state_id = 10 (contiue)
+      #### if ( $med[ 0] == '1'  AND ( $med[ 15 ] == 1 ) ) { $med[ 2 ] = 10; }  ## IF doc_type_id = 1 (Buch) AND location_id = 1 (SA) -> state_id = 10 (contiue)
     
       $SQL = "INSERT INTO document SET ";
       foreach (  $_SESSION[ 'CFG' ][ 'EXPO_IMPO' ] as $exim )
@@ -931,7 +929,7 @@ function getSAid( $SEM )
     if ( $medium->get_physicaldesc    ( ) != '' ) { $SQL .= " AND `physicaldesc`       = \"" . $this->es ( $medium->get_physicaldesc      ( ) ) . "\""; }
     if ( $medium->get_state_id        ( ) != '' ) { $SQL .= " AND `state_id`           = \"" . $this->es ( $medium->get_state_id          ( ) ) . "\""; }
     if ( $medium->get_notes_to_staff  ( ) != '' ) { $SQL .= " AND `notes_to_staff`     = \"" . $this->es ( $medium->get_notes_to_staff    ( ) ) . "\""; }
-   #if ( $medium->get_shelf_remain    ( ) != '' ) { $SQL .= " AND `shelf_remain`       = \"" . $this->es ( $medium->get_shelf_remain      ( ) ) . "\""; }
+   #if ( $medium->get_location_id    ( ) != '' ) { $SQL .= " AND `location_id`       = \"" . $this->es ( $medium->get_location_id      ( ) ) . "\""; }
     if ( $medium->get_notes_to_studies( ) != '' ) { $SQL .= " AND `notes_to_studies`   = \"" . $this->es ( $medium->get_notes_to_studies  ( ) ) . "\""; }
     $SQL .= " ORDER BY `id` DESC";
  

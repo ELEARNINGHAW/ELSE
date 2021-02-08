@@ -71,7 +71,7 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
   $tpl_vars[ 'collectionList' ]                  = $this -> getAllCollection ( $I )      ;
   $tpl_vars[ 'user'           ]                  = $I[ 'currentUser'                     ] -> obj2array ();
   $tpl_vars[ 'operator'       ]                  = $I[ 'operator'                        ] -> obj2array ();
-  $tpl_vars[ 'SEMESTER'       ]    =   array_keys( $this -> conf [ 'SEM'                      ] ); #$conf[ 'SEMESTER' ] ;
+  $tpl_vars[ 'SEMESTER'       ]                  =   array_keys( $this -> conf [ 'SEM'   ] ); #$conf[ 'SEMESTER' ] ;
   $tpl_vars[ 'html_options'   ][ 'DEP'     ]     = $_SESSION[ 'DEP_2_BIB'                ]; ## $this -> SQL -> getAllDepartments() ;             ## Liste aller Departments (Categories)
   $tpl_vars[ 'html_options'   ][ 'FAK'     ]     = $_SESSION[ 'FAK'                      ]; ## Liste aller Fakultäten
   $tpl_vars[ 'html_options'   ][ 'FACHBIB' ]     = $_SESSION[ 'FACHBIB'                  ]; ## Liste aller Fachbibs
@@ -84,7 +84,7 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
 
   ##-------------------------------------------------------------------------------------------------------------------
 
-  $this -> RENDERER -> do_template ( 'index.tpl' , $tpl_vars , TRUE ) ;
+  $this -> RENDERER -> do_template ( 'collection_list.tpl' , $tpl_vars , TRUE ) ;
 }
 
 ###############################################################################################
@@ -470,10 +470,10 @@ function getMediaList( $I )
         if( isset( $med[ 'signature'   ][ 0 ] ) ) { $m -> set_signature     ( trim ( $med[ 'signature'    ]  ) ); }
         if( isset( $med[ 'sigel'       ][ 0 ] ) ) { $m -> set_sigel         ( trim ( $med[ 'sigel'        ]  ) ); }
         if( isset( $med[ 'format'      ][ 0 ] ) ) { $m -> set_format        ( trim ( $med[ 'format'       ]  ) );
-            $m -> set_doc_type      ( trim ( $med[ 'format'       ]  ) );
-            $m -> calcDocTypeID();
-            $m -> calcItem();
-        }
+                                                    $m -> set_doc_type      ( trim ( $med[ 'format'       ]  ) );
+                                                    $m -> calcDocTypeID();
+                                                    $m -> calcItem();
+                                                  }
  
         $isDublette = $this->checkDoublette($I['currentCollection']->get_collection_id(),  $m -> get_ppn() );
         if (! $isDublette )

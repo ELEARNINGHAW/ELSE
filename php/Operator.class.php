@@ -11,7 +11,7 @@ class Operator
   public $url;
   public $history;
   public $mediaListID;
-  public $shelf_remain;
+  public $location_id;
 
   function __construct()
   {
@@ -25,7 +25,7 @@ class Operator
     $this -> url              = '#' ;
     $this -> history          = '' ;
     $this -> mediaListID      = '' ;
-    $this -> shelf_remain     = '' ;
+    $this -> location_id      = '' ;
   }
 
   function get_item               ()   { return $this -> item          ; }
@@ -38,7 +38,7 @@ class Operator
   function get_url                ()   { return $this -> url           ; }
   function get_history            ()   { return $this -> history       ; }
   function get_mediaListID        ()   { return $this -> mediaListID   ; }
-  function get_shelf_remain       ()   { return $this -> shelf_remain  ; }
+  function get_location_id        ()   { return $this -> location_id   ; }
 
 
   function set_item                 ( $val )  { return $this -> item          =  $val ; }
@@ -51,7 +51,7 @@ class Operator
   function set_url                  ( $val )  { return $this -> url           =  $val ; }
   function set_history              ( $val )  { return $this -> history       =  $val ; }
   function set_mediaListID          ( $val )  { return $this -> mediaListID   =  $val ; }
-  function set_shelf_remain         ( $val )  { return $this -> shelf_remain  =  $val ; }
+  function set_location_id          ( $val )  { return $this -> location_id   =  $val ; }
 
 
   function obj2array()              {  return json_decode(json_encode( $this  ), true);  }

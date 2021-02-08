@@ -1,7 +1,7 @@
 {if $user.role_name == "staff" OR  $user.role_name == "admin" OR  $operator.mode == 'suggest' } {$restricted  = "" }  {else}  {$restricted = "disabled=\"yes\""}  {/if}
   
-{if  $operator.msg == "shelf_remain"} {$color= "red"} {$bw ="2"}
-{else}                                {$color= "AAA"} {$bw ="1"}
+{if  $operator.msg == "location_id"} {$color= "red"} {$bw ="2"}
+{else}                               {$color= "AAA"} {$bw ="1"}
 {/if}
 
 {if $maxElement > 0 OR $medium.doc_type_id == 16}
@@ -9,12 +9,12 @@
 {$SAready    = $DOC_TYPE[ $medium.doc_type_id ][ 'SA-ready'    ] }
 {$doctypetxt = $DOC_TYPE[ $medium.doc_type_id ][ 'description' ] }
 
-{if ($medium.shelf_remain == 0)}  {$c0 = 'checked="checked"' } {else} {$c0 = ''} {/if}
-{if ($medium.shelf_remain == 1)}  {$c1 = 'checked="checked"' } {else} {$c1 = ''} {/if}
-{if ($medium.shelf_remain == 2)}  {$c2 = 'checked="checked"' } {else} {$c2 = ''} {/if}
-{if ($medium.shelf_remain == 3)}  {$c3 = 'checked="checked"' } {else} {$c3 = ''} {/if}
-{if ($medium.shelf_remain == 4)}  {$c4 = 'checked="checked"' } {else} {$c4 = ''} {/if}
-{if ($medium.shelf_remain == 5)}  {$c5 = 'checked="checked"' } {else} {$c5 = ''} {/if}
+{if ($medium.location_id == 0)}  {$c0 = 'checked="checked"' } {else} {$c0 = ''} {/if}
+{if ($medium.location_id == 1)}  {$c1 = 'checked="checked"' } {else} {$c1 = ''} {/if}
+{if ($medium.location_id == 2)}  {$c2 = 'checked="checked"' } {else} {$c2 = ''} {/if}
+{if ($medium.location_id == 3)}  {$c3 = 'checked="checked"' } {else} {$c3 = ''} {/if}
+{if ($medium.location_id == 4)}  {$c4 = 'checked="checked"' } {else} {$c4 = ''} {/if}
+{if ($medium.location_id == 5)}  {$c5 = 'checked="checked"' } {else} {$c5 = ''} {/if}
 
 {if $medium.doc_type_id == 16 }
   <h3 style="margin:10px; margin-bottom:0px; margin-top:0px; padding:10px; " class="bgDef bg{$collection.bib_id}">Erwerbungsvorschlag für: {$collection.title}
@@ -90,24 +90,24 @@
     <div style="border:{$bw}px solid {$color}; float: left;  height:80px; padding: 5px; font-size: 12px; width: calc(100% - 15px); ">
 
         {if  ( $medium.sigel == 'HAW-Hamburg' ) OR $medium.doc_type_id == 16 }
-            <input {$c2} value="2" class='i' type="radio" name="shelf_remain" id="radio-2" {$checked}><label for="radio-2"><span style="font-weight:700; "> Literaturhinweis - verbleibt im Regal der Bibliothek.     </span></label><br/>
+            <input {$c2} value="2" class='i' type="radio" name="location_id" id="radio-2" {$checked}><label for="radio-2"><span style="font-weight:700; "> Literaturhinweis - verbleibt im Regal der Bibliothek.     </span></label><br/>
         {else}
-            <input {$c2} value="5" class='i' type="radio" name="shelf_remain" id="radio-5" {$checked}><label for="radio-5"><span style="font-weight:700; "> Titel nicht aus HAW-Bestand, daher Literaturhinweis   </span></label><br/>
+            <input {$c2} value="5" class='i' type="radio" name="location_id" id="radio-5" {$checked}><label for="radio-5"><span style="font-weight:700; "> Titel nicht aus HAW-Bestand, daher Literaturhinweis   </span></label><br/>
         {/if}
 
       {if $semApp}
-      <input {$c1} value="1" class='i' type="radio" name="shelf_remain" id="radio-1"><label for="radio-1"><span style="font-weight:700; "> Semesterapparat  -  wird in Ihren phys. Semesterapparat eingestellt. </span></label>
+      <input {$c1} value="1" class='i' type="radio" name="location_id" id="radio-1"><label for="radio-1"><span style="font-weight:700; "> Semesterapparat  -  wird in Ihren phys. Semesterapparat eingestellt. </span></label>
       {/if}
 
       {if $scanservicePrint}
-      <input {$c3} value="4" class='i' type="radio" name="shelf_remain" id="radio-3"><label for="radio-3"><span style="font-weight:700; "> Scanauftrag  - Teile dieses Printmediums als PDF. </span></label>
+      <input {$c3} value="4" class='i' type="radio" name="location_id" id="radio-3"><label for="radio-3"><span style="font-weight:700; "> Scanauftrag  - Teile dieses Printmediums als PDF. </span></label>
       {/if}
 
       {if $scanserviceArticle}
-      <input {$c4} value="4" class='i' type="radio" name="shelf_remain" id="radio-4"><label for="radio-4"><span style="font-weight:700; "> Scanauftrag  -  Diesen Artikel als PDF. </span></label>
+      <input {$c4} value="4" class='i' type="radio" name="location_id" id="radio-4"><label for="radio-4"><span style="font-weight:700; "> Scanauftrag  -  Diesen Artikel als PDF. </span></label>
       {/if}
 
-      <input {$c0} value="0"           type="radio" name="shelf_remain" id="radio-1" style="visibility: hidden;">
+      <input {$c0} value="0"           type="radio" name="location_id" id="radio-1" style="visibility: hidden;">
     </div>
    </tr>
 {/if}

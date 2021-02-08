@@ -21,7 +21,6 @@ class Medium
   public  $collection_id;
   public  $location_id;
   public  $state_id;
-  public  $shelf_remain;
   public  $notes_to_studies;
   public  $notes_to_staff;
   public  $created;
@@ -48,8 +47,7 @@ function __construct( )
   $this -> physicaldesc                 = '';
   $this -> collection_id                = '';
   $this -> state_id                     = '';
-  $this -> location_id                     = '';
-  $this -> shelf_remain                 = '';
+  $this -> location_id                 = '';
   $this -> notes_to_studies             = '';
   $this -> notes_to_staff               = '';
   $this -> created                      = '';
@@ -76,7 +74,6 @@ function get_physicaldesc     ()   { return $this -> physicaldesc         ; }
 function get_collection_id    ()   { return $this -> collection_id        ; }
 function get_state_id         ()   { return $this -> state_id             ; }
 function get_location_id      ()   { return $this -> location_id          ; }
-function get_shelf_remain     ()   { return $this -> shelf_remain         ; }
 function get_notes_to_studies ()   { return $this -> notes_to_studies     ; }
 function get_notes_to_staff   ()   { return $this -> notes_to_staff       ; }
 function get_created          ()   { return $this -> created              ; }
@@ -102,7 +99,6 @@ function set_physicaldesc                ( $val )  {        $this -> physicaldes
 function set_collection_id               ( $val )  { return $this -> collection_id               =  $val ; }
 function set_state_id                    ( $val )  { return $this -> state_id                    =  $val ; }
 function set_location_id                 ( $val )  { return $this -> location_id                 =  $val ; }
-function set_shelf_remain                ( $val )  { return $this -> shelf_remain                =  $val ; }
 function set_notes_to_studies            ( $val )  { return $this -> notes_to_studies            =  $val ; }
 function set_notes_to_staff              ( $val )  { return $this -> notes_to_staff              =  $val ; }
 function set_created                     ( $val )  { return $this -> created                     =  $val ; }
@@ -118,10 +114,12 @@ function calcDocType()
 {
   $pos = $this -> get_doc_type_id() ;
  
-  if (isset($_SESSION[ 'DOC_TYPE' ][ $pos  ])) {
+  if (isset($_SESSION[ 'DOC_TYPE' ][ $pos  ]))
+  {
     $dt = $_SESSION['DOC_TYPE'][$pos];
   }
-  else {
+  else
+  {
     $dt =  0 ;
   }
  
@@ -145,8 +143,5 @@ function calcItem()  ## docTypeID and Item
     {  $this -> set_item(  $dt[ 'item' ] ); }
   }
 }
-  
-  
-
 
 }
