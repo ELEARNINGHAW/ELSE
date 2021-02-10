@@ -21,7 +21,7 @@
   fadeDelay: 1.0          // Point during the overlay's fade-in that the modal begins to fade in (.5 = 50%, 1.5 = 150%, etc.)
   };
 </script>
-
+</div>
 </body>
 </html>
 {/if}

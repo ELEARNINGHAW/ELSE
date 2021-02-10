@@ -11,7 +11,7 @@
 {else}                           <div class="depName bg{$filter.bib}" >  Semesterapparate                                                  </div>
 {/if}
 
-<div style="position: absolute; display: block; background-color: #eeeeee; width:100%;">
+<div style="position: absolute; display: block; background-color: #FBFBFB; width:100%;">
 <div style="position: relative ; display: block; background-color: #9B410E; width:790px;">
 
   {foreach key=key item=c name=collectionList from=$collectionList }
@@ -34,7 +34,7 @@
         <div class='SAHeadline' style="display: block;" >
           <a href="index.php?item=collection&action=show_collection&dc_collection_id={$c[j].dc_collection_id}&amp;r={$user.role_id}">
           <div class="name2 semapNameListe"  >{$c[j].title|truncate:85:"...":true}</div>
-          <div class="name  semapNameListeNumbers bg{$c[j].bib_id} ">[{$c[j].MedState.med_state_GE}] / {$c[j].bib_id}</div>
+          <div class="name  semapNameListeNumbers bgc{$c[j].bib_id} ">[{$c[j].MedState.med_state_GE}] / {$c[j].bib_id}</div>
           </a>
         </div>
     {/if}

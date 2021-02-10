@@ -382,16 +382,39 @@ display:block;
 }
 
 
+.cTD1, .cWuS,.cLS,.cTI,.cDMI,.cTWI1,.cTWI2,.cSP,.cHAW
+{
+    font-weight: 700;
+    color:#000;
+}
+
 
 .cTD1 {  color: #efe96d }
 .cWuS { color: #C60C30 !important; }
 .cLS { color: #E98300 !important; }
 .cTI { color: #0E905A !important; }
 .cDMI { color:#008B95 !important; }
-.cTWI1 { color:#7f2049 !important; }
+.cTWI1 { color:#7f2049 !important}
 .cTWI2 { color:#0E905A !important; }
 .cSP  { color:#C60C30 !important;  }
-.cHAW  {  color:#002664 !important; }
+.cHAW  {  color:#002664 !important }
+
+
+.bgcTD1  { background-color: #efe96d !important; color:#FFF; }
+.bgcWuS  { background-color: #C60C30 !important; color:#FFF; }
+.bgcLS   { background-color: #E98300 !important; color:#FFF; }
+.bgcTI   { background-color: #0E905A !important; color:#FFF; }
+.bgcDMI  { background-color: #008B95 !important; color:#FFF; }
+.bgcTWI1 { background-color: #7f2049 !important; color:#FFF; }
+.bgcTWI2 { background-color: #0E905A !important; color:#FFF; }
+.bgcSP   { background-color: #C60C30 !important; color:#FFF; }
+.bgcHAW  { background-color: #002664 !important; color:#FFF; }
+
+
+
+
+
+
 
 .bgTWI1  /* TWI I */
 {
@@ -645,7 +668,6 @@ a.name
     padding-right: 0px;
     padding-left: 0px;
 
-    color: #000000;
     margin-left: 0px;
     font-size: 13px;
     margin: 2px;
@@ -728,11 +750,17 @@ a.name
     float:left;
 }
 
+.content {
+    max-width: 500px;
+    margin: auto;
+}
+
+
 .dozentLink , .fachbibName
 {
     text-decoration: none;
     color: #000000;
-    background-color: #E0E0E0;
+
     padding: 5px;
 }
 
@@ -743,7 +771,7 @@ a.name
 
 .column
 {
-    width:75%;
+    width:800px;
 }
 
 
