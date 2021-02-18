@@ -67,12 +67,12 @@ Neuen Semesterapparat anlegen für: {$collection.title}
 
 <div style=" margin:20px; margin-top:0px;  padding:10px; border:solid 1px black;height:260px ">
 
-<div style="position: absolute; height: 240px; width:160px; left:120px; margin:2px;font-size: 30px; border:solid 0px black;">
+<span  style="position: relative; height: 240px; width:160px;  ; margin:2px;font-size: 30px; border:solid 0px black;">
 <a class ="exportBt"   href="index.php?item=collection&amp;action=export&amp;dc_collection_id={$collection.dc_collection_id}&amp;redirect=SA&amp;r={$user.role_id}" title="Export des Semesterapparats">
     <img style="width: 240px; height: 240px;" src="img/svg/export.svg"  /></a>
-</div>
+</span>
 
-<div style="position: absolute; height: 220px; width:225px; left:400px; margin:2px;font-size: 25px; border:solid 5px black;">
+<span style="position: absolute; height: 220px; width:225px;   margin:2px;font-size: 25px; border:solid 5px black;">
  
 <form action="index.php?item=collection&amp;action=import&amp;dc_collection_id={$collection.dc_collection_id}" method="GET"
   class="dropzone"
@@ -81,7 +81,7 @@ Neuen Semesterapparat anlegen für: {$collection.title}
 >
 
 </form>
-</div>
+</span>
 
 <script>
 
