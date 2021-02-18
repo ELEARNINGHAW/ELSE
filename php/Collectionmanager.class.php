@@ -657,17 +657,18 @@ function importCollection( $I )
 {
   $ds          = DIRECTORY_SEPARATOR;  //1
   $storeFolder = 'uploads';   //2
-  $fp          = fopen('data.txt', 'w');
-  $debug       = false;
+  $fp          = fopen('data.txt', 'w' );
+  $debug       = true;
   
-  if ( $debug )    { $tempFile = "ELSE_20200915165812.exp"; }     ## DEBUGGING ONLY
+  if ( $debug )    { $tempFile = "ELSE_20210218130809.exp"; }     ## DEBUGGING ONLY
   else
   {
     $tempFile   = ( $_FILES[ 'file' ][ 'tmp_name' ] );
     $targetPath = dirname( __FILE__ ) . $ds. $storeFolder . $ds;
     $targetFile =  $targetPath. $_FILES[ 'file' ][ 'name' ];
-    move_uploaded_file($tempFile,$targetFile);
+    move_uploaded_file( $tempFile, $targetFile );
   }
+  
   $newSA         = file ( $tempFile ,  FILE_SKIP_EMPTY_LINES );
   $bom           = pack("CCC", 0xef, 0xbb, 0xbf);
   $collection_id =  $I[ 'currentCollection' ] -> get_collection_id ();

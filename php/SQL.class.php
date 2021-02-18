@@ -831,6 +831,7 @@ SET `state_id` = '" . $this->es ( $state ) . "' WHERE `document`.`id` = " . $thi
   function exportCollection( $collection_id )
   {
     $csv_export = '';
+    $csv_export2 = '';
     # $csv_filename = 'ELSE_'. urlencode( $collection_id ). '.' . date("YmdHis") . '.exp';
     $SQL = " SELECT * FROM `document`  WHERE collection_id = '" . $collection_id . "' AND state_id != 6";
 
@@ -838,14 +839,17 @@ SET `state_id` = '" . $this->es ( $state ) . "' WHERE `document`.`id` = " . $thi
 
     if ( $res )
     { while ( $row = mysqli_fetch_assoc ( $res ) )
-    { foreach ( $_SESSION[ 'CFG' ]['EXPO_IMPO'] as $exim )
-    {  $csv_export .=  preg_replace("(\r\n|\n|\r)" , "<br/>",  $row[ $exim  ]  ) . ";;";
+      { foreach ( $_SESSION[ 'CFG' ]['EXPO_IMPO'] as $exim )
+      {
+        $csv_export .=  preg_replace("(\r\n|\n|\r)" , "<br/>",  $row[ $exim  ]  ) . ";;";
+      }
+       $csv_export =  substr($csv_export , 0, -2) ;
+       $csv_export2 .= $csv_export."\r\n";
+       $csv_export ='';
     }
-      $csv_export .= "\r\n";
     }
-    }
-
-    return $csv_export;
+    
+    return $csv_export2;
   }
 
 
@@ -857,14 +861,14 @@ function importMedium( $collection_id , $medium , $fp)
     
     $rowCnt    = sizeof( $_SESSION[ 'CFG' ][ 'EXPO_IMPO' ] );
     $spacerCnt =  substr_count ( $medium , ';;' ) ;
-
+ 
     $med       = explode ( ";;" , $medium );
-    
+
     if ( $this -> getDocumentInfos( $med[10], $collection_id  ) != '' )  ## Medium ist bereits Element des SA
     {
       # deb( "EX SA:". $med[ 4 ]   );
     }
-    else if ( isset( $med[ 4 ] )  AND ($rowCnt == $spacerCnt )   ) ## Zu importierender Datensatz hat zumindest ein Titel UND es werden soviele Elemente aus der Import-Dateizeile eingelesen wie auch erwartet werden
+    else if ( isset( $med[ 4 ] )  AND ($rowCnt == ( $spacerCnt+1 ) )   ) ## Zu importierender Datensatz hat zumindest ein Titel UND es werden soviele Elemente aus der Import-Dateizeile eingelesen wie auch erwartet werden
     {
       #### if ( $med[ 0] == '1'  AND ( $med[ 15 ] == 1 ) ) { $med[ 2 ] = 10; }  ## IF doc_type_id = 1 (Buch) AND location_id = 1 (SA) -> state_id = 10 (contiue)
     
@@ -878,6 +882,7 @@ function importMedium( $collection_id , $medium , $fp)
       $SQL .= " collection_id     = \"" . $collection_id . "\"  , ";
       $SQL .= " last_modified     = NOW()                         ";
  
+    deb($SQL);
     $res = mysqli_query ( $this->DB , $SQL );
     fwrite($fp, $SQL."\n"  ) ;  ## -- FOR  DEBUGING  --##
   
