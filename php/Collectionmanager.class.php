@@ -658,7 +658,7 @@ function importCollection( $I )
   $ds          = DIRECTORY_SEPARATOR;  //1
   $storeFolder = 'uploads';   //2
   $fp          = fopen('data.txt', 'w' );
-  $debug       = true;
+  $debug       = false;
   
   if ( $debug )    { $tempFile = "ELSE_20210218130809.exp"; }     ## DEBUGGING ONLY
   else
