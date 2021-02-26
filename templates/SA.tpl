@@ -33,7 +33,6 @@
 <table>   {$preMedTyp = ''}
 
 {if ($di.location_id == 4)}{$preMedTyp = '[SCAN] '  }{/if}
-{if $operator.mode      == "print"      }  <tr><td><div class="mediaListHeader">TYP:       </div></td><td><div  class="mediaTxt" >{$whereIs2}            </div>            {/if}
 {if $di.title           != ""           }  <tr><td><div class="mediaListHeader">Titel:     </div></td><td><div  class="mediaTxt" >{$di.title}            </div>            {/if}
 {if $di.author          != ""           }  <tr><td><div class="mediaListHeader">Autor*in:  </div></td><td><div  class="mediaTxt" >{$di.author}           </div> </td></tr> {/if}
 {if $di.doc_type        == 'electronic' }  <tr><td><div class="mediaListHeader">Format:    </div></td><td><span class="mediaTxt" >Online-Ressource       </span></td></tr> {/if}

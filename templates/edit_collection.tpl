@@ -2,7 +2,6 @@
 <meta charset="utf-8">
 <script src="lib/dropzone.min.js"></script>
 <link rel="stylesheet" href="lib/dropzone.min.css">
-  
 
 <h3 style="margin:20px; padding:10px;   "  class="bgDef bg{$collection.bib_id}"  >
 {if $operator.mode == "new"}
@@ -12,7 +11,6 @@ Neuen Semesterapparat anlegen für: {$collection.title}
 {/if}
 <a style="float:right;" href="index.php?item=collection&action=show_collection&dc_collection_id={$collection.dc_collection_id}&r={$user.role_id}"><img  class="icon" style="margin-top:-4px;" title="Zurück" src="img/svg/chevron-left.svg" /></a>
 </h3>
-
 
 <div style="margin:20px; margin-top:0px;  padding:10px; border:solid 1px black; ">
 <form action="index.php" method="get">
@@ -47,12 +45,10 @@ Neuen Semesterapparat anlegen für: {$collection.title}
 <td> <textarea name="notes_to_studies_col" cols="40" rows="5" >{$collection.notes_to_studies_col}</textarea> </td>
 </tr>
 
-
 <tr>
   <td style="vertical-align: top;"><span  class="medHead3">Bemerkungen für die HIBS Mitarbeiter/in zum Semesterapparat:<br/>(Optional)</span></td>
   <td> <textarea name="notes_to_staff_col" cols="40" rows="5" >{$collection.notes_to_staff_col}</textarea> </td>
 </tr>
-
 
 <tr>
 <td style="vertical-align: top;"><span  class="medHead2">Semester:</span></td>
@@ -69,7 +65,7 @@ Neuen Semesterapparat anlegen für: {$collection.title}
 
 <span  style="position: relative; height: 240px; width:160px;  ; margin:2px;font-size: 30px; border:solid 0px black;">
 <a class ="exportBt"   href="index.php?item=collection&amp;action=export&amp;dc_collection_id={$collection.dc_collection_id}&amp;redirect=SA&amp;r={$user.role_id}" title="Export des Semesterapparats">
-    <img style="width: 240px; height: 240px;" src="img/svg/export.svg"  /></a>
+    <img style="width: 240px; height: 240px;margin-left: 125px" src="img/svg/export.svg"  /></a>
 </span>
 
 <span style="position: absolute; height: 220px; width:225px;   margin:2px;font-size: 25px; border:solid 5px black;">
@@ -104,5 +100,3 @@ Dropzone.options.mydropzone =
 };
 
 </script>
-
-
