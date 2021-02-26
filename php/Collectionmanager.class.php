@@ -681,10 +681,7 @@ function importCollection( $I )
     $this -> SQL -> importMedium( $collection_id, $medium , $fp );
   }
   fclose($fp);
- 
-
 }
-
 
 
 
@@ -701,8 +698,6 @@ function importCollection( $I )
         $oldSEM =  array_pop( $SEM ) ;
         $newSEM =  $_SESSION[ 'CUR_SEM' ];
         # ---------------------------------
-
-
 
 #  $oldSA_ID = 'DMI.DS.W18 DMDK';       # RE1JLkRTLlcxOCBETURL
 #  $oldSA_ID = 'TI..IN.W17 WAUD';       # VEkuLklOLlcxNyBXQVVE

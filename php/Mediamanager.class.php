@@ -257,7 +257,7 @@ function saveMediaMetaData( $I )
           }
         }
 
-        if ( $doc_type_id == '6'  OR  $doc_type_id == '7' )                                                      ## Artikel oder E-Artikel
+        if ( $doc_type_id == '6' )                                                                              ## Artikel
         {
           { $I[ 'medium' ] -> set_location_id ( 2 );                                                             ## ist der Medienort: Bibliothek
           }
