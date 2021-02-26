@@ -247,7 +247,7 @@ function saveMediaMetaData( $I )
         # $doc_type_id = 15 # Monograph Series        Schriftenreihe      1  1 physical
         # $doc_type_id = 16 # Purchase suggestion     Erwerbungsvorschlag 1  0 physical
         
-        if ( $doc_type_id == '6' )                                                                              ## Artikel
+        if ( $doc_type_id == '4' )                                                                              ## E-Book
         { $I[ 'medium' ] -> set_state_id     ( 3 );                                                             ## Status wird 'aktiv'         , Status 3
           if ( $I[ 'medium' ] -> get_sigel() == 'HAW-Hamburg'   )
           {  $I[ 'medium' ] -> set_location_id ( 2 );                                                           ## ist der Medienort: Bibliothek
@@ -256,13 +256,14 @@ function saveMediaMetaData( $I )
           { $I[ 'medium' ] -> set_location_id ( 5 );                                                            ## ist der Medienort: Ext - Bibliothek
           }
         }
-  
-        if ( $doc_type_id == '4' )                                                                              ## Kaufvorschlag
-        {  if ( $I[ 'medium' ] -> get_sigel() == 'HAW-Hamburg'   )
-          { $I[ 'medium' ] -> set_location_id ( 5 );                                                            ## und der Status wird 'aktiv'         , Status 3
+
+        if ( $doc_type_id == '6'  OR  $doc_type_id == '7' )                                                      ## Artikel oder E-Artikel
+        {
+          { $I[ 'medium' ] -> set_location_id ( 2 );                                                             ## ist der Medienort: Bibliothek
           }
         }
-  
+
+
         if ( $doc_type_id == '16' )                                                                              ## Kaufvorschlag
         {  $I[ 'medium' ] -> set_state_id     ( 9 );                                                             ## und der Status wird 'aktiv'         , Status 3
         }

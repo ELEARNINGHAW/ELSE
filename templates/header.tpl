@@ -24,13 +24,13 @@
 
 {if  $operator.mode == 'print'}{* No Header *}
 {else}
-<div id="{$medium.id}"; style="position:relative;  padding:0px; height:38px; margin:0px; margin-bottom:20px; margin-left:4px; margin-right: 0px;">
+<div id="{$medium.id}"; style="position:relative;  padding:0px; height:38px; margin:0px; margin-bottom:20px; margin-left:4px; margin-right: 0px;  padding-left: 55px;">
 
 <!---->
   <div style="position:relative;  left:0px; top:0px; height:40px; padding-right: 3px;"  >
     <ul id="nav" style="position:absolute; left:5px;   top:3px; margin-right:60px; border: white solid 2px;"   >
       <li><a title="Alle Semesterapparate"          class="bgHAW2x"  {if $filter.bib == X                            } style=" background-color:#FFF !important; color:#000 !important;  " {/if}  href="index.php?category=X&amp;mode=filterBib&amp;r={$user.role_id}"> X  </a></li>
-      <li><a title="Semesterapparate der FB DMI"    class="bgHAW2"   {if $filter.bib == DMI                          } style=" background-color:#FFF !important; color:#000 !important;  " {/if}  href="index.php?category=DMI&amp;mode=filterBib&amp;r={$user.role_id}">  DMI  </a></li>
+      <li><a title="Semesterapparate der FB DMI"    class="bgHAW2"   {if $filter.bib == DMI                          } style=" background-color:#FFF !important; color:#000 !important;  " {/if}  href="inde  x.php?category=DMI&amp;mode=filterBib&amp;r={$user.role_id}">  DMI  </a></li>
       <li><a title="Semesterapparate der FB LS"     class="bgHAW2"   {if $filter.bib == LS                           } style=" background-color:#FFF !important; color:#000 !important;  " {/if}  href="index.php?category=LS&amp;mode=filterBib&amp;r={$user.role_id}">   LS   </a></li>
       <li><a title="Semesterapparate der FB SP"     class="bgHAW2"   {if $filter.bib == SP                           } style=" background-color:#FFF !important; color:#000 !important;  " {/if}  href="index.php?category=SP&amp;mode=filterBib&amp;r={$user.role_id}">   SP   </a></li>
       <li><a title="Semesterapparate der FB TWI1"   class="bgHAW2"   {if $filter.bib == TWI1                         } style=" background-color:#FFF !important; color:#000 !important;  " {/if}  href="index.php?category=TWI1&amp;mode=filterBib&amp;r={$user.role_id}"> TWI1 </a></li>
