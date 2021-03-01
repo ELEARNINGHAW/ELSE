@@ -68,7 +68,7 @@ function editMediaMetaData( $I )
 
 ###############################################################################################
 function annoteNewMedia_showForm( $I )
-{
+{ #deb( $_SESSION );
   if ( isset( $_SESSION[ 'books' ][ 'booksHitList' ][ 0 ]))                                               #deb('--- 1 ---');
   {
     if ( $I[ 'medium' ] -> get_doc_type_id() != 16)                                                     ##  Erwerbungsvorschlag

@@ -455,7 +455,7 @@ function getMediaList( $I )
     $medList = $this -> LMSLoader( $url );                                                          # deb( $medList,1 );
  
     $medList = $this -> UTIL -> xml2array( $medList );
-
+ 
     foreach ( $medList as $med )
     {
         $m = new Medium();
