@@ -23,8 +23,8 @@ class Medium
   public  $state_id;
   public  $notes_to_studies;
   public  $notes_to_staff;
-  public  $created;
   public  $last_modified;
+  public  $created;
   public  $last_state_change;
 
 function __construct( )
@@ -130,7 +130,7 @@ function calcDocType()
 function calcDocTypeID()  ## docTypeID and Item
 {
   foreach ( $_SESSION[ 'DOC_TYPE' ]  as $dt )
-  {    if ($dt[ 'doc_type' ] == $this->get_doc_type() )
+  { if ( $dt[ 'doc_type' ] == $this -> get_doc_type() )
     {  $this -> set_doc_type_id( $dt[ 'id'   ] );
     }
   }

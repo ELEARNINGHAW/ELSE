@@ -882,7 +882,7 @@ function importMedium( $collection_id , $medium , $fp)
       $SQL .= " collection_id     = \"" . $collection_id . "\"  , ";
       $SQL .= " last_modified     = NOW()                         ";
  
-    deb($SQL);
+ 
     $res = mysqli_query ( $this->DB , $SQL );
     fwrite($fp, $SQL."\n"  ) ;  ## -- FOR  DEBUGING  --##
   
