@@ -8,10 +8,10 @@
     <link   type="text/css"        href="lib/style.css"     rel="stylesheet"  />
     <link   type="text/css"        href="lib/jquery-ui.css" rel="stylesheet" />
     <link   href="https://fonts.googleapis.com/css?family=Fira+Sans|Open+Sans&display=swap" rel="stylesheet">
+    <title>Semesterapparate</title>
     <script type="text/javascript" src="lib/jquery-1.10.2.js"></script>
     <script type="text/javascript" src="lib/jquery-ui.js"></script>
     <script type="text/javascript" src="lib/else.js"></script>
-    <title>Semesterapparate</title>
   </head>
 
   {if  $user.role_name == "admin" ||  $user.role_name == "staff"}
