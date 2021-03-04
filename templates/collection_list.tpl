@@ -11,7 +11,7 @@
 {else}                           <div class="depName bg{$filter.bib}" >  Semesterapparate                                                  </div>
 {/if}
 
-<div style="position: absolute; display: block; background-color: #FBFBFB; width:100%;">
+<div style="position: absolute; display: block; background-color: #FBFBFB; padding-right:50px; padding-left:50px">
 <div style="position: relative ; display: block; background-color: #9B410E; width:790px;">
 
   {foreach key=key item=c name=collectionList from=$collectionList }
