@@ -410,12 +410,6 @@ display:block;
 .bgcSP   { background-color: #C60C30 !important; color:#FFF; }
 .bgcHAW  { background-color: #002664 !important; color:#FFF; }
 
-
-
-
-
-
-
 .bgTWI1  /* TWI I */
 {
   background-image:url( ../img/bg/TWI1.png );
@@ -652,13 +646,23 @@ a.name
     padding : 6px;
     padding-right: 10px;
     padding-left: 40px;
-
-    background-image:url(../img/svg/SA.svg);
     background-repeat:no-repeat;
     background-position: 3px -2px;
     background-size: 32px;
 
 }
+
+.statePic3
+{
+    background-image:url(../img/svg/SA.svg);
+}
+
+.statePic10
+{
+    background-image:url(../img/svg/SAArchiv.svg);
+}
+
+
 
 .semapNameListeNumbers {
 
@@ -722,11 +726,12 @@ a.name
 .depName
 {
   font-size:15px;
-  margin: 10px;
+  margin-left: 60px;
   margin-top: 2px;
   padding: 2px;
   padding-left: 35px;
   border: 1px solid #000;
+  width: calc(100% - 65px);
   color:#000000;
 /*  background-image:url(../img/svg/star.svg);
   background-repeat:no-repeat;*/
@@ -749,6 +754,11 @@ a.name
     border:solid #EFEFEF 2px;
     float:left;
     background-color: #E0E0E0;
+}
+
+.SAstate10
+{
+    background-color: #f0ead8;
 }
 
 .content {

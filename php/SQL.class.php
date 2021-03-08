@@ -80,8 +80,7 @@ function getDokumentList( $colID , $filter = null  )
   $filterBib   = '';
   $filterState = '';
   $filterType  = '';
-
- ;
+ 
 if( $filter )
 {
   $filterSem   = $filter->get_sem();
@@ -187,8 +186,10 @@ function getCollection( $colID = null , $filter = false ,  $short = null )
   $bibFilter       = '';
   $semesterFilter  = '';
   $collection      = '';
-  $ret             = false;
+  $SA             = false;
+  
 
+  
   ## ---------------------------------------------------------------------------------------------------------------------------------------------------
   ## EIN oder  ALLE Semesterapparate. Gefiltert nach BIB und/oder SEMESTER
 
@@ -225,9 +226,9 @@ function getCollection( $colID = null , $filter = false ,  $short = null )
   if ( $res )
     while ( $row = mysqli_fetch_assoc ( $res ) )
     {
-      $ret[ $row[ 'c_id' ] ] =  $this -> getCollectionMetaData( $row[ 'c_id' ] );                                       ## Metadaten des Semesterapparats
+      $SA[ $row[ 'c_id' ] ]  =  $this -> getCollectionMetaData( $row[ 'c_id' ] );                                       ## Metadaten des Semesterapparats
       $dl                    =  $this -> getDokumentList ( $row[ 'c_id' ] , $filter );                                  ## Alle/gefilterte Medien des SA ( $doc_ID, $doc_type_id = null , $doc_state_id = null  )
-
+     
       if ( $dl )
       { # Medien nach 'sortorder' neu anordnen
         $withoutSortOrder = array();
@@ -235,8 +236,18 @@ function getCollection( $colID = null , $filter = false ,  $short = null )
 
         foreach ( $dl as $d )
         {
+        # $SA_sem      =  $SA[ $row[ 'c_id' ] ] -> sem ;
+        # $CUR_SEM     =  $_SESSION[ 'CUR_SEM' ] ;
+          $SA_state_id =  $SA[ $row[ 'c_id' ] ] ->state_id;
+          $role_id     =  $_SESSION[ 'currentUser' ][ 'role_id' ];
+
+          if (  $SA_state_id ==  10   AND  $role_id > 2  ) ## SA hat Status Archviert UND aktueller Nutzer ist mindestens Bib -Staff
+          {
+           # $d -> calcNewDocState ( );  ## alle Status der Medien werden archivkonform geändert.
+          }
+  
           $d -> calcDocType ( );  ## TODO check ob überhaupt notwendig?
-          $withoutSortOrder[ $d -> get_id()  ] = $d ;   ## --- Attribute hinzufügen 'doc_type', 'item', 'doc_type_id', 'state_id'
+          $withoutSortOrder[ $d -> get_id() ] = $d;   ## --- Attribute hinzufügen 'doc_type', 'item', 'doc_type_id', 'state_id'
         }
 
         $sortorder = explode ( ',' , $row[ 'c_sortorder' ] ); # Array von PPN als Identifikatoren der Medien
@@ -262,14 +273,14 @@ function getCollection( $colID = null , $filter = false ,  $short = null )
         }
 
 
-        $ret[ $row[ 'c_id' ] ]->set_media( $withSortOrder );
+        $SA[ $row[ 'c_id' ] ]->set_media( $withSortOrder );
       }
       elseif (  $filterState != '' OR  $filterType != '' )   #Wenn SA keine Medien beinhaltet, wird dieser wieder entfernt
-      { unset ( $ret[ $row[ 'c_id' ] ] );
+      { unset ( $SA[ $row[ 'c_id' ] ] );
       }
     }
 
-  return $ret;
+  return $SA;
 }
 
 function getUserList(  )
@@ -535,6 +546,9 @@ function get_med_state( $collection_id )
     return $res;
   }
 
+  
+  
+  
 
 # ---------------------------------------------------------------------------------------------
 function setMediaState( $mediaID , $state )
@@ -828,10 +842,10 @@ SET `state_id` = '" . $this->es ( $state ) . "' WHERE `document`.`id` = " . $thi
 
 
 # ---------------------------------------------------------------------------------------------
-  function exportCollection( $collection_id )
+  function exportCollection( $collection_id , $type = 1)
   {
-    $csv_export = '';
-    $csv_export2 = '';
+    $csv_export = null;
+    $csv_export2 = null;
     # $csv_filename = 'ELSE_'. urlencode( $collection_id ). '.' . date("YmdHis") . '.exp';
     $SQL = " SELECT * FROM `document`  WHERE collection_id = '" . $collection_id . "' AND state_id != 6";
 
@@ -839,16 +853,23 @@ SET `state_id` = '" . $this->es ( $state ) . "' WHERE `document`.`id` = " . $thi
 
     if ( $res )
     { while ( $row = mysqli_fetch_assoc ( $res ) )
-      { foreach ( $_SESSION[ 'CFG' ]['EXPO_IMPO'] as $exim )
       {
-        $csv_export .=  preg_replace("(\r\n|\n|\r)" , "<br/>",  $row[ $exim  ]  ) . ";;";
+        if ( $type == 1)
+        {
+          foreach ( $_SESSION[ 'CFG' ][ 'EXPO_IMPO' ] as $exim )
+          {
+            $csv_export .= preg_replace("(\r\n|\n|\r)", "<br/>", $row[$exim]) . ";;";
+          }
+          $csv_export = substr($csv_export, 0, -2);
+          $csv_export2 .= $csv_export . "\r\n";
+          $csv_export = '';
+        }
+        else if ( $type == 2)
+        {
+          $csv_export2[] = $row;
+        }
       }
-       $csv_export =  substr($csv_export , 0, -2) ;
-       $csv_export2 .= $csv_export."\r\n";
-       $csv_export ='';
     }
-    }
-    
     return $csv_export2;
   }
 
@@ -866,12 +887,9 @@ function importMedium( $collection_id , $medium , $fp)
 
     if ( $this -> getDocumentInfos( $med[10], $collection_id  ) != '' )  ## Medium ist bereits Element des SA
     {
-      # deb( "EX SA:". $med[ 4 ]   );
     }
     else if ( isset( $med[ 4 ] )  AND ($rowCnt == ( $spacerCnt+1 ) )   ) ## Zu importierender Datensatz hat zumindest ein Titel UND es werden soviele Elemente aus der Import-Dateizeile eingelesen wie auch erwartet werden
     {
-      #### if ( $med[ 0] == '1'  AND ( $med[ 15 ] == 1 ) ) { $med[ 2 ] = 10; }  ## IF doc_type_id = 1 (Buch) AND location_id = 1 (SA) -> state_id = 10 (contiue)
-    
       $SQL = "INSERT INTO document SET ";
       foreach (  $_SESSION[ 'CFG' ][ 'EXPO_IMPO' ] as $exim )
       { $m =   trim( $med[ $i++ ] ) ;
@@ -881,16 +899,52 @@ function importMedium( $collection_id , $medium , $fp)
       }
       $SQL .= " collection_id     = \"" . $collection_id . "\"  , ";
       $SQL .= " last_modified     = NOW()                         ";
- 
- 
+  
     $res = mysqli_query ( $this->DB , $SQL );
     fwrite($fp, $SQL."\n"  ) ;  ## -- FOR  DEBUGING  --##
-  
    }
-    # deb($res);
     return $res;
-  
 }
+
+
+# ---------------------------------------------------------------------------------------------
+  function importMedium2( $collection_id , $medium , $fp)
+  {
+    $res = 0;
+    $i = 0;
+
+    unset($medium['id']);
+    unset($medium['last_modified']);
+    unset($medium['collection_id']);
+  
+    $m = $this -> getDocumentInfos( $medium['ppn'], $collection_id  );
+    
+    #deb( $m  );
+    
+    if ( $m != ''  AND $m[ 'state_id' ] != 6)  ## Medium ist bereits Element des SA
+    {
+    
+    }
+    else if ( isset( $medium['title'] )  ) ## Zu importierender Datensatz hat zumindest ein Titel UND es werden soviele Elemente aus der Import-Dateizeile eingelesen wie auch erwartet werden
+    {
+      $SQL = "INSERT INTO document SET ";
+      foreach (  $medium as $k => $v )
+      {
+        
+        $val = mysqli_real_escape_string( $this -> DB, trim( $v ) );
+        $SQL .= " $k  = \"" . ''.$val . "\"  , ";
+      }
+      $SQL .= " collection_id     = \"" . $collection_id . "\"  , ";
+      $SQL .= " last_modified     = NOW()                         ";
+
+      $res = mysqli_query ( $this->DB , $SQL );
+      fwrite($fp, $SQL."\n"  ) ;  ## -- FOR  DEBUGING  --##
+    }
+    return $res;
+  }
+
+
+
 
 function getSAid( $SEM )
 {
@@ -904,16 +958,36 @@ function getSAid( $SEM )
 
 
 
+function getColPredecessors($collection_id)
+{
+  $ret = null;
+  $collection_XX = substr_replace( $collection_id , '%%%', 7,3 );
+ 
+  $SQL = " SELECT * FROM `collection` WHERE `collection`.`id` LIKE '" .$collection_XX. "' ORDER BY `id` DESC;";
+  $res = mysqli_query ( $this->DB , $SQL );
+  while ( $row = mysqli_fetch_assoc ( $res ) )
+  {
+    $ret[ $row[ 'id' ] ] =  $row;
+    $ret[ $row[ 'id' ] ]['dc_id'] =  base64_encode ( rawurlencode ( $row['id'] ) );
+  }
+  unset ( $ret[ $collection_id ]);
+  
+
+  return $ret;
+}
+
+
+
+
+
 # ---------------------------------------------------------------------------------------------
   function getDocumentInfos( $docID, $collection_id = '', $noDel = false )  ## Kartesisches Produkt aller Dokumenten mit allen dazugehörigen Infos
   { $SQLtmp = '';
     $SQLtmp2 = '';
-    if ($collection_id != '') { $SQLtmp = ' AND collection_id = "'. $collection_id .'" '; }
-    if ($noDel              ) { $SQLtmp2 = ' AND state_id =! "6' ; }
-    $SQL = "SELECT * FROM `document` WHERE `ppn`  ='" . $this->es ( $docID ) .$SQLtmp ."'";
-   
+    if ($collection_id != '') { $SQLtmp = ' AND collection_id = "'. $collection_id .'"'; }
+    if ($noDel              ) { $SQLtmp2 = ' AND state_id =! "6"' ; }
+    $SQL = "SELECT * FROM `document` WHERE `ppn`  ='" . $this->es ( $docID )."'" .$SQLtmp ."";
     $res = mysqli_query ( $this->DB , $SQL );
-    #deb($res);
     $ans = mysqli_fetch_assoc ( $res );
     return $ans;
   }
@@ -980,6 +1054,11 @@ function getSAid( $SEM )
 # ---------------------------------------------------------------------------------------------
   function getSAlist( $user , $I, $asObject=true )
   {
+    
+    $xcsql ='AND ( ';
+    foreach ($I['xcategory'] as $xc)   {  $xcsql .=" c.sem = '" . $xc . "' OR ";   }
+    $xcsql .=' false ) ';
+    
     $SQL  = " SELECT c.id                    as c_id,
                      c.user_id               as c_user_id,
                      c.state_id              as c_state_id,
@@ -995,7 +1074,7 @@ function getSAid( $SEM )
                      c.notes_to_staff_col    as c_notes_to_staff_col,
                      c.course_id             as c_course_id,
                      c.sortorder             as c_sortorder,
-                     u.department            as u_department,  
+                     u.department            as u_department,
                      u.surname               as u_surname,
                      u.forename              as u_forename, 
                      u.bib_id                as u_bib_id,
@@ -1007,18 +1086,19 @@ function getSAid( $SEM )
     $SQL .= " LEFT JOIN  state s";
     $SQL .= " ON s.id = c.state_id";
     $SQL .= " WHERE user_id = \"" . $this->es ( $user ) . "\"";
-    if ( $I[ 'operator' ]->get_mode () == "view" )
+  if ( $I[ 'operator' ]->get_mode () == "view" )
   { $SQL .= " AND c.state_id = 3";                                                                }     # Zustand 3 = aktiv
-    if ( $I[ 'filter' ] -> get_bib( ) != 'X' AND $I[ 'filter' ] -> get_bib( )  != ''          )         # sem: Filter auf das aktuelle Semester (oder alle Semester)
+  if ( $I[ 'filter' ] -> get_bib( ) != 'X' AND $I[ 'filter' ] -> get_bib( )  != ''          )         # sem: Filter auf das aktuelle Semester (oder alle Semester)
   { $SQL .= " AND (  c.bib_id = '" . $I[ 'filter' ] -> get_bib( )  . "'  )";                      }     # operator for category/department
-    if ( $I[ 'filter' ] -> get_sem( )  != 'X' AND $I[ 'filter' ] -> get_sem( )  != ''         )         # sem: operator auf das aktuelle Semester (oder alle Semester)
+  if ( $I[ 'filter' ] -> get_sem( )  != 'X' AND $I[ 'filter' ] -> get_sem( )  != ''         )         # sem: operator auf das aktuelle Semester (oder alle Semester)
   { $SQL .= " AND ( c.sem = '" . $I[ 'filter' ] -> get_sem( )  . "')";                            }
+  if ( $I[ 'filter' ] -> get_sem( )  == 'X'      )         # sem: operator auf das aktuelle Semester (oder alle Semester)
+  { $SQL .= " $xcsql ";                            }
+  
     $SQL .= " ORDER BY `c_id` ";
     $SQL .= " DESC ";
 
-    #deb($SQL,1);
     $SAList = NULL;
-
 
     $res = mysqli_query ( $this->DB , $SQL );
 

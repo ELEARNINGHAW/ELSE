@@ -28,8 +28,9 @@
   <div style="font-size:35px; float:left; padding:10px; margin:5px; margin-bottom:100px;display:block;   background-color:#EFEFEF">B</div>Eine neue Suche starten:<br><br>
  {/if}
   <div class="text2">
-  <h3> Medien hinzuf&uuml;gen &ndash; <span style="color: #ff0000;">NEU &uuml;ber den HAW-Katalog </span>&ndash; incl. Artikelindex: </h3>
-<ol>
+  <h3> Medien hinzuf&uuml;gen </h3>
+      <ul><li><span style="color: #ff0000;">NEU &uuml;ber den HAW-Katalog </span>&ndash; incl. Artikelindex:</li></ul>
+      <ol>
     <li>Wechseln Sie über den Button unten zum HAW-Katalog und <br> melden Sie sich dort mit Ihrer Bibliothekskennung an. </li>
   <li><b>Im HAW-Katalog erstellen Sie Ihre gewünschte Literaturliste <br>(weitere Infos finden Sie dort).</b> </li>
   <li>Wechseln Sie dann zurück zu dieser Seite<br>und fügen Sie den "Link Literaturliste" in das Feld unten ein. </li>
@@ -54,8 +55,22 @@
   <input type="hidden" name="dc_collection_id" value="{$collection.dc_collection_id}">
   </form>
 </div>
-
+      <br/>    <br/>
 <hr>
+
+{if  $col_predecessors|@count gt 0}
+<div class="text2">
+ <ul><li>Importieren Sie die Medien aus einem Ihrer früheren Veranstaltungen</li></ul>
+
+{foreach key=cid item=c name=col_predecessors from=$col_predecessors }
+  <div class="text2" style="text-align: left;">
+  <a onClick="$('#FButton').spin('modal');"  href="index.php?item=collection&action=takeover&r={$user.role_id}&lmsid={$c['dc_id']}">
+     <button  style="padding:20px; width: 650px; margin-left: 30px;" class="ui-button ui-widget ui-corner-all">{$c['title']} </button></a>
+  </div>
+ {/foreach}<br/><br/>
+ </div>
+ <hr>
+{/if}
 
 <div class="text2">
 <ul><li>Haben Sie im HAW-Katalog nicht das Gewünschte gefunden</li></ul>
@@ -63,14 +78,11 @@
  <a   onClick="$('#FButton').spin('modal');"  href="index.php?msg=&action=purchase_suggestion&loc=1&lmsid={$collection.dc_collection_id}">
       <button  style="padding:20px; width: 650px; margin-left: 30px;" class="ui-button ui-widget ui-corner-all">Erwerbungsvorschlag für den Semesterapparat </button></a>
 </div>
-    <br/>    <br/>
+<br/><br/>
 </div>
 
 {if $CONF.SRU.SRUenabled}
-  <hr>
-
-
-
+<hr>
   <div style="display: block;" class="text2"> <h3>Medien hinzuf&uuml;gen &ndash; <span style="color: #ff0000;">Alternativ &uuml;ber Suche im alten online-Katalog (OPAC): <br> ACHTUNG: Dieser Service steht nur noch übergangsweise bis 31.12.2020 zur Verfügung.</span></h3>
     <ol>
       <li>Bitte geben Sie in dieser Suchmaske <b>Titel</b> und/oder <b>Autor*in</b> und/oder <b>Signatur</b> ein.</li>
