@@ -19,7 +19,7 @@
   {foreach key=cid item=ci from=$collection}
 
   {if $ci.dc_collection_id != "" OR  $operator_action == 'show_media_list'}
-    <div class="SAMeta bgDef bg{$ci.bib_id}"  style="height: 65px;" >
+    <div class="SAMeta bgDef bg{$ci.bib_id} SAstate{$ci.state_id}"  style="height: 65px; " >
 
     <div style="width:540px;  display: inline-block; position:absolute; padding-top:2px; left:70px; ">
     {if ( $staff_mode )}

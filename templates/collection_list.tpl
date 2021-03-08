@@ -24,7 +24,7 @@
 
     {section name=j loop=$c}
     {if ( ( $operator.mode == "edit"  AND $c[j].state_name != 'delete') OR  ($operator.mode == "admin" or $operator.mode == "staff") ) AND $c[0].bib_id != 0  }{*  <!-- HEADLINE:  SEMAPP -- EDITMODE  -. *}
-      <a class="name lb{$c[j].bib_id|escape} semapNameListe  href="index.php?item=collection&collection_id={$c[j].id}&item=collection&action=show_collection&amp;r={$c[0].Owner.role_id }">{$c[j].title|escape} </a>
+      <a class="name lb{$c[j].bib_id|escape} semapNameListe statePic{$c[j].state_id} href="index.php?item=collection&collection_id={$c[j].id}&item=collection&action=show_collection&amp;r={$c[0].Owner.role_id }">{$c[j].title|escape} </a>
 
       {if $operator.mode == "edit" or $operator.mode == "staff" or $operator.mode == "admin"}
         <div  class="semapIconListe"> {include file="action_button_bar.tpl" mode=$operator.mode item="collection" state=$c[j].state_name collection_id=$c[j].id  document_id=0 } </div>
@@ -33,7 +33,7 @@
       {elseif $c[j].state_name != 'delete'} {* HEADLINE:  SEMAPP -- USER-MODE  *}
         <div class='SAHeadline' style="display: block;" >
           <a href="index.php?item=collection&action=show_collection&dc_collection_id={$c[j].dc_collection_id}&amp;r={$user.role_id}">
-          <div class="name2 semapNameListe"  >{$c[j].title|truncate:85:"...":true}</div>
+          <div class="name2 semapNameListe statePic{$c[j].state_id}"  >{$c[j].title|truncate:85:"...":true}</div>
           <div class="name  semapNameListeNumbers bgc{$c[j].bib_id} ">[{$c[j].MedState.med_state_GE}] / {$c[j].bib_id}</div>
           </a>
         </div>

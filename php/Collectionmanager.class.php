@@ -51,8 +51,6 @@ function  showMediaList( $I )  ##---------- Medien gefiltert nach Status
   $tpl_vars[ 'FACHBIB'         ]  = $_SESSION[ 'FACHBIB'                  ]  ; # Liste aller Fachbibs
   $tpl_vars[ 'SEMESTER'        ]  = array_keys( $this -> conf [ 'SEM'  ] ); #
 
-  #deb($tpl_vars,1);
-
   $this->RENDERER -> do_template( 'collection.tpl', $tpl_vars );
 }
 
@@ -67,6 +65,7 @@ function  showMediaList( $I )  ##---------- Medien gefiltert nach Status
 
 function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert nach Dozenten,  Fakuläten, Departtments, Status
 {
+ 
   /* ----------------- LISTE DER INPUTPARAMETER  ------------------ */
   $tpl_vars[ 'collectionList' ]                  = $this -> getAllCollection ( $I )      ;
   $tpl_vars[ 'user'           ]                  = $I[ 'currentUser'                     ] -> obj2array ();
@@ -82,6 +81,7 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
   $tpl_vars[ 'toLastPage'     ]                  =  true                                  ;
   $tpl_vars[ 'back_URL'       ]  = "#";
 
+
   ##-------------------------------------------------------------------------------------------------------------------
 
   $this -> RENDERER -> do_template ( 'collection_list.tpl' , $tpl_vars , TRUE ) ;
@@ -96,6 +96,7 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
         $collection_id                                      = $I[ 'currentCollection'               ] -> get_collection_id( );
         $bc_urlID                                           = $_SESSION['bc_urlID'] = $this -> UTIL -> b64en($collection_id.'###'. $I[ 'currentUser']-> get_hawaccount() );
         $collection                                         = $this -> SQL -> getCollection ( $collection_id );
+        $tpl_vars[ 'col_predecessors'  ]                    = $this -> SQL -> getColPredecessors( $collection_id );
         $tpl_vars[ 'collection'        ]                    = $collection[ $collection_id           ] -> obj2array ( );
         $tpl_vars[ 'user'              ]                    = $I[ 'currentUser'                     ] -> obj2array ( );
         $tpl_vars[ 'operator'          ]                    = $I[ 'operator'                        ] -> obj2array ( );
@@ -110,10 +111,13 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
         $tpl_vars[ 'URLID'             ]                    = $bc_urlID;
         $tpl_vars[ 'URL'               ]                    = $this -> conf [ 'SERVER' ][ 'URL' ].'/htdocs/' ;
         $tpl_vars[ 'back_URL'          ]                    = "index.php?item=collection&action=show_collection&dc_collection_id=".$collection[ $collection_id           ]->get_dc_collection_id()."&r=".$I[ 'currentUser'  ]->get_role_id();
-        $tpl_vars[ 'VUFIND'            ]                     = $_SESSION[ 'CFG'      ]['VUFIND'];
-        $tpl_vars[ 'CONF'            ]                       = $_SESSION[ 'CFG'      ];
+        $tpl_vars[ 'VUFIND'            ]                    = $_SESSION[ 'CFG'      ]['VUFIND'];
+        $tpl_vars[ 'CONF'            ]                      = $_SESSION[ 'CFG'      ];
         $_SESSION[ 'currentCollection' ] = $collection[ $collection_id ] -> obj2array ( );
- 
+  
+     # deb( $collection_id  );
+   #  deb(  $tpl_vars[ 'col_predecessors'  ],1 );
+        
         $this -> RENDERER -> do_template ( 'new_book.tpl' , $tpl_vars ) ;
         exit(0);
     }
@@ -632,9 +636,36 @@ function LMSLoader( $url )
   
   return  $medium;
 }
+ 
+  function  takeOverCollection( $I )
+  {
+   
+ 
+    $debug         = false;
+    
+    $fp            = fopen('data.txt', 'w' );
+    $newSA         =  $this -> SQL -> exportCollection( $I[ 'medium' ] -> get_collection_id() , 2 );
+    $bom           =  pack("CCC", 0xef, 0xbb, 0xbf);
+    
+    #deb($I[ 'currentCollection' ] -> get_id() );
+    #deb( $I[ 'currentCollection' ] ,1);
+    #deb( $I );
+    
+    foreach( $newSA as $medium )
+    {
+      $this -> SQL -> importMedium2( $I[ 'currentCollection' ] -> get_id(), $medium , $fp );
+    }
+    #  fclose($fp);
+  
+    $url ="index.php?item=collection&action=show_collection&dc_collection_id=". $I[ 'currentCollection' ] -> dc_collection_id . "&r=".$I[ 'currentUser' ] -> role_id;
+    
+    $this -> RENDERER -> doRedirect( $url  );
+  }
+
+
 
 ###############################################################################################
-function exportCollection( $I )
+function  exportCollection( $I )
 {
 
 $csv_filename = 'ELSE_' . date("YmdHis") . '.exp';
@@ -829,13 +860,13 @@ function importCollection( $I )
         exit(0);
     }
 
-
-
   function getAllCollection( $I )
   {
-   # if ( $I[ 'filter' ] -> get_user () != "" )  $user = '';
-   # else                                        $user = ( $I[ 'filter' ] -> get_user () );
-   # $userlist = $this -> SQL -> getUserList ( $I[ 'filter' ] -> get_user () );                                                                         ## Array der Metadaten aller ELSE Owner
+   $SEM_cur  = array_keys( $this -> conf [ 'SEM' ] );
+   $SEM_old  = explode("," ,  str_replace( " ", "", $this -> conf ['SEM2'] [ 'xcategory'  ]   ) );
+ 
+   $I[ 'xcategory' ] =  array_merge( $SEM_old, $SEM_cur);
+                                                                                                                        ## Array der Metadaten aller ELSE Owner
    $userlist = $this -> SQL -> getUserList ( );                                                                         ## Array der Metadaten aller ELSE Owner
 
    $collectionList = null;
