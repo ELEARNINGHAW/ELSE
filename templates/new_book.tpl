@@ -1,7 +1,9 @@
 <div id="basic-modal-content">
  <img src="img/loader.gif" style="width:80px; heigth:80px" /></div>
 <script type='text/javascript' src='lib/jquery.simplemodal.js'></script>
-  
+<script src="lib/dropzone.min.js"></script>
+<link rel="stylesheet" href="lib/dropzone.min.css">
+
 <h3 style="margin:10px; padding:10px;  " class="bgDef bg{$collection.bib_id}" >
     {$collection.title} : Suche im HAW-Katalog <a style="float:right;" href="{$back_URL}"><img  class="icon" style="margin-top:-4px;" title="Zurück" src="img/svg/chevron-left.svg" /></a>
 </h3>
@@ -28,8 +30,9 @@
   <div style="font-size:35px; float:left; padding:10px; margin:5px; margin-bottom:100px;display:block;   background-color:#EFEFEF">B</div>Eine neue Suche starten:<br><br>
  {/if}
   <div class="text2">
-  <h3> Medien hinzuf&uuml;gen </h3>
-      <ul><li><span style="color: #ff0000;">NEU &uuml;ber den HAW-Katalog </span>&ndash; incl. Artikelindex:</li></ul>
+  <h2> Medien hinzuf&uuml;gen </h2>
+      <h3>(A)  NEU:  &uuml;ber den HAW-Katalog </span>&ndash; incl. Artikelindex </h3>
+
       <ol>
     <li>Wechseln Sie über den Button unten zum HAW-Katalog und <br> melden Sie sich dort mit Ihrer Bibliothekskennung an. </li>
   <li><b>Im HAW-Katalog erstellen Sie Ihre gewünschte Literaturliste <br>(weitere Infos finden Sie dort).</b> </li>
@@ -60,9 +63,9 @@
 
 {if  $col_predecessors|@count gt 0}
 <div class="text2">
- <ul><li>Importieren Sie die Medien aus einem Ihrer früheren Veranstaltungen</li></ul>
 
-{foreach key=cid item=c name=col_predecessors from=$col_predecessors }
+    <h3>(B) Importieren Sie die Medien aus einem Ihrer früheren Veranstaltungen</h3>
+    {foreach key=cid item=c name=col_predecessors from=$col_predecessors }
   <div class="text2" style="text-align: left;">
   <a onClick="$('#FButton').spin('modal');"  href="index.php?item=collection&action=takeover&r={$user.role_id}&lmsid={$c['dc_id']}">
      <button  style="padding:20px; width: 650px; margin-left: 30px;" class="ui-button ui-widget ui-corner-all">{$c['title']} </button></a>
@@ -73,13 +76,61 @@
 {/if}
 
 <div class="text2">
-<ul><li>Haben Sie im HAW-Katalog nicht das Gewünschte gefunden</li></ul>
+    <h3>(C) Haben Sie im HAW-Katalog nicht das Gewünschte gefunden</h3>
 <div class="text2" style="text-align: left;">
  <a   onClick="$('#FButton').spin('modal');"  href="index.php?msg=&action=purchase_suggestion&loc=1&lmsid={$collection.dc_collection_id}">
       <button  style="padding:20px; width: 650px; margin-left: 30px;" class="ui-button ui-widget ui-corner-all">Erwerbungsvorschlag für den Semesterapparat </button></a>
 </div>
 <br/><br/>
 </div>
+
+      <hr>
+      <h3>(D) Exportieren oder Importieren Sie Medien aus Semesterapparaten</h3></>
+
+      <div style=" margin:20px; margin-top:0px;  padding:10px; border:solid 1px black;height:260px ">
+
+<span  style="position: relative; height: 240px; width:160px;  ; margin:2px;font-size: 30px; border:solid 0px black;">
+<a class ="exportBt"   href="index.php?item=collection&amp;action=export&amp;dc_collection_id={$collection.dc_collection_id}&amp;redirect=SA&amp;r={$user.role_id}" title="Export des Semesterapparats">
+    <img style="width: 240px; height: 240px;margin-left: 125px" src="img/svg/export.svg"  /></a>
+</span>
+
+     <span style="position: absolute; height: 220px; width:225px;   margin:2px;font-size: 25px; border:solid 5px black;">
+
+<form action="index.php?item=collection&amp;action=import&amp;dc_collection_id={$collection.dc_collection_id}" method="GET"
+      class="dropzone"
+      id="mydropzone"
+      style="position: absolute; height: 180px; width:220px;   margin:2px;"
+>
+
+</form>
+</span>
+
+          <script>
+
+              Dropzone.options.mydropzone =
+                  {
+                      paramName:   "file", // The name that will be used to transfer the file
+                      maxFilesize: 0.05, // MB
+                      accept: function(file, done)
+                      {
+                          if (file.name.substring(0, 5) == 'ELSE_' && file.name.substring(19, 23)=='.exp' )
+                          {    done();
+                          }
+                          else
+                          {
+                              done("Wrong File!");
+                          }
+                      },
+                      maxFiles:    1,
+                      dictDefaultMessage: "TO IMPORT Drop file here"
+                  };
+
+          </script>
+
+
+
+
+
 
 {if $CONF.SRU.SRUenabled}
 <hr>
