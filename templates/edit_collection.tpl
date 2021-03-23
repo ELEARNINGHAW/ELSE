@@ -58,5 +58,16 @@ Neuen Semesterapparat anlegen für: {$collection.title}
 </tbody>
 </table>
 
+
+    <hr>
+    <h3>Exportieren der Medien aus diesem Semesterapparaten</h3></>
+
+    <div style="margin:calc(40% - 50px); margin-top:0px;  padding:10px; border:solid 1px black;height:245px; width: 260px; ">
+
+<span  style="position: relative; height: 240px; width:160px;  ; margin:2px;font-size: 30px; border:solid 0px black;">
+<a class ="exportBt"   href="index.php?item=collection&amp;action=export&amp;dc_collection_id={$collection.dc_collection_id}&amp;redirect=SA&amp;r={$user.role_id}" title="Export des Semesterapparats">
+    <img style="width: 240px; height: 240px;margin-left: 10px" src="img/svg/export.svg"  /></a>
+</span>
+
 </form>
 </div>

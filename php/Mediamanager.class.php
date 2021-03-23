@@ -61,7 +61,7 @@ function editMediaMetaData( $I )
   $tpl_vars[ 'currentElement'  ]                          =  0 ;
   $tpl_vars[ 'maxElement'      ]                          =  1 ;
   $tpl_vars[ 'back_URL'        ]                          = $_SESSION[ 'history' ][ 0 ];
- # deb( $tpl_vars[ 'medium'          ] ,1);
+  #deb( $tpl_vars[ 'medium'          ] ,1);
   $this -> RENDERER -> do_template ( 'edit_book.tpl' , $tpl_vars ) ;
   exit(0);
 }
