@@ -113,6 +113,7 @@ padding:0px 5px;
 border:1px solid #333;
 color:#fff;
 text-decoration:none;
+text-align: center;
 background-color:#333;
 }
 
@@ -758,7 +759,7 @@ a.name
 
 .SAstate10
 {
-    background-color: #f0ead8;
+    background-color: #ff050547;
 }
 
 .content {

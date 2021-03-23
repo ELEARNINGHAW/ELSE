@@ -116,7 +116,7 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
         $_SESSION[ 'currentCollection' ] = $collection[ $collection_id ] -> obj2array ( );
   
      # deb( $collection_id  );
-   #  deb(  $tpl_vars[ 'col_predecessors'  ],1 );
+     # deb(  $tpl_vars[ 'CONF'  ],1 );
         
         $this -> RENDERER -> do_template ( 'new_book.tpl' , $tpl_vars ) ;
         exit(0);
@@ -863,7 +863,7 @@ function importCollection( $I )
   function getAllCollection( $I )
   {
    $SEM_cur  = array_keys( $this -> conf [ 'SEM' ] );
-   $SEM_old  = explode("," ,  str_replace( " ", "", $this -> conf ['SEM2'] [ 'xcategory'  ]   ) );
+   $SEM_old  = array_keys( $this -> conf [ 'ASEM' ] );
  
    $I[ 'xcategory' ] =  array_merge( $SEM_old, $SEM_cur);
                                                                                                                         ## Array der Metadaten aller ELSE Owner

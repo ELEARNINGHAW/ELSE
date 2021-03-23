@@ -28,7 +28,7 @@
 <div id="{$medium.id}"; style="position:relative;  padding:0px; height:38px; margin:0px; margin-bottom:20px; margin-left:4px; margin-right: 0px;  padding-left: 55px;">
 
 <!---->
-  <div style="position:relative;  left:0px; top:0px; height:40px; padding-right: 3px;"  >
+  <div style="position:relative;  left:-6px; top:0px; height:40px; padding-right: 3px;"  >
     <ul id="nav" style="position:absolute; left:5px;   top:3px; margin-right:60px; border: white solid 2px;"   >
       <li><a title="Alle Semesterapparate"          class="bgHAW2x"  {if $filter.bib == X                            } style=" background-color:#FFF !important; color:#000 !important;  " {/if}  href="index.php?category=X&amp;mode=filterBib&amp;r={$user.role_id}"> X  </a></li>
       <li><a title="Semesterapparate der FB DMI"    class="bgHAW2"   {if $filter.bib == DMI                          } style=" background-color:#FFF !important; color:#000 !important;  " {/if}  href="index.php?category=DMI&amp;mode=filterBib&amp;r={$user.role_id}">  DMI  </a></li>
@@ -49,7 +49,7 @@
   </ul>
 {/if}
 
-<ul id="nav2" style="position:absolute; right:150px;   top:3px;">
+<ul id="nav2" style="position:absolute; left:307px;   top:1px;">
     {if      $filter.state ==  0 AND $filter.type != 16}<li><a class="bo"  href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=0"  title="Alle SemApp"         ><img src="img/svg/Xa.svg" width="32" height="32"/></a>
     {elseif  $filter.state ==  1}                       <li><a class="bo"  href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=1"  title="Neu Bestellte"       ><img src="img/svg/Na.svg" width="32" height="32"/></a>
     {elseif  $filter.state ==  2}                       <li><a class="bo"  href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=2"  title="Wird Bearbeitet"     ><img src="img/svg/Ba.svg" width="32" height="32"/></a>
