@@ -230,11 +230,12 @@ function getCollection( $colID = null , $filter = false ,  $short = null )
     {
       $SA[ $row[ 'c_id' ] ]  =  $this -> getCollectionMetaData( $row[ 'c_id' ] );                                       ## Metadaten des Semesterapparats
       $dl                    =  $this -> getDokumentList ( $row[ 'c_id' ] , $filter );                                  ## Alle/gefilterte Medien des SA ( $doc_ID, $doc_type_id = null , $doc_state_id = null  )
-     
+      
       if ( $dl )
       { # Medien nach 'sortorder' neu anordnen
         $withoutSortOrder = array();
         $withSortOrder    = array();
+        $ASEM = array_keys(   $_SESSION[ 'CFG' ][ 'ASEM' ] );
 
         foreach ( $dl as $d )
         {
@@ -243,9 +244,9 @@ function getCollection( $colID = null , $filter = false ,  $short = null )
           $SA_state_id =  $SA[ $row[ 'c_id' ] ] ->state_id;
           $role_id     =  $_SESSION[ 'currentUser' ][ 'role_id' ];
 
-          if (  $SA_state_id ==  10   AND  $role_id > 2  ) ## SA hat Status Archviert UND aktueller Nutzer ist mindestens Bib -Staff
+          if (  in_array( $SA[ $row[ 'c_id' ] ]->sem,$ASEM )   AND  $role_id > 2  ) ## SA hat Status Archviert UND aktueller Nutzer ist mindestens Bib -Staff
           {
-           # $d -> calcNewDocState ( );  ## alle Status der Medien werden archivkonform geändert.
+            $d -> calcNewDocState ( );  ## alle Status der Medien werden archivkonform geändert.
           }
   
           $d -> calcDocType ( );  ## TODO check ob überhaupt notwendig?

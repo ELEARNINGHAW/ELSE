@@ -142,7 +142,7 @@ function calcNewDocState()  ## ändert Dokumenten State wenn Dokument im  Archiv
   $doc_type_id = $this->get_doc_type_id();
   $location_id = $this->get_location_id();
   $SA_ready = $_SESSION['DOC_TYPE'][ $doc_type_id ]['SA-ready'] ;
-  
+
 ## (im SA mit Status: Archiv)
 ##  ALLE Medien: Status: "NEU BESTELLT" -> wird zu  Status: "AKTIV"  und   Locator:"Literatur Hinweis"
 if ( $state_id == 1 )                     { $this->set_state_id(3); $this ->set_location_id( 2 ); }
