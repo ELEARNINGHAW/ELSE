@@ -127,6 +127,7 @@ if ( isset ( $_GET[ 'year'                                     ] ) )  { $medium 
 if ( isset ( $_GET[ 'volume'                                   ] ) )  { $medium -> set_volume              ( $_GET[ 'volume'            ] ) ; }
 if ( isset ( $_GET[ 'edition'                                  ] ) )  { $medium -> set_edition             ( $_GET[ 'edition'           ] ) ; }
 if ( isset ( $_GET[ 'signature'                                ] ) )  { $medium -> set_signature           ( $_GET[ 'signature'         ] ) ; }
+if ( isset ( $_GET[ 'sigel'                                    ] ) )  { $medium -> set_sigel               ( $_GET[ 'sigel'             ] ) ; }
 if ( isset ( $_GET[ 'notes_to_staff'                           ] ) )  { $medium -> set_notes_to_staff      ( $_GET[ 'notes_to_staff'    ] ) ; }
 if ( isset ( $_GET[ 'notes_to_studies'                         ] ) )  { $medium -> set_notes_to_studies    ( $_GET[ 'notes_to_studies'  ] ) ; }
 if ( isset ( $_GET[ 'location_id'                              ] ) )  { $medium -> set_location_id         ( $_GET[ 'location_id'       ] ) ;

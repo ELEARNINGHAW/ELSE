@@ -32,7 +32,6 @@
 {/if}
 <div  style="margin:10px; margin-top:0px;  padding:10px; border:solid 1px black; ">
 <form  action="index.php" method="get">
-
 <input type = "hidden" name = "dc_collection_id" value = "{$collection.dc_collection_id}" >
 <input type = "hidden" name = "item"             value = "media"                          >
 <input type = "hidden" name = "loc"              value = "1"                              >   {* loc ist an dieser Stelle noch nicht definiert, deshalb standard = 1 *}
@@ -41,6 +40,7 @@
 <input type = "hidden" name = "doc_type_id"      value = "{$medium.doc_type_id}"          >
 <input type = "hidden" name = "ppn"              value = "{$medium.ppn}"                  >
 <input type = "hidden" name = "physicaldesc"     value = "{$medium.physicaldesc}"         >
+<input type = "hidden" name = "sigel"            value = "{$medium.sigel}"                >
 <input type = "hidden" name = "role"             value = "{$user.role_encode}"            >
 {*<input type = "hidden" name = "redirect"         value = "{$operator.redirect}"           > *}
 
@@ -56,9 +56,8 @@
 <table style="text-align: left; width: 100%;" border="0"  >
 <tbody>
 {if $maxElement > 0 OR $medium.doc_type_id == 16}
-{* SPEICHERBUTTON: ALLE  *}
 <tr><td class = "editmedia">Medientyp: </td><td> {$doctypetxt} </td>
- <td rowspan="10" >   <input style="width:125px; height:50px;" name="ok" value="&nbsp;&nbsp;&nbsp;SPEICHERN&nbsp;&nbsp;&nbsp;" type="submit"> </td>
+ <td rowspan="10" >   <input style="width:125px; height:50px;" name="ok" value="&nbsp;&nbsp;&nbsp;SPEICHERN&nbsp;&nbsp;&nbsp;" type="submit"> </td>{* SPEICHERBUTTON: ALLE  *}
 </tr>
     {* ORT:  SA fähig UND ( Neues Medium ODER Erwerbungsvorschlag ) *}
 

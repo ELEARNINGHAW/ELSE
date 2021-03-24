@@ -41,12 +41,14 @@ physicaldesc       = "' . $this -> es ( $book -> get_physicaldesc      ( ) ) . '
 state_id           = "' . $this -> es ( $book -> get_state_id          ( ) ) . '",
 notes_to_staff     = "' . $this -> es ( $book -> get_notes_to_staff    ( ) ) . '",
 notes_to_studies   = "' . $this -> es ( $book -> get_notes_to_studies  ( ) ) . '",
-location_id       = "' . $this -> es ( $book -> get_location_id      ( ) ) . '",
+location_id        = "' . $this -> es ( $book -> get_location_id       ( ) ) . '",
+sigel              = "' . $this -> es ( $book -> get_sigel             ( ) ) . '",
 
 created            = NOW() ,
 last_modified      = NOW() ,
 last_state_change  = NOW()';
 
+#deb($SQL,1);
 $res = mysqli_query ( $this -> DB , $SQL );
 
 $ret = $this->getDocumentID ( $book );
