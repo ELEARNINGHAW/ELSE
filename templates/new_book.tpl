@@ -61,8 +61,7 @@
 <hr>
 {if  $col_predecessors|@count gt 0   AND $CONF['CONF']['import_col_predecessor'] }
 <div class="text2">
-
-    <h3>Importieren Sie die Medien aus einem Ihrer früheren Veranstaltungen</h3>
+   <h3>Importieren Sie die Medien aus einem Ihrer früheren Veranstaltungen</h3>
     {foreach key=cid item=c name=col_predecessors from=$col_predecessors }
   <div class="text2" style="text-align: left;">
   <a onClick="$('#FButton').spin('modal');"  href="index.php?item=collection&action=takeover&r={$user.role_id}&lmsid={$c['dc_id']}">
@@ -80,23 +79,25 @@
       <button  style="padding:20px; width: 650px; margin-left: 30px;" class="ui-button ui-widget ui-corner-all">Erwerbungsvorschlag für den Semesterapparat </button></a>
 </div>
 <br/><br/>
-</div>
     <hr>
-      <h3>Importieren Sie Medien über die Exportdatei eines Semesterapparates</h3></>
-      <div style=" margin:20px; margin-top:0px;  padding:10px; border:solid 1px black;height:260px ">
-     <span style="position: absolute;  left:calc(50% - 100px); height: 220px; width:225px;   margin:2px;font-size: 25px; border:solid 5px black;">
+</div>
+
+     <div class="text2">
+       <h3>Importieren der Medien aus der Exportdatei eines anderen Semesterapparates </h3>
+         Den Export-Button finden Sie unter <img src="img/edit.png" style=" vertical-align: text-top;"  /> den allgemeinen Infos des Semesterapparates aus dem Sie Medien importieren möchten.
+         <div style=" margin:20px; margin-top:0px;  padding:10px; border:solid 0px black;height:100px ">
+     <span style="position: absolute;  left:30px); height: 100px; width:650px;   margin:1px; padding:10px; vertical-align: middle;font-size: 25px; border:solid 0px black;">
 
 <form action="index.php?item=collection&amp;action=import&amp;dc_collection_id={$collection.dc_collection_id}" method="GET"
       class="dropzone"
       id="mydropzone"
-      style="position: absolute; height: 180px; width:220px;   margin:2px;"
+      style="position: absolute; height: 75px; width:650px;   margin:2px;"
 >
 
 </form>
 </span>
 
           <script>
-
               Dropzone.options.mydropzone =
                   {
                       paramName:   "file", // The name that will be used to transfer the file
@@ -112,18 +113,15 @@
                           }
                       },
                       maxFiles:    1,
-                      dictDefaultMessage: "TO IMPORT Drop file here"
+                      dictDefaultMessage: "Import / Datei hier einfügen"
                   };
-
           </script>
+         </div>
+         <br/><br/>
+         <hr>
 
+         {if $CONF.SRU.SRUenabled}
 
-
-
-
-
-{if $CONF.SRU.SRUenabled}
-<hr>
   <div style="display: block;" class="text2"> <h3>Medien hinzuf&uuml;gen &ndash; <span style="color: #ff0000;">Alternativ &uuml;ber Suche im alten online-Katalog (OPAC): <br> ACHTUNG: Dieser Service steht nur noch übergangsweise bis 31.12.2020 zur Verfügung.</span></h3>
     <ol>
       <li>Bitte geben Sie in dieser Suchmaske <b>Titel</b> und/oder <b>Autor*in</b> und/oder <b>Signatur</b> ein.</li>
