@@ -57,11 +57,6 @@ Neuen Semesterapparat anlegen für: {$collection.title}
 
 </tbody>
 </table>
-
-
-
-
-
     <hr>
 
     <div class="text2">

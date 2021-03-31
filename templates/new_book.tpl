@@ -25,7 +25,7 @@
  </div>
 {/if}
 
- <div style="margin:10px; margin-bottom: 0px; padding:10px;  padding-bottom:30px; border:solid 1px black; ">
+ <div style="margin:10px; margin-bottom: 20px; padding:10px;  padding-bottom:30px; border:solid 1px black; ">
  {if $searchHits < 1}
   <div style="font-size:35px; float:left; padding:10px; margin:5px; margin-bottom:100px;display:block;   background-color:#EFEFEF">B</div>Eine neue Suche starten:<br><br>
  {/if}
@@ -86,7 +86,7 @@
        <h3>Importieren der Medien aus der Exportdatei eines anderen Semesterapparates </h3>
          Den Export-Button finden Sie unter <img src="img/edit.png" style=" vertical-align: text-top;"  /> den allgemeinen Infos des Semesterapparates aus dem Sie Medien importieren möchten.
          <div style=" margin:20px; margin-top:0px;  padding:10px; border:solid 0px black;height:100px ">
-     <span style="position: absolute;  left:30px); height: 100px; width:650px;   margin:1px; padding:10px; vertical-align: middle;font-size: 25px; border:solid 0px black;">
+     <span style="position: absolute;  left:30px); height: 100px; width:650px;   margin:1px; padding:10px; vertical-align: middle;font-size: 17px; color: #3383bb; font-weight: bold; border:solid 0px black;">
 
 <form action="index.php?item=collection&amp;action=import&amp;dc_collection_id={$collection.dc_collection_id}" method="GET"
       class="dropzone"
