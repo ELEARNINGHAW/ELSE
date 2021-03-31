@@ -41,7 +41,7 @@
   </div>
 
 {if  ($SEMESTER != null) }
-  <ul id="nav" style="position:absolute; left:360px;   top:2px; margin-right:10px; border: white solid 2px;">
+  <ul id="nav" style="position:absolute; left:320px;   top:3px; margin-right:10px; border: white solid 2px;">
     <li><a class="en" title="Alle Semester" href="index.php?category=X&mode=filterSem&r=2"    {if $filter.sem == X   } style="background-color:#FFF; color:#000;" {/if}>X</a></li>
       {foreach from=$SEMESTER item=sem}
         <li><a class="enS" title="Semester {$sem}"  href="index.php?category={$sem}&mode=filterSem&r=2" {if  $filter.sem == $sem } style="background-color:#FFF; color:#000;" {/if}>{$sem}</a></li>
@@ -49,7 +49,7 @@
   </ul>
 {/if}
 
-<ul id="nav2" style="position:absolute; left:313px;   top:1px;">
+<ul id="nav2" style="position:absolute; left:580px;   top:1px;">
     {if      $filter.state ==  0 AND $filter.type != 16}<li><a class="bo"  href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=0"  title="Alle SemApp"         ><img src="img/svg/Xa.svg" width="32" height="32"/></a>
     {elseif  $filter.state ==  1}                       <li><a class="bo"  href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=1"  title="Neu Bestellte"       ><img src="img/svg/Na.svg" width="32" height="32"/></a>
     {elseif  $filter.state ==  2}                       <li><a class="bo"  href="index.php?item=collection&amp;action=show_media_list&amp;mode=filterState&amp;category=2"  title="Wird Bearbeitet"     ><img src="img/svg/Ba.svg" width="32" height="32"/></a>
