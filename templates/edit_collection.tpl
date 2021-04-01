@@ -63,7 +63,7 @@ Neuen Semesterapparat anlegen für: {$collection.title}
     <h3>Exportieren der Medien aus diesem Semesterapparat </h3>
        Den Import-Button finden Sie unter <img src="img/addmedia.png" style=" vertical-align: text-top;"  /> (Medien hinzufügen) im Ziel-Semesterapparat.
         <a class ="exportBt"   href="index.php?item=collection&amp;action=export&amp;dc_collection_id={$collection.dc_collection_id}&amp;redirect=SA&amp;r={$user.role_id}" title="Export des Semesterapparats">
-           <button  style="padding:20px; width: 650px; margin: 30px;" class="ui-button ui-widget ui-corner-all">Export </button>
+           <button  type="button" style="padding:20px; width: 650px; margin: 30px;" class="ui-button ui-widget ui-corner-all">Export </button>
          </a>
 
         </div>
