@@ -119,8 +119,7 @@ function annoteNewMedia_showForm( $I )
     $tpl_vars[ 'DOC_TYPE'       ] = $_SESSION[ 'DOC_TYPE' ];
     $tpl_vars[ 'currentElement' ] = $_SESSION[ 'books'    ][ 'currentElement' ];
     $tpl_vars[ 'maxElement'     ] = $_SESSION[ 'books'    ][ 'maxElement'     ];
-  deb(   $_SESSION[ 'DOC_TYPE' ]  );
-   deb( $_SESSION[ 'books' ][ 'booksHitList' ] );
+
     $this -> RENDERER -> do_template( 'edit_book.tpl' , $tpl_vars );
     exit( 0 );
 }
