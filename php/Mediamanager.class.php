@@ -71,12 +71,12 @@ function annoteNewMedia_showForm( $I )
 { #deb( $_SESSION );
   if ( isset( $_SESSION[ 'books' ][ 'booksHitList' ][ 0 ]))                                               #deb('--- 1 ---');
   {
-    if ( $I[ 'medium' ] -> get_doc_type_id() != 16)                                                     ##  Erwerbungsvorschlag
+    if ( $I[ 'medium' ] -> get_doc_type_id() != 99)                                                     ##  Erwerbungsvorschlag
     {
       $tmpBook = $_SESSION[ 'books' ][ 'booksHitList' ][ $_SESSION[ 'books' ][ 'currentElement' ] ];
       $I[ 'medium' ] -> array2obj( $tmpBook );
     }
-    else if ( $I[ 'medium' ] -> get_title( ) == '' AND $I[ 'medium' ] -> get_doc_type_id( ) != 16 )     ## Kein Titel UND kein Erwerbungsvorschlag
+    else if ( $I[ 'medium' ] -> get_title( ) == '' AND $I[ 'medium' ] -> get_doc_type_id( ) != 99 )     ## Kein Titel UND kein Erwerbungsvorschlag
     {
       $tmpBook = $_SESSION[ 'books' ][ 'booksHitList' ][ $I[ 'medium' ] -> get_ppn( ) ];                 ## Metadaten des aus der Trefferliste ausgeählte Mediums
       $I[ 'medium' ] -> array2obj( $tmpBook );
@@ -88,7 +88,7 @@ function annoteNewMedia_showForm( $I )
     }
   }
   
-  elseif ( $I[ 'medium' ] -> get_ppn() != '' AND   $I[ 'medium' ] -> get_doc_type_id() != 16 )
+  elseif ( $I[ 'medium' ] -> get_ppn() != '' AND   $I[ 'medium' ] -> get_doc_type_id() != 99)
   {                                                                                         #   deb('--- 2 ---');
     $tmpBook = $_SESSION[ 'books' ][ 'booksHitList' ][ $I[ 'medium' ] -> get_ppn() ];       # Hitliste kommt aus der OPAC Trefferliste
     $tmpBook = $this -> UTIL -> getOPACDocType( $tmpBook );
@@ -119,8 +119,8 @@ function annoteNewMedia_showForm( $I )
     $tpl_vars[ 'DOC_TYPE'       ] = $_SESSION[ 'DOC_TYPE' ];
     $tpl_vars[ 'currentElement' ] = $_SESSION[ 'books'    ][ 'currentElement' ];
     $tpl_vars[ 'maxElement'     ] = $_SESSION[ 'books'    ][ 'maxElement'     ];
- 
-  #deb($tpl_vars );
+  deb(   $_SESSION[ 'DOC_TYPE' ]  );
+   deb( $_SESSION[ 'books' ][ 'booksHitList' ] );
     $this -> RENDERER -> do_template( 'edit_book.tpl' , $tpl_vars );
     exit( 0 );
 }
@@ -138,7 +138,7 @@ function purchaseSuggestion( $I )
   $_SESSION[ 'books' ][ 'booksHitList' ][ 0 ][ 'ppn'            ]  =  $KVppn;
   $_SESSION[ 'books' ][ 'booksHitList' ][ 0 ][ 'format'         ]  = 'Purchase suggestion';
   $_SESSION[ 'books' ][ 'booksHitList' ][ 0 ][ 'item'           ]  = 'physical';
-  $_SESSION[ 'books' ][ 'booksHitList' ][ 0 ][ 'doc_type_id'    ]  =  16;
+  $_SESSION[ 'books' ][ 'booksHitList' ][ 0 ][ 'doc_type_id'    ]  =  99;
   $_SESSION[ 'books' ][ 'booksHitList' ][ 0 ][ 'status_id'      ]  =  9;
   $_SESSION[ 'books' ][ 'booksHitList' ][ 0 ][ 'doc_type'       ]  = 'Purchase suggestion';
   $_SESSION[ 'books' ][ 'booksHitList' ][ 0 ][ 'notes_to_staff' ]  = '........';
@@ -165,11 +165,11 @@ function saveMediaMetaData( $I )
   if ( $I[ 'medium' ] -> get_id() == 0 )                                                                    ##  NEUES MEDIUM
   {
     $ppn = $I[ 'medium' ] -> get_ppn() ;
-    if ( $I[ 'medium' ] -> get_doc_type_id () == '16' )                                                      ## Kaufvorschlag
+    if ( $I[ 'medium' ] -> get_doc_type_id () == '99' )                                                      ## Kaufvorschlag
     {
-      $I[ 'medium' ] -> set_doc_type ( $_SESSION[ 'DOC_TYPE' ][ 16 ][ 'description' ] );
-      $I[ 'medium' ] -> set_in_SA    ( $_SESSION[ 'DOC_TYPE' ][ 16 ][ 'SA-ready'    ] );
-      $I[ 'medium' ] -> set_item     ( $_SESSION[ 'DOC_TYPE' ][ 16 ][ 'item'        ] );
+      $I[ 'medium' ] -> set_doc_type ( $_SESSION[ 'DOC_TYPE' ][ 99 ][ 'description' ] );
+      $I[ 'medium' ] -> set_in_SA    ( $_SESSION[ 'DOC_TYPE' ][ 99 ][ 'SA-ready'    ] );
+      $I[ 'medium' ] -> set_item     ( $_SESSION[ 'DOC_TYPE' ][ 99 ][ 'item'        ] );
       $I[ 'medium' ] -> set_state_id ( 9 );                                                                   ## Status wird 'Vorschlag'
       $_SESSION[ 'books'][ 'booksHitList'   ][ 0 ] = $I[ 'medium' ] -> obj2array() ;
       $_SESSION[ 'books'][ 'currentElement' ] = 1;
@@ -243,7 +243,7 @@ function saveMediaMetaData( $I )
         # $doc_type_id = 13 # Serial Volume           Reihe               1  1 physical
         # $doc_type_id = 14 # unknown                 unbekannt           0  1 online
         # $doc_type_id = 15 # Monograph Series        Schriftenreihe      1  1 physical
-        # $doc_type_id = 16 # Purchase suggestion     Erwerbungsvorschlag 1  0 physical
+        # $doc_type_id = 99# Purchase suggestion     Erwerbungsvorschlag 1  0 physical
   
         $doc_type_id = $I[ 'medium' ] -> get_doc_type_id ();
         
@@ -264,7 +264,7 @@ function saveMediaMetaData( $I )
         }
 
 
-        if ( $doc_type_id == '16' )                                                                              ## Kaufvorschlag
+        if ( $doc_type_id == '99')                                                                              ## Kaufvorschlag
         {  $I[ 'medium' ] -> set_state_id     ( 9 );                                                             ## und der Status wird 'aktiv'         , Status 3
         }
 
@@ -342,10 +342,10 @@ function purchase_suggestion( $I )
 
   $I[ 'medium' ] -> set_title ( 'Kaufvorschlag' );
   $I[ 'medium' ] -> set_notes_to_staff ( $I[ 'operator' ] -> get_msg() );
-  $I[ 'medium' ] -> set_doc_type_id ( 16 );
-  $I[ 'medium' ] -> set_doc_type ( $_SESSION[ 'DOC_TYPE' ][ 16 ][ 'description' ] );
-  $I[ 'medium' ] -> set_in_SA    ( $_SESSION[ 'DOC_TYPE' ][ 16 ][ 'SA-ready'    ] );
-  $I[ 'medium' ] -> set_item     ( $_SESSION[ 'DOC_TYPE' ][ 16 ][ 'item'        ] );
+  $I[ 'medium' ] -> set_doc_type_id ( 99);
+  $I[ 'medium' ] -> set_doc_type ( $_SESSION[ 'DOC_TYPE' ][ 99 ][ 'description' ] );
+  $I[ 'medium' ] -> set_in_SA    ( $_SESSION[ 'DOC_TYPE' ][ 99 ][ 'SA-ready'    ] );
+  $I[ 'medium' ] -> set_item     ( $_SESSION[ 'DOC_TYPE' ][ 99 ][ 'item'        ] );
   $I[ 'medium' ] -> set_ppn      ( $KVppn );
   $I[ 'medium' ] -> set_state_id ( 9 );
 
@@ -608,7 +608,7 @@ function getHitList( $searchQuery )
     function getIMS_pack()
     {
 
-     $imsid = 16;
+     $imsid = 99;
 
       $error = false;
 

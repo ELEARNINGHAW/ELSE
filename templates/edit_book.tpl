@@ -4,7 +4,7 @@
 {else}                               {$color= "AAA"} {$bw ="1"}
 {/if}
 
-{if $maxElement > 0 OR $medium.doc_type_id == 16}
+{if $maxElement > 0 OR $medium.doc_type_id == 99}
 
 {$SAready    = $DOC_TYPE[ $medium.doc_type_id ][ 'SA-ready'    ] }
 {$doctypetxt = $DOC_TYPE[ $medium.doc_type_id ][ 'description' ] }
@@ -16,7 +16,7 @@
 {if ($medium.location_id == 4)}  {$c4 = 'checked="checked"' } {else} {$c4 = ''} {/if}
 {if ($medium.location_id == 5)}  {$c5 = 'checked="checked"' } {else} {$c5 = ''} {/if}
 
-{if $medium.doc_type_id == 16 }
+{if $medium.doc_type_id == 99 }
   <h3 style="margin:10px; margin-bottom:0px; margin-top:0px; padding:10px; " class="bgDef bg{$collection.bib_id}">Erwerbungsvorschlag für: {$collection.title}
   {if $operator.action != 'annoteNewMedia' }  <a style="float:right;" href="{$back_URL}"><img  class="icon" style="margin-top:-4px;" title="Zurück" src="img/svg/chevron-left.svg" /></a> {/if}</h3>
     <div style="margin:10px;  padding:10px; border:solid 1px black; ">
@@ -76,7 +76,7 @@
       {$scanservicePrint = true}
     {/if}
 
-    {if ($medium.sigel == 'HAW-Hamburg' AND   $medium.doc_type_id != 6   OR $medium.doc_type_id == 16)   }
+    {if ($medium.sigel == 'HAW-Hamburg' AND   $medium.doc_type_id != 6   OR $medium.doc_type_id == 99)   }
       {$semApp = true}
     {/if}
 
@@ -84,7 +84,7 @@
         {$checked = 'checked="checked"' } {$c0 = '' }
     {/if}
 
-{if ( $SAready == 1 AND  ( $operator.mode == 'new'  OR  ($medium.doc_type_id == 16   OR  $medium.doc_type_id == 6) )  )   }
+{if ( $SAready == 1 AND  ( $operator.mode == 'new'  OR  ($medium.doc_type_id == 99  OR  $medium.doc_type_id == 6) )  )   }
   <tr><td  class = "editmedia" style="vertical-align: top; font-weight: bold;">  Ort:  <span style="color: {$color}; vertical-align: top; font-weight: bold;">(bitte auswählen)</span> </td><td>
     <div style="border:{$bw}px solid {$color}; float: left;  height:80px; padding: 5px; font-size: 12px; width: calc(100% - 15px); ">
 
@@ -112,7 +112,7 @@
 {/if}
 
 {* Wenn KEIN Erwerbungsvorschlag *}
-{if ($medium.doc_type_id != 16 ) }  {* doc_type 16 = Erwerbungsvorschlag *}
+{if ($medium.doc_type_id != 99 ) }  {* doc_type 99 = Erwerbungsvorschlag *}
   {* Titel, Autor*}
   <tr><td class = "editmedia">Titel:    </td><td><textarea  cols="60" rows="2"    name="title">{$medium.title}</textarea>           </td></tr>
   <tr><td class = "editmedia">Autor:    </td><td><input size="50" value="{$medium.author}"     {$restricted} name="author">         </td></tr>
@@ -129,9 +129,9 @@
 
 
 {* Infos für die BIB: Wenn SA-fähiges Medium ODER Erwerbugnsvorschlag  *}
-{if $DOC_TYPE[ $medium.doc_type_id ]['SA-ready']  == 1 OR $medium.doc_type_id == 16 } {* doc_type 1 = Buch oder CD im SA *}
+{if $DOC_TYPE[ $medium.doc_type_id ]['SA-ready']  == 1 OR $medium.doc_type_id == 99 } {* doc_type 1 = Buch oder CD im SA *}
 <tr>
-    {if ($medium.doc_type_id == 16 ) }  <td class = "editmedia"> Ihr Erwerbungs-<br/>vorschlag:                                     </td>
+    {if ($medium.doc_type_id == 99 ) }  <td class = "editmedia"> Ihr Erwerbungs-<br/>vorschlag:                                     </td>
     {else}                              <td class = "editmedia"> Anmerkung <br/>f&uuml;r die Bibliothek:<br/>(Optional)                  </td>
     {/if}
                                         <td><p class="para">Bitte geben Sie hier die zu scannenden Seiten an:</p> <textarea cols="60" rows="5" name="notes_to_staff">{$medium.notes_to_staff|escape}</textarea> 	 </td></tr>

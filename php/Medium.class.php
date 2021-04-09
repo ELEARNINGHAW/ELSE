@@ -130,7 +130,8 @@ function calcDocType()
 function calcDocTypeID()  ## docTypeID and Item
 {
   foreach ( $_SESSION[ 'DOC_TYPE' ]  as $dt )
-  { if ( $dt[ 'doc_type' ] == $this -> get_doc_type() )
+  {
+    if ( $dt[ 'doc_type' ] == $this -> get_doc_type() )
     {  $this -> set_doc_type_id( $dt[ 'id'   ] );
     }
   }
