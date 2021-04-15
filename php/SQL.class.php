@@ -584,13 +584,13 @@ SET `state_id` = '" . $this->es ( $state ) . "' WHERE `document`.`id` = " . $thi
     $SQL = "
   INSERT INTO user SET
   id                = \"" . $this->es ( $user->id ) . "\"  ,
-  role_id           = \"" . $this->es ( $user->role ) . "\"  ,
+  role_id           = \"" . $this->es ( $user->role_id ) . "\"  ,
   surname           = \"" . $this->es ( $user->surname ) . "\"  ,
   forename          = \"" . $this->es ( $user->forename ) . "\"  ,
   sex               = \"" . $this->es ( $user->sex ) . "\"  ,
-  email             = \"" . $this->es ( $user->mail ) . "\"  ,
+  email             = \"" . $this->es ( $user->email ) . "\"  ,
   bib_id            = \"" . $this->es ( $user->bib_id ) . "\"  ,
-  department        = \"" . $this->es ( $user->department ) . "\"  ,
+  department        = \"" . $this->es ( $user->dep_id ) . "\"  ,
   hawaccount        = \"" . $this->es ( $user->hawaccount ) . "\"  ,
   state_id          = 3                                                   ,
   created           = NOW()                                               ,
