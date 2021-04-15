@@ -61,15 +61,15 @@ function editMediaMetaData( $I )
   $tpl_vars[ 'currentElement'  ]                          =  0 ;
   $tpl_vars[ 'maxElement'      ]                          =  1 ;
   $tpl_vars[ 'back_URL'        ]                          = $_SESSION[ 'history' ][ 0 ];
-#  deb( $tpl_vars[ 'medium'          ] ,1);
+ 
   $this -> RENDERER -> do_template ( 'edit_book.tpl' , $tpl_vars ) ;
   exit(0);
 }
 
 ###############################################################################################
 function annoteNewMedia_showForm( $I )
-{ #deb( $_SESSION );
-  if ( isset( $_SESSION[ 'books' ][ 'booksHitList' ][ 0 ]))                                               #deb('--- 1 ---');
+{
+  if ( isset( $_SESSION[ 'books' ][ 'booksHitList' ][ 0 ]))
   {
     if ( $I[ 'medium' ] -> get_doc_type_id() != 99)                                                     ##  Erwerbungsvorschlag
     {
@@ -89,7 +89,7 @@ function annoteNewMedia_showForm( $I )
   }
   
   elseif ( $I[ 'medium' ] -> get_ppn() != '' AND   $I[ 'medium' ] -> get_doc_type_id() != 99)
-  {                                                                                         #   deb('--- 2 ---');
+  {
     $tmpBook = $_SESSION[ 'books' ][ 'booksHitList' ][ $I[ 'medium' ] -> get_ppn() ];       # Hitliste kommt aus der OPAC Trefferliste
     $tmpBook = $this -> UTIL -> getOPACDocType( $tmpBook );
     
@@ -101,7 +101,7 @@ function annoteNewMedia_showForm( $I )
     
   }
   else
-  {                                                                                         #deb('--- 3 ---');
+  {
     $_SESSION[ 'books' ][ 'currentElement' ] = 0;
     $_SESSION[ 'books' ][ 'maxElement'     ] = 0;
   }
@@ -145,8 +145,7 @@ function purchaseSuggestion( $I )
   $_SESSION[ 'books' ][ 'maxElement'                            ]  =  1;
   $_SESSION[ 'books' ][ 'url'                                   ]  = 'index.php?ppn=1028111126&item=media&loc=1&action=annoteNewMedia&dc_collection_id=VEkuLk1QLlcxOSUyMEVQMUIlMjBCbW4=&mode=new&r=Mg==';
 
-  # deb (  $KVppn  );
-  # deb ($_SESSION[ 'books' ]);
+ 
 
   annoteNewMedia_showForm( $I );
 }
@@ -190,11 +189,28 @@ function saveMediaMetaData( $I )
         $I[ 'medium' ] -> set_id            ( '' );
         $I[ 'medium' ] -> set_collection_id ( $I[ 'currentCollection' ] -> get_collection_id () );
   
+  
+        #-----------------------------------------------------------------------------------------------------
+        
         if ( $I[ 'medium' ] -> get_item () == 'online' )                                                          ## Bei ONLINE Medien
         { $I[ 'medium' ] -> set_location_id  ( 3 );                                                               ## ist der Medienort: 'Online' ;) , Status 3
         }
   
-        #-----------------------------------------------------------------------------------------------------
+        #-------------------------------
+        # Medienstatus
+        # name        description
+        #------------------------------
+        # new	        neu bestellt	  1
+        # open        wird bearbeitet	2
+        # active      ist aktiv	      3
+        # obsolete    wird entfernt	  4
+        # inactive	  ist naktiv      5
+        # delete	    IST GELÖSCHT!   6
+        # suggest	    Vorschlag       9
+        # archive	    archiviert     10
+        #------------------------------
+   
+  
         $location_id = $I[ 'medium' ] -> get_location_id ();
         #location_id = 1   # Semesterapp    / SA Medium
         #location_id = 2   # Bibliothek     / LitHinweis Buch
@@ -203,28 +219,28 @@ function saveMediaMetaData( $I )
         #location_id = 5   # externe Biblio / Titel nicht aus HAW-Bestand -LitHinweis Buch
         
         if ( $location_id == '1' )                                                                               ##  Wenn Medien'ORT' 'Semesterapparat' (status: 1)
-        {                                                                                                        ##  ist der Medienort: 'verbleibt im Regal' ;) , Status 1
-          $I[ 'medium' ] -> set_state_id     ( 1 );                                                              ##  und der Status wird 'aktiv'         , Status 3
+        {
+          $I[ 'medium' ] -> set_state_id     ( 1 );                                                              ##  der Status wird 'new'          , Status 1
         }
 
-        else if ($location_id == '2'  )                                                                          ##  Wenn Medien'ORT' 'verbleibt im Regal' (status: 2)
-        {                                                                                                        ##  ist der Medienort: 'online'  , Status 2
-          $I[ 'medium' ] -> set_state_id     ( 3 );                                                              ##  und der Status wird 'aktiv'         , Status 3
+        else if ($location_id == '2'  )                                                                          ##  Wenn Medien'ORT' 'Bibliothek / verbleibt im Regal' (status: 2)
+        {
+          $I[ 'medium' ] -> set_state_id     ( 3 );                                                              ##  der Status wird 'aktiv'         , Status 3
         }
 
         else if ($location_id == '3'  )                                                                          ##  Wenn Medien'ORT' 'ONLINE' (status: 3) / Medien 'ITEM' :'online'
-        {                                                                                                        ##  ist der Medienort: 'online'  , Status 3
-          $I[ 'medium' ] -> set_state_id     ( 3 );                                                              ##  und der Status wird 'aktiv'         , Status 3
+        {
+          $I[ 'medium' ] -> set_state_id     ( 3 );                                                              ##  und der Status wird 'aktiv'       , Status 3
         }
         
-        else if ( $location_id == '4'  )                                                                         ##  Wenn Medien'ORT' 'Scanservice' (status: 2)
-        {                                                                                                        ##  ist der Medienort: 'verbleibt im Regal' ;) , Status 2
-          $I[ 'medium' ] -> set_state_id     ( 1 );                                                              ##  und der Status wird 'aktiv'         , Status 3
+        else if ( $location_id == '4'  )                                                                         ##  Wenn Medien'ORT' 'Scanservice' (status: 4)
+        {                                                                                                        ##
+          $I[ 'medium' ] -> set_state_id     ( 1 );                                                              ##  und der Status wird 'new'         , Status 1
           $I[ 'medium' ] -> set_notes_to_staff  ( "[SCANSERVICE]\n " .   $I[ 'medium' ] -> get_notes_to_staff() ) ;
         }
 
         else if  ( $location_id == '5'  )                                                                        ##  Wenn kein Medium aus externer Bibliothek ist
-        {                                                                                                        ##  ist der Medienort: 'verbleibt im Regal' ;) , Status 2
+        {                                                                                                        ##
           $I[ 'medium' ] -> set_state_id     ( 3 );                                                              ##  und der Status wird 'aktiv'         , Status 3
         }
   
@@ -242,29 +258,33 @@ function saveMediaMetaData( $I )
         # $doc_type_id = 13 # Serial Volume           Reihe               1  1 physical
         # $doc_type_id = 14 # unknown                 unbekannt           0  1 online
         # $doc_type_id = 15 # Monograph Series        Schriftenreihe      1  1 physical
-        # $doc_type_id = 99# Purchase suggestion     Erwerbungsvorschlag 1  0 physical
+        # $doc_type_id = 16 # Data Media              Datenträger         1  1 physical
+        # $doc_type_id = 99 # Purchase suggestion     Erwerbungsvorschlag 1  0 physical
   
+ 
+
+        
         $doc_type_id = $I[ 'medium' ] -> get_doc_type_id ();
         
         if ( $doc_type_id == '4' )                                                                              ## E-Book
         { $I[ 'medium' ] -> set_state_id     ( 3 );                                                             ## Status wird 'aktiv'         , Status 3
-          if ( $I[ 'medium' ] -> get_sigel() == 'HAW-Hamburg'   )
-          {  $I[ 'medium' ] -> set_location_id ( 3 );                                                           ## ist der Medienort: online
+          if ( $I[ 'medium' ] -> get_sigel() == 'HAW-Hamburg'   )                                               ## Wenn Sigel = HAW
+          {  $I[ 'medium' ] -> set_location_id ( 3 );                                                           ## dann ist der Medienort: online
           }
           else
-          { $I[ 'medium' ] -> set_location_id ( 5 );                                                            ## ist der Medienort: Ext - Bibliothek
+          { $I[ 'medium' ] -> set_location_id ( 5 );                                                            ## sonst ist der Medienort: Ext - Bibliothek
           }
         }
 
         if ( $doc_type_id == '6' )                                                                              ## Artikel
         {
-          { $I[ 'medium' ] -> set_location_id ( 2 );                                                             ## ist der Medienort: Bibliothek
+          { $I[ 'medium' ] -> set_location_id ( 2 );                                                            ## ist der Medienort: Bibliothek
           }
         }
 
 
         if ( $doc_type_id == '99')                                                                              ## Kaufvorschlag
-        {  $I[ 'medium' ] -> set_state_id     ( 9 );                                                             ## und der Status wird 'aktiv'         , Status 3
+        {  $I[ 'medium' ] -> set_state_id     ( 9 );                                                            ## und der Status wird 'aktiv'         , Status 3
         }
 
         $this -> SQL -> initMediaMetaData ( $I[ 'medium' ] );
@@ -274,10 +294,9 @@ function saveMediaMetaData( $I )
     }
   }
   
-  
   else
   {
-    $this -> SQL-> updateMediaMetaData( $I[ 'medium' ]);                                                             /* Metadaten des neuen Mediums speichern */
+    $this -> SQL-> updateMediaMetaData( $I[ 'medium' ]);                                                         ## Metadaten des neuen Mediums speichern
   }
 
   if( $_SESSION['books'][ 'currentElement'  ] <   $_SESSION['books'][ 'maxElement'  ] -1  )
@@ -1119,7 +1138,7 @@ function getHitList( $searchQuery )
     $this->SQL->deleteMedia ( $I  );
    # $url = "index.php?item=collection&action=show_collection&dc_collection_id=" . $I[ 'currentCollection' ]->get_dc_collection_id () . "&r=" . $I[ 'currentUser' ]->get_role_id ();
     $url = "index.php?item=collection&action=show_media_list&mode=filterState&category=6";
-    #deb($url,1);
+ 
     if ( $this->CFG->CFG[ 'ajaxON' ] ) {
       $this->showSA ( $I );
     } else {

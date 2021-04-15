@@ -31,8 +31,7 @@ function  showMediaList( $I )  ##---------- Medien gefiltert nach Status
   #$I[ 'filter' ] -> set_type( 1 );  ## NUR Semesterappartat Medien/Bücher werden angezeigt
 
   $collection = $this -> SQL -> getCollection( null,  $I[ 'filter' ]  , true );
-
-  # deb($collection);
+ 
   $col_list = null;
   if(( $collection ) )  foreach ($collection as $c )   { $col_list[] = $c -> obj2array( );  }
 
@@ -114,9 +113,6 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
         $tpl_vars[ 'VUFIND'            ]                    = $_SESSION[ 'CFG'      ]['VUFIND'];
         $tpl_vars[ 'CONF'            ]                      = $_SESSION[ 'CFG'      ];
         $_SESSION[ 'currentCollection' ] = $collection[ $collection_id ] -> obj2array ( );
-  
-     # deb( $collection_id  );
-     # deb(  $tpl_vars[ 'CONF'  ],1 );
         
         $this -> RENDERER -> do_template ( 'new_book.tpl' , $tpl_vars ) ;
         exit(0);
@@ -153,15 +149,21 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
   function showCollection( $I )
   {
     $tpl_vars[ 'SEMESTER'               ] = array_keys( $this -> conf [ 'SEM' ] );
-
+# deb
     $collection_id                        = $I[ 'currentCollection' ] -> get_collection_id();
+ 
     $collection                           = $this -> SQL-> getCollection ( $collection_id );
-   # $I[ 'operator' ] -> set_url( $I[ 'operator' ] -> get_history( )[ 1 ]  );                  ##  Link für den "zurück"- Button
-
-    $_SESSION['url']['currentCollection'] = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-
-    $tpl_vars[ 'collection'        ][ $collection_id ] =  $collection[ $collection_id ] -> obj2array( );
-
+ 
+    if( !$collection )                                                                               # Wenn ein  SA von Studis aufgerufen wird, der in ELSE noch nicht exisitiert
+    { $collection[ $collection_id ]       = $I[ 'currentCollection' ];  }
+ 
+#   deb($collection);
+ 
+    $_SESSION[ 'url' ][ 'currentCollection' ] = $_SERVER[ 'HTTP_HOST' ].$_SERVER[ 'REQUEST_URI' ];
+    if( $collection_id )
+    {
+      $tpl_vars[ 'collection' ][ $collection_id ] = $collection[ $collection_id ] -> obj2array();
+    }
     $tpl_vars[ 'medium'            ] = $I[ 'medium'                     ] -> obj2array( ) ;
     $tpl_vars[ 'user'              ] = $I[ 'currentUser'                ] -> obj2array( ) ;
     $tpl_vars[ 'operator'          ] = $I[ 'operator'                   ] -> obj2array( ) ;
@@ -180,8 +182,7 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
    # $tpl_vars[ 'medIndex'          ]  = $_SESSION[ 'medIndex' ];
    # $tpl_vars[ 'back_URL'          ]  = "index.php?item=collection&action=show_collection&dc_collection_id=".$collection[ $collection_id  ] -> get_dc_collection_id()."&r=".$I[ 'currentUser'  ] -> get_role_id();
    # $this -> RENDERER -> do_template( 'collection.tpl', $tpl_vars, ( $I[ 'operator' ] -> get_mode() != 'print' ) );
- #  deb( $tpl_vars  );
-  #  deb( $tpl_vars[ 'collection'        ],1   );
+ 
    $this -> RENDERER -> do_template( 'collection.tpl', $tpl_vars );
   }
 
@@ -404,7 +405,7 @@ function lmsDownload( $I )
  
   $url  =  $I[ 'operator' ] -> get_url() ;
  
-  $lmsDownload = explode( '?lmsid=', $url );                                             # deb( $lmsDownload );
+  $lmsDownload = explode( '?lmsid=', $url );
  
   $medList = $this -> UTIL -> xml2array( $this -> LMSLoader( $url ."&format=".$this -> conf [VUFIND][ 'recordSchema' ] ) );
 
@@ -454,9 +455,8 @@ function getMediaList( $I )
     $conf = $this -> conf;
 
     $mediaListID  =  $I[ 'operator' ] -> get_mediaListID() ;
-    $url =  $this -> conf [ 'VUFIND' ][ 'vuFindURL'    ]  .'MyResearch/MyList/'.$mediaListID  . $this -> conf [ 'VUFIND' ][ 'vuFindParams' ];                                                # deb( $url );
-  #  deb($url,1);
-    $medList = $this -> LMSLoader( $url );                                                          # deb( $medList,1 );
+    $url =  $this -> conf [ 'VUFIND' ][ 'vuFindURL'    ]  .'MyResearch/MyList/'.$mediaListID  . $this -> conf [ 'VUFIND' ][ 'vuFindParams' ];
+    $medList = $this -> LMSLoader( $url );
  
     $medList = $this -> UTIL -> xml2array( $medList );
  
@@ -632,24 +632,19 @@ function LMSLoader( $url )
     $medium[(string)$PPN][ 'format'          ] =   (string)$xmlrec -> format;
 
   }
- #deb($medium,1);
+ 
   
   return  $medium;
 }
  
   function  takeOverCollection( $I )
   {
-   
- 
     $debug         = false;
     
     $fp            = fopen('data.txt', 'w' );
     $newSA         =  $this -> SQL -> exportCollection( $I[ 'medium' ] -> get_collection_id() , 2 );
     $bom           =  pack("CCC", 0xef, 0xbb, 0xbf);
-    
-    #deb($I[ 'currentCollection' ] -> get_id() );
-    #deb( $I[ 'currentCollection' ] ,1);
-    #deb( $I );
+
     
     foreach( $newSA as $medium )
     {
@@ -707,8 +702,7 @@ function importCollection( $I )
   foreach( $newSA as $medium )
   {
     if (0 == strncmp( $medium, $bom, 3 ) ) {   $medium = substr( $medium, 3 );   }  ## UTF8 BOM entfernen
-    # $med = explode ( ";;" , $medium ); # deb($med);
-   
+  
     $this -> SQL -> importMedium( $collection_id, $medium , $fp );
   }
   fclose($fp);

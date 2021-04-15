@@ -48,7 +48,6 @@ created            = NOW() ,
 last_modified      = NOW() ,
 last_state_change  = NOW()';
 
-#deb($SQL,1);
 $res = mysqli_query ( $this -> DB , $SQL );
 
 $ret = $this->getDocumentID ( $book );
@@ -137,12 +136,13 @@ return $ret;
   {
     $collection = new collection();
 
-    if ( $collection_id != '' ) {
+    if ( $collection_id != '' )
+    {
       $SQL = "
   SELECT *
   FROM collection
   WHERE `title_short` = \"" . $this->es ( $collection_id ) . "\"";
-
+ 
       $res = mysqli_query ( $this->DB , $SQL );
 
       $col = mysqli_fetch_assoc ( $res );
@@ -224,13 +224,12 @@ function getCollection( $colID = null , $filter = false ,  $short = null )
   ## ---------------------------------------------------------------------------------------------------------------------------------------------------
   ## ALLE Medieninfo zu dem entsprechenden SA werden ermittelt
   ## ---------------------------------------------------------------------------------------------------------------------------------------------------
-
-  if ( $res )
+  if ( $res->num_rows != 0 )
     while ( $row = mysqli_fetch_assoc ( $res ) )
     {
       $SA[ $row[ 'c_id' ] ]  =  $this -> getCollectionMetaData( $row[ 'c_id' ] );                                       ## Metadaten des Semesterapparats
       $dl                    =  $this -> getDokumentList ( $row[ 'c_id' ] , $filter );                                  ## Alle/gefilterte Medien des SA ( $doc_ID, $doc_type_id = null , $doc_state_id = null  )
-      
+ 
       if ( $dl )
       { # Medien nach 'sortorder' neu anordnen
         $withoutSortOrder = array();
@@ -282,7 +281,7 @@ function getCollection( $colID = null , $filter = false ,  $short = null )
       { unset ( $SA[ $row[ 'c_id' ] ] );
       }
     }
-
+ 
   return $SA;
 }
 
@@ -470,7 +469,7 @@ function get_med_state( $collection_id )
 
 
   { #trigger_error("Deprecated function called: deleteMedia()", E_USER_NOTICE);
-   #deb($I ,1);
+ 
    
     $ret = '';
     $r = $I[ 'currentUser' ]->get_role_name();
@@ -921,8 +920,6 @@ function importMedium( $collection_id , $medium , $fp)
     unset($medium['collection_id']);
   
     $m = $this -> getDocumentInfos( $medium['ppn'], $collection_id  );
-    
-    #deb( $m  );
     
     if ( $m != ''  AND $m[ 'state_id' ] != 6)  ## Medium ist bereits Element des SA
     {

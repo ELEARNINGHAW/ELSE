@@ -1,4 +1,14 @@
 <?php
+
+# id name	    description
+# -------------------------
+# 1  admin    Administrator
+# 2  staff    Bibliothekar
+# 3  edit     Dozent / Tutor
+# 4  guest    Gast
+# 5  mailuser	SYSMAIL
+# -------------------------
+
 class User
 {
 public $id;
