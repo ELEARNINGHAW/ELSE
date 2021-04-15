@@ -476,8 +476,7 @@ function getMediaList( $I )
         if( isset( $med[ 'format'      ][ 0 ] ) ) { $m -> set_format        ( trim ( $med[ 'format'       ]  ) );
                                                     $m -> set_doc_type      ( trim ( $med[ 'format'       ]  ) );
                                                     $m -> calcDocTypeID();
-                                                    $m -> calcItem();
-                                                  }
+                                                    $m -> calcItem();                                              }
  
         $isDublette = $this->checkDoublette($I['currentCollection']->get_collection_id(),  $m -> get_ppn() );
         if (! $isDublette )
@@ -485,7 +484,6 @@ function getMediaList( $I )
           $ret[] = $m;
         }
     }
-
  
     $_SESSION[ 'books' ][ 'booksHitList'      ] = $this -> UTIL -> xml2array( $ret );
     $_SESSION[ 'books' ][ 'currentElement'    ] = 0;
@@ -494,8 +492,6 @@ function getMediaList( $I )
     $collection_dc_collection_id = $I[ 'currentCollection' ] -> get_dc_collection_id();
     $user_role_id                = $I[ 'currentUser'       ] -> get_role_encode();
     $b_ppn                       = $_SESSION[ 'books'      ][ 'booksHitList' ][ 0 ][ 'ppn' ];
-
-
 
     $_SESSION[ 'books' ][ 'url' ] =  "index.php?ppn=$b_ppn&item=media&loc=1&action=annoteNewMedia&dc_collection_id=$collection_dc_collection_id&mode=new&r=$user_role_id";
  

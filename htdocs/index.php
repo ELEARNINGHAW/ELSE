@@ -28,7 +28,6 @@ $COLLMGR    = new COLLECTIONMANAGER( $CFG, $SQL, $RENDERER, $UTIL            );
 $MEDIAMGR   = new MEDIAMANAGER(      $CFG, $SQL, $RENDERER, $UTIL, $COLLMGR  );
 
 
-
 ## ----------------------------------------------------------------------------------------
 $I = $UTIL -> getInput();                                #--- GET ALL INPUT (GET) ---
 ## ----------------------------------------------------------------------------------------

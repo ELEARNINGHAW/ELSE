@@ -1069,6 +1069,14 @@ td{
   border-left: solid #000 1px;
 }
 
+.medium_0 /* Unbekannt */
+{
+    background-image:url(../img/svg/txtUnknown.png);
+    background-repeat:repeat-y;
+    background-color: transparent;
+}
+
+
 .medium_1 /* Buch */
 {
   background-image:url(../img/svg/txtSemApp.png);
