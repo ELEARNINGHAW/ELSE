@@ -114,14 +114,8 @@ function calcDocType()
 {
   $pos = $this -> get_doc_type_id() ;
  
-  if (isset($_SESSION[ 'DOC_TYPE' ][ $pos  ]))
-  {
-    $dt = $_SESSION['DOC_TYPE'][$pos];
-  }
-  else
-  {
-    $dt =  0;
-  }
+  if (isset($_SESSION[ 'DOC_TYPE' ][ $pos  ]))  {  $dt = $_SESSION['DOC_TYPE'][$pos];  }
+  else                                          {  $dt =  0;                           }
  
   $this -> set_doc_type( $dt[ 'doc_type'   ] );
 }

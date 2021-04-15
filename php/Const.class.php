@@ -207,7 +207,7 @@ $this->CONST_ACTION_INFO = array
     (
       
       "state"   => array ( 'continue' ) ,
-      "loc"      => array (  "1" ) ,
+      "loc"      => array ( "0", "1" ) ,
       "mode"   => array (  "admin" ,'staff' ) ,
     ) ,
     'acl' => array

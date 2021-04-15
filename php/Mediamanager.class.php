@@ -75,6 +75,7 @@ function annoteNewMedia_showForm( $I )
     {
       $tmpBook = $_SESSION[ 'books' ][ 'booksHitList' ][ $_SESSION[ 'books' ][ 'currentElement' ] ];
       $I[ 'medium' ] -> array2obj( $tmpBook );
+     
     }
     else if ( $I[ 'medium' ] -> get_title( ) == '' AND $I[ 'medium' ] -> get_doc_type_id( ) != 99 )     ## Kein Titel UND kein Erwerbungsvorschlag
     {
@@ -106,9 +107,9 @@ function annoteNewMedia_showForm( $I )
     $_SESSION[ 'books' ][ 'maxElement'     ] = 0;
   }
     $collection_id = $I[ 'currentCollection' ] -> get_collection_id();
-  
+
     $collection = $this -> SQL -> getCollection( $collection_id );
-  
+   
     $tpl_vars[ 'collection'     ] = $collection[ $collection_id] -> obj2array();
     $tpl_vars[ 'medium'         ] = $I[ 'medium'       ] -> obj2array();
     $tpl_vars[ 'user'           ] = $I[ 'currentUser'  ] -> obj2array();
@@ -123,7 +124,6 @@ function annoteNewMedia_showForm( $I )
     $this -> RENDERER -> do_template( 'edit_book.tpl' , $tpl_vars );
     exit( 0 );
 }
-
 
 
 function purchaseSuggestion( $I )
@@ -196,19 +196,19 @@ function saveMediaMetaData( $I )
         { $I[ 'medium' ] -> set_location_id  ( 3 );                                                               ## ist der Medienort: 'Online' ;) , Status 3
         }
   
-        #-------------------------------
+        #-----------------------------------
         # Medienstatus
         # name        description
-        #------------------------------
-        # new	        neu bestellt	  1
-        # open        wird bearbeitet	2
-        # active      ist aktiv	      3
-        # obsolete    wird entfernt	  4
-        # inactive	  ist naktiv      5
-        # delete	    IST GELÖSCHT!   6
-        # suggest	    Vorschlag       9
-        # archive	    archiviert     10
-        #------------------------------
+        #-----------------------------------
+        # - 1  new	       neu bestellt	    1
+        # - 2  open        wird bearbeitet	2
+        # - 3  active      ist aktiv	      3
+        # - 4  obsolete    wird entfernt	  4
+        # - 5  inactive	   ist naktiv       5
+        # - 6  delete	     IST GELÖSCHT!    6
+        # - 9  suggest	   Vorschlag        9
+        # - 10 archive	   archiviert      10
+        #-----------------------------------
    
   
         $location_id = $I[ 'medium' ] -> get_location_id ();
@@ -245,6 +245,7 @@ function saveMediaMetaData( $I )
         }
   
         #-----------------------------------------------------------------------------------------------------
+        # $doc_type_id = 0  # unknown                 Unbekannt           0  1 online
         # $doc_type_id = 1  # Book                    Buch                1  1 physical
         # $doc_type_id = 3  # Motion Picture          Film                1  1 physical
         # $doc_type_id = 4  # eBook                   E-Book              0  1 online
@@ -275,8 +276,7 @@ function saveMediaMetaData( $I )
           { $I[ 'medium' ] -> set_location_id ( 5 );                                                            ## sonst ist der Medienort: Ext - Bibliothek
           }
         }
-  
-  
+    
         if ( $doc_type_id == '8' )                                                                              ## E-Zeitschrift / Journal
         { $I[ 'medium' ] -> set_state_id     ( 3 );                                                             ## Status wird 'aktiv'         , Status 3
           if ( $I[ 'medium' ] -> get_sigel() == 'HAW-Hamburg'   )                                               ## Wenn Sigel = HAW
@@ -287,18 +287,22 @@ function saveMediaMetaData( $I )
           }
         }
         
-        
         if ( $doc_type_id == '6' )                                                                              ## Artikel
         {
           { $I[ 'medium' ] -> set_location_id ( 2 );                                                            ## ist der Medienort: Bibliothek
           }
         }
 
-
         if ( $doc_type_id == '99')                                                                              ## Kaufvorschlag
-        {  $I[ 'medium' ] -> set_state_id     ( 9 );                                                            ## und der Status wird 'aktiv'         , Status 3
+        {  $I[ 'medium' ] -> set_state_id     ( 9 );                                                            ## und der Status wird 'Vorschlag'      , Status 3
         }
-
+  
+        if ( $doc_type_id == '14')                                                                              ## Kaufvorschlag
+        {  $I[ 'medium' ] -> set_state_id     ( 3 );                                                            ## und der Status wird 'aktiv'         , Status 3
+           $I[ 'medium' ] -> set_location_id  ( 2 );
+        }
+  
+  
         $this -> SQL -> initMediaMetaData ( $I[ 'medium' ] );
         break;
         }
