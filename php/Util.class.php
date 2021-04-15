@@ -36,7 +36,7 @@ $this -> HAWdb     = new HAW_DB();                                    # Aus der 
 
 
 if ( isset ( $_GET[ 'uid' ] ) )  ##  Initiale Parameterübergabe über  Moodle ## // Kurskurzname   /* Paramterübergabe von EMIL  */
-{
+{# deb($_GET[ 'uid' ],1);
   $O = $this -> getGET_BASE_Values () ;
   $currentCollection = $O[ 'currentCollection' ] ;
   $currentUser       = $O[ 'currentUser'       ] ;
@@ -143,7 +143,7 @@ if      ( isset ( $_GET[ 'collection_id'                       ] ) )  {  $curren
                                                                          $currentCollection -> set_dc_collection_id ( $this->b64en( $_GET[ 'collection_id'     ] ) ) ;
                                                                       }
 else if ( isset ( $_GET[ 'dc_collection_id'                    ] ) )  {  $cid = $this->b64de( $_GET[ 'dc_collection_id'  ] );
-                                                                         $cc  = $this ->   SQL-> getCollection (  $cid );
+                                                                         $cc  = $this ->  SQL-> getCollection (  $cid );
                                                                          $currentCollection =   $cc[ $cid ] ;
                                                                          $currentCollection -> set_dc_collection_id     ( $_GET[ 'dc_collection_id'     ] ) ;
                                                                          $currentCollection -> set_collection_id    ( $cid ) ;

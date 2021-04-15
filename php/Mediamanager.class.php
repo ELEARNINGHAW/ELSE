@@ -275,7 +275,19 @@ function saveMediaMetaData( $I )
           { $I[ 'medium' ] -> set_location_id ( 5 );                                                            ## sonst ist der Medienort: Ext - Bibliothek
           }
         }
-
+  
+  
+        if ( $doc_type_id == '8' )                                                                              ## E-Zeitschrift / Journal
+        { $I[ 'medium' ] -> set_state_id     ( 3 );                                                             ## Status wird 'aktiv'         , Status 3
+          if ( $I[ 'medium' ] -> get_sigel() == 'HAW-Hamburg'   )                                               ## Wenn Sigel = HAW
+          {  $I[ 'medium' ] -> set_location_id ( 3 );                                                           ## dann ist der Medienort: online
+          }
+          else
+          { $I[ 'medium' ] -> set_location_id ( 5 );                                                            ## sonst ist der Medienort: Ext - Bibliothek
+          }
+        }
+        
+        
         if ( $doc_type_id == '6' )                                                                              ## Artikel
         {
           { $I[ 'medium' ] -> set_location_id ( 2 );                                                            ## ist der Medienort: Bibliothek

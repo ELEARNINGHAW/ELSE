@@ -212,13 +212,13 @@ function getCollection( $colID = null , $filter = false ,  $short = null )
     else                                                                          {  $bibFilter       = " AND c.bib_id       != '' "                     ; }
   }
 
-  if ( $colID )   { $collection .= " AND c.id = \"" . $this->es ( $colID ) . "\" ";  }
+  if ( $colID )   { $collection .= "  c.id = \"" . $this->es ( $colID ) . "\" ";  }
 
   $SQL  = "SELECT  c.id  as  c_id,    c.sortorder as c_sortorder ";
-  $SQL .= " FROM `collection` c , `user` u";
-  $SQL .= " WHERE  u.hawaccount = c.user_id " .  $collection  . " " . $bibFilter . " " . $semesterFilter;  # ."  ".$user;
+  $SQL .= " FROM `collection` c ";
+  $SQL .= " WHERE  " .  $collection  . " " . $bibFilter . " " . $semesterFilter;  # ."  ".$user;
   $SQL .= " ORDER BY c.id ";
-
+ 
   $res = mysqli_query ( $this->DB , $SQL );
 
   ## ---------------------------------------------------------------------------------------------------------------------------------------------------
