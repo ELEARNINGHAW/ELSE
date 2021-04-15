@@ -542,13 +542,11 @@ function get_med_state( $collection_id )
     trigger_error ( "Deprecated function called: setCollectionState()" , E_USER_NOTICE );
     $SQL = "
   UPDATE collection
-  SET `state_id` = '" . $this->es ( $state ) . "' WHERE `collection`.`id` = " . $this->es ( $colID );
+  SET `state_id` = '" . $this->es ( $state ) . "' WHERE `collection`.`id` =  " . $this->es ( $colID );
 
     $res = mysqli_query ( $this->DB , $SQL );
     return $res;
   }
-
-  
   
   
 
