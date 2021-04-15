@@ -581,7 +581,7 @@ SET `state_id` = '" . $this->es ( $state ) . "' WHERE `document`.`id` = " . $thi
 # ---------------------------------------------------------------------------------------------
   function initUser( $user )
   {
-    $SQL = "
+  $SQL = "
   INSERT INTO user SET
   id                = \"" . $this->es ( $user->id ) . "\"  ,
   role_id           = \"" . $this->es ( $user->role_id ) . "\"  ,
@@ -597,8 +597,8 @@ SET `state_id` = '" . $this->es ( $state ) . "' WHERE `document`.`id` = " . $thi
   last_modified     = NOW()                                               ,
   last_state_change = NOW()                                               ";
 
-    $res = mysqli_query ( $this->DB , $SQL );
-    return $res;
+  $res = mysqli_query ( $this->DB , $SQL );
+  return $res;
   }
 
 
