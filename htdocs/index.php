@@ -1,6 +1,7 @@
 ﻿<?php
 session_start();   # session_destroy (); unset($_SESSION);
 
+
 require_once ( '../php/Const.class.php'               );
 require_once ( '../php/Config.class.php'              );
 require_once ( '../php/SQL.class.php'                 );
@@ -18,12 +19,14 @@ require_once ( '../php/MedState.class.php'            );
 require_once ( '../php/Bib.php'                       );
 require_once ( '../php/Filter.class.php'              );
 
+
 $CFG        = new ConfigELSE( new CONSTANT()                                 );
 $SQL        = new SQL(                                                       );
 $UTIL       = new UTIL(                    $SQL                              );
 $RENDERER   = new RENDERER(                                 $UTIL            );
 $COLLMGR    = new COLLECTIONMANAGER( $CFG, $SQL, $RENDERER, $UTIL            );
 $MEDIAMGR   = new MEDIAMANAGER(      $CFG, $SQL, $RENDERER, $UTIL, $COLLMGR  );
+
 
 
 ## ----------------------------------------------------------------------------------------
@@ -34,7 +37,6 @@ $cu = $I[ 'currentUser' ];
 $ca = $I[ 'operator'    ] -> get_action();   # ACTION
 $ci = $I[ 'operator'    ] -> get_item();     # ITEM
 $cl = $I[ 'operator'    ] -> get_loc();      # LOCATOR
-
 
 # $ca = 'import';
 #deb($ci );
@@ -143,7 +145,7 @@ if ( $ci  == 'collection' AND $UTIL->hasRole( $cu,'staff', 'edit', 'mailuser'  )
 ## ----------------------------------------------------------------------------------------
 
 else
-{ if ( $ci  == 'collection' )
+{ if ( $ci  == 'collection' );
   { if      ( 1 == 2 ) {;}
     else if ( $ca  == 'show_collection'      )  { $COLLMGR -> showCollection                  ( $I ); }    ## SAs wird angezeigt (deren Editierbarkeit ist abhängig von der Rolle des Nuters)
     else if ( $ca  == 'show_media_list'      )  { $COLLMGR -> showMediaList                   ( $I ); }    ## Zeigt die Liste der SAs, geoperatort nach deren Zustand

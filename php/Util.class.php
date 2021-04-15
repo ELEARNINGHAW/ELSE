@@ -23,7 +23,6 @@ $currentUser       = new User();
 $medium            = new medium();
 $this -> HAWdb     = new HAW_DB();                                    # Aus der SQLite DB
 
-
 #if ( ! isset ( $_SESSION [ 'DEP_2_BIB' ] ) )  // Standardkonstanten werden nur beim ersten Aufruf eingelesen.
 {
   $_SESSION[ 'DEP_2_BIB'    ] = $this -> HAWdb -> getDEP_2_BIB ();
@@ -193,7 +192,7 @@ return $I ;
 
 function splitCourseName_user($cnu, $selector = false )
 {
-  $ret =  explode ( '###', $lms = $this -> b64de( $cnu ) );          # deb( $lms );
+  $ret =  explode ( '###', $lms = $this -> b64de( $cnu ) );
   if ($selector)   {  $ret = $ret[ 1 ];  }
   else             {  $ret = $ret[ 0 ];  }
 
@@ -222,13 +221,14 @@ function getGET_BASE_Values ( )
 
   #### Übergabe aus Moodle / IDM
 #------------------------------------------------------------------------
-
-  if ( isset ( $_GET[ 'cid'] ) )  { $currentCollection -> set_course_id    ( $this -> b64de( $_GET[ 'cid']  ) );  }
-  if ( isset ( $_GET[ 'mid'] ) )  { $currentCollection -> set_modul_id     ( $this -> b64de( $_GET[ 'mid']  ) );  }
-  if ( isset ( $_GET[ 'sn' ] ) )  { $currentCollection -> set_title_short  ( $this -> b64de( $_GET[ 'sn' ]  ) );  }
-  if ( isset ( $_GET[ 'cn' ] ) )  { $currentCollection -> set_title        ( $this -> b64de( $_GET[ 'cn' ]  ) );  }
-
- #  deb($currentCollection,1);
+  
+ # if ( isset ( $_GET[ 'sn' ] ) )  { $currentCollection -> set_id           ( $this -> b64de( $_GET[ 'sn'  ]  ) );  }
+  if ( isset ( $_GET[ 'sn' ] ) )  { $currentCollection -> set_collection_id( $this -> b64de( $_GET[ 'sn'  ]  ) );  }
+  if ( isset ( $_GET[ 'cid'] ) )  { $currentCollection -> set_course_id    ( $this -> b64de( $_GET[ 'cid' ]  ) );  }
+  if ( isset ( $_GET[ 'mid'] ) )  { $currentCollection -> set_modul_id     ( $this -> b64de( $_GET[ 'mid' ]  ) );  }
+  if ( isset ( $_GET[ 'sn' ] ) )  { $currentCollection -> set_title_short  ( $this -> b64de( $_GET[ 'sn'  ]  ) );  }
+  if ( isset ( $_GET[ 'cn' ] ) )  { $currentCollection -> set_title        ( $this -> b64de( $_GET[ 'cn'  ]  ) );  }
+ 
 #------------------------------------------------------------------------
 
   if ( isset ( $_GET[ 'uid'] ) )  { $currentUser -> set_id                 ( $this -> b64de( $_GET[ 'uid']  ) ) ; }
@@ -253,7 +253,7 @@ function getGET_BASE_Values ( )
   $O[ 'currentCollection' ]  =  $this -> updateCollection(  $currentCollection, $currentUser );
   $O[ 'currentUser'       ]  =  $this -> updateUser( $currentUser  );
   $O[ 'medium'            ]  =  $medium;
-   # deb($O[ 'currentCollection' ] ,1);
+ 
   return $O;
 }
 
@@ -362,22 +362,27 @@ function updateUser ( $user )
 # ---------------------------------------------------------------------------------------------
 function updateCollection ( $collection , $user )
 {
-  if ( $collection->get_id() != '' AND ( $user -> get_role_id () == 1    OR   $user -> get_role_id () == 2    OR   $user -> get_role_id () == 3) )
+  if (  $user -> get_role_id () == 1    OR   $user -> get_role_id () == 2    OR   $user -> get_role_id () == 3 )
   {
-    $old_collection = $this -> SQL -> getCollectionMetaData( $collection -> get_title_short() ) ;
-
-    if (  $old_collection -> get_id() != '' )                                            #  echo "Semesterapparat existiert schon";
-    {
-      $ret = $this -> SQL -> updateColMetaData( $collection  );                          #  echo "- Bestehender Semesterapparat (UPDATE DB )-";
+    if ($collection -> get_id() )
+    {die("ID");
+      $old_collection = $this -> SQL -> getCollectionMetaData( $collection -> get_title_short());
+    
+      if ($old_collection->get_id() != '')                                            #  echo "Semesterapparat existiert schon";
+      {
+        $ret = $this -> SQL -> updateColMetaData($collection);                          #  echo "- Bestehender Semesterapparat (UPDATE DB )-";
+      }
     }
+    else                                                                                    #  echo "Semesterapparat existiert NOCH NICHT ";
+    {
+      $collection -> set_expiry_date( $this -> get_new_expiry_date() );
+      $ret = $this -> SQL -> initCollection($collection, $user);                         #  echo "- NEUER Semesterapparat (INIT DB )-";
+    }
+    $collection = $this -> SQL -> getCollectionMetaData( $collection -> get_title_short( ) ) ;
   }
-  else                                                                                    #  echo "Semesterapparat existiert NOCH NICHT ";
-  {
-    $collection -> set_expiry_date ( $this -> get_new_expiry_date() );
-    $ret = $this -> SQL -> initCollection( $collection , $user );                         #  echo "- NEUER Semesterapparat (INIT DB )-";
-  }
-  $collection = $this -> SQL -> getCollectionMetaData( $collection -> get_title_short() ) ;
+  
   return $collection;
+  
 }
 
 
@@ -722,9 +727,6 @@ function check_acl ( $acl_list , $item , $id )
     $book['sigel'   ]  = "HAW-Hamburg";
     return $book;
   }
-
-  
-  
 
 ####################### --- DEPRECATED TOOLS --- #######################
 # ---------------------------------------------------------------------------------------------
