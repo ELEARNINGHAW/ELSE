@@ -67,7 +67,7 @@
     {$checked            = ''   }
 
 
-    {if ( $medium.doc_type_id == 16 ) }   ## Medientyp: unbekannt
+    {if ( $medium.doc_type_id == 16 ) }  {*Medientyp: unbekannt*}
         {$med_unknown = true}
     {/if}
 
