@@ -216,11 +216,11 @@ function getCollection( $colID = null , $filter = false ,  $short = null )
 
   $SQL  = "SELECT  c.id  as  c_id,    c.sortorder as c_sortorder ";
   $SQL .= " FROM `collection` c ";
-  $SQL .= " WHERE  " .  $collection  . " " . $bibFilter . " " . $semesterFilter;  # ."  ".$user;
+  $SQL .= " WHERE  1=1 " .  $collection  . " " . $bibFilter . " " . $semesterFilter;  # ."  ".$user;
   $SQL .= " ORDER BY c.id ";
- 
+ deb($SQL);
   $res = mysqli_query ( $this->DB , $SQL );
-
+ 
   ## ---------------------------------------------------------------------------------------------------------------------------------------------------
   ## ALLE Medieninfo zu dem entsprechenden SA werden ermittelt
   ## ---------------------------------------------------------------------------------------------------------------------------------------------------
