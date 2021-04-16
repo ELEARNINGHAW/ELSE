@@ -297,9 +297,9 @@ function saveMediaMetaData( $I )
         {  $I[ 'medium' ] -> set_state_id     ( 9 );                                                            ## und der Status wird 'Vorschlag'      , Status 3
         }
   
-        if ( $doc_type_id == '14')                                                                              ## Kaufvorschlag
+        if ( $doc_type_id == '14')                                                                              ## Medientyp: unbekannt
         {  $I[ 'medium' ] -> set_state_id     ( 3 );                                                            ## und der Status wird 'aktiv'         , Status 3
-           $I[ 'medium' ] -> set_location_id  ( 2 );
+           $I[ 'medium' ] -> set_location_id  ( 2 );                                                            ## ist der Medienort: Bibliothek
         }
   
   
