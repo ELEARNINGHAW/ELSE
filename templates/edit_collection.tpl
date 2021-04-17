@@ -32,13 +32,6 @@ Neuen Semesterapparat anlegen für: {$collection.title}
 {/if*}
 
 <table style="text-align: left; width: 100%;" border="0">
-<tr>
-<td style="vertical-align: top;"><span class="medHead2">Standort des Semesterapparats:</span></td>
-    <td>{html_options name="bib_id" options=$tpl.bib_info selected=$collection.bib_id } <br/><span  style="font-weight: bold; font-size: 12px;" >im Regal &quot;Semesterapparate&quot;</span><br/></td>
-     <td rowspan="10" >   <input style="width:125px; height:50px;" name="ok" value="&nbsp;&nbsp;&nbsp;SPEICHERN&nbsp;&nbsp;&nbsp;" type="submit"> </td>
-   </tr>
-
-</tr>
 
 <tr>
 <td style="vertical-align: top;"><span  class="medHead2">Bemerkungen für die Studierenden zum Semesterapparat:<br/>(Optional)</span></td>
@@ -50,31 +43,37 @@ Neuen Semesterapparat anlegen für: {$collection.title}
   <td> <textarea name="notes_to_staff_col" cols="40" rows="5" >{$collection.notes_to_staff_col}</textarea> </td>
 </tr>
 
+{if $user.role_id <= 2}
+<tr>
+  <td style="vertical-align: top;"><span class="medHead2">Standort des Semesterapparats:</span></td>
+  <td>{html_options name="bib_id" options=$tpl.bib_info selected=$collection.bib_id } <br/><span  style="font-weight: bold; font-size: 12px;" >im Regal &quot;Semesterapparate&quot;</span><br/></td>
+  <td rowspan="10" >   <input style="width:125px; height:50px;" name="ok" value="&nbsp;&nbsp;&nbsp;SPEICHERN&nbsp;&nbsp;&nbsp;" type="submit"> </td>
+</tr>
+
 <tr>
 <td style="vertical-align: top;"><span  class="medHead2">Semester:</span></td>
 <td> {html_options name="semester_id" options=$tpl.semlist selected=$collection.sem }</td>
 </tr>
 
+<tr>
+  <td style="vertical-align: top;"><span  class="medHead2">Owner:</span></td>
+  <td> {html_options name="owner_id" options=$tpl.all_user selected=$collection.Owner.hawaccount }</td>
+</tr>
+{/if}
+
+
+
 </tbody>
 </table>
     <hr>
-
     <div class="text2">
     <h3>Exportieren der Medien aus diesem Semesterapparat </h3>
        Den Import-Button finden Sie unter <img src="img/addmedia.png" style=" vertical-align: text-top;"  /> (Medien hinzufügen) im Ziel-Semesterapparat.
         <a class ="exportBt"   href="index.php?item=collection&amp;action=export&amp;dc_collection_id={$collection.dc_collection_id}&amp;redirect=SA&amp;r={$user.role_id}" title="Export des Semesterapparats">
            <button  type="button" style="padding:20px; width: 650px; margin: 30px;" class="ui-button ui-widget ui-corner-all">Export </button>
          </a>
-
         </div>
         <br/><br/>
         <hr>
-
-
-
-
-
-
-
 </form>
 </div>

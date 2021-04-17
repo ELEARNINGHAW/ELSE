@@ -303,8 +303,6 @@ function getUserList(  )
   return $ret;
 }
 
-
-
 # ---------------------------------------------------------------------------------------------
   function getUserMetaData( $hawAccount )
   {
@@ -355,6 +353,18 @@ function getUserList(  )
     return $user;
 
   }
+
+function getAllUserData()
+{
+  $ul = $this -> getUserList () ;
+  foreach ( $ul as $u )
+  {
+    $tmp = $this->getUserMetaData($u);
+    $userList[$tmp->get_bib_id() . "_" . $tmp->get_surname() . "_" . $tmp->get_forename()] = $tmp;
+  }
+  ksort($userList );
+  return $userList;
+}
 
 
 # ---------------------------------------------------------------------------------------------
@@ -815,6 +825,7 @@ SET `state_id` = '" . $this->es ( $state ) . "' WHERE `document`.`id` = " . $thi
     if   ( $collection -> get_bib_id               () != '' ) {  $SQL .= " bib_id               = \"" . $this->es ( $collection -> get_bib_id               () ) . "\" ,";  }
     if   ( $collection -> get_sem                  () != '' ) {  $SQL .= " sem                  = \"" . $this->es ( $collection -> get_sem                  () ) . "\" ,";  }
     if   ( $collection -> get_title                () != '' ) {  $SQL .= " title                = \"" . $this->es ( $collection -> get_title                () ) . "\" ,";  }
+    if   ( $collection -> get_Owner                () != '' ) {  $SQL .= " user_id              = \"" . $this->es ( $collection -> get_Owner                () ) . "\" ,";  }
  #  if   ( $collection -> get_notes_to_studies_col () != '' ) {  $SQL .= " notes_to_studies_col = \"" . $this->es ( $collection -> get_notes_to_studies_col () ) . "\" ,";  }
                                                               {  $SQL .= " notes_to_studies_col = \"" . $this->es ( $collection -> get_notes_to_studies_col () ) . "\" ,";  }
                                                               {  $SQL .= " notes_to_staff_col   = \"" . $this->es ( $collection -> get_notes_to_staff_col   () ) . "\" ,";  }

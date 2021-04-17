@@ -197,6 +197,13 @@ function saveNewCollection( $I )
 ###############################################################################################
 function editColMetaData( $I )
 {
+  foreach ( $_SESSION[ 'ALL_USER' ] as $user )
+  { if($user['hawaccount' ] != '' )
+    {
+    $all_user[$user['hawaccount']] = $user['surname'] . ', ' . $user['forename'];
+    }
+  }
+  
   $collection_id = $I[ 'currentCollection'    ] -> get_collection_id();
   $collection    = $this -> SQL -> getCollection( $collection_id ); #( $colID , $filter , $short = null )
 
@@ -212,6 +219,7 @@ function editColMetaData( $I )
   $tpl_vars[ 'DEP'               ]  = $_SESSION[ 'DEP_2_BIB'                ]  ; # Liste aller Departments
   $tpl_vars[ 'FAK'               ]  = $_SESSION[ 'FAK'                      ]  ; # Liste aller Fakultäten
   $tpl_vars[ 'FACHBIB'           ]  = $_SESSION[ 'FACHBIB'                  ]  ; # Liste aller Fachbibs
+
   $tpl_vars[ 'SEMESTER'          ]  = array_keys( $this -> conf [ 'SEM'          ] ); #
   $tpl_vars[ 'back_URL'          ]  = "index.php?item=collection&action=show_collection&dc_collection_id=".$collection[ $collection_id  ] -> get_dc_collection_id()."&r=".$I[ 'currentUser'  ] -> get_role_id();
 
@@ -221,7 +229,7 @@ function editColMetaData( $I )
 
   foreach ( $_SESSION[ 'FACHBIB'   ] as $FBI    )   {  $bib_info[ $FBI[ 'bib_id' ] ] = $FBI[ 'bib_name' ];  }
 
-  foreach ( $_SESSION[ 'DEP_2_BIB' ] as $DEPA   )                                                           # Nur Departments mit ID > 1000 kommen in die Liste
+  foreach ( $_SESSION[ 'DEP_2_BIB' ] as $DEPA   )                                                                     # Nur Departments mit ID > 1000 kommen in die Liste
   { if($DEPA[ 'dep_id' ] < 1000  AND $DEPA[ 'dep_name' ] != 'XXX'  )
     { $departments[ $DEPA[ 'dep_id' ] ] = $DEPA[ 'dep_name' ];
     }
@@ -231,7 +239,8 @@ function editColMetaData( $I )
   $tpl_vars[ 'tpl' ][ 'departments' ] = $departments; #$_SESSION[ 'DEP_2_BIB' ];
   $tpl_vars[ 'tpl' ][ 'bib_info'    ] = $bib_info;
   $tpl_vars[ 'tpl' ][ 'role_info'   ] = $this -> SQL -> getRoleInfos('name');
-
+  $tpl_vars[ 'tpl' ][ 'all_user'    ] = $all_user;  # Liste aller User (mit Schreibrechten)
+ 
   $this -> RENDERER->do_template ( 'edit_collection.tpl' , $tpl_vars ) ;
   exit(0);
 }
