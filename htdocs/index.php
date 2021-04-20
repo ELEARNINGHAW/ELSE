@@ -1,7 +1,6 @@
 ﻿<?php
 session_start();   # session_destroy (); unset($_SESSION);
 
-
 require_once ( '../php/Const.class.php'               );
 require_once ( '../php/Config.class.php'              );
 require_once ( '../php/SQL.class.php'                 );
@@ -38,10 +37,12 @@ $ci = $I[ 'operator'    ] -> get_item();     # ITEM
 $cl = $I[ 'operator'    ] -> get_loc();      # LOCATOR
 
 # $ca = 'import';
+#deb( $_GET  );
 #deb($ci );
 #deb($cu );
 #deb($ca );
-#deb($I);
+#deb( $cl );
+#deb( $I,1  );
 # -- Default: item = collection --
 # --(bei role = user)  action = show_collection,
 # --(bei role = staff) action = show_collection_list
@@ -60,12 +61,12 @@ if ( $ci  == 'collection'  AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit')
   else if ( $ca  == 'resort'                 )  { $COLLMGR -> resortCollection          ( $I ) ; }  ## Setzt neue Reihenfolge der Medien im SA
   else if ( $ca  == 'export'                 )  { $COLLMGR -> exportCollection          ( $I ) ; }  ## Exportiert den SA
   else if ( $ca  == 'import'                 )  { $COLLMGR -> importCollection          ( $I ) ; }  ## Importiert den SA
-  else if ( $ca  == 'takeover'               )  { $COLLMGR -> takeoverCollection        ( $I ) ; }  ## Übernimmt ausgwählten vorläufer SA
+  else if ( $ca  == 'takeover'               )  { $COLLMGR -> takeoverCollection        ( $I ) ; }  ## Übernimmt ausgwählten Vorläufer SA
   else if ( $ca  == 'lms-download'           )  { $COLLMGR -> lmsDownload               ( $I ) ; }  ## Importiert Medien-Metadaten direkt aus Beluga Core
   else if ( $ca  == 'getMediaList'           )  { $COLLMGR -> getMediaList              ( $I ) ; }  ## Importiert Medien-Metadaten direkt aus Beluga Core
 }
 
-else if (   $cl  ==  1   AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit'))   ## --- cl = 1 -- Location = phys Semesterapp
+ if (  ( $cl == 1  OR  $cl == 0  OR $cl == 2  OR $cl  == 3 OR $cl  == 5)   AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit'))  ## cl = 2 Location =  Bibliothek  --  3 Loc =  online --  5 Loc = externe Biblio
 {
   if      ( 1 == 2 ) {;}
   else if ( $ca  == 'search'                )  {  $MEDIAMGR -> searchMediaOnLibraryServer    ( $I ); }   ## ++ 4 OPAC -- Suchprozess des Mediums wird gestartet
@@ -84,20 +85,7 @@ else if (   $cl  ==  1   AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit')) 
   else if ( $ca  == 'activate'              )  {  $MEDIAMGR -> activateMedia                 ( $I ); }   ## ActionHandler: Medium Aktivieren
   else if ( $ca  == 'new_email'             )  {  $MEDIAMGR -> showMailForm                  ( $I ); }   ## ActionHandler: Mailformular für Infomail an Nutzer
   else if ( $ca  == 'cancel_order'          )  {  $MEDIAMGR -> cancelMedia                   ( $I ); }   ## ActionHandler: Buchbestellung wird storiert
-}
-
-else if (  ( $cl == 2  OR $cl  == 3 OR $cl  == 5)   AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit'))  ## cl = 2 Location =  Bibliothek  --  3 Loc =  online --  5 Loc = externe Biblio
-{
-  if      ( 1 == 2 ) {;}
-  else if ( $ca  == 'annoteNewMedia'        )  {  $MEDIAMGR -> annoteNewMedia_showForm       ( $I ); }   ## Eingabemaske Metadaten für Buch Annotation anzeigen
-  else if ( $ca  == 'edit'                  )  {  $MEDIAMGR -> editMediaMetaData             ( $I ); }   ## ActionHandler: Metadaten des SA bearbeiten
-  else if ( $ca  == 'save'                  )  {  $MEDIAMGR -> saveMediaMetaData             ( $I ); }   ## Speichern der Metadaten des Mediums
-  else if ( $ca  == 'accept'                )  {  $MEDIAMGR -> acceptMedia                   ( $I ); }   ## ActionHandler: angefordertes Buch wird akzeptiert zur Bearbeitung
-  else if ( $ca  == 'finished'              )  {  $MEDIAMGR -> doneMedia                     ( $I ); }   ## ActionHandler: angefordertes Buch steht für die Studies bereit
-  else if ( $ca  == 'kill'                  )  {  $MEDIAMGR -> ereaseMedia                   ( $I ); }   ## Buch wird endgültig aus SA gelöscht
   else if ( $ca  == 'deactivate'            )  {  $MEDIAMGR -> deactivateMedia               ( $I ); }   ## ActionHandler: Medium Deaktivieren
-  else if ( $ca  == 'activate'              )  {  $MEDIAMGR -> activateMedia                 ( $I ); }   ## ActionHandler: Medium Aktivieren
-  else if ( $ca  == 'delete'                )  {  $MEDIAMGR -> deleteMedia                   ( $I ); }   ## ActionHandler: Medium wird aus SA gelöscht
   else if ( $ca  == 'delete_ebook'          )  {  $MEDIAMGR -> deleteMedia                   ( $I ); }   ## ActionHandler: Medium wird aus SA gelöscht
   else if ( $ca  == 'new_email'             )  {  $MEDIAMGR -> showMailForm                  ( $I ); }   ## ActionHandler: Erwebungsvorschlag (nach 0 Suchtreffern)
 }

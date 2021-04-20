@@ -19,6 +19,7 @@ class Collection
   public $sortorder;
   public $collection_id;
   public $dc_collection_id;
+  public $to_collection_id;
   public $bib_id;
   public $media;
 
@@ -46,6 +47,7 @@ class Collection
     $this -> sortorder             = null;
     $this -> collection_id         = null;
     $this -> dc_collection_id      = null;
+    $this -> to_collection_id      = null;
     $this -> bib_id                = null;
     $this -> Owner                 = new User();
     $this -> MedState              = new MedState();
@@ -71,6 +73,7 @@ class Collection
   function get_sortorder()             { return $this -> sortorder            ; }
   function get_collection_id()         { return $this -> collection_id        ; }
   function get_dc_collection_id()      { return $this -> dc_collection_id     ; }
+  function get_to_collection_id()      { return $this -> to_collection_id     ; }
   function get_bib_id ()               { return $this -> bib_id               ; }
   function get_Owner()                 { return $this -> Owner                ; }
   function get_Medstate()              { return $this -> MedState             ; }
@@ -95,6 +98,7 @@ class Collection
   function set_sortorder               ( $val ) { $this -> sortorder            =  $val ; }
   function set_collection_id           ( $val ) { $this -> collection_id        =  $val ; }
   function set_dc_collection_id        ( $val ) { $this -> dc_collection_id     =  $val ; }
+  function set_to_collection_id        ( $val ) { $this -> to_collection_id     =  $val ; }
   function set_bib_id                  ( $val ) { $this -> bib_id               =  $val ; }
   function set_Owner                   ( $val ) { $this -> Owner                =  $val ; }
   function set_Medstate                ( $val ) { $this -> MedState             =  $val ; }
@@ -104,9 +108,9 @@ class Collection
   function obj2array()
   {
       $tmp = (array) $this;
-      $tmp['Owner'] = (array) $this->Owner;
-      $tmp['MedState'] = (array) $this->MedState;
-      $tmp['Bib'] = (array) $this->Bib;
+      $tmp[ 'Owner'    ] = (array) $this->Owner;
+      $tmp[ 'MedState' ] = (array) $this->MedState;
+      $tmp[ 'Bib'      ] = (array) $this->Bib;
 
       unset($tmp['media']);
       if (isset($this -> media))

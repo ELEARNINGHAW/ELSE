@@ -42,7 +42,8 @@
 <input type = "hidden" name = "physicaldesc"     value = "{$medium.physicaldesc}"         >
 <input type = "hidden" name = "sigel"            value = "{$medium.sigel}"                >
 <input type = "hidden" name = "role"             value = "{$user.role_encode}"            >
-{*<input type = "hidden" name = "redirect"         value = "{$operator.redirect}"           > *}
+<input type = "hidden" name = "origin"           value = "{$medium.origin}"       >
+    {*<input type = "hidden" name = "redirect"         value = "{$operator.redirect}"           > *}
 
 {if $restricted}
 <input type = "hidden" name = "title"            value = "{$medium.title}"        >
@@ -51,6 +52,7 @@
 <input type = "hidden" name = "edition"          value = "{$medium.edition}"      >
 <input type = "hidden" name = "signature"        value = "{$medium.signature}"    >
 <input type = "hidden" name = "ppn"              value = "{$medium.ppn}"          >
+
 {/if}
 
 <table style="text-align: left; width: 100%;" border="0"  >
@@ -66,11 +68,9 @@
     {$semApp             = false}
     {$checked            = ''   }
 
-
     {if ( $medium.doc_type_id == 16 ) }  {*Medientyp: unbekannt*}
         {$med_unknown = true}
     {/if}
-
 
     {if ($CONF.scanServiceON   AND $medium.doc_type_id == 6 ) }   ## Artikel
       {$scanserviceArticle = true}
@@ -91,7 +91,6 @@
 {if ( $SAready == 1 AND  ( $operator.mode == 'new'  OR  ($medium.doc_type_id == 99  OR  $medium.doc_type_id == 6) )  )   }
   <tr><td  class = "editmedia" style="vertical-align: top; font-weight: bold;">  Ort:  <span style="color: {$color}; vertical-align: top; font-weight: bold;">(bitte auswählen)</span> </td><td>
     <div style="border:{$bw}px solid {$color}; float: left;  height:80px; padding: 5px; font-size: 12px; width: calc(100% - 15px); ">
-
 
         {if  ( $medium.sigel == 'HAW-Hamburg' ) OR $medium.doc_type_id == 99 }
             <input {$c2} value="2" class='i' type="radio" name="location_id" id="radio-2" {$checked}><label for="radio-2"><span style="font-weight:700; "> Literaturhinweis - verbleibt im Regal der Bibliothek.     </span></label><br/>
@@ -153,6 +152,16 @@
         <td rowspan="10" >   <input style="width:125px; height:50px;" name="ok" value="&nbsp;&nbsp;&nbsp;Weiter&nbsp;&nbsp;&nbsp;" type="submit"> </td>
     </tr>
 {/if}
+
+
+{if $user.role_id <= 2 AND $medium.id != 0 }
+<tr>
+    <td style="vertical-align: top;  "><span  class="editmedia">Medienort:</span></td>
+    <td style="  border:{$bw}px solid {$color}; float: left;  height:20px; padding: 5px; font-size: 12px; width: calc(100% - 15px); "><span  class="editmedia"> {html_options name="location_id" options=$MEDIALOC selected=$medium.location_id }</td></div>
+</tr>
+
+{/if}
+
 </tbody>
 </table>
 <br>

@@ -43,6 +43,7 @@ notes_to_staff     = "' . $this -> es ( $book -> get_notes_to_staff    ( ) ) . '
 notes_to_studies   = "' . $this -> es ( $book -> get_notes_to_studies  ( ) ) . '",
 location_id        = "' . $this -> es ( $book -> get_location_id       ( ) ) . '",
 sigel              = "' . $this -> es ( $book -> get_sigel             ( ) ) . '",
+origin             = "' . $this -> es ( $book -> get_origin            ( ) ) . '",
 
 created            = NOW() ,
 last_modified      = NOW() ,
@@ -59,15 +60,17 @@ return $ret;
   function updateMediaMetaData( $medium )
   {
     $SQL = " UPDATE document SET ";
+    if ( $medium -> get_location_id        ( ) != '' )  {  $SQL .= " location_id      = \"" . $this -> es (  $medium -> get_location_id        ( ) ) . "\" ,";  }
     if ( $medium -> get_title              ( ) != '' )  {  $SQL .= " title            = \"" . $this -> es (  $medium -> get_title              ( ) ) . "\" ,";  }
     if ( $medium -> get_signature          ( ) != '' )  {  $SQL .= " signature        = \"" . $this -> es (  $medium -> get_signature          ( ) ) . "\" ,";  }
     if ( $medium -> get_author             ( ) != '' )  {  $SQL .= " author           = \"" . $this -> es (  $medium -> get_author             ( ) ) . "\" ,";  }
     if ( $medium -> get_ISBN               ( ) != '' )  {  $SQL .= " ISBN             = \"" . $this -> es (  $medium -> get_ISBN               ( ) ) . "\" ,";  }
+    if ( $medium -> get_origin             ( ) != '' )  {  $SQL .= " origin           = \"" . $this -> es (  $medium -> get_origin             ( ) ) . "\" ,";  }
     if ( $medium -> get_notes_to_studies   ( ) != '' )  {  $SQL .= " notes_to_studies = \"" . $this -> es (  $medium -> get_notes_to_studies   ( ) ) . "\" ,";  }
     if ( $medium -> get_notes_to_staff     ( ) != '' )  {  $SQL .= " notes_to_staff   = \"" . $this -> es (  $medium -> get_notes_to_staff     ( ) ) . "\" ,";  }
                                                            $SQL .= " last_modified    = NOW()  ";
                                                            $SQL .= " WHERE id         = \"" . $this -> es (  $medium -> get_id                 ( ) ) . "\"  ";
-    $res = mysqli_query ( $this -> DB , $SQL );
+                                                           $res = mysqli_query ( $this -> DB , $SQL );
     return $res;
   }
 
@@ -219,8 +222,6 @@ function getCollection( $colID = null , $filter = false ,  $short = null )
   $SQL .= " WHERE   1 = 1 " .  $collection  . "  " . $bibFilter . " " . $semesterFilter;  # ."  ".$user;
   $SQL .= " ORDER BY c.id ";
  
- 
-  
   $res = mysqli_query ( $this->DB , $SQL );
  
   ## ---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -231,12 +232,12 @@ function getCollection( $colID = null , $filter = false ,  $short = null )
     {
       $SA[ $row[ 'c_id' ] ]  =  $this -> getCollectionMetaData( $row[ 'c_id' ] );                                       ## Metadaten des Semesterapparats
       $dl                    =  $this -> getDokumentList ( $row[ 'c_id' ] , $filter );                                  ## Alle/gefilterte Medien des SA ( $doc_ID, $doc_type_id = null , $doc_state_id = null  )
- 
+   
       if ( $dl )
       { # Medien nach 'sortorder' neu anordnen
         $withoutSortOrder = array();
         $withSortOrder    = array();
-        $ASEM = array_keys(   $_SESSION[ 'CFG' ][ 'ASEM' ] );
+        $ASEM = array_keys(   $_SESSION[ 'CFG' ][ 'ASEM' ] );  # Archivierte SEMester
 
         foreach ( $dl as $d )
         {
@@ -861,7 +862,7 @@ SET `state_id` = '" . $this->es ( $state ) . "' WHERE `document`.`id` = " . $thi
     $csv_export2 = null;
     # $csv_filename = 'ELSE_'. urlencode( $collection_id ). '.' . date("YmdHis") . '.exp';
     $SQL = " SELECT * FROM `document`  WHERE collection_id = '" . $collection_id . "' AND state_id != 6";
-
+ 
     $res = mysqli_query ( $this -> DB , $SQL );
 
     if ( $res )
@@ -910,6 +911,7 @@ function importMedium( $collection_id , $medium , $fp)
         $val = mysqli_real_escape_string(   $this -> DB, $m );
         $SQL .= " $exim  = \"" . ''.$val . "\"  , ";
       }
+      $SQL .= " origin            = \"" . 2              . "\"  , ";
       $SQL .= " collection_id     = \"" . $collection_id . "\"  , ";
       $SQL .= " last_modified     = NOW()                         ";
   
@@ -921,7 +923,7 @@ function importMedium( $collection_id , $medium , $fp)
 
 
 # ---------------------------------------------------------------------------------------------
-  function importMedium2( $collection_id , $medium , $fp)
+  function takeoverMedium( $collection , $medium , $fp)
   {
     $res = 0;
     $i = 0;
@@ -930,25 +932,25 @@ function importMedium( $collection_id , $medium , $fp)
     unset($medium['last_modified']);
     unset($medium['collection_id']);
   
-    $m = $this -> getDocumentInfos( $medium['ppn'], $collection_id  );
+    $m = $this -> getDocumentInfos( $medium['ppn'], $collection -> get_collection_id()  );
     
     if ( $m != ''  AND $m[ 'state_id' ] != 6)  ## Medium ist bereits Element des SA
     {
-    
     }
-    else if ( isset( $medium['title'] )  ) ## Zu importierender Datensatz hat zumindest ein Titel UND es werden soviele Elemente aus der Import-Dateizeile eingelesen wie auch erwartet werden
+    else if ( isset( $medium['title'] )  ) ## Zu übernehmende Datensatz hat zumindest ein Titel UND es werden soviele Elemente aus der Import-Dateizeile eingelesen wie auch erwartet werden
     {
       $SQL = "INSERT INTO document SET ";
       foreach (  $medium as $k => $v )
       {
-        
         $val = mysqli_real_escape_string( $this -> DB, trim( $v ) );
         $SQL .= " $k  = \"" . ''.$val . "\"  , ";
       }
-      $SQL .= " collection_id     = \"" . $collection_id . "\"  , ";
+ 
+      $SQL .= " collection_id     = \"" . $collection-> get_collection_id() . "\"  , ";
       $SQL .= " last_modified     = NOW()                         ";
-
+ 
       $res = mysqli_query ( $this->DB , $SQL );
+ 
       fwrite($fp, $SQL."\n"  ) ;  ## -- FOR  DEBUGING  --##
     }
     return $res;

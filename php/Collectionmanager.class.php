@@ -113,7 +113,7 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
         $tpl_vars[ 'VUFIND'            ]                    = $_SESSION[ 'CFG'      ]['VUFIND'];
         $tpl_vars[ 'CONF'            ]                      = $_SESSION[ 'CFG'      ];
         $_SESSION[ 'currentCollection' ] = $collection[ $collection_id ] -> obj2array ( );
-        
+
         $this -> RENDERER -> do_template ( 'new_book.tpl' , $tpl_vars ) ;
         exit(0);
     }
@@ -149,7 +149,7 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
   function showCollection( $I )
   {
     $tpl_vars[ 'SEMESTER'               ] = array_keys( $this -> conf [ 'SEM' ] );
-# deb
+
     $collection_id                        = $I[ 'currentCollection' ] -> get_collection_id();
  
     $collection                           = $this -> SQL-> getCollection ( $collection_id );
@@ -157,12 +157,10 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
     if( !$collection )                                                                               # Wenn ein  SA von Studis aufgerufen wird, der in ELSE noch nicht exisitiert
     { $collection[ $collection_id ]       = $I[ 'currentCollection' ];  }
  
-#   deb($collection);
- 
     $_SESSION[ 'url' ][ 'currentCollection' ] = $_SERVER[ 'HTTP_HOST' ].$_SERVER[ 'REQUEST_URI' ];
     if( $collection_id )
     {
-      $tpl_vars[ 'collection' ][ $collection_id ] = $collection[ $collection_id ] -> obj2array();
+    $tpl_vars[ 'collection' ][ $collection_id ] = $collection[ $collection_id ] -> obj2array();
     }
     $tpl_vars[ 'medium'            ] = $I[ 'medium'                     ] -> obj2array( ) ;
     $tpl_vars[ 'user'              ] = $I[ 'currentUser'                ] -> obj2array( ) ;
@@ -177,12 +175,7 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
     $tpl_vars[ 'CFG'               ] = $this -> conf ;
     $tpl_vars[ 'errors_info'       ][] = '';
     $tpl_vars[ 'back_URL'          ]  = $_SESSION[ 'history' ][ 0 ];
-    $tpl_vars[ 'back_URL'          ]  = $_SESSION[ 'history' ][ 0 ];
   
-   # $tpl_vars[ 'medIndex'          ]  = $_SESSION[ 'medIndex' ];
-   # $tpl_vars[ 'back_URL'          ]  = "index.php?item=collection&action=show_collection&dc_collection_id=".$collection[ $collection_id  ] -> get_dc_collection_id()."&r=".$I[ 'currentUser'  ] -> get_role_id();
-   # $this -> RENDERER -> do_template( 'collection.tpl', $tpl_vars, ( $I[ 'operator' ] -> get_mode() != 'print' ) );
- 
    $this -> RENDERER -> do_template( 'collection.tpl', $tpl_vars );
   }
 
@@ -417,11 +410,11 @@ function lmsDownload( $I )
   $lmsDownload = explode( '?lmsid=', $url );
  
   $medList = $this -> UTIL -> xml2array( $this -> LMSLoader( $url ."&format=".$this -> conf [VUFIND][ 'recordSchema' ] ) );
-
+ 
   foreach ( $medList as $med )
   {
     $m = new Medium();
-
+    $m -> set_origin ( 1 ); # -- Katalog
     if( isset( $med[ 'title'       ][ 0 ] ) ) { $m -> set_title         ( trim ( $med[ 'title'        ]  ) ); }
     if( isset( $med[ 'author'      ][ 0 ] ) ) { $m -> set_author        ( trim ( $med[ 'author'       ]  ) ); }
     if( isset( $med[ 'publisher'   ][ 0 ] ) ) { $m -> set_publisher     ( trim ( $med[ 'publisher'    ]  ) ); }
@@ -472,6 +465,7 @@ function getMediaList( $I )
     foreach ( $medList as $med )
     {
         $m = new Medium();
+        $m -> set_origin( 1 ) ;   # Origin = Katalog
 
         if( isset( $med[ 'title'       ][ 0 ] ) ) { $m -> set_title         ( trim ( $med[ 'title'        ]  ) ); }
         if( isset( $med[ 'author'      ][ 0 ] ) ) { $m -> set_author        ( trim ( $med[ 'author'       ]  ) ); }
@@ -503,7 +497,6 @@ function getMediaList( $I )
     $b_ppn                       = $_SESSION[ 'books'      ][ 'booksHitList' ][ 0 ][ 'ppn' ];
 
     $_SESSION[ 'books' ][ 'url' ] =  "index.php?ppn=$b_ppn&item=media&loc=1&action=annoteNewMedia&dc_collection_id=$collection_dc_collection_id&mode=new&r=$user_role_id";
- 
     $this -> RENDERER -> doRedirect( $_SESSION[ 'books' ][ 'url' ]  );
 }
 
@@ -647,13 +640,12 @@ function LMSLoader( $url )
     $debug         = false;
     
     $fp            = fopen('data.txt', 'w' );
-    $newSA         =  $this -> SQL -> exportCollection( $I[ 'medium' ] -> get_collection_id() , 2 );
+    $newSA         =  $this -> SQL -> exportCollection(  $I ['currentCollection'] -> get_to_collection_id() , 2 );
     $bom           =  pack("CCC", 0xef, 0xbb, 0xbf);
 
-    
     foreach( $newSA as $medium )
-    {
-      $this -> SQL -> importMedium2( $I[ 'currentCollection' ] -> get_id(), $medium , $fp );
+    { $medium[ 'origin' ] = 4;
+      $this -> SQL -> takeoverMedium( $I[ 'currentCollection' ] , $medium , $fp );
     }
     #  fclose($fp);
   
@@ -690,8 +682,8 @@ function importCollection( $I )
   $storeFolder = 'uploads';   //2
   $fp          = fopen('data.txt', 'w' );
   $debug       = false;
-  
-  if ( $debug )    { $tempFile = "ELSE_20210218130809.exp"; }     ## DEBUGGING ONLY
+ 
+  if ( $debug )    { $tempFile = "ELSE_20210420123422.exp"; }     ## DEBUGGING ONLY -- Datei liegt in ELSE/htdocs
   else
   {
     $tempFile   = ( $_FILES[ 'file' ][ 'tmp_name' ] );
@@ -707,7 +699,6 @@ function importCollection( $I )
   foreach( $newSA as $medium )
   {
     if (0 == strncmp( $medium, $bom, 3 ) ) {   $medium = substr( $medium, 3 );   }  ## UTF8 BOM entfernen
-  
     $this -> SQL -> importMedium( $collection_id, $medium , $fp );
   }
   fclose($fp);
