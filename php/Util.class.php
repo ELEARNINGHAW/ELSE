@@ -19,12 +19,24 @@ function getInput ( )
 {
 $operator          = new operator();
 $currentCollection = new collection();
+$collection        = new collection();
 $currentUser       = new User();
 $medium            = new medium();
 $this -> HAWdb     = new HAW_DB();                                    # Aus der SQLite DB
 
 #if ( ! isset ( $_SESSION [ 'DEP_2_BIB' ] ) )  // Standardkonstanten werden nur beim ersten Aufruf eingelesen.
 {
+
+}
+
+if ( isset ( $_GET[ 'uid' ] ) )  ##  Initiale Parameterübergabe über  Moodle ## // Kurskurzname   /* Paramterübergabe von EMIL  */
+{
+  $O = $this -> getGET_BASE_Values () ;
+  $currentCollection = $O[ 'currentCollection' ] ;
+  $currentUser       = $O[ 'currentUser'       ] ;
+  $medium            = $O[ 'medium'            ] ;
+
+  $_SESSION[ 'currentUser'  ] = (array) $currentUser      ;
   $_SESSION[ 'DEP_2_BIB'    ] = $this -> HAWdb -> getDEP_2_BIB ();
   $_SESSION[ 'FAK'          ] = $this -> HAWdb -> getAllFak ();
   $_SESSION[ 'FACHBIB'      ] = $this -> HAWdb -> getAllFachBib ();
@@ -32,17 +44,9 @@ $this -> HAWdb     = new HAW_DB();                                    # Aus der 
   $_SESSION[ 'MEDIA_STATE'  ] = $this -> SQL -> getAllMedStates ();
   $_SESSION[ 'ACTION_INFO'  ] = $this -> CONS -> CONST_ACTION_INFO;
   $_SESSION[ 'CUR_SEM'      ] = $this -> getCurrentSem ();
+  $_SESSION[ 'ALL_USER'     ] = json_decode(json_encode( $this -> SQL -> getAllUserData()  ), true);;
 }
 
-
-if ( isset ( $_GET[ 'uid' ] ) )  ##  Initiale Parameterübergabe über  Moodle ## // Kurskurzname   /* Paramterübergabe von EMIL  */
-{# deb($_GET[ 'uid' ],1);
-  $O = $this -> getGET_BASE_Values () ;
-  $currentCollection = $O[ 'currentCollection' ] ;
-  $currentUser       = $O[ 'currentUser'       ] ;
-  $medium            = $O[ 'medium'            ] ;
-  $_SESSION[ 'currentUser'       ] = (array) $currentUser      ;
-}
 
 else
 {
@@ -129,11 +133,13 @@ if ( isset ( $_GET[ 'signature'                                ] ) )  { $medium 
 if ( isset ( $_GET[ 'sigel'                                    ] ) )  { $medium -> set_sigel               ( $_GET[ 'sigel'             ] ) ; }
 if ( isset ( $_GET[ 'notes_to_staff'                           ] ) )  { $medium -> set_notes_to_staff      ( $_GET[ 'notes_to_staff'    ] ) ; }
 if ( isset ( $_GET[ 'notes_to_studies'                         ] ) )  { $medium -> set_notes_to_studies    ( $_GET[ 'notes_to_studies'  ] ) ; }
-if ( isset ( $_GET[ 'location_id'                              ] ) )  { $medium -> set_location_id         ( $_GET[ 'location_id'       ] ) ;
-                                                                        $medium -> set_location_id         ( $_GET[ 'location_id'       ] ) ; }
+if ( isset ( $_GET[ 'location_id'                              ] ) )  { $medium -> set_location_id         ( $_GET[ 'location_id'       ] ) ; }
+if ( isset ( $_GET[ 'origin'                                   ] ) )  { $medium -> set_origin              ( $_GET[ 'origin'            ] ) ; }
 if ( isset ( $_GET[ 'lmsid'                                    ] ) )  { $medium -> set_collection_id       ( $this -> splitCourseName_user( $_GET[ 'lmsid'            ] )  ); }
 if ( isset ( $_GET[ 'dc_collection_id'                         ] ) )  { $medium -> set_collection_id       ( $this -> b64de(                $_GET[ 'dc_collection_id' ] )  ); }
 
+
+#deb($medium);
 ##
 ### ------------------------------- COLLECTION  --------------------------------
 ##
@@ -149,17 +155,19 @@ else if ( isset ( $_GET[ 'dc_collection_id'                    ] ) )  {  $cid = 
                                                                          $currentCollection -> set_collection_id    ( $cid ) ;
                                                                        }
 else if  ( isset ( $_GET[ 'lmsid'                               ] ) )  { $currentCollection -> set_dc_collection_id     ( $this-> b64en( $this-> splitCourseName_user( $_GET[ 'lmsid' ] ) ) )  ; $currentCollection -> set_collection_id  (  $this-> splitCourseName_user( $_GET[ 'lmsid' ] )  ); }
+if       ( isset ( $_GET[ 'dc_to_collection_id'                 ] ) )  {  $currentCollection-> set_to_collection_id     ($this->b64de( $_GET[ 'dc_to_collection_id'  ] ) ); }
 if       ( isset ( $_GET[ 'sortorder'                           ] ) )  { $currentCollection -> set_sortorder            ( $_GET[ 'sortorder'            ] ) ; }
 if       ( isset ( $_GET[ 'expiry_date'                         ] ) )  { $currentCollection -> set_expiry_date          ( $_GET[ 'expiry_date'          ] ) ; }
 if       ( isset ( $_GET[ 'user_id'                             ] ) )  { $currentCollection -> set_user_id              ( $_GET[ 'user_id'              ] ) ; }
 if       ( isset ( $_GET[ 'bib_id'                              ] ) )  { $currentCollection -> set_bib_id               ( $_GET[ 'bib_id'               ] ) ; }
 if       ( isset ( $_GET[ 'department_id'                       ] ) )  { $currentCollection -> set_department_id        ( $_GET[ 'department_id'        ] ) ; }
 if       ( isset ( $_GET[ 'semester_id'                         ] ) )  { $currentCollection -> set_sem                  ( $_GET[ 'semester_id'          ] ) ; }
+if       ( isset ( $_GET[ 'owner_id'                            ] ) )  { $currentCollection -> set_owner                ( $_GET[ 'owner_id'             ] ) ; }
 if       ( isset ( $_GET[ 'notes_to_studies_col'                ] ) )  { $currentCollection -> set_notes_to_studies_col ( $_GET[ 'notes_to_studies_col' ] ) ; }
 if       ( isset ( $_GET[ 'notes_to_staff_col'                  ] ) )  { $currentCollection -> set_notes_to_staff_col   ( $_GET[ 'notes_to_staff_col'   ] ) ; }
 if       ( isset ( $_GET[ 'imsid'                               ] ) )  { $currentCollection -> set_collection_id        ( $_GET[ 'imsid'                ] ) ; } ## IMSID sollte zu collection_id geändert werden
-if       ( isset ( $_GET[ 'lms-download'                        ] ) )  { $currentCollection =  array_pop   ( $this -> SQL -> getCollection( $_SESSION[ 'currentCollection' ][ 'collection_id' ] )  );  }
- 
+if       ( isset ( $_GET[ 'lms-download'                        ] ) )  { $currentCollection =  array_pop     ( $this -> SQL -> getCollection( $_SESSION[ 'currentCollection' ][ 'collection_id' ] )  );  }
+
 
 ##
 ### ------------------------------- EMAIL  --------------------------------
@@ -207,7 +215,6 @@ function getGET_BASE_Values ( )
   $currentUser             =  new user();
   $medium                  =  new medium();
   
-  
   $_SESSION[ 'filter' ][ 'bib'   ] = '';
   $_SESSION[ 'filter' ][ 'sem'   ] = $_SESSION[ 'CUR_SEM'      ] ;
   $_SESSION[ 'filter' ][ 'state' ] = '';
@@ -222,7 +229,7 @@ function getGET_BASE_Values ( )
   #### Übergabe aus Moodle / IDM
 #------------------------------------------------------------------------
   
- # if ( isset ( $_GET[ 'sn' ] ) )  { $currentCollection -> set_id           ( $this -> b64de( $_GET[ 'sn'  ]  ) );  }
+# if ( isset ( $_GET[ 'sn' ] ) )  { $currentCollection -> set_id           ( $this -> b64de( $_GET[ 'sn'  ]  ) );  }
   if ( isset ( $_GET[ 'sn' ] ) )  { $currentCollection -> set_collection_id( $this -> b64de( $_GET[ 'sn'  ]  ) );  }
   if ( isset ( $_GET[ 'cid'] ) )  { $currentCollection -> set_course_id    ( $this -> b64de( $_GET[ 'cid' ]  ) );  }
   if ( isset ( $_GET[ 'mid'] ) )  { $currentCollection -> set_modul_id     ( $this -> b64de( $_GET[ 'mid' ]  ) );  }
@@ -365,7 +372,7 @@ function updateCollection ( $collection , $user )
   if (  $user -> get_role_id () == 1    OR   $user -> get_role_id () == 2    OR   $user -> get_role_id () == 3 )
   {
     if ($collection -> get_id() )
-    {die("ID");
+    {
       $old_collection = $this -> SQL -> getCollectionMetaData( $collection -> get_title_short());
     
       if ($old_collection->get_id() != '')                                            #  echo "Semesterapparat existiert schon";

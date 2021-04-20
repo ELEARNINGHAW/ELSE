@@ -14,9 +14,7 @@ if   ( !isset ($this->default_role_id)) $this->default_role_id = 3;
 if   ( isset ( $_POST[ 'bib_id' ] ) )  { $this->bib_id = $_POST[ 'bib_id' ] ; }
 else                                   { $this->bib_id = 'HAW' ;              }
 
-
 $this->CONST_letter_header = array ( 'A' , 'B' , 'C' , 'D' , 'E' , 'F' , 'G' , 'H' , 'I' , 'J' , 'K' , 'L' , 'M' , 'N' , 'O' , 'P' , 'Q' , 'R' , 'S' , 'T' , 'U' , 'V' , 'W' , 'X' , 'Y' , 'Z' ) ;
-
 
 ## actions info ## Zur Zeit nur genutzt für die Buttons zur Medienbearbeitung
 $this->CONST_ACTION_INFO = array
@@ -27,10 +25,10 @@ $this->CONST_ACTION_INFO = array
         'input'             => array ( "mode" => "new" ) ,
         'acl'               => array 
         (
-            "user"       => "any" ,
+         /*   "user"       => "any" ,
             "collection" => "role=admin,role=edit,role=staff" ,
             "physical"   => "role=admin,role=edit,role=staff" ,
-            "online"     => "role=admin,role=edit,role=staff" ,
+            "online"     => "role=admin,role=edit,role=staff" ,*/
           ) ,
     ) ,
 
@@ -39,7 +37,7 @@ $this->CONST_ACTION_INFO = array
         'button'            => 'coll_meta_edit' ,
         'button_label'      => 'Bearbeiten' ,
         'input'             => array ( "mode" => "edit" ) ,
-        'acl'               => array (  "collection" => "role=admin,owner=true,role=staff",  ) ,
+        'acl'               => array ( /* "collection" => "role=admin,owner=true,role=staff",  */ ) ,
         'button_visible_if' => array 
         (
             "item"       => array ( "collection" ) ,
@@ -64,12 +62,12 @@ $this->CONST_ACTION_INFO = array
         (
             "state"    => array ( "inactive", 'suggest' ) ,
             "mode"     => array ( "edit" , "admin" , "staff" ) ,
-            "loc"      => array ( "1", "2", "3"  , "4", "5"  ) ,
+            "loc"      => array ( "0", "1", "2", "3"  , "4", "5"  ) ,
         ) ,
         'acl' => array
         (
-            "physical"       => "role=admin,owner=true,role=staff" ,
-            "online"         => "role=none,owner=none" ,
+          /*  "physical"       => "role=admin,owner=true,role=staff" ,
+            "online"         => "role=none,owner=none" ,*/
         ) ,
     ) ,
     
@@ -78,10 +76,10 @@ $this->CONST_ACTION_INFO = array
         'button'            => 'accept' ,
         'button_label'      => 'Bestellung annehmen' ,
         'input'             => array ( "state" => "open" ) ,
-        'acl' => array (  "physical" => "role=admin,role=staff" ,  ) ,
+        'acl' => array ( /* "physical" => "role=admin,role=staff" , */ ) ,
         'button_visible_if' => array 
         (
-            "loc"      => array ( "1" ,"2"  , "4", "5"  ) ,
+            "loc"      => array ( "0", "1" ,"2"  , "4", "5"  ) ,
             "state"    => array ( "new", "suggest" ) ,
             "mode"     => array ( "staff" , "admin" ) ,
         ) ,
@@ -92,11 +90,11 @@ $this->CONST_ACTION_INFO = array
         'button'            => 'cancel_order' ,
         'button_label'      => 'Bestellung stornieren' ,
         'input'             => array ( "state" => "inactive" ) ,
-        'acl' => array ( "physical" => "role=admin,owner=true,role=staff" ,  ) ,
+        'acl' => array ( /* "physical" => "role=admin,owner=true,role=staff" */  ) ,
         'button_visible_if' => array 
         (
             "state"    => array ( "new" ) ,
-            "loc"      => array ( "1"   , "4"   ) ,
+            "loc"      => array ( "0", "1"   , "4"   ) ,
             "mode"     => array ( "edit" , "staff" , "admin" ) ,
         ) ,
     ) ,
@@ -110,8 +108,9 @@ $this->CONST_ACTION_INFO = array
         (
             "state" => array ( "open" ) ,
             "mode"  => array ( "staff" , "admin" ) ,
+            "loc"      => array ( "0", "1" ,"2"  , "4", "5"  ) ,
         ) ,
-        'acl'               => array ( "physical" => "role=admin,role=staff" ,   ) ,
+        'acl'               => array (  /* "physical" => "role=admin,role=staff"  */   ) ,
     ) ,
     
     'release'             => array
@@ -119,10 +118,10 @@ $this->CONST_ACTION_INFO = array
         'button'            => 'release' ,
         'button_label'      => 'Rückgabe' ,
         'input'             => array ( "state" => "obsolete" ) ,
-        'acl'               => array ( "physical" => "role=admin,owner=true" , ) ,
+        'acl'               => array ( /* "physical" => "role=admin,owner=true"  */ ) ,
         'button_visible_if' => array
         (
-            "loc"      => array ( "1"    ) ,
+            "loc"      => array ( "0", "1"    ) ,
             "state" => array ( "active" ,'continue') ,
             "mode" => array ( "edit" , "admin" ,"staff" ) ,
         ) ,
@@ -133,10 +132,10 @@ $this->CONST_ACTION_INFO = array
         'button'            => 'return' ,
         'button_label'      => 'Rückgabe erledigt' ,
         'input'             => array ( "state" => "inactive" ) ,
-        'acl'               => array ( "physical" => "role=admin,role=staff" , ) ,
+        'acl'               => array ( /* "physical" => "role=admin,role=staff" */ ) ,
         'button_visible_if' => array 
         (
-            "loc"      => array ( "1"   ) ,
+            "loc"      => array ( "0", "1"   ) ,
             "state"     => array ( "obsolete" , "delete") ,
             "mode"      => array ( "staff" , "admin" ) ,
         ) ,
@@ -149,13 +148,13 @@ $this->CONST_ACTION_INFO = array
         'input'             => array ( "state" => "open" ) ,
         'button_visible_if' => array 
         (
-            "loc"      => array ( "1"    ) ,
+            "loc"      => array ( "0", "1"    ) ,
             "state"     => array ( 'obsolete' ) ,
             "mode"      => array ( 'edit', 'staff' , 'admin' ) ,
         ) ,
         'acl' => array 
         (
-            "physical"      => "role=admin, owner=true, role=staff" ,
+           /* "physical"      => "role=admin, owner=true, role=staff" , */
         ) ,
     ) ,
 
@@ -166,14 +165,14 @@ $this->CONST_ACTION_INFO = array
         'input'             => array ( "state" => "new" ) ,
         'button_visible_if' => array 
         (
-            "loc"      => array ( "1"   ) ,
+            "loc"      => array ( "0", "1"   ) ,
             "state"      => array ( "inactive" ) ,
             "mode"       => array (  "admin", 'staff' ) ,
         ) ,
         'acl' => array 
-        (
+        ( /*
             "article" => "role=admin,owner=true,role=staff" ,
-            "physical"    => "role=admin,owner=true,role=staff" ,
+            "physical"    => "role=admin,owner=true,role=staff" , */
         ) ,
     ) ,
     
@@ -185,18 +184,14 @@ $this->CONST_ACTION_INFO = array
         'button_visible_if' => array
         (
             "state"  => array ( "active" ) ,
-            "loc"      => array (  "2", "3" , "4", "5"   ) ,
+            "loc"      => array ("0",  "1", "2", "3" , "4", "5"   ) ,
             "mode"   => array ( "edit" , "admin" ,'staff' ) ,
         ) ,
         'acl' => array 
         (
-
-            "online"  => "owner=true,role=admin, role=staff",
+          /*  "online"  => "owner=true,role=admin, role=staff", */
         ) ,
-    ) ,
-    
-    
-
+    ),
   
   'activate'              => array
   (                                                                           /*  E-Book wird wieder aktiviert         (5 -> 3): [Ist aktiv]       */
@@ -206,14 +201,13 @@ $this->CONST_ACTION_INFO = array
     'button_visible_if' => array
     (
       
-      "state"   => array ( 'continue' ) ,
+      "state"   => array ("unknown" , 'continue' ) ,
       "loc"      => array ( "0", "1" ) ,
       "mode"   => array (  "admin" ,'staff' ) ,
     ) ,
     'acl' => array
     (
-      
-      "online"  => "owner=true,role=admin, role=staff",
+      /*  "online"  => "owner=true,role=admin, role=staff",*/
     ) ,
   ) ,
   
@@ -225,14 +219,13 @@ $this->CONST_ACTION_INFO = array
     'button_visible_if' => array
     (
       
-      "state"   => array ( "inactive" ,"delete" ) ,
-      "loc"      => array (  "2", "3"  , "4" , "5" ) ,
+      "state"   => array ( "unknown" ,"inactive" ,"delete" ) ,
+      "loc"      => array (  "0", "2", "3"  , "4" , "5" ) ,
       "mode"   => array ( "edit" , "admin" ,'staff' ) ,
     ) ,
     'acl' => array
     (
-      
-      "online"  => "owner=true,role=admin, role=staff",
+      /*  "online"  => "owner=true,role=admin, role=staff", */
     ) ,
   ) ,
     
@@ -244,14 +237,13 @@ $this->CONST_ACTION_INFO = array
         'input'             => array ( "mode" => "edit" ) ,
         'button_visible_if' => array 
         (
-            "loc"      => array ( "1" ,  "2", "3"  , "4", "5"  ) ,
+            "loc"      => array ("0", "1" ,  "2", "3"  , "4", "5"  ) ,
             "mode"     => array ( "edit" , "staff" , "admin" ) ,
         ) ,
         'acl'               => array 
         (
-            "physical"    => "role=admin,role=staff,owner=true" ,
-
-            "online"   => "role=admin,role=staff,owner=true" ,
+          /*  "physical"    => "role=admin,role=staff,owner=true" ,
+            "online"   => "role=admin,role=staff,owner=true" , */
         ) ,
     ) ,
     
@@ -260,10 +252,10 @@ $this->CONST_ACTION_INFO = array
         'button'            => 'new_email' ,
         'button_label'      => 'E-Mail senden' ,
         'input'             => array ( "mode" => "new" , "item" => "email" ) ,
-        'acl'               => array ( "any" => "role=admin,role=staff" , ) ,
+        'acl'               => array ( /* "any" => "role=admin,role=staff" , */ ) ,
         'button_visible_if' => array 
         (
-            "loc"      => array ( "1" ,  "2", "3"  , "4" , "5" ) ,
+            "loc"      => array ("0", "1" ,  "2", "3"  , "4" , "5" ) ,
             "mode" => array ( "staff" , "admin" ) ,
         ) ,
     ) ,
@@ -273,11 +265,11 @@ $this->CONST_ACTION_INFO = array
         'button'            => 'kill' ,
         'button_label'      => 'ENDGÜLTIG LÖSCHEN!' ,
         'input'             => array ( "state" => "delete" ) ,
-        'acl'               => array ( "any" => "role=admin,role=staff" , ) ,
+        'acl'               => array ( /*  "any" => "role=admin,role=staff" , */ ) ,
         'button_visible_if' => array 
         (
             "state"  => array ( "delete" ) ,
-            "loc"      => array ( "1" ,  "2", "3" , "4", "5"  ) ,
+            "loc"      => array ("0",  "1" ,  "2", "3" , "4", "5"  ) ,
             "mode"   => array ( "staff" , "admin" ) ,
         ) ,
     ) ,

@@ -6,8 +6,8 @@
 {if $di.location_id == 3  }  {$whereIs =              $CFG[ 'MEDIA_LOC'][ 3 ]}   {/if}{* online         / PDF                 *}
 {if $di.location_id == 4  }  {$whereIs =              $CFG[ 'MEDIA_LOC'][ 4 ]}   {/if}{* Scanservice    / Medienserver        *}
 {if $di.location_id == 5  }  {$whereIs =              $CFG[ 'MEDIA_LOC'][ 5 ]}   {/if}{* externe Biblio / Titel nicht aus HAW-Bestand -LitHinweis Buch             *}
-{if $di.doc_type_id  == 6  }  {$whereIs =              $CFG[ 'MEDIA_LOC'][ 6 ]}   {/if}{* Artikel                              *}
-{if $di.doc_type_id  == 7  }  {$whereIs =              $CFG[ 'MEDIA_LOC'][ 7 ]}   {/if}{* eArtikel                             *}
+{if $di.doc_type_id  == 6 }  {$whereIs =              $CFG[ 'MEDIA_LOC'][ 6 ]}   {/if}{* Artikel                              *}
+{if $di.doc_type_id  == 7 }  {$whereIs =              $CFG[ 'MEDIA_LOC'][ 7 ]}   {/if}{* eArtikel                             *}
 {$edit_mode  = "0"}
 {$staff_mode = "0"}
 {$whereIs2 =              $CFG[ 'MEDIA_PRINT'][ $di.location_id ]}

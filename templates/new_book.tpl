@@ -59,12 +59,12 @@
 </div>
       <br/>    <br/>
 <hr>
-{if  $col_predecessors|@count gt 0   AND $CONF['CONF']['import_col_predecessor'] }
+{if  $col_predecessors|@count gt 0   AND $CONF['CONF']['takeover_col_predecessor'] }
 <div class="text2">
-   <h3>Importieren Sie die Medien aus einem Ihrer früheren Veranstaltungen</h3>
+    <h3>Importieren Sie die Medien aus einem Ihrer früheren Veranstaltungen</h3>
     {foreach key=cid item=c name=col_predecessors from=$col_predecessors }
   <div class="text2" style="text-align: left;">
-  <a onClick="$('#FButton').spin('modal');"  href="index.php?item=collection&action=takeover&r={$user.role_id}&lmsid={$c['dc_id']}">
+  <a onClick="$('#FButton').spin('modal');"  href="index.php?item=collection&action=takeover&r={$user.role_id}&dc_to_collection_id={$c['dc_id']}">
      <button  style="padding:20px; width: 650px; margin-left: 30px;" class="ui-button ui-widget ui-corner-all">{$c['title']} </button></a>
   </div>
  {/foreach}<br/><br/>

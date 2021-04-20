@@ -58,10 +58,11 @@ function editMediaMetaData( $I )
   $tpl_vars[ 'filter'          ]                          =  $I[ 'filter'                          ] -> obj2array ( ) ;
   $tpl_vars[ 'DOC_TYPE'        ]                          =  $_SESSION[ 'DOC_TYPE'                 ];
   $tpl_vars[ 'CONF'            ]                          =  $_SESSION[ 'CFG'      ][ 'CONF' ];
+  $tpl_vars[ 'MEDIALOC'        ]                          =   $_SESSION[ 'CFG' ][ 'MEDIA_PRINT' ];
   $tpl_vars[ 'currentElement'  ]                          =  0 ;
   $tpl_vars[ 'maxElement'      ]                          =  1 ;
   $tpl_vars[ 'back_URL'        ]                          = $_SESSION[ 'history' ][ 0 ];
- 
+  
   $this -> RENDERER -> do_template ( 'edit_book.tpl' , $tpl_vars ) ;
   exit(0);
 }
@@ -71,11 +72,10 @@ function annoteNewMedia_showForm( $I )
 {
   if ( isset( $_SESSION[ 'books' ][ 'booksHitList' ][ 0 ]))
   {
-    if ( $I[ 'medium' ] -> get_doc_type_id() != 99)                                                     ##  Erwerbungsvorschlag
+    if ( $I[ 'medium' ] -> get_doc_type_id() != 99)                                                     ## KEIN  Erwerbungsvorschlag
     {
       $tmpBook = $_SESSION[ 'books' ][ 'booksHitList' ][ $_SESSION[ 'books' ][ 'currentElement' ] ];
       $I[ 'medium' ] -> array2obj( $tmpBook );
-     
     }
     else if ( $I[ 'medium' ] -> get_title( ) == '' AND $I[ 'medium' ] -> get_doc_type_id( ) != 99 )     ## Kein Titel UND kein Erwerbungsvorschlag
     {
@@ -109,7 +109,7 @@ function annoteNewMedia_showForm( $I )
     $collection_id = $I[ 'currentCollection' ] -> get_collection_id();
 
     $collection = $this -> SQL -> getCollection( $collection_id );
-   
+    $tpl_vars[ 'MEDIALOC'        ]                          =   $_SESSION[ 'CFG' ][ 'MEDIA_PRINT' ];
     $tpl_vars[ 'collection'     ] = $collection[ $collection_id] -> obj2array();
     $tpl_vars[ 'medium'         ] = $I[ 'medium'       ] -> obj2array();
     $tpl_vars[ 'user'           ] = $I[ 'currentUser'  ] -> obj2array();
@@ -120,7 +120,7 @@ function annoteNewMedia_showForm( $I )
     $tpl_vars[ 'DOC_TYPE'       ] = $_SESSION[ 'DOC_TYPE' ];
     $tpl_vars[ 'currentElement' ] = $_SESSION[ 'books'    ][ 'currentElement' ];
     $tpl_vars[ 'maxElement'     ] = $_SESSION[ 'books'    ][ 'maxElement'     ];
-
+ 
     $this -> RENDERER -> do_template( 'edit_book.tpl' , $tpl_vars );
     exit( 0 );
 }
@@ -145,30 +145,28 @@ function purchaseSuggestion( $I )
   $_SESSION[ 'books' ][ 'maxElement'                            ]  =  1;
   $_SESSION[ 'books' ][ 'url'                                   ]  = 'index.php?ppn=1028111126&item=media&loc=1&action=annoteNewMedia&dc_collection_id=VEkuLk1QLlcxOSUyMEVQMUIlMjBCbW4=&mode=new&r=Mg==';
 
- 
-
   annoteNewMedia_showForm( $I );
 }
 
 ###############################################################################################
 function saveMediaMetaData( $I )
 {
-  if (  $I[ 'operator' ] -> item == 'media'   AND $I[ 'medium' ] -> get_location_id() == '0' )   #  Bei physischem Medium wurde NOCH(!) keine Auswahl getroffen, ob Literaturhinweis oder Handapparat
+  if (  $I[ 'operator' ] -> item == 'media'   AND $I[ 'medium' ] -> get_location_id() == '0'   AND $I[ 'medium' ] -> get_origin() == '' )   #  Bei physischem Medium wurde NOCH(!) keine Auswahl getroffen, ob Literaturhinweis oder Handapparat
   {
     $I[ 'operator' ] -> set_msg            ( 'location_id' );
     $I[ 'operator' ] -> set_mode           ( 'new' );
-    $this -> annoteNewMedia_showForm( $I );                                                      # Zur Wiedervolage an Benutzer, um diesese fehlende Auswahl zu treffen
+    $this -> annoteNewMedia_showForm( $I );                                                                 ## Zur Wiedervolage an Benutzer, um diesese fehlende Auswahl zu treffen
   }
   
   if ( $I[ 'medium' ] -> get_id() == 0 )                                                                    ##  NEUES MEDIUM
   {
     $ppn = $I[ 'medium' ] -> get_ppn() ;
-    if ( $I[ 'medium' ] -> get_doc_type_id () == '99' )                                                      ## Kaufvorschlag
+    if ( $I[ 'medium' ] -> get_doc_type_id () == '99' )                                                     ## Kaufvorschlag
     {
       $I[ 'medium' ] -> set_doc_type ( $_SESSION[ 'DOC_TYPE' ][ 99 ][ 'description' ] );
       $I[ 'medium' ] -> set_in_SA    ( $_SESSION[ 'DOC_TYPE' ][ 99 ][ 'SA-ready'    ] );
       $I[ 'medium' ] -> set_item     ( $_SESSION[ 'DOC_TYPE' ][ 99 ][ 'item'        ] );
-      $I[ 'medium' ] -> set_state_id ( 9 );                                                                   ## Status wird 'Vorschlag'
+      $I[ 'medium' ] -> set_state_id ( 9 );                                                                 ## Status wird 'Vorschlag'
       $_SESSION[ 'books'][ 'booksHitList'   ][ 0 ] = $I[ 'medium' ] -> obj2array() ;
       $_SESSION[ 'books'][ 'currentElement' ] = 1;
       $_SESSION[ 'books'][ 'maxElement'     ] = 1;
@@ -186,10 +184,10 @@ function saveMediaMetaData( $I )
         $I[ 'medium' ] -> set_state_id      ( $m[ 'state_id'      ]  );
         $I[ 'medium' ] -> set_format        ( $m[ 'format'        ]  );
         $I[ 'medium' ] -> set_sigel         ( $m[ 'sigel'         ]  );
+        $I[ 'medium' ] -> set_origin        ( $m[ 'origin'        ]  );
         $I[ 'medium' ] -> set_id            ( '' );
         $I[ 'medium' ] -> set_collection_id ( $I[ 'currentCollection' ] -> get_collection_id () );
-  
-  
+
         #-----------------------------------------------------------------------------------------------------
         
         if ( $I[ 'medium' ] -> get_item () == 'online' )                                                          ## Bei ONLINE Medien
@@ -209,9 +207,9 @@ function saveMediaMetaData( $I )
         # - 9  suggest	   Vorschlag        9
         # - 10 archive	   archiviert      10
         #-----------------------------------
-   
-  
+    
         $location_id = $I[ 'medium' ] -> get_location_id ();
+        #location_id = 0   # Unbekannt     / SA Medium
         #location_id = 1   # Semesterapp    / SA Medium
         #location_id = 2   # Bibliothek     / LitHinweis Buch
         #location_id = 3   # online         / PDF
@@ -261,9 +259,6 @@ function saveMediaMetaData( $I )
         # $doc_type_id = 15 # Monograph Series        Schriftenreihe      1  1 physical
         # $doc_type_id = 16 # Data Media              Datenträger         1  1 physical
         # $doc_type_id = 99 # Purchase suggestion     Erwerbungsvorschlag 1  0 physical
-  
- 
-
         
         $doc_type_id = $I[ 'medium' ] -> get_doc_type_id ();
         
@@ -301,8 +296,7 @@ function saveMediaMetaData( $I )
         {  $I[ 'medium' ] -> set_state_id     ( 3 );                                                            ## und der Status wird 'aktiv'         , Status 3
            $I[ 'medium' ] -> set_location_id  ( 2 );                                                            ## ist der Medienort: Bibliothek
         }
-  
-  
+    
         $this -> SQL -> initMediaMetaData ( $I[ 'medium' ] );
         break;
         }
@@ -312,7 +306,7 @@ function saveMediaMetaData( $I )
   
   else
   {
-    $this -> SQL-> updateMediaMetaData( $I[ 'medium' ]);                                                         ## Metadaten des neuen Mediums speichern
+    $this -> SQL-> updateMediaMetaData( $I[ 'medium' ] );                                                         ## Metadaten des neuen Mediums speichern
   }
 
   if( $_SESSION['books'][ 'currentElement'  ] <   $_SESSION['books'][ 'maxElement'  ] -1  )
@@ -382,6 +376,7 @@ function purchase_suggestion( $I )
   $I[ 'medium' ] -> set_item     ( $_SESSION[ 'DOC_TYPE' ][ 99 ][ 'item'        ] );
   $I[ 'medium' ] -> set_ppn      ( $KVppn );
   $I[ 'medium' ] -> set_state_id ( 9 );
+  $I[ 'medium' ] -> set_origin   ( 3 );
 
  
   $tpl_vars[ 'collection'      ]            =  $collection[  $collection_id          ] -> obj2array ( );
@@ -400,7 +395,7 @@ function purchase_suggestion( $I )
   $tpl_vars[ 'back_URL'        ]            = $_SESSION[ 'history'  ][ 0 ];
   $this -> RENDERER -> do_template ( 'edit_book.tpl' , $tpl_vars ) ;
 
-  exit(0);
+  exit( 0 );
 }
 
 /*
@@ -1031,6 +1026,7 @@ function getHitList( $searchQuery )
       $this->SQL->setMediaState ( $I[ 'medium' ]->get_id () , 5 );
 
       $url = "index.php?item=collection&action=show_collection&dc_collection_id=" . $I[ 'currentCollection' ]->get_dc_collection_id () . "&r=" . $I[ 'currentUser' ]->get_role_id ();
+  
       if ( $this->CFG->CFG[ 'ajaxON' ] ) {
         $this->showSA ( $I );
       } else {
