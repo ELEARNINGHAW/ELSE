@@ -31,11 +31,14 @@ $this -> HAWdb     = new HAW_DB();                                    # Aus der 
 
 if ( isset ( $_GET[ 'uid' ] ) )  ##  Initiale Parameterübergabe über  Moodle ## // Kurskurzname   /* Paramterübergabe von EMIL  */
 {
+  $_SESSION[ 'CUR_SEM'      ] = $this -> getCurrentSem ();
+  
   $O = $this -> getGET_BASE_Values () ;
+  
   $currentCollection = $O[ 'currentCollection' ] ;
   $currentUser       = $O[ 'currentUser'       ] ;
   $medium            = $O[ 'medium'            ] ;
-
+  
   $_SESSION[ 'currentUser'  ] = (array) $currentUser      ;
   $_SESSION[ 'DEP_2_BIB'    ] = $this -> HAWdb -> getDEP_2_BIB ();
   $_SESSION[ 'FAK'          ] = $this -> HAWdb -> getAllFak ();
@@ -43,10 +46,10 @@ if ( isset ( $_GET[ 'uid' ] ) )  ##  Initiale Parameterübergabe über  Moodle #
   $_SESSION[ 'DOC_TYPE'     ] = $this -> SQL -> getAllDocTypes();
   $_SESSION[ 'MEDIA_STATE'  ] = $this -> SQL -> getAllMedStates ();
   $_SESSION[ 'ACTION_INFO'  ] = $this -> CONS -> CONST_ACTION_INFO;
-  $_SESSION[ 'CUR_SEM'      ] = $this -> getCurrentSem ();
-  $_SESSION[ 'ALL_USER'     ] = json_decode(json_encode( $this -> SQL -> getAllUserData()  ), true);;
-}
 
+  $_SESSION[ 'ALL_USER'     ] = json_decode(json_encode( $this -> SQL -> getAllUserData()  ), true);;
+  
+}
 
 else
 {

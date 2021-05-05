@@ -18,7 +18,6 @@ require_once ( '../php/MedState.class.php'            );
 require_once ( '../php/Bib.php'                       );
 require_once ( '../php/Filter.class.php'              );
 
-
 $CFG        = new ConfigELSE( new CONSTANT()                                 );
 $SQL        = new SQL(                                                       );
 $UTIL       = new UTIL(                    $SQL                              );

@@ -154,7 +154,7 @@
 {/if}
 
 
-{if $user.role_id <= 2 AND $medium.id != 0 }
+{if $user.role_id <= 2 AND $medium.id != 0  AND $CONF.show_set_location}
 <tr>
     <td style="vertical-align: top;  "><span  class="editmedia">Medienort:</span></td>
     <td style="  border:{$bw}px solid {$color}; float: left;  height:20px; padding: 5px; font-size: 12px; width: calc(100% - 15px); "><span  class="editmedia"> {html_options name="location_id" options=$MEDIALOC selected=$medium.location_id }</td></div>

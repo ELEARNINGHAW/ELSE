@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="lib/dropzone.min.css">
 
 <h3 style="margin:10px; padding:10px;  " class="bgDef bg{$collection.bib_id}" >
-    {$collection.title} : Suche im HAW-Katalog <a style="float:right;" href="{$back_URL}"><img  class="icon" style="margin-top:-4px;" title="Zurück" src="img/svg/chevron-left.svg" /></a>
+    {$collection.title} : Medien hinzufügen <a style="float:right;" href="{$back_URL}"><img  class="icon" style="margin-top:-4px;" title="Zurück" src="img/svg/chevron-left.svg" /></a>
 </h3>
 
 <div id='basic-modal'>
@@ -29,14 +29,18 @@
  {if $searchHits < 1}
   <div style="font-size:35px; float:left; padding:10px; margin:5px; margin-bottom:100px;display:block;   background-color:#EFEFEF">B</div>Eine neue Suche starten:<br><br>
  {/if}
-  <div class="text2">
+
+   {if  $CONF['CONF']['show_get_media_by_katalog'] }
+     <div class="text2">
   <h2> Medien hinzuf&uuml;gen </h2>
   <h3><span style="color: red"> NEU:  &uuml;ber den HAW-Katalog </span>&ndash; incl. Artikelindex </h3>
 <ol>
-  <li>Wechseln Sie über den Button unten zum HAW-Katalog und <br> melden Sie sich dort mit Ihrer Bibliothekskennung an. </li>
-  <li><b>Im HAW-Katalog erstellen Sie Ihre gewünschte Literaturliste <br>(weitere Infos finden Sie dort).</b> </li>
-  <li>Wechseln Sie dann zurück zu dieser Seite<br>und fügen Sie den "Link Literaturliste" in das Feld unten ein. </li>
-  <li>Nun werden die Medien nacheinander in Ihren Semesterapparat eingelesen<br>und Sie können diese bei Bedarf einzeln annotieren und bearbeiten. </li>
+    {foreach from= $CONF['TXT']['katalog'] item=row}
+        <li >{$row}</li>
+    {/foreach}
+
+
+
 </ol>
 
 <div class="text2" style="text-align: left">
@@ -59,6 +63,8 @@
 </div>
       <br/>    <br/>
 <hr>
+{/if}
+
 {if  $col_predecessors|@count gt 0   AND $CONF['CONF']['takeover_col_predecessor'] }
 <div class="text2">
     <h3>Importieren Sie die Medien aus einem Ihrer früheren Veranstaltungen</h3>
@@ -72,6 +78,7 @@
  <hr>
 {/if}
 
+{if  $CONF['CONF']['show_purchase_suggestion'] }
 <div class="text2">
     <h3>Haben Sie im HAW-Katalog nicht das Gewünschte gefunden</h3>
 <div class="text2" style="text-align: left;">
@@ -81,7 +88,9 @@
 <br/><br/>
     <hr>
 </div>
+{/if}
 
+{if  $CONF['CONF']['show_import'] }
      <div class="text2">
        <h3>Importieren der Medien aus der Exportdatei eines anderen Semesterapparates </h3>
          Den Export-Button finden Sie unter <img src="img/edit.png" style=" vertical-align: text-top;"  /> den allgemeinen Infos des Semesterapparates aus dem Sie Medien importieren möchten.
@@ -119,6 +128,8 @@
          </div>
          <br/><br/>
          <hr>
+         {/if}
+
 
          {if $CONF.SRU.SRUenabled}
 
