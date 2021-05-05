@@ -1,16 +1,16 @@
 {* $di, $ci, $user, $operator, $CFG, $MEDIA_STATE *}
 {$FB = $FACHBIB[$ci.bib_id].bib_name|escape}
-{if $di.location_id == 0  }  {$whereIs =              $CFG[ 'MEDIA_LOC'][ 0 ]}   {/if}{* unbekannt     *}
-{if $di.location_id == 1  }  {$whereIs =    "{$FB} - {$CFG[ 'MEDIA_LOC'][ 1 ]}"} {/if}{* Semesterapp    / SA Medium           *}
-{if $di.location_id == 2  }  {$whereIs =              $CFG[ 'MEDIA_LOC'][ 2 ]}   {/if}{* Bibliothek     / LitHinweis Buch     *}
-{if $di.location_id == 3  }  {$whereIs =              $CFG[ 'MEDIA_LOC'][ 3 ]}   {/if}{* online         / PDF                 *}
-{if $di.location_id == 4  }  {$whereIs =              $CFG[ 'MEDIA_LOC'][ 4 ]}   {/if}{* Scanservice    / Medienserver        *}
-{if $di.location_id == 5  }  {$whereIs =              $CFG[ 'MEDIA_LOC'][ 5 ]}   {/if}{* externe Biblio / Titel nicht aus HAW-Bestand -LitHinweis Buch             *}
-{if $di.doc_type_id  == 6 }  {$whereIs =              $CFG[ 'MEDIA_LOC'][ 6 ]}   {/if}{* Artikel                              *}
-{if $di.doc_type_id  == 7 }  {$whereIs =              $CFG[ 'MEDIA_LOC'][ 7 ]}   {/if}{* eArtikel                             *}
+{if $di.location_id == 0  }  {$whereIs =            $CFG[ 'MEDIA_LOC'][ 0 ]}   {/if}{* unbekannt                            *}
+{if $di.location_id == 1  }  {$whereIs =  "{$FB} - {$CFG[ 'MEDIA_LOC'][ 1 ]}"} {/if}{* Semesterapp    / SA Medium           *}
+{if $di.location_id == 2  }  {$whereIs =            $CFG[ 'MEDIA_LOC'][ 2 ]}   {/if}{* Bibliothek     / LitHinweis Buch     *}
+{if $di.location_id == 3  }  {$whereIs =            $CFG[ 'MEDIA_LOC'][ 3 ]}   {/if}{* online         / PDF                 *}
+{if $di.location_id == 4  }  {$whereIs =            $CFG[ 'MEDIA_LOC'][ 4 ]}   {/if}{* Scanservice    / Medienserver        *}
+{if $di.location_id == 5  }  {$whereIs =            $CFG[ 'MEDIA_LOC'][ 5 ]}   {/if}{* externe Biblio / Titel nicht aus HAW-Bestand -LitHinweis Buch             *}
+{if $di.doc_type_id == 6  }  {$whereIs =            $CFG[ 'MEDIA_LOC'][ 6 ]}   {/if}{* Artikel                              *}
+{if $di.doc_type_id == 7  }  {$whereIs =            $CFG[ 'MEDIA_LOC'][ 7 ]}   {/if}{* eArtikel                             *}
 {$edit_mode  = "0"}
 {$staff_mode = "0"}
-{$whereIs2 =              $CFG[ 'MEDIA_PRINT'][ $di.location_id ]}
+{$whereIs2 =                $CFG[ 'MEDIA_PRINT'][ $di.location_id ]}
 {$doctypedescription = $DOC_TYPE[ $di.doc_type_id ]['description'] }
 {$doctype            = $DOC_TYPE[ $di.doc_type_id ]['item'       ] }
 {if $user_role_name == "admin"  OR  $user_role_name == "staff" OR  $user_role_name == "edit"  } {$edit_mode  = "1"} {/if}
@@ -21,7 +21,7 @@
 {if  $di.doc_type_id  == 99}
     <a title="Erwerbungsvorschlag" class="medimove medLink  s_standard state_{$di.state_id} {if $edit_mode == '1'} {/if} " onclick="return -1">
 {else}
-    <a title="Medium Im Onlinekatalog anzeigen" class="medimove medLink  s_standard state_{$di.state_id} {if $edit_mode == '1'} {/if} " href="{$CFG.CATALOG_URL[$DOC_TYPE[$di.doc_type_id]['indexID']]}{$di.ppn}" target="_blank" onclick="return -1">
+  <a title="Medium Im Onlinekatalog anzeigen" class="medimove medLink  s_standard state_{$di.state_id} {if $edit_mode == '1'} {/if} " href="{$CFG.CATALOG_URL[$DOC_TYPE[$di.doc_type_id]['indexID']]}{$di.ppn}" target="_blank" onclick="return -1">
 {/if}
 <div title="Verschieben des Mediums in der Liste" class="handle" style="float: right;"> </div>
 <table>   {$preMedTyp = ''}

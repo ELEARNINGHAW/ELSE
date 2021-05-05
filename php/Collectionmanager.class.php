@@ -79,7 +79,7 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
   $tpl_vars[ 'source'         ]                  = 'index.php'                            ;
   $tpl_vars[ 'toLastPage'     ]                  =  true                                  ;
   $tpl_vars[ 'back_URL'       ]  = "#";
-
+  $tpl_vars[ 'medium'          ] =  $I[ 'medium'                          ] -> obj2array ( ) ;
 
   ##-------------------------------------------------------------------------------------------------------------------
 
@@ -113,7 +113,6 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
         $tpl_vars[ 'VUFIND'            ]                    = $_SESSION[ 'CFG'      ]['VUFIND'];
         $tpl_vars[ 'CONF'            ]                      = $_SESSION[ 'CFG'      ];
         $_SESSION[ 'currentCollection' ] = $collection[ $collection_id ] -> obj2array ( );
-
         $this -> RENDERER -> do_template ( 'new_book.tpl' , $tpl_vars ) ;
         exit(0);
     }
@@ -175,7 +174,11 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
     $tpl_vars[ 'CFG'               ] = $this -> conf ;
     $tpl_vars[ 'errors_info'       ][] = '';
     $tpl_vars[ 'back_URL'          ]  = $_SESSION[ 'history' ][ 0 ];
-  
+   
+  #  deb($tpl_vars[ 'DOC_TYPE'          ]);
+  #  deb($tpl_vars[ 'CFG'               ]['CATALOG_URL']);
+  #  deb( $tpl_vars[ 'collection' ][ $collection_id ]);
+    
    $this -> RENDERER -> do_template( 'collection.tpl', $tpl_vars );
   }
 

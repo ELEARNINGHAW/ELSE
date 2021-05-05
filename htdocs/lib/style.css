@@ -759,7 +759,7 @@ a.name
 
 .SAstate10
 {
-    background-color: #ff050547;
+    background-image:url(../img/bg/bggrey1.png);
 }
 
 .content {
@@ -794,8 +794,8 @@ a.name
     padding: 5px;
     padding-left: 15px;
     border: 1px solid #999;
-    background-position: 25px 5px;
-    background-size: 32px;
+
+    background-image:url(../img/bg/bgyellow1.png);
     /*   text-shadow:#AAA 1px 1px;   */
 }
 
@@ -1257,7 +1257,6 @@ td{
   color: #000;
   padding:8px;
   padding-left:40px;
-  background-image:url(../img/svg/pushpin.svg);
   background-repeat:no-repeat;
   background-position:10px 5px;
   background-size: 20px;

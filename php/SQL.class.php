@@ -973,10 +973,11 @@ function getSAid( $SEM )
 
 function getColPredecessors($collection_id)
 {
+  $userid = $_SESSION [ 'currentUser' ][ 'hawaccount' ];
   $ret = null;
-  $collection_XX = substr_replace( $collection_id , '%%%', 7,3 );
+  #$collection_XX = substr_replace( $collection_id , '%%%', 7,3 );
  
-  $SQL = " SELECT * FROM `collection` WHERE `collection`.`id` LIKE '" .$collection_XX. "' ORDER BY `id` DESC;";
+  $SQL = " SELECT * FROM `collection` WHERE `collection`.`user_id` LIKE '" .$userid . "' ORDER BY `id` DESC;";
   $res = mysqli_query ( $this->DB , $SQL );
   while ( $row = mysqli_fetch_assoc ( $res ) )
   {
@@ -984,8 +985,6 @@ function getColPredecessors($collection_id)
     $ret[ $row[ 'id' ] ]['dc_id'] =  base64_encode ( rawurlencode ( $row['id'] ) );
   }
   unset ( $ret[ $collection_id ]);
-  
-
   return $ret;
 }
 
