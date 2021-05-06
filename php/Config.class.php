@@ -27,7 +27,9 @@ function getConf()
   $pat = explode( '/', $_SERVER[ 'SCRIPT_FILENAME' ] );  ## Ermittelt in welchem Verzeichnis dieses Programm liegt (ELSE vs. ELSE-TEST)
   array_pop($pat); array_pop($pat);
   $conf[ 'CONF' ][ 'cwd' ] = array_pop($pat);
-
+  
+  if($conf[ 'CONF' ][ 'cwd' ] == 'www') { $conf[ 'CONF' ][ 'cwd' ] = 'ELSE'; }
+  
   if (!isset ($conf['SERVER']))
   {
      $conf[ 'SERVER' ] =  $conf[ $conf[ 'CONF' ][ 'cwd' ] ];
