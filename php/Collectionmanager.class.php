@@ -100,18 +100,24 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
         $tpl_vars[ 'user'              ]                    = $I[ 'currentUser'                     ] -> obj2array ( );
         $tpl_vars[ 'operator'          ]                    = $I[ 'operator'                        ] -> obj2array ( );
         $tpl_vars[ 'filter'            ]                    = $I[ 'filter'                          ] -> obj2array ( ) ;
-        $tpl_vars[ 'SEMESTER'          ]                    = array_keys( $this -> conf [ 'SEM' ] );                                      # $conf[ 'SEMESTER' ] ;
-        $tpl_vars[ 'page'              ]                    = 1;                                                                     # Seite 1 = Eingabemaske für die Suchbegriffe bei der Mediensuche */
+        $tpl_vars[ 'medium'            ]                    = $I[ 'medium'                          ] -> obj2array( ) ;
+        $tpl_vars[ 'SEMESTER'          ]                    = array_keys( $this -> conf [ 'SEM' ] );                    # $conf[ 'SEMESTER' ] ;
+        $tpl_vars[ 'page'              ]                    = 1;                                                        # Seite 1 = Eingabemaske für die Suchbegriffe bei der Mediensuche */
         $tpl_vars[ 'searchHits'        ]                    = $searchHits;
-        $tpl_vars[ 'book'              ][ 'title'       ]   = $toSearch[ 'title'         ];
-        $tpl_vars[ 'book'              ][ 'author'      ]   = $toSearch[ 'author'        ];
-        $tpl_vars[ 'book'              ][ 'signature'   ]   = $toSearch[ 'signature'     ];
         $tpl_vars[ 'maxRecords'        ]                    = $this -> conf  [ 'SRU' ][ 'maxRecords' ];
         $tpl_vars[ 'URLID'             ]                    = $bc_urlID;
         $tpl_vars[ 'URL'               ]                    = $this -> conf [ 'SERVER' ][ 'URL' ].'/htdocs/' ;
         $tpl_vars[ 'back_URL'          ]                    = "index.php?item=collection&action=show_collection&dc_collection_id=".$collection[ $collection_id           ]->get_dc_collection_id()."&r=".$I[ 'currentUser'  ]->get_role_id();
         $tpl_vars[ 'VUFIND'            ]                    = $_SESSION[ 'CFG'      ]['VUFIND'];
         $tpl_vars[ 'CONF'            ]                      = $_SESSION[ 'CFG'      ];
+        
+        if($toSearch != NULL )
+        {
+        $tpl_vars[ 'book'              ][ 'title'       ]   = $toSearch[ 'title'         ];
+        $tpl_vars[ 'book'              ][ 'author'      ]   = $toSearch[ 'author'        ];
+        $tpl_vars[ 'book'              ][ 'signature'   ]   = $toSearch[ 'signature'     ];
+        }
+  
         $_SESSION[ 'currentCollection' ] = $collection[ $collection_id ] -> obj2array ( );
         $this -> RENDERER -> do_template ( 'new_book.tpl' , $tpl_vars ) ;
         exit(0);

@@ -308,7 +308,10 @@ function getUserList(  )
   function getUserMetaData( $hawAccount )
   {
     $user = new user();
-
+    $user->set_dep_name( 'nicht erkannt');
+    $user->set_dep_id( 0 );
+    
+    
     $SQL = "
   SELECT
   user.id            as u_id,
@@ -326,33 +329,33 @@ function getUserList(  )
   AND user.state_id   = state.id
   AND user.hawaccount = \"" . $this->es ( $hawAccount ) . "\"
   AND user.role_id    = role.id LIMIT 1";
+  
 
-
+    
+    
     $res = mysqli_query ( $this->DB , $SQL );
     $userdb = mysqli_fetch_assoc ( $res );
-
-    $user->set_id ( $userdb[ 'u_id' ] );
-    $user->set_forename ( $userdb[ 'u_forename' ] );
-    $user->set_surname ( $userdb[ 'u_surname' ] );
-    $user->set_hawaccount ( $userdb[ 'u_hawaccount' ] );
-    $user->set_sex ( $userdb[ 'u_sex' ] );
-    $user->set_email ( $userdb[ 'u_mail' ] );
-    $user->set_role_id ( $userdb[ 'u_role' ] );
-    $user->set_department ( $userdb[ 'u_department_id' ] );
-    $user->set_bib_id ( $userdb[ 'u_bib_id' ] );
-
+    if( isset( $userdb ) )
+    {
+      $user -> set_id        ( $userdb[ 'u_id'            ] );
+      $user -> set_forename  ( $userdb[ 'u_forename'      ] );
+      $user -> set_surname   ( $userdb[ 'u_surname'       ] );
+      $user -> set_hawaccount( $userdb[ 'u_hawaccount'    ] );
+      $user -> set_sex       ( $userdb[ 'u_sex'           ] );
+      $user -> set_email     ( $userdb[ 'u_mail'          ] );
+      $user -> set_role_id   ( $userdb[ 'u_role'          ] );
+      $user -> set_department( $userdb[ 'u_department_id' ] );
+      $user -> set_bib_id    ( $userdb[ 'u_bib_id'        ] );
+    
+    
     if( isset($_SESSION['DEP_2_BIB'][$userdb[ 'u_department_id' ] ]['dep_name']))
     {
       $user->set_dep_name( $_SESSION['DEP_2_BIB'][$userdb[ 'u_department_id' ] ]['dep_name']);
     }
-    else
-    {
-      $user->set_dep_name( 'nicht erkannt');
-      $user->set_dep_id( 0 );
+ 
     }
-
     return $user;
-
+  
   }
 
 function getAllUserData()
