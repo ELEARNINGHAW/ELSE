@@ -1037,7 +1037,7 @@ function getHitList( $searchQuery )
 ###############################################################################################
     function cancel_release( $I )
     {
-      $this->SQL->setMediaState ( $I[ 'medium' ]->get_id () , 2 );
+      $this->SQL->setMediaState ( $I[ 'medium' ]->get_id () , 3 );
 
       $url = "index.php?item=collection&action=show_collection&dc_collection_id=" . $I[ 'currentCollection' ]->get_dc_collection_id () . "&r=" . $I[ 'currentUser' ]->get_role_id ();
       if ( $this->CFG->CFG[ 'ajaxON' ] ) {
