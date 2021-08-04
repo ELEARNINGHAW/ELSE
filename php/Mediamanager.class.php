@@ -70,12 +70,14 @@ function editMediaMetaData( $I )
 ###############################################################################################
 function annoteNewMedia_showForm( $I )
 {
+    # $_SESSION[ 'books' ][ 'booksHitList'      ]
   if ( isset( $_SESSION[ 'books' ][ 'booksHitList' ][ 0 ]))
-  {
+  { #deb($_SESSION[ 'books' ][ 'booksHitList' ] );
     if ( $I[ 'medium' ] -> get_doc_type_id() != 99)                                                     ## KEIN  Erwerbungsvorschlag
     {
       $tmpBook = $_SESSION[ 'books' ][ 'booksHitList' ][ $_SESSION[ 'books' ][ 'currentElement' ] ];
       $I[ 'medium' ] -> array2obj( $tmpBook );
+       #deb( $_SESSION[ 'books' ][ 'booksHitList' ],1);
     }
     else if ( $I[ 'medium' ] -> get_title( ) == '' AND $I[ 'medium' ] -> get_doc_type_id( ) != 99 )     ## Kein Titel UND kein Erwerbungsvorschlag
     {
@@ -109,7 +111,7 @@ function annoteNewMedia_showForm( $I )
     $collection_id = $I[ 'currentCollection' ] -> get_collection_id();
 
     $collection = $this -> SQL -> getCollection( $collection_id );
-    $tpl_vars[ 'MEDIALOC'        ]                          =   $_SESSION[ 'CFG' ][ 'MEDIA_PRINT' ];
+    $tpl_vars[ 'MEDIALOC'       ] = $_SESSION[ 'CFG' ][ 'MEDIA_PRINT' ];
     $tpl_vars[ 'collection'     ] = $collection[ $collection_id] -> obj2array();
     $tpl_vars[ 'medium'         ] = $I[ 'medium'       ] -> obj2array();
     $tpl_vars[ 'user'           ] = $I[ 'currentUser'  ] -> obj2array();
@@ -120,7 +122,7 @@ function annoteNewMedia_showForm( $I )
     $tpl_vars[ 'DOC_TYPE'       ] = $_SESSION[ 'DOC_TYPE' ];
     $tpl_vars[ 'currentElement' ] = $_SESSION[ 'books'    ][ 'currentElement' ];
     $tpl_vars[ 'maxElement'     ] = $_SESSION[ 'books'    ][ 'maxElement'     ];
- 
+
     $this -> RENDERER -> do_template( 'edit_book.tpl' , $tpl_vars );
     exit( 0 );
 }
@@ -151,12 +153,22 @@ function purchaseSuggestion( $I )
 ###############################################################################################
 function saveMediaMetaData( $I )
 {
-  if (  $I[ 'operator' ] -> item == 'media'   AND $I[ 'medium' ] -> get_location_id() == '0'   AND $I[ 'medium' ] -> get_origin() == '' )   #  Bei physischem Medium wurde NOCH(!) keine Auswahl getroffen, ob Literaturhinweis oder Handapparat
+  #$I[ 'medium' ] -> set_item (  $_SESSION[ 'DOC_TYPE' ][ $I[ 'medium' ] -> get_doc_type_id () ]['item'] ) ;
+  #deb($_SESSION[ 'DOC_TYPE' ]);
+  #deb($I[ 'operator' ] -> item );
+#  deb($I[ 'medium' ],1);
+  if (  $I[ 'operator' ] -> item              == 'media'
+  AND   $I[ 'medium'   ] -> get_location_id() == '-1'
+  AND   $I[ 'medium'    ] -> get_shape()      != 'online'
+
+  )   #  Bei physischem Medium wurde NOCH(!) keine Auswahl getroffen, ob Literaturhinweis oder Handapparat
   {
     $I[ 'operator' ] -> set_msg            ( 'location_id' );
     $I[ 'operator' ] -> set_mode           ( 'new' );
     $this -> annoteNewMedia_showForm( $I );                                                                 ## Zur Wiedervolage an Benutzer, um diesese fehlende Auswahl zu treffen
   }
+  
+  
   
   if ( $I[ 'medium' ] -> get_id() == 0 )                                                                    ##  NEUES MEDIUM
   {
@@ -177,7 +189,7 @@ function saveMediaMetaData( $I )
       {
       if ($m['ppn'] == $ppn)
       { $I[ 'medium' ] -> set_leader        ( $m[ 'leader'        ]  ); ## Datensatz aus dem Bibkatlog wird übernommen (zu den manuellen Metadaten-Einträgen)
-        $I[ 'medium' ] -> set_item          ( $m[ 'item'          ]  );
+        $I[ 'medium' ] -> set_shape         ( $m[ 'shape'         ]  );
         $I[ 'medium' ] -> set_doc_type      ( $m[ 'doc_type'      ]  );
         $I[ 'medium' ] -> set_physicaldesc  ( $m[ 'physicaldesc'  ]  );
         $I[ 'medium' ] -> set_collection_id ( $m[ 'collection_id' ]  );
@@ -190,7 +202,7 @@ function saveMediaMetaData( $I )
 
         #-----------------------------------------------------------------------------------------------------
         
-        if ( $I[ 'medium' ] -> get_item () == 'online' )                                                          ## Bei ONLINE Medien
+        if ( $I[ 'medium' ] -> get_shape() == 'online' )                                                          ## Bei ONLINE Medien
         { $I[ 'medium' ] -> set_location_id  ( 3 );                                                               ## ist der Medienort: 'Online' ;) , Status 3
         }
   
@@ -217,29 +229,24 @@ function saveMediaMetaData( $I )
         #location_id = 5   # externe Biblio / Titel nicht aus HAW-Bestand -LitHinweis Buch
         
         if ( $location_id == '1' )                                                                               ##  Wenn Medien'ORT' 'Semesterapparat' (status: 1)
-        {
-          $I[ 'medium' ] -> set_state_id     ( 1 );                                                              ##  der Status wird 'new'          , Status 1
+        { $I[ 'medium' ] -> set_state_id     ( 1 );                                                              ##  der Status wird 'new'          , Status 1
         }
 
         else if ($location_id == '2'  )                                                                          ##  Wenn Medien'ORT' 'Bibliothek / verbleibt im Regal' (status: 2)
-        {
-          $I[ 'medium' ] -> set_state_id     ( 3 );                                                              ##  der Status wird 'aktiv'         , Status 3
+        { $I[ 'medium' ] -> set_state_id     ( 3 );                                                              ##  der Status wird 'aktiv'         , Status 3
         }
 
         else if ($location_id == '3'  )                                                                          ##  Wenn Medien'ORT' 'ONLINE' (status: 3) / Medien 'ITEM' :'online'
-        {
-          $I[ 'medium' ] -> set_state_id     ( 3 );                                                              ##  und der Status wird 'aktiv'       , Status 3
+        { $I[ 'medium' ] -> set_state_id     ( 3 );                                                              ##  und der Status wird 'aktiv'       , Status 3
         }
         
         else if ( $location_id == '4'  )                                                                         ##  Wenn Medien'ORT' 'Scanservice' (status: 4)
-        {                                                                                                        ##
-          $I[ 'medium' ] -> set_state_id     ( 1 );                                                              ##  und der Status wird 'new'         , Status 1
+        { $I[ 'medium' ] -> set_state_id     ( 1 );                                                              ##  und der Status wird 'new'         , Status 1
           $I[ 'medium' ] -> set_notes_to_staff  ( "[SCANSERVICE]\n " .   $I[ 'medium' ] -> get_notes_to_staff() ) ;
         }
 
         else if  ( $location_id == '5'  )                                                                        ##  Wenn kein Medium aus externer Bibliothek ist
-        {                                                                                                        ##
-          $I[ 'medium' ] -> set_state_id     ( 3 );                                                              ##  und der Status wird 'aktiv'         , Status 3
+        { $I[ 'medium' ] -> set_state_id     ( 3 );                                                              ##  und der Status wird 'aktiv'         , Status 3
         }
   
         #-----------------------------------------------------------------------------------------------------
@@ -271,7 +278,15 @@ function saveMediaMetaData( $I )
           { $I[ 'medium' ] -> set_location_id ( 5 );                                                            ## sonst ist der Medienort: Ext - Bibliothek
           }
         }
-    
+  
+        if ( $doc_type_id == '6' )                                                                              ## E-Artikel
+        { $I[ 'medium' ] -> set_location_id ( 2 );                                                              ## ist der Medienort: online
+        }
+  
+        if ( $doc_type_id == '7' )                                                                              ## Artikel
+        { $I[ 'medium' ] -> set_location_id ( 3 );                                                              ## ist der Medienort: Bibliothek
+        }
+        
         if ( $doc_type_id == '8' )                                                                              ## E-Zeitschrift / Journal
         { $I[ 'medium' ] -> set_state_id     ( 3 );                                                             ## Status wird 'aktiv'         , Status 3
           if ( $I[ 'medium' ] -> get_sigel() == 'HAW-Hamburg'   )                                               ## Wenn Sigel = HAW
@@ -281,20 +296,14 @@ function saveMediaMetaData( $I )
           { $I[ 'medium' ] -> set_location_id ( 5 );                                                            ## sonst ist der Medienort: Ext - Bibliothek
           }
         }
-        
-        if ( $doc_type_id == '6' )                                                                              ## Artikel
-        {
-          { $I[ 'medium' ] -> set_location_id ( 2 );                                                            ## ist der Medienort: Bibliothek
-          }
-        }
-
-        if ( $doc_type_id == '99')                                                                              ## Kaufvorschlag
-        {  $I[ 'medium' ] -> set_state_id     ( 9 );                                                            ## und der Status wird 'Vorschlag'      , Status 3
-        }
   
         if ( $doc_type_id == '14')                                                                              ## Medientyp: unbekannt
         {  $I[ 'medium' ] -> set_state_id     ( 3 );                                                            ## und der Status wird 'aktiv'         , Status 3
            $I[ 'medium' ] -> set_location_id  ( 2 );                                                            ## ist der Medienort: Bibliothek
+        }
+
+        if ( $doc_type_id == '99')                                                                              ## Kaufvorschlag
+        {  $I[ 'medium' ] -> set_state_id     ( 9 );                                                            ## und der Status wird 'Vorschlag'      , Status 3
         }
     
         $this -> SQL -> initMediaMetaData ( $I[ 'medium' ] );
@@ -373,7 +382,7 @@ function purchase_suggestion( $I )
   $I[ 'medium' ] -> set_doc_type_id ( 99);
   $I[ 'medium' ] -> set_doc_type ( $_SESSION[ 'DOC_TYPE' ][ 99 ][ 'description' ] );
   $I[ 'medium' ] -> set_in_SA    ( $_SESSION[ 'DOC_TYPE' ][ 99 ][ 'SA-ready'    ] );
-  $I[ 'medium' ] -> set_item     ( $_SESSION[ 'DOC_TYPE' ][ 99 ][ 'item'        ] );
+  $I[ 'medium' ] -> set_shape    ( $_SESSION[ 'DOC_TYPE' ][ 99 ][ 'shape'       ] );
   $I[ 'medium' ] -> set_ppn      ( $KVppn );
   $I[ 'medium' ] -> set_state_id ( 9 );
   $I[ 'medium' ] -> set_origin   ( 3 );
@@ -482,6 +491,8 @@ function getHitList( $searchQuery )
     {
       $m = new Medium();
 
+#        deb($medium,1);
+
       ## ------------------ TURBOMARC ----------------------------------------------------------------------------------
       if ( $recordSchema == 'turbomarc' )
       {
@@ -537,8 +548,8 @@ function getHitList( $searchQuery )
 
 
         foreach ( $r->datafield as $a => $b ) {
-
-          if ( $b->attributes () == '100' ) {$author = $b;}
+          if ( $b->attributes () == '100' ) {$author .= $b.' ';}
+     #     if ( $b->attributes () == '700' ) {$author .= $b.' ';}
           if ( $b->attributes () == '245' ) {$title = $b;}
           if ( $b->attributes () == '300' ) {$physicaldesc = $b;}
           if ( $b->attributes () == '264' ) {$publisher = $b;}
@@ -559,8 +570,8 @@ function getHitList( $searchQuery )
       #  $medium[(string)$PPN][ 'SIG'          ] = $signatur;
       $medium[ $PPN ][ 'publisher' ] = $publisher->subfield;
       $medium[ $PPN ][ 'ISBN' ] = $ISBN;
-
-
+   
+      
       $m->set_title ( trim ( $medium[ $PPN ][ 'title' ] ) );
       $m->set_author ( trim ( $medium[ $PPN ][ 'author' ] ) );
       # $m->set_signature   ( trim ( $r -> d954 -> sd   ) );

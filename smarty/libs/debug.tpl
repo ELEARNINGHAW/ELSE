@@ -6,7 +6,7 @@
         <style type="text/css">
             {literal}
             body, h1, h2, h3, td, th, p {
-                font-family: sans-serif;
+                font-family: 'Open Sans', sans-serif;
                 font-weight: normal;
                 font-size: 0.9em;
                 margin: 1px;
@@ -58,7 +58,7 @@
             }
 
             th, td {
-                font-family: monospace;
+                font-family: 'Open Sans', sans-serif;
                 vertical-align: top;
                 text-align: left;
             }

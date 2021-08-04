@@ -5,7 +5,7 @@
 		<title>AjAX Praxisbeispiel</title>
 		<script type='text/javascript' src='https://code.jquery.com/jquery-3.1.0.min.js'></script>
  		<style>
-			*{ 	font-family: "courier new";	}
+			*{ 	font-family: 'Open Sans', sans-serif;	}
 			.ausgabe{ margin: 8px; padding: 8px; }
 		</style>
  	</head>

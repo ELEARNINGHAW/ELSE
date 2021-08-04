@@ -12,7 +12,7 @@
 {$staff_mode = "0"}
 {$whereIs2 =                $CFG[ 'MEDIA_PRINT'][ $di.location_id ]}
 {$doctypedescription = $DOC_TYPE[ $di.doc_type_id ]['description'] }
-{$doctype            = $DOC_TYPE[ $di.doc_type_id ]['item'       ] }
+{$doctype            = $DOC_TYPE[ $di.doc_type_id ]['shape'      ] }
 {if $user_role_name == "admin"  OR  $user_role_name == "staff" OR  $user_role_name == "edit"  } {$edit_mode  = "1"} {/if}
 {if $user_role_name == "admin"  OR  $user_role_name == "staff"                                } {$staff_mode = "1"} {/if}
 {if $medium.id == $di.id}  {$current = "currentDoc"} {else}  {$current = "XXX"}   {/if}{* Das zuletzt angeklickte Medium wird zur Unterscheidung in der Liste farblich unterlegt*}
@@ -57,7 +57,8 @@
 {/if}
 {if $visible == 1}
 {if $CFG['CONF'][ 'ajaxON' ]} {* AJAX *} <a class='icon' href='javascript:;' onCLick="{literal}${/literal}.ajax({literal}{{/literal}url: 'index.php?dc_collection_id={$ci.dc_collection_id}&item={$di.item}&action={$action.button}&r={$user.role_encode}&d_info={$di.id}#{$di.id}' ,type: 'GET', success: function(data){literal}{{/literal}{literal}${/literal}('.{$di.id}').html(data);{literal}}}{/literal});"><img  class="icon" title="{$action.button_label}" src="img/svg/{$action.button}.svg" /></a>
-{else}                        {* HTTP *} <a class="icon" href="index.php?loc={$di.location_id}&dc_collection_id={$ci.dc_collection_id}&amp;item={$di.item}&amp;action={$action.button}&amp;r={$user.role_encode}&amp;document_id={$di.id}#{$di.id}">                                                                                                                                                                              <img  class="icon" title="{$action.button_label}" src="img/svg/{$action.button}.svg" /></a>
+{else}                        {* HTTP *} <a class="icon" href="index.php?loc={$di.location_id}&dc_collection_id={$ci.dc_collection_id}&amp;shape={$di.shape}&amp;action={$action.button}&amp;r={$user.role_encode}&amp;document_id={$di.id}#{$di.id}">                                                                                                                                                                              <img  class="icon" title="{$action.button_label}" src="img/svg/{$action.button}.svg" /></a>
+{* else}                                 <a class="icon" href="index.php?loc={$di.location_id}&dc_collection_id={$ci.dc_collection_id}&amp;item={$di.item}&amp;action={$action.button}&amp;r={$user.role_encode}&amp;document_id={$di.id}#{$di.id}">                                                                                                                                                                              <img  class="icon" title="{$action.button_label}" src="img/svg/{$action.button}.svg" /></a>*}
 {/if}
 {/if}
 {/foreach}

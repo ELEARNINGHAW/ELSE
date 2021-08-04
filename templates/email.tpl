@@ -10,8 +10,8 @@
 
 <input  style="float:right;width:125px; height:50px;" name="send"  value="Senden" type="submit" />
 
-<span  style="margin:10px; font-family:Arial, Helvetica, sans-serif;" >An: {$collection.Owner.forename} {$collection.Owner.surname} &lt;{$collection.Owner.email}&gt; </span><br/><br/>
-<span  style="margin:10px; font-family:Arial, Helvetica, sans-serif;" >Betreff: Ihr ELSE Semesterapparat </span>
+<span  style="margin:10px; font-family: 'Open Sans', sans-serif;" >An: {$collection.Owner.forename} {$collection.Owner.surname} &lt;{$collection.Owner.email}&gt; </span><br/><br/>
+<span  style="margin:10px; font-family: 'Open Sans', sans-serif;" >Betreff: Ihr ELSE Semesterapparat </span>
 
 
 

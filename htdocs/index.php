@@ -25,7 +25,6 @@ $RENDERER   = new RENDERER(                                 $UTIL            );
 $COLLMGR    = new COLLECTIONMANAGER( $CFG, $SQL, $RENDERER, $UTIL            );
 $MEDIAMGR   = new MEDIAMANAGER(      $CFG, $SQL, $RENDERER, $UTIL, $COLLMGR  );
 
-
 ## ----------------------------------------------------------------------------------------
 $I = $UTIL -> getInput();                                #--- GET ALL INPUT (GET) ---
 ## ----------------------------------------------------------------------------------------
@@ -41,7 +40,9 @@ $cl = $I[ 'operator'    ] -> get_loc();      # LOCATOR
 #deb($cu );
 #deb($ca );
 #deb( $cl );
+#deb($_SESSION[ 'books' ][ 'booksHitList' ]);
 #deb( $I,1  );
+
 # -- Default: item = collection --
 # --(bei role = user)  action = show_collection,
 # --(bei role = staff) action = show_collection_list

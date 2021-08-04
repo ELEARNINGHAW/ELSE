@@ -41,11 +41,12 @@
 <input type = "hidden" name = "ppn"              value = "{$medium.ppn}"                  >
 <input type = "hidden" name = "physicaldesc"     value = "{$medium.physicaldesc}"         >
 <input type = "hidden" name = "sigel"            value = "{$medium.sigel}"                >
+<input type = "hidden" name = "origin"           value = "{$medium.origin}"               >
+<input type = "hidden" name = "shape"            value = "{$medium.shape}"                >
 <input type = "hidden" name = "role"             value = "{$user.role_encode}"            >
-<input type = "hidden" name = "origin"           value = "{$medium.origin}"       >
-    {*<input type = "hidden" name = "redirect"         value = "{$operator.redirect}"           > *}
 
-{if $restricted}
+
+    {if $restricted}
 <input type = "hidden" name = "title"            value = "{$medium.title}"        >
 <input type = "hidden" name = "author"           value = "{$medium.author}"       >
 <input type = "hidden" name = "ISBN"             value = "{$medium.ISBN}"         >
@@ -55,7 +56,7 @@
 
 {/if}
 
-<table style="text-align: left; width: 100%;" border="0"  >
+<table style="text-align: left; width: 100%;">
 <tbody>
 {if $maxElement > 0 OR $medium.doc_type_id == 16}
 <tr><td class = "editmedia">Medientyp: </td><td> {$doctypetxt} </td>
@@ -88,7 +89,12 @@
         {$checked = 'checked="checked"' } {$c0 = '' }
     {/if}
 
-{if ( $SAready == 1 AND  ( $operator.mode == 'new'  OR  ($medium.doc_type_id == 99  OR  $medium.doc_type_id == 6) )  )   }
+{if ( $SAready == 1
+ AND ( $operator.mode == 'new'
+   OR ($medium.doc_type_id == 99
+   OR  $medium.doc_type_id == 6  ) ) )
+} {*Erwerbungsvorschlag, E-Book, unbekannt*}
+
   <tr><td  class = "editmedia" style="vertical-align: top; font-weight: bold;">  Ort:  <span style="color: {$color}; vertical-align: top; font-weight: bold;">(bitte auswählen)</span> </td><td>
     <div style="border:{$bw}px solid {$color}; float: left;  height:80px; padding: 5px; font-size: 12px; width: calc(100% - 15px); ">
 
