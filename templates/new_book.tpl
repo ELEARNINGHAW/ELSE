@@ -94,7 +94,7 @@
 {if  $CONF['CONF']['show_import'] }
      <div class="text2">
        <h3>Import von Medien aus der Exportdatei eines vorhandenen Semesterapparates </h3>
-         Den Export-Button finden Sie unter <img src="img/edit.png" style=" vertical-align: text-top;"  /> Den Export-Button finden Sie den Sie unter  "Bearbeiten der allgemeinen Infos..." des Semesterapparates aus dem Sie Medien importieren möchten.
+         Den Export-Button finden Sie unter <img src="img/edit.png" style=" vertical-align: text-top;"  /> "Bearbeiten der allgemeinen Infos..." des Semesterapparates aus dem Sie Medien importieren möchten.
          <div style=" margin:20px; margin-top:0px;  padding:10px; border:solid 0px black;height:100px ">
      <span style="position: absolute;  left:30px); height: 100px; width:650px;   margin:1px; padding:10px; vertical-align: middle;font-size: 17px; color: #3383bb; font-weight: bold; border:solid 0px black;">
 
