@@ -79,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `document` (
 
 CREATE TABLE IF NOT EXISTS `doc_type` (
 `id` bigint(20) unsigned NOT NULL,
-  `item` text,
+  `shape` text,
   `description` text,
   `for_loan` tinyint(1) DEFAULT NULL,
   `doc_type_id` bigint(20) unsigned NOT NULL,
@@ -90,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `doc_type` (
 -- Daten für Tabelle `doc_type`
 --
 
-INSERT INTO `doc_type` (`id`, `item`, `description`, `for_loan`, `doc_type_id`, `doc_type`) VALUES
+INSERT INTO `doc_type` (`id`, `shape`, `description`, `for_loan`, `doc_type_id`, `doc_type`) VALUES
 (1, 'book', 'Buch SA', 1, 1, 'print'),
 (4, 'ebook', 'E-Book', 3, 4, 'electronic'),
 (3, 'book', 'CD-ROM', 3, 3, 'electronic'),

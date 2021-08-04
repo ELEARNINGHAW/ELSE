@@ -48,7 +48,7 @@ if ( isset ( $_GET[ 'uid' ] ) )  ##  Initiale Parameterübergabe über  Moodle #
   $_SESSION[ 'ACTION_INFO'  ] = $this -> CONS -> CONST_ACTION_INFO;
 
   $_SESSION[ 'ALL_USER'     ] = json_decode(json_encode( $this -> SQL -> getAllUserData()  ), true);;
-  
+#deb( $_SESSION[ 'DOC_TYPE'     ] ) ;
 }
 
 else
@@ -129,6 +129,7 @@ if ( isset ( $_GET[ 'title'                                    ] ) )  { $medium 
 if ( isset ( $_GET[ 'author'                                   ] ) )  { $medium -> set_author              ( $_GET[ 'author'            ] ) ; }
 if ( isset ( $_GET[ 'publisher'                                ] ) )  { $medium -> set_publisher           ( $_GET[ 'publisher'         ] ) ; }
 if ( isset ( $_GET[ 'ISBN'                                     ] ) )  { $medium -> set_ISBN                ( $_GET[ 'ISBN'              ] ) ; }
+if ( isset ( $_GET[ 'shape'                                    ] ) )  { $medium -> set_shape               ( $_GET[ 'shape'             ] ) ; }
 if ( isset ( $_GET[ 'year'                                     ] ) )  { $medium -> set_year                ( $_GET[ 'year'              ] ) ; }
 if ( isset ( $_GET[ 'volume'                                   ] ) )  { $medium -> set_volume              ( $_GET[ 'volume'            ] ) ; }
 if ( isset ( $_GET[ 'edition'                                  ] ) )  { $medium -> set_edition             ( $_GET[ 'edition'           ] ) ; }

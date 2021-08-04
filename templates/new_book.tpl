@@ -33,7 +33,8 @@
    {if  $CONF['CONF']['show_get_media_by_katalog'] }
      <div class="text2">
   <h2> Medien hinzuf&uuml;gen </h2>
-  <h3><span style="color: red"> NEU:  &uuml;ber den HAW-Katalog </span>&ndash; incl. Artikelindex </h3>
+         <hr>
+  <h3>&Uuml;ber den HAW-Katalog</h3>
 <ol>
     {foreach from= $CONF['TXT']['katalog'] item=row}
         <li >{$row}</li>
@@ -80,7 +81,7 @@
 
 {if  $CONF['CONF']['show_purchase_suggestion'] }
 <div class="text2">
-    <h3>Haben Sie im HAW-Katalog nicht das Gewünschte gefunden</h3>
+    <h3>Haben Sie im HAW-Katalog nicht das Gewünschte gefunden?</h3>
 <div class="text2" style="text-align: left;">
  <a   onClick="$('#FButton').spin('modal');"  href="index.php?msg=&action=purchase_suggestion&loc=1&lmsid={$collection.dc_collection_id}">
       <button  style="padding:20px; width: 650px; margin-left: 30px;" class="ui-button ui-widget ui-corner-all">Erwerbungsvorschlag für den Semesterapparat </button></a>
@@ -92,8 +93,8 @@
 
 {if  $CONF['CONF']['show_import'] }
      <div class="text2">
-       <h3>Importieren der Medien aus der Exportdatei eines anderen Semesterapparates </h3>
-         Den Export-Button finden Sie unter <img src="img/edit.png" style=" vertical-align: text-top;"  /> den allgemeinen Infos des Semesterapparates aus dem Sie Medien importieren möchten.
+       <h3>Import von Medien aus der Exportdatei eines vorhandenen Semesterapparates </h3>
+         Den Export-Button finden Sie unter <img src="img/edit.png" style=" vertical-align: text-top;"  /> Den Export-Button finden Sie den Sie unter  "Bearbeiten der allgemeinen Infos..." des Semesterapparates aus dem Sie Medien importieren möchten.
          <div style=" margin:20px; margin-top:0px;  padding:10px; border:solid 0px black;height:100px ">
      <span style="position: absolute;  left:30px); height: 100px; width:650px;   margin:1px; padding:10px; vertical-align: middle;font-size: 17px; color: #3383bb; font-weight: bold; border:solid 0px black;">
 

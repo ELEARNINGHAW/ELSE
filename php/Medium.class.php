@@ -12,7 +12,7 @@ class Medium
   public  $sigel;
   public  $leader;
   public  $format;
-  public  $item;
+  public  $shape;
   public  $origin;
  
   public  $doc_type_id;
@@ -41,7 +41,7 @@ function __construct( )
   $this -> sigel                        = '';
   $this -> leader                       = '';
   $this -> format                       = '';
-  $this -> item                         = '';
+  $this -> shape                        = '';
   $this -> origin                       = '';
   $this -> doc_type_id                  = '';
   $this -> doc_type                     = '';
@@ -49,7 +49,7 @@ function __construct( )
   $this -> physicaldesc                 = '';
   $this -> collection_id                = '';
   $this -> state_id                     = '';
-  $this -> location_id                  = '';
+  $this -> location_id                  = '-1';
   $this -> notes_to_studies             = '';
   $this -> notes_to_staff               = '';
   $this -> created                      = '';
@@ -68,7 +68,7 @@ function get_ppn              ()   { return $this -> ppn                  ; }
 function get_sigel            ()   { return $this -> sigel                ; }
 function get_leader           ()   { return $this -> leader               ; }
 function get_format           ()   { return $this -> format               ; }
-function get_item             ()   { return $this -> item                 ; }
+function get_shape            ()   { return $this -> shape                ; }
 function get_origin           ()   { return $this -> origin               ; }
 function get_doc_type_id      ()   { return $this -> doc_type_id          ; }
 function get_doc_type         ()   { return $this -> doc_type             ; }
@@ -94,7 +94,7 @@ function set_ppn                         ( $val )  { return $this -> ppn        
 function set_sigel                       ( $val )  { return $this -> sigel                       =  $val ; }
 function set_leader                      ( $val )  { return $this -> leader                      =  $val ; }
 function set_format                      ( $val )  { return $this -> format                      =  $val ; }
-function set_item                        ( $val )  { return $this -> item                        =  $val ; }
+function set_shape                       ( $val )  { return $this -> shape                       =  $val ; }
 function set_origin                      ( $val )  { return $this -> origin                      =  $val ; }
 function set_doc_type_id                 ( $val )  { return $this -> doc_type_id                 =  $val ; }
 function set_doc_type                    ( $val )  { return $this -> doc_type                    =  $val ; }
@@ -124,15 +124,22 @@ function calcDocType()
   $this -> set_doc_type( $dt[ 'doc_type'   ] );
 }
 
-
 function calcDocTypeID()  ## docTypeID and Item
-{
-  foreach ( $_SESSION[ 'DOC_TYPE' ]  as $dt )
-  {
-    if ( $dt[ 'doc_type' ] == $this -> get_doc_type() )
+{ foreach ( $_SESSION[ 'DOC_TYPE' ]  as $dt )
+  { if ( $dt[ 'doc_type' ] == $this -> get_doc_type() )
     {  $this -> set_doc_type_id( $dt[ 'id'   ] );
     }
   }
+}
+
+
+function calcItem()  ## docTypeID and Item
+{
+  $this -> set_shape (  $_SESSION[ 'DOC_TYPE' ][ $this -> get_doc_type_id () ]['shape'] ) ;
+#  foreach ( $_SESSION[ 'DOC_TYPE' ]  as $dt )
+#  { if ($dt[ 'doc_type' ] == $this->get_doc_type() )
+#  {  $this -> set_shape(  $dt[ 'shape' ] ); }
+#  }
 }
 
 
@@ -162,13 +169,5 @@ if ( $state_id == 5 AND $SA_ready == 1  )      { $this ->set_location_id( 2 ); }
 }
 
 
-
-function calcItem()  ## docTypeID and Item
-{
-  foreach ( $_SESSION[ 'DOC_TYPE' ]  as $dt )
-  { if ($dt[ 'doc_type' ] == $this->get_doc_type() )
-    {  $this -> set_item(  $dt[ 'item' ] ); }
-  }
-}
 
 }

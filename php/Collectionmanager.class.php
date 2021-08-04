@@ -208,8 +208,8 @@ function editColMetaData( $I )
   
   $collection_id = $I[ 'currentCollection'    ] -> get_collection_id();
   $collection    = $this -> SQL -> getCollection( $collection_id ); #( $colID , $filter , $short = null )
-
   $tpl_vars[ 'collection'        ]  = $collection[  $collection_id          ] -> obj2array (); ;
+  $tpl_vars[ 'medium'            ]  = $I[ 'medium'                          ] -> obj2array( ) ;
   $tpl_vars[ 'user'              ]  = $I[ 'currentUser'                     ] -> obj2array ();
   $tpl_vars[ 'operator'          ]  = $I[ 'operator'                        ] -> obj2array ();
 
@@ -489,14 +489,17 @@ function getMediaList( $I )
                                                     $m -> set_doc_type      ( trim ( $med[ 'format'       ]  ) );
                                                     $m -> calcDocTypeID();
                                                     $m -> calcItem();                                              }
- 
+  
+      
         $isDublette = $this->checkDoublette($I['currentCollection']->get_collection_id(),  $m -> get_ppn() );
         if (! $isDublette )
         {
           $ret[] = $m;
+       #  deb($m      );
         }
     }
- 
+  
+
     $_SESSION[ 'books' ][ 'booksHitList'      ] = $this -> UTIL -> xml2array( $ret );
     $_SESSION[ 'books' ][ 'currentElement'    ] = 0;
     $_SESSION[ 'books' ][ 'maxElement'        ] = sizeof($_SESSION[ 'books' ][ 'booksHitList' ]);
@@ -504,7 +507,7 @@ function getMediaList( $I )
     $collection_dc_collection_id = $I[ 'currentCollection' ] -> get_dc_collection_id();
     $user_role_id                = $I[ 'currentUser'       ] -> get_role_encode();
     $b_ppn                       = $_SESSION[ 'books'      ][ 'booksHitList' ][ 0 ][ 'ppn' ];
-
+    
     $_SESSION[ 'books' ][ 'url' ] =  "index.php?ppn=$b_ppn&item=media&loc=1&action=annoteNewMedia&dc_collection_id=$collection_dc_collection_id&mode=new&r=$user_role_id";
     $this -> RENDERER -> doRedirect( $_SESSION[ 'books' ][ 'url' ]  );
 }
@@ -546,7 +549,7 @@ function LMSLoader( $url )
     foreach ( $xmlrec -> datafield as $a => $b )
     {
       $b_att = $b -> attributes ();
-
+    
       ## -- Autor --
       if ( $b_att == '100' )
       {
@@ -555,12 +558,21 @@ function LMSLoader( $url )
           if( $sf -> attributes() -> code == 'a'  )  {  $medium[ $PPN ][ 'author'        ] = (string)$sf  ; $hasAuthor = true;  }
         }
       }
-
+  
+      if ( $hasAuthor == false AND $b_att == '700' )
+      {
+        foreach ($b -> subfield as $sf )
+        { # deb($sf,1 );
+          if( $sf -> attributes() -> code == 'a'  )  {  $medium[ $PPN ][ 'author'        ] =  (string)$sf ;   $hasAuthor = true; }
+        }
+      }
+  
+  
       if ( $hasAuthor == false AND $b_att == '245' )
       {
         foreach ($b -> subfield as $sf )
         {
-          if( $sf -> attributes() -> code == 'c'  )  {  $medium[ $PPN ][ 'author'        ] =  (string)$sf ;   }
+          if( $sf -> attributes() -> code == 'c'  )  {  $medium[ $PPN ][ 'author'        ] =  (string)$sf ;  $hasAuthor = true;  }
         }
       }
 

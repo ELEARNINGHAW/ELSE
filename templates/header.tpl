@@ -15,7 +15,7 @@
   </head>
 
   {if  $user.role_name == "admin" ||  $user.role_name == "staff"}
-<body style='margin:0px; padding:0; padding-left:calc(50% - 400px);' >
+<body style='margin:0px; padding:0; padding-left:calc(50% - 500px);' >
 {else}
 <body style='margin:0px; padding:0px;' >
 {/if}

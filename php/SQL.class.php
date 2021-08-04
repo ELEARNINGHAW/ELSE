@@ -252,7 +252,7 @@ function getCollection( $colID = null , $filter = false ,  $short = null )
           }
   
           $d -> calcDocType ( );  ## TODO check ob überhaupt notwendig?
-          $withoutSortOrder[ $d -> get_id() ] = $d;   ## --- Attribute hinzufügen 'doc_type', 'item', 'doc_type_id', 'state_id'
+          $withoutSortOrder[ $d -> get_id() ] = $d;   ## --- Attribute hinzufügen 'doc_type', 'shape', 'doc_type_id', 'state_id'
         }
 
         $sortorder = explode ( ',' , $row[ 'c_sortorder' ] ); # Array von PPN als Identifikatoren der Medien
