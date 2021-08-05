@@ -460,14 +460,14 @@ function lmsDownload( $I )
   $this -> RENDERER -> doRedirect( $_SESSION[ 'books' ][ 'url' ]  );
 }
 
-
 function getMediaList( $I )
 {
     $conf = $this -> conf;
 
     $mediaListID  =  $I[ 'operator' ] -> get_mediaListID() ;
     $url =  $this -> conf [ 'VUFIND' ][ 'vuFindURL'    ]  .'MyResearch/MyList/'.$mediaListID  . $this -> conf [ 'VUFIND' ][ 'vuFindParams' ];
-    $medList = $this -> LMSLoader( $url );
+    
+    $medList = $this -> LMSLoader( trim($url) );
  
     $medList = $this -> UTIL -> xml2array( $medList );
  
@@ -489,17 +489,13 @@ function getMediaList( $I )
                                                     $m -> set_doc_type      ( trim ( $med[ 'format'       ]  ) );
                                                     $m -> calcDocTypeID();
                                                     $m -> calcItem();                                              }
-  
-      
+        
         $isDublette = $this->checkDoublette($I['currentCollection']->get_collection_id(),  $m -> get_ppn() );
         if (! $isDublette )
-        {
-          $ret[] = $m;
-       #  deb($m      );
+        { $ret[] = $m;
         }
     }
   
-
     $_SESSION[ 'books' ][ 'booksHitList'      ] = $this -> UTIL -> xml2array( $ret );
     $_SESSION[ 'books' ][ 'currentElement'    ] = 0;
     $_SESSION[ 'books' ][ 'maxElement'        ] = sizeof($_SESSION[ 'books' ][ 'booksHitList' ]);
@@ -523,90 +519,64 @@ function LMSLoader( $url )
   
   ### ------ TEST -------
   if ($this -> conf['CONF'] ['cwd']  == 'ELSE-DEV')
-  {
-   # $url = 'X:\home\ELSE\haw-marc21.xml';
-  }
-  ### ------ TEST -------
+  { # $url = 'X:\home\ELSE\haw-marc21.xml';
+  }  ### ------ TEST -------
   
-  $strXml = file_get_contents( $url , false, stream_context_create($arrContextOptions));
+  $strXml = file_get_contents( $url , false, stream_context_create( $arrContextOptions ) );
  
-  $xml = simplexml_load_string( $strXml);
+  $xml = simplexml_load_string( $strXml );
  
   $i = 0;
   foreach( $xml -> record as $xmlrec )
-  {
-    foreach ( $xmlrec -> controlfield as $a => $b )
-    {
-      ## --- PPN
-      if ( $b[ 'tag' ]       == '001' )
-      {
-        $PPN            = (string)$b;
+  { foreach ( $xmlrec -> controlfield as $a => $b )
+    { if ( $b[ 'tag' ]       == '001' ) ## --- PPN
+      { $PPN            = (string)$b;
         $medium[(string)$PPN][ 'ppn'          ] = $PPN;
       }
     }
 
     $hasAuthor = false;
     foreach ( $xmlrec -> datafield as $a => $b )
-    {
-      $b_att = $b -> attributes ();
-    
-      ## -- Autor --
-      if ( $b_att == '100' )
-      {
-        foreach ( $b -> subfield as $sf )
-        {
-          if( $sf -> attributes() -> code == 'a'  )  {  $medium[ $PPN ][ 'author'        ] = (string)$sf  ; $hasAuthor = true;  }
+    { $b_att = $b -> attributes ();
+      if ( $b_att == '100' )   ## -- Autor --
+      { foreach ( $b -> subfield as $sf )
+        { if( $sf -> attributes() -> code == 'a'  )  {  $medium[ $PPN ][ 'author'        ] .=  (string)$sf . ', '  ; $hasAuthor = false;  }
         }
       }
   
       if ( $hasAuthor == false AND $b_att == '700' )
-      {
-        foreach ($b -> subfield as $sf )
-        { # deb($sf,1 );
-          if( $sf -> attributes() -> code == 'a'  )  {  $medium[ $PPN ][ 'author'        ] =  (string)$sf ;   $hasAuthor = true; }
+      { foreach ($b -> subfield as $sf )
+        { if( $sf -> attributes() -> code == 'a'  )  {  $medium[ $PPN ][ 'author'        ] .=  (string)$sf  . ', ';   $hasAuthor = false; }
         }
       }
-  
-  
+   
       if ( $hasAuthor == false AND $b_att == '245' )
-      {
-        foreach ($b -> subfield as $sf )
-        {
-          if( $sf -> attributes() -> code == 'c'  )  {  $medium[ $PPN ][ 'author'        ] =  (string)$sf ;  $hasAuthor = true;  }
+      { foreach ($b -> subfield as $sf )
+        { if( $sf -> attributes() -> code == 'c'  )  {  $medium[ $PPN ][ 'author'        ] .=  (string)$sf  . ', ';  $hasAuthor = false;  }
         }
       }
-
-
-      ## -- Titel --
-      if ( $b_att == '245' )
-      {
-        foreach ( $b -> subfield as $sf   )
-        {
-          if( $sf -> attributes() -> code == 'a'  )  {  $medium[ $PPN ][ 'title'        ]  =         (string)$sf;   }
+   
+      if ( $b_att == '245' )   ## -- Titel --
+      { foreach ( $b -> subfield as $sf   )
+        { if( $sf -> attributes() -> code == 'a'  )  {  $medium[ $PPN ][ 'title'        ]  =         (string)$sf;   }
           if( $sf -> attributes() -> code == 'b'  )  {  $medium[ $PPN ][ 'title'        ] .= ' - '.  (string)$sf;   }
           if( $sf -> attributes() -> code == 'n'  )  {  $medium[ $PPN ][ 'title'        ] .= ' - '.  (string)$sf;   }
         }
       }
 
-
-      ## -- Physical Description --
-      if ( $b_att == '300' )
-      {
-          foreach ($b -> subfield as $sf   )
-          {
-              if( $sf -> attributes() -> code == 'a' )  {  $medium[ $PPN ][ 'physicaldesc'        ] =  (string)$sf;   }
-          }
+      if ( $b_att == '300' )      ## -- Physical Description --
+      { foreach ($b -> subfield as $sf   )
+        { if( $sf -> attributes() -> code == 'a' )  {  $medium[ $PPN ][ 'physicaldesc'        ] =  (string)$sf;   }
+        }
       }
 
-      ## -- Signatur / Sigel --
-      if ( $b_att == '980' )
+      if ( $b_att == '980' )      ## -- Signatur / Sigel --
       { $hit = false;
         foreach ( $b -> subfield as $sf   )
         { if( $sf -> attributes() -> code == 2  )    {  if ( $sf  == 34 ){ $hit = true;  }  }  }
 
         if ( $hit )
-        {
-          $medium[ $PPN ][ 'sigel' ] = 'HAW-Hamburg';
+        { $medium[ $PPN ][ 'sigel' ] = 'HAW-Hamburg';
           foreach ( $b -> subfield as $sf   )
           { if( $sf -> attributes() -> code == 'd' )    { $medium[ $PPN ][ 'signature' ] =  (string)$sf; }
           }
@@ -620,30 +590,21 @@ function LMSLoader( $url )
         { if( $sf -> attributes() -> code == 'a'  )    {  if ( $sf  == 'GBV_ILN_34' ){ $hit = true;  }  }  }
     
         if ( $hit )
-        {
-          $medium[ $PPN ][ 'sigel' ] = 'HAW-Hamburg';
+        { $medium[ $PPN ][ 'sigel' ] = 'HAW-Hamburg';
           $hit = false;
         }
       }
-  
-  
-  
-      ## -- Verlag --
-      if ( $b_att == '264' )
-      {
-          foreach ($b -> subfield as $sf   )
-          {
-              if( $sf -> attributes() -> code == 'a'  )  {  $medium[ $PPN ][ 'publisher'        ] =   (string)$sf;   }
-           }
+    
+      if ( $b_att == '264' )     ## -- Verlag --
+      {  foreach ($b -> subfield as $sf   )
+        { if( $sf -> attributes() -> code == 'a'  )  {  $medium[ $PPN ][ 'publisher'        ] =   (string)$sf;   }
+        }
       }
-
-      ## -- ISBN  --
-      if ( $b_att == '020' )
-      {
-          foreach ($b -> subfield as $sf   )
-          {
-              if( $sf -> attributes() -> code == '9'  )  {  $medium[ $PPN ][ 'ISBN'        ] =  (string)$sf;   }
-          }
+    
+      if ( $b_att == '020' )    ## -- ISBN  --
+      {  foreach ($b -> subfield as $sf   )
+        {  if( $sf -> attributes() -> code == '9'  )  {  $medium[ $PPN ][ 'ISBN'             ] =  (string)$sf;   }
+        }
       }
     }
 
@@ -651,7 +612,6 @@ function LMSLoader( $url )
     $medium[(string)$PPN][ 'format'          ] =   (string)$xmlrec -> format;
 
   }
- 
   
   return  $medium;
 }
