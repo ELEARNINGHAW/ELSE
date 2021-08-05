@@ -113,7 +113,7 @@ if ( isset ( $_GET[ 'mediaListID'                              ] ) )
   }
   #if ( is_int( $_GET[ 'mediaListID' ]  ) )
   {
-    $operator->set_mediaListID($_GET['mediaListID']) ;
+    $operator->set_mediaListID(trim( $_GET['mediaListID' ] ) ) ;
   }
 }
 
@@ -318,7 +318,7 @@ function getFachBIB( $user )
   if ( isset( $_SESSION[ 'DEP_2_BIB' ][ $user -> get_department()  ] ) )
               {  $bib = $_SESSION[ 'DEP_2_BIB' ][ $user -> get_department() ];  }
   else        {  $bib = $_SESSION[ 'DEP_2_BIB' ][ 101 ];                }  ## Preset auf FachBib = HAW, falls dem User kein Department zugeordnet wurde.
-
+  
   $user -> set_dep_id       (  $bib[ 'dep_id'      ] ) ;
   $user -> set_dep_name     (  $bib[ 'dep_name'    ] ) ;
   $user -> set_dep_2_fak    (  $bib[ 'dep_2_fak'   ] ) ;
