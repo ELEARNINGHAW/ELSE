@@ -34,7 +34,7 @@
         <div class='SAHeadline' style="display: block;" >
           <a href="index.php?item=collection&action=show_collection&dc_collection_id={$c[j].dc_collection_id}&amp;r={$user.role_id}">
           <div class="name2 semapNameListe statePic{$c[j].state_id}"  >{$c[j].title|truncate:85:"...":true}</div>
-          <div class="name  semapNameListeNumbers bgc{$c[j].bib_id} ">[{$c[j].MedState.med_state_GE}] / {$c[j].bib_id}</div>
+          <div class="name  semapNameListeNumbers bgc{$c[j].bib_id} ">[{$c[j].MedState.med_state_GE}]  {$c[j].bib_id}</div>
           </a>
         </div>
     {/if}

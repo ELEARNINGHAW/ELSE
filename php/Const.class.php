@@ -237,7 +237,7 @@ $this -> CONST_ACTION_INFO = array
 (  'button'            => 'new_email' ,
    'button_label'      => 'E-Mail senden' ,
    'input'             => array ( "mode" => "new" , "item" => "email" ) ,
-   'acl'               => array ( /* "any" => "role=admin,role=staff" , */ ) ,
+   'acl'               => array (  "any" => "role=admin,role=staff"   ) ,
    'button_visible_if' => array
     ( "loc"      => array ("0", "1" ,  "2", "3"  , "4" , "5" ) ,
       "mode" => array ( "staff" , "admin" ) ,

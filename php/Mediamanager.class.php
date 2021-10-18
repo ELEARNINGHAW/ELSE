@@ -916,8 +916,8 @@ function getHitList( $searchQuery )
       $tpl_vars[ 'filter'     ] = $I[ 'filter'                ]->obj2array ();
       $tpl_vars[ 'SEMESTER'   ] = array_keys ( $_SESSION[ 'CFG' ][ 'SEM' ] );
 
-      if    ( $tpl_vars[ 'collection' ][ 'Owner' ][ 'sex' ] == 'w' ) { $salutaton = 'Sehr geehrte/r' . $tpl_vars[ 'collection' ][ 'Owner' ][ 'forename' ] . ' ' . $tpl_vars[ 'collection' ][ 'Owner' ][ 'surname' ]; }
-      else                                                           { $salutaton = 'Sehr geehrte/r' . $tpl_vars[ 'collection' ][ 'Owner' ][ 'forename' ] . ' ' . $tpl_vars[ 'collection' ][ 'Owner' ][ 'surname' ]; }
+      if    ( $tpl_vars[ 'collection' ][ 'Owner' ][ 'sex' ] == 'w' ) { $salutaton = 'Sehr geehrte/r ' . $tpl_vars[ 'collection' ][ 'Owner' ][ 'forename' ] . ' ' . $tpl_vars[ 'collection' ][ 'Owner' ][ 'surname' ]; }
+      else                                                           { $salutaton = 'Sehr geehrte/r ' . $tpl_vars[ 'collection' ][ 'Owner' ][ 'forename' ] . ' ' . $tpl_vars[ 'collection' ][ 'Owner' ][ 'surname' ]; }
 
       $tpl_vars[ 'salutaton'    ] = $salutaton;
       $tpl_vars[ 'back_URL'     ]                = $_SESSION[ 'history'  ][ 0 ];
