@@ -96,24 +96,24 @@
 } {*Erwerbungsvorschlag, E-Book, unbekannt*}
 
   <tr><td  class = "editmedia" style="vertical-align: top; font-weight: bold;">  Ort:  <span style="color: {$color}; vertical-align: top; font-weight: bold;">(bitte auswählen)</span> </td><td>
-    <div style="border:{$bw}px solid {$color}; float: left;  height:80px; padding: 5px; font-size: 12px; width: calc(100% - 15px); ">
+    <div style="border:{$bw}px solid {$color}; float: left;  height:80px; padding: 3px; padding-right: 8px; font-size: 12px; width: calc(100% - 15px); ">
 
         {if  ( $medium.sigel == 'HAW-Hamburg' ) OR $medium.doc_type_id == 99 }
-            <input {$c2} value="2" class='i' type="radio" name="location_id" id="radio-2" {$checked}><label for="radio-2"><span style="font-weight:700; "> Literaturhinweis - verbleibt im Regal der Bibliothek.     </span></label><br/>
+            <input {$c2} value="2" class='i' type="radio" name="location_id" id="radio-2" {$checked}><label style="text-align: left; font-weight:700;" for="radio-2"><span "> Literaturhinweis - verbleibt im Regal der Bibliothek.     </span></label><br/>
         {else}
-            <input {$c2} value="5" class='i' type="radio" name="location_id" id="radio-5" {$checked}><label for="radio-5"><span style="font-weight:700; "> Titel nicht aus HAW-Bestand, daher Literaturhinweis   </span></label><br/>
+            <input {$c2} value="5" class='i' type="radio" name="location_id" id="radio-5" {$checked}><lab1el style="text-align: left; font-weight:700;" for="radio-5"><span "> Titel nicht aus HAW-Bestand, daher Literaturhinweis   </span></lab1el><br/>
         {/if}
 
         {if $semApp}
-      <input {$c1} value="1" class='i' type="radio" name="location_id" id="radio-1"><label for="radio-1"><span style="font-weight:700; "> Semesterapparat  -  wird in Ihren phys. Semesterapparat eingestellt. </span></label>
+      <input {$c1} value="1" class='i' type="radio" name="location_id" id="radio-1"><label for="radio-1" style="text-align: left; font-weight:700; "><span> Semesterapparat  -  wird in Ihren phys. Semesterapparat eingestellt. </span></label>
       {/if}
 
       {if $scanservicePrint}
-      <input {$c3} value="4" class='i' type="radio" name="location_id" id="radio-3"><label for="radio-3"><span style="font-weight:700; "> Scanauftrag  - Teile dieses Printmediums als PDF. </span></label>
+      <input {$c3} value="4" class='i' type="radio" name="location_id" id="radio-3"><label for="radio-3" style="text-align: left; font-weight:700; "><span> Scanauftrag  - Teile dieses Printmediums als PDF. </span></label>
       {/if}
 
       {if $scanserviceArticle}
-      <input {$c4} value="4" class='i' type="radio" name="location_id" id="radio-4"><label for="radio-4"><span style="font-weight:700; "> Scanauftrag  -  Diesen Artikel als PDF. </span></label>
+      <input {$c4} value="4" class='i' type="radio" name="location_id" id="radio-4"><label for="radio-4" style="text-align: left; font-weight:700;" ><span> Scanauftrag  -  Diesen Artikel als PDF. </span></label>
       {/if}
 
       <input {$c0} value="0"           type="radio" name="location_id" id="radio-1" style="visibility: hidden;">

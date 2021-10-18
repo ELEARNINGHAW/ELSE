@@ -1055,12 +1055,12 @@ function getColPredecessors($collection_id)
   {
     $ret = "";
     $SQL = "SELECT name FROM `role` WHERE id = " . $this->es ( $roleNr );
-
-    $res = mysqli_query ( $this->DB , $SQL );
+    
+    $res = mysqli_query ( $this->DB , $SQL ); # deb($res,1);
     while ( $row = mysqli_fetch_assoc ( $res ) ) {
       $ret = $row[ 'name' ];
     }
- 
+  
     return $ret;
   }
 

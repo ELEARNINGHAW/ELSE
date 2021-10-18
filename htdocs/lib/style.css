@@ -45,6 +45,11 @@ textarea
     font-size: 15px;
 }
 
+label
+{
+  width: 95%;
+}
+
 .text2
 {
   font-size:1.0em;
