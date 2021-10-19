@@ -45,15 +45,13 @@
 <input type = "hidden" name = "shape"            value = "{$medium.shape}"                >
 <input type = "hidden" name = "role"             value = "{$user.role_encode}"            >
 
-
-    {if $restricted}
+{if $restricted}
 <input type = "hidden" name = "title"            value = "{$medium.title}"        >
 <input type = "hidden" name = "author"           value = "{$medium.author}"       >
 <input type = "hidden" name = "ISBN"             value = "{$medium.ISBN}"         >
 <input type = "hidden" name = "edition"          value = "{$medium.edition}"      >
 <input type = "hidden" name = "signature"        value = "{$medium.signature}"    >
 <input type = "hidden" name = "ppn"              value = "{$medium.ppn}"          >
-
 {/if}
 
 <table style="text-align: left; width: 100%;">
