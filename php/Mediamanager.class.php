@@ -122,7 +122,8 @@ function annoteNewMedia_showForm( $I )
     $tpl_vars[ 'DOC_TYPE'       ] = $_SESSION[ 'DOC_TYPE' ];
     $tpl_vars[ 'currentElement' ] = $_SESSION[ 'books'    ][ 'currentElement' ];
     $tpl_vars[ 'maxElement'     ] = $_SESSION[ 'books'    ][ 'maxElement'     ];
-
+    $tpl_vars[ 'back_URL'       ] = '#';
+    
     $this -> RENDERER -> do_template( 'edit_book.tpl' , $tpl_vars );
     exit( 0 );
 }
@@ -156,7 +157,7 @@ function saveMediaMetaData( $I )
   #$I[ 'medium' ] -> set_item (  $_SESSION[ 'DOC_TYPE' ][ $I[ 'medium' ] -> get_doc_type_id () ]['item'] ) ;
   #deb($_SESSION[ 'DOC_TYPE' ]);
   #deb($I[ 'operator' ] -> item );
-#  deb($I[ 'medium' ],1);
+# deb($I[ 'medium' ],1);
   if (  $I[ 'operator' ] -> item              == 'media'
   AND   $I[ 'medium'   ] -> get_location_id() == '-1'
   AND   $I[ 'medium'    ] -> get_shape()      != 'online'
@@ -177,7 +178,7 @@ function saveMediaMetaData( $I )
     {
       $I[ 'medium' ] -> set_doc_type ( $_SESSION[ 'DOC_TYPE' ][ 99 ][ 'description' ] );
       $I[ 'medium' ] -> set_in_SA    ( $_SESSION[ 'DOC_TYPE' ][ 99 ][ 'SA-ready'    ] );
-      $I[ 'medium' ] -> set_item     ( $_SESSION[ 'DOC_TYPE' ][ 99 ][ 'item'        ] );
+      $I[ 'medium' ] -> set_format   ( $_SESSION[ 'DOC_TYPE' ][ 99 ][ 'shape'       ] );
       $I[ 'medium' ] -> set_state_id ( 9 );                                                                 ## Status wird 'Vorschlag'
       $_SESSION[ 'books'][ 'booksHitList'   ][ 0 ] = $I[ 'medium' ] -> obj2array() ;
       $_SESSION[ 'books'][ 'currentElement' ] = 1;
