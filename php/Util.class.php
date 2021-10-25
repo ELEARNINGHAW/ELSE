@@ -399,7 +399,7 @@ function updateCollection ( $collection , $user )
 # ---------------------------------------------------------------------------------------------
   function sendBIB_APmails()
   {
-  
+ # deb($this -> conf,1);
     # 0 => "Sonntag",
 # 1 => "Montag",
 # 2 => "Dienstag",
@@ -425,10 +425,10 @@ function updateCollection ( $collection , $user )
         {
           $message .= "ELSE Statusbericht: \r\n\r\n";
           $message .= $trenner. "\r\n";
-          if( conf[ 'ADMINEMAILINFO' ][ 'new'      ] AND  $mi[ 1  ] > 0 ) {$message .= " Neu bestellt: "  . $mi[ 1  ] . "\r\n"; $subject .= " [ N:".$mi[1]."  ] "; }
-          if( conf[ 'ADMINEMAILINFO' ][ 'suggest'  ] AND  $mi[ 9  ] > 0 ) {$message .= " Kaufvorschlag: " . $mi[ 9  ] . "\r\n"; $subject .= " [ K:".$mi[9]."  ] "; }
-          if( conf[ 'ADMINEMAILINFO' ][ 'obsolete' ] AND  $mi[ 4  ] > 0 ) {$message .= " Entfernen: "     . $mi[ 4  ] . "\r\n"; $subject .= " [ E:".$mi[4]."  ] "; }
-          if( conf[ 'ADMINEMAILINFO' ][ 'continue' ] AND  $mi[ 10 ] > 0 ) {$message .= " Verlängert: "    . $mi[ 10 ] . "\r\n"; $subject .= " [ V:".$mi[10]." ] "; }
+          if( $this ->conf[ 'ADMINEMAILINFO' ][ 'new'      ] AND  $mi[ 1  ] > 0 ) {$message .= " Neu bestellt: "  . $mi[ 1  ] . "\r\n"; $subject .= " [ N:".$mi[1]."  ] "; }
+          if( $this ->conf[ 'ADMINEMAILINFO' ][ 'suggest'  ] AND  $mi[ 9  ] > 0 ) {$message .= " Kaufvorschlag: " . $mi[ 9  ] . "\r\n"; $subject .= " [ K:".$mi[9]."  ] "; }
+          if( $this ->conf[ 'ADMINEMAILINFO' ][ 'obsolete' ] AND  $mi[ 4  ] > 0 ) {$message .= " Entfernen: "     . $mi[ 4  ] . "\r\n"; $subject .= " [ E:".$mi[4]."  ] "; }
+          if( $this ->conf[ 'ADMINEMAILINFO' ][ 'continue' ] AND  $mi[ 10 ] > 0 ) {$message .= " Verlängert: "    . $mi[ 10 ] . "\r\n"; $subject .= " [ V:".$mi[10]." ] "; }
           $message .= $trenner. "\r\n";
   
           $subject  = "ELSE: Statusbericht -- ". $mi['bib_id'] . " -- " . $subject;

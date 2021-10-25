@@ -6,8 +6,7 @@ var $user;
 var $collection;
 
 function __construct( )
-{
-  $conf_cwd = $_SESSION[ 'CFG' ][ 'SERVER' ];
+{ $conf_cwd = $_SESSION[ 'CFG' ][ 'SERVER' ];
 
   $this -> DB = new \MySQLi( $conf_cwd[ 'db_host' ] ,
   $conf_cwd[ 'db_user' ] ,
@@ -15,8 +14,7 @@ function __construct( )
   $conf_cwd[ 'db_name' ] );
 
   if ( mysqli_connect_errno () )
-  {
-    printf ( "Verbindung fehlgeschlagen: %s\n" , mysqli_connect_error () );
+  { printf ( "Verbindung fehlgeschlagen: %s\n" , mysqli_connect_error () );
     exit();
   }
 }
