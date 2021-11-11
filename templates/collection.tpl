@@ -54,7 +54,6 @@
     </div>
   {/if}
 
-
   </div>
   {/if}
 
@@ -62,12 +61,9 @@
       <div class="staffhint"><div style="color:red;" >HIBS:</div>{$ci.notes_to_staff_col|replace:'':' '|nl2br} </div>
     {/if}
 
-
     {if $ci.notes_to_studies_col != '' AND $operator_action != 'show_media_list' }
     <div class="studihint"><div style="color:red;" >Hinweise zur Vorlesung</div>{$ci.notes_to_studies_col|replace:'':' '|nl2br} </div>
     {/if}
-
-
 
     {if isset($ci.media)}
     {foreach from=$ci.media item=di}

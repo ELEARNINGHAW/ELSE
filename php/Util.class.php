@@ -137,6 +137,7 @@ if ( isset ( $_GET[ 'sigel'                                    ] ) )  { $medium 
 if ( isset ( $_GET[ 'notes_to_staff'                           ] ) )  { $medium -> set_notes_to_staff      ( $_GET[ 'notes_to_staff'    ] ) ; }
 if ( isset ( $_GET[ 'notes_to_studies'                         ] ) )  { $medium -> set_notes_to_studies    ( $_GET[ 'notes_to_studies'  ] ) ; }
 if ( isset ( $_GET[ 'location_id'                              ] ) )  { $medium -> set_location_id         ( $_GET[ 'location_id'       ] ) ; }
+if ( isset ( $_GET[ 'state_id'                                 ] ) )  { $medium -> set_state_id            ( $_GET[ 'state_id'          ] ) ; }
 if ( isset ( $_GET[ 'origin'                                   ] ) )  { $medium -> set_origin              ( $_GET[ 'origin'            ] ) ; }
 if ( isset ( $_GET[ 'lmsid'                                    ] ) )  { $medium -> set_collection_id       ( $this -> splitCourseName_user( $_GET[ 'lmsid'            ] )  ); }
 if ( isset ( $_GET[ 'dc_collection_id'                         ] ) )  { $medium -> set_collection_id       ( $this -> b64de(                $_GET[ 'dc_collection_id' ] )  ); }

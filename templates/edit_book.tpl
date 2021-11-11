@@ -164,6 +164,12 @@
     <td style="  border:{$bw}px solid {$color}; float: left;  height:20px; padding: 5px; font-size: 12px; width: calc(100% - 15px); "><span  class="editmedia"> {html_options name="location_id" options=$MEDIALOC selected=$medium.location_id }</td></div>
 </tr>
 
+
+<tr>
+    <td style="vertical-align: top;  "><span  class="editmedia">Medienstatus:</span></td>
+    <td style="  border:{$bw}px solid {$color}; float: left;  height:20px; padding: 5px; font-size: 12px; width: calc(100% - 15px); "><span  class="editmedia"> {html_options name="state_id" options=$MEDIASTATE selected=$medium.state_id }</td></div>
+</tr>
+
 {/if}
 
 </tbody>

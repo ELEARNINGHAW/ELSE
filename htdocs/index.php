@@ -36,6 +36,7 @@ $cl = $I[ 'operator'    ] -> get_loc();      # LOCATOR
 
 # $ca = 'import';
 #deb( $_GET  );
+#deb( $_POST,1  );
 #deb($ci );
 #deb($cu );
 #deb($ca );
@@ -49,8 +50,7 @@ $cl = $I[ 'operator'    ] -> get_loc();      # LOCATOR
 
 ## --- AKTIONEN DES SEMESTERAPPARATS ---
 if ( $ci  == 'collection'  AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit') )
-{
-  if      ( 1 == 2 ) {;}
+{ if      ( 1 == 2 ) {;}
   else if ( $ca  == 'show_collection_list'   )  { $COLLMGR -> showCollectionList        ( $I ) ; }  ## ++ 1 STAFF:: SA wird angezeigt (deren Editierbarkeit ist abhängig von der Rolle des Nuters)
   else if ( $ca  == 'show_collection'        )  { $COLLMGR -> showCollection            ( $I ) ; }  ## ++ 2 SA wird angezeigt (deren Editierbarkeit ist abhängig von der Rolle des Nuters)
   else if ( $ca  == 'show_media_list'        )  { $COLLMGR -> showMediaList             ( $I ) ; }  ## ++    STAFF:: Zeigt die Liste der Medien der SAs, gefiltert nach deren STATUS (und ev. Sem)
@@ -66,9 +66,8 @@ if ( $ci  == 'collection'  AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit')
   else if ( $ca  == 'getMediaList'           )  { $COLLMGR -> getMediaList              ( $I ) ; }  ## Importiert Medien-Metadaten direkt aus Beluga Core
 }
 
- if (  ( $cl == 1  OR  $cl == 0  OR $cl == 2  OR $cl  == 3 OR $cl  == 5)   AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit'))  ## cl = 2 Location =  Bibliothek  --  3 Loc =  online --  5 Loc = externe Biblio
-{
-  if      ( 1 == 2 ) {;}
+if (  ( $cl == 1  OR  $cl == 0  OR $cl == 2  OR $cl  == 3 OR $cl  == 5)   AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit'))  ## cl = 2 Location =  Bibliothek  --  3 Loc =  online --  5 Loc = externe Biblio
+{ if      ( 1 == 2 ) {;}
   else if ( $ca  == 'search'                )  {  $MEDIAMGR -> searchMediaOnLibraryServer    ( $I ); }   ## ++ 4 OPAC -- Suchprozess des Mediums wird gestartet
   else if ( $ca  == 'annoteNewMedia'        )  {  $MEDIAMGR -> annoteNewMedia_showForm       ( $I ); }   ## ++ 5 Eingabemaske Metadaten für Buch Annotation anzeigen
   else if ( $ca  == 'save'                  )  {  $MEDIAMGR -> saveMediaMetaData             ( $I ); }   ## ++ 6 Metadaten eines neues Buch speichern
@@ -90,10 +89,8 @@ if ( $ci  == 'collection'  AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit')
   else if ( $ca  == 'new_email'             )  {  $MEDIAMGR -> showMailForm                  ( $I ); }   ## ActionHandler: Erwebungsvorschlag (nach 0 Suchtreffern)
 }
 
-
 else if (  ( $cl  == 4)   AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit'))   ## cl = 4  Location =  Scanservice
-{
-  if      ( 1 == 2 ) {;}
+{ if      ( 1 == 2 ) {;}
   else if ( $ca  == 'annoteNewMedia'        )  {  $MEDIAMGR -> annoteNewMedia_showForm       ( $I ); }   ## Eingabemaske Metadaten für Buch Annotation anzeigen
   else if ( $ca  == 'edit'                  )  {  $MEDIAMGR -> editMediaMetaData             ( $I ); }   ## ActionHandler: Metadaten des SA bearbeiten
   else if ( $ca  == 'save'                  )  {  $MEDIAMGR -> saveMediaMetaData             ( $I ); }   ## Speichern der Metadaten des Mediums
@@ -107,7 +104,6 @@ else if (  ( $cl  == 4)   AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit'))
   else if ( $ca  == 'new_email'             )  {  $MEDIAMGR -> showMailForm                  ( $I ); }   ## ActionHandler: Erwebungsvorschlag (nach 0 Suchtreffern)
 }
 
-
 ## ----------------------------------------------------------------------------------------
 ## --------- Aktionen nur für Dozenten oder Staff oder Mailuser ---------------------------
 ## ----------------------------------------------------------------------------------------
@@ -117,7 +113,6 @@ if ( $ci  == 'email' AND $UTIL->hasRole( $cu,'staff', 'edit', 'mailuser'  ) )
   else if ( $ca  == 'sendmail'              )  {  $MEDIAMGR -> send_email                    ( $I ); }    ## Email wird verschickt
   else if ( $ca  == 'HIBSAPmail'            )  {  $UTIL     -> sendBIB_APmails               (    ); }    ## Cronjob: HIBS Ansprechpartner Infomail
 }
-
 
 if ( $ci  == 'collection' AND $UTIL->hasRole( $cu,'staff', 'edit', 'mailuser'  ))
 { if      ( 1 == 2 ) {;}

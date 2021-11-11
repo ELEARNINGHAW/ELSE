@@ -7,7 +7,7 @@ var $collection;
 
 function __construct( )
 { $conf_cwd = $_SESSION[ 'CFG' ][ 'SERVER' ];
-
+ # deb($conf_cwd,1);
   $this -> DB = new \MySQLi( $conf_cwd[ 'db_host' ] ,
   $conf_cwd[ 'db_user' ] ,
   $conf_cwd[ 'db_pass' ] ,
@@ -57,8 +57,10 @@ return $ret;
 # ---------------------------------------------------------------------------------------------
   function updateMediaMetaData( $medium )
   {
+    deb($medium);
     $SQL = " UPDATE document SET ";
     if ( $medium -> get_location_id        ( ) != '' )  {  $SQL .= " location_id      = \"" . $this -> es (  $medium -> get_location_id        ( ) ) . "\" ,";  }
+    if ( $medium -> get_state_id           ( ) != '' )  {  $SQL .= " state_id         = \"" . $this -> es (  $medium -> get_state_id           ( ) ) . "\" ,";  }
     if ( $medium -> get_title              ( ) != '' )  {  $SQL .= " title            = \"" . $this -> es (  $medium -> get_title              ( ) ) . "\" ,";  }
     if ( $medium -> get_signature          ( ) != '' )  {  $SQL .= " signature        = \"" . $this -> es (  $medium -> get_signature          ( ) ) . "\" ,";  }
     if ( $medium -> get_author             ( ) != '' )  {  $SQL .= " author           = \"" . $this -> es (  $medium -> get_author             ( ) ) . "\" ,";  }
@@ -68,7 +70,10 @@ return $ret;
     if ( $medium -> get_notes_to_staff     ( ) != '' )  {  $SQL .= " notes_to_staff   = \"" . $this -> es (  $medium -> get_notes_to_staff     ( ) ) . "\" ,";  }
                                                            $SQL .= " last_modified    = NOW()  ";
                                                            $SQL .= " WHERE id         = \"" . $this -> es (  $medium -> get_id                 ( ) ) . "\"  ";
-                                                           $res = mysqli_query ( $this -> DB , $SQL );
+  
+   # deb($SQL,1);
+  
+    $res = mysqli_query ( $this -> DB , $SQL );
     return $res;
   }
 
