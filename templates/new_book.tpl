@@ -1,5 +1,5 @@
 <div id="basic-modal-content">
- <img src="img/loader.gif" style="width:80px; heigth:80px" /></div>
+<img src="img/loader.gif" style="width:80px; heigth:80px" /></div>
 <script type='text/javascript' src='lib/jquery.simplemodal.js'></script>
 <script src="lib/dropzone.min.js"></script>
 <link rel="stylesheet" href="lib/dropzone.min.css">
@@ -39,9 +39,6 @@
     {foreach from= $CONF['TXT']['katalog'] item=row}
         <li >{$row}</li>
     {/foreach}
-
-
-
 </ol>
 
 <div class="text2" style="text-align: left">
@@ -62,17 +59,17 @@
   <input type="hidden" name="dc_collection_id" value="{$collection.dc_collection_id}">
   </form>
 </div>
-      <br/>    <br/>
+<br/><br/>
 <hr>
 {/if}
 
 {if  $col_predecessors|@count gt 0   AND $CONF['CONF']['takeover_col_predecessor'] }
 <div class="text2">
-    <h3>Importieren Sie die Medien aus einem Ihrer früheren Veranstaltungen</h3>
-    {foreach key=cid item=c name=col_predecessors from=$col_predecessors }
+  <h3>Importieren Sie die Medien aus einem Ihrer früheren Veranstaltungen</h3>
+  {foreach key=cid item=c name=col_predecessors from=$col_predecessors }
   <div class="text2" style="text-align: left;">
   <a onClick="$('#FButton').spin('modal');"  href="index.php?item=collection&action=takeover&r={$user.role_id}&dc_to_collection_id={$c['dc_id']}">
-     <button  style="padding:20px; width: 650px; margin-left: 30px;" class="ui-button ui-widget ui-corner-all">{$c['title']} </button></a>
+    <button  style="padding:20px; width: 650px; margin-left: 30px;" class="ui-button ui-widget ui-corner-all">{$c['title']} </button></a>
   </div>
  {/foreach}<br/><br/>
  </div>
@@ -144,9 +141,9 @@
      <form action="index.php" method="get">
      <table style="text-align: left; width: 100%;" border="0" cellpadding="2" cellspacing="2">
        <tbody>
-        <tr><td class="head1">Titel (Stichwort): </td><td><input class="txtin"  size="80" value="{$book.title|escape}"     name="title"></td></tr>
-        <tr><td class="head1">Autor*in (Nachname):  </td><td><input class="txtin"  size="80" value="{$book.author|escape}"    name="author"></td></tr>
-        <tr><td class="head1">Signatur:          </td><td><input class="txtin"  size="80" value="{$book.signature|escape}" name="signature"></td></tr>
+        <tr><td class="head1">Titel (Stichwort):   </td><td><input class="txtin"  size="80" value="{$book.title|escape}"     name="title"></td></tr>
+        <tr><td class="head1">Autor*in (Nachname): </td><td><input class="txtin"  size="80" value="{$book.author|escape}"    name="author"></td></tr>
+        <tr><td class="head1">Signatur:            </td><td><input class="txtin"  size="80" value="{$book.signature|escape}" name="signature"></td></tr>
        </tbody>
        <input type="hidden" name="loc"              value="1" >
        <input type="hidden" name="action"           value="search" >

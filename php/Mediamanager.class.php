@@ -46,6 +46,12 @@ function showHitList( $I , $books, $hits, $maxhits )
 ###############################################################################################
 function editMediaMetaData( $I )
 {
+  foreach ($_SESSION[ 'MEDIA_STATE' ]  as $mst )
+  {
+    $mstd = str_replace(  'Vor<br />', 'Vor', $mst['description'] );
+    $ms[ $mst['id'] ] =  str_replace(  '<br />', ' ', $mstd );
+  }
+
   $collection_id                                          =  $I[ 'currentCollection' ] -> get_collection_id();
   $collection                                             =  $this -> SQL -> getCollection ( $collection_id );
   $tpl_vars[ 'collection'      ]                          =  $collection[ $collection_id ] -> obj2array( );
@@ -58,7 +64,8 @@ function editMediaMetaData( $I )
   $tpl_vars[ 'filter'          ]                          =  $I[ 'filter'                          ] -> obj2array ( ) ;
   $tpl_vars[ 'DOC_TYPE'        ]                          =  $_SESSION[ 'DOC_TYPE'                 ];
   $tpl_vars[ 'CONF'            ]                          =  $_SESSION[ 'CFG'      ][ 'CONF' ];
-  $tpl_vars[ 'MEDIALOC'        ]                          =   $_SESSION[ 'CFG' ][ 'MEDIA_PRINT' ];
+  $tpl_vars[ 'MEDIALOC'        ]                          =  $_SESSION[ 'CFG' ][ 'MEDIA_PRINT' ];
+  $tpl_vars[ 'MEDIASTATE'      ]                          =  $ms;
   $tpl_vars[ 'currentElement'  ]                          =  0 ;
   $tpl_vars[ 'maxElement'      ]                          =  1 ;
   $tpl_vars[ 'back_URL'        ]                          = $_SESSION[ 'history' ][ 0 ];
@@ -70,14 +77,14 @@ function editMediaMetaData( $I )
 ###############################################################################################
 function annoteNewMedia_showForm( $I )
 {
-    # $_SESSION[ 'books' ][ 'booksHitList'      ]
+  # $_SESSION[ 'books' ][ 'booksHitList'      ]
   if ( isset( $_SESSION[ 'books' ][ 'booksHitList' ][ 0 ]))
   { #deb($_SESSION[ 'books' ][ 'booksHitList' ] );
     if ( $I[ 'medium' ] -> get_doc_type_id() != 99)                                                     ## KEIN  Erwerbungsvorschlag
     {
       $tmpBook = $_SESSION[ 'books' ][ 'booksHitList' ][ $_SESSION[ 'books' ][ 'currentElement' ] ];
       $I[ 'medium' ] -> array2obj( $tmpBook );
-       #deb( $_SESSION[ 'books' ][ 'booksHitList' ],1);
+      #deb( $_SESSION[ 'books' ][ 'booksHitList' ],1);
     }
     else if ( $I[ 'medium' ] -> get_title( ) == '' AND $I[ 'medium' ] -> get_doc_type_id( ) != 99 )     ## Kein Titel UND kein Erwerbungsvorschlag
     {
@@ -157,19 +164,15 @@ function saveMediaMetaData( $I )
   #$I[ 'medium' ] -> set_item (  $_SESSION[ 'DOC_TYPE' ][ $I[ 'medium' ] -> get_doc_type_id () ]['item'] ) ;
   #deb($_SESSION[ 'DOC_TYPE' ]);
   #deb($I[ 'operator' ] -> item );
-# deb($I[ 'medium' ],1);
   if (  $I[ 'operator' ] -> item              == 'media'
   AND   $I[ 'medium'   ] -> get_location_id() == '-1'
   AND   $I[ 'medium'    ] -> get_shape()      != 'online'
-
   )   #  Bei physischem Medium wurde NOCH(!) keine Auswahl getroffen, ob Literaturhinweis oder Handapparat
   {
     $I[ 'operator' ] -> set_msg            ( 'location_id' );
     $I[ 'operator' ] -> set_mode           ( 'new' );
     $this -> annoteNewMedia_showForm( $I );                                                                 ## Zur Wiedervolage an Benutzer, um diesese fehlende Auswahl zu treffen
   }
-  
-  
   
   if ( $I[ 'medium' ] -> get_id() == 0 )                                                                    ##  NEUES MEDIUM
   {
