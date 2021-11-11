@@ -143,7 +143,7 @@ if ( isset ( $_GET[ 'lmsid'                                    ] ) )  { $medium 
 if ( isset ( $_GET[ 'dc_collection_id'                         ] ) )  { $medium -> set_collection_id       ( $this -> b64de(                $_GET[ 'dc_collection_id' ] )  ); }
 
 
-#deb($medium);
+
 ##
 ### ------------------------------- COLLECTION  --------------------------------
 ##
@@ -400,7 +400,7 @@ function updateCollection ( $collection , $user )
 # ---------------------------------------------------------------------------------------------
   function sendBIB_APmails()
   {
- # deb($this -> conf,1);
+ 
     # 0 => "Sonntag",
 # 1 => "Montag",
 # 2 => "Dienstag",
