@@ -180,10 +180,7 @@ function showCollectionList( $I  ) //  1 ++ Liste der Semesterapparate, sortiert
     $tpl_vars[ 'CFG'               ] = $this -> conf ;
     $tpl_vars[ 'errors_info'       ][] = '';
     $tpl_vars[ 'back_URL'          ]  = $_SESSION[ 'history' ][ 0 ];
-   
-  #  deb($tpl_vars[ 'DOC_TYPE'          ]);
-  #  deb($tpl_vars[ 'CFG'               ]['CATALOG_URL']);
-  #  deb( $tpl_vars[ 'collection' ][ $collection_id ]);
+ 
     
    $this -> RENDERER -> do_template( 'collection.tpl', $tpl_vars );
   }

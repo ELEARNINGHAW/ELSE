@@ -79,12 +79,12 @@ function annoteNewMedia_showForm( $I )
 {
   # $_SESSION[ 'books' ][ 'booksHitList'      ]
   if ( isset( $_SESSION[ 'books' ][ 'booksHitList' ][ 0 ]))
-  { #deb($_SESSION[ 'books' ][ 'booksHitList' ] );
+  {
     if ( $I[ 'medium' ] -> get_doc_type_id() != 99)                                                     ## KEIN  Erwerbungsvorschlag
     {
       $tmpBook = $_SESSION[ 'books' ][ 'booksHitList' ][ $_SESSION[ 'books' ][ 'currentElement' ] ];
       $I[ 'medium' ] -> array2obj( $tmpBook );
-      #deb( $_SESSION[ 'books' ][ 'booksHitList' ],1);
+      
     }
     else if ( $I[ 'medium' ] -> get_title( ) == '' AND $I[ 'medium' ] -> get_doc_type_id( ) != 99 )     ## Kein Titel UND kein Erwerbungsvorschlag
     {
@@ -161,9 +161,7 @@ function purchaseSuggestion( $I )
 ###############################################################################################
 function saveMediaMetaData( $I )
 {
-  #$I[ 'medium' ] -> set_item (  $_SESSION[ 'DOC_TYPE' ][ $I[ 'medium' ] -> get_doc_type_id () ]['item'] ) ;
-  #deb($_SESSION[ 'DOC_TYPE' ]);
-  #deb($I[ 'operator' ] -> item );
+ 
   if (  $I[ 'operator' ] -> item              == 'media'
   AND   $I[ 'medium'   ] -> get_location_id() == '-1'
   AND   $I[ 'medium'    ] -> get_shape()      != 'online'
@@ -495,7 +493,7 @@ function getHitList( $searchQuery )
     {
       $m = new Medium();
 
-#        deb($medium,1);
+ 
 
       ## ------------------ TURBOMARC ----------------------------------------------------------------------------------
       if ( $recordSchema == 'turbomarc' )
@@ -950,7 +948,9 @@ function getHitList( $searchQuery )
 
       $collection_id = $I[ 'currentCollection' ]->get_collection_id ();
       $collection = $this->SQL->getCollection ( $collection_id );
-      $medium = $collection[ $collection_id ]->get_media () [ $I[ 'medium' ]->get_id () ];
+      
+      $col = ( $collection[ $collection_id ] -> get_media ());
+      { foreach ( $col as $c)  {  if ( $c -> get_id() ==  $I[ 'medium' ] -> get_id () )  { $medium = $c; } }  }
 
       $I[ 'medium' ]->set_notes_to_staff ( $medium->get_notes_to_staff () . ' MAIL: ' . $message );
 
@@ -974,7 +974,8 @@ function getHitList( $searchQuery )
       $tpl_vars[ 'operator' ] = $I[ 'operator' ]->obj2array ();
       $tpl_vars[ 'filter' ] = $I[ 'filter' ]->obj2array ();
       $tpl_vars[ 'SEMESTER' ] = array_keys ( $_SESSION[ 'CFG' ][ 'SEM' ] );
-
+      $tpl_vars[ 'back_URL'     ]                = $tpl_vars[ 'operator' ]['url'];
+      
       $this->RENDERER->do_template ( 'email.tpl' , $tpl_vars );
     }
 

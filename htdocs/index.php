@@ -35,14 +35,7 @@ $ci = $I[ 'operator'    ] -> get_item();     # ITEM
 $cl = $I[ 'operator'    ] -> get_loc();      # LOCATOR
 
 # $ca = 'import';
-#deb( $_GET  );
-#deb( $_POST,1  );
-#deb($ci );
-#deb($cu );
-#deb($ca );
-#deb( $cl );
-#deb($_SESSION[ 'books' ][ 'booksHitList' ]);
-#deb( $I,1  );
+
 
 # -- Default: item = collection --
 # --(bei role = user)  action = show_collection,
