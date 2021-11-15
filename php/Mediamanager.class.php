@@ -906,18 +906,19 @@ function getHitList( $searchQuery )
       # $doc_info = $this -> SQL -> getDocumentInfos ( $I[ 'W' ][ 'document_id' ] ) ;
       # $CI       = $this -> SQL -> getCollection ( $doc_info[ 'collection_id' ] ) ;
       # $col_info  = $CI[ $doc_info[ 'collection_id' ] ] ;
-      # $user_info = $col_info [ 'user_info' ] ;
+      # $user_info = $col_info [ 'user_info' ]
 
       $collection_id = $I[ 'currentCollection' ] -> get_collection_id ();
       $collection    = $this -> SQL -> getCollection ( $collection_id );
-
+ 
+  
+      $tpl_vars[ 'medium'     ] = $collection[ $collection_id ]->get_media()[ $I[ 'medium']->get_id() ]->obj2array ();
       $tpl_vars[ 'collection' ] = $collection[ $collection_id ]->obj2array ();
-      $tpl_vars[ 'medium'     ] = $I[ 'medium'                ]->obj2array ();
       $tpl_vars[ 'user'       ] = $I[ 'currentUser'           ]->obj2array ();
       $tpl_vars[ 'operator'   ] = $I[ 'operator'              ]->obj2array ();
       $tpl_vars[ 'filter'     ] = $I[ 'filter'                ]->obj2array ();
       $tpl_vars[ 'SEMESTER'   ] = array_keys ( $_SESSION[ 'CFG' ][ 'SEM' ] );
-
+      
       if    ( $tpl_vars[ 'collection' ][ 'Owner' ][ 'sex' ] == 'w' ) { $salutaton = 'Sehr geehrte/r ' . $tpl_vars[ 'collection' ][ 'Owner' ][ 'forename' ] . ' ' . $tpl_vars[ 'collection' ][ 'Owner' ][ 'surname' ]; }
       else                                                           { $salutaton = 'Sehr geehrte/r ' . $tpl_vars[ 'collection' ][ 'Owner' ][ 'forename' ] . ' ' . $tpl_vars[ 'collection' ][ 'Owner' ][ 'surname' ]; }
 

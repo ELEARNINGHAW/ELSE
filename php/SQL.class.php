@@ -108,7 +108,6 @@ $res = mysqli_query ( $this -> DB , $SQL );
 if ( $res )
 { while ( $row = mysqli_fetch_assoc ( $res ) )
   {
-   
     if( $row[ 'state_id' ] != 6 OR  $filterState == 6 )  ## Gelöschte Medien werden NICHT angezeigt, außer in der Liste der gelöschten Medien
     {
       $m = new Medium();
@@ -133,6 +132,8 @@ if ( $res )
       $ret[ $row[ 'id' ] ] = $m;
     }
   }
+ 
+  
 }
 return $ret;
 }
@@ -235,7 +236,7 @@ function getCollection( $colID = null , $filter = false ,  $short = null )
     {
       $SA[ $row[ 'c_id' ] ]  =  $this -> getCollectionMetaData( $row[ 'c_id' ] );                                       ## Metadaten des Semesterapparats
       $dl                    =  $this -> getDokumentList ( $row[ 'c_id' ] , $filter );                                  ## Alle/gefilterte Medien des SA ( $doc_ID, $doc_type_id = null , $doc_state_id = null  )
-   
+
       if ( $dl )
       { # Medien nach 'sortorder' neu anordnen
         $withoutSortOrder = array();
@@ -257,7 +258,7 @@ function getCollection( $colID = null , $filter = false ,  $short = null )
           $d -> calcDocType ( );  ## TODO check ob überhaupt notwendig?
           $withoutSortOrder[ $d -> get_id() ] = $d;   ## --- Attribute hinzufügen 'doc_type', 'shape', 'doc_type_id', 'state_id'
         }
-
+        
         $sortorder = explode ( ',' , $row[ 'c_sortorder' ] ); # Array von PPN als Identifikatoren der Medien
 
         if ( $sortorder[ 0 ] != '' AND $filterState == '' )     ##  Falls es eine Sortorder gibt, wird nach dieser Sortiert
@@ -266,7 +267,7 @@ function getCollection( $colID = null , $filter = false ,  $short = null )
             {
               if ( $wso -> get_ppn() == $ppn )
               {
-                $withSortOrder[] = $wso;
+                $withSortOrder[ $wso -> get_id()] = $wso;
                 unset( $withoutSortOrder[ $wso -> get_id() ] );
               }
             }
@@ -274,20 +275,18 @@ function getCollection( $colID = null , $filter = false ,  $short = null )
 
           foreach($withoutSortOrder as $wso)    ## Falls in der Sortoder-Liste weniger Medien stehen, als Medien im SA sind.
           {
-            $withSortOrder[] = $wso;
+            $withSortOrder[ $wso -> get_id()] = $wso;
           }
         } else
         { $withSortOrder = $withoutSortOrder;
         }
-
-
+        
         $SA[ $row[ 'c_id' ] ]->set_media( $withSortOrder );
       }
       elseif (  $filterState != '' OR  $filterType != '' )   #Wenn SA keine Medien beinhaltet, wird dieser wieder entfernt
       { unset ( $SA[ $row[ 'c_id' ] ] );
       }
     }
- 
   return $SA;
 }
 
