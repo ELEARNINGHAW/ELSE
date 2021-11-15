@@ -2,7 +2,6 @@
 {$collection.title} : {$collection.media[ 0 ].title } : Email
 <a style="float:right;" href="{$back_URL}}"> <img  class="icon" style="margin-top:-4px;" title="Zurück" src="img/svg/chevron-left.svg" /></a>
 </h3>
-  
 
 {if $operator.msg == ''}
 <br />
@@ -12,8 +11,6 @@
 
 <span  style="margin:10px; font-family: 'Open Sans', sans-serif;" >An: {$collection.Owner.forename} {$collection.Owner.surname} &lt;{$collection.Owner.email}&gt; </span><br/><br/>
 <span  style="margin:10px; font-family: 'Open Sans', sans-serif;" >Betreff: Ihr ELSE Semesterapparat </span>
-
-
 
 <input  name="to"                 type="hidden"  value="{$collection.Owner.email}"/>
 <input  name="from"               type="hidden"  value="{$user.email}"/>
@@ -27,11 +24,11 @@
 
 Ihr Semesterapparat: {$collection.title }
 
-Ihr Buch/Medium: {$collection.media[ 0 ].title }
+Ihr Buch/Medium: {$medium.title }
 
 
 {$collection.media[ 0 ].notes_to_staff}
- 
+
 
 Mit freundlichen Gr&uuml;&szlig;en
 {$user.forename} {$user.surname}
