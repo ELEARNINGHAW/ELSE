@@ -9,17 +9,15 @@ function getConf()
   $iniFile = "../php/config/config.ini";
   $ini     = file_get_contents( $iniFile );
   $conf    = parse_ini_string( $ini, true );
-
-  #$conf = parse_ini_file("../php/config/config.ini", true);
+  
+  $mp = $conf['MEDIA_PRINT'];  asort($mp ); foreach ($mp as $k => $v) { $m[$k] = substr($v,2);  $conf['MEDIA_PRINT'] = $m ; }  ## Reihenfolge wird geändert
 
   foreach ( $conf[ 'SEM' ] as $sem => $startend )
-  {
-    
-    $s =  explode( ',',  str_replace( ' ' , '' , $startend ) ) ;
+  { $s =  explode( ',',  str_replace( ' ' , '' , $startend ) ) ;
     $sem = str_replace( ' ' , '' , $sem )  ;
     
     if( strstr ( $sem, 'A' ) ){ $sem = str_replace( 'A' , '' , $sem )  ;  $cfg[ 'ASEM' ][ $sem ] = $s; }
-    else               {                                                                      $cfg[  'SEM' ][ $sem ] = $s; }
+    else              {                                                                      $cfg[  'SEM' ][ $sem ] = $s; }
   }
   $conf[ 'SEM' ] = $cfg[ 'SEM' ];
   $conf[ 'ASEM' ] = $cfg[ 'ASEM' ];

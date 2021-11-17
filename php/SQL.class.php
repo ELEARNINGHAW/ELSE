@@ -436,6 +436,7 @@ function get_med_state( $collection_id )
 
     $res = mysqli_query ( $this->DB , $SQL );
     while ( $row = mysqli_fetch_assoc ( $res ) ) {
+   #   $row[ 'description' ] = str_replace ( '-##' , '<br />' , $row[ 'description' ] );                   ## Parst nach '##' und ersetzt durch '<br>'
       $row[ 'description' ] = str_replace ( '##' , '<br />' , $row[ 'description' ] );                   ## Parst nach '##' und ersetzt durch '<br>'
       $ret[ $row[ 'id' ] ] = $row;
     }

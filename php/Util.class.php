@@ -31,7 +31,6 @@ $this -> HAWdb     = new HAW_DB();                                    # Aus der 
 
 if ( isset ( $_GET[ 'uid' ] ) )  ##  Initiale Parameterübergabe über  Moodle ## // Kurskurzname   /* Paramterübergabe von EMIL  */
 {
-  
   $_SESSION[ 'FAK'          ] = $this -> HAWdb -> getAllFak ();
   $_SESSION[ 'FACHBIB'      ] = $this -> HAWdb -> getAllFachBib ();
   $_SESSION[ 'DOC_TYPE'     ] = $this -> SQL -> getAllDocTypes();
