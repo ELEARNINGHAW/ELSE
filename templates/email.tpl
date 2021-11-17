@@ -27,7 +27,7 @@ Ihr Semesterapparat: {$collection.title }
 Ihr Buch/Medium: {$medium.title }
 
 
-{$collection.media[ 0 ].notes_to_staff}
+{$medium.notes_to_staff}
 
 
 Mit freundlichen Gr&uuml;&szlig;en

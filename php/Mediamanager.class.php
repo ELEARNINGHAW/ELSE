@@ -48,7 +48,8 @@ function editMediaMetaData( $I )
 {
   foreach ($_SESSION[ 'MEDIA_STATE' ]  as $mst )
   {
-    $mstd = str_replace(  'Vor<br />', 'Vor', $mst['description'] );
+    $mstd =  str_replace('-<br />', '', $mst['description'] );
+   # $mstd =  str_replace('<br />', ' ', $mstd );
     $ms[ $mst['id'] ] =  str_replace(  '<br />', ' ', $mstd );
   }
 
