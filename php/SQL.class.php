@@ -100,7 +100,7 @@ if( $filter )
 $SQL =
 "SELECT * FROM `document`
 WHERE `collection_id` = \"" . $colID . "\"";
-if (  $filterLoc    == 0   )                           { $SQL .= " AND `location_id`  = "  . $this -> es ( $filterLoc  ); }
+if (  $filterLoc    == '0'   )                           { $SQL .= " AND `location_id`  = "  . $this -> es ( $filterLoc  ); }
 if (  $filterState  != ''  AND  $filterState != 0   ) { $SQL .= " AND `state_id`     = "  . $this -> es ( $filterState  ); }
 if (  $filterType   != ''  AND  $filterType != 'X'  ) { $SQL .= " AND `doc_type_id`  = "  . $this -> es ( $filterType   ); }
 
