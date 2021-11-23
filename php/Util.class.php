@@ -61,7 +61,7 @@ else
   }
   else
   {
-    die("<div style='text-align:center;'><h1>ACCESS ERROR<h1><h3>Netzwerkfehler!</h3>Bitte ELSE neu starten</div>");
+    die("<div style='text-align:center;'><h1>ACCESS ERROR<h1><h3>TIME OUT</h3>Bitte ELSE neu starten</div>");
   }
 }
 
@@ -85,7 +85,7 @@ if ( isset( $_GET[ 'action' ] ) AND  $_GET[ 'action' ] == 'b_coll_edit' ) {  uns
 ## -----------------------------------------------------------------------------
 
 ## Action DEFAULTEEINSTELLUNGEN für die einzelnen Rollen
-if (  $this -> hasRole( $currentUser,'admin', 'staff') )      { $operator -> set_action           ( 'show_collection_list'    ); }
+if (  $this -> hasRole( $currentUser,'admin', 'staff') )       { $operator -> set_action           ( 'show_collection_list'    ); }
 else                                                                 { $operator -> set_action           ( 'show_collection'         ); }
 
 if ( isset ( $_GET[ 'item'                                     ] ) ) { $operator -> set_item             ( $_GET[ 'item'               ] ) ; }
@@ -218,6 +218,7 @@ function getGET_BASE_Values ( )
   $currentUser             =  new user();
   $medium                  =  new medium();
   
+  $_SESSION[ 'filter' ][ 'loc'   ] = '';
   $_SESSION[ 'filter' ][ 'bib'   ] = '';
   $_SESSION[ 'filter' ][ 'sem'   ] = $_SESSION[ 'CUR_SEM'      ] ;
   $_SESSION[ 'filter' ][ 'state' ] = '';
@@ -539,14 +540,21 @@ else { return false;    }
 
 function get_filter( $operator )
 {
-  
   $filter = new Filter();
-
+  
+  $filter -> set_loc     ( $_SESSION[ 'filter' ][ 'loc'   ]  );
   $filter -> set_bib     ( $_SESSION[ 'filter' ][ 'bib'   ]  );
   $filter -> set_sem     ( $_SESSION[ 'filter' ][ 'sem'   ]  );
   $filter -> set_state   ( $_SESSION[ 'filter' ][ 'state' ]  );
   $filter -> set_type    ( $_SESSION[ 'filter' ][ 'type'  ]  );
 
+  if ( $operator -> get_mode() == 'filterLoc'   )                 # Filter State u. Type  wird auf ALLE zurückgesetzt bei Filter auf Bib
+  { $filter -> set_loc   ( $operator -> get_category( ) );
+    $filter -> set_state ( '' );
+    $filter -> set_type  ( '' );
+  }
+  
+  
   if ( $operator -> get_mode() == 'filterBib'   )                 # Filter State u. Type  wird auf ALLE zurückgesetzt bei Filter auf Bib
   { $filter -> set_bib   ( $operator -> get_category( ) );
     $filter -> set_state ( 0 );
@@ -563,12 +571,14 @@ function get_filter( $operator )
   { $filter -> set_state ( $operator -> get_category( ) );
     # if (  $operator -> get_category( ) == 0 )
     {  $filter -> set_type ( 'X' );
+      $filter -> set_loc   ( '' );
     }
   }
   
   if ( $operator -> get_mode() == 'filterType'  )
   { $filter -> set_type  ( $operator -> get_category( ) );
     $filter -> set_state ( 0 );
+    $filter -> set_loc   ( '' );
   }
   
   if ( $operator -> get_mode() == 'filterUser'  )

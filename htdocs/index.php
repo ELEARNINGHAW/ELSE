@@ -38,7 +38,7 @@ $cl = $I[ 'operator'    ] -> get_loc();      # LOCATOR
 # -- Default: item = collection --
 # --(bei role = user)  action = show_collection,
 # --(bei role = staff) action = show_collection_list
-
+#deb($I);
 ## --- AKTIONEN DES SEMESTERAPPARATS ---
 if ( $ci  == 'collection'  AND   $UTIL -> hasRole( $cu,'admin', 'staff', 'edit') )
 { if      ( 1 == 2 ) {;}

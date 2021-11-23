@@ -83,34 +83,38 @@ function getDokumentList( $colID , $filter = null  )
 {
   $ret = NULL;
 
-  $filterSem   = '';
-  $filterBib   = '';
+#  $filterSem   = '';
+  $filterLoc   = '';
   $filterState = '';
   $filterType  = '';
  
 if( $filter )
 {
-  $filterSem   = $filter->get_sem();
-  $filterBib   = $filter->get_bib();
-  $filterState = $filter->get_state();
-  $filterType  = $filter->get_type();
-}
 
+#  $filterSem   = $filter->get_sem();
+#  $filterBib   = $filter->get_bib();
+   $filterLoc   = $filter->get_loc();
+   $filterState = $filter->get_state();
+   $filterType  = $filter->get_type();
+}
 $SQL =
 "SELECT * FROM `document`
 WHERE `collection_id` = \"" . $colID . "\"";
+if (  $filterLoc    == 0   )                           { $SQL .= " AND `location_id`  = "  . $this -> es ( $filterLoc  ); }
 if (  $filterState  != ''  AND  $filterState != 0   ) { $SQL .= " AND `state_id`     = "  . $this -> es ( $filterState  ); }
 if (  $filterType   != ''  AND  $filterType != 'X'  ) { $SQL .= " AND `doc_type_id`  = "  . $this -> es ( $filterType   ); }
-  
+
+
 
 $res = mysqli_query ( $this -> DB , $SQL );
 
 if ( $res )
-{ while ( $row = mysqli_fetch_assoc ( $res ) )
+{
+  while ( $row = mysqli_fetch_assoc ( $res ) )
   {
-    if( $row[ 'state_id' ] != 6 OR  $filterState == 6 )  ## Gelöschte Medien werden NICHT angezeigt, außer in der Liste der gelöschten Medien
-    {
-      $m = new Medium();
+  
+    if( $row[ 'state_id' ] != 6 OR  $filterState == 6 )  ## --DEPRECATED-- Gelöschte Medien werden NICHT angezeigt, außer in der Liste der gelöschten Medien
+    { $m = new Medium();
       $m -> set_id                   ( $row[ 'id'                  ] );
       $m -> set_state_id             ( $row[ 'state_id'            ] );
       $m -> set_title                ( $row[ 'title'               ] );
@@ -131,6 +135,7 @@ if ( $res )
       $m -> set_last_state_change    ( $row[ 'last_state_change'   ] );
       $ret[ $row[ 'id' ] ] = $m;
     }
+  
   }
  
   
@@ -203,17 +208,18 @@ function getCollection( $colID = null , $filter = false ,  $short = null )
   ## EIN oder  ALLE Semesterapparate. Gefiltert nach BIB und/oder SEMESTER
 
   $filterSem   =  '';
-  $filterBib   =  '';
+  $filterLoc   =  '';
   $filterState =  '';
   $filterType  =  '';
 
   if( $filter )
   {
+    $filterLoc   =  $filter -> get_loc();
     $filterSem   =  $filter -> get_sem();
     $filterBib   =  $filter -> get_bib();
     $filterState =  $filter -> get_state();
     $filterType  =  $filter -> get_type();
-
+  
     if ( $filterSem  != ''  AND   $filterSem  != 'X'                           )  {  $semesterFilter  = " AND c.sem           = '" .   $filterSem  . "' "; }  # SEMESTER filter
     if ( $filterBib  != ''  AND   $filterBib  != 'X' AND   $filterBib != '0'   )  {  $bibFilter       = " AND c.bib_id        = '" .   $filterBib  . "' "; }  # Bibliotheks filter
     else                                                                          {  $bibFilter       = " AND c.bib_id       != '' "                     ; }
@@ -236,7 +242,7 @@ function getCollection( $colID = null , $filter = false ,  $short = null )
     {
       $SA[ $row[ 'c_id' ] ]  =  $this -> getCollectionMetaData( $row[ 'c_id' ] );                                       ## Metadaten des Semesterapparats
       $dl                    =  $this -> getDokumentList ( $row[ 'c_id' ] , $filter );                                  ## Alle/gefilterte Medien des SA ( $doc_ID, $doc_type_id = null , $doc_state_id = null  )
-
+ 
       if ( $dl )
       { # Medien nach 'sortorder' neu anordnen
         $withoutSortOrder = array();
@@ -283,7 +289,9 @@ function getCollection( $colID = null , $filter = false ,  $short = null )
         
         $SA[ $row[ 'c_id' ] ]->set_media( $withSortOrder );
       }
-      elseif (  $filterState != '' OR  $filterType != '' )   #Wenn SA keine Medien beinhaltet, wird dieser wieder entfernt
+     
+      elseif (  $filterState != '' OR  $filterType != '' OR  $filterLoc != '' )   #Wenn SA keine Medien beinhaltet, wird dieser wieder entfernt
+    #  else
       { unset ( $SA[ $row[ 'c_id' ] ] );
       }
     }
